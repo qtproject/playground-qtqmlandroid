@@ -32,6 +32,18 @@ Activity {
             }
 
             TextView {
+                text: "ToggleButton"
+                textSize: 72
+                textColor: Qt.rgba(1,1,1,1)
+            }
+
+            LinearLayout {
+                ToggleButton { }
+                ToggleButton { }
+                ToggleButton { }
+            }
+
+            TextView {
                 text: "CheckBox"
                 textSize: 72
                 textColor: Qt.rgba(1,1,1,1)
@@ -62,7 +74,7 @@ Activity {
                 textColor: Qt.rgba(1,1,1,1)
             }
 
-            LinearLayout {
+            RadioGroup {
                 RadioButton {
                     checked: true
                     text: "First"
