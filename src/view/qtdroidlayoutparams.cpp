@@ -1,19 +1,14 @@
 #include "qtdroidlayoutparams_p.h"
-#include "qtdroidlinearlayoutparams_p.h"
-#include "qtdroidlinearlayout_p.h"
 #include "qtdroidview_p.h"
 
 QtDroidLayoutParams::QtDroidLayoutParams(QtDroidView *view) :
     QtDroidObject(view), m_view(view)
 {
+    m_view->setLayoutParams(this);
 }
 
 QtDroidLayoutParams *QtDroidLayoutParams::qmlAttachedProperties(QObject *object)
 {
-    QtDroidLinearLayout *linearLayout = qobject_cast<QtDroidLinearLayout*>(object);
-    if (linearLayout)
-        return new QtDroidLinearLayoutParams(linearLayout);
-
     QtDroidView *view = qobject_cast<QtDroidView*>(object);
     if (view)
         return new QtDroidLayoutParams(view);
@@ -54,10 +49,17 @@ void QtDroidLayoutParams::setHeight(Size value)
     }
 }
 
-void QtDroidLayoutParams::applyParams(QtDroidView *view)
+QAndroidJniObject QtDroidLayoutParams::construct()
+{
+    return QAndroidJniObject("android/view/ViewGroup$LayoutParams",
+                             "(II)V",
+                             MATCH_PARENT, MATCH_PARENT);
+}
+
+void QtDroidLayoutParams::applyParams(QAndroidJniObject &params)
 {
     if (!m_width.isNull())
-        ;
+        params.callMethod<void>("setWidth", "(I)V", m_width.value());
     if (!m_height.isNull())
-        ;
+        params.callMethod<void>("setHeight", "(I)V", m_height.value());
 }

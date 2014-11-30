@@ -5,8 +5,6 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidLinearLayout;
-
 class QtDroidLinearLayoutParams : public QtDroidLayoutParams
 {
     Q_OBJECT
@@ -14,7 +12,9 @@ class QtDroidLinearLayoutParams : public QtDroidLayoutParams
     Q_PROPERTY(qreal weight READ weight WRITE setWeight NOTIFY weightChanged)
 
 public:
-    explicit QtDroidLinearLayoutParams(QtDroidLinearLayout *layout);
+    explicit QtDroidLinearLayoutParams(QtDroidView *view);
+
+    static QtDroidLinearLayoutParams *qmlAttachedProperties(QObject *object);
 
     int gravity() const;
     void setGravity(int gravity);
@@ -27,7 +27,8 @@ Q_SIGNALS:
     void weightChanged();
 
 protected:
-    virtual void applyParams(QtDroidView *view);
+    QAndroidJniObject construct() Q_DECL_OVERRIDE;
+    void applyParams(QAndroidJniObject &params) Q_DECL_OVERRIDE;
 
 private:
     QtDroidOptional<int> m_gravity;
@@ -35,5 +36,7 @@ private:
 };
 
 QT_END_NAMESPACE
+
+QML_DECLARE_TYPEINFO(QtDroidLinearLayoutParams, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDLINEARLAYOUTPARAMS_P_H

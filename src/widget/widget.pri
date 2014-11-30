@@ -8,8 +8,11 @@ HEADERS += \
     $$PWD/qtdroidframelayout_p.h \
     $$PWD/qtdroidlinearlayout_p.h \
     $$PWD/qtdroidlinearlayoutparams_p.h \
+    $$PWD/qtdroidmarginlayoutparams_p.h \
     $$PWD/qtdroidprogressbar_p.h \
     $$PWD/qtdroidradiobutton_p.h \
+    $$PWD/qtdroidrelativelayout_p.h \
+    $$PWD/qtdroidrelativelayoutparams_p.h \
     $$PWD/qtdroidscrollview_p.h \
     $$PWD/qtdroidseekbar_p.h \
     $$PWD/qtdroidswitch_p.h \
@@ -23,8 +26,11 @@ SOURCES += \
     $$PWD/qtdroidframelayout.cpp \
     $$PWD/qtdroidlinearlayout.cpp \
     $$PWD/qtdroidlinearlayoutparams.cpp \
+    $$PWD/qtdroidmarginlayoutparams.cpp \
     $$PWD/qtdroidprogressbar.cpp \
     $$PWD/qtdroidradiobutton.cpp \
+    $$PWD/qtdroidrelativelayout.cpp \
+    $$PWD/qtdroidrelativelayoutparams.cpp \
     $$PWD/qtdroidscrollview.cpp \
     $$PWD/qtdroidseekbar.cpp \
     $$PWD/qtdroidswitch.cpp \

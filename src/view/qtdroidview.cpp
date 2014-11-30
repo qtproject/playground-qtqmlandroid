@@ -1,8 +1,11 @@
 #include "qtdroidview_p.h"
 #include "qtdroidcontext_p.h"
+#include "qtdroidlayoutparams_p.h"
+#include <QtCore/qcoreapplication.h>
+#include <QtCore/qhash.h>
 
 QtDroidView::QtDroidView(QObject *parent) : QtDroidObject(parent),
-    m_context(0), m_x(0), m_y(0), m_width(0), m_height(0)
+    m_context(0), m_layoutParamsDirty(false), m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
 {
 }
 
@@ -123,6 +126,8 @@ void QtDroidView::inflate(jobject context)
                                    view.object(),
                                    reinterpret_cast<jlong>(this));
 
+    view.callMethod<void>("setId", "(I)V", qHash(this));
+
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
         registerNativeMethods(m_listener.object());
@@ -131,6 +136,8 @@ void QtDroidView::inflate(jobject context)
 
     if (!m_focus.isNull())
         callSetFocus(instance(), m_focus.value());
+
+    invalidateLayoutParams();
 }
 
 void QtDroidView::registerNativeMethods(jobject listener)
@@ -185,4 +192,38 @@ bool QtDroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)
         QMetaObject::invokeMethod(view, "longClick", Qt::QueuedConnection);
     }
     return true; // TODO: accept
+}
+
+void QtDroidView::customEvent(QEvent *event)
+{
+    if (m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
+        QtDroidObject::callUiMethod([=]() {
+            QAndroidJniObject params = m_layoutParams->instance();
+            if (!params.isValid()) {
+                params = m_layoutParams->construct();
+                m_layoutParams->setInstance(params);
+            }
+            m_layoutParams->applyParams(params);
+            instance().callMethod<void>("setLayoutParams",
+                                        "(Landroid/view/ViewGroup$LayoutParams;)V",
+                                        params.object());
+        });
+        m_layoutParamsDirty = false;
+    }
+}
+
+void QtDroidView::invalidateLayoutParams()
+{
+    if (!m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
+        m_layoutParamsDirty = true;
+        QCoreApplication::postEvent(this, new QEvent(QEvent::User));
+    }
+}
+
+void QtDroidView::setLayoutParams(QtDroidLayoutParams *params)
+{
+    if (m_layoutParams != params) {
+        m_layoutParams = params;
+        invalidateLayoutParams();
+    }
 }

@@ -7,6 +7,7 @@
 QT_BEGIN_NAMESPACE
 
 class QtDroidContext;
+class QtDroidLayoutParams;
 
 class QtDroidView : public QtDroidObject
 {
@@ -59,15 +60,25 @@ protected:
     static void onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint top, jint left, jint right, jint bottom);
     static bool onLongClick(JNIEnv *env, jobject object, jlong instance);
 
+    void customEvent(QEvent *event) Q_DECL_OVERRIDE;
+
 private Q_SLOTS:
     bool updateFocus(bool focus);
 
 private:
+    void invalidateLayoutParams();
+    void setLayoutParams(QtDroidLayoutParams *params);
+
     QtDroidContext *m_context;
     QAndroidJniObject m_listener;
 
+    bool m_layoutParamsDirty;
+    QtDroidLayoutParams *m_layoutParams;
+
     QtDroidOptional<bool> m_focus;
     qreal m_x, m_y, m_width, m_height;
+
+    friend class QtDroidLayoutParams;
     friend class QtDroidViewGroup;
     friend class QtDroidActivity;
 };

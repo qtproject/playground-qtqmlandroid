@@ -38,12 +38,14 @@ Q_SIGNALS:
     void heightChanged();
 
 protected:
-    virtual void applyParams(QtDroidView *view);
+    virtual QAndroidJniObject construct();
+    virtual void applyParams(QAndroidJniObject &params);
 
 private:
     QtDroidView *m_view;
     QtDroidOptional<Size> m_width;
     QtDroidOptional<Size> m_height;
+    friend class QtDroidView;
 };
 
 QT_END_NAMESPACE
