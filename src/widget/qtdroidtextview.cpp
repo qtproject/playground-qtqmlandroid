@@ -79,6 +79,31 @@ void QtDroidTextView::setTextSize(qreal size)
     }
 }
 
+QString QtDroidTextView::hint() const
+{
+    if (m_hint.isNull())
+        return QString();
+    return m_hint.value();
+}
+
+static void callSetHint(const QAndroidJniObject& view, const QString &hint)
+{
+    if (view.isValid()) {
+        QtDroidObject::callUiMethod([=]() {
+            view.callMethod<void>("setHint", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(hint).object());
+        });
+    }
+}
+
+void QtDroidTextView::setHint(const QString &arg)
+{
+    if (arg != hint()) {
+        m_hint = arg;
+        callSetHint(instance(), arg);
+        emit hintChanged();
+    }
+}
+
 QAndroidJniObject QtDroidTextView::construct(jobject context)
 {
     return QAndroidJniObject("android/widget/TextView",
@@ -96,4 +121,6 @@ void QtDroidTextView::inflate(jobject context)
         callSetTextColor(instance(), m_textColor.value());
     if (!m_textSize.isNull())
         callSetTextSize(instance(), m_textSize.value());
+    if (!m_hint.isNull())
+        callSetHint(instance(), m_hint.value());
 }

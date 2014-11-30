@@ -162,7 +162,7 @@ Activity {
             }
 
             EditText {
-                text: "EditText"
+                hint: "Hint..."
                 textColor: "white"
             }
         }
