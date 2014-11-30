@@ -5,6 +5,7 @@ HEADERS += \
     $$PWD/qtdroidbutton_p.h \
     $$PWD/qtdroidcheckbox_p.h \
     $$PWD/qtdroidcompoundbutton_p.h \
+    $$PWD/qtdroidedittext_p.h \
     $$PWD/qtdroidframelayout_p.h \
     $$PWD/qtdroidlinearlayout_p.h \
     $$PWD/qtdroidlinearlayoutparams_p.h \
@@ -23,6 +24,7 @@ SOURCES += \
     $$PWD/qtdroidbutton.cpp \
     $$PWD/qtdroidcheckbox.cpp \
     $$PWD/qtdroidcompoundbutton.cpp \
+    $$PWD/qtdroidedittext.cpp \
     $$PWD/qtdroidframelayout.cpp \
     $$PWD/qtdroidlinearlayout.cpp \
     $$PWD/qtdroidlinearlayoutparams.cpp \

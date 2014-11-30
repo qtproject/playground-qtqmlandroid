@@ -142,6 +142,17 @@ Activity {
                 id: seekBar
                 progress: 50
             }
+
+            TextView {
+                text: "EditText"
+                textSize: 72
+                textColor: Qt.rgba(1,1,1,1)
+            }
+
+            EditText {
+                text: "EditText"
+                textColor: "white"
+            }
         }
     }
 }

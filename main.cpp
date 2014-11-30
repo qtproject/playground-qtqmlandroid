@@ -10,6 +10,7 @@
 
 #include "qtdroidbutton_p.h"
 #include "qtdroidcheckbox_p.h"
+#include "qtdroidedittext_p.h"
 #include "qtdroidprogressbar_p.h"
 #include "qtdroidradiobutton_p.h"
 #include "qtdroidrelativelayout_p.h"
@@ -32,6 +33,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<QtDroidButton>("qtdroid.widget", 0, 1, "Button");
     qmlRegisterType<QtDroidCheckBox>("qtdroid.widget", 0, 1, "CheckBox");
+    qmlRegisterType<QtDroidEditText>("qtdroid.widget", 0, 1, "EditText");
     qmlRegisterType<QtDroidLinearLayout>("qtdroid.widget", 0, 1, "LinearLayout");
     qmlRegisterType<QtDroidProgressBar>("qtdroid.widget", 0, 1, "ProgressBar");
     qmlRegisterType<QtDroidRelativeLayout>("qtdroid.widget", 0, 1, "RelativeLayout");
