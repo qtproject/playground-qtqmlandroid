@@ -1,0 +1,79 @@
+#include "qtdroidactivity_p.h"
+#include "qtdroidactionbar_p.h"
+#include "qtdroidview_p.h"
+#include <QtCore/private/qjnihelpers_p.h>
+#include <QtAndroidExtras/qandroidfunctions.h>
+#include <QtAndroidExtras/qandroidjnienvironment.h>
+
+QtDroidActivity::QtDroidActivity(QObject *parent) : QtDroidContext(parent), m_view(0), m_actionBar(0)
+{
+    // TODO: multiple activities?
+    setInstance(QtAndroid::androidActivity());
+}
+
+QtDroidActionBar *QtDroidActivity::actionBar() const
+{
+    return m_actionBar;
+}
+
+void QtDroidActivity::setActionBar(QtDroidActionBar *bar)
+{
+    if (m_actionBar != bar) {
+        if (m_actionBar)
+            m_actionBar->setActivity(0);
+        m_actionBar = bar;
+        if (bar && isComponentComplete())
+            bar->setActivity(this);
+    }
+}
+
+QtDroidView *QtDroidActivity::contentView() const
+{
+    return m_view;
+}
+
+void QtDroidActivity::setContentView(QtDroidView *view)
+{
+    if (m_view != view) {
+        if (m_view)
+            m_view->setContext(0);
+        m_view = view;
+        if (view)
+            view->setContext(this);
+    }
+}
+
+void QtDroidActivity::classBegin()
+{
+    QtDroidContext::classBegin();
+}
+
+void QtDroidActivity::componentComplete()
+{
+    QtDroidContext::componentComplete();
+
+    if (m_actionBar) {
+        QAndroidJniObject activity = instance();
+        callUiMethod([=]() {
+            QAndroidJniObject bar = activity.callObjectMethod("getActionBar", "()Landroid/app/ActionBar;");
+            m_actionBar->setInstance(bar);
+            m_actionBar->setActivity(this);
+            //QAndroidJniObject content = m_view->construct(activity.object());
+//            m_view->setInstance(content);
+//            m_view->inflate(activity.object());
+//            if (content.isValid())
+//                activity.callMethod<void>("setContentView", "(Landroid/view/View;)V", content.object());
+        });
+    }
+
+    if (m_view) {
+        QAndroidJniObject activity = instance();
+        callUiMethod([=]() {
+            QAndroidJniObject content = m_view->construct(activity.object());
+            m_view->setInstance(content);
+            m_view->inflate(activity.object());
+            if (content.isValid())
+                activity.callMethod<void>("setContentView", "(Landroid/view/View;)V", content.object());
+        });
+    }
+}

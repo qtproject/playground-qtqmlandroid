@@ -1,0 +1,29 @@
+package qtdroid.widget;
+
+import android.widget.SeekBar;
+
+public class QtSeekBarListener implements SeekBar.OnSeekBarChangeListener
+{
+    public QtSeekBarListener(SeekBar seekBar, long instance) {
+        m_instance = instance;
+        seekBar.setOnSeekBarChangeListener(this);
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        onProgressChanged(m_instance, progress, fromUser);
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+        // TODO
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        // TODO
+    }
+
+    private long m_instance;
+    private static native void onProgressChanged(long instance, int progress, boolean fromUser);
+}

@@ -1,0 +1,42 @@
+package qtdroid.view;
+
+import android.view.View;
+
+public class QtViewListener implements View.OnClickListener,
+                                       View.OnFocusChangeListener,
+                                       View.OnLayoutChangeListener,
+                                       View.OnLongClickListener
+{
+    public QtViewListener(View view, long instance) {
+        m_instance = instance;
+        view.setOnClickListener(this);
+        view.addOnLayoutChangeListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        onClick(m_instance);
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean hasFocus) {
+        onFocusChange(m_instance, hasFocus);
+    }
+
+    @Override
+    public void onLayoutChange(View view, int left, int top, int right, int bottom,
+                                          int oldLeft, int oldTop, int oldRight, int oldBottom) {
+        onLayoutChange(m_instance, left, top, right, bottom);
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+        return onLongClick(m_instance);
+    }
+
+    private long m_instance;
+    private static native void onClick(long instance);
+    private static native void onFocusChange(long instance, boolean hasFocus);
+    private static native void onLayoutChange(long instance, int left, int top, int right, int bottom);
+    private static native boolean onLongClick(long instance);
+}

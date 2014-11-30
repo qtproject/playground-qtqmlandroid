@@ -1,0 +1,42 @@
+#ifndef QTDROIDCOMPOUNDBUTTON_P_H
+#define QTDROIDCOMPOUNDBUTTON_P_H
+
+#include "qtdroidbutton_p.h"
+
+QT_BEGIN_NAMESPACE
+
+class QtDroidCompoundButton : public QtDroidButton
+{
+    Q_OBJECT
+    Q_PROPERTY(bool checked READ isChecked WRITE setChecked NOTIFY checkedChanged)
+
+public:
+    explicit QtDroidCompoundButton(QObject *parent = 0);
+
+    bool isChecked() const;
+    void setChecked(bool checked);
+
+public Q_SLOTS:
+    void toggle();
+
+Q_SIGNALS:
+    void checkedChanged();
+
+protected:
+    QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
+    void inflate(jobject context) Q_DECL_OVERRIDE;
+
+    static void registerNativeMethods(jobject listener);
+    static void onCheckedChanged(JNIEnv *env, jobject object, jlong instance, jboolean isChecked);
+
+private Q_SLOTS:
+    bool updateChecked(bool checked);
+
+private:
+    bool m_checked;
+    QAndroidJniObject m_listener;
+};
+
+QT_END_NAMESPACE
+
+#endif // QTDROIDCOMPOUNDBUTTON_P_H
