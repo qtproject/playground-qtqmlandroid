@@ -3,7 +3,6 @@
 
 #include "qtdroidobject_p.h"
 #include "qtdroidoptional_p.h"
-#include <QtQml/qqml.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -18,8 +17,6 @@ class QtDroidLayoutParams : public QtDroidObject
 
 public:
     explicit QtDroidLayoutParams(QtDroidView *view);
-
-    static QtDroidLayoutParams *qmlAttachedProperties(QObject *object);
 
     enum Size {
         FILL_PARENT = -1,
@@ -49,7 +46,5 @@ private:
 };
 
 QT_END_NAMESPACE
-
-QML_DECLARE_TYPEINFO(QtDroidLayoutParams, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDLAYOUTPARAMS_P_H

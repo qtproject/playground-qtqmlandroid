@@ -2,6 +2,7 @@
 #define QTDROIDRELATIVELAYOUT_P_H
 
 #include "qtdroidviewgroup_p.h"
+#include "qtdroidrelativelayoutparams_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -11,6 +12,8 @@ class QtDroidRelativeLayout : public QtDroidViewGroup
 
 public:
     explicit QtDroidRelativeLayout(QObject *parent = 0);
+
+    static QtDroidRelativeLayoutParams *qmlAttachedProperties(QObject *object);
 
     enum Verb {
         LEFT_OF                  = 0,
@@ -43,5 +46,7 @@ protected:
 };
 
 QT_END_NAMESPACE
+
+QML_DECLARE_TYPEINFO(QtDroidRelativeLayout, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDRELATIVELAYOUT_P_H

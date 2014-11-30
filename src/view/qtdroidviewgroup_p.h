@@ -2,6 +2,7 @@
 #define QTDROIDVIEWGROUP_P_H
 
 #include "qtdroidview_p.h"
+#include <QtQml/qqml.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -12,6 +13,8 @@ class QtDroidViewGroup : public QtDroidView
 
 public:
     explicit QtDroidViewGroup(QObject *parent = 0);
+
+    static QtDroidLayoutParams *qmlAttachedProperties(QObject *object);
 
     QQmlListProperty<QtDroidView> children();
 
@@ -35,5 +38,7 @@ protected:
 };
 
 QT_END_NAMESPACE
+
+QML_DECLARE_TYPEINFO(QtDroidViewGroup, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDVIEWGROUP_P_H

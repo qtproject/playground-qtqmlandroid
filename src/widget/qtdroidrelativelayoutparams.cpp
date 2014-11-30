@@ -29,14 +29,6 @@ QtDroidRelativeLayoutParams::QtDroidRelativeLayoutParams(QtDroidView *view) : Qt
 {
 }
 
-QtDroidRelativeLayoutParams *QtDroidRelativeLayoutParams::qmlAttachedProperties(QObject *object)
-{
-    QtDroidView *view = qobject_cast<QtDroidView*>(object);
-    if (view)
-        return new QtDroidRelativeLayoutParams(view);
-    return 0;
-}
-
 QtDroidView *QtDroidRelativeLayoutParams::above() const
 {
     return m_above;
@@ -342,12 +334,11 @@ QAndroidJniObject QtDroidRelativeLayoutParams::construct()
                              "(II)V",
                              WRAP_CONTENT, WRAP_CONTENT);
 }
-#include <QtDebug>
+
 static void addRule(QAndroidJniObject& params, QtDroidView *view, QtDroidRelativeLayout::Verb verb)
 {
     if (view) {
         int anchor = view->instance().callMethod<jint>("getId");
-        qDebug() << view << anchor;
         params.callMethod<void>("addRule", "(II)V", verb, anchor);
     }
 }

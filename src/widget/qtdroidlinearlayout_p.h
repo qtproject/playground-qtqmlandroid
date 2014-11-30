@@ -3,6 +3,7 @@
 
 #include "qtdroidviewgroup_p.h"
 #include "qtdroidoptional_p.h"
+#include "qtdroidlinearlayoutparams_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -18,6 +19,8 @@ class QtDroidLinearLayout : public QtDroidViewGroup
 
 public:
     explicit QtDroidLinearLayout(QObject *parent = 0);
+
+    static QtDroidLinearLayoutParams *qmlAttachedProperties(QObject *object);
 
     enum Orientation {
         HORIZONTAL = 0,
@@ -64,5 +67,7 @@ private:
 };
 
 QT_END_NAMESPACE
+
+QML_DECLARE_TYPEINFO(QtDroidLinearLayout, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDLINEARLAYOUT_P_H

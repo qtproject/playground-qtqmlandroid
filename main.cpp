@@ -3,7 +3,6 @@
 #include "qtdroidactionbar_p.h"
 #include "qtdroidactivity_p.h"
 
-#include "qtdroidlayoutparams_p.h"
 #include "qtdroidview_p.h"
 #include "qtdroidviewgroup_p.h"
 #include "qtdroidlinearlayout_p.h"
@@ -15,7 +14,6 @@
 #include "qtdroidradiobutton_p.h"
 #include "qtdroidradiogroup_p.h"
 #include "qtdroidrelativelayout_p.h"
-#include "qtdroidrelativelayoutparams_p.h"
 #include "qtdroidscrollview_p.h"
 #include "qtdroidseekbar_p.h"
 #include "qtdroidswitch_p.h"
@@ -29,7 +27,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtDroidActionBar>("qtdroid.app", 0, 1, "ActionBar");
     qmlRegisterType<QtDroidActivity>("qtdroid.app", 0, 1, "Activity");
 
-    qmlRegisterUncreatableType<QtDroidLayoutParams>("qtdroid.view", 0, 1, "LayoutParams", QLatin1String("LayoutParams is an attached property."));
     qmlRegisterType<QtDroidView>();
     qmlRegisterType<QtDroidViewGroup>();
 
@@ -41,7 +38,6 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtDroidRadioButton>("qtdroid.widget", 0, 1, "RadioButton");
     qmlRegisterType<QtDroidRadioGroup>("qtdroid.widget", 0, 1, "RadioGroup");
     qmlRegisterType<QtDroidRelativeLayout>("qtdroid.widget", 0, 1, "RelativeLayout");
-    qmlRegisterUncreatableType<QtDroidRelativeLayoutParams>("qtdroid.view", 0, 1, "RelativeLayoutParams", QLatin1String("RelativeLayoutParams is an attached property."));
     qmlRegisterType<QtDroidScrollView>("qtdroid.widget", 0, 1, "ScrollView");
     qmlRegisterType<QtDroidSeekBar>("qtdroid.widget", 0, 1, "SeekBar");
     qmlRegisterType<QtDroidSwitch>("qtdroid.widget", 0, 1, "Switch");

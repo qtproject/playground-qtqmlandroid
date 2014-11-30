@@ -14,8 +14,6 @@ class QtDroidLinearLayoutParams : public QtDroidLayoutParams
 public:
     explicit QtDroidLinearLayoutParams(QtDroidView *view);
 
-    static QtDroidLinearLayoutParams *qmlAttachedProperties(QObject *object);
-
     int gravity() const;
     void setGravity(int gravity);
 
@@ -36,7 +34,5 @@ private:
 };
 
 QT_END_NAMESPACE
-
-QML_DECLARE_TYPEINFO(QtDroidLinearLayoutParams, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDLINEARLAYOUTPARAMS_P_H

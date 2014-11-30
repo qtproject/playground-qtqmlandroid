@@ -4,6 +4,14 @@ QtDroidRelativeLayout::QtDroidRelativeLayout(QObject *parent) : QtDroidViewGroup
 {
 }
 
+QtDroidRelativeLayoutParams *QtDroidRelativeLayout::qmlAttachedProperties(QObject *object)
+{
+    QtDroidView *view = qobject_cast<QtDroidView*>(object);
+    if (view)
+        return new QtDroidRelativeLayoutParams(view);
+    return 0;
+}
+
 QAndroidJniObject QtDroidRelativeLayout::construct(jobject context)
 {
     return QAndroidJniObject("android/widget/RelativeLayout",

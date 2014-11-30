@@ -35,8 +35,6 @@ class QtDroidRelativeLayoutParams : public QtDroidMarginLayoutParams
 public:
     explicit QtDroidRelativeLayoutParams(QtDroidView *view);
 
-    static QtDroidRelativeLayoutParams *qmlAttachedProperties(QObject *object);
-
     QtDroidView *above() const;
     void setAbove(QtDroidView *view);
 
@@ -164,7 +162,5 @@ private:
 };
 
 QT_END_NAMESPACE
-
-QML_DECLARE_TYPEINFO(QtDroidRelativeLayoutParams, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDRELATIVELAYOUTPARAMS_P_H

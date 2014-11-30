@@ -7,14 +7,6 @@ QtDroidLayoutParams::QtDroidLayoutParams(QtDroidView *view) :
     m_view->setLayoutParams(this);
 }
 
-QtDroidLayoutParams *QtDroidLayoutParams::qmlAttachedProperties(QObject *object)
-{
-    QtDroidView *view = qobject_cast<QtDroidView*>(object);
-    if (view)
-        return new QtDroidLayoutParams(view);
-    return 0;
-}
-
 QtDroidLayoutParams::Size QtDroidLayoutParams::width() const
 {
     if (m_width.isNull())

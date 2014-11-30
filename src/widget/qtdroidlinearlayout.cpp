@@ -1,8 +1,15 @@
 #include "qtdroidlinearlayout_p.h"
-#include "qtdroidcontext_p.h"
 
 QtDroidLinearLayout::QtDroidLinearLayout(QObject *parent) : QtDroidViewGroup(parent)
 {
+}
+
+QtDroidLinearLayoutParams *QtDroidLinearLayout::qmlAttachedProperties(QObject *object)
+{
+    QtDroidView *view = qobject_cast<QtDroidView*>(object);
+    if (view)
+        return new QtDroidLinearLayoutParams(view);
+    return 0;
 }
 
 bool QtDroidLinearLayout::isBaselineAligned() const

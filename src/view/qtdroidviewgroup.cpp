@@ -1,8 +1,17 @@
 #include "qtdroidviewgroup_p.h"
+#include "qtdroidlayoutparams_p.h"
 #include "qtdroidcontext_p.h"
 
 QtDroidViewGroup::QtDroidViewGroup(QObject *parent) : QtDroidView(parent)
 {
+}
+
+QtDroidLayoutParams *QtDroidViewGroup::qmlAttachedProperties(QObject *object)
+{
+    QtDroidView *view = qobject_cast<QtDroidView*>(object);
+    if (view)
+        return new QtDroidLayoutParams(view);
+    return 0;
 }
 
 QQmlListProperty<QtDroidView> QtDroidViewGroup::children()

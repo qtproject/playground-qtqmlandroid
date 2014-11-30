@@ -5,14 +5,6 @@ QtDroidLinearLayoutParams::QtDroidLinearLayoutParams(QtDroidView *view) : QtDroi
 {
 }
 
-QtDroidLinearLayoutParams *QtDroidLinearLayoutParams::qmlAttachedProperties(QObject *object)
-{
-    QtDroidView *view = qobject_cast<QtDroidView*>(object);
-    if (view)
-        return new QtDroidLinearLayoutParams(view);
-    return 0;
-}
-
 int QtDroidLinearLayoutParams::gravity() const
 {
     if (m_gravity.isNull())

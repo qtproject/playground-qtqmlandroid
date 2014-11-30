@@ -1,5 +1,5 @@
 import qtdroid.app 0.1
-import qtdroid.view 0.1
+//import qtdroid.view 0.1
 import qtdroid.widget 0.1
 
 import QtQuick 2.0 // color
