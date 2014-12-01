@@ -7,14 +7,14 @@ QtDroidLayoutParams::QtDroidLayoutParams(QtDroidView *view) :
     m_view->setLayoutParams(this);
 }
 
-QtDroidLayoutParams::Size QtDroidLayoutParams::width() const
+int QtDroidLayoutParams::width() const
 {
     if (m_width.isNull())
         return MATCH_PARENT;
     return m_width.value();
 }
 
-void QtDroidLayoutParams::setWidth(Size value)
+void QtDroidLayoutParams::setWidth(int value)
 {
     if (value != width()) {
         m_width = value;
@@ -24,14 +24,14 @@ void QtDroidLayoutParams::setWidth(Size value)
     }
 }
 
-QtDroidLayoutParams::Size QtDroidLayoutParams::height() const
+int QtDroidLayoutParams::height() const
 {
     if (m_height.isNull())
         return MATCH_PARENT;
     return m_height.value();
 }
 
-void QtDroidLayoutParams::setHeight(Size value)
+void QtDroidLayoutParams::setHeight(int value)
 {
     if (value != height()) {
         m_height = value;
@@ -51,7 +51,7 @@ QAndroidJniObject QtDroidLayoutParams::construct()
 void QtDroidLayoutParams::applyParams(QAndroidJniObject &params)
 {
     if (!m_width.isNull())
-        params.callMethod<void>("setWidth", "(I)V", m_width.value());
+        params.setField<int>("width", m_width.value());
     if (!m_height.isNull())
-        params.callMethod<void>("setHeight", "(I)V", m_height.value());
+        params.setField<int>("height", m_height.value());
 }

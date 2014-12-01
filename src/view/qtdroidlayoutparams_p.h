@@ -11,8 +11,8 @@ class QtDroidView;
 class QtDroidLayoutParams : public QtDroidObject
 {
     Q_OBJECT
-    Q_PROPERTY(Size width READ width WRITE setWidth NOTIFY widthChanged)
-    Q_PROPERTY(Size height READ height WRITE setHeight NOTIFY heightChanged)
+    Q_PROPERTY(int width READ width WRITE setWidth NOTIFY widthChanged)
+    Q_PROPERTY(int height READ height WRITE setHeight NOTIFY heightChanged)
     Q_ENUMS(Size)
 
 public:
@@ -24,11 +24,11 @@ public:
         WRAP_CONTENT = -2
     };
 
-    Size width() const;
-    void setWidth(Size width);
+    int width() const;
+    void setWidth(int width);
 
-    Size height() const;
-    void setHeight(Size height);
+    int height() const;
+    void setHeight(int height);
 
 Q_SIGNALS:
     void widthChanged();
@@ -40,8 +40,8 @@ protected:
 
 private:
     QtDroidView *m_view;
-    QtDroidOptional<Size> m_width;
-    QtDroidOptional<Size> m_height;
+    QtDroidOptional<int> m_width;
+    QtDroidOptional<int> m_height;
     friend class QtDroidView;
 };
 
