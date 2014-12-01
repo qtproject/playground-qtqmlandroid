@@ -1,6 +1,6 @@
 #include "qtdroidarrayadapter_p.h"
 
-QtDroidArrayAdapter::QtDroidArrayAdapter(QObject *parent) : QtDroidObject(parent)
+QtDroidArrayAdapter::QtDroidArrayAdapter(QObject *parent) : QtDroidBaseAdapter(parent)
 {
 }
 

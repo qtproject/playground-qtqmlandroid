@@ -5,18 +5,21 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidArrayAdapter;
+class QtDroidBaseAdapter;
 
 class QtDroidAdapterView : public QtDroidViewGroup
 {
     Q_OBJECT
-    Q_PROPERTY(QtDroidArrayAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged) // TODO: Adapter
+    Q_PROPERTY(QtDroidBaseAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged) // TODO: Adapter
 
 public:
     explicit QtDroidAdapterView(QObject *parent = 0);
 
-    QtDroidArrayAdapter *adapter() const;
-    void setAdapter(QtDroidArrayAdapter *adapter);
+    QtDroidBaseAdapter *adapter() const;
+    void setAdapter(QtDroidBaseAdapter *adapter);
+
+public Q_SLOTS:
+    void setSelection(int position);
 
 Q_SIGNALS:
     void adapterChanged();
@@ -31,7 +34,7 @@ protected:
 
 private:
     QAndroidJniObject m_listener;
-    QtDroidArrayAdapter *m_adapter;
+    QtDroidBaseAdapter *m_adapter;
 };
 
 QT_END_NAMESPACE

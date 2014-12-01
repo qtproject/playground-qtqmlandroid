@@ -1,21 +1,28 @@
 #include "qtdroidadapterview_p.h"
-#include "qtdroidarrayadapter_p.h"
+#include "qtdroidbaseadapter_p.h"
 
 QtDroidAdapterView::QtDroidAdapterView(QObject *parent) : QtDroidViewGroup(parent), m_adapter(0)
 {
 }
 
-QtDroidArrayAdapter *QtDroidAdapterView::adapter() const
+QtDroidBaseAdapter *QtDroidAdapterView::adapter() const
 {
     return m_adapter;
 }
 
-void QtDroidAdapterView::setAdapter(QtDroidArrayAdapter *adapter)
+void QtDroidAdapterView::setAdapter(QtDroidBaseAdapter *adapter)
 {
     if (m_adapter != adapter) {
         m_adapter = adapter;
         emit adapterChanged();
     }
+}
+
+void QtDroidAdapterView::setSelection(int position)
+{
+    QtDroidObject::callUiMethod([=]() {
+        instance().callMethod<void>("setSelection", "(I)V", position);
+    });
 }
 
 QAndroidJniObject QtDroidAdapterView::construct(jobject context)
