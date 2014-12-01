@@ -20,6 +20,8 @@
 #include "qtdroidtextview_p.h"
 #include "qtdroidtogglebutton_p.h"
 
+#include "qtdroiddrawerlayout_p.h"
+
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
@@ -29,6 +31,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<QtDroidView>();
     qmlRegisterType<QtDroidViewGroup>();
+    qmlRegisterUncreatableType<QtDroidLayoutParams>("qtdroid.view", 0, 1, "Layout", "Layout is an attached property");
 
     qmlRegisterType<QtDroidButton>("qtdroid.widget", 0, 1, "Button");
     qmlRegisterType<QtDroidCheckBox>("qtdroid.widget", 0, 1, "CheckBox");
@@ -43,6 +46,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtDroidSwitch>("qtdroid.widget", 0, 1, "Switch");
     qmlRegisterType<QtDroidTextView>("qtdroid.widget", 0, 1, "TextView");
     qmlRegisterType<QtDroidToggleButton>("qtdroid.widget", 0, 1, "ToggleButton");
+
+    qmlRegisterType<QtDroidDrawerLayout>("qtdroid.support.v4.widget", 0, 1, "DrawerLayout");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
