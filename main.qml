@@ -13,7 +13,7 @@ Activity {
     DrawerLayout {
 
         ScrollView {
-            DrawerLayout.gravity: 0 // NONE
+            DrawerLayout.gravity: Gravity.NO_GRAVITY
             DrawerLayout.height: Layout.MATCH_PARENT
 
             LinearLayout {
@@ -178,8 +178,8 @@ Activity {
         LinearLayout {
             orientation: LinearLayout.VERTICAL
 
-            DrawerLayout.gravity: 3 // LEFT
-            DrawerLayout.width: 600
+            DrawerLayout.gravity: Gravity.LEFT
+            DrawerLayout.width: 400
             DrawerLayout.height: Layout.MATCH_PARENT
 
             TextView {

@@ -3,6 +3,7 @@
 #include "qtdroidactionbar_p.h"
 #include "qtdroidactivity_p.h"
 
+#include "qtdroidgravity_p.h"
 #include "qtdroidview_p.h"
 #include "qtdroidviewgroup_p.h"
 #include "qtdroidlinearlayout_p.h"
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<QtDroidView>();
     qmlRegisterType<QtDroidViewGroup>();
+    qmlRegisterUncreatableType<QtDroidGravity>("qtdroid.view", 0, 1, "Gravity", "Gravity is an enum");
     qmlRegisterUncreatableType<QtDroidLayoutParams>("qtdroid.view", 0, 1, "Layout", "Layout is an attached property");
 
     qmlRegisterType<QtDroidButton>("qtdroid.widget", 0, 1, "Button");
