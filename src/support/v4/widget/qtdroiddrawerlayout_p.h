@@ -15,6 +15,10 @@ public:
 
     static QtDroidDrawerLayoutParams *qmlAttachedProperties(QObject *object);
 
+public Q_SLOTS:
+    void closeDrawers();
+    void closeDrawer(int gravity);
+
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
     void inflate(jobject context) Q_DECL_OVERRIDE;

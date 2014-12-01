@@ -12,6 +12,20 @@ QtDroidDrawerLayoutParams *QtDroidDrawerLayout::qmlAttachedProperties(QObject *o
     return 0;
 }
 
+void QtDroidDrawerLayout::closeDrawers()
+{
+    QtDroidObject::callUiMethod([=]() {
+        instance().callMethod<void>("closeDrawers");
+    });
+}
+
+void QtDroidDrawerLayout::closeDrawer(int gravity)
+{
+    QtDroidObject::callUiMethod([=]() {
+        instance().callMethod<void>("closeDrawer", "(I)V", gravity);
+    });
+}
+
 QAndroidJniObject QtDroidDrawerLayout::construct(jobject context)
 {
     return QAndroidJniObject("android/support/v4/widget/DrawerLayout",

@@ -164,7 +164,22 @@ Activity {
                 id: adapter
                 array: ["Buttons", "Progress", "Input"]
             }
-            onClick: console.log(position, adapter.getItem(position))
+            onClick: {
+                drawer.closeDrawer(Gravity.LEFT)
+                console.log(position, adapter.getItem(position))
+            }
+        }
+
+        ListView {
+            DrawerLayout.gravity: Gravity.RIGHT
+
+            adapter: ArrayAdapter {
+                array: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"]
+            }
+            onClick: {
+                drawer.closeDrawer(Gravity.RIGHT)
+                console.log(position, adapter.getItem(position))
+            }
         }
     }
 }
