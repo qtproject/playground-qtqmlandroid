@@ -23,6 +23,9 @@
 #include "qtdroidswitch_p.h"
 #include "qtdroidtextview_p.h"
 #include "qtdroidtogglebutton_p.h"
+#include "qtdroidviewanimator_p.h"
+#include "qtdroidviewflipper_p.h"
+#include "qtdroidviewswitcher_p.h"
 
 #include "qtdroiddrawerlayout_p.h"
 
@@ -55,6 +58,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtDroidSwitch>("qtdroid.widget", 0, 1, "Switch");
     qmlRegisterType<QtDroidTextView>("qtdroid.widget", 0, 1, "TextView");
     qmlRegisterType<QtDroidToggleButton>("qtdroid.widget", 0, 1, "ToggleButton");
+    qmlRegisterType<QtDroidViewAnimator>("qtdroid.widget", 0, 1, "ViewAnimator");
+    qmlRegisterType<QtDroidViewFlipper>("qtdroid.widget", 0, 1, "ViewFlipper");
+    qmlRegisterType<QtDroidViewSwitcher>("qtdroid.widget", 0, 1, "ViewSwitcher");
 
     qmlRegisterType<QtDroidDrawerLayout>("qtdroid.support.v4.widget", 0, 1, "DrawerLayout");
 

@@ -24,7 +24,10 @@ HEADERS += \
     $$PWD/qtdroidspinner_p.h \
     $$PWD/qtdroidswitch_p.h \
     $$PWD/qtdroidtextview_p.h \
-    $$PWD/qtdroidtogglebutton_p.h
+    $$PWD/qtdroidtogglebutton_p.h \
+    $$PWD/qtdroidviewanimator_p.h \
+    $$PWD/qtdroidviewflipper_p.h \
+    $$PWD/qtdroidviewswitcher_p.h
 
 SOURCES += \
     $$PWD/qtdroidabsseekbar.cpp \
@@ -50,4 +53,7 @@ SOURCES += \
     $$PWD/qtdroidspinner.cpp \
     $$PWD/qtdroidswitch.cpp \
     $$PWD/qtdroidtextview.cpp \
-    $$PWD/qtdroidtogglebutton.cpp
+    $$PWD/qtdroidtogglebutton.cpp \
+    $$PWD/qtdroidviewanimator.cpp \
+    $$PWD/qtdroidviewflipper.cpp \
+    $$PWD/qtdroidviewswitcher.cpp
