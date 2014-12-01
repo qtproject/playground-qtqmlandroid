@@ -1,11 +1,11 @@
 #ifndef QTDROIDLINEARLAYOUTPARAMS_P_H
 #define QTDROIDLINEARLAYOUTPARAMS_P_H
 
-#include "qtdroidlayoutparams_p.h"
+#include "qtdroidmarginlayoutparams_p.h"
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidLinearLayoutParams : public QtDroidLayoutParams
+class QtDroidLinearLayoutParams : public QtDroidMarginLayoutParams
 {
     Q_OBJECT
     Q_PROPERTY(int gravity READ gravity WRITE setGravity NOTIFY gravityChanged)

@@ -1,7 +1,7 @@
 #include "qtdroidlinearlayoutparams_p.h"
 #include "qtdroidview_p.h"
 
-QtDroidLinearLayoutParams::QtDroidLinearLayoutParams(QtDroidView *view) : QtDroidLayoutParams(view)
+QtDroidLinearLayoutParams::QtDroidLinearLayoutParams(QtDroidView *view) : QtDroidMarginLayoutParams(view)
 {
 }
 
@@ -44,7 +44,7 @@ QAndroidJniObject QtDroidLinearLayoutParams::construct()
 
 void QtDroidLinearLayoutParams::applyParams(QAndroidJniObject &params)
 {
-    QtDroidLayoutParams::applyParams(params);
+    QtDroidMarginLayoutParams::applyParams(params);
 
     if (!m_gravity.isNull())
         params.callMethod<void>("setGravity", "(I)V", m_gravity.value());
