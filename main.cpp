@@ -19,6 +19,7 @@
 #include "qtdroidrelativelayout_p.h"
 #include "qtdroidscrollview_p.h"
 #include "qtdroidseekbar_p.h"
+#include "qtdroidspinner_p.h"
 #include "qtdroidswitch_p.h"
 #include "qtdroidtextview_p.h"
 #include "qtdroidtogglebutton_p.h"
@@ -38,6 +39,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<QtDroidLayoutParams>("qtdroid.view", 0, 1, "Layout", "Layout is an attached property");
 
     qmlRegisterType<QtDroidArrayAdapter>("qtdroid.widget", 0, 1, "ArrayAdapter");
+    qmlRegisterType<QtDroidBaseAdapter>();
     qmlRegisterType<QtDroidButton>("qtdroid.widget", 0, 1, "Button");
     qmlRegisterType<QtDroidCheckBox>("qtdroid.widget", 0, 1, "CheckBox");
     qmlRegisterType<QtDroidEditText>("qtdroid.widget", 0, 1, "EditText");
@@ -49,6 +51,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtDroidRelativeLayout>("qtdroid.widget", 0, 1, "RelativeLayout");
     qmlRegisterType<QtDroidScrollView>("qtdroid.widget", 0, 1, "ScrollView");
     qmlRegisterType<QtDroidSeekBar>("qtdroid.widget", 0, 1, "SeekBar");
+    qmlRegisterType<QtDroidSpinner>("qtdroid.widget", 0, 1, "Spinner");
     qmlRegisterType<QtDroidSwitch>("qtdroid.widget", 0, 1, "Switch");
     qmlRegisterType<QtDroidTextView>("qtdroid.widget", 0, 1, "TextView");
     qmlRegisterType<QtDroidToggleButton>("qtdroid.widget", 0, 1, "ToggleButton");

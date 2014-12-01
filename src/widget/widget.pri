@@ -21,6 +21,7 @@ HEADERS += \
     $$PWD/qtdroidrelativelayoutparams_p.h \
     $$PWD/qtdroidscrollview_p.h \
     $$PWD/qtdroidseekbar_p.h \
+    $$PWD/qtdroidspinner_p.h \
     $$PWD/qtdroidswitch_p.h \
     $$PWD/qtdroidtextview_p.h \
     $$PWD/qtdroidtogglebutton_p.h
@@ -46,6 +47,7 @@ SOURCES += \
     $$PWD/qtdroidrelativelayoutparams.cpp \
     $$PWD/qtdroidscrollview.cpp \
     $$PWD/qtdroidseekbar.cpp \
+    $$PWD/qtdroidspinner.cpp \
     $$PWD/qtdroidswitch.cpp \
     $$PWD/qtdroidtextview.cpp \
     $$PWD/qtdroidtogglebutton.cpp

@@ -1,13 +1,16 @@
 package qtdroid.widget;
 
 import android.view.View;
+import android.widget.Spinner;
 import android.widget.AdapterView;
 
 public class QtAdapterViewListener implements AdapterView.OnItemClickListener
 {
     public QtAdapterViewListener(AdapterView view, long instance) {
         m_instance = instance;
-        view.setOnItemClickListener(this);
+        if (!(view instanceof Spinner)) {
+            view.setOnItemClickListener(this);
+        }
     }
 
     @Override

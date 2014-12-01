@@ -154,6 +154,17 @@ Activity {
                 EditText {
                     hint: "Hint..."
                 }
+
+                TextView {
+                    text: "Spinner"
+                    textSize: 48
+                }
+
+                Spinner {
+                    adapter: ArrayAdapter {
+                        array: ["Apple", "Banana", "Orange"]
+                    }
+                }
             }
         }
 
