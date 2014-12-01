@@ -1,6 +1,7 @@
 package qtdroid.view;
 
 import android.view.View;
+import android.widget.AdapterView;
 
 public class QtViewListener implements View.OnClickListener,
                                        View.OnFocusChangeListener,
@@ -9,7 +10,11 @@ public class QtViewListener implements View.OnClickListener,
 {
     public QtViewListener(View view, long instance) {
         m_instance = instance;
-        view.setOnClickListener(this);
+        if (!(view instanceof AdapterView)) {
+            view.setOnClickListener(this);
+            view.setOnLongClickListener(this);
+        }
+        view.setOnFocusChangeListener(this);
         view.addOnLayoutChangeListener(this);
     }
 

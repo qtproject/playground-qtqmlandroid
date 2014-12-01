@@ -2,6 +2,8 @@ INCLUDEPATH += $$PWD
 
 HEADERS += \
     $$PWD/qtdroidabsseekbar_p.h \
+    $$PWD/qtdroidadapterview_p.h \
+    $$PWD/qtdroidarrayadapter_p.h \
     $$PWD/qtdroidbutton_p.h \
     $$PWD/qtdroidcheckbox_p.h \
     $$PWD/qtdroidcompoundbutton_p.h \
@@ -9,6 +11,7 @@ HEADERS += \
     $$PWD/qtdroidframelayout_p.h \
     $$PWD/qtdroidlinearlayout_p.h \
     $$PWD/qtdroidlinearlayoutparams_p.h \
+    $$PWD/qtdroidlistview_p.h \
     $$PWD/qtdroidmarginlayoutparams_p.h \
     $$PWD/qtdroidprogressbar_p.h \
     $$PWD/qtdroidradiobutton_p.h \
@@ -23,6 +26,8 @@ HEADERS += \
 
 SOURCES += \
     $$PWD/qtdroidabsseekbar.cpp \
+    $$PWD/qtdroidadapterview.cpp \
+    $$PWD/qtdroidarrayadapter.cpp \
     $$PWD/qtdroidbutton.cpp \
     $$PWD/qtdroidcheckbox.cpp \
     $$PWD/qtdroidcompoundbutton.cpp \
@@ -30,6 +35,7 @@ SOURCES += \
     $$PWD/qtdroidframelayout.cpp \
     $$PWD/qtdroidlinearlayout.cpp \
     $$PWD/qtdroidlinearlayoutparams.cpp \
+    $$PWD/qtdroidlistview.cpp \
     $$PWD/qtdroidmarginlayoutparams.cpp \
     $$PWD/qtdroidprogressbar.cpp \
     $$PWD/qtdroidradiobutton.cpp \

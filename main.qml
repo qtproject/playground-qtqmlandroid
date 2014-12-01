@@ -3,7 +3,7 @@ import qtdroid.view 0.1
 import qtdroid.widget 0.1
 import qtdroid.support.v4.widget 0.1
 
-import QtQuick 2.0 // color
+//import QtQuick 2.0 // color
 
 Activity {
     actionBar: ActionBar {
@@ -11,6 +11,7 @@ Activity {
     }
 
     DrawerLayout {
+        id: drawer
 
         ScrollView {
             DrawerLayout.gravity: Gravity.NO_GRAVITY
@@ -156,25 +157,14 @@ Activity {
             }
         }
 
-        LinearLayout {
-            orientation: LinearLayout.VERTICAL
-
+        ListView {
             DrawerLayout.gravity: Gravity.LEFT
-            DrawerLayout.width: 400
-            DrawerLayout.height: Layout.MATCH_PARENT
 
-            TextView {
-                text: "Hello"
-                textColor: "white"
+            adapter: ArrayAdapter {
+                id: adapter
+                array: ["Buttons", "Progress", "Input"]
             }
-            TextView {
-                text: "Cute"
-                textColor: "white"
-            }
-            TextView {
-                text: "Hello"
-                textColor: "white"
-            }
+            onClick: console.log(position, adapter.getItem(position))
         }
     }
 }
