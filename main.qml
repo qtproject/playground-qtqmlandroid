@@ -17,13 +17,11 @@ Activity {
             DrawerLayout.height: Layout.MATCH_PARENT
 
             LinearLayout {
-
                 orientation: LinearLayout.VERTICAL
 
                 TextView {
                     text: "Button"
-                    textSize: 72
-                    textColor: Qt.rgba(1,1,1,1)
+                    textSize: 48
                 }
 
                 LinearLayout {
@@ -40,8 +38,7 @@ Activity {
 
                 TextView {
                     text: "ToggleButton"
-                    textSize: 72
-                    textColor: Qt.rgba(1,1,1,1)
+                    textSize: 48
                 }
 
                 LinearLayout {
@@ -52,83 +49,70 @@ Activity {
 
                 TextView {
                     text: "CheckBox"
-                    textSize: 72
-                    textColor: Qt.rgba(1,1,1,1)
+                    textSize: 48
                 }
 
                 LinearLayout {
                     CheckBox {
                         checked: true
                         text: "First"
-                        textColor: "white"
                         onCheckedChanged: console.log(text, checked)
                     }
                     CheckBox {
                         text: "Second"
-                        textColor: "white"
                         onCheckedChanged: console.log(text, checked)
                     }
                     CheckBox {
                         text: "Third"
-                        textColor: "white"
                         onCheckedChanged: console.log(text, checked)
                     }
                 }
 
                 TextView {
                     text: "RadioButton"
-                    textSize: 72
-                    textColor: Qt.rgba(1,1,1,1)
+                    textSize: 48
                 }
 
                 RadioGroup {
                     RadioButton {
                         checked: true
                         text: "First"
-                        textColor: "white"
                         onCheckedChanged: console.log(text, checked)
                     }
                     RadioButton {
                         text: "Second"
-                        textColor: "white"
                         onCheckedChanged: console.log(text, checked)
                     }
                     RadioButton {
                         text: "Third"
-                        textColor: "white"
                         onCheckedChanged: console.log(text, checked)
                     }
                 }
 
                 TextView {
                     text: "Switch"
-                    textSize: 72
-                    textColor: Qt.rgba(1,1,1,1)
+                    textSize: 48
                 }
 
                 LinearLayout {
                     Switch {
                         checked: true
                         text: "First"
-                        textColor: "white"
                         onCheckedChanged: console.log(text, checked)
                     }
                     Switch {
                         text: "Second"
-                        textColor: "white"
                         onCheckedChanged: console.log(text, checked)
                     }
                     Switch {
                         text: "Third"
-                        textColor: "white"
                         onCheckedChanged: console.log(text, checked)
                     }
                 }
 
                 TextView {
                     text: "ProgressBar"
-                    textSize: 72
-                    textColor: Qt.rgba(1,1,1,1)
+                    textSize: 48
                 }
 
                 LinearLayout {
@@ -153,8 +137,7 @@ Activity {
 
                 TextView {
                     text: "SeekBar"
-                    textSize: 72
-                    textColor: Qt.rgba(1,1,1,1)
+                    textSize: 48
                 }
 
                 SeekBar {
@@ -164,13 +147,11 @@ Activity {
 
                 TextView {
                     text: "EditText"
-                    textSize: 72
-                    textColor: Qt.rgba(1,1,1,1)
+                    textSize: 48
                 }
 
                 EditText {
                     hint: "Hint..."
-                    textColor: "white"
                 }
             }
         }
