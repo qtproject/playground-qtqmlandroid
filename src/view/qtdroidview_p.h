@@ -23,9 +23,12 @@ class QtDroidView : public QtDroidObject
 public:
     explicit QtDroidView(QObject *parent = 0);
 
+    int identifier() const;
+
     QtDroidContext *context() const;
     void setContext(QtDroidContext *context);
 
+    QList<QtDroidView *> childViews() const;
     QQmlListProperty<QtDroidView> children();
 
     bool hasFocus() const;
@@ -105,6 +108,7 @@ private:
     void invalidateLayoutParams();
     void setLayoutParams(QtDroidLayoutParams *params);
 
+    int m_id;
     QtDroidContext *m_context;
     QList<QtDroidView *> m_children;
 

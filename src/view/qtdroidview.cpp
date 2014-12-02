@@ -7,6 +7,13 @@
 QtDroidView::QtDroidView(QObject *parent) : QtDroidObject(parent),
     m_context(0), m_layoutParamsDirty(false), m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
 {
+    static int id = 0;
+    m_id = ++id;
+}
+
+int QtDroidView::identifier() const
+{
+    return m_id;
 }
 
 QtDroidContext *QtDroidView::context() const
@@ -23,6 +30,11 @@ void QtDroidView::setContext(QtDroidContext *context)
         viewChange(ViewContextChange, context);
         emit contextChanged();
     }
+}
+
+QList<QtDroidView *> QtDroidView::childViews() const
+{
+    return m_children;
 }
 
 QQmlListProperty<QtDroidView> QtDroidView::children()
@@ -199,7 +211,7 @@ void QtDroidView::inflate(jobject context)
                                    view.object(),
                                    reinterpret_cast<jlong>(this));
 
-    view.callMethod<void>("setId", "(I)V", qHash(this));
+    view.callMethod<void>("setId", "(I)V", m_id);
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
