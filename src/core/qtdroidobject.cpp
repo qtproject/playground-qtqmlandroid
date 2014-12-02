@@ -49,9 +49,10 @@ QQmlListProperty<QObject> QtDroidObject::data()
 void QtDroidObject::data_append(QQmlListProperty<QObject> *list, QObject *object)
 {
     if (QtDroidObject *that = qobject_cast<QtDroidObject *>(list->object)) {
+        object->setParent(that);
         that->m_data.append(object);
-        emit that->dataChanged();
         that->objectAdded(object);
+        emit that->dataChanged();
     }
 }
 

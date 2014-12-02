@@ -13,6 +13,7 @@ class QtDroidView : public QtDroidObject
 {
     Q_OBJECT
     Q_PROPERTY(QtDroidContext *context READ context NOTIFY contextChanged)
+    Q_PROPERTY(QQmlListProperty<QtDroidView> children READ children NOTIFY childrenChanged)
     Q_PROPERTY(bool focus READ hasFocus WRITE setFocus NOTIFY focusChanged)
     Q_PROPERTY(qreal x READ x WRITE setX NOTIFY xChanged)
     Q_PROPERTY(qreal y READ y WRITE setY NOTIFY yChanged)
@@ -24,6 +25,8 @@ public:
 
     QtDroidContext *context() const;
     void setContext(QtDroidContext *context);
+
+    QQmlListProperty<QtDroidView> children();
 
     bool hasFocus() const;
     void setFocus(bool focus);
@@ -40,8 +43,29 @@ public:
     qreal height() const;
     void setHeight(qreal height);
 
+    enum ViewChange {
+        ViewContextChange,      // data.context
+        ViewParentChange,       // data.view
+        ViewChildAddedChange,   // data.view
+        ViewChildRemovedChange, // data.view
+        ViewVisibilityChange,   // data.boolean
+    };
+
+    union ViewChangeData {
+        ViewChangeData(QtDroidView *v) : view(v) {}
+        ViewChangeData(QtDroidContext *c) : context(c) {}
+        ViewChangeData(qreal n) : number(n) {}
+        ViewChangeData(bool b) : boolean(b) {}
+
+        QtDroidView *view;
+        QtDroidContext *context;
+        qreal number;
+        bool boolean;
+    };
+
 Q_SIGNALS:
     void contextChanged();
+    void childrenChanged();
     void focusChanged();
     void click();
     void xChanged();
@@ -51,6 +75,19 @@ Q_SIGNALS:
     void longClick(); // TODO: accept
 
 protected:
+    virtual void viewChange(ViewChange change, const ViewChangeData &data);
+
+    void objectAdded(QObject *object) Q_DECL_OVERRIDE;
+    void objectRemoved(QObject *object) Q_DECL_OVERRIDE;
+
+    void addChild(QtDroidView *child);
+    void removeChild(QtDroidView *child);
+
+    static void children_append(QQmlListProperty<QtDroidView> *list, QtDroidView *child);
+    static int children_count(QQmlListProperty<QtDroidView> *list);
+    static QtDroidView *children_at(QQmlListProperty<QtDroidView> *list, int index);
+    static void children_clear(QQmlListProperty<QtDroidView> *list);
+
     virtual QAndroidJniObject construct(jobject context);
     virtual void inflate(jobject context);
 
@@ -70,6 +107,8 @@ private:
     void setLayoutParams(QtDroidLayoutParams *params);
 
     QtDroidContext *m_context;
+    QList<QtDroidView *> m_children;
+
     QAndroidJniObject m_listener;
 
     bool m_layoutParamsDirty;
