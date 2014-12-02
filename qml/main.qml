@@ -5,7 +5,8 @@ import qtdroid.support.v4.widget 0.1
 
 Activity {
     actionBar: ActionBar {
-        title: adapter.getItem(switcher.displayedChild)
+        title: "QtDroid"
+        subtitle: adapter.getItem(switcher.displayedChild)
     }
 
     DrawerLayout {

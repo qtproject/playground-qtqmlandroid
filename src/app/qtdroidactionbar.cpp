@@ -32,26 +32,38 @@ void QtDroidActionBar::setVisible(bool arg)
 
 QString QtDroidActionBar::title() const
 {
-    if (m_title.isNull())
-        return QString();
-    return m_title.value();
+    return m_title;
 }
 
-static void callSetTitle(const QAndroidJniObject& bar, const QString &title)
+static void callSetTitle(const QAndroidJniObject& bar, const char* method, const QString &title)
 {
     if (bar.isValid()) {
         QtDroidObject::callUiMethod([=]() {
-            bar.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(title).object());
+            bar.callMethod<void>(method, "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(title).object());
         });
     }
 }
 
-void QtDroidActionBar::setTitle(const QString &arg)
+void QtDroidActionBar::setTitle(const QString &title)
 {
-    if (arg != title()) {
-        m_title = arg;
-        callSetTitle(instance(), arg);
+    if (m_title != title) {
+        m_title = title;
+        callSetTitle(instance(), "setTitle", title);
         emit titleChanged();
+    }
+}
+
+QString QtDroidActionBar::subtitle() const
+{
+    return m_subtitle;
+}
+
+void QtDroidActionBar::setSubtitle(const QString &subtitle)
+{
+    if (m_subtitle != subtitle) {
+        m_subtitle = subtitle;
+        callSetTitle(instance(), "setSubtitle", subtitle);
+        emit subtitleChanged();
     }
 }
 
@@ -66,6 +78,8 @@ void QtDroidActionBar::setActivity(QtDroidActivity *activity)
         m_activity = activity;
         callSetVisible(instance(), m_visible);
         if (!m_title.isNull())
-            callSetTitle(instance(), m_title.value());
+            callSetTitle(instance(), "setTitle", m_title);
+        if (!m_subtitle.isNull())
+            callSetTitle(instance(), "setSubtitle", m_subtitle);
     }
 }
