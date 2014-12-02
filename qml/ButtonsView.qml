@@ -14,6 +14,10 @@ ScrollView {
         LinearLayout {
             Button { text: "Ok" }
             Button { text: "Cancel" }
+            Space {
+                LinearLayout.weight: 1
+                LinearLayout.width: Layout.WRAP_CONTENT
+            }
             Button {
                 text: "Attach"
                 onClick: menu.show()

@@ -30,6 +30,7 @@
 #include "qtdroidrelativelayoutparams_p.h"
 #include "qtdroidscrollview_p.h"
 #include "qtdroidseekbar_p.h"
+#include "qtdroidspace_p.h"
 #include "qtdroidspinner_p.h"
 #include "qtdroidswitch_p.h"
 #include "qtdroidtextview_p.h"
@@ -75,6 +76,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtDroidRelativeLayoutParams>();
     qmlRegisterType<QtDroidScrollView>("qtdroid.widget", 0, 1, "ScrollView");
     qmlRegisterType<QtDroidSeekBar>("qtdroid.widget", 0, 1, "SeekBar");
+    qmlRegisterType<QtDroidSpace>("qtdroid.widget", 0, 1, "Space");
     qmlRegisterType<QtDroidSpinner>("qtdroid.widget", 0, 1, "Spinner");
     qmlRegisterType<QtDroidSwitch>("qtdroid.widget", 0, 1, "Switch");
     qmlRegisterType<QtDroidTextView>("qtdroid.widget", 0, 1, "TextView");
