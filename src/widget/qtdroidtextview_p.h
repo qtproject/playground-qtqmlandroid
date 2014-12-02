@@ -41,10 +41,10 @@ protected:
     void inflate(jobject context) Q_DECL_OVERRIDE;
 
 private:
-    QtDroidOptional<QString> m_text;
+    QString m_text;
+    QString m_hint;
     QtDroidOptional<int> m_textColor;
     QtDroidOptional<qreal> m_textSize;
-    QtDroidOptional<QString> m_hint;
 };
 
 QT_END_NAMESPACE

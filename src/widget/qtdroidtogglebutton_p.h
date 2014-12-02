@@ -29,8 +29,8 @@ protected:
     void inflate(jobject context) Q_DECL_OVERRIDE;
 
 private:
-    QtDroidOptional<QString> m_textOn;
-    QtDroidOptional<QString> m_textOff;
+    QString m_textOn;
+    QString m_textOff;
 };
 
 QT_END_NAMESPACE

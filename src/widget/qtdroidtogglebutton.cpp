@@ -15,14 +15,12 @@ static void callSetText(const QAndroidJniObject& button, const char *method, con
 
 QString QtDroidToggleButton::textOn() const
 {
-    if (m_textOn.isNull())
-        return QString();
-    return m_textOn.value();
+    return m_textOn;
 }
 
 void QtDroidToggleButton::setTextOn(const QString &text)
 {
-    if (text != textOn()) {
+    if (m_textOn != text) {
         m_textOn = text;
         callSetText(instance(), "setTextOn", text);
         emit textOnChanged();
@@ -31,14 +29,12 @@ void QtDroidToggleButton::setTextOn(const QString &text)
 
 QString QtDroidToggleButton::textOff() const
 {
-    if (m_textOff.isNull())
-        return QString();
-    return m_textOff.value();
+    return m_textOff;
 }
 
 void QtDroidToggleButton::setTextOff(const QString &text)
 {
-    if (text != textOff()) {
+    if (m_textOff != text) {
         m_textOff = text;
         callSetText(instance(), "setTextOff", text);
         emit textOffChanged();
@@ -57,7 +53,7 @@ void QtDroidToggleButton::inflate(jobject context)
     QtDroidCompoundButton::inflate(context);
 
     if (!m_textOn.isNull())
-        callSetText(instance(), "setTextOn", m_textOn.value());
+        callSetText(instance(), "setTextOn", m_textOn);
     if (!m_textOff.isNull())
-        callSetText(instance(), "setTextOff", m_textOff.value());
+        callSetText(instance(), "setTextOff", m_textOff);
 }
