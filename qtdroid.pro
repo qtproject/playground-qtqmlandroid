@@ -1,7 +1,6 @@
 TEMPLATE = app
 TARGET = qtdroid
-QT += androidextras qml quick
-QT += core-private qml-private
+QT += androidextras qml core-private # qjnihelpers
 SOURCES += main.cpp
 RESOURCES += qtdroid.qrc
 

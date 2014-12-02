@@ -1,4 +1,5 @@
 #include "qtdroidtextview_p.h"
+#include "qtdroidcolor_p.h"
 
 QtDroidTextView::QtDroidTextView(QObject *parent) : QtDroidView(parent)
 {
@@ -29,23 +30,23 @@ void QtDroidTextView::setText(const QString &txt)
     }
 }
 
-QColor QtDroidTextView::textColor() const
+int QtDroidTextView::textColor() const
 {
     if (m_textColor.isNull())
-        return QColor();
+        return QtDroidColor::BLACK; // TODO
     return m_textColor.value();
 }
 
-static void callSetTextColor(const QAndroidJniObject& view, const QColor &color)
+static void callSetTextColor(const QAndroidJniObject& view, int color)
 {
     if (view.isValid()) {
         QtDroidObject::callUiMethod([=]() {
-            view.callMethod<void>("setTextColor", "(I)V", color.rgba());
+            view.callMethod<void>("setTextColor", "(I)V", color);
         });
     }
 }
 
-void QtDroidTextView::setTextColor(const QColor& color)
+void QtDroidTextView::setTextColor(int color)
 {
     if (color != textColor()) {
         m_textColor = color;

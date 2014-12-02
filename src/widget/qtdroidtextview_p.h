@@ -11,7 +11,7 @@ class QtDroidTextView : public QtDroidView
 {
     Q_OBJECT
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
-    Q_PROPERTY(QColor textColor READ textColor WRITE setTextColor NOTIFY textColorChanged)
+    Q_PROPERTY(int textColor READ textColor WRITE setTextColor NOTIFY textColorChanged)
     Q_PROPERTY(qreal textSize READ textSize WRITE setTextSize NOTIFY textSizeChanged)
     Q_PROPERTY(QString hint READ hint WRITE setHint NOTIFY hintChanged)
 
@@ -21,8 +21,8 @@ public:
     QString text() const;
     void setText(const QString &text);
 
-    QColor textColor() const;
-    void setTextColor(const QColor& color);
+    int textColor() const;
+    void setTextColor(int color);
 
     qreal textSize() const;
     void setTextSize(qreal size);
@@ -42,7 +42,7 @@ protected:
 
 private:
     QtDroidOptional<QString> m_text;
-    QtDroidOptional<QColor> m_textColor;
+    QtDroidOptional<int> m_textColor;
     QtDroidOptional<qreal> m_textSize;
     QtDroidOptional<QString> m_hint;
 };

@@ -3,6 +3,8 @@
 #include "qtdroidactionbar_p.h"
 #include "qtdroidactivity_p.h"
 
+#include "qtdroidcolor_p.h"
+
 #include "qtdroidgravity_p.h"
 #include "qtdroidview_p.h"
 #include "qtdroidviewgroup_p.h"
@@ -39,6 +41,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<QtDroidActionBar>("qtdroid.app", 0, 1, "ActionBar");
     qmlRegisterType<QtDroidActivity>("qtdroid.app", 0, 1, "Activity");
+
+    qmlRegisterSingletonType<QtDroidColor>("qtdroid.graphics", 0, 1, "Color", QtDroidColor::provider);
 
     qmlRegisterType<QtDroidView>();
     qmlRegisterType<QtDroidViewGroup>();
