@@ -6,6 +6,7 @@ HEADERS += \
     $$PWD/qtdroidarrayadapter_p.h \
     $$PWD/qtdroidbaseadapter_p.h \
     $$PWD/qtdroidbutton_p.h \
+    $$PWD/qtdroidcalendarview_p.h \
     $$PWD/qtdroidcheckbox_p.h \
     $$PWD/qtdroidcompoundbutton_p.h \
     $$PWD/qtdroidedittext_p.h \
@@ -38,6 +39,7 @@ SOURCES += \
     $$PWD/qtdroidbaseadapter.cpp \
     $$PWD/qtdroidarrayadapter.cpp \
     $$PWD/qtdroidbutton.cpp \
+    $$PWD/qtdroidcalendarview.cpp \
     $$PWD/qtdroidcheckbox.cpp \
     $$PWD/qtdroidcompoundbutton.cpp \
     $$PWD/qtdroidedittext.cpp \

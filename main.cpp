@@ -15,6 +15,7 @@
 
 #include "qtdroidarrayadapter_p.h"
 #include "qtdroidbutton_p.h"
+#include "qtdroidcalendarview_p.h"
 #include "qtdroidcheckbox_p.h"
 #include "qtdroidedittext_p.h"
 #include "qtdroidframelayout_p.h"
@@ -63,6 +64,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtDroidArrayAdapter>("qtdroid.widget", 0, 1, "ArrayAdapter");
     qmlRegisterType<QtDroidBaseAdapter>();
     qmlRegisterType<QtDroidButton>("qtdroid.widget", 0, 1, "Button");
+    qmlRegisterType<QtDroidCalendarView>("qtdroid.widget", 0, 1, "CalendarView");
     qmlRegisterType<QtDroidCheckBox>("qtdroid.widget", 0, 1, "CheckBox");
     qmlRegisterType<QtDroidEditText>("qtdroid.widget", 0, 1, "EditText");
     qmlRegisterType<QtDroidFrameLayout>("qtdroid.widget", 0, 1, "FrameLayout");
