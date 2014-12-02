@@ -6,6 +6,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QtDroidActionBarDrawerToggle;
+
 class QtDroidDrawerLayout : public QtDroidViewGroup
 {
     Q_OBJECT
@@ -20,8 +22,13 @@ public Q_SLOTS:
     void closeDrawer(int gravity);
 
 protected:
+    void objectAdded(QObject *object) Q_DECL_OVERRIDE;
+
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
     void inflate(jobject context) Q_DECL_OVERRIDE;
+
+private:
+    QtDroidActionBarDrawerToggle *m_toggle;
 };
 
 QT_END_NAMESPACE

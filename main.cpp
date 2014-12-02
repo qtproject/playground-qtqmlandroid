@@ -41,6 +41,8 @@
 
 #include "qtdroiddrawerlayout_p.h"
 
+#include "qtdroidactionbardrawertoggle_p.h"
+
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
@@ -86,6 +88,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtDroidViewSwitcher>("qtdroid.widget", 0, 1, "ViewSwitcher");
 
     qmlRegisterType<QtDroidDrawerLayout>("qtdroid.support.v4.widget", 0, 1, "DrawerLayout");
+
+    qmlRegisterType<QtDroidActionBarDrawerToggle>("qtdroid.support.v7.app", 0, 1, "ActionBarDrawerToggle");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
