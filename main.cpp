@@ -8,6 +8,8 @@
 #include "qtdroidcolor_p.h"
 
 #include "qtdroidgravity_p.h"
+#include "qtdroidlayoutparams_p.h"
+#include "qtdroidmenuitem_p.h"
 #include "qtdroidview_p.h"
 #include "qtdroidviewgroup_p.h"
 
@@ -20,6 +22,7 @@
 #include "qtdroidlinearlayout_p.h"
 #include "qtdroidlinearlayoutparams_p.h"
 #include "qtdroidlistview_p.h"
+#include "qtdroidpopupmenu_p.h"
 #include "qtdroidprogressbar_p.h"
 #include "qtdroidradiobutton_p.h"
 #include "qtdroidradiogroup_p.h"
@@ -48,10 +51,11 @@ int main(int argc, char *argv[])
 
     qmlRegisterSingletonType<QtDroidColor>("qtdroid.graphics", 0, 1, "Color", QtDroidColor::provider);
 
-    qmlRegisterType<QtDroidView>();
-    qmlRegisterType<QtDroidViewGroup>();
     qmlRegisterUncreatableType<QtDroidGravity>("qtdroid.view", 0, 1, "Gravity", "Gravity is an enum");
     qmlRegisterUncreatableType<QtDroidLayoutParams>("qtdroid.view", 0, 1, "Layout", "Layout is an attached property");
+    qmlRegisterType<QtDroidMenuItem>("qtdroid.view", 0, 1, "MenuItem");
+    qmlRegisterType<QtDroidView>();
+    qmlRegisterType<QtDroidViewGroup>();
 
     qmlRegisterType<QtDroidArrayAdapter>("qtdroid.widget", 0, 1, "ArrayAdapter");
     qmlRegisterType<QtDroidBaseAdapter>();
@@ -63,6 +67,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtDroidLinearLayout>("qtdroid.widget", 0, 1, "LinearLayout");
     qmlRegisterType<QtDroidLinearLayoutParams>();
     qmlRegisterType<QtDroidListView>("qtdroid.widget", 0, 1, "ListView");
+    qmlRegisterType<QtDroidPopupMenu>("qtdroid.widget", 0, 1, "PopupMenu");
     qmlRegisterType<QtDroidProgressBar>("qtdroid.widget", 0, 1, "ProgressBar");
     qmlRegisterType<QtDroidRadioButton>("qtdroid.widget", 0, 1, "RadioButton");
     qmlRegisterType<QtDroidRadioGroup>("qtdroid.widget", 0, 1, "RadioGroup");

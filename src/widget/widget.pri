@@ -15,6 +15,7 @@ HEADERS += \
     $$PWD/qtdroidlinearlayoutparams_p.h \
     $$PWD/qtdroidlistview_p.h \
     $$PWD/qtdroidmarginlayoutparams_p.h \
+    $$PWD/qtdroidpopupmenu_p.h \
     $$PWD/qtdroidprogressbar_p.h \
     $$PWD/qtdroidradiobutton_p.h \
     $$PWD/qtdroidradiogroup_p.h \
@@ -45,6 +46,7 @@ SOURCES += \
     $$PWD/qtdroidlinearlayoutparams.cpp \
     $$PWD/qtdroidlistview.cpp \
     $$PWD/qtdroidmarginlayoutparams.cpp \
+    $$PWD/qtdroidpopupmenu.cpp \
     $$PWD/qtdroidprogressbar.cpp \
     $$PWD/qtdroidradiobutton.cpp \
     $$PWD/qtdroidradiogroup.cpp \

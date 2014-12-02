@@ -1,3 +1,4 @@
+import qtdroid.view 0.1
 import qtdroid.widget 0.1
 
 ScrollView {
@@ -13,6 +14,15 @@ ScrollView {
         LinearLayout {
             Button { text: "Ok" }
             Button { text: "Cancel" }
+            Button {
+                text: "Attach"
+                onClick: menu.show()
+                PopupMenu {
+                    id: menu
+                    MenuItem { title: "Image" }
+                    MenuItem { title: "Document" }
+                }
+            }
         }
 
         TextView { text: "ToggleButton"; textSize: 48 }
