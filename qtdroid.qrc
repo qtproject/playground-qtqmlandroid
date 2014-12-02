@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/ButtonsView.qml</file>
+        <file>qml/ProgressView.qml</file>
+        <file>qml/InputView.qml</file>
+    </qresource>
+</RCC>

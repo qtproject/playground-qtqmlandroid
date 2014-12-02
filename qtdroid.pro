@@ -3,6 +3,6 @@ TARGET = qtdroid
 QT += androidextras qml quick
 QT += core-private qml-private
 SOURCES += main.cpp
-RESOURCES += main.qrc
+RESOURCES += qtdroid.qrc
 
 include(src/src.pri)
