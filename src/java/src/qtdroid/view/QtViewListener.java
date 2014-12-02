@@ -36,7 +36,7 @@ public class QtViewListener implements View.OnClickListener,
 
     @Override
     public boolean onLongClick(View view) {
-        return onLongClick(m_instance);
+        return false; // TODO: onLongClick(m_instance);
     }
 
     private long m_instance;
