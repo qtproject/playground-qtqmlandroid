@@ -5,4 +5,5 @@ OTHER_FILES += \
     $$PWD/src/qtdroid/app/QtActivity.java \
     $$PWD/src/qtdroid/view/QtViewListener.java \
     $$PWD/src/qtdroid/widget/QtCompoundButtonListener.java \
+    $$PWD/src/qtdroid/widget/QtRadioGroupListener.java \
     $$PWD/src/qtdroid/widget/QtSeekBarListener.java
