@@ -9,6 +9,15 @@ Activity {
         subtitle: adapter.getItem(switcher.displayedChild)
     }
 
+    optionsMenu: Menu {
+        MenuItem {
+            title: "Help"
+        }
+        MenuItem {
+            title: "Exit"
+        }
+    }
+
     DrawerLayout {
         id: drawer
 

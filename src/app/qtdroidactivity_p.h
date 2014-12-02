@@ -6,12 +6,14 @@
 QT_BEGIN_NAMESPACE
 
 class QtDroidView;
+class QtDroidMenu;
 class QtDroidActionBar;
 
 class QtDroidActivity : public QtDroidContext
 {
     Q_OBJECT
     Q_PROPERTY(QtDroidActionBar *actionBar READ actionBar WRITE setActionBar)
+    Q_PROPERTY(QtDroidMenu *optionsMenu READ optionsMenu WRITE setOptionsMenu)
     Q_PROPERTY(QtDroidView *contentView READ contentView WRITE setContentView)
     Q_CLASSINFO("DefaultProperty", "contentView")
 
@@ -20,6 +22,9 @@ public:
 
     QtDroidActionBar *actionBar() const;
     void setActionBar(QtDroidActionBar *bar);
+
+    QtDroidMenu *optionsMenu() const;
+    void setOptionsMenu(QtDroidMenu *menu);
 
     QtDroidView *contentView() const;
     void setContentView(QtDroidView *view);
@@ -30,6 +35,7 @@ protected:
 
 private:
     QtDroidView *m_view;
+    QtDroidMenu *m_optionsMenu;
     QtDroidActionBar *m_actionBar;
 };
 
