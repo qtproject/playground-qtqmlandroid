@@ -9,19 +9,10 @@ bool QtDroidCompoundButton::isChecked() const
     return m_checked;
 }
 
-static void callSetChecked(const QAndroidJniObject& button, bool checked)
-{
-    if (button.isValid()) {
-        QtDroidObject::callUiMethod([=]() {
-            button.callMethod<void>("setChecked", "(Z)V", checked);
-        });
-    }
-}
-
 void QtDroidCompoundButton::setChecked(bool checked)
 {
     if (updateChecked(checked))
-        callSetChecked(instance(), checked);
+        callBoolMethod("setChecked", checked);
 }
 
 bool QtDroidCompoundButton::updateChecked(bool arg)
@@ -36,12 +27,7 @@ bool QtDroidCompoundButton::updateChecked(bool arg)
 
 void QtDroidCompoundButton::toggle()
 {
-    QAndroidJniObject button = instance();
-    if (button.isValid()) {
-        QtDroidObject::callUiMethod([=]() {
-            button.callMethod<void>("toggle");
-        });
-    }
+    callVoidMethod("toggle");
 }
 
 QAndroidJniObject QtDroidCompoundButton::construct(jobject context)
@@ -67,7 +53,7 @@ void QtDroidCompoundButton::inflate(jobject context)
         nativeMethodsRegistered = true;
     }
 
-    callSetChecked(instance(), m_checked);
+    callBoolMethod("setChecked", m_checked);
 }
 
 void QtDroidCompoundButton::registerNativeMethods(jobject listener)

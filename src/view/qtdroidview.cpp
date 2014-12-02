@@ -38,21 +38,6 @@ bool QtDroidView::hasFocus() const
     return m_focus.value();
 }
 
-static void callSetFocus(const QAndroidJniObject& view, bool focus)
-{
-    if (view.isValid()) {
-        QtDroidObject::callUiMethod([=]() {
-            view.callMethod<jboolean>("requestFocus", "()Z", focus);
-        });
-    }
-}
-
-void QtDroidView::setFocus(bool focus)
-{
-    if (updateFocus(focus))
-        callSetFocus(instance(), focus);
-}
-
 bool QtDroidView::updateFocus(bool arg)
 {
     if (arg != hasFocus()) {
@@ -222,9 +207,6 @@ void QtDroidView::inflate(jobject context)
         nativeMethodsRegistered = true;
     }
 
-    if (!m_focus.isNull())
-        callSetFocus(instance(), m_focus.value());
-
     invalidateLayoutParams();
 }
 
@@ -285,7 +267,7 @@ bool QtDroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)
 void QtDroidView::customEvent(QEvent *event)
 {
     if (m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
-        QtDroidObject::callUiMethod([=]() {
+        callFunction([=]() {
             QAndroidJniObject params = m_layoutParams->instance();
             if (!params.isValid()) {
                 params = m_layoutParams->construct();

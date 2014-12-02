@@ -23,7 +23,12 @@ public:
     QAndroidJniObject instance() const;
     void setInstance(const QAndroidJniObject &instance);
 
-    static void callUiMethod(std::function<void()> method);
+    static void callFunction(std::function<void()> method);
+    void callTextMethod(const char *method, const QString &text);
+    void callRealMethod(const char *method, qreal value);
+    void callIntMethod(const char *method, int value);
+    void callBoolMethod(const char *method, bool value);
+    void callVoidMethod(const char *method);
 
     QQmlListProperty<QObject> data();
 

@@ -20,9 +20,7 @@ void QtDroidAdapterView::setAdapter(QtDroidBaseAdapter *adapter)
 
 void QtDroidAdapterView::setSelection(int position)
 {
-    QtDroidObject::callUiMethod([=]() {
-        instance().callMethod<void>("setSelection", "(I)V", position);
-    });
+    callIntMethod("setSelection", position);
 }
 
 QAndroidJniObject QtDroidAdapterView::construct(jobject context)

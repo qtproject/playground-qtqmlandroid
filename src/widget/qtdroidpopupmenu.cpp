@@ -53,7 +53,7 @@ void QtDroidPopupMenu::show()
     QAndroidJniObject c = context->instance();
     QAndroidJniObject a = anchor->instance();
 
-    callUiMethod([=]() {
+    callFunction([=]() {
         QAndroidJniObject popup;
         if (!m_gravity.isNull()) {
             popup = QAndroidJniObject("android/widget/PopupMenu",
@@ -80,11 +80,7 @@ void QtDroidPopupMenu::show()
 
 void QtDroidPopupMenu::dismiss()
 {
-    callUiMethod([=]() {
-        QAndroidJniObject menu = instance();
-        if (menu.isValid())
-            menu.callMethod<void>("dismiss");
-    });
+    callVoidMethod("dismiss");
 }
 
 void QtDroidPopupMenu::objectAdded(QObject *object)

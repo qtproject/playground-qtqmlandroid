@@ -11,36 +11,23 @@ int QtDroidViewAnimator::displayedChild() const
     return m_displayedChild.value();
 }
 
-static void callSetDisplayedChild(const QAndroidJniObject& animator, int child)
-{
-    if (animator.isValid()) {
-        QtDroidObject::callUiMethod([=]() {
-            animator.callMethod<void>("setDisplayedChild", "(I)V", child);
-        });
-    }
-}
-
 void QtDroidViewAnimator::setDisplayedChild(int child)
 {
     if (child != displayedChild()) {
         m_displayedChild = child;
-        callSetDisplayedChild(instance(), child);
+        callIntMethod("setDisplayedChild", child);
         emit displayedChildChanged();
     }
 }
 
 void QtDroidViewAnimator::showNext()
 {
-    QtDroidObject::callUiMethod([=]() {
-        instance().callMethod<void>("showNext");
-    });
+    callVoidMethod("showNext");
 }
 
 void QtDroidViewAnimator::showPrevious()
 {
-    QtDroidObject::callUiMethod([=]() {
-        instance().callMethod<void>("showPrevious");
-    });
+    callVoidMethod("showPrevious");
 }
 
 QAndroidJniObject QtDroidViewAnimator::construct(jobject context)
@@ -55,5 +42,5 @@ void QtDroidViewAnimator::inflate(jobject context)
     QtDroidFrameLayout::inflate(context);
 
     if (!m_displayedChild.isNull())
-        callSetDisplayedChild(instance(), m_displayedChild.value());
+        callIntMethod("setDisplayedChild", m_displayedChild.value());
 }

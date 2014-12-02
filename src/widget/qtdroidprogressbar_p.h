@@ -54,9 +54,9 @@ private Q_SLOTS:
     bool updateProgress(int progress);
 
 private:
+    int m_progress;
     bool m_indeterminate;
     QtDroidOptional<int> m_max;
-    QtDroidOptional<int> m_progress;
     QtDroidOptional<Style> m_style;
 };
 

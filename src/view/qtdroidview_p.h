@@ -14,7 +14,7 @@ class QtDroidView : public QtDroidObject
     Q_OBJECT
     Q_PROPERTY(QtDroidContext *context READ context NOTIFY contextChanged)
     Q_PROPERTY(QQmlListProperty<QtDroidView> children READ children NOTIFY childrenChanged)
-    Q_PROPERTY(bool focus READ hasFocus WRITE setFocus NOTIFY focusChanged)
+    Q_PROPERTY(bool focus READ hasFocus NOTIFY focusChanged)
     Q_PROPERTY(qreal x READ x WRITE setX NOTIFY xChanged)
     Q_PROPERTY(qreal y READ y WRITE setY NOTIFY yChanged)
     Q_PROPERTY(qreal width READ width WRITE setWidth NOTIFY widthChanged) // TODO: reset
@@ -29,7 +29,6 @@ public:
     QQmlListProperty<QtDroidView> children();
 
     bool hasFocus() const;
-    void setFocus(bool focus);
 
     qreal x() const;
     void setX(qreal x);

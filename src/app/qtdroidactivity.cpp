@@ -62,7 +62,7 @@ void QtDroidActivity::componentComplete()
     QtDroidContext::componentComplete();
 
     QAndroidJniObject activity = instance();
-    callUiMethod([=]() {
+    callFunction([=]() {
         if (m_optionsMenu) {
             foreach (QtDroidMenuItem *item, m_optionsMenu->items()) {
                 activity.callMethod<void>("addOptionsMenuItem",

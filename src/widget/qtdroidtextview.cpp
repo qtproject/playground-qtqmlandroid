@@ -10,20 +10,11 @@ QString QtDroidTextView::text() const
     return m_text;
 }
 
-static void callSetText(const QAndroidJniObject& view, const QString &text)
-{
-    if (view.isValid()) {
-        QtDroidObject::callUiMethod([=]() {
-            view.callMethod<void>("setText", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(text).object());
-        });
-    }
-}
-
 void QtDroidTextView::setText(const QString &text)
 {
     if (m_text != text) {
         m_text = text;
-        callSetText(instance(), text);
+        callTextMethod("setText", text);
         emit textChanged();
     }
 }
@@ -35,20 +26,11 @@ int QtDroidTextView::textColor() const
     return m_textColor.value();
 }
 
-static void callSetTextColor(const QAndroidJniObject& view, int color)
-{
-    if (view.isValid()) {
-        QtDroidObject::callUiMethod([=]() {
-            view.callMethod<void>("setTextColor", "(I)V", color);
-        });
-    }
-}
-
 void QtDroidTextView::setTextColor(int color)
 {
     if (color != textColor()) {
         m_textColor = color;
-        callSetTextColor(instance(), color);
+        callIntMethod("setTextColor", color);
         emit textColorChanged();
     }
 }
@@ -60,20 +42,11 @@ qreal QtDroidTextView::textSize() const
     return m_textSize.value();
 }
 
-static void callSetTextSize(const QAndroidJniObject& view, qreal size)
-{
-    if (view.isValid()) {
-        QtDroidObject::callUiMethod([=]() {
-            view.callMethod<void>("setTextSize", "(IF)V", 0, size); // TypedValue.COMPLEX_UNIT_PX
-        });
-    }
-}
-
 void QtDroidTextView::setTextSize(qreal size)
 {
     if (size != textSize()) {
         m_textSize = size;
-        callSetTextSize(instance(), size);
+        callRealMethod("setTextSize", size);
         emit textSizeChanged();
     }
 }
@@ -83,20 +56,11 @@ QString QtDroidTextView::hint() const
     return m_hint;
 }
 
-static void callSetHint(const QAndroidJniObject& view, const QString &hint)
-{
-    if (view.isValid()) {
-        QtDroidObject::callUiMethod([=]() {
-            view.callMethod<void>("setHint", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(hint).object());
-        });
-    }
-}
-
 void QtDroidTextView::setHint(const QString &hint)
 {
     if (m_hint != hint) {
         m_hint = hint;
-        callSetHint(instance(), hint);
+        callTextMethod("setHint", hint);
         emit hintChanged();
     }
 }
@@ -113,11 +77,11 @@ void QtDroidTextView::inflate(jobject context)
     QtDroidView::inflate(context);
 
     if (!m_text.isNull())
-        callSetText(instance(), m_text);
+        callTextMethod("setText", m_text);
     if (!m_textColor.isNull())
-        callSetTextColor(instance(), m_textColor.value());
+        callIntMethod("setTextColor", m_textColor.value());
     if (!m_textSize.isNull())
-        callSetTextSize(instance(), m_textSize.value());
+        callRealMethod("setTextSize", m_textSize.value());
     if (!m_hint.isNull())
-        callSetHint(instance(), m_hint);
+        callTextMethod("setHint", m_hint);
 }

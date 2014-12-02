@@ -9,7 +9,7 @@ ScrollView {
         FrameLayout.bottomMargin: 48
         orientation: LinearLayout.VERTICAL
 
-        TextView { text: "Button"; textSize: 48 }
+        TextView { text: "Button"; textSize: 18 }
 
         LinearLayout {
             Button { text: "Ok" }
@@ -29,20 +29,20 @@ ScrollView {
             }
         }
 
-        TextView { text: "ToggleButton"; textSize: 48 }
+        TextView { text: "ToggleButton"; textSize: 18 }
 
         LinearLayout {
             ToggleButton { checked: true }
             ToggleButton { }
         }
 
-        TextView { textSize: 48; text: "CheckBox" }
+        TextView { textSize: 18; text: "CheckBox" }
 
         CheckBox { text: "E-mail"; checked: true }
         CheckBox { text: "Calendar" }
         CheckBox { text: "Contacts" }
 
-        TextView { text: "RadioButton"; textSize: 48 }
+        TextView { text: "RadioButton"; textSize: 18 }
 
         RadioGroup {
             RadioButton { text: "Portrait";  checked: true }
@@ -50,7 +50,7 @@ ScrollView {
             RadioButton { text: "Automatic" }
         }
 
-        TextView { text: "Switch"; textSize: 48 }
+        TextView { text: "Switch"; textSize: 18 }
 
         Switch { text: "Wifi"; checked: true }
         Switch { text: "Bluetooth" }

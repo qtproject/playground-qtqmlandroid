@@ -15,16 +15,12 @@ QtDroidDrawerLayoutParams *QtDroidDrawerLayout::qmlAttachedProperties(QObject *o
 
 void QtDroidDrawerLayout::closeDrawers()
 {
-    QtDroidObject::callUiMethod([=]() {
-        instance().callMethod<void>("closeDrawers");
-    });
+    callVoidMethod("closeDrawers");
 }
 
 void QtDroidDrawerLayout::closeDrawer(int gravity)
 {
-    QtDroidObject::callUiMethod([=]() {
-        instance().callMethod<void>("closeDrawer", "(I)V", gravity);
-    });
+    callIntMethod("closeDrawer", gravity);
 }
 
 void QtDroidDrawerLayout::objectAdded(QObject *object)

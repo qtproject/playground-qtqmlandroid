@@ -8,7 +8,7 @@ ScrollView {
         FrameLayout.bottomMargin: 48
         orientation: LinearLayout.VERTICAL
 
-        TextView { text: "ProgressBar"; textSize: 48 }
+        TextView { text: "ProgressBar"; textSize: 18 }
 
         LinearLayout {
             ProgressBar { style: ProgressBar.Large }
@@ -16,7 +16,7 @@ ScrollView {
             ProgressBar { style: ProgressBar.Small }
         }
 
-        TextView { text: "ProgressBar (horizontal)"; textSize: 48 }
+        TextView { text: "ProgressBar (horizontal)"; textSize: 18 }
 
         ProgressBar {
             indeterminate: true
@@ -27,7 +27,7 @@ ScrollView {
             style: ProgressBar.Horizontal
         }
 
-        TextView { text: "SeekBar"; textSize: 48 }
+        TextView { text: "SeekBar"; textSize: 18 }
 
         SeekBar {
             id: seekBar

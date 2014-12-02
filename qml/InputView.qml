@@ -8,13 +8,13 @@ ScrollView {
         FrameLayout.bottomMargin: 48
         orientation: LinearLayout.VERTICAL
 
-        TextView { text: "EditText"; textSize: 48 }
+        TextView { text: "EditText"; textSize: 18 }
 
         EditText {
             hint: "Hint..."
         }
 
-        TextView { text: "Spinner"; textSize: 48 }
+        TextView { text: "Spinner"; textSize: 18 }
 
         Spinner {
             adapter: ArrayAdapter {

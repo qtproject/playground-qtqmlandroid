@@ -4,15 +4,6 @@ QtDroidToggleButton::QtDroidToggleButton(QObject *parent) : QtDroidCompoundButto
 {
 }
 
-static void callSetText(const QAndroidJniObject& button, const char *method, const QString &text)
-{
-    if (button.isValid()) {
-        QtDroidObject::callUiMethod([=]() {
-            button.callMethod<void>(method, "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(text).object());
-        });
-    }
-}
-
 QString QtDroidToggleButton::textOn() const
 {
     return m_textOn;
@@ -22,7 +13,7 @@ void QtDroidToggleButton::setTextOn(const QString &text)
 {
     if (m_textOn != text) {
         m_textOn = text;
-        callSetText(instance(), "setTextOn", text);
+        callTextMethod("setTextOn", text);
         emit textOnChanged();
     }
 }
@@ -36,7 +27,7 @@ void QtDroidToggleButton::setTextOff(const QString &text)
 {
     if (m_textOff != text) {
         m_textOff = text;
-        callSetText(instance(), "setTextOff", text);
+        callTextMethod("setTextOff", text);
         emit textOffChanged();
     }
 }
@@ -53,7 +44,7 @@ void QtDroidToggleButton::inflate(jobject context)
     QtDroidCompoundButton::inflate(context);
 
     if (!m_textOn.isNull())
-        callSetText(instance(), "setTextOn", m_textOn);
+        callTextMethod("setTextOn", m_textOn);
     if (!m_textOff.isNull())
-        callSetText(instance(), "setTextOff", m_textOff);
+        callTextMethod("setTextOff", m_textOff);
 }

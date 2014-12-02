@@ -19,11 +19,61 @@ void QtDroidObject::setInstance(const QAndroidJniObject &instance)
     m_instance = instance;
 }
 
-void QtDroidObject::callUiMethod(std::function<void()> method)
+void QtDroidObject::callFunction(std::function<void()> method)
 {
     QAndroidJniEnvironment env;
     QRunnable *runnable = new QtConcurrent::StoredFunctorCall0<void, decltype(method)>(method);
     QtAndroidPrivate::runOnUiThread(runnable, env);
+}
+
+void QtDroidObject::callTextMethod(const char *method, const QString &text)
+{
+    QAndroidJniObject obj = instance();
+    if (obj.isValid()) {
+        callFunction([=]() {
+            obj.callMethod<void>(method, "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(text).object());
+        });
+    }
+}
+
+void QtDroidObject::callRealMethod(const char *method, qreal value)
+{
+    QAndroidJniObject obj = instance();
+    if (obj.isValid()) {
+        callFunction([=]() {
+            obj.callMethod<void>(method, "(F)V", value);
+        });
+    }
+}
+
+void QtDroidObject::callIntMethod(const char *method, int value)
+{
+    QAndroidJniObject obj = instance();
+    if (obj.isValid()) {
+        callFunction([=]() {
+            obj.callMethod<void>(method, "(I)V", value);
+        });
+    }
+}
+
+void QtDroidObject::callBoolMethod(const char *method, bool value)
+{
+    QAndroidJniObject obj = instance();
+    if (obj.isValid()) {
+        callFunction([=]() {
+            obj.callMethod<void>(method, "(Z)V", value);
+        });
+    }
+}
+
+void QtDroidObject::callVoidMethod(const char *method)
+{
+    QAndroidJniObject obj = instance();
+    if (obj.isValid()) {
+        callFunction([=]() {
+            obj.callMethod<void>(method);
+        });
+    }
 }
 
 bool QtDroidObject::isComponentComplete() const
