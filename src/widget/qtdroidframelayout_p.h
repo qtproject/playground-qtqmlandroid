@@ -2,6 +2,7 @@
 #define QTDROIDFRAMELAYOUT_P_H
 
 #include "qtdroidviewgroup_p.h"
+#include "qtdroidframelayoutparams_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -12,11 +13,15 @@ class QtDroidFrameLayout : public QtDroidViewGroup
 public:
     explicit QtDroidFrameLayout(QObject *parent = 0);
 
+    static QtDroidFrameLayoutParams *qmlAttachedProperties(QObject *object);
+
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
     void inflate(jobject context) Q_DECL_OVERRIDE;
 };
 
 QT_END_NAMESPACE
+
+QML_DECLARE_TYPEINFO(QtDroidFrameLayout, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDFRAMELAYOUT_P_H

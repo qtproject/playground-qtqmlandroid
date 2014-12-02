@@ -10,6 +10,7 @@ HEADERS += \
     $$PWD/qtdroidcompoundbutton_p.h \
     $$PWD/qtdroidedittext_p.h \
     $$PWD/qtdroidframelayout_p.h \
+    $$PWD/qtdroidframelayoutparams_p.h \
     $$PWD/qtdroidlinearlayout_p.h \
     $$PWD/qtdroidlinearlayoutparams_p.h \
     $$PWD/qtdroidlistview_p.h \
@@ -39,6 +40,7 @@ SOURCES += \
     $$PWD/qtdroidcompoundbutton.cpp \
     $$PWD/qtdroidedittext.cpp \
     $$PWD/qtdroidframelayout.cpp \
+    $$PWD/qtdroidframelayoutparams.cpp \
     $$PWD/qtdroidlinearlayout.cpp \
     $$PWD/qtdroidlinearlayoutparams.cpp \
     $$PWD/qtdroidlistview.cpp \

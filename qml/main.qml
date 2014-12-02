@@ -13,10 +13,6 @@ Activity {
 
         ViewAnimator {
             id: switcher
-            DrawerLayout.topMargin: 48
-            DrawerLayout.leftMargin: 48
-            DrawerLayout.rightMargin: 48
-            DrawerLayout.bottomMargin: 48
 
             ButtonsView { }
             ProgressView { }

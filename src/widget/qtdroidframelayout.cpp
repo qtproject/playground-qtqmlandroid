@@ -4,6 +4,14 @@ QtDroidFrameLayout::QtDroidFrameLayout(QObject *parent) : QtDroidViewGroup(paren
 {
 }
 
+QtDroidFrameLayoutParams *QtDroidFrameLayout::qmlAttachedProperties(QObject *object)
+{
+    QtDroidView *view = qobject_cast<QtDroidView*>(object);
+    if (view)
+        return new QtDroidFrameLayoutParams(view);
+    return 0;
+}
+
 QAndroidJniObject QtDroidFrameLayout::construct(jobject context)
 {
     return QAndroidJniObject("android/widget/FrameLayout",
