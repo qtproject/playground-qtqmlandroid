@@ -35,6 +35,9 @@
 #include "qtdroidspace_p.h"
 #include "qtdroidspinner_p.h"
 #include "qtdroidswitch_p.h"
+#include "qtdroidtabhost_p.h"
+#include "qtdroidtabspec_p.h"
+#include "qtdroidtabwidget_p.h"
 #include "qtdroidtextview_p.h"
 #include "qtdroidtogglebutton_p.h"
 #include "qtdroidviewanimator_p.h"
@@ -85,6 +88,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtDroidSpace>("qtdroid.widget", 0, 1, "Space");
     qmlRegisterType<QtDroidSpinner>("qtdroid.widget", 0, 1, "Spinner");
     qmlRegisterType<QtDroidSwitch>("qtdroid.widget", 0, 1, "Switch");
+    qmlRegisterType<QtDroidTabHost>("qtdroid.widget", 0, 1, "TabHost");
+    qmlRegisterUncreatableType<QtDroidTabSpec>("qtdroid.widget", 0, 1, "TabSpec", "TabSpec is an attached property");
+    qmlRegisterType<QtDroidTabWidget>("qtdroid.widget", 0, 1, "TabWidget");
     qmlRegisterType<QtDroidTextView>("qtdroid.widget", 0, 1, "TextView");
     qmlRegisterType<QtDroidToggleButton>("qtdroid.widget", 0, 1, "ToggleButton");
     qmlRegisterType<QtDroidViewAnimator>("qtdroid.widget", 0, 1, "ViewAnimator");

@@ -27,27 +27,19 @@ Activity {
             ButtonsView { }
             ProgressView { }
             InputView { }
-            CalendarView { }
+            TabView { }
         }
 
         ListView {
             DrawerLayout.gravity: Gravity.LEFT
             adapter: ArrayAdapter {
                 id: adapter
-                array: ["Buttons", "Progress", "Input", "Calendar"]
+                array: ["Buttons", "Progress", "Input", "Views"]
             }
             onClick: {
                 drawer.closeDrawer(Gravity.LEFT)
                 switcher.displayedChild = position
             }
-        }
-
-        ListView {
-            DrawerLayout.gravity: Gravity.RIGHT
-            adapter: ArrayAdapter {
-                array: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"]
-            }
-            onClick: drawer.closeDrawer(Gravity.RIGHT)
         }
     }
 }

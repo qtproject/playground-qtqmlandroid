@@ -27,6 +27,9 @@ HEADERS += \
     $$PWD/qtdroidspace_p.h \
     $$PWD/qtdroidspinner_p.h \
     $$PWD/qtdroidswitch_p.h \
+    $$PWD/qtdroidtabhost_p.h \
+    $$PWD/qtdroidtabspec_p.h \
+    $$PWD/qtdroidtabwidget_p.h \
     $$PWD/qtdroidtextview_p.h \
     $$PWD/qtdroidtogglebutton_p.h \
     $$PWD/qtdroidviewanimator_p.h \
@@ -60,6 +63,9 @@ SOURCES += \
     $$PWD/qtdroidspace.cpp \
     $$PWD/qtdroidspinner.cpp \
     $$PWD/qtdroidswitch.cpp \
+    $$PWD/qtdroidtabhost.cpp \
+    $$PWD/qtdroidtabspec.cpp \
+    $$PWD/qtdroidtabwidget.cpp \
     $$PWD/qtdroidtextview.cpp \
     $$PWD/qtdroidtogglebutton.cpp \
     $$PWD/qtdroidviewanimator.cpp \

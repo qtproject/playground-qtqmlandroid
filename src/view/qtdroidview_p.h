@@ -24,6 +24,7 @@ public:
     explicit QtDroidView(QObject *parent = 0);
 
     int identifier() const;
+    void setIdentifier(int id);
 
     QtDroidContext *context() const;
     void setContext(QtDroidContext *context);

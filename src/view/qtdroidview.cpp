@@ -16,6 +16,11 @@ int QtDroidView::identifier() const
     return m_id;
 }
 
+void QtDroidView::setIdentifier(int identifier)
+{
+    m_id = identifier;
+}
+
 QtDroidContext *QtDroidView::context() const
 {
     return m_context;
