@@ -1,7 +1,9 @@
 #include "qtdroiddrawerlayout_p.h"
 #include "qtdroidactionbardrawertoggle_p.h"
+#include <QtCore/qcoreevent.h>
 
-QtDroidDrawerLayout::QtDroidDrawerLayout(QObject *parent) : QtDroidViewGroup(parent), m_toggle(0)
+QtDroidDrawerLayout::QtDroidDrawerLayout(QtDroidView *parent) :
+    QtDroidViewGroup(parent), m_toggle(0)
 {
 }
 
@@ -23,14 +25,6 @@ void QtDroidDrawerLayout::closeDrawer(int gravity)
     callIntMethod("closeDrawer", gravity);
 }
 
-void QtDroidDrawerLayout::objectAdded(QObject *object)
-{
-    QtDroidViewGroup::objectAdded(object);
-
-    if (!m_toggle)
-        m_toggle = qobject_cast<QtDroidActionBarDrawerToggle *>(object);
-}
-
 QAndroidJniObject QtDroidDrawerLayout::construct(jobject context)
 {
     return QAndroidJniObject("android/support/v4/widget/DrawerLayout",
@@ -44,4 +38,13 @@ void QtDroidDrawerLayout::inflate(jobject context)
 
     if (m_toggle)
         m_toggle->construct(context, instance().object());
+}
+
+void QtDroidDrawerLayout::childEvent(QChildEvent *event)
+{
+    QtDroidViewGroup::childEvent(event);
+
+    // TODO: dynamic add/remove
+    if (!m_toggle && event->added())
+        m_toggle = qobject_cast<QtDroidActionBarDrawerToggle *>(event->child());
 }

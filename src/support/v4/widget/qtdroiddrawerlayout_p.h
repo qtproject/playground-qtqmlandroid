@@ -13,7 +13,7 @@ class QtDroidDrawerLayout : public QtDroidViewGroup
     Q_OBJECT
 
 public:
-    explicit QtDroidDrawerLayout(QObject *parent = 0);
+    explicit QtDroidDrawerLayout(QtDroidView *parent = 0);
 
     static QtDroidDrawerLayoutParams *qmlAttachedProperties(QObject *object);
 
@@ -22,10 +22,10 @@ public Q_SLOTS:
     void closeDrawer(int gravity);
 
 protected:
-    void objectAdded(QObject *object) Q_DECL_OVERRIDE;
-
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
     void inflate(jobject context) Q_DECL_OVERRIDE;
+
+    void childEvent(QChildEvent *event) Q_DECL_OVERRIDE;
 
 private:
     QtDroidActionBarDrawerToggle *m_toggle;
