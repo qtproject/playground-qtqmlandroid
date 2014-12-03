@@ -11,7 +11,7 @@ class QtDroidViewAnimator : public QtDroidFrameLayout
     Q_PROPERTY(int displayedChild READ displayedChild WRITE setDisplayedChild NOTIFY displayedChildChanged)
 
 public:
-    explicit QtDroidViewAnimator(QObject *parent = 0);
+    explicit QtDroidViewAnimator(QtDroidView *parent = 0);
 
     int displayedChild() const;
     void setDisplayedChild(int child);

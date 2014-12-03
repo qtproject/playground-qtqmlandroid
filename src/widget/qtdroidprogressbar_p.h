@@ -16,7 +16,7 @@ class QtDroidProgressBar : public QtDroidView
     Q_ENUMS(Style)
 
 public:
-    explicit QtDroidProgressBar(QObject *parent = 0);
+    explicit QtDroidProgressBar(QtDroidView *parent = 0);
 
     bool isIndeterminate() const;
     void setIndeterminate(bool indeterminate);

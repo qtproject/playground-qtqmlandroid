@@ -1,6 +1,6 @@
 #include "qtdroidviewflipper_p.h"
 
-QtDroidViewFlipper::QtDroidViewFlipper(QObject *parent) : QtDroidViewAnimator(parent)
+QtDroidViewFlipper::QtDroidViewFlipper(QtDroidView *parent) : QtDroidViewAnimator(parent)
 {
 }
 

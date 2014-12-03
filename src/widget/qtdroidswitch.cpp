@@ -1,6 +1,6 @@
 #include "qtdroidswitch_p.h"
 
-QtDroidSwitch::QtDroidSwitch(QObject *parent) : QtDroidCompoundButton(parent)
+QtDroidSwitch::QtDroidSwitch(QtDroidView *parent) : QtDroidCompoundButton(parent)
 {
 }
 

@@ -11,7 +11,7 @@ class QtDroidCompoundButton : public QtDroidButton
     Q_PROPERTY(bool checked READ isChecked WRITE setChecked NOTIFY checkedChanged)
 
 public:
-    explicit QtDroidCompoundButton(QObject *parent = 0);
+    explicit QtDroidCompoundButton(QtDroidView *parent = 0);
 
     bool isChecked() const;
     void setChecked(bool checked);

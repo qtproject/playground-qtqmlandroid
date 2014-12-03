@@ -1,6 +1,6 @@
 #include "qtdroidframelayout_p.h"
 
-QtDroidFrameLayout::QtDroidFrameLayout(QObject *parent) : QtDroidViewGroup(parent)
+QtDroidFrameLayout::QtDroidFrameLayout(QtDroidView *parent) : QtDroidViewGroup(parent)
 {
 }
 

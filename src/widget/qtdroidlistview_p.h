@@ -10,7 +10,7 @@ class QtDroidListView : public QtDroidAdapterView // TODO: AbsListView
     Q_OBJECT
 
 public:
-    explicit QtDroidListView(QObject *parent = 0);
+    explicit QtDroidListView(QtDroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;

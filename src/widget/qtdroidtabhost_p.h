@@ -10,7 +10,7 @@ class QtDroidTabHost : public QtDroidFrameLayout
     Q_OBJECT
 
 public:
-    explicit QtDroidTabHost(QObject *parent = 0);
+    explicit QtDroidTabHost(QtDroidView *parent = 0);
 
 Q_SIGNALS:
     void tabChanged(const QString &tabId);

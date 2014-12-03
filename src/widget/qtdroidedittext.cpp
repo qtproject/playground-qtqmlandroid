@@ -1,6 +1,6 @@
 #include "qtdroidedittext_p.h"
 
-QtDroidEditText::QtDroidEditText(QObject *parent) : QtDroidTextView(parent)
+QtDroidEditText::QtDroidEditText(QtDroidView *parent) : QtDroidTextView(parent)
 {
 }
 

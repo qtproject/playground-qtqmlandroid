@@ -1,6 +1,6 @@
 #include "qtdroidspinner_p.h"
 
-QtDroidSpinner::QtDroidSpinner(QObject *parent) : QtDroidAdapterView(parent)
+QtDroidSpinner::QtDroidSpinner(QtDroidView *parent) : QtDroidAdapterView(parent)
 {
 }
 

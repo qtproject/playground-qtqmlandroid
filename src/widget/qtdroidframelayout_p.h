@@ -11,7 +11,7 @@ class QtDroidFrameLayout : public QtDroidViewGroup
     Q_OBJECT
 
 public:
-    explicit QtDroidFrameLayout(QObject *parent = 0);
+    explicit QtDroidFrameLayout(QtDroidView *parent = 0);
 
     static QtDroidFrameLayoutParams *qmlAttachedProperties(QObject *object);
 

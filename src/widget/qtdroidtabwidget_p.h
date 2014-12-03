@@ -10,7 +10,7 @@ class QtDroidTabWidget : public QtDroidLinearLayout
     Q_OBJECT
 
 public:
-    explicit QtDroidTabWidget(QObject *parent = 0);
+    explicit QtDroidTabWidget(QtDroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;

@@ -1,6 +1,6 @@
 #include "qtdroidlinearlayout_p.h"
 
-QtDroidLinearLayout::QtDroidLinearLayout(QObject *parent) : QtDroidViewGroup(parent)
+QtDroidLinearLayout::QtDroidLinearLayout(QtDroidView *parent) : QtDroidViewGroup(parent)
 {
 }
 

@@ -10,7 +10,7 @@ class QtDroidSeekBar : public QtDroidAbsSeekBar
     Q_OBJECT
 
 public:
-    explicit QtDroidSeekBar(QObject *parent = 0);
+    explicit QtDroidSeekBar(QtDroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;

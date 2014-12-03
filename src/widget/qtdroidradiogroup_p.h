@@ -13,7 +13,7 @@ class QtDroidRadioGroup : public QtDroidLinearLayout
     Q_PROPERTY(QtDroidRadioButton *checkedButton READ checkedButton WRITE setCheckedButton NOTIFY checkedButtonChanged)
 
 public:
-    explicit QtDroidRadioGroup(QObject *parent = 0);
+    explicit QtDroidRadioGroup(QtDroidView *parent = 0);
 
     QtDroidRadioButton *checkedButton() const;
     void setCheckedButton(QtDroidRadioButton *button);

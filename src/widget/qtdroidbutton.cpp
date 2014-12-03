@@ -1,6 +1,6 @@
 #include "qtdroidbutton_p.h"
 
-QtDroidButton::QtDroidButton(QObject *parent) : QtDroidTextView(parent)
+QtDroidButton::QtDroidButton(QtDroidView *parent) : QtDroidTextView(parent)
 {
 }
 

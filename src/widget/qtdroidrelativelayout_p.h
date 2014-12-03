@@ -11,7 +11,7 @@ class QtDroidRelativeLayout : public QtDroidViewGroup
     Q_OBJECT
 
 public:
-    explicit QtDroidRelativeLayout(QObject *parent = 0);
+    explicit QtDroidRelativeLayout(QtDroidView *parent = 0);
 
     static QtDroidRelativeLayoutParams *qmlAttachedProperties(QObject *object);
 

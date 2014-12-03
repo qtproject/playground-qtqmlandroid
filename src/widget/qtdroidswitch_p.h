@@ -10,7 +10,7 @@ class QtDroidSwitch : public QtDroidCompoundButton
     Q_OBJECT
 
 public:
-    explicit QtDroidSwitch(QObject *parent = 0);
+    explicit QtDroidSwitch(QtDroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;

@@ -16,7 +16,7 @@ class QtDroidTextView : public QtDroidView
     Q_PROPERTY(QString hint READ hint WRITE setHint NOTIFY hintChanged)
 
 public:
-    explicit QtDroidTextView(QObject *parent = 0);
+    explicit QtDroidTextView(QtDroidView *parent = 0);
 
     QString text() const;
     void setText(const QString &text);

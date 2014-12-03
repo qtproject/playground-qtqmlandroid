@@ -1,6 +1,6 @@
 #include "qtdroidabsseekbar_p.h"
 
-QtDroidAbsSeekBar::QtDroidAbsSeekBar(QObject *parent) : QtDroidProgressBar(parent)
+QtDroidAbsSeekBar::QtDroidAbsSeekBar(QtDroidView *parent) : QtDroidProgressBar(parent)
 {
 }
 

@@ -1,6 +1,6 @@
 #include "qtdroidcompoundbutton_p.h"
 
-QtDroidCompoundButton::QtDroidCompoundButton(QObject *parent) : QtDroidButton(parent), m_checked(false)
+QtDroidCompoundButton::QtDroidCompoundButton(QtDroidView *parent) : QtDroidButton(parent), m_checked(false)
 {
 }
 

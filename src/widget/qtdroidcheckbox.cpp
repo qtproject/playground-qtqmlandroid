@@ -1,6 +1,6 @@
 #include "qtdroidcheckbox_p.h"
 
-QtDroidCheckBox::QtDroidCheckBox(QObject *parent) : QtDroidCompoundButton(parent)
+QtDroidCheckBox::QtDroidCheckBox(QtDroidView *parent) : QtDroidCompoundButton(parent)
 {
 }
 

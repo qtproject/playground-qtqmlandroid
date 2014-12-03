@@ -12,7 +12,7 @@ class QtDroidToggleButton : public QtDroidCompoundButton
     Q_PROPERTY(QString textOff READ textOff WRITE setTextOff NOTIFY textOffChanged)
 
 public:
-    explicit QtDroidToggleButton(QObject *parent = 0);
+    explicit QtDroidToggleButton(QtDroidView *parent = 0);
 
     QString textOn() const;
     void setTextOn(const QString &text);

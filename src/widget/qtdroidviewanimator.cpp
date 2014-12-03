@@ -1,6 +1,6 @@
 #include "qtdroidviewanimator_p.h"
 
-QtDroidViewAnimator::QtDroidViewAnimator(QObject *parent) : QtDroidFrameLayout(parent)
+QtDroidViewAnimator::QtDroidViewAnimator(QtDroidView *parent) : QtDroidFrameLayout(parent)
 {
 }
 

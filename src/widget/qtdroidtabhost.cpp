@@ -1,7 +1,7 @@
 #include "qtdroidtabhost_p.h"
 #include "qtdroidtabspec_p.h"
 
-QtDroidTabHost::QtDroidTabHost(QObject *parent) : QtDroidFrameLayout(parent)
+QtDroidTabHost::QtDroidTabHost(QtDroidView *parent) : QtDroidFrameLayout(parent)
 {
 }
 

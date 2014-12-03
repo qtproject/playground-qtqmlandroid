@@ -1,6 +1,6 @@
 #include "qtdroidradiobutton_p.h"
 
-QtDroidRadioButton::QtDroidRadioButton(QObject *parent) : QtDroidCompoundButton(parent)
+QtDroidRadioButton::QtDroidRadioButton(QtDroidView *parent) : QtDroidCompoundButton(parent)
 {
 }
 

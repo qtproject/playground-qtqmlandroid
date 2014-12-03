@@ -13,7 +13,7 @@ class QtDroidAdapterView : public QtDroidViewGroup
     Q_PROPERTY(QtDroidBaseAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged) // TODO: Adapter
 
 public:
-    explicit QtDroidAdapterView(QObject *parent = 0);
+    explicit QtDroidAdapterView(QtDroidView *parent = 0);
 
     QtDroidBaseAdapter *adapter() const;
     void setAdapter(QtDroidBaseAdapter *adapter);

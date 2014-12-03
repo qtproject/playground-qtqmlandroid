@@ -1,7 +1,7 @@
 #include "qtdroidadapterview_p.h"
 #include "qtdroidbaseadapter_p.h"
 
-QtDroidAdapterView::QtDroidAdapterView(QObject *parent) : QtDroidViewGroup(parent), m_adapter(0)
+QtDroidAdapterView::QtDroidAdapterView(QtDroidView *parent) : QtDroidViewGroup(parent), m_adapter(0)
 {
 }
 

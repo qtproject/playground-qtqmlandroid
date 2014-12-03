@@ -1,7 +1,7 @@
 #include "qtdroidradiogroup_p.h"
 #include "qtdroidradiobutton_p.h"
 
-QtDroidRadioGroup::QtDroidRadioGroup(QObject *parent) :
+QtDroidRadioGroup::QtDroidRadioGroup(QtDroidView *parent) :
     QtDroidLinearLayout(parent), m_checkedButton(0)
 {
 }

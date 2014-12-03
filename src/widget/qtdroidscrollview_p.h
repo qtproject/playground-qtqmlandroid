@@ -10,7 +10,7 @@ class QtDroidScrollView : public QtDroidFrameLayout
     Q_OBJECT
 
 public:
-    explicit QtDroidScrollView(QObject *parent = 0);
+    explicit QtDroidScrollView(QtDroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;

@@ -1,6 +1,6 @@
 #include "qtdroidrelativelayout_p.h"
 
-QtDroidRelativeLayout::QtDroidRelativeLayout(QObject *parent) : QtDroidViewGroup(parent)
+QtDroidRelativeLayout::QtDroidRelativeLayout(QtDroidView *parent) : QtDroidViewGroup(parent)
 {
 }
 

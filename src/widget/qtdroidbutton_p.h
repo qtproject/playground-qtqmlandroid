@@ -10,7 +10,7 @@ class QtDroidButton : public QtDroidTextView
     Q_OBJECT
 
 public:
-    explicit QtDroidButton(QObject *parent = 0);
+    explicit QtDroidButton(QtDroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;

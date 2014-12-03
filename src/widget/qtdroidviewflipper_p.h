@@ -10,7 +10,7 @@ class QtDroidViewFlipper : public QtDroidViewAnimator
     Q_OBJECT
 
 public:
-    explicit QtDroidViewFlipper(QObject *parent = 0);
+    explicit QtDroidViewFlipper(QtDroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;

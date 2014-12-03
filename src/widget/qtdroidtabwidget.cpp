@@ -1,6 +1,6 @@
 #include "qtdroidtabwidget_p.h"
 
-QtDroidTabWidget::QtDroidTabWidget(QObject *parent) : QtDroidLinearLayout(parent)
+QtDroidTabWidget::QtDroidTabWidget(QtDroidView *parent) : QtDroidLinearLayout(parent)
 {
     setIdentifier(16908307); // TODO: android.R.id.tabs
 }

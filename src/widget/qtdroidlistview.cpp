@@ -1,6 +1,6 @@
 #include "qtdroidlistview_p.h"
 
-QtDroidListView::QtDroidListView(QObject *parent) : QtDroidAdapterView(parent)
+QtDroidListView::QtDroidListView(QtDroidView *parent) : QtDroidAdapterView(parent)
 {
 }
 

@@ -1,6 +1,6 @@
 #include "qtdroidprogressbar_p.h"
 
-QtDroidProgressBar::QtDroidProgressBar(QObject *parent) :
+QtDroidProgressBar::QtDroidProgressBar(QtDroidView *parent) :
     QtDroidView(parent), m_progress(0), m_indeterminate(false)
 {
 }

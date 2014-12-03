@@ -1,6 +1,6 @@
 #include "qtdroidcalendarview_p.h"
 
-QtDroidCalendarView::QtDroidCalendarView(QObject *parent) : QtDroidFrameLayout(parent)
+QtDroidCalendarView::QtDroidCalendarView(QtDroidView *parent) : QtDroidFrameLayout(parent)
 {
 }
 

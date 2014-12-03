@@ -10,7 +10,7 @@ class QtDroidSpace : public QtDroidView
     Q_OBJECT
 
 public:
-    explicit QtDroidSpace(QObject *parent = 0);
+    explicit QtDroidSpace(QtDroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;

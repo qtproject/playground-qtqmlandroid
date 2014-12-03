@@ -18,7 +18,7 @@ class QtDroidLinearLayout : public QtDroidViewGroup
     Q_ENUMS(Orientation)
 
 public:
-    explicit QtDroidLinearLayout(QObject *parent = 0);
+    explicit QtDroidLinearLayout(QtDroidView *parent = 0);
 
     static QtDroidLinearLayoutParams *qmlAttachedProperties(QObject *object);
 

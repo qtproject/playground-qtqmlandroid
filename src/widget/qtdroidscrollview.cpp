@@ -1,6 +1,6 @@
 #include "qtdroidscrollview_p.h"
 
-QtDroidScrollView::QtDroidScrollView(QObject *parent) : QtDroidFrameLayout(parent)
+QtDroidScrollView::QtDroidScrollView(QtDroidView *parent) : QtDroidFrameLayout(parent)
 {
 }
 

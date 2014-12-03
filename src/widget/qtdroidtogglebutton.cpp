@@ -1,6 +1,6 @@
 #include "qtdroidtogglebutton_p.h"
 
-QtDroidToggleButton::QtDroidToggleButton(QObject *parent) : QtDroidCompoundButton(parent)
+QtDroidToggleButton::QtDroidToggleButton(QtDroidView *parent) : QtDroidCompoundButton(parent)
 {
 }
 

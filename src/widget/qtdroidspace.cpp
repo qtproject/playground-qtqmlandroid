@@ -1,6 +1,6 @@
 #include "qtdroidspace_p.h"
 
-QtDroidSpace::QtDroidSpace(QObject *parent) : QtDroidView(parent)
+QtDroidSpace::QtDroidSpace(QtDroidView *parent) : QtDroidView(parent)
 {
 }
 

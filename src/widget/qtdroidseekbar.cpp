@@ -1,6 +1,6 @@
 #include "qtdroidseekbar_p.h"
 
-QtDroidSeekBar::QtDroidSeekBar(QObject *parent) : QtDroidAbsSeekBar(parent)
+QtDroidSeekBar::QtDroidSeekBar(QtDroidView *parent) : QtDroidAbsSeekBar(parent)
 {
 }
 

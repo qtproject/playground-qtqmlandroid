@@ -10,7 +10,7 @@ class QtDroidRadioButton : public QtDroidCompoundButton
     Q_OBJECT
 
 public:
-    explicit QtDroidRadioButton(QObject *parent = 0);
+    explicit QtDroidRadioButton(QtDroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;

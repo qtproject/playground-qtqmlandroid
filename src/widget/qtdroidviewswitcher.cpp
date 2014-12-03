@@ -1,6 +1,6 @@
 #include "qtdroidviewswitcher_p.h"
 
-QtDroidViewSwitcher::QtDroidViewSwitcher(QObject *parent) : QtDroidViewAnimator(parent)
+QtDroidViewSwitcher::QtDroidViewSwitcher(QtDroidView *parent) : QtDroidViewAnimator(parent)
 {
 }
 

@@ -10,7 +10,7 @@ class QtDroidCheckBox : public QtDroidCompoundButton
     Q_OBJECT
 
 public:
-    explicit QtDroidCheckBox(QObject *parent = 0);
+    explicit QtDroidCheckBox(QtDroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;

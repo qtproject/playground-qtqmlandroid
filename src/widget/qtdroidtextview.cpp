@@ -1,7 +1,7 @@
 #include "qtdroidtextview_p.h"
 #include "qtdroidcolor_p.h"
 
-QtDroidTextView::QtDroidTextView(QObject *parent) : QtDroidView(parent)
+QtDroidTextView::QtDroidTextView(QtDroidView *parent) : QtDroidView(parent)
 {
 }
 
