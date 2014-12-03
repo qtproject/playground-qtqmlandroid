@@ -1,5 +1,6 @@
 #include "qtdroidadapterview_p.h"
 #include "qtdroidbaseadapter_p.h"
+#include "qtdroidfunctions_p.h"
 
 QtDroidAdapterView::QtDroidAdapterView(QtDroidView *parent) : QtDroidViewGroup(parent), m_adapter(0)
 {
@@ -20,7 +21,7 @@ void QtDroidAdapterView::setAdapter(QtDroidBaseAdapter *adapter)
 
 void QtDroidAdapterView::setSelection(int position)
 {
-    callIntMethod("setSelection", position);
+    QtDroid::callIntMethod(instance(), "setSelection", position);
 }
 
 QAndroidJniObject QtDroidAdapterView::construct(jobject context)

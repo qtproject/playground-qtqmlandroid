@@ -1,4 +1,5 @@
 #include "qtdroidpopupmenu_p.h"
+#include "qtdroidfunctions_p.h"
 #include "qtdroidmenuitem_p.h"
 #include "qtdroidcontext_p.h"
 #include "qtdroidview_p.h"
@@ -64,7 +65,7 @@ void QtDroidPopupMenu::show()
     QAndroidJniObject c = context->instance();
     QAndroidJniObject a = anchor->instance();
 
-    callFunction([=]() {
+    QtDroid::callFunction([=]() {
         QAndroidJniObject popup;
         if (!m_gravity.isNull()) {
             popup = QAndroidJniObject("android/widget/PopupMenu",
@@ -91,5 +92,5 @@ void QtDroidPopupMenu::show()
 
 void QtDroidPopupMenu::dismiss()
 {
-    callVoidMethod("dismiss");
+    QtDroid::callVoidMethod(instance(), "dismiss");
 }

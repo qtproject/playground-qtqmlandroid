@@ -1,5 +1,6 @@
 #include "qtdroidradiogroup_p.h"
 #include "qtdroidradiobutton_p.h"
+#include "qtdroidfunctions_p.h"
 
 QtDroidRadioGroup::QtDroidRadioGroup(QtDroidView *parent) :
     QtDroidLinearLayout(parent), m_checkedButton(0)
@@ -14,12 +15,12 @@ QtDroidRadioButton *QtDroidRadioGroup::checkedButton() const
 void QtDroidRadioGroup::setCheckedButton(QtDroidRadioButton *button)
 {
     if (updateCheckedButton(button))
-        callIntMethod("check", button ? button->identifier() : -1);
+        QtDroid::callIntMethod(instance(), "check", button ? button->identifier() : -1);
 }
 
 void QtDroidRadioGroup::clearCheck()
 {
-    callVoidMethod("clearCheck");
+    QtDroid::callVoidMethod(instance(), "clearCheck");
 }
 
 QAndroidJniObject QtDroidRadioGroup::construct(jobject context)

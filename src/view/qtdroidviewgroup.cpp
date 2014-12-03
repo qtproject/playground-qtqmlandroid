@@ -1,5 +1,6 @@
 #include "qtdroidviewgroup_p.h"
 #include "qtdroidlayoutparams_p.h"
+#include "qtdroidfunctions_p.h"
 #include "qtdroidcontext_p.h"
 
 QtDroidViewGroup::QtDroidViewGroup(QtDroidView *parent) : QtDroidView(parent)
@@ -39,7 +40,7 @@ void QtDroidViewGroup::viewChange(ViewChange change, const ViewChangeData &data)
     case ViewChildAddedChange: // data.view
         if (group.isValid()) {
             QAndroidJniObject ctx = context()->instance();
-            callFunction([=]() {
+            QtDroid::callFunction([=]() {
                 QAndroidJniObject child = data.view->construct(ctx.object());
                 data.view->setInstance(child);
                 data.view->inflate(ctx.object());
@@ -50,7 +51,7 @@ void QtDroidViewGroup::viewChange(ViewChange change, const ViewChangeData &data)
     case ViewChildRemovedChange: // data.view
         if (group.isValid()) {
             QAndroidJniObject child = data.view->instance();
-            callFunction([=]() {
+            QtDroid::callFunction([=]() {
                 group.callMethod<void>("removeView", "(Landroid/view/View;)V", child.object());
             });
             data.view->setInstance(QAndroidJniObject());

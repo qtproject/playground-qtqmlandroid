@@ -1,5 +1,6 @@
 #include "qtdroidview_p.h"
 #include "qtdroidcontext_p.h"
+#include "qtdroidfunctions_p.h"
 #include "qtdroidlayoutparams_p.h"
 #include <QtCore/qcoreapplication.h>
 #include <QtCore/qhash.h>
@@ -301,7 +302,7 @@ bool QtDroidView::event(QEvent *event)
 void QtDroidView::customEvent(QEvent *event)
 {
     if (m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
-        callFunction([=]() {
+        QtDroid::callFunction([=]() {
             QAndroidJniObject params = m_layoutParams->instance();
             if (!params.isValid()) {
                 params = m_layoutParams->construct();

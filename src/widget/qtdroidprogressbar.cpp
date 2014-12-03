@@ -1,4 +1,5 @@
 #include "qtdroidprogressbar_p.h"
+#include "qtdroidfunctions_p.h"
 
 QtDroidProgressBar::QtDroidProgressBar(QtDroidView *parent) :
     QtDroidView(parent), m_progress(0), m_indeterminate(false)
@@ -14,7 +15,7 @@ void QtDroidProgressBar::setIndeterminate(bool indeterminate)
 {
     if (m_indeterminate != indeterminate) {
         m_indeterminate = indeterminate;
-        callBoolMethod("setIndeterminate", indeterminate);
+        QtDroid::callBoolMethod(instance(), "setIndeterminate", indeterminate);
         emit indeterminateChanged();
     }
 }
@@ -27,7 +28,7 @@ int QtDroidProgressBar::progress() const
 void QtDroidProgressBar::setProgress(int progress)
 {
     if (updateProgress(progress))
-        callIntMethod("setProgress", progress);
+        QtDroid::callIntMethod(instance(), "setProgress", progress);
 }
 
 bool QtDroidProgressBar::updateProgress(int progress)
@@ -51,7 +52,7 @@ void QtDroidProgressBar::setMax(int arg)
 {
     if (arg != max()) {
         m_max = arg;
-        callIntMethod("setMax", arg);
+        QtDroid::callIntMethod(instance(), "setMax", arg);
         emit maxChanged();
     }
 }
@@ -79,8 +80,8 @@ void QtDroidProgressBar::inflate(jobject context)
 {
     QtDroidView::inflate(context);
 
-    callIntMethod("setProgress", m_progress);
-    callBoolMethod("setIndeterminate", m_indeterminate);
+    QtDroid::callIntMethod(instance(), "setProgress", m_progress);
+    QtDroid::callBoolMethod(instance(), "setIndeterminate", m_indeterminate);
     if (!m_max.isNull())
-        callIntMethod("setMax", m_max.value());
+        QtDroid::callIntMethod(instance(), "setMax", m_max.value());
 }

@@ -3,6 +3,7 @@
 #include "qtdroidmenuitem_p.h"
 #include "qtdroidmenu_p.h"
 #include "qtdroidview_p.h"
+#include "qtdroidfunctions_p.h"
 #include <QtCore/private/qjnihelpers_p.h>
 #include <QtAndroidExtras/qandroidfunctions.h>
 #include <QtAndroidExtras/qandroidjnienvironment.h>
@@ -62,7 +63,7 @@ void QtDroidActivity::componentComplete()
     QtDroidContext::componentComplete();
 
     QAndroidJniObject activity = instance();
-    callFunction([=]() {
+    QtDroid::callFunction([=]() {
         if (m_optionsMenu) {
             foreach (QtDroidMenuItem *item, m_optionsMenu->items()) {
                 activity.callMethod<void>("addOptionsMenuItem",

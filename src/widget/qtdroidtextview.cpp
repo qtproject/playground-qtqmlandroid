@@ -1,4 +1,5 @@
 #include "qtdroidtextview_p.h"
+#include "qtdroidfunctions_p.h"
 #include "qtdroidcolor_p.h"
 
 QtDroidTextView::QtDroidTextView(QtDroidView *parent) : QtDroidView(parent)
@@ -14,7 +15,7 @@ void QtDroidTextView::setText(const QString &text)
 {
     if (m_text != text) {
         m_text = text;
-        callTextMethod("setText", text);
+        QtDroid::callTextMethod(instance(), "setText", text);
         emit textChanged();
     }
 }
@@ -30,7 +31,7 @@ void QtDroidTextView::setTextColor(int color)
 {
     if (color != textColor()) {
         m_textColor = color;
-        callIntMethod("setTextColor", color);
+        QtDroid::callIntMethod(instance(), "setTextColor", color);
         emit textColorChanged();
     }
 }
@@ -46,7 +47,7 @@ void QtDroidTextView::setTextSize(qreal size)
 {
     if (size != textSize()) {
         m_textSize = size;
-        callRealMethod("setTextSize", size);
+        QtDroid::callRealMethod(instance(), "setTextSize", size);
         emit textSizeChanged();
     }
 }
@@ -60,7 +61,7 @@ void QtDroidTextView::setHint(const QString &hint)
 {
     if (m_hint != hint) {
         m_hint = hint;
-        callTextMethod("setHint", hint);
+        QtDroid::callTextMethod(instance(), "setHint", hint);
         emit hintChanged();
     }
 }
@@ -77,11 +78,11 @@ void QtDroidTextView::inflate(jobject context)
     QtDroidView::inflate(context);
 
     if (!m_text.isNull())
-        callTextMethod("setText", m_text);
+        QtDroid::callTextMethod(instance(), "setText", m_text);
     if (!m_textColor.isNull())
-        callIntMethod("setTextColor", m_textColor.value());
+        QtDroid::callIntMethod(instance(), "setTextColor", m_textColor.value());
     if (!m_textSize.isNull())
-        callRealMethod("setTextSize", m_textSize.value());
+        QtDroid::callRealMethod(instance(), "setTextSize", m_textSize.value());
     if (!m_hint.isNull())
-        callTextMethod("setHint", m_hint);
+        QtDroid::callTextMethod(instance(), "setHint", m_hint);
 }

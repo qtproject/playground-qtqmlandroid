@@ -1,4 +1,5 @@
 #include "qtdroidactionbar_p.h"
+#include "qtdroidfunctions_p.h"
 
 QtDroidActionBar::QtDroidActionBar(QObject *parent) : QtDroidObject(parent), m_visible(true), m_activity(0)
 {
@@ -14,9 +15,9 @@ void QtDroidActionBar::setVisible(bool arg)
     if (arg != isVisible()) {
         m_visible = arg;
         if (arg)
-            callVoidMethod("show");
+            QtDroid::callVoidMethod(instance(), "show");
         else
-            callVoidMethod("hide");
+            QtDroid::callVoidMethod(instance(), "hide");
         emit visibleChanged();
     }
 }
@@ -30,7 +31,7 @@ void QtDroidActionBar::setTitle(const QString &title)
 {
     if (m_title != title) {
         m_title = title;
-        callTextMethod("setTitle", title);
+        QtDroid::callTextMethod(instance(), "setTitle", title);
         emit titleChanged();
     }
 }
@@ -44,7 +45,7 @@ void QtDroidActionBar::setSubtitle(const QString &subtitle)
 {
     if (m_subtitle != subtitle) {
         m_subtitle = subtitle;
-        callTextMethod("setSubtitle", subtitle);
+        QtDroid::callTextMethod(instance(), "setSubtitle", subtitle);
         emit subtitleChanged();
     }
 }
@@ -59,12 +60,12 @@ void QtDroidActionBar::setActivity(QtDroidActivity *activity)
     if (m_activity != activity) {
         m_activity = activity;
         if (m_visible)
-            callVoidMethod("show");
+            QtDroid::callVoidMethod(instance(), "show");
         else
-            callVoidMethod("hide");
+            QtDroid::callVoidMethod(instance(), "hide");
         if (!m_title.isNull())
-            callTextMethod("setTitle", m_title);
+            QtDroid::callTextMethod(instance(), "setTitle", m_title);
         if (!m_subtitle.isNull())
-            callTextMethod("setSubtitle", m_subtitle);
+            QtDroid::callTextMethod(instance(), "setSubtitle", m_subtitle);
     }
 }

@@ -1,4 +1,5 @@
 #include "qtdroidcompoundbutton_p.h"
+#include "qtdroidfunctions_p.h"
 
 QtDroidCompoundButton::QtDroidCompoundButton(QtDroidView *parent) : QtDroidButton(parent), m_checked(false)
 {
@@ -12,7 +13,7 @@ bool QtDroidCompoundButton::isChecked() const
 void QtDroidCompoundButton::setChecked(bool checked)
 {
     if (updateChecked(checked))
-        callBoolMethod("setChecked", checked);
+        QtDroid::callBoolMethod(instance(), "setChecked", checked);
 }
 
 bool QtDroidCompoundButton::updateChecked(bool arg)
@@ -27,7 +28,7 @@ bool QtDroidCompoundButton::updateChecked(bool arg)
 
 void QtDroidCompoundButton::toggle()
 {
-    callVoidMethod("toggle");
+    QtDroid::callVoidMethod(instance(), "toggle");
 }
 
 QAndroidJniObject QtDroidCompoundButton::construct(jobject context)
@@ -53,7 +54,7 @@ void QtDroidCompoundButton::inflate(jobject context)
         nativeMethodsRegistered = true;
     }
 
-    callBoolMethod("setChecked", m_checked);
+    QtDroid::callBoolMethod(instance(), "setChecked", m_checked);
 }
 
 void QtDroidCompoundButton::registerNativeMethods(jobject listener)

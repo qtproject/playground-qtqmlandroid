@@ -1,5 +1,6 @@
 #include "qtdroiddrawerlayout_p.h"
 #include "qtdroidactionbardrawertoggle_p.h"
+#include "qtdroidfunctions_p.h"
 #include <QtCore/qcoreevent.h>
 
 QtDroidDrawerLayout::QtDroidDrawerLayout(QtDroidView *parent) :
@@ -17,12 +18,12 @@ QtDroidDrawerLayoutParams *QtDroidDrawerLayout::qmlAttachedProperties(QObject *o
 
 void QtDroidDrawerLayout::closeDrawers()
 {
-    callVoidMethod("closeDrawers");
+    QtDroid::callVoidMethod(instance(), "closeDrawers");
 }
 
 void QtDroidDrawerLayout::closeDrawer(int gravity)
 {
-    callIntMethod("closeDrawer", gravity);
+    QtDroid::callIntMethod(instance(), "closeDrawer", gravity);
 }
 
 QAndroidJniObject QtDroidDrawerLayout::construct(jobject context)

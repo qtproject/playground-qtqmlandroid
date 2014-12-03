@@ -1,4 +1,5 @@
 #include "qtdroidviewanimator_p.h"
+#include "qtdroidfunctions_p.h"
 
 QtDroidViewAnimator::QtDroidViewAnimator(QtDroidView *parent) : QtDroidFrameLayout(parent)
 {
@@ -15,19 +16,19 @@ void QtDroidViewAnimator::setDisplayedChild(int child)
 {
     if (child != displayedChild()) {
         m_displayedChild = child;
-        callIntMethod("setDisplayedChild", child);
+        QtDroid::callIntMethod(instance(), "setDisplayedChild", child);
         emit displayedChildChanged();
     }
 }
 
 void QtDroidViewAnimator::showNext()
 {
-    callVoidMethod("showNext");
+    QtDroid::callVoidMethod(instance(), "showNext");
 }
 
 void QtDroidViewAnimator::showPrevious()
 {
-    callVoidMethod("showPrevious");
+    QtDroid::callVoidMethod(instance(), "showPrevious");
 }
 
 QAndroidJniObject QtDroidViewAnimator::construct(jobject context)
@@ -42,5 +43,5 @@ void QtDroidViewAnimator::inflate(jobject context)
     QtDroidFrameLayout::inflate(context);
 
     if (!m_displayedChild.isNull())
-        callIntMethod("setDisplayedChild", m_displayedChild.value());
+        QtDroid::callIntMethod(instance(), "setDisplayedChild", m_displayedChild.value());
 }
