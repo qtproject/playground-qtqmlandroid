@@ -18,6 +18,8 @@ class QtDroidPopupMenu : public QtDroidObject
 public:
     explicit QtDroidPopupMenu(QObject *parent = 0);
 
+    QList<QtDroidMenuItem *> items() const;
+
     QtDroidView *anchor() const;
     void setAnchor(QtDroidView *anchor);
 
@@ -34,15 +36,10 @@ Q_SIGNALS:
     void dismissed();
     void itemClick();
 
-protected:
-    void objectAdded(QObject *object);
-    void objectRemoved(QObject *object);
-
 private:
     QtDroidView *m_anchor;
     QtDroidOptional<int> m_gravity;
     QAndroidJniObject m_listener;
-    QList<QtDroidMenuItem *> m_items;
 };
 
 QT_END_NAMESPACE

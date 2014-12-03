@@ -8,6 +8,17 @@ QtDroidPopupMenu::QtDroidPopupMenu(QObject *parent) : QtDroidObject(parent), m_a
 {
 }
 
+QList<QtDroidMenuItem *> QtDroidPopupMenu::items() const
+{
+    QList<QtDroidMenuItem *> lst;
+    foreach (QObject *child, children()) {
+        QtDroidMenuItem *item = qobject_cast<QtDroidMenuItem *>(child);
+        if (item)
+            lst += item;
+    }
+    return lst;
+}
+
 QtDroidView *QtDroidPopupMenu::anchor() const
 {
     return m_anchor;
@@ -67,7 +78,7 @@ void QtDroidPopupMenu::show()
         setInstance(popup);
 
         QAndroidJniObject menu = popup.callObjectMethod("getMenu", "()Landroid/view/Menu;");
-        foreach (QtDroidMenuItem *item, m_items) {
+        foreach (QtDroidMenuItem *item, items()) {
             QAndroidJniObject it = menu.callObjectMethod("add",
                                                          "(Ljava/lang/CharSequence;)Landroid/view/MenuItem;",
                                                          QAndroidJniObject::fromString(item->title()).object());
@@ -81,18 +92,4 @@ void QtDroidPopupMenu::show()
 void QtDroidPopupMenu::dismiss()
 {
     callVoidMethod("dismiss");
-}
-
-void QtDroidPopupMenu::objectAdded(QObject *object)
-{
-    QtDroidMenuItem *item = qobject_cast<QtDroidMenuItem *>(object);
-    if (item)
-        m_items += item;
-}
-
-void QtDroidPopupMenu::objectRemoved(QObject *object)
-{
-    QtDroidMenuItem *item = qobject_cast<QtDroidMenuItem *>(object);
-    if (item)
-        m_items.removeOne(item);
 }
