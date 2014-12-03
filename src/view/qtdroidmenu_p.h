@@ -15,13 +15,6 @@ public:
     explicit QtDroidMenu(QObject *parent = 0);
 
     QList<QtDroidMenuItem *> items() const;
-
-protected:
-    void objectAdded(QObject *object) Q_DECL_OVERRIDE;
-    void objectRemoved(QObject *object) Q_DECL_OVERRIDE;
-
-private:
-    QList<QtDroidMenuItem *> m_items;
 };
 
 QT_END_NAMESPACE

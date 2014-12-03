@@ -11,13 +11,15 @@ class QtDroidViewGroup : public QtDroidView
     Q_OBJECT
 
 public:
-    explicit QtDroidViewGroup(QObject *parent = 0);
+    explicit QtDroidViewGroup(QtDroidView *parent = 0);
 
     static QtDroidLayoutParams *qmlAttachedProperties(QObject *object);
 
 protected:
     QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
     void inflate(jobject context) Q_DECL_OVERRIDE;
+
+    void viewChange(ViewChange change, const ViewChangeData &data) Q_DECL_OVERRIDE;
 };
 
 QT_END_NAMESPACE

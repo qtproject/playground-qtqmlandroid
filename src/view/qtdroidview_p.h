@@ -13,6 +13,7 @@ class QtDroidView : public QtDroidObject
 {
     Q_OBJECT
     Q_PROPERTY(QtDroidContext *context READ context NOTIFY contextChanged)
+    Q_PROPERTY(QtDroidView *parent READ parentView WRITE setParentView NOTIFY parentChanged)
     Q_PROPERTY(QQmlListProperty<QtDroidView> children READ children NOTIFY childrenChanged)
     Q_PROPERTY(bool focus READ hasFocus NOTIFY focusChanged)
     Q_PROPERTY(qreal x READ x WRITE setX NOTIFY xChanged)
@@ -21,13 +22,17 @@ class QtDroidView : public QtDroidObject
     Q_PROPERTY(qreal height READ height WRITE setHeight NOTIFY heightChanged) // TODO: reset
 
 public:
-    explicit QtDroidView(QObject *parent = 0);
+    explicit QtDroidView(QtDroidView *parent = 0);
+    ~QtDroidView();
 
     int identifier() const;
     void setIdentifier(int id);
 
     QtDroidContext *context() const;
     void setContext(QtDroidContext *context);
+
+    QtDroidView *parentView() const;
+    void setParentView(QtDroidView *parent);
 
     QList<QtDroidView *> childViews() const;
     QQmlListProperty<QtDroidView> children();
@@ -68,6 +73,7 @@ public:
 
 Q_SIGNALS:
     void contextChanged();
+    void parentChanged();
     void childrenChanged();
     void focusChanged();
     void click();
@@ -79,9 +85,6 @@ Q_SIGNALS:
 
 protected:
     virtual void viewChange(ViewChange change, const ViewChangeData &data);
-
-    void objectAdded(QObject *object) Q_DECL_OVERRIDE;
-    void objectRemoved(QObject *object) Q_DECL_OVERRIDE;
 
     void addChild(QtDroidView *child);
     void removeChild(QtDroidView *child);
@@ -100,6 +103,7 @@ protected:
     static void onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint top, jint left, jint right, jint bottom);
     static bool onLongClick(JNIEnv *env, jobject object, jlong instance);
 
+    bool event(QEvent *event) Q_DECL_OVERRIDE;
     void customEvent(QEvent *event) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
@@ -111,6 +115,7 @@ private:
 
     int m_id;
     QtDroidContext *m_context;
+    QtDroidView *m_parent;
     QList<QtDroidView *> m_children;
 
     QAndroidJniObject m_listener;

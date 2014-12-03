@@ -1,4 +1,6 @@
 #include "qtdroidobject_p.h"
+#include <QtCore/qcoreevent.h>
+#include <QtCore/qcoreapplication.h>
 #include <QtCore/private/qjnihelpers_p.h>
 #include <QtConcurrent/qtconcurrentrun.h>
 #include <QtAndroidExtras/qandroidfunctions.h>
@@ -7,6 +9,7 @@
 QtDroidObject::QtDroidObject(QObject *parent) :
     QObject(parent), m_complete(false)
 {
+    QCoreApplication::postEvent(this, new QEvent(QEvent::Polish));
 }
 
 QAndroidJniObject QtDroidObject::instance() const
@@ -92,38 +95,34 @@ void QtDroidObject::componentComplete()
 
 QQmlListProperty<QObject> QtDroidObject::data()
 {
-    return QQmlListProperty<QObject>(this, 0, &QtDroidObject::data_append, &QtDroidObject::data_count,
-                                              &QtDroidObject::data_at, &QtDroidObject::data_clear);
+    return QQmlListProperty<QObject>(this, 0, &QtDroidObject::data_append,
+                                     &QtDroidObject::data_count, &QtDroidObject::data_at, 0);
 }
 
 void QtDroidObject::data_append(QQmlListProperty<QObject> *list, QObject *object)
 {
-    if (QtDroidObject *that = qobject_cast<QtDroidObject *>(list->object)) {
+    if (QtDroidObject *that = qobject_cast<QtDroidObject *>(list->object))
         object->setParent(that);
-        that->m_data.append(object);
-        that->objectAdded(object);
-        emit that->dataChanged();
-    }
 }
 
 int QtDroidObject::data_count(QQmlListProperty<QObject> *list)
 {
     if (QtDroidObject *that = qobject_cast<QtDroidObject *>(list->object))
-        return that->m_data.count();
+        return that->children().count();
     return 0;
 }
 
 QObject *QtDroidObject::data_at(QQmlListProperty<QObject> *list, int index)
 {
     if (QtDroidObject *that = qobject_cast<QtDroidObject *>(list->object))
-        return that->m_data.at(index);
+        return that->children().value(index);
     return 0;
 }
 
-void QtDroidObject::data_clear(QQmlListProperty<QObject> *list)
+void QtDroidObject::childEvent(QChildEvent *event)
 {
-    if (QtDroidObject *that = qobject_cast<QtDroidObject *>(list->object)) {
-        that->m_data.clear();
-        emit that->dataChanged();
-    }
+    if (event->added())
+        emit dataChanged();
+    else if (event->removed())
+        emit dataChanged();
 }

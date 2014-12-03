@@ -43,14 +43,11 @@ protected:
     static void data_append(QQmlListProperty<QObject> *list, QObject *object);
     static int data_count(QQmlListProperty<QObject> *list);
     static QObject *data_at(QQmlListProperty<QObject> *list, int index);
-    static void data_clear(QQmlListProperty<QObject> *list);
 
-    virtual void objectAdded(QObject *object) { Q_UNUSED(object) }
-    virtual void objectRemoved(QObject *object) { Q_UNUSED(object) }
+    void childEvent(QChildEvent *event) Q_DECL_OVERRIDE;
 
 private:
     bool m_complete;
-    QList<QObject *> m_data;
     QAndroidJniObject m_instance;
 };
 

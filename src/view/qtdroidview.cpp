@@ -4,11 +4,20 @@
 #include <QtCore/qcoreapplication.h>
 #include <QtCore/qhash.h>
 
-QtDroidView::QtDroidView(QObject *parent) : QtDroidObject(parent),
-    m_context(0), m_layoutParamsDirty(false), m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
+QtDroidView::QtDroidView(QtDroidView *parent) : QtDroidObject(parent),
+    m_context(0), m_parent(0), m_layoutParamsDirty(false), m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
 {
     static int id = 0;
     m_id = ++id;
+
+    if (parent)
+        setParentView(parent);
+}
+
+QtDroidView::~QtDroidView()
+{
+    if (m_parent)
+        setParentView(0);
 }
 
 int QtDroidView::identifier() const
@@ -34,6 +43,24 @@ void QtDroidView::setContext(QtDroidContext *context)
             child->setContext(context);
         viewChange(ViewContextChange, context);
         emit contextChanged();
+    }
+}
+
+QtDroidView *QtDroidView::parentView() const
+{
+    return m_parent;
+}
+
+void QtDroidView::setParentView(QtDroidView *parent)
+{
+    if (m_parent != parent) {
+        if (m_parent)
+            m_parent->removeChild(this);
+        m_parent = parent;
+        viewChange(ViewParentChange, parent);
+        if (parent)
+            parent->addChild(this);
+        emit parentChanged();
     }
 }
 
@@ -134,46 +161,28 @@ void QtDroidView::viewChange(ViewChange change, const ViewChangeData &data)
     }
 }
 
-void QtDroidView::objectAdded(QObject *object)
-{
-    addChild(qobject_cast<QtDroidView *>(object));
-}
-
-void QtDroidView::objectRemoved(QObject *object)
-{
-    removeChild(qobject_cast<QtDroidView *>(object));
-}
-
 void QtDroidView::addChild(QtDroidView *child)
 {
-    if (child) {
-        Q_ASSERT(!m_children.contains(child));
+    if (!m_children.contains(child)) {
         m_children.append(child);
         child->setContext(m_context);
         viewChange(ViewChildAddedChange, child);
-        child->viewChange(ViewParentChange, this);
         emit childrenChanged();
     }
 }
 
 void QtDroidView::removeChild(QtDroidView *child)
 {
-    if (child) {
-        Q_ASSERT(m_children.contains(child));
-        m_children.removeOne(child);
+    if (m_children.removeOne(child)) {
         viewChange(ViewChildRemovedChange, child);
-        child->viewChange(ViewParentChange, static_cast<QtDroidContext *>(0));
-        child->setContext(0);
         emit childrenChanged();
     }
 }
 
 void QtDroidView::children_append(QQmlListProperty<QtDroidView> *list, QtDroidView *child)
 {
-    if (QtDroidView *that = qobject_cast<QtDroidView *>(list->object)) {
-        that->m_children.append(child);
-        emit that->childrenChanged();
-    }
+    if (QtDroidView *that = qobject_cast<QtDroidView *>(list->object))
+        that->addChild(child);
 }
 
 int QtDroidView::children_count(QQmlListProperty<QtDroidView> *list)
@@ -193,10 +202,8 @@ QtDroidView *QtDroidView::children_at(QQmlListProperty<QtDroidView> *list, int i
 void QtDroidView::children_clear(QQmlListProperty<QtDroidView> *list)
 {
     if (QtDroidView *that = qobject_cast<QtDroidView *>(list->object)) {
-        if (!that->m_children.isEmpty()) {
-            that->m_children.clear();
-            emit that->childrenChanged();
-        }
+        while (!that->m_children.isEmpty())
+            that->m_children.first()->setParentView(0);
     }
 }
 
@@ -279,6 +286,16 @@ bool QtDroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)
         QMetaObject::invokeMethod(view, "longClick", Qt::QueuedConnection);
     }
     return true; // TODO: accept
+}
+
+bool QtDroidView::event(QEvent *event)
+{
+    if (event->type() == QEvent::Polish) {
+        QtDroidView *view = qobject_cast<QtDroidView *>(parent());
+        if (view)
+            setParentView(view);
+    }
+    return QtDroidObject::event(event);
 }
 
 void QtDroidView::customEvent(QEvent *event)

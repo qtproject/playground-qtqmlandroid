@@ -7,19 +7,11 @@ QtDroidMenu::QtDroidMenu(QObject *parent) : QtDroidObject(parent)
 
 QList<QtDroidMenuItem *> QtDroidMenu::items() const
 {
-    return m_items;
-}
-
-void QtDroidMenu::objectAdded(QObject *object)
-{
-    QtDroidMenuItem *item = qobject_cast<QtDroidMenuItem *>(object);
-    if (item)
-        m_items += item;
-}
-
-void QtDroidMenu::objectRemoved(QObject *object)
-{
-    QtDroidMenuItem *item = qobject_cast<QtDroidMenuItem *>(object);
-    if (item)
-        m_items.removeOne(item);
+    QList<QtDroidMenuItem *> lst;
+    foreach (QObject *child, children()) {
+        QtDroidMenuItem *item = qobject_cast<QtDroidMenuItem *>(child);
+        if (item)
+            lst += item;
+    }
+    return lst;
 }
