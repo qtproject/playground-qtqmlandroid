@@ -30,15 +30,10 @@ void QtDroidTabHost::inflate()
 
     host.callMethod<void>("setup");
 
-    int i = 0;
+    int index = 0;
     QList<QtDroidTabSpec *> tabs = findChildren<QtDroidTabSpec *>();
-    foreach (QtDroidTabSpec *tab, tabs) {
-        QAndroidJniObject spec = host.callObjectMethod("newTabSpec",
-                                                       "(Ljava/lang/String;)Landroid/widget/TabHost$TabSpec;",
-                                                       QAndroidJniObject::fromString(QString::number(i++)).object());
-        tab->applyParams(spec);
-        host.callMethod<void>("addTab", "(Landroid/widget/TabHost$TabSpec;)V", spec.object());
-    }
+    foreach (QtDroidTabSpec *tab, tabs)
+        tab->setup(this, index++);
 }
 
 void QtDroidTabHost::registerNativeMethods(jobject listener)

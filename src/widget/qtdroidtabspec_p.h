@@ -7,7 +7,7 @@
 QT_BEGIN_NAMESPACE
 
 class QtDroidView;
-class QAndroidJniObject;
+class QtDroidTabHost;
 
 class QtDroidTabSpec : public QObject
 {
@@ -22,16 +22,13 @@ public:
     QString label() const;
     void setLabel(const QString &label);
 
+    void setup(QtDroidTabHost *host, int index);
+
 Q_SIGNALS:
     void labelChanged();
 
-protected:
-    void applyParams(QAndroidJniObject &spec);
-
 private:
     QString m_label;
-
-    friend class QtDroidTabHost;
 };
 
 QT_END_NAMESPACE

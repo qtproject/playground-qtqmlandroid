@@ -1,5 +1,7 @@
 #include "qtdroidtabspec_p.h"
+#include "qtdroidtabhost_p.h"
 #include "qtdroidview_p.h"
+#include "qtdroidfunctions_p.h"
 #include <QtAndroidExtras/qandroidjniobject.h>
 
 QtDroidTabSpec::QtDroidTabSpec(QtDroidView *view) : QObject(view)
@@ -26,21 +28,35 @@ void QtDroidTabSpec::setLabel(const QString &label)
 {
     if (m_label != label) {
         m_label = label;
+        // TODO: invalidate
         emit labelChanged();
     }
 }
 
-void QtDroidTabSpec::applyParams(QAndroidJniObject &spec)
+void QtDroidTabSpec::setup(QtDroidTabHost *h, int index)
 {
-    if (!m_label.isNull()) {
+    QAndroidJniObject host = h->instance();
+
+    int id = -1;
+    QtDroidView *content = qobject_cast<QtDroidView *>(parent());
+    if (content)
+        id = content->identifier();
+
+    QtDroid::callFunction([=]() {
+        QAndroidJniObject spec = host.callObjectMethod("newTabSpec",
+                                                       "(Ljava/lang/String;)Landroid/widget/TabHost$TabSpec;",
+                                                       QAndroidJniObject::fromString(QString::number(index)).object());
+
         spec.callObjectMethod("setIndicator",
                              "(Ljava/lang/CharSequence;)Landroid/widget/TabHost$TabSpec;",
                              QAndroidJniObject::fromString(m_label).object());
-    }
-    QtDroidView *content = qobject_cast<QtDroidView *>(parent());
-    if (content) {
-        spec.callObjectMethod("setContent",
-                             "(I)Landroid/widget/TabHost$TabSpec;",
-                             content->identifier());
-    }
+
+        if (id != -1) {
+            spec.callObjectMethod("setContent",
+                                  "(I)Landroid/widget/TabHost$TabSpec;",
+                                  id);
+        }
+
+        host.callMethod<void>("addTab", "(Landroid/widget/TabHost$TabSpec;)V", spec.object());
+    });
 }
