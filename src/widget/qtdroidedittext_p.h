@@ -13,8 +13,8 @@ public:
     explicit QtDroidEditText(QtDroidView *parent = 0);
 
 protected:
-    QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
-    void inflate(jobject context) Q_DECL_OVERRIDE;
+    QAndroidJniObject construct() Q_DECL_OVERRIDE;
+    void inflate() Q_DECL_OVERRIDE;
 };
 
 QT_END_NAMESPACE

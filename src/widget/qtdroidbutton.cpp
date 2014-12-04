@@ -4,14 +4,14 @@ QtDroidButton::QtDroidButton(QtDroidView *parent) : QtDroidTextView(parent)
 {
 }
 
-QAndroidJniObject QtDroidButton::construct(jobject context)
+QAndroidJniObject QtDroidButton::construct()
 {
     return QAndroidJniObject("android/widget/Button",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidButton::inflate(jobject context)
+void QtDroidButton::inflate()
 {
-    QtDroidTextView::inflate(context);
+    QtDroidTextView::inflate();
 }

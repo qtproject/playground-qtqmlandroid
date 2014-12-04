@@ -4,14 +4,14 @@ QtDroidViewFlipper::QtDroidViewFlipper(QtDroidView *parent) : QtDroidViewAnimato
 {
 }
 
-QAndroidJniObject QtDroidViewFlipper::construct(jobject context)
+QAndroidJniObject QtDroidViewFlipper::construct()
 {
     return QAndroidJniObject("android/widget/ViewFlipper",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidViewFlipper::inflate(jobject context)
+void QtDroidViewFlipper::inflate()
 {
-    QtDroidViewAnimator::inflate(context);
+    QtDroidViewAnimator::inflate();
 }

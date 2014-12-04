@@ -4,14 +4,14 @@ QtDroidSpinner::QtDroidSpinner(QtDroidView *parent) : QtDroidAdapterView(parent)
 {
 }
 
-QAndroidJniObject QtDroidSpinner::construct(jobject context)
+QAndroidJniObject QtDroidSpinner::construct()
 {
     return QAndroidJniObject("android/widget/Spinner",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidSpinner::inflate(jobject context)
+void QtDroidSpinner::inflate()
 {
-    QtDroidAdapterView::inflate(context);
+    QtDroidAdapterView::inflate();
 }

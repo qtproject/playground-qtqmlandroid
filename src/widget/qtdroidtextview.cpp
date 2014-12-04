@@ -66,16 +66,16 @@ void QtDroidTextView::setHint(const QString &hint)
     }
 }
 
-QAndroidJniObject QtDroidTextView::construct(jobject context)
+QAndroidJniObject QtDroidTextView::construct()
 {
     return QAndroidJniObject("android/widget/TextView",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidTextView::inflate(jobject context)
+void QtDroidTextView::inflate()
 {
-    QtDroidView::inflate(context);
+    QtDroidView::inflate();
 
     if (!m_text.isNull())
         QtDroid::callTextMethod(instance(), "setText", m_text);

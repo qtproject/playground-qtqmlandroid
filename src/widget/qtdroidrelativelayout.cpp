@@ -12,14 +12,14 @@ QtDroidRelativeLayoutParams *QtDroidRelativeLayout::qmlAttachedProperties(QObjec
     return 0;
 }
 
-QAndroidJniObject QtDroidRelativeLayout::construct(jobject context)
+QAndroidJniObject QtDroidRelativeLayout::construct()
 {
     return QAndroidJniObject("android/widget/RelativeLayout",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidRelativeLayout::inflate(jobject context)
+void QtDroidRelativeLayout::inflate()
 {
-    QtDroidViewGroup::inflate(context);
+    QtDroidViewGroup::inflate();
 }

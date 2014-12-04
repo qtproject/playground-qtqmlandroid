@@ -28,6 +28,7 @@ public:
     int identifier() const;
     void setIdentifier(int id);
 
+    QAndroidJniObject ctx() const;
     QtDroidContext *context() const;
     void setContext(QtDroidContext *context);
 
@@ -94,8 +95,8 @@ protected:
     static QtDroidView *children_at(QQmlListProperty<QtDroidView> *list, int index);
     static void children_clear(QQmlListProperty<QtDroidView> *list);
 
-    virtual QAndroidJniObject construct(jobject context);
-    virtual void inflate(jobject context);
+    virtual QAndroidJniObject construct();
+    virtual void inflate();
 
     static void registerNativeMethods(jobject listener);
     static void onClick(JNIEnv *env, jobject object, jlong instance);

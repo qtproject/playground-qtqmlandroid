@@ -5,14 +5,14 @@ QtDroidTabWidget::QtDroidTabWidget(QtDroidView *parent) : QtDroidLinearLayout(pa
     setIdentifier(16908307); // TODO: android.R.id.tabs
 }
 
-QAndroidJniObject QtDroidTabWidget::construct(jobject context)
+QAndroidJniObject QtDroidTabWidget::construct()
 {
     return QAndroidJniObject("android/widget/TabWidget",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidTabWidget::inflate(jobject context)
+void QtDroidTabWidget::inflate()
 {
-    QtDroidLinearLayout::inflate(context);
+    QtDroidLinearLayout::inflate();
 }

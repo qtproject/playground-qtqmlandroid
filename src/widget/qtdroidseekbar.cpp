@@ -4,16 +4,16 @@ QtDroidSeekBar::QtDroidSeekBar(QtDroidView *parent) : QtDroidAbsSeekBar(parent)
 {
 }
 
-QAndroidJniObject QtDroidSeekBar::construct(jobject context)
+QAndroidJniObject QtDroidSeekBar::construct()
 {
     return QAndroidJniObject("android/widget/SeekBar",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidSeekBar::inflate(jobject context)
+void QtDroidSeekBar::inflate()
 {
-    QtDroidAbsSeekBar::inflate(context);
+    QtDroidAbsSeekBar::inflate();
 
     QAndroidJniObject bar = instance();
     m_listener = QAndroidJniObject("qtdroid/widget/QtSeekBarListener",

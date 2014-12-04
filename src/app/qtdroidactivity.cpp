@@ -77,9 +77,9 @@ void QtDroidActivity::componentComplete()
             m_actionBar->setActivity(this);
         }
         if (m_view) {
-            QAndroidJniObject content = m_view->construct(activity.object());
+            QAndroidJniObject content = m_view->construct();
             m_view->setInstance(content);
-            m_view->inflate(activity.object());
+            m_view->inflate();
             if (content.isValid())
                 activity.callMethod<void>("setContentView", "(Landroid/view/View;)V", content.object());
         }

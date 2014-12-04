@@ -26,7 +26,7 @@ Q_SIGNALS:
 
 protected:
     QAndroidJniObject construct() Q_DECL_OVERRIDE;
-    void applyParams(QAndroidJniObject &params) Q_DECL_OVERRIDE;
+    void inflate(QAndroidJniObject &params) Q_DECL_OVERRIDE;
 
 private:
     QtDroidOptional<int> m_gravity;

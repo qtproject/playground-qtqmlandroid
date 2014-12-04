@@ -31,16 +31,16 @@ void QtDroidViewAnimator::showPrevious()
     QtDroid::callVoidMethod(instance(), "showPrevious");
 }
 
-QAndroidJniObject QtDroidViewAnimator::construct(jobject context)
+QAndroidJniObject QtDroidViewAnimator::construct()
 {
     return QAndroidJniObject("android/widget/ViewAnimator",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidViewAnimator::inflate(jobject context)
+void QtDroidViewAnimator::inflate()
 {
-    QtDroidFrameLayout::inflate(context);
+    QtDroidFrameLayout::inflate();
 
     if (!m_displayedChild.isNull())
         QtDroid::callIntMethod(instance(), "setDisplayedChild", m_displayedChild.value());

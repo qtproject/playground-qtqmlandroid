@@ -4,14 +4,14 @@ QtDroidCheckBox::QtDroidCheckBox(QtDroidView *parent) : QtDroidCompoundButton(pa
 {
 }
 
-QAndroidJniObject QtDroidCheckBox::construct(jobject context)
+QAndroidJniObject QtDroidCheckBox::construct()
 {
     return QAndroidJniObject("android/widget/CheckBox",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidCheckBox::inflate(jobject context)
+void QtDroidCheckBox::inflate()
 {
-    QtDroidCompoundButton::inflate(context);
+    QtDroidCompoundButton::inflate();
 }

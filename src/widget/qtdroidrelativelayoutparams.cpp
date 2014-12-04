@@ -349,9 +349,9 @@ static void addRule(QAndroidJniObject &params, bool value, QtDroidRelativeLayout
         params.callMethod<void>("addRule", "(I)V", verb);
 }
 
-void QtDroidRelativeLayoutParams::applyParams(QAndroidJniObject &params)
+void QtDroidRelativeLayoutParams::inflate(QAndroidJniObject &params)
 {
-    QtDroidMarginLayoutParams::applyParams(params);
+    QtDroidMarginLayoutParams::inflate(params);
 
     params.setField<jboolean>("alignWithParent", m_alignWithParent);
 

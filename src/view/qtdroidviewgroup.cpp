@@ -15,20 +15,20 @@ QtDroidLayoutParams *QtDroidViewGroup::qmlAttachedProperties(QObject *object)
     return 0;
 }
 
-QAndroidJniObject QtDroidViewGroup::construct(jobject context)
+QAndroidJniObject QtDroidViewGroup::construct()
 {
     return QAndroidJniObject("android/view/ViewGroup",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidViewGroup::inflate(jobject context)
+void QtDroidViewGroup::inflate()
 {
-    QtDroidView::inflate(context);
+    QtDroidView::inflate();
 
     foreach (QtDroidView *child, m_children) {
-        child->setInstance(child->construct(context));
-        child->inflate(context);
+        child->setInstance(child->construct());
+        child->inflate();
         instance().callMethod<void>("addView", "(Landroid/view/View;)V", child->instance().object());
     }
 }
@@ -39,11 +39,10 @@ void QtDroidViewGroup::viewChange(ViewChange change, const ViewChangeData &data)
     switch (change) {
     case ViewChildAddedChange: // data.view
         if (group.isValid()) {
-            QAndroidJniObject ctx = context()->instance();
             QtDroid::callFunction([=]() {
-                QAndroidJniObject child = data.view->construct(ctx.object());
+                QAndroidJniObject child = data.view->construct();
                 data.view->setInstance(child);
-                data.view->inflate(ctx.object());
+                data.view->inflate();
                 group.callMethod<void>("addView", "(Landroid/view/View;)V", child.object());
             });
         }

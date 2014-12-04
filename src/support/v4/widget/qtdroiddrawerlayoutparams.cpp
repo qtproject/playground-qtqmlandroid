@@ -27,9 +27,9 @@ QAndroidJniObject QtDroidDrawerLayoutParams::construct()
                              MATCH_PARENT, MATCH_PARENT, m_gravity);
 }
 
-void QtDroidDrawerLayoutParams::applyParams(QAndroidJniObject &params)
+void QtDroidDrawerLayoutParams::inflate(QAndroidJniObject &params)
 {
-    QtDroidMarginLayoutParams::applyParams(params);
+    QtDroidMarginLayoutParams::inflate(params);
 
     params.setField<int>("gravity", m_gravity);
 }

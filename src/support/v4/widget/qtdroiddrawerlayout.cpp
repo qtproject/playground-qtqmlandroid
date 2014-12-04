@@ -26,19 +26,19 @@ void QtDroidDrawerLayout::closeDrawer(int gravity)
     QtDroid::callIntMethod(instance(), "closeDrawer", gravity);
 }
 
-QAndroidJniObject QtDroidDrawerLayout::construct(jobject context)
+QAndroidJniObject QtDroidDrawerLayout::construct()
 {
     return QAndroidJniObject("android/support/v4/widget/DrawerLayout",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidDrawerLayout::inflate(jobject context)
+void QtDroidDrawerLayout::inflate()
 {
-    QtDroidViewGroup::inflate(context);
+    QtDroidViewGroup::inflate();
 
     if (m_toggle)
-        m_toggle->construct(context, instance().object());
+        m_toggle->construct(ctx().object(), instance().object());
 }
 
 void QtDroidDrawerLayout::childEvent(QChildEvent *event)

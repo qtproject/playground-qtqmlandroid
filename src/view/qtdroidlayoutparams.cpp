@@ -1,8 +1,9 @@
 #include "qtdroidlayoutparams_p.h"
+#include "qtdroidfunctions_p.h"
 #include "qtdroidview_p.h"
 
 QtDroidLayoutParams::QtDroidLayoutParams(QtDroidView *view) :
-    QtDroidObject(view), m_view(view)
+    QObject(view), m_view(view)
 {
     m_view->setLayoutParams(this);
 }
@@ -18,8 +19,7 @@ void QtDroidLayoutParams::setWidth(int value)
 {
     if (value != width()) {
         m_width = value;
-//        if (isValid())
-//            jniObject().callMethod<void>("applyText", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(txt).object());
+        // TODO: invalidate
         emit widthChanged();
     }
 }
@@ -35,10 +35,21 @@ void QtDroidLayoutParams::setHeight(int value)
 {
     if (value != height()) {
         m_height = value;
-//        if (isValid())
-//            jniObject().callMethod<void>("applyText", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(txt).object());
+        // TODO: invalidate
         emit heightChanged();
     }
+}
+
+void QtDroidLayoutParams::apply(QtDroidView *v)
+{
+    QAndroidJniObject view = v->instance();
+    QtDroid::callFunction([=]() {
+        QAndroidJniObject params = construct();
+        inflate(params);
+        view.callMethod<void>("setLayoutParams",
+                              "(Landroid/view/ViewGroup$LayoutParams;)V",
+                              params.object());
+    });
 }
 
 QAndroidJniObject QtDroidLayoutParams::construct()
@@ -48,7 +59,7 @@ QAndroidJniObject QtDroidLayoutParams::construct()
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtDroidLayoutParams::applyParams(QAndroidJniObject &params)
+void QtDroidLayoutParams::inflate(QAndroidJniObject &params)
 {
     if (!m_width.isNull())
         params.setField<int>("width", m_width.value());

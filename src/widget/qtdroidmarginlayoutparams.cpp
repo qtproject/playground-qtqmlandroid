@@ -72,9 +72,9 @@ QAndroidJniObject QtDroidMarginLayoutParams::construct()
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtDroidMarginLayoutParams::applyParams(QAndroidJniObject &params)
+void QtDroidMarginLayoutParams::inflate(QAndroidJniObject &params)
 {
-    QtDroidLayoutParams::applyParams(params);
+    QtDroidLayoutParams::inflate(params);
 
     if (!m_topMargin.isNull() || !m_leftMargin.isNull() || !m_rightMargin.isNull() || !m_bottomMargin.isNull()) {
         params.callMethod<void>("setMargins",

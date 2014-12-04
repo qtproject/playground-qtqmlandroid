@@ -25,8 +25,8 @@ Q_SIGNALS:
     void checkedButtonChanged();
 
 protected:
-    QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
-    void inflate(jobject context) Q_DECL_OVERRIDE;
+    QAndroidJniObject construct() Q_DECL_OVERRIDE;
+    void inflate() Q_DECL_OVERRIDE;
 
     static void registerNativeMethods(jobject listener);
     static void onCheckedChanged(JNIEnv *env, jobject object, jlong instance, jint checkedId);

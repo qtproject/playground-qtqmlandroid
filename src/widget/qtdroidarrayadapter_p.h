@@ -2,7 +2,7 @@
 #define QTDROIDARRAYADAPTER_P_H
 
 #include "qtdroidbaseadapter_p.h"
-#include <QtCore/qstring.h>
+#include <QtCore/qstringlist.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -20,15 +20,13 @@ public:
     int count() const Q_DECL_OVERRIDE;
     Q_INVOKABLE QString getItem(int position) const;
 
+    void setup(QtDroidAdapterView *view) Q_DECL_OVERRIDE;
+
 public Q_SLOTS:
     void clear() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void arrayChanged();
-
-protected:
-    QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
-    void inflate(jobject context) Q_DECL_OVERRIDE;
 
 private:
     QStringList m_array;

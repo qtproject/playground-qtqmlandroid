@@ -1,14 +1,15 @@
 #ifndef QTDROIDLAYOUTPARAMS_P_H
 #define QTDROIDLAYOUTPARAMS_P_H
 
-#include "qtdroidobject_p.h"
+#include <QtCore/qobject.h>
+#include <QtAndroidExtras/qandroidjniobject.h>
 #include "qtdroidoptional_p.h"
 
 QT_BEGIN_NAMESPACE
 
 class QtDroidView;
 
-class QtDroidLayoutParams : public QtDroidObject
+class QtDroidLayoutParams : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int width READ width WRITE setWidth NOTIFY widthChanged)
@@ -30,19 +31,20 @@ public:
     int height() const;
     void setHeight(int height);
 
+    void apply(QtDroidView *view);
+
 Q_SIGNALS:
     void widthChanged();
     void heightChanged();
 
 protected:
     virtual QAndroidJniObject construct();
-    virtual void applyParams(QAndroidJniObject &params);
+    virtual void inflate(QAndroidJniObject &params);
 
 private:
     QtDroidView *m_view;
     QtDroidOptional<int> m_width;
     QtDroidOptional<int> m_height;
-    friend class QtDroidView;
 };
 
 QT_END_NAMESPACE

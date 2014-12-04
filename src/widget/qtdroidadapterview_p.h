@@ -26,8 +26,8 @@ Q_SIGNALS:
     void click(int position);
 
 protected:
-    QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
-    void inflate(jobject context) Q_DECL_OVERRIDE;
+    QAndroidJniObject construct() Q_DECL_OVERRIDE;
+    void inflate() Q_DECL_OVERRIDE;
 
     static void registerNativeMethods(jobject listener);
     static void onItemClick(JNIEnv *env, jobject object, jlong instance, jint position);

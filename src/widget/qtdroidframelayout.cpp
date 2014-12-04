@@ -12,14 +12,14 @@ QtDroidFrameLayoutParams *QtDroidFrameLayout::qmlAttachedProperties(QObject *obj
     return 0;
 }
 
-QAndroidJniObject QtDroidFrameLayout::construct(jobject context)
+QAndroidJniObject QtDroidFrameLayout::construct()
 {
     return QAndroidJniObject("android/widget/FrameLayout",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidFrameLayout::inflate(jobject context)
+void QtDroidFrameLayout::inflate()
 {
-    QtDroidViewGroup::inflate(context);
+    QtDroidViewGroup::inflate();
 }

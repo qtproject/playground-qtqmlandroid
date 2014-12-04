@@ -4,14 +4,14 @@ QtDroidCalendarView::QtDroidCalendarView(QtDroidView *parent) : QtDroidFrameLayo
 {
 }
 
-QAndroidJniObject QtDroidCalendarView::construct(jobject context)
+QAndroidJniObject QtDroidCalendarView::construct()
 {
     return QAndroidJniObject("android/widget/CalendarView",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidCalendarView::inflate(jobject context)
+void QtDroidCalendarView::inflate()
 {
-    QtDroidViewGroup::inflate(context);
+    QtDroidViewGroup::inflate();
 }

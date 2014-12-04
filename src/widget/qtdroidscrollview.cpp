@@ -4,14 +4,14 @@ QtDroidScrollView::QtDroidScrollView(QtDroidView *parent) : QtDroidFrameLayout(p
 {
 }
 
-QAndroidJniObject QtDroidScrollView::construct(jobject context)
+QAndroidJniObject QtDroidScrollView::construct()
 {
     return QAndroidJniObject("android/widget/ScrollView",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidScrollView::inflate(jobject context)
+void QtDroidScrollView::inflate()
 {
-    QtDroidFrameLayout::inflate(context);
+    QtDroidFrameLayout::inflate();
 }

@@ -24,8 +24,8 @@ Q_SIGNALS:
     void displayedChildChanged();
 
 protected:
-    QAndroidJniObject construct(jobject context) Q_DECL_OVERRIDE;
-    void inflate(jobject context) Q_DECL_OVERRIDE;
+    QAndroidJniObject construct() Q_DECL_OVERRIDE;
+    void inflate() Q_DECL_OVERRIDE;
 
 private:
     QtDroidOptional<int> m_displayedChild;

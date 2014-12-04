@@ -31,6 +31,13 @@ void QtDroidView::setIdentifier(int identifier)
     m_id = identifier;
 }
 
+QAndroidJniObject QtDroidView::ctx() const
+{
+    if (!m_context)
+        return QAndroidJniObject();
+    return m_context->instance();
+}
+
 QtDroidContext *QtDroidView::context() const
 {
     return m_context;
@@ -208,16 +215,15 @@ void QtDroidView::children_clear(QQmlListProperty<QtDroidView> *list)
     }
 }
 
-QAndroidJniObject QtDroidView::construct(jobject context)
+QAndroidJniObject QtDroidView::construct()
 {
     return QAndroidJniObject("android/view/View",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidView::inflate(jobject context)
+void QtDroidView::inflate()
 {
-    Q_UNUSED(context)
     QAndroidJniObject view = instance();
     m_listener = QAndroidJniObject("qtdroid/view/QtViewListener",
                                    "(Landroid/view/View;J)V",
@@ -301,18 +307,9 @@ bool QtDroidView::event(QEvent *event)
 
 void QtDroidView::customEvent(QEvent *event)
 {
+    Q_UNUSED(event);
     if (m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
-        QtDroid::callFunction([=]() {
-            QAndroidJniObject params = m_layoutParams->instance();
-            if (!params.isValid()) {
-                params = m_layoutParams->construct();
-                m_layoutParams->setInstance(params);
-            }
-            m_layoutParams->applyParams(params);
-            instance().callMethod<void>("setLayoutParams",
-                                        "(Landroid/view/ViewGroup$LayoutParams;)V",
-                                        params.object());
-        });
+        m_layoutParams->apply(this);
         m_layoutParamsDirty = false;
     }
 }

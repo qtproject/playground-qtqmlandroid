@@ -33,16 +33,16 @@ void QtDroidToggleButton::setTextOff(const QString &text)
     }
 }
 
-QAndroidJniObject QtDroidToggleButton::construct(jobject context)
+QAndroidJniObject QtDroidToggleButton::construct()
 {
     return QAndroidJniObject("android/widget/ToggleButton",
                              "(Landroid/content/Context;)V",
-                             context);
+                             ctx().object());
 }
 
-void QtDroidToggleButton::inflate(jobject context)
+void QtDroidToggleButton::inflate()
 {
-    QtDroidCompoundButton::inflate(context);
+    QtDroidCompoundButton::inflate();
 
     if (!m_textOn.isNull())
         QtDroid::callTextMethod(instance(), "setTextOn", m_textOn);

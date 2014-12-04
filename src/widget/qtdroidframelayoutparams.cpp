@@ -27,9 +27,9 @@ QAndroidJniObject QtDroidFrameLayoutParams::construct()
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtDroidFrameLayoutParams::applyParams(QAndroidJniObject &params)
+void QtDroidFrameLayoutParams::inflate(QAndroidJniObject &params)
 {
-    QtDroidMarginLayoutParams::applyParams(params);
+    QtDroidMarginLayoutParams::inflate(params);
 
     if (!m_gravity.isNull())
         params.callMethod<void>("setGravity", "(I)V", m_gravity.value());
