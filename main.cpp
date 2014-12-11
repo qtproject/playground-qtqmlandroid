@@ -6,6 +6,8 @@
 #include "qtandroidcontext_p.h"
 
 #include "qtandroidcolor_p.h"
+#include "qtandroidcolordrawable_p.h"
+#include "qtandroiddrawable_p.h"
 
 #include "qtandroidr_p.h"
 
@@ -62,6 +64,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidContext>();
 
     qmlRegisterSingletonType<QtAndroidColor>("android.graphics", 21, 0, "Color", QtAndroidColor::provider);
+    qmlRegisterType<QtAndroidColorDrawable>("android.graphics.drawable", 21, 0, "ColorDrawable");
+    qmlRegisterType<QtAndroidDrawable>("android.graphics.drawable", 21, 0, "Drawable");
 
     qmlRegisterSingletonType<QtAndroidR>("android.R", 21, 0, "R", QtAndroidR::provider);
 

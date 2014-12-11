@@ -7,6 +7,7 @@
 QT_BEGIN_NAMESPACE
 
 class QtAndroidContext;
+class QtAndroidDrawable;
 class QtAndroidLayoutParams;
 
 class QtAndroidView : public QtAndroidObject
@@ -15,6 +16,7 @@ class QtAndroidView : public QtAndroidObject
     Q_PROPERTY(QtAndroidContext *context READ context NOTIFY contextChanged)
     Q_PROPERTY(QtAndroidView *parent READ parentView WRITE setParentView NOTIFY parentChanged)
     Q_PROPERTY(QQmlListProperty<QtAndroidView> children READ children NOTIFY childrenChanged)
+    Q_PROPERTY(QtAndroidDrawable *background READ background WRITE setBackground NOTIFY backgroundChanged)
     Q_PROPERTY(bool focus READ hasFocus NOTIFY focusChanged)
     Q_PROPERTY(qreal x READ x WRITE setX NOTIFY xChanged)
     Q_PROPERTY(qreal y READ y WRITE setY NOTIFY yChanged)
@@ -37,6 +39,9 @@ public:
 
     QList<QtAndroidView *> childViews() const;
     QQmlListProperty<QtAndroidView> children();
+
+    QtAndroidDrawable *background() const;
+    void setBackground(QtAndroidDrawable *background);
 
     bool hasFocus() const;
 
@@ -75,6 +80,7 @@ public:
 Q_SIGNALS:
     void contextChanged();
     void parentChanged();
+    void backgroundChanged();
     void childrenChanged();
     void focusChanged();
     void click();
@@ -118,6 +124,7 @@ private:
     QtAndroidContext *m_context;
     QtAndroidView *m_parent;
     QList<QtAndroidView *> m_children;
+    QtAndroidDrawable *m_background;
 
     QAndroidJniObject m_listener;
 

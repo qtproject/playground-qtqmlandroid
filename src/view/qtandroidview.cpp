@@ -1,12 +1,14 @@
 #include "qtandroidview_p.h"
 #include "qtandroidcontext_p.h"
+#include "qtandroiddrawable_p.h"
 #include "qtandroidfunctions_p.h"
 #include "qtandroidlayoutparams_p.h"
 #include <QtCore/qcoreapplication.h>
 #include <QtCore/qhash.h>
 
 QtAndroidView::QtAndroidView(QtAndroidView *parent) : QtAndroidObject(parent),
-    m_context(0), m_parent(0), m_layoutParamsDirty(false), m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
+    m_context(0), m_parent(0), m_background(0), m_layoutParamsDirty(false),
+    m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
 {
     static int id = 0;
     m_id = ++id;
@@ -81,6 +83,19 @@ QQmlListProperty<QtAndroidView> QtAndroidView::children()
 {
     return QQmlListProperty<QtAndroidView>(this, 0, &QtAndroidView::children_append, &QtAndroidView::children_count,
                                                    &QtAndroidView::children_at, &QtAndroidView::children_clear);
+}
+
+QtAndroidDrawable *QtAndroidView::background() const
+{
+    return m_background;
+}
+
+void QtAndroidView::setBackground(QtAndroidDrawable *background)
+{
+    if (m_background != background) {
+        m_background = background;
+        emit backgroundChanged();
+    }
 }
 
 bool QtAndroidView::hasFocus() const
@@ -231,6 +246,15 @@ void QtAndroidView::inflate()
                                    reinterpret_cast<jlong>(this));
 
     view.callMethod<void>("setId", "(I)V", m_id);
+
+    if (m_background) {
+        QAndroidJniObject bg = m_background->construct();
+        if (bg.isValid()) {
+            m_background->setInstance(bg);
+            m_background->inflate();
+            view.callMethod<void>("setBackground", "(Landroid/graphics/drawable/Drawable;)V", bg.object());
+        }
+    }
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {

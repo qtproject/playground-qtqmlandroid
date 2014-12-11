@@ -5,3 +5,5 @@ HEADERS += \
 
 SOURCES += \
     $$PWD/qtandroidcolor.cpp
+
+include(drawable/drawable.pri)
