@@ -7,6 +7,8 @@
 
 #include "qtdroidcolor_p.h"
 
+#include "qtdroidr_p.h"
+
 #include "qtdroidgravity_p.h"
 #include "qtdroidlayoutparams_p.h"
 #include "qtdroidmenu_p.h"
@@ -52,12 +54,16 @@ int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
 
+    qRegisterMetaType<QQmlPropertyMap *>();
+
     qmlRegisterType<QtDroidActionBar>("qtdroid.app", 0, 1, "ActionBar");
     qmlRegisterType<QtDroidActivity>("qtdroid.app", 0, 1, "Activity");
 
     qmlRegisterType<QtDroidContext>();
 
     qmlRegisterSingletonType<QtDroidColor>("qtdroid.graphics", 0, 1, "Color", QtDroidColor::provider);
+
+    qmlRegisterSingletonType<QtDroidR>("qtdroid.R", 0, 1, "R", QtDroidR::provider);
 
     qmlRegisterUncreatableType<QtDroidGravity>("qtdroid.view", 0, 1, "Gravity", "Gravity is an enum");
     qmlRegisterUncreatableType<QtDroidLayoutParams>("qtdroid.view", 0, 1, "Layout", "Layout is an attached property");
