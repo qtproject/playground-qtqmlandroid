@@ -1,4 +1,4 @@
-package qtdroid.view;
+package qt.android.view;
 
 import android.view.View;
 import android.widget.AdapterView;

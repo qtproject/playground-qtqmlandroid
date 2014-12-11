@@ -1,4 +1,4 @@
-package qtdroid.widget;
+package qt.android.widget;
 
 import android.view.View;
 import android.widget.Spinner;

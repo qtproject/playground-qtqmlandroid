@@ -1,4 +1,4 @@
-package qtdroid.app;
+package qt.android.app;
 
 import java.lang.String;
 import java.util.ArrayList;
