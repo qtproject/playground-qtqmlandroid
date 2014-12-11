@@ -1,7 +1,7 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qtdroidr_p.h
+    $$PWD/qtandroidr_p.h
 
 SOURCES += \
-    $$PWD/qtdroidr.cpp
+    $$PWD/qtandroidr.cpp

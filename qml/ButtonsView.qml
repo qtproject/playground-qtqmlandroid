@@ -1,5 +1,5 @@
-import qtdroid.view 0.1
-import qtdroid.widget 0.1
+import android.view 0.1
+import android.widget 0.1
 
 ScrollView {
     LinearLayout {

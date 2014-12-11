@@ -1,16 +1,16 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qtdroidgravity_p.h \
-    $$PWD/qtdroidlayoutparams_p.h \
-    $$PWD/qtdroidmenu_p.h \
-    $$PWD/qtdroidmenuitem_p.h \
-    $$PWD/qtdroidview_p.h \
-    $$PWD/qtdroidviewgroup_p.h
+    $$PWD/qtandroidgravity_p.h \
+    $$PWD/qtandroidlayoutparams_p.h \
+    $$PWD/qtandroidmenu_p.h \
+    $$PWD/qtandroidmenuitem_p.h \
+    $$PWD/qtandroidview_p.h \
+    $$PWD/qtandroidviewgroup_p.h
 
 SOURCES += \
-    $$PWD/qtdroidlayoutparams.cpp \
-    $$PWD/qtdroidmenu.cpp \
-    $$PWD/qtdroidmenuitem.cpp \
-    $$PWD/qtdroidview.cpp \
-    $$PWD/qtdroidviewgroup.cpp
+    $$PWD/qtandroidlayoutparams.cpp \
+    $$PWD/qtandroidmenu.cpp \
+    $$PWD/qtandroidmenuitem.cpp \
+    $$PWD/qtandroidview.cpp \
+    $$PWD/qtandroidviewgroup.cpp

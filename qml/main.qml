@@ -1,8 +1,8 @@
-import qtdroid.app 0.1
-import qtdroid.view 0.1
-import qtdroid.widget 0.1
-import qtdroid.support.v4.widget 0.1
-import qtdroid.R 0.1
+import android.app 0.1
+import android.view 0.1
+import android.widget 0.1
+import android.support.v4.widget 0.1
+import android.R 0.1
 
 Activity {
     actionBar: ActionBar {

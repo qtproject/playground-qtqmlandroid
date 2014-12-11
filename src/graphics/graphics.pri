@@ -1,7 +1,7 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qtdroidcolor_p.h
+    $$PWD/qtandroidcolor_p.h
 
 SOURCES += \
-    $$PWD/qtdroidcolor.cpp
+    $$PWD/qtandroidcolor.cpp

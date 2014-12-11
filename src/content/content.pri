@@ -1,7 +1,7 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qtdroidcontext_p.h
+    $$PWD/qtandroidcontext_p.h
 
 SOURCES += \
-    $$PWD/qtdroidcontext.cpp
+    $$PWD/qtandroidcontext.cpp

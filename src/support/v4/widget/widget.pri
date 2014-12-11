@@ -1,9 +1,9 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qtdroiddrawerlayout_p.h \
-    $$PWD/qtdroiddrawerlayoutparams_p.h
+    $$PWD/qtandroiddrawerlayout_p.h \
+    $$PWD/qtandroiddrawerlayoutparams_p.h
 
 SOURCES += \
-    $$PWD/qtdroiddrawerlayout.cpp \
-    $$PWD/qtdroiddrawerlayoutparams.cpp
+    $$PWD/qtandroiddrawerlayout.cpp \
+    $$PWD/qtandroiddrawerlayoutparams.cpp
