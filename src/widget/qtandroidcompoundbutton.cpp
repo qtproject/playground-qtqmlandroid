@@ -43,7 +43,7 @@ void QtAndroidCompoundButton::inflate()
     QtAndroidButton::inflate();
 
     QAndroidJniObject view = instance();
-    m_listener = QAndroidJniObject("qtandroid/widget/QtCompoundButtonListener",
+    m_listener = QAndroidJniObject("qt/android/widget/QtCompoundButtonListener",
                                    "(Landroid/widget/CompoundButton;J)V",
                                    view.object(),
                                    reinterpret_cast<jlong>(this));

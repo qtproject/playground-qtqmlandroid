@@ -225,7 +225,7 @@ QAndroidJniObject QtAndroidView::construct()
 void QtAndroidView::inflate()
 {
     QAndroidJniObject view = instance();
-    m_listener = QAndroidJniObject("qtandroid/view/QtViewListener",
+    m_listener = QAndroidJniObject("qt/android/view/QtViewListener",
                                    "(Landroid/view/View;J)V",
                                    view.object(),
                                    reinterpret_cast<jlong>(this));

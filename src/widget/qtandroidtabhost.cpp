@@ -17,7 +17,7 @@ void QtAndroidTabHost::inflate()
     QtAndroidFrameLayout::inflate();
 
     QAndroidJniObject host = instance();
-    m_listener = QAndroidJniObject("qtandroid/widget/QtTabHostListener",
+    m_listener = QAndroidJniObject("qt/android/widget/QtTabHostListener",
                                    "(Landroid/widget/TabHost;J)V",
                                    host.object(),
                                    reinterpret_cast<jlong>(this));
