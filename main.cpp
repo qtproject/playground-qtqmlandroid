@@ -56,56 +56,56 @@ int main(int argc, char *argv[])
 
     qRegisterMetaType<QQmlPropertyMap *>();
 
-    qmlRegisterType<QtAndroidActionBar>("android.app", 0, 1, "ActionBar");
-    qmlRegisterType<QtAndroidActivity>("android.app", 0, 1, "Activity");
+    qmlRegisterType<QtAndroidActionBar>("android.app", 21, 0, "ActionBar");
+    qmlRegisterType<QtAndroidActivity>("android.app", 21, 0, "Activity");
 
     qmlRegisterType<QtAndroidContext>();
 
-    qmlRegisterSingletonType<QtAndroidColor>("android.graphics", 0, 1, "Color", QtAndroidColor::provider);
+    qmlRegisterSingletonType<QtAndroidColor>("android.graphics", 21, 0, "Color", QtAndroidColor::provider);
 
-    qmlRegisterSingletonType<QtAndroidR>("android.R", 0, 1, "R", QtAndroidR::provider);
+    qmlRegisterSingletonType<QtAndroidR>("android.R", 21, 0, "R", QtAndroidR::provider);
 
-    qmlRegisterUncreatableType<QtAndroidGravity>("android.view", 0, 1, "Gravity", "Gravity is an enum");
-    qmlRegisterUncreatableType<QtAndroidLayoutParams>("android.view", 0, 1, "Layout", "Layout is an attached property");
-    qmlRegisterType<QtAndroidMenu>("android.view", 0, 1, "Menu");
-    qmlRegisterType<QtAndroidMenuItem>("android.view", 0, 1, "MenuItem");
-    qmlRegisterType<QtAndroidView>("android.view", 0, 1, "View");
+    qmlRegisterUncreatableType<QtAndroidGravity>("android.view", 21, 0, "Gravity", "Gravity is an enum");
+    qmlRegisterUncreatableType<QtAndroidLayoutParams>("android.view", 21, 0, "Layout", "Layout is an attached property");
+    qmlRegisterType<QtAndroidMenu>("android.view", 21, 0, "Menu");
+    qmlRegisterType<QtAndroidMenuItem>("android.view", 21, 0, "MenuItem");
+    qmlRegisterType<QtAndroidView>("android.view", 21, 0, "View");
     qmlRegisterType<QtAndroidViewGroup>();
 
-    qmlRegisterType<QtAndroidArrayAdapter>("android.widget", 0, 1, "ArrayAdapter");
+    qmlRegisterType<QtAndroidArrayAdapter>("android.widget", 21, 0, "ArrayAdapter");
     qmlRegisterType<QtAndroidBaseAdapter>();
-    qmlRegisterType<QtAndroidButton>("android.widget", 0, 1, "Button");
-    qmlRegisterType<QtAndroidCalendarView>("android.widget", 0, 1, "CalendarView");
-    qmlRegisterType<QtAndroidCheckBox>("android.widget", 0, 1, "CheckBox");
-    qmlRegisterType<QtAndroidEditText>("android.widget", 0, 1, "EditText");
-    qmlRegisterType<QtAndroidFrameLayout>("android.widget", 0, 1, "FrameLayout");
+    qmlRegisterType<QtAndroidButton>("android.widget", 21, 0, "Button");
+    qmlRegisterType<QtAndroidCalendarView>("android.widget", 21, 0, "CalendarView");
+    qmlRegisterType<QtAndroidCheckBox>("android.widget", 21, 0, "CheckBox");
+    qmlRegisterType<QtAndroidEditText>("android.widget", 21, 0, "EditText");
+    qmlRegisterType<QtAndroidFrameLayout>("android.widget", 21, 0, "FrameLayout");
     qmlRegisterType<QtAndroidFrameLayoutParams>();
-    qmlRegisterType<QtAndroidLinearLayout>("android.widget", 0, 1, "LinearLayout");
+    qmlRegisterType<QtAndroidLinearLayout>("android.widget", 21, 0, "LinearLayout");
     qmlRegisterType<QtAndroidLinearLayoutParams>();
-    qmlRegisterType<QtAndroidListView>("android.widget", 0, 1, "ListView");
-    qmlRegisterType<QtAndroidPopupMenu>("android.widget", 0, 1, "PopupMenu");
-    qmlRegisterType<QtAndroidProgressBar>("android.widget", 0, 1, "ProgressBar");
-    qmlRegisterType<QtAndroidRadioButton>("android.widget", 0, 1, "RadioButton");
-    qmlRegisterType<QtAndroidRadioGroup>("android.widget", 0, 1, "RadioGroup");
-    qmlRegisterType<QtAndroidRelativeLayout>("android.widget", 0, 1, "RelativeLayout");
+    qmlRegisterType<QtAndroidListView>("android.widget", 21, 0, "ListView");
+    qmlRegisterType<QtAndroidPopupMenu>("android.widget", 21, 0, "PopupMenu");
+    qmlRegisterType<QtAndroidProgressBar>("android.widget", 21, 0, "ProgressBar");
+    qmlRegisterType<QtAndroidRadioButton>("android.widget", 21, 0, "RadioButton");
+    qmlRegisterType<QtAndroidRadioGroup>("android.widget", 21, 0, "RadioGroup");
+    qmlRegisterType<QtAndroidRelativeLayout>("android.widget", 21, 0, "RelativeLayout");
     qmlRegisterType<QtAndroidRelativeLayoutParams>();
-    qmlRegisterType<QtAndroidScrollView>("android.widget", 0, 1, "ScrollView");
-    qmlRegisterType<QtAndroidSeekBar>("android.widget", 0, 1, "SeekBar");
-    qmlRegisterType<QtAndroidSpace>("android.widget", 0, 1, "Space");
-    qmlRegisterType<QtAndroidSpinner>("android.widget", 0, 1, "Spinner");
-    qmlRegisterType<QtAndroidSwitch>("android.widget", 0, 1, "Switch");
-    qmlRegisterType<QtAndroidTabHost>("android.widget", 0, 1, "TabHost");
-    qmlRegisterUncreatableType<QtAndroidTabSpec>("android.widget", 0, 1, "TabSpec", "TabSpec is an attached property");
-    qmlRegisterType<QtAndroidTabWidget>("android.widget", 0, 1, "TabWidget");
-    qmlRegisterType<QtAndroidTextView>("android.widget", 0, 1, "TextView");
-    qmlRegisterType<QtAndroidToggleButton>("android.widget", 0, 1, "ToggleButton");
-    qmlRegisterType<QtAndroidViewAnimator>("android.widget", 0, 1, "ViewAnimator");
-    qmlRegisterType<QtAndroidViewFlipper>("android.widget", 0, 1, "ViewFlipper");
-    qmlRegisterType<QtAndroidViewSwitcher>("android.widget", 0, 1, "ViewSwitcher");
+    qmlRegisterType<QtAndroidScrollView>("android.widget", 21, 0, "ScrollView");
+    qmlRegisterType<QtAndroidSeekBar>("android.widget", 21, 0, "SeekBar");
+    qmlRegisterType<QtAndroidSpace>("android.widget", 21, 0, "Space");
+    qmlRegisterType<QtAndroidSpinner>("android.widget", 21, 0, "Spinner");
+    qmlRegisterType<QtAndroidSwitch>("android.widget", 21, 0, "Switch");
+    qmlRegisterType<QtAndroidTabHost>("android.widget", 21, 0, "TabHost");
+    qmlRegisterUncreatableType<QtAndroidTabSpec>("android.widget", 21, 0, "TabSpec", "TabSpec is an attached property");
+    qmlRegisterType<QtAndroidTabWidget>("android.widget", 21, 0, "TabWidget");
+    qmlRegisterType<QtAndroidTextView>("android.widget", 21, 0, "TextView");
+    qmlRegisterType<QtAndroidToggleButton>("android.widget", 21, 0, "ToggleButton");
+    qmlRegisterType<QtAndroidViewAnimator>("android.widget", 21, 0, "ViewAnimator");
+    qmlRegisterType<QtAndroidViewFlipper>("android.widget", 21, 0, "ViewFlipper");
+    qmlRegisterType<QtAndroidViewSwitcher>("android.widget", 21, 0, "ViewSwitcher");
 
-    qmlRegisterType<QtAndroidDrawerLayout>("android.support.v4.widget", 0, 1, "DrawerLayout");
+    qmlRegisterType<QtAndroidDrawerLayout>("android.support.v4.widget", 21, 0, "DrawerLayout");
 
-    qmlRegisterType<QtAndroidActionBarDrawerToggle>("android.support.v7.app", 0, 1, "ActionBarDrawerToggle");
+    qmlRegisterType<QtAndroidActionBarDrawerToggle>("android.support.v7.app", 21, 0, "ActionBarDrawerToggle");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
