@@ -6,9 +6,9 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidActivity;
+class QtAndroidActivity;
 
-class QtDroidActionBar : public QtDroidObject
+class QtAndroidActionBar : public QtAndroidObject
 {
     Q_OBJECT
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
@@ -17,7 +17,7 @@ class QtDroidActionBar : public QtDroidObject
     Q_PROPERTY(QString subtitle READ subtitle WRITE setSubtitle NOTIFY subtitleChanged)
 
 public:
-    explicit QtDroidActionBar(QObject *parent = 0);
+    explicit QtAndroidActionBar(QObject *parent = 0);
 
     bool isVisible() const;
     void setVisible(bool visible);
@@ -31,8 +31,8 @@ public:
     QString subtitle() const;
     void setSubtitle(const QString &subtitle);
 
-    QtDroidActivity *activity() const;
-    void setActivity(QtDroidActivity *activity);
+    QtAndroidActivity *activity() const;
+    void setActivity(QtAndroidActivity *activity);
 
 Q_SIGNALS:
     void visibleChanged();
@@ -45,7 +45,7 @@ private:
     qreal m_elevation;
     QString m_title;
     QString m_subtitle;
-    QtDroidActivity *m_activity;
+    QtAndroidActivity *m_activity;
 };
 
 QT_END_NAMESPACE

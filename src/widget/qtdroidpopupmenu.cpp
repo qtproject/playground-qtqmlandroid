@@ -5,27 +5,27 @@
 #include "qtdroidview_p.h"
 #include <QtCore/qdebug.h>
 
-QtDroidPopupMenu::QtDroidPopupMenu(QObject *parent) : QtDroidObject(parent), m_anchor(0)
+QtAndroidPopupMenu::QtAndroidPopupMenu(QObject *parent) : QtAndroidObject(parent), m_anchor(0)
 {
 }
 
-QList<QtDroidMenuItem *> QtDroidPopupMenu::items() const
+QList<QtAndroidMenuItem *> QtAndroidPopupMenu::items() const
 {
-    QList<QtDroidMenuItem *> lst;
+    QList<QtAndroidMenuItem *> lst;
     foreach (QObject *child, children()) {
-        QtDroidMenuItem *item = qobject_cast<QtDroidMenuItem *>(child);
+        QtAndroidMenuItem *item = qobject_cast<QtAndroidMenuItem *>(child);
         if (item)
             lst += item;
     }
     return lst;
 }
 
-QtDroidView *QtDroidPopupMenu::anchor() const
+QtAndroidView *QtAndroidPopupMenu::anchor() const
 {
     return m_anchor;
 }
 
-void QtDroidPopupMenu::setAnchor(QtDroidView *anchor)
+void QtAndroidPopupMenu::setAnchor(QtAndroidView *anchor)
 {
     if (m_anchor != anchor) {
         m_anchor = anchor;
@@ -33,14 +33,14 @@ void QtDroidPopupMenu::setAnchor(QtDroidView *anchor)
     }
 }
 
-int QtDroidPopupMenu::gravity() const
+int QtAndroidPopupMenu::gravity() const
 {
     if (m_gravity.isNull())
         return 0; // TODO
     return m_gravity.value();
 }
 
-void QtDroidPopupMenu::setGravity(int value)
+void QtAndroidPopupMenu::setGravity(int value)
 {
     if (value != gravity()) {
         m_gravity = value;
@@ -48,15 +48,15 @@ void QtDroidPopupMenu::setGravity(int value)
     }
 }
 
-void QtDroidPopupMenu::show()
+void QtAndroidPopupMenu::show()
 {
-    QtDroidView *anchor = m_anchor ? m_anchor : qobject_cast<QtDroidView *>(parent());
+    QtAndroidView *anchor = m_anchor ? m_anchor : qobject_cast<QtAndroidView *>(parent());
     if (!anchor) {
         qWarning() << "PopupMenu parent must be either anchored or in a view.";
         return;
     }
 
-    QtDroidContext *context = anchor->context();
+    QtAndroidContext *context = anchor->context();
     if (!context) {
         qWarning() << "PopupMenu is not ready - no context.";
         return;
@@ -65,7 +65,7 @@ void QtDroidPopupMenu::show()
     QAndroidJniObject c = context->instance();
     QAndroidJniObject a = anchor->instance();
 
-    QtDroid::callFunction([=]() {
+    QtAndroid::callFunction([=]() {
         QAndroidJniObject popup;
         if (!m_gravity.isNull()) {
             popup = QAndroidJniObject("android/widget/PopupMenu",
@@ -79,7 +79,7 @@ void QtDroidPopupMenu::show()
         setInstance(popup);
 
         QAndroidJniObject menu = popup.callObjectMethod("getMenu", "()Landroid/view/Menu;");
-        foreach (QtDroidMenuItem *item, items()) {
+        foreach (QtAndroidMenuItem *item, items()) {
             QAndroidJniObject it = menu.callObjectMethod("add",
                                                          "(Ljava/lang/CharSequence;)Landroid/view/MenuItem;",
                                                          QAndroidJniObject::fromString(item->title()).object());
@@ -90,7 +90,7 @@ void QtDroidPopupMenu::show()
     });
 }
 
-void QtDroidPopupMenu::dismiss()
+void QtAndroidPopupMenu::dismiss()
 {
-    QtDroid::callVoidMethod(instance(), "dismiss");
+    QtAndroid::callVoidMethod(instance(), "dismiss");
 }

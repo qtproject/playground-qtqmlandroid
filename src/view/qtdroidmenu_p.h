@@ -5,16 +5,16 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidMenuItem;
+class QtAndroidMenuItem;
 
-class QtDroidMenu : public QtDroidObject
+class QtAndroidMenu : public QtAndroidObject
 {
     Q_OBJECT
 
 public:
-    explicit QtDroidMenu(QObject *parent = 0);
+    explicit QtAndroidMenu(QObject *parent = 0);
 
-    QList<QtDroidMenuItem *> items() const;
+    QList<QtAndroidMenuItem *> items() const;
 };
 
 QT_END_NAMESPACE

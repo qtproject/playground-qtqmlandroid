@@ -1,17 +1,17 @@
 #include "qtdroidradiobutton_p.h"
 
-QtDroidRadioButton::QtDroidRadioButton(QtDroidView *parent) : QtDroidCompoundButton(parent)
+QtAndroidRadioButton::QtAndroidRadioButton(QtAndroidView *parent) : QtAndroidCompoundButton(parent)
 {
 }
 
-QAndroidJniObject QtDroidRadioButton::construct()
+QAndroidJniObject QtAndroidRadioButton::construct()
 {
     return QAndroidJniObject("android/widget/RadioButton",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidRadioButton::inflate()
+void QtAndroidRadioButton::inflate()
 {
-    QtDroidCompoundButton::inflate();
+    QtAndroidCompoundButton::inflate();
 }

@@ -1,17 +1,17 @@
 #include "qtdroidcalendarview_p.h"
 
-QtDroidCalendarView::QtDroidCalendarView(QtDroidView *parent) : QtDroidFrameLayout(parent)
+QtAndroidCalendarView::QtAndroidCalendarView(QtAndroidView *parent) : QtAndroidFrameLayout(parent)
 {
 }
 
-QAndroidJniObject QtDroidCalendarView::construct()
+QAndroidJniObject QtAndroidCalendarView::construct()
 {
     return QAndroidJniObject("android/widget/CalendarView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidCalendarView::inflate()
+void QtAndroidCalendarView::inflate()
 {
-    QtDroidViewGroup::inflate();
+    QtAndroidViewGroup::inflate();
 }

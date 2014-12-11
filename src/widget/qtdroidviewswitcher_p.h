@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidViewSwitcher : public QtDroidViewAnimator
+class QtAndroidViewSwitcher : public QtAndroidViewAnimator
 {
     Q_OBJECT
 
 public:
-    explicit QtDroidViewSwitcher(QtDroidView *parent = 0);
+    explicit QtAndroidViewSwitcher(QtAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct() Q_DECL_OVERRIDE;

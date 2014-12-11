@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidFrameLayoutParams : public QtDroidMarginLayoutParams
+class QtAndroidFrameLayoutParams : public QtAndroidMarginLayoutParams
 {
     Q_OBJECT
     Q_PROPERTY(int gravity READ gravity WRITE setGravity NOTIFY gravityChanged)
 
 public:
-    explicit QtDroidFrameLayoutParams(QtDroidView *view);
+    explicit QtAndroidFrameLayoutParams(QtAndroidView *view);
 
     int gravity() const;
     void setGravity(int gravity);
@@ -24,7 +24,7 @@ protected:
     void inflate(QAndroidJniObject &params) Q_DECL_OVERRIDE;
 
 private:
-    QtDroidOptional<int> m_gravity;
+    QtAndroidOptional<int> m_gravity;
 };
 
 QT_END_NAMESPACE

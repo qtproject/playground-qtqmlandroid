@@ -3,43 +3,43 @@
 #include "qtdroidfunctions_p.h"
 #include "qtdroidcontext_p.h"
 
-QtDroidViewGroup::QtDroidViewGroup(QtDroidView *parent) : QtDroidView(parent)
+QtAndroidViewGroup::QtAndroidViewGroup(QtAndroidView *parent) : QtAndroidView(parent)
 {
 }
 
-QtDroidLayoutParams *QtDroidViewGroup::qmlAttachedProperties(QObject *object)
+QtAndroidLayoutParams *QtAndroidViewGroup::qmlAttachedProperties(QObject *object)
 {
-    QtDroidView *view = qobject_cast<QtDroidView*>(object);
+    QtAndroidView *view = qobject_cast<QtAndroidView*>(object);
     if (view)
-        return new QtDroidLayoutParams(view);
+        return new QtAndroidLayoutParams(view);
     return 0;
 }
 
-QAndroidJniObject QtDroidViewGroup::construct()
+QAndroidJniObject QtAndroidViewGroup::construct()
 {
     return QAndroidJniObject("android/view/ViewGroup",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidViewGroup::inflate()
+void QtAndroidViewGroup::inflate()
 {
-    QtDroidView::inflate();
+    QtAndroidView::inflate();
 
-    foreach (QtDroidView *child, m_children) {
+    foreach (QtAndroidView *child, m_children) {
         child->setInstance(child->construct());
         child->inflate();
         instance().callMethod<void>("addView", "(Landroid/view/View;)V", child->instance().object());
     }
 }
 
-void QtDroidViewGroup::viewChange(ViewChange change, const ViewChangeData &data)
+void QtAndroidViewGroup::viewChange(ViewChange change, const ViewChangeData &data)
 {
     QAndroidJniObject group = instance();
     switch (change) {
     case ViewChildAddedChange: // data.view
         if (group.isValid()) {
-            QtDroid::callFunction([=]() {
+            QtAndroid::callFunction([=]() {
                 QAndroidJniObject child = data.view->construct();
                 data.view->setInstance(child);
                 data.view->inflate();
@@ -50,7 +50,7 @@ void QtDroidViewGroup::viewChange(ViewChange change, const ViewChangeData &data)
     case ViewChildRemovedChange: // data.view
         if (group.isValid()) {
             QAndroidJniObject child = data.view->instance();
-            QtDroid::callFunction([=]() {
+            QtAndroid::callFunction([=]() {
                 group.callMethod<void>("removeView", "(Landroid/view/View;)V", child.object());
             });
             data.view->setInstance(QAndroidJniObject());

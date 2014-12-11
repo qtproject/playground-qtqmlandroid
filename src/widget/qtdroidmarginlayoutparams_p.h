@@ -5,7 +5,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidMarginLayoutParams : public QtDroidLayoutParams
+class QtAndroidMarginLayoutParams : public QtAndroidLayoutParams
 {
     Q_OBJECT
     Q_PROPERTY(int topMargin READ topMargin WRITE setTopMargin NOTIFY topMarginChanged)
@@ -14,7 +14,7 @@ class QtDroidMarginLayoutParams : public QtDroidLayoutParams
     Q_PROPERTY(int bottomMargin READ bottomMargin WRITE setBottomMargin NOTIFY bottomMarginChanged)
 
 public:
-    explicit QtDroidMarginLayoutParams(QtDroidView *view);
+    explicit QtAndroidMarginLayoutParams(QtAndroidView *view);
 
     int topMargin() const;
     void setTopMargin(int margin);
@@ -39,10 +39,10 @@ protected:
     void inflate(QAndroidJniObject &params) Q_DECL_OVERRIDE;
 
 private:
-    QtDroidOptional<int> m_topMargin;
-    QtDroidOptional<int> m_leftMargin;
-    QtDroidOptional<int> m_rightMargin;
-    QtDroidOptional<int> m_bottomMargin;
+    QtAndroidOptional<int> m_topMargin;
+    QtAndroidOptional<int> m_leftMargin;
+    QtAndroidOptional<int> m_rightMargin;
+    QtAndroidOptional<int> m_bottomMargin;
 };
 
 QT_END_NAMESPACE

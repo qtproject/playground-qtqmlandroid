@@ -2,16 +2,16 @@
 #include "qtdroidadapterview_p.h"
 #include "qtdroidfunctions_p.h"
 
-QtDroidArrayAdapter::QtDroidArrayAdapter(QObject *parent) : QtDroidBaseAdapter(parent)
+QtAndroidArrayAdapter::QtAndroidArrayAdapter(QObject *parent) : QtAndroidBaseAdapter(parent)
 {
 }
 
-QStringList QtDroidArrayAdapter::array() const
+QStringList QtAndroidArrayAdapter::array() const
 {
     return m_array;
 }
 
-void QtDroidArrayAdapter::setArray(const QStringList &array)
+void QtAndroidArrayAdapter::setArray(const QStringList &array)
 {
     if (m_array != array) {
         m_array = array; // TODO: sync
@@ -20,17 +20,17 @@ void QtDroidArrayAdapter::setArray(const QStringList &array)
     }
 }
 
-int QtDroidArrayAdapter::count() const
+int QtAndroidArrayAdapter::count() const
 {
     return m_array.count();
 }
 
-QString QtDroidArrayAdapter::getItem(int position) const
+QString QtAndroidArrayAdapter::getItem(int position) const
 {
     return m_array.value(position);
 }
 
-void QtDroidArrayAdapter::clear()
+void QtAndroidArrayAdapter::clear()
 {
     if (!m_array.isEmpty()) {
         m_array.clear(); // TODO: sync
@@ -39,11 +39,11 @@ void QtDroidArrayAdapter::clear()
     }
 }
 
-void QtDroidArrayAdapter::setup(QtDroidAdapterView *view)
+void QtAndroidArrayAdapter::setup(QtAndroidAdapterView *view)
 {
     QAndroidJniObject ctx = view->ctx();
     QAndroidJniObject adv = view->instance();
-    QtDroid::callFunction([=]() {
+    QtAndroid::callFunction([=]() {
         QAndroidJniObject adapter("android/widget/ArrayAdapter",
                                   "(Landroid/content/Context;I)V",
                                   ctx.object(),

@@ -7,9 +7,9 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidView;
+class QtAndroidView;
 
-class QtDroidLayoutParams : public QObject
+class QtAndroidLayoutParams : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int width READ width WRITE setWidth NOTIFY widthChanged)
@@ -17,7 +17,7 @@ class QtDroidLayoutParams : public QObject
     Q_ENUMS(Size)
 
 public:
-    explicit QtDroidLayoutParams(QtDroidView *view);
+    explicit QtAndroidLayoutParams(QtAndroidView *view);
 
     enum Size {
         FILL_PARENT = -1,
@@ -31,7 +31,7 @@ public:
     int height() const;
     void setHeight(int height);
 
-    void apply(QtDroidView *view);
+    void apply(QtAndroidView *view);
 
 Q_SIGNALS:
     void widthChanged();
@@ -42,9 +42,9 @@ protected:
     virtual void inflate(QAndroidJniObject &params);
 
 private:
-    QtDroidView *m_view;
-    QtDroidOptional<int> m_width;
-    QtDroidOptional<int> m_height;
+    QtAndroidView *m_view;
+    QtAndroidOptional<int> m_width;
+    QtAndroidOptional<int> m_height;
 };
 
 QT_END_NAMESPACE

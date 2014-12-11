@@ -1,17 +1,17 @@
 #include "qtdroidcheckbox_p.h"
 
-QtDroidCheckBox::QtDroidCheckBox(QtDroidView *parent) : QtDroidCompoundButton(parent)
+QtAndroidCheckBox::QtAndroidCheckBox(QtAndroidView *parent) : QtAndroidCompoundButton(parent)
 {
 }
 
-QAndroidJniObject QtDroidCheckBox::construct()
+QAndroidJniObject QtAndroidCheckBox::construct()
 {
     return QAndroidJniObject("android/widget/CheckBox",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidCheckBox::inflate()
+void QtAndroidCheckBox::inflate()
 {
-    QtDroidCompoundButton::inflate();
+    QtAndroidCompoundButton::inflate();
 }

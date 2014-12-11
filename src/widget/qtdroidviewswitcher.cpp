@@ -1,17 +1,17 @@
 #include "qtdroidviewswitcher_p.h"
 
-QtDroidViewSwitcher::QtDroidViewSwitcher(QtDroidView *parent) : QtDroidViewAnimator(parent)
+QtAndroidViewSwitcher::QtAndroidViewSwitcher(QtAndroidView *parent) : QtAndroidViewAnimator(parent)
 {
 }
 
-QAndroidJniObject QtDroidViewSwitcher::construct()
+QAndroidJniObject QtAndroidViewSwitcher::construct()
 {
     return QAndroidJniObject("android/widget/ViewSwitcher",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidViewSwitcher::inflate()
+void QtAndroidViewSwitcher::inflate()
 {
-    QtDroidViewAnimator::inflate();
+    QtAndroidViewAnimator::inflate();
 }

@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidSwitch : public QtDroidCompoundButton
+class QtAndroidSwitch : public QtAndroidCompoundButton
 {
     Q_OBJECT
 
 public:
-    explicit QtDroidSwitch(QtDroidView *parent = 0);
+    explicit QtAndroidSwitch(QtAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct() Q_DECL_OVERRIDE;

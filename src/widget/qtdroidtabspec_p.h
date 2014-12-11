@@ -6,23 +6,23 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidView;
-class QtDroidTabHost;
+class QtAndroidView;
+class QtAndroidTabHost;
 
-class QtDroidTabSpec : public QObject
+class QtAndroidTabSpec : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY labelChanged)
 
 public:
-    explicit QtDroidTabSpec(QtDroidView *view);
+    explicit QtAndroidTabSpec(QtAndroidView *view);
 
-    static QtDroidTabSpec *qmlAttachedProperties(QObject *object);
+    static QtAndroidTabSpec *qmlAttachedProperties(QObject *object);
 
     QString label() const;
     void setLabel(const QString &label);
 
-    void setup(QtDroidTabHost *host, int index);
+    void setup(QtAndroidTabHost *host, int index);
 
 Q_SIGNALS:
     void labelChanged();
@@ -33,6 +33,6 @@ private:
 
 QT_END_NAMESPACE
 
-QML_DECLARE_TYPEINFO(QtDroidTabSpec, QML_HAS_ATTACHED_PROPERTIES)
+QML_DECLARE_TYPEINFO(QtAndroidTabSpec, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDTABSPEC_P_H

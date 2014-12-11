@@ -1,37 +1,37 @@
 #include "qtdroidprogressbar_p.h"
 #include "qtdroidfunctions_p.h"
 
-QtDroidProgressBar::QtDroidProgressBar(QtDroidView *parent) :
-    QtDroidView(parent), m_progress(0), m_indeterminate(false)
+QtAndroidProgressBar::QtAndroidProgressBar(QtAndroidView *parent) :
+    QtAndroidView(parent), m_progress(0), m_indeterminate(false)
 {
 }
 
-bool QtDroidProgressBar::isIndeterminate() const
+bool QtAndroidProgressBar::isIndeterminate() const
 {
     return m_indeterminate;
 }
 
-void QtDroidProgressBar::setIndeterminate(bool indeterminate)
+void QtAndroidProgressBar::setIndeterminate(bool indeterminate)
 {
     if (m_indeterminate != indeterminate) {
         m_indeterminate = indeterminate;
-        QtDroid::callBoolMethod(instance(), "setIndeterminate", indeterminate);
+        QtAndroid::callBoolMethod(instance(), "setIndeterminate", indeterminate);
         emit indeterminateChanged();
     }
 }
 
-int QtDroidProgressBar::progress() const
+int QtAndroidProgressBar::progress() const
 {
     return m_progress;
 }
 
-void QtDroidProgressBar::setProgress(int progress)
+void QtAndroidProgressBar::setProgress(int progress)
 {
     if (updateProgress(progress))
-        QtDroid::callIntMethod(instance(), "setProgress", progress);
+        QtAndroid::callIntMethod(instance(), "setProgress", progress);
 }
 
-bool QtDroidProgressBar::updateProgress(int progress)
+bool QtAndroidProgressBar::updateProgress(int progress)
 {
     if (m_progress != progress) {
         m_progress = progress;
@@ -41,47 +41,47 @@ bool QtDroidProgressBar::updateProgress(int progress)
     return false;
 }
 
-int QtDroidProgressBar::max() const
+int QtAndroidProgressBar::max() const
 {
     if (m_max.isNull())
         return 100;
     return m_max.value();
 }
 
-void QtDroidProgressBar::setMax(int arg)
+void QtAndroidProgressBar::setMax(int arg)
 {
     if (arg != max()) {
         m_max = arg;
-        QtDroid::callIntMethod(instance(), "setMax", arg);
+        QtAndroid::callIntMethod(instance(), "setMax", arg);
         emit maxChanged();
     }
 }
 
-QtDroidProgressBar::Style QtDroidProgressBar::style() const
+QtAndroidProgressBar::Style QtAndroidProgressBar::style() const
 {
     if (m_style.isNull())
         return Medium;
     return m_style.value();
 }
 
-void QtDroidProgressBar::setStyle(Style style)
+void QtAndroidProgressBar::setStyle(Style style)
 {
     m_style = style; // TODO: warning after construction or re-construct?
 }
 
-QAndroidJniObject QtDroidProgressBar::construct()
+QAndroidJniObject QtAndroidProgressBar::construct()
 {
     return QAndroidJniObject("android/widget/ProgressBar",
                              "(Landroid/content/Context;Landroid/util/AttributeSet;I)V",
                              ctx().object(), 0, style());
 }
 
-void QtDroidProgressBar::inflate()
+void QtAndroidProgressBar::inflate()
 {
-    QtDroidView::inflate();
+    QtAndroidView::inflate();
 
-    QtDroid::callIntMethod(instance(), "setProgress", m_progress);
-    QtDroid::callBoolMethod(instance(), "setIndeterminate", m_indeterminate);
+    QtAndroid::callIntMethod(instance(), "setProgress", m_progress);
+    QtAndroid::callBoolMethod(instance(), "setIndeterminate", m_indeterminate);
     if (!m_max.isNull())
-        QtDroid::callIntMethod(instance(), "setMax", m_max.value());
+        QtAndroid::callIntMethod(instance(), "setMax", m_max.value());
 }

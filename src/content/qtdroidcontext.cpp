@@ -1,5 +1,5 @@
 #include "qtdroidcontext_p.h"
 
-QtDroidContext::QtDroidContext(QObject *parent) : QtDroidObject(parent)
+QtAndroidContext::QtAndroidContext(QObject *parent) : QtAndroidObject(parent)
 {
 }

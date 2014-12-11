@@ -6,14 +6,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidViewGroup : public QtDroidView
+class QtAndroidViewGroup : public QtAndroidView
 {
     Q_OBJECT
 
 public:
-    explicit QtDroidViewGroup(QtDroidView *parent = 0);
+    explicit QtAndroidViewGroup(QtAndroidView *parent = 0);
 
-    static QtDroidLayoutParams *qmlAttachedProperties(QObject *object);
+    static QtAndroidLayoutParams *qmlAttachedProperties(QObject *object);
 
 protected:
     QAndroidJniObject construct() Q_DECL_OVERRIDE;
@@ -24,6 +24,6 @@ protected:
 
 QT_END_NAMESPACE
 
-QML_DECLARE_TYPEINFO(QtDroidViewGroup, QML_HAS_ATTACHED_PROPERTIES)
+QML_DECLARE_TYPEINFO(QtAndroidViewGroup, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDVIEWGROUP_P_H

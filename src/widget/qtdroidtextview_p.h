@@ -7,7 +7,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidTextView : public QtDroidView
+class QtAndroidTextView : public QtAndroidView
 {
     Q_OBJECT
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
@@ -16,7 +16,7 @@ class QtDroidTextView : public QtDroidView
     Q_PROPERTY(QString hint READ hint WRITE setHint NOTIFY hintChanged)
 
 public:
-    explicit QtDroidTextView(QtDroidView *parent = 0);
+    explicit QtAndroidTextView(QtAndroidView *parent = 0);
 
     QString text() const;
     void setText(const QString &text);
@@ -43,8 +43,8 @@ protected:
 private:
     QString m_text;
     QString m_hint;
-    QtDroidOptional<int> m_textColor;
-    QtDroidOptional<qreal> m_textSize;
+    QtAndroidOptional<int> m_textColor;
+    QtAndroidOptional<qreal> m_textSize;
 };
 
 QT_END_NAMESPACE

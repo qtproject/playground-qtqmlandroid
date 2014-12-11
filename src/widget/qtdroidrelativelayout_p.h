@@ -6,14 +6,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidRelativeLayout : public QtDroidViewGroup
+class QtAndroidRelativeLayout : public QtAndroidViewGroup
 {
     Q_OBJECT
 
 public:
-    explicit QtDroidRelativeLayout(QtDroidView *parent = 0);
+    explicit QtAndroidRelativeLayout(QtAndroidView *parent = 0);
 
-    static QtDroidRelativeLayoutParams *qmlAttachedProperties(QObject *object);
+    static QtAndroidRelativeLayoutParams *qmlAttachedProperties(QObject *object);
 
     enum Verb {
         LEFT_OF                  = 0,
@@ -47,6 +47,6 @@ protected:
 
 QT_END_NAMESPACE
 
-QML_DECLARE_TYPEINFO(QtDroidRelativeLayout, QML_HAS_ATTACHED_PROPERTIES)
+QML_DECLARE_TYPEINFO(QtAndroidRelativeLayout, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDRELATIVELAYOUT_P_H

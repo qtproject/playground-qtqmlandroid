@@ -1,25 +1,25 @@
 #include "qtdroidlinearlayout_p.h"
 
-QtDroidLinearLayout::QtDroidLinearLayout(QtDroidView *parent) : QtDroidViewGroup(parent)
+QtAndroidLinearLayout::QtAndroidLinearLayout(QtAndroidView *parent) : QtAndroidViewGroup(parent)
 {
 }
 
-QtDroidLinearLayoutParams *QtDroidLinearLayout::qmlAttachedProperties(QObject *object)
+QtAndroidLinearLayoutParams *QtAndroidLinearLayout::qmlAttachedProperties(QObject *object)
 {
-    QtDroidView *view = qobject_cast<QtDroidView*>(object);
+    QtAndroidView *view = qobject_cast<QtAndroidView*>(object);
     if (view)
-        return new QtDroidLinearLayoutParams(view);
+        return new QtAndroidLinearLayoutParams(view);
     return 0;
 }
 
-bool QtDroidLinearLayout::isBaselineAligned() const
+bool QtAndroidLinearLayout::isBaselineAligned() const
 {
     if (m_baselineAligned.isNull())
         return true;
     return m_baselineAligned.value();
 }
 
-void QtDroidLinearLayout::setBaselineAligned(bool aligned)
+void QtAndroidLinearLayout::setBaselineAligned(bool aligned)
 {
     if (aligned != isBaselineAligned()) {
         m_baselineAligned = aligned;
@@ -29,14 +29,14 @@ void QtDroidLinearLayout::setBaselineAligned(bool aligned)
     }
 }
 
-int QtDroidLinearLayout::baselineAlignedChildIndex() const
+int QtAndroidLinearLayout::baselineAlignedChildIndex() const
 {
     if (m_baselineAlignedChildIndex.isNull())
         return -1;
     return m_baselineAlignedChildIndex.value();
 }
 
-void QtDroidLinearLayout::setBaselineAlignedChildIndex(int index)
+void QtAndroidLinearLayout::setBaselineAlignedChildIndex(int index)
 {
     if (index != baselineAlignedChildIndex()) {
         m_baselineAlignedChildIndex = index;
@@ -46,14 +46,14 @@ void QtDroidLinearLayout::setBaselineAlignedChildIndex(int index)
     }
 }
 
-bool QtDroidLinearLayout::isMeasureWithLargestChildEnabled() const
+bool QtAndroidLinearLayout::isMeasureWithLargestChildEnabled() const
 {
     if (m_measureWithLargestChild.isNull())
         return false;
     return m_measureWithLargestChild.value();
 }
 
-void QtDroidLinearLayout::setMeasureWithLargestChildEnabled(bool enabled)
+void QtAndroidLinearLayout::setMeasureWithLargestChildEnabled(bool enabled)
 {
     if (enabled != isMeasureWithLargestChildEnabled()) {
         m_measureWithLargestChild = enabled;
@@ -63,14 +63,14 @@ void QtDroidLinearLayout::setMeasureWithLargestChildEnabled(bool enabled)
     }
 }
 
-QtDroidLinearLayout::Orientation QtDroidLinearLayout::orientation() const
+QtAndroidLinearLayout::Orientation QtAndroidLinearLayout::orientation() const
 {
     if (m_orientation.isNull())
         return HORIZONTAL;
     return m_orientation.value();
 }
 
-void QtDroidLinearLayout::setOrientation(Orientation value)
+void QtAndroidLinearLayout::setOrientation(Orientation value)
 {
     if (value != orientation()) {
         m_orientation = value;
@@ -80,14 +80,14 @@ void QtDroidLinearLayout::setOrientation(Orientation value)
     }
 }
 
-qreal QtDroidLinearLayout::weightSum() const
+qreal QtAndroidLinearLayout::weightSum() const
 {
     if (m_weightSum.isNull())
         return -1.0f;
     return m_weightSum.value();
 }
 
-void QtDroidLinearLayout::setWeightSum(qreal sum)
+void QtAndroidLinearLayout::setWeightSum(qreal sum)
 {
     if (sum != weightSum()) {
         m_weightSum = sum;
@@ -97,14 +97,14 @@ void QtDroidLinearLayout::setWeightSum(qreal sum)
     }
 }
 
-QAndroidJniObject QtDroidLinearLayout::construct()
+QAndroidJniObject QtAndroidLinearLayout::construct()
 {
     return QAndroidJniObject("android/widget/LinearLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidLinearLayout::inflate()
+void QtAndroidLinearLayout::inflate()
 {
     QAndroidJniObject layout = instance();
     if (layout.isValid()) {
@@ -118,7 +118,7 @@ void QtDroidLinearLayout::inflate()
             layout.callMethod<void>("setWeightSum", "(J)V", m_weightSum.value());
     }
 
-    QtDroidViewGroup::inflate();
+    QtAndroidViewGroup::inflate();
 
     if (layout.isValid()) {
         if (!m_baselineAlignedChildIndex.isNull())

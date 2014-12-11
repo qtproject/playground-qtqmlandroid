@@ -5,7 +5,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidGravity : public QObject
+class QtAndroidGravity : public QObject
 {
     Q_OBJECT
     Q_FLAGS(Flags)
@@ -45,7 +45,7 @@ public:
     Q_DECLARE_FLAGS(Flags, Flag)
 };
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(QtDroidGravity::Flags)
+Q_DECLARE_OPERATORS_FOR_FLAGS(QtAndroidGravity::Flags)
 
 QT_END_NAMESPACE
 

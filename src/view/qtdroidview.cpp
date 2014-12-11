@@ -5,7 +5,7 @@
 #include <QtCore/qcoreapplication.h>
 #include <QtCore/qhash.h>
 
-QtDroidView::QtDroidView(QtDroidView *parent) : QtDroidObject(parent),
+QtAndroidView::QtAndroidView(QtAndroidView *parent) : QtAndroidObject(parent),
     m_context(0), m_parent(0), m_layoutParamsDirty(false), m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
 {
     static int id = 0;
@@ -15,51 +15,51 @@ QtDroidView::QtDroidView(QtDroidView *parent) : QtDroidObject(parent),
         setParentView(parent);
 }
 
-QtDroidView::~QtDroidView()
+QtAndroidView::~QtAndroidView()
 {
     if (m_parent)
         setParentView(0);
 }
 
-int QtDroidView::identifier() const
+int QtAndroidView::identifier() const
 {
     return m_id;
 }
 
-void QtDroidView::setIdentifier(int identifier)
+void QtAndroidView::setIdentifier(int identifier)
 {
     m_id = identifier;
 }
 
-QAndroidJniObject QtDroidView::ctx() const
+QAndroidJniObject QtAndroidView::ctx() const
 {
     if (!m_context)
         return QAndroidJniObject();
     return m_context->instance();
 }
 
-QtDroidContext *QtDroidView::context() const
+QtAndroidContext *QtAndroidView::context() const
 {
     return m_context;
 }
 
-void QtDroidView::setContext(QtDroidContext *context)
+void QtAndroidView::setContext(QtAndroidContext *context)
 {
     if (m_context != context) {
         m_context = context;
-        foreach (QtDroidView *child, m_children)
+        foreach (QtAndroidView *child, m_children)
             child->setContext(context);
         viewChange(ViewContextChange, context);
         emit contextChanged();
     }
 }
 
-QtDroidView *QtDroidView::parentView() const
+QtAndroidView *QtAndroidView::parentView() const
 {
     return m_parent;
 }
 
-void QtDroidView::setParentView(QtDroidView *parent)
+void QtAndroidView::setParentView(QtAndroidView *parent)
 {
     if (m_parent != parent) {
         if (m_parent)
@@ -72,25 +72,25 @@ void QtDroidView::setParentView(QtDroidView *parent)
     }
 }
 
-QList<QtDroidView *> QtDroidView::childViews() const
+QList<QtAndroidView *> QtAndroidView::childViews() const
 {
     return m_children;
 }
 
-QQmlListProperty<QtDroidView> QtDroidView::children()
+QQmlListProperty<QtAndroidView> QtAndroidView::children()
 {
-    return QQmlListProperty<QtDroidView>(this, 0, &QtDroidView::children_append, &QtDroidView::children_count,
-                                                   &QtDroidView::children_at, &QtDroidView::children_clear);
+    return QQmlListProperty<QtAndroidView>(this, 0, &QtAndroidView::children_append, &QtAndroidView::children_count,
+                                                   &QtAndroidView::children_at, &QtAndroidView::children_clear);
 }
 
-bool QtDroidView::hasFocus() const
+bool QtAndroidView::hasFocus() const
 {
     if (m_focus.isNull())
         return false;
     return m_focus.value();
 }
 
-bool QtDroidView::updateFocus(bool arg)
+bool QtAndroidView::updateFocus(bool arg)
 {
     if (arg != hasFocus()) {
         m_focus = arg;
@@ -100,13 +100,13 @@ bool QtDroidView::updateFocus(bool arg)
     return false;
 }
 
-qreal QtDroidView::x() const
+qreal QtAndroidView::x() const
 {
     return m_x;
     //return jniObject().callMethod<jfloat>("getX");
 }
 
-void QtDroidView::setX(qreal x)
+void QtAndroidView::setX(qreal x)
 {
     if (m_x != x) {
         m_x = x;
@@ -114,13 +114,13 @@ void QtDroidView::setX(qreal x)
     }
 }
 
-qreal QtDroidView::y() const
+qreal QtAndroidView::y() const
 {
     return m_y;
     //return jniObject().callMethod<jfloat>("getY");
 }
 
-void QtDroidView::setY(qreal y)
+void QtAndroidView::setY(qreal y)
 {
     if (m_y != y) {
         m_y = y;
@@ -128,13 +128,13 @@ void QtDroidView::setY(qreal y)
     }
 }
 
-qreal QtDroidView::width() const
+qreal QtAndroidView::width() const
 {
     return m_width;
     //return jniObject().callMethod<jfloat>("getWidth");
 }
 
-void QtDroidView::setWidth(qreal width)
+void QtAndroidView::setWidth(qreal width)
 {
     if (m_width != width) {
         m_width = width;
@@ -142,13 +142,13 @@ void QtDroidView::setWidth(qreal width)
     }
 }
 
-qreal QtDroidView::height() const
+qreal QtAndroidView::height() const
 {
     return m_height;
     //return jniObject().callMethod<jfloat>("getHeight");
 }
 
-void QtDroidView::setHeight(qreal height)
+void QtAndroidView::setHeight(qreal height)
 {
     if (m_height != height) {
         m_height = height;
@@ -156,7 +156,7 @@ void QtDroidView::setHeight(qreal height)
     }
 }
 
-void QtDroidView::viewChange(ViewChange change, const ViewChangeData &data)
+void QtAndroidView::viewChange(ViewChange change, const ViewChangeData &data)
 {
     switch (change) {
     case ViewContextChange:      // data.context
@@ -169,7 +169,7 @@ void QtDroidView::viewChange(ViewChange change, const ViewChangeData &data)
     }
 }
 
-void QtDroidView::addChild(QtDroidView *child)
+void QtAndroidView::addChild(QtAndroidView *child)
 {
     if (!m_children.contains(child)) {
         m_children.append(child);
@@ -179,7 +179,7 @@ void QtDroidView::addChild(QtDroidView *child)
     }
 }
 
-void QtDroidView::removeChild(QtDroidView *child)
+void QtAndroidView::removeChild(QtAndroidView *child)
 {
     if (m_children.removeOne(child)) {
         viewChange(ViewChildRemovedChange, child);
@@ -187,42 +187,42 @@ void QtDroidView::removeChild(QtDroidView *child)
     }
 }
 
-void QtDroidView::children_append(QQmlListProperty<QtDroidView> *list, QtDroidView *child)
+void QtAndroidView::children_append(QQmlListProperty<QtAndroidView> *list, QtAndroidView *child)
 {
-    if (QtDroidView *that = qobject_cast<QtDroidView *>(list->object))
+    if (QtAndroidView *that = qobject_cast<QtAndroidView *>(list->object))
         that->addChild(child);
 }
 
-int QtDroidView::children_count(QQmlListProperty<QtDroidView> *list)
+int QtAndroidView::children_count(QQmlListProperty<QtAndroidView> *list)
 {
-    if (QtDroidView *that = qobject_cast<QtDroidView *>(list->object))
+    if (QtAndroidView *that = qobject_cast<QtAndroidView *>(list->object))
         return that->m_children.count();
     return 0;
 }
 
-QtDroidView *QtDroidView::children_at(QQmlListProperty<QtDroidView> *list, int index)
+QtAndroidView *QtAndroidView::children_at(QQmlListProperty<QtAndroidView> *list, int index)
 {
-    if (QtDroidView *that = qobject_cast<QtDroidView *>(list->object))
+    if (QtAndroidView *that = qobject_cast<QtAndroidView *>(list->object))
         return that->m_children.at(index);
     return 0;
 }
 
-void QtDroidView::children_clear(QQmlListProperty<QtDroidView> *list)
+void QtAndroidView::children_clear(QQmlListProperty<QtAndroidView> *list)
 {
-    if (QtDroidView *that = qobject_cast<QtDroidView *>(list->object)) {
+    if (QtAndroidView *that = qobject_cast<QtAndroidView *>(list->object)) {
         while (!that->m_children.isEmpty())
             that->m_children.first()->setParentView(0);
     }
 }
 
-QAndroidJniObject QtDroidView::construct()
+QAndroidJniObject QtAndroidView::construct()
 {
     return QAndroidJniObject("android/view/View",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidView::inflate()
+void QtAndroidView::inflate()
 {
     QAndroidJniObject view = instance();
     m_listener = QAndroidJniObject("qtdroid/view/QtViewListener",
@@ -241,7 +241,7 @@ void QtDroidView::inflate()
     invalidateLayoutParams();
 }
 
-void QtDroidView::registerNativeMethods(jobject listener)
+void QtAndroidView::registerNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onClick", "(J)V", reinterpret_cast<void *>(onClick)},
                                {"onFocusChange", "(JZ)V", reinterpret_cast<void *>(onFocusChange)},
@@ -254,40 +254,40 @@ void QtDroidView::registerNativeMethods(jobject listener)
     env->DeleteLocalRef(cls);
 }
 
-void QtDroidView::onClick(JNIEnv *env, jobject object, jlong instance)
+void QtAndroidView::onClick(JNIEnv *env, jobject object, jlong instance)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtDroidView *view = reinterpret_cast<QtDroidView *>(instance);
+    QtAndroidView *view = reinterpret_cast<QtAndroidView *>(instance);
     if (view)
         QMetaObject::invokeMethod(view, "click", Qt::QueuedConnection);
 }
 
-void QtDroidView::onFocusChange(JNIEnv *env, jobject object, jlong instance, jboolean hasFocus)
+void QtAndroidView::onFocusChange(JNIEnv *env, jobject object, jlong instance, jboolean hasFocus)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtDroidView *view = reinterpret_cast<QtDroidView *>(instance);
+    QtAndroidView *view = reinterpret_cast<QtAndroidView *>(instance);
     if (view)
         QMetaObject::invokeMethod(view, "updateFocus", Qt::QueuedConnection, Q_ARG(bool, hasFocus));
 }
 
 #include <QtDebug>
-void QtDroidView::onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint top, jint left, jint right, jint bottom)
+void QtAndroidView::onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint top, jint left, jint right, jint bottom)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtDroidView *view = reinterpret_cast<QtDroidView *>(instance);
+    QtAndroidView *view = reinterpret_cast<QtAndroidView *>(instance);
     if (view) {
         //qDebug() << "onLayoutChange:" << view << top << left << right << bottom;
     }
 }
 
-bool QtDroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)
+bool QtAndroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtDroidView *view = reinterpret_cast<QtDroidView *>(instance);
+    QtAndroidView *view = reinterpret_cast<QtAndroidView *>(instance);
     if (view) {
         //qDebug() << "onLongClick:" << view;
         QMetaObject::invokeMethod(view, "longClick", Qt::QueuedConnection);
@@ -295,17 +295,17 @@ bool QtDroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)
     return true; // TODO: accept
 }
 
-bool QtDroidView::event(QEvent *event)
+bool QtAndroidView::event(QEvent *event)
 {
     if (event->type() == QEvent::Polish) {
-        QtDroidView *view = qobject_cast<QtDroidView *>(parent());
+        QtAndroidView *view = qobject_cast<QtAndroidView *>(parent());
         if (view)
             setParentView(view);
     }
-    return QtDroidObject::event(event);
+    return QtAndroidObject::event(event);
 }
 
-void QtDroidView::customEvent(QEvent *event)
+void QtAndroidView::customEvent(QEvent *event)
 {
     Q_UNUSED(event);
     if (m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
@@ -314,7 +314,7 @@ void QtDroidView::customEvent(QEvent *event)
     }
 }
 
-void QtDroidView::invalidateLayoutParams()
+void QtAndroidView::invalidateLayoutParams()
 {
     if (!m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
         m_layoutParamsDirty = true;
@@ -322,7 +322,7 @@ void QtDroidView::invalidateLayoutParams()
     }
 }
 
-void QtDroidView::setLayoutParams(QtDroidLayoutParams *params)
+void QtAndroidView::setLayoutParams(QtAndroidLayoutParams *params)
 {
     if (m_layoutParams != params) {
         m_layoutParams = params;

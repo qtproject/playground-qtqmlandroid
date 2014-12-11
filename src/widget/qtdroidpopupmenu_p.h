@@ -6,22 +6,22 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidView;
-class QtDroidMenuItem;
+class QtAndroidView;
+class QtAndroidMenuItem;
 
-class QtDroidPopupMenu : public QtDroidObject
+class QtAndroidPopupMenu : public QtAndroidObject
 {
     Q_OBJECT
-    Q_PROPERTY(QtDroidView *anchor READ anchor WRITE setAnchor NOTIFY anchorChanged)
+    Q_PROPERTY(QtAndroidView *anchor READ anchor WRITE setAnchor NOTIFY anchorChanged)
     Q_PROPERTY(int gravity READ gravity WRITE setGravity NOTIFY gravityChanged)
 
 public:
-    explicit QtDroidPopupMenu(QObject *parent = 0);
+    explicit QtAndroidPopupMenu(QObject *parent = 0);
 
-    QList<QtDroidMenuItem *> items() const;
+    QList<QtAndroidMenuItem *> items() const;
 
-    QtDroidView *anchor() const;
-    void setAnchor(QtDroidView *anchor);
+    QtAndroidView *anchor() const;
+    void setAnchor(QtAndroidView *anchor);
 
     int gravity() const;
     void setGravity(int gravity);
@@ -37,8 +37,8 @@ Q_SIGNALS:
     void itemClick();
 
 private:
-    QtDroidView *m_anchor;
-    QtDroidOptional<int> m_gravity;
+    QtAndroidView *m_anchor;
+    QtAndroidOptional<int> m_gravity;
     QAndroidJniObject m_listener;
 };
 

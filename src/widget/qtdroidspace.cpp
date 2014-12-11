@@ -1,17 +1,17 @@
 #include "qtdroidspace_p.h"
 
-QtDroidSpace::QtDroidSpace(QtDroidView *parent) : QtDroidView(parent)
+QtAndroidSpace::QtAndroidSpace(QtAndroidView *parent) : QtAndroidView(parent)
 {
 }
 
-QAndroidJniObject QtDroidSpace::construct()
+QAndroidJniObject QtAndroidSpace::construct()
 {
     return QAndroidJniObject("android/widget/Space",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidSpace::inflate()
+void QtAndroidSpace::inflate()
 {
-    QtDroidView::inflate();
+    QtAndroidView::inflate();
 }

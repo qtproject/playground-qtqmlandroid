@@ -1,17 +1,17 @@
 #include "qtdroidedittext_p.h"
 
-QtDroidEditText::QtDroidEditText(QtDroidView *parent) : QtDroidTextView(parent)
+QtAndroidEditText::QtAndroidEditText(QtAndroidView *parent) : QtAndroidTextView(parent)
 {
 }
 
-QAndroidJniObject QtDroidEditText::construct()
+QAndroidJniObject QtAndroidEditText::construct()
 {
     return QAndroidJniObject("android/widget/EditText",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidEditText::inflate()
+void QtAndroidEditText::inflate()
 {
-    QtDroidTextView::inflate();
+    QtAndroidTextView::inflate();
 }

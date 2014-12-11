@@ -1,15 +1,15 @@
 #include "qtdroidmenu_p.h"
 #include "qtdroidmenuitem_p.h"
 
-QtDroidMenu::QtDroidMenu(QObject *parent) : QtDroidObject(parent)
+QtAndroidMenu::QtAndroidMenu(QObject *parent) : QtAndroidObject(parent)
 {
 }
 
-QList<QtDroidMenuItem *> QtDroidMenu::items() const
+QList<QtAndroidMenuItem *> QtAndroidMenu::items() const
 {
-    QList<QtDroidMenuItem *> lst;
+    QList<QtAndroidMenuItem *> lst;
     foreach (QObject *child, children()) {
-        QtDroidMenuItem *item = qobject_cast<QtDroidMenuItem *>(child);
+        QtAndroidMenuItem *item = qobject_cast<QtAndroidMenuItem *>(child);
         if (item)
             lst += item;
     }

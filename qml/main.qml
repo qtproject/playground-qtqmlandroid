@@ -6,7 +6,7 @@ import qtdroid.R 0.1
 
 Activity {
     actionBar: ActionBar {
-        title: "QtDroid"
+        title: "QtAndroid"
         subtitle: adapter.getItem(switcher.displayedChild)
     }
 

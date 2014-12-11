@@ -1,25 +1,25 @@
 #include "qtdroidframelayout_p.h"
 
-QtDroidFrameLayout::QtDroidFrameLayout(QtDroidView *parent) : QtDroidViewGroup(parent)
+QtAndroidFrameLayout::QtAndroidFrameLayout(QtAndroidView *parent) : QtAndroidViewGroup(parent)
 {
 }
 
-QtDroidFrameLayoutParams *QtDroidFrameLayout::qmlAttachedProperties(QObject *object)
+QtAndroidFrameLayoutParams *QtAndroidFrameLayout::qmlAttachedProperties(QObject *object)
 {
-    QtDroidView *view = qobject_cast<QtDroidView*>(object);
+    QtAndroidView *view = qobject_cast<QtAndroidView*>(object);
     if (view)
-        return new QtDroidFrameLayoutParams(view);
+        return new QtAndroidFrameLayoutParams(view);
     return 0;
 }
 
-QAndroidJniObject QtDroidFrameLayout::construct()
+QAndroidJniObject QtAndroidFrameLayout::construct()
 {
     return QAndroidJniObject("android/widget/FrameLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidFrameLayout::inflate()
+void QtAndroidFrameLayout::inflate()
 {
-    QtDroidViewGroup::inflate();
+    QtAndroidViewGroup::inflate();
 }

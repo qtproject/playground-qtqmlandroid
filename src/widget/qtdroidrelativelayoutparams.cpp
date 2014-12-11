@@ -2,7 +2,7 @@
 #include "qtdroidrelativelayout_p.h"
 #include "qtdroidview_p.h"
 
-QtDroidRelativeLayoutParams::QtDroidRelativeLayoutParams(QtDroidView *view) : QtDroidMarginLayoutParams(view),
+QtAndroidRelativeLayoutParams::QtAndroidRelativeLayoutParams(QtAndroidView *view) : QtAndroidMarginLayoutParams(view),
     m_above(0),
     m_below(0),
     m_alignTop(0),
@@ -29,12 +29,12 @@ QtDroidRelativeLayoutParams::QtDroidRelativeLayoutParams(QtDroidView *view) : Qt
 {
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::above() const
+QtAndroidView *QtAndroidRelativeLayoutParams::above() const
 {
     return m_above;
 }
 
-void QtDroidRelativeLayoutParams::setAbove(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setAbove(QtAndroidView *view)
 {
     if (view != m_above) {
         m_above = view;
@@ -42,12 +42,12 @@ void QtDroidRelativeLayoutParams::setAbove(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::below() const
+QtAndroidView *QtAndroidRelativeLayoutParams::below() const
 {
     return m_below;
 }
 
-void QtDroidRelativeLayoutParams::setBelow(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setBelow(QtAndroidView *view)
 {
     if (view != m_below) {
         m_below = view;
@@ -55,12 +55,12 @@ void QtDroidRelativeLayoutParams::setBelow(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::alignTop() const
+QtAndroidView *QtAndroidRelativeLayoutParams::alignTop() const
 {
     return m_alignTop;
 }
 
-void QtDroidRelativeLayoutParams::setAlignTop(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setAlignTop(QtAndroidView *view)
 {
     if (view != m_alignTop) {
         m_alignTop = view;
@@ -68,12 +68,12 @@ void QtDroidRelativeLayoutParams::setAlignTop(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::alignLeft() const
+QtAndroidView *QtAndroidRelativeLayoutParams::alignLeft() const
 {
     return m_alignLeft;
 }
 
-void QtDroidRelativeLayoutParams::setAlignLeft(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setAlignLeft(QtAndroidView *view)
 {
     if (view != m_alignLeft) {
         m_alignLeft = view;
@@ -81,12 +81,12 @@ void QtDroidRelativeLayoutParams::setAlignLeft(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::alignRight() const
+QtAndroidView *QtAndroidRelativeLayoutParams::alignRight() const
 {
     return m_alignRight;
 }
 
-void QtDroidRelativeLayoutParams::setAlignRight(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setAlignRight(QtAndroidView *view)
 {
     if (view != m_alignRight) {
         m_alignRight = view;
@@ -94,12 +94,12 @@ void QtDroidRelativeLayoutParams::setAlignRight(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::alignBottom() const
+QtAndroidView *QtAndroidRelativeLayoutParams::alignBottom() const
 {
     return m_alignBottom;
 }
 
-void QtDroidRelativeLayoutParams::setAlignBottom(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setAlignBottom(QtAndroidView *view)
 {
     if (view != m_alignBottom) {
         m_alignBottom = view;
@@ -107,12 +107,12 @@ void QtDroidRelativeLayoutParams::setAlignBottom(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::alignStart() const
+QtAndroidView *QtAndroidRelativeLayoutParams::alignStart() const
 {
     return m_alignStart;
 }
 
-void QtDroidRelativeLayoutParams::setAlignStart(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setAlignStart(QtAndroidView *view)
 {
     if (view != m_alignStart) {
         m_alignStart = view;
@@ -120,12 +120,12 @@ void QtDroidRelativeLayoutParams::setAlignStart(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::alignEnd() const
+QtAndroidView *QtAndroidRelativeLayoutParams::alignEnd() const
 {
     return m_alignEnd;
 }
 
-void QtDroidRelativeLayoutParams::setAlignEnd(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setAlignEnd(QtAndroidView *view)
 {
     if (view != m_alignEnd) {
         m_alignEnd = view;
@@ -133,12 +133,12 @@ void QtDroidRelativeLayoutParams::setAlignEnd(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::alignBaseline() const
+QtAndroidView *QtAndroidRelativeLayoutParams::alignBaseline() const
 {
     return m_alignBaseline;
 }
 
-void QtDroidRelativeLayoutParams::setAlignBaseline(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setAlignBaseline(QtAndroidView *view)
 {
     if (view != m_alignBaseline) {
         m_alignBaseline = view;
@@ -146,12 +146,12 @@ void QtDroidRelativeLayoutParams::setAlignBaseline(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::toLeftOf() const
+QtAndroidView *QtAndroidRelativeLayoutParams::toLeftOf() const
 {
     return m_toLeftOf;
 }
 
-void QtDroidRelativeLayoutParams::setToLeftOf(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setToLeftOf(QtAndroidView *view)
 {
     if (view != m_toLeftOf) {
         m_toLeftOf = view;
@@ -159,12 +159,12 @@ void QtDroidRelativeLayoutParams::setToLeftOf(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::toRightOf() const
+QtAndroidView *QtAndroidRelativeLayoutParams::toRightOf() const
 {
     return m_toRightOf;
 }
 
-void QtDroidRelativeLayoutParams::setToRightOf(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setToRightOf(QtAndroidView *view)
 {
     if (view != m_toRightOf) {
         m_toRightOf = view;
@@ -172,12 +172,12 @@ void QtDroidRelativeLayoutParams::setToRightOf(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::toStartOf() const
+QtAndroidView *QtAndroidRelativeLayoutParams::toStartOf() const
 {
     return m_toStartOf;
 }
 
-void QtDroidRelativeLayoutParams::setToStartOf(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setToStartOf(QtAndroidView *view)
 {
     if (view != m_toStartOf) {
         m_toStartOf = view;
@@ -185,12 +185,12 @@ void QtDroidRelativeLayoutParams::setToStartOf(QtDroidView *view)
     }
 }
 
-QtDroidView *QtDroidRelativeLayoutParams::toEndOf() const
+QtAndroidView *QtAndroidRelativeLayoutParams::toEndOf() const
 {
     return m_toEndOf;
 }
 
-void QtDroidRelativeLayoutParams::setToEndOf(QtDroidView *view)
+void QtAndroidRelativeLayoutParams::setToEndOf(QtAndroidView *view)
 {
     if (view != m_toEndOf) {
         m_toEndOf = view;
@@ -198,12 +198,12 @@ void QtDroidRelativeLayoutParams::setToEndOf(QtDroidView *view)
     }
 }
 
-bool QtDroidRelativeLayoutParams::alignParentTop() const
+bool QtAndroidRelativeLayoutParams::alignParentTop() const
 {
     return m_alignParentTop;
 }
 
-void QtDroidRelativeLayoutParams::setAlignParentTop(bool align)
+void QtAndroidRelativeLayoutParams::setAlignParentTop(bool align)
 {
     if (align != alignParentTop()) {
         m_alignParentTop = align;
@@ -211,12 +211,12 @@ void QtDroidRelativeLayoutParams::setAlignParentTop(bool align)
     }
 }
 
-bool QtDroidRelativeLayoutParams::alignParentLeft() const
+bool QtAndroidRelativeLayoutParams::alignParentLeft() const
 {
     return m_alignParentLeft;
 }
 
-void QtDroidRelativeLayoutParams::setAlignParentLeft(bool align)
+void QtAndroidRelativeLayoutParams::setAlignParentLeft(bool align)
 {
     if (align != alignParentLeft()) {
         m_alignParentLeft = align;
@@ -224,12 +224,12 @@ void QtDroidRelativeLayoutParams::setAlignParentLeft(bool align)
     }
 }
 
-bool QtDroidRelativeLayoutParams::alignParentRight() const
+bool QtAndroidRelativeLayoutParams::alignParentRight() const
 {
     return m_alignParentRight;
 }
 
-void QtDroidRelativeLayoutParams::setAlignParentRight(bool align)
+void QtAndroidRelativeLayoutParams::setAlignParentRight(bool align)
 {
     if (align != alignParentRight()) {
         m_alignParentRight = align;
@@ -237,12 +237,12 @@ void QtDroidRelativeLayoutParams::setAlignParentRight(bool align)
     }
 }
 
-bool QtDroidRelativeLayoutParams::alignParentBottom() const
+bool QtAndroidRelativeLayoutParams::alignParentBottom() const
 {
     return m_alignParentBottom;
 }
 
-void QtDroidRelativeLayoutParams::setAlignParentBottom(bool align)
+void QtAndroidRelativeLayoutParams::setAlignParentBottom(bool align)
 {
     if (align != alignParentBottom()) {
         m_alignParentBottom = align;
@@ -250,12 +250,12 @@ void QtDroidRelativeLayoutParams::setAlignParentBottom(bool align)
     }
 }
 
-bool QtDroidRelativeLayoutParams::alignParentStart() const
+bool QtAndroidRelativeLayoutParams::alignParentStart() const
 {
     return m_alignParentStart;
 }
 
-void QtDroidRelativeLayoutParams::setAlignParentStart(bool align)
+void QtAndroidRelativeLayoutParams::setAlignParentStart(bool align)
 {
     if (align != alignParentStart()) {
         m_alignParentStart = align;
@@ -263,12 +263,12 @@ void QtDroidRelativeLayoutParams::setAlignParentStart(bool align)
     }
 }
 
-bool QtDroidRelativeLayoutParams::alignParentEnd() const
+bool QtAndroidRelativeLayoutParams::alignParentEnd() const
 {
     return m_alignParentEnd;
 }
 
-void QtDroidRelativeLayoutParams::setAlignParentEnd(bool align)
+void QtAndroidRelativeLayoutParams::setAlignParentEnd(bool align)
 {
     if (align != alignParentEnd()) {
         m_alignParentEnd = align;
@@ -276,12 +276,12 @@ void QtDroidRelativeLayoutParams::setAlignParentEnd(bool align)
     }
 }
 
-bool QtDroidRelativeLayoutParams::alignWithParent() const
+bool QtAndroidRelativeLayoutParams::alignWithParent() const
 {
     return m_alignWithParent;
 }
 
-void QtDroidRelativeLayoutParams::setAlignWithParent(bool align)
+void QtAndroidRelativeLayoutParams::setAlignWithParent(bool align)
 {
     if (align != alignWithParent()) {
         m_alignWithParent = align;
@@ -289,12 +289,12 @@ void QtDroidRelativeLayoutParams::setAlignWithParent(bool align)
     }
 }
 
-bool QtDroidRelativeLayoutParams::centerHorizontal() const
+bool QtAndroidRelativeLayoutParams::centerHorizontal() const
 {
     return m_centerHorizontal;
 }
 
-void QtDroidRelativeLayoutParams::setCenterHorizontal(bool center)
+void QtAndroidRelativeLayoutParams::setCenterHorizontal(bool center)
 {
     if (center != centerHorizontal()) {
         m_centerHorizontal = center;
@@ -302,12 +302,12 @@ void QtDroidRelativeLayoutParams::setCenterHorizontal(bool center)
     }
 }
 
-bool QtDroidRelativeLayoutParams::centerVertical() const
+bool QtAndroidRelativeLayoutParams::centerVertical() const
 {
     return m_centerVertical;
 }
 
-void QtDroidRelativeLayoutParams::setCenterVertical(bool center)
+void QtAndroidRelativeLayoutParams::setCenterVertical(bool center)
 {
     if (center != centerVertical()) {
         m_centerVertical = center;
@@ -315,12 +315,12 @@ void QtDroidRelativeLayoutParams::setCenterVertical(bool center)
     }
 }
 
-bool QtDroidRelativeLayoutParams::centerInParent() const
+bool QtAndroidRelativeLayoutParams::centerInParent() const
 {
     return m_centerInParent;
 }
 
-void QtDroidRelativeLayoutParams::setCenterInParent(bool center)
+void QtAndroidRelativeLayoutParams::setCenterInParent(bool center)
 {
     if (center != centerInParent()) {
         m_centerInParent = center;
@@ -328,14 +328,14 @@ void QtDroidRelativeLayoutParams::setCenterInParent(bool center)
     }
 }
 
-QAndroidJniObject QtDroidRelativeLayoutParams::construct()
+QAndroidJniObject QtAndroidRelativeLayoutParams::construct()
 {
     return QAndroidJniObject("android/widget/RelativeLayout$LayoutParams",
                              "(II)V",
                              WRAP_CONTENT, WRAP_CONTENT);
 }
 
-static void addRule(QAndroidJniObject& params, QtDroidView *view, QtDroidRelativeLayout::Verb verb)
+static void addRule(QAndroidJniObject& params, QtAndroidView *view, QtAndroidRelativeLayout::Verb verb)
 {
     if (view) {
         int anchor = view->instance().callMethod<jint>("getId");
@@ -343,39 +343,39 @@ static void addRule(QAndroidJniObject& params, QtDroidView *view, QtDroidRelativ
     }
 }
 
-static void addRule(QAndroidJniObject &params, bool value, QtDroidRelativeLayout::Verb verb)
+static void addRule(QAndroidJniObject &params, bool value, QtAndroidRelativeLayout::Verb verb)
 {
     if (value)
         params.callMethod<void>("addRule", "(I)V", verb);
 }
 
-void QtDroidRelativeLayoutParams::inflate(QAndroidJniObject &params)
+void QtAndroidRelativeLayoutParams::inflate(QAndroidJniObject &params)
 {
-    QtDroidMarginLayoutParams::inflate(params);
+    QtAndroidMarginLayoutParams::inflate(params);
 
     params.setField<jboolean>("alignWithParent", m_alignWithParent);
 
-    addRule(params, m_above, QtDroidRelativeLayout::ABOVE);
-    addRule(params, m_below, QtDroidRelativeLayout::BELOW);
-    addRule(params, m_alignTop, QtDroidRelativeLayout::ALIGN_TOP);
-    addRule(params, m_alignLeft, QtDroidRelativeLayout::ALIGN_LEFT);
-    addRule(params, m_alignRight, QtDroidRelativeLayout::ALIGN_RIGHT);
-    addRule(params, m_alignBottom, QtDroidRelativeLayout::ALIGN_BOTTOM);
-    addRule(params, m_alignStart, QtDroidRelativeLayout::ALIGN_START);
-    addRule(params, m_alignEnd, QtDroidRelativeLayout::ALIGN_END);
-    addRule(params, m_alignBaseline, QtDroidRelativeLayout::ALIGN_BASELINE);
-    addRule(params, m_toLeftOf, QtDroidRelativeLayout::LEFT_OF);
-    addRule(params, m_toRightOf, QtDroidRelativeLayout::RIGHT_OF);
-    addRule(params, m_toStartOf, QtDroidRelativeLayout::START_OF);
-    addRule(params, m_toEndOf, QtDroidRelativeLayout::END_OF);
+    addRule(params, m_above, QtAndroidRelativeLayout::ABOVE);
+    addRule(params, m_below, QtAndroidRelativeLayout::BELOW);
+    addRule(params, m_alignTop, QtAndroidRelativeLayout::ALIGN_TOP);
+    addRule(params, m_alignLeft, QtAndroidRelativeLayout::ALIGN_LEFT);
+    addRule(params, m_alignRight, QtAndroidRelativeLayout::ALIGN_RIGHT);
+    addRule(params, m_alignBottom, QtAndroidRelativeLayout::ALIGN_BOTTOM);
+    addRule(params, m_alignStart, QtAndroidRelativeLayout::ALIGN_START);
+    addRule(params, m_alignEnd, QtAndroidRelativeLayout::ALIGN_END);
+    addRule(params, m_alignBaseline, QtAndroidRelativeLayout::ALIGN_BASELINE);
+    addRule(params, m_toLeftOf, QtAndroidRelativeLayout::LEFT_OF);
+    addRule(params, m_toRightOf, QtAndroidRelativeLayout::RIGHT_OF);
+    addRule(params, m_toStartOf, QtAndroidRelativeLayout::START_OF);
+    addRule(params, m_toEndOf, QtAndroidRelativeLayout::END_OF);
 
-    addRule(params, m_alignParentTop, QtDroidRelativeLayout::ALIGN_PARENT_TOP);
-    addRule(params, m_alignParentLeft, QtDroidRelativeLayout::ALIGN_PARENT_LEFT);
-    addRule(params, m_alignParentRight, QtDroidRelativeLayout::ALIGN_PARENT_RIGHT);
-    addRule(params, m_alignParentBottom, QtDroidRelativeLayout::ALIGN_PARENT_BOTTOM);
-    addRule(params, m_alignParentStart, QtDroidRelativeLayout::ALIGN_PARENT_START);
-    addRule(params, m_alignParentEnd, QtDroidRelativeLayout::ALIGN_PARENT_END);
-    addRule(params, m_centerHorizontal, QtDroidRelativeLayout::CENTER_HORIZONTAL);
-    addRule(params, m_centerVertical, QtDroidRelativeLayout::CENTER_VERTICAL);
-    addRule(params, m_centerInParent, QtDroidRelativeLayout::CENTER_IN_PARENT);
+    addRule(params, m_alignParentTop, QtAndroidRelativeLayout::ALIGN_PARENT_TOP);
+    addRule(params, m_alignParentLeft, QtAndroidRelativeLayout::ALIGN_PARENT_LEFT);
+    addRule(params, m_alignParentRight, QtAndroidRelativeLayout::ALIGN_PARENT_RIGHT);
+    addRule(params, m_alignParentBottom, QtAndroidRelativeLayout::ALIGN_PARENT_BOTTOM);
+    addRule(params, m_alignParentStart, QtAndroidRelativeLayout::ALIGN_PARENT_START);
+    addRule(params, m_alignParentEnd, QtAndroidRelativeLayout::ALIGN_PARENT_END);
+    addRule(params, m_centerHorizontal, QtAndroidRelativeLayout::CENTER_HORIZONTAL);
+    addRule(params, m_centerVertical, QtAndroidRelativeLayout::CENTER_VERTICAL);
+    addRule(params, m_centerInParent, QtAndroidRelativeLayout::CENTER_IN_PARENT);
 }

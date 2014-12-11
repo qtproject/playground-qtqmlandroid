@@ -1,15 +1,15 @@
 #include "qtdroidmenuitem_p.h"
 
-QtDroidMenuItem::QtDroidMenuItem(QObject *parent) : QObject(parent)
+QtAndroidMenuItem::QtAndroidMenuItem(QObject *parent) : QObject(parent)
 {
 }
 
-QString QtDroidMenuItem::title() const
+QString QtAndroidMenuItem::title() const
 {
     return m_title;
 }
 
-void QtDroidMenuItem::setTitle(const QString &title)
+void QtAndroidMenuItem::setTitle(const QString &title)
 {
     if (m_title != title) {
         m_title = title;

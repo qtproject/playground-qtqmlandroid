@@ -56,56 +56,56 @@ int main(int argc, char *argv[])
 
     qRegisterMetaType<QQmlPropertyMap *>();
 
-    qmlRegisterType<QtDroidActionBar>("qtdroid.app", 0, 1, "ActionBar");
-    qmlRegisterType<QtDroidActivity>("qtdroid.app", 0, 1, "Activity");
+    qmlRegisterType<QtAndroidActionBar>("qtdroid.app", 0, 1, "ActionBar");
+    qmlRegisterType<QtAndroidActivity>("qtdroid.app", 0, 1, "Activity");
 
-    qmlRegisterType<QtDroidContext>();
+    qmlRegisterType<QtAndroidContext>();
 
-    qmlRegisterSingletonType<QtDroidColor>("qtdroid.graphics", 0, 1, "Color", QtDroidColor::provider);
+    qmlRegisterSingletonType<QtAndroidColor>("qtdroid.graphics", 0, 1, "Color", QtAndroidColor::provider);
 
-    qmlRegisterSingletonType<QtDroidR>("qtdroid.R", 0, 1, "R", QtDroidR::provider);
+    qmlRegisterSingletonType<QtAndroidR>("qtdroid.R", 0, 1, "R", QtAndroidR::provider);
 
-    qmlRegisterUncreatableType<QtDroidGravity>("qtdroid.view", 0, 1, "Gravity", "Gravity is an enum");
-    qmlRegisterUncreatableType<QtDroidLayoutParams>("qtdroid.view", 0, 1, "Layout", "Layout is an attached property");
-    qmlRegisterType<QtDroidMenu>("qtdroid.view", 0, 1, "Menu");
-    qmlRegisterType<QtDroidMenuItem>("qtdroid.view", 0, 1, "MenuItem");
-    qmlRegisterType<QtDroidView>("qtdroid.view", 0, 1, "View");
-    qmlRegisterType<QtDroidViewGroup>();
+    qmlRegisterUncreatableType<QtAndroidGravity>("qtdroid.view", 0, 1, "Gravity", "Gravity is an enum");
+    qmlRegisterUncreatableType<QtAndroidLayoutParams>("qtdroid.view", 0, 1, "Layout", "Layout is an attached property");
+    qmlRegisterType<QtAndroidMenu>("qtdroid.view", 0, 1, "Menu");
+    qmlRegisterType<QtAndroidMenuItem>("qtdroid.view", 0, 1, "MenuItem");
+    qmlRegisterType<QtAndroidView>("qtdroid.view", 0, 1, "View");
+    qmlRegisterType<QtAndroidViewGroup>();
 
-    qmlRegisterType<QtDroidArrayAdapter>("qtdroid.widget", 0, 1, "ArrayAdapter");
-    qmlRegisterType<QtDroidBaseAdapter>();
-    qmlRegisterType<QtDroidButton>("qtdroid.widget", 0, 1, "Button");
-    qmlRegisterType<QtDroidCalendarView>("qtdroid.widget", 0, 1, "CalendarView");
-    qmlRegisterType<QtDroidCheckBox>("qtdroid.widget", 0, 1, "CheckBox");
-    qmlRegisterType<QtDroidEditText>("qtdroid.widget", 0, 1, "EditText");
-    qmlRegisterType<QtDroidFrameLayout>("qtdroid.widget", 0, 1, "FrameLayout");
-    qmlRegisterType<QtDroidFrameLayoutParams>();
-    qmlRegisterType<QtDroidLinearLayout>("qtdroid.widget", 0, 1, "LinearLayout");
-    qmlRegisterType<QtDroidLinearLayoutParams>();
-    qmlRegisterType<QtDroidListView>("qtdroid.widget", 0, 1, "ListView");
-    qmlRegisterType<QtDroidPopupMenu>("qtdroid.widget", 0, 1, "PopupMenu");
-    qmlRegisterType<QtDroidProgressBar>("qtdroid.widget", 0, 1, "ProgressBar");
-    qmlRegisterType<QtDroidRadioButton>("qtdroid.widget", 0, 1, "RadioButton");
-    qmlRegisterType<QtDroidRadioGroup>("qtdroid.widget", 0, 1, "RadioGroup");
-    qmlRegisterType<QtDroidRelativeLayout>("qtdroid.widget", 0, 1, "RelativeLayout");
-    qmlRegisterType<QtDroidRelativeLayoutParams>();
-    qmlRegisterType<QtDroidScrollView>("qtdroid.widget", 0, 1, "ScrollView");
-    qmlRegisterType<QtDroidSeekBar>("qtdroid.widget", 0, 1, "SeekBar");
-    qmlRegisterType<QtDroidSpace>("qtdroid.widget", 0, 1, "Space");
-    qmlRegisterType<QtDroidSpinner>("qtdroid.widget", 0, 1, "Spinner");
-    qmlRegisterType<QtDroidSwitch>("qtdroid.widget", 0, 1, "Switch");
-    qmlRegisterType<QtDroidTabHost>("qtdroid.widget", 0, 1, "TabHost");
-    qmlRegisterUncreatableType<QtDroidTabSpec>("qtdroid.widget", 0, 1, "TabSpec", "TabSpec is an attached property");
-    qmlRegisterType<QtDroidTabWidget>("qtdroid.widget", 0, 1, "TabWidget");
-    qmlRegisterType<QtDroidTextView>("qtdroid.widget", 0, 1, "TextView");
-    qmlRegisterType<QtDroidToggleButton>("qtdroid.widget", 0, 1, "ToggleButton");
-    qmlRegisterType<QtDroidViewAnimator>("qtdroid.widget", 0, 1, "ViewAnimator");
-    qmlRegisterType<QtDroidViewFlipper>("qtdroid.widget", 0, 1, "ViewFlipper");
-    qmlRegisterType<QtDroidViewSwitcher>("qtdroid.widget", 0, 1, "ViewSwitcher");
+    qmlRegisterType<QtAndroidArrayAdapter>("qtdroid.widget", 0, 1, "ArrayAdapter");
+    qmlRegisterType<QtAndroidBaseAdapter>();
+    qmlRegisterType<QtAndroidButton>("qtdroid.widget", 0, 1, "Button");
+    qmlRegisterType<QtAndroidCalendarView>("qtdroid.widget", 0, 1, "CalendarView");
+    qmlRegisterType<QtAndroidCheckBox>("qtdroid.widget", 0, 1, "CheckBox");
+    qmlRegisterType<QtAndroidEditText>("qtdroid.widget", 0, 1, "EditText");
+    qmlRegisterType<QtAndroidFrameLayout>("qtdroid.widget", 0, 1, "FrameLayout");
+    qmlRegisterType<QtAndroidFrameLayoutParams>();
+    qmlRegisterType<QtAndroidLinearLayout>("qtdroid.widget", 0, 1, "LinearLayout");
+    qmlRegisterType<QtAndroidLinearLayoutParams>();
+    qmlRegisterType<QtAndroidListView>("qtdroid.widget", 0, 1, "ListView");
+    qmlRegisterType<QtAndroidPopupMenu>("qtdroid.widget", 0, 1, "PopupMenu");
+    qmlRegisterType<QtAndroidProgressBar>("qtdroid.widget", 0, 1, "ProgressBar");
+    qmlRegisterType<QtAndroidRadioButton>("qtdroid.widget", 0, 1, "RadioButton");
+    qmlRegisterType<QtAndroidRadioGroup>("qtdroid.widget", 0, 1, "RadioGroup");
+    qmlRegisterType<QtAndroidRelativeLayout>("qtdroid.widget", 0, 1, "RelativeLayout");
+    qmlRegisterType<QtAndroidRelativeLayoutParams>();
+    qmlRegisterType<QtAndroidScrollView>("qtdroid.widget", 0, 1, "ScrollView");
+    qmlRegisterType<QtAndroidSeekBar>("qtdroid.widget", 0, 1, "SeekBar");
+    qmlRegisterType<QtAndroidSpace>("qtdroid.widget", 0, 1, "Space");
+    qmlRegisterType<QtAndroidSpinner>("qtdroid.widget", 0, 1, "Spinner");
+    qmlRegisterType<QtAndroidSwitch>("qtdroid.widget", 0, 1, "Switch");
+    qmlRegisterType<QtAndroidTabHost>("qtdroid.widget", 0, 1, "TabHost");
+    qmlRegisterUncreatableType<QtAndroidTabSpec>("qtdroid.widget", 0, 1, "TabSpec", "TabSpec is an attached property");
+    qmlRegisterType<QtAndroidTabWidget>("qtdroid.widget", 0, 1, "TabWidget");
+    qmlRegisterType<QtAndroidTextView>("qtdroid.widget", 0, 1, "TextView");
+    qmlRegisterType<QtAndroidToggleButton>("qtdroid.widget", 0, 1, "ToggleButton");
+    qmlRegisterType<QtAndroidViewAnimator>("qtdroid.widget", 0, 1, "ViewAnimator");
+    qmlRegisterType<QtAndroidViewFlipper>("qtdroid.widget", 0, 1, "ViewFlipper");
+    qmlRegisterType<QtAndroidViewSwitcher>("qtdroid.widget", 0, 1, "ViewSwitcher");
 
-    qmlRegisterType<QtDroidDrawerLayout>("qtdroid.support.v4.widget", 0, 1, "DrawerLayout");
+    qmlRegisterType<QtAndroidDrawerLayout>("qtdroid.support.v4.widget", 0, 1, "DrawerLayout");
 
-    qmlRegisterType<QtDroidActionBarDrawerToggle>("qtdroid.support.v7.app", 0, 1, "ActionBarDrawerToggle");
+    qmlRegisterType<QtAndroidActionBarDrawerToggle>("qtdroid.support.v7.app", 0, 1, "ActionBarDrawerToggle");
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));

@@ -6,12 +6,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidContext : public QtDroidObject
+class QtAndroidContext : public QtAndroidObject
 {
     Q_OBJECT
 
 public:
-    explicit QtDroidContext(QObject *parent = 0);
+    explicit QtAndroidContext(QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

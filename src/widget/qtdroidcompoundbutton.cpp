@@ -1,22 +1,22 @@
 #include "qtdroidcompoundbutton_p.h"
 #include "qtdroidfunctions_p.h"
 
-QtDroidCompoundButton::QtDroidCompoundButton(QtDroidView *parent) : QtDroidButton(parent), m_checked(false)
+QtAndroidCompoundButton::QtAndroidCompoundButton(QtAndroidView *parent) : QtAndroidButton(parent), m_checked(false)
 {
 }
 
-bool QtDroidCompoundButton::isChecked() const
+bool QtAndroidCompoundButton::isChecked() const
 {
     return m_checked;
 }
 
-void QtDroidCompoundButton::setChecked(bool checked)
+void QtAndroidCompoundButton::setChecked(bool checked)
 {
     if (updateChecked(checked))
-        QtDroid::callBoolMethod(instance(), "setChecked", checked);
+        QtAndroid::callBoolMethod(instance(), "setChecked", checked);
 }
 
-bool QtDroidCompoundButton::updateChecked(bool arg)
+bool QtAndroidCompoundButton::updateChecked(bool arg)
 {
     if (arg != isChecked()) {
         m_checked = arg;
@@ -26,21 +26,21 @@ bool QtDroidCompoundButton::updateChecked(bool arg)
     return false;
 }
 
-void QtDroidCompoundButton::toggle()
+void QtAndroidCompoundButton::toggle()
 {
-    QtDroid::callVoidMethod(instance(), "toggle");
+    QtAndroid::callVoidMethod(instance(), "toggle");
 }
 
-QAndroidJniObject QtDroidCompoundButton::construct()
+QAndroidJniObject QtAndroidCompoundButton::construct()
 {
     return QAndroidJniObject("android/widget/CompoundButton",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidCompoundButton::inflate()
+void QtAndroidCompoundButton::inflate()
 {
-    QtDroidButton::inflate();
+    QtAndroidButton::inflate();
 
     QAndroidJniObject view = instance();
     m_listener = QAndroidJniObject("qtdroid/widget/QtCompoundButtonListener",
@@ -54,10 +54,10 @@ void QtDroidCompoundButton::inflate()
         nativeMethodsRegistered = true;
     }
 
-    QtDroid::callBoolMethod(instance(), "setChecked", m_checked);
+    QtAndroid::callBoolMethod(instance(), "setChecked", m_checked);
 }
 
-void QtDroidCompoundButton::registerNativeMethods(jobject listener)
+void QtAndroidCompoundButton::registerNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onCheckedChanged", "(JZ)V", reinterpret_cast<void *>(onCheckedChanged)}};
 
@@ -67,11 +67,11 @@ void QtDroidCompoundButton::registerNativeMethods(jobject listener)
     env->DeleteLocalRef(cls);
 }
 
-void QtDroidCompoundButton::onCheckedChanged(JNIEnv *env, jobject object, jlong instance, jboolean isChecked)
+void QtAndroidCompoundButton::onCheckedChanged(JNIEnv *env, jobject object, jlong instance, jboolean isChecked)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtDroidCompoundButton *button = reinterpret_cast<QtDroidCompoundButton *>(instance);
+    QtAndroidCompoundButton *button = reinterpret_cast<QtAndroidCompoundButton *>(instance);
     if (button)
         QMetaObject::invokeMethod(button, "updateChecked", Qt::QueuedConnection, Q_ARG(bool, isChecked));
 }

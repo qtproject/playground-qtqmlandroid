@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidEditText : public QtDroidTextView
+class QtAndroidEditText : public QtAndroidTextView
 {
     Q_OBJECT
 
 public:
-    explicit QtDroidEditText(QtDroidView *parent = 0);
+    explicit QtAndroidEditText(QtAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct() Q_DECL_OVERRIDE;

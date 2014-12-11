@@ -1,17 +1,17 @@
 #include "qtdroidspinner_p.h"
 
-QtDroidSpinner::QtDroidSpinner(QtDroidView *parent) : QtDroidAdapterView(parent)
+QtAndroidSpinner::QtAndroidSpinner(QtAndroidView *parent) : QtAndroidAdapterView(parent)
 {
 }
 
-QAndroidJniObject QtDroidSpinner::construct()
+QAndroidJniObject QtAndroidSpinner::construct()
 {
     return QAndroidJniObject("android/widget/Spinner",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidSpinner::inflate()
+void QtAndroidSpinner::inflate()
 {
-    QtDroidAdapterView::inflate();
+    QtAndroidAdapterView::inflate();
 }

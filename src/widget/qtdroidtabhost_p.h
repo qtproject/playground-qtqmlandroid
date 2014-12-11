@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidTabHost : public QtDroidFrameLayout
+class QtAndroidTabHost : public QtAndroidFrameLayout
 {
     Q_OBJECT
 
 public:
-    explicit QtDroidTabHost(QtDroidView *parent = 0);
+    explicit QtAndroidTabHost(QtAndroidView *parent = 0);
 
 Q_SIGNALS:
     void tabChanged(const QString &tabId);

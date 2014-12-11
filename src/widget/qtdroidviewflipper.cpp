@@ -1,17 +1,17 @@
 #include "qtdroidviewflipper_p.h"
 
-QtDroidViewFlipper::QtDroidViewFlipper(QtDroidView *parent) : QtDroidViewAnimator(parent)
+QtAndroidViewFlipper::QtAndroidViewFlipper(QtAndroidView *parent) : QtAndroidViewAnimator(parent)
 {
 }
 
-QAndroidJniObject QtDroidViewFlipper::construct()
+QAndroidJniObject QtAndroidViewFlipper::construct()
 {
     return QAndroidJniObject("android/widget/ViewFlipper",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidViewFlipper::inflate()
+void QtAndroidViewFlipper::inflate()
 {
-    QtDroidViewAnimator::inflate();
+    QtAndroidViewAnimator::inflate();
 }

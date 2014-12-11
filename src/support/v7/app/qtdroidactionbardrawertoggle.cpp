@@ -1,10 +1,10 @@
 #include "qtdroidactionbardrawertoggle_p.h"
 
-QtDroidActionBarDrawerToggle::QtDroidActionBarDrawerToggle(QObject *parent) : QtDroidObject(parent)
+QtAndroidActionBarDrawerToggle::QtAndroidActionBarDrawerToggle(QObject *parent) : QtAndroidObject(parent)
 {
 }
 
-void QtDroidActionBarDrawerToggle::construct(jobject activity, jobject drawer)
+void QtAndroidActionBarDrawerToggle::construct(jobject activity, jobject drawer)
 {
     QAndroidJniObject toggle("android/support/v7/app/ActionBarDrawerToggle",
                              "(Landroid/app/Activity;Landroid/support/v4/widget/DrawerLayout;II)V",

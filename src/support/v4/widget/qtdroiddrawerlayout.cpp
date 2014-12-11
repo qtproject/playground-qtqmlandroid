@@ -3,49 +3,49 @@
 #include "qtdroidfunctions_p.h"
 #include <QtCore/qcoreevent.h>
 
-QtDroidDrawerLayout::QtDroidDrawerLayout(QtDroidView *parent) :
-    QtDroidViewGroup(parent), m_toggle(0)
+QtAndroidDrawerLayout::QtAndroidDrawerLayout(QtAndroidView *parent) :
+    QtAndroidViewGroup(parent), m_toggle(0)
 {
 }
 
-QtDroidDrawerLayoutParams *QtDroidDrawerLayout::qmlAttachedProperties(QObject *object)
+QtAndroidDrawerLayoutParams *QtAndroidDrawerLayout::qmlAttachedProperties(QObject *object)
 {
-    QtDroidView *view = qobject_cast<QtDroidView*>(object);
+    QtAndroidView *view = qobject_cast<QtAndroidView*>(object);
     if (view)
-        return new QtDroidDrawerLayoutParams(view);
+        return new QtAndroidDrawerLayoutParams(view);
     return 0;
 }
 
-void QtDroidDrawerLayout::closeDrawers()
+void QtAndroidDrawerLayout::closeDrawers()
 {
-    QtDroid::callVoidMethod(instance(), "closeDrawers");
+    QtAndroid::callVoidMethod(instance(), "closeDrawers");
 }
 
-void QtDroidDrawerLayout::closeDrawer(int gravity)
+void QtAndroidDrawerLayout::closeDrawer(int gravity)
 {
-    QtDroid::callIntMethod(instance(), "closeDrawer", gravity);
+    QtAndroid::callIntMethod(instance(), "closeDrawer", gravity);
 }
 
-QAndroidJniObject QtDroidDrawerLayout::construct()
+QAndroidJniObject QtAndroidDrawerLayout::construct()
 {
     return QAndroidJniObject("android/support/v4/widget/DrawerLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidDrawerLayout::inflate()
+void QtAndroidDrawerLayout::inflate()
 {
-    QtDroidViewGroup::inflate();
+    QtAndroidViewGroup::inflate();
 
     if (m_toggle)
         m_toggle->construct(ctx().object(), instance().object());
 }
 
-void QtDroidDrawerLayout::childEvent(QChildEvent *event)
+void QtAndroidDrawerLayout::childEvent(QChildEvent *event)
 {
-    QtDroidViewGroup::childEvent(event);
+    QtAndroidViewGroup::childEvent(event);
 
     // TODO: dynamic add/remove
     if (!m_toggle && event->added())
-        m_toggle = qobject_cast<QtDroidActionBarDrawerToggle *>(event->child());
+        m_toggle = qobject_cast<QtAndroidActionBarDrawerToggle *>(event->child());
 }

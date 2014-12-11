@@ -4,27 +4,27 @@
 #include "qtdroidfunctions_p.h"
 #include <QtAndroidExtras/qandroidjniobject.h>
 
-QtDroidTabSpec::QtDroidTabSpec(QtDroidView *view) : QObject(view)
+QtAndroidTabSpec::QtAndroidTabSpec(QtAndroidView *view) : QObject(view)
 {
-    QtDroidView *parent = qobject_cast<QtDroidView *>(view->parent());
+    QtAndroidView *parent = qobject_cast<QtAndroidView *>(view->parent());
     if (parent)
         parent->setIdentifier(16908305); // TODO: android.R.id.tabcontent
 }
 
-QtDroidTabSpec *QtDroidTabSpec::qmlAttachedProperties(QObject *object)
+QtAndroidTabSpec *QtAndroidTabSpec::qmlAttachedProperties(QObject *object)
 {
-    QtDroidView *view = qobject_cast<QtDroidView*>(object);
+    QtAndroidView *view = qobject_cast<QtAndroidView*>(object);
     if (view)
-        return new QtDroidTabSpec(view);
+        return new QtAndroidTabSpec(view);
     return 0;
 }
 
-QString QtDroidTabSpec::label() const
+QString QtAndroidTabSpec::label() const
 {
     return m_label;
 }
 
-void QtDroidTabSpec::setLabel(const QString &label)
+void QtAndroidTabSpec::setLabel(const QString &label)
 {
     if (m_label != label) {
         m_label = label;
@@ -33,16 +33,16 @@ void QtDroidTabSpec::setLabel(const QString &label)
     }
 }
 
-void QtDroidTabSpec::setup(QtDroidTabHost *h, int index)
+void QtAndroidTabSpec::setup(QtAndroidTabHost *h, int index)
 {
     QAndroidJniObject host = h->instance();
 
     int id = -1;
-    QtDroidView *content = qobject_cast<QtDroidView *>(parent());
+    QtAndroidView *content = qobject_cast<QtAndroidView *>(parent());
     if (content)
         id = content->identifier();
 
-    QtDroid::callFunction([=]() {
+    QtAndroid::callFunction([=]() {
         QAndroidJniObject spec = host.callObjectMethod("newTabSpec",
                                                        "(Ljava/lang/String;)Landroid/widget/TabHost$TabSpec;",
                                                        QAndroidJniObject::fromString(QString::number(index)).object());

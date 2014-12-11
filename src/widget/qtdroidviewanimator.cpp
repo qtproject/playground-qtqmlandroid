@@ -1,91 +1,91 @@
 #include "qtdroidviewanimator_p.h"
 #include "qtdroidfunctions_p.h"
 
-QtDroidViewAnimator::QtDroidViewAnimator(QtDroidView *parent) : QtDroidFrameLayout(parent)
+QtAndroidViewAnimator::QtAndroidViewAnimator(QtAndroidView *parent) : QtAndroidFrameLayout(parent)
 {
 }
 
-int QtDroidViewAnimator::displayedChild() const
+int QtAndroidViewAnimator::displayedChild() const
 {
     if (m_displayedChild.isNull())
         return 0;
     return m_displayedChild.value();
 }
 
-void QtDroidViewAnimator::setDisplayedChild(int child)
+void QtAndroidViewAnimator::setDisplayedChild(int child)
 {
     if (child != displayedChild()) {
         m_displayedChild = child;
-        QtDroid::callIntMethod(instance(), "setDisplayedChild", child);
+        QtAndroid::callIntMethod(instance(), "setDisplayedChild", child);
         emit displayedChildChanged();
     }
 }
 
-int QtDroidViewAnimator::inAnimation() const
+int QtAndroidViewAnimator::inAnimation() const
 {
     if (m_inAnimation.isNull())
         return -1;
     return m_inAnimation.value();
 }
 
-void QtDroidViewAnimator::setInAnimation(int animation)
+void QtAndroidViewAnimator::setInAnimation(int animation)
 {
     if (animation != inAnimation()) {
         m_inAnimation = animation;
         if (instance().isValid()) {
-            QtDroid::callFunction([=]() {
+            QtAndroid::callFunction([=]() {
                 instance().callMethod<void>("setInAnimation", "(Landroid/content/Context;I)V", ctx().object(), animation);
             });
         }
-        QtDroid::callIntMethod(instance(), "setInAnimation", animation);
+        QtAndroid::callIntMethod(instance(), "setInAnimation", animation);
         emit inAnimationChanged();
     }
 }
 
-int QtDroidViewAnimator::outAnimation() const
+int QtAndroidViewAnimator::outAnimation() const
 {
     if (m_outAnimation.isNull())
         return -1;
     return m_outAnimation.value();
 }
 
-void QtDroidViewAnimator::setOutAnimation(int animation)
+void QtAndroidViewAnimator::setOutAnimation(int animation)
 {
     if (animation != outAnimation()) {
         m_outAnimation = animation;
         if (instance().isValid()) {
-            QtDroid::callFunction([=]() {
+            QtAndroid::callFunction([=]() {
                 instance().callMethod<void>("setOutAnimation", "(Landroid/content/Context;I)V", ctx().object(), animation);
             });
         }
-        QtDroid::callIntMethod(instance(), "setInAnimation", animation);
+        QtAndroid::callIntMethod(instance(), "setInAnimation", animation);
         emit inAnimationChanged();
     }
 }
 
-void QtDroidViewAnimator::showNext()
+void QtAndroidViewAnimator::showNext()
 {
-    QtDroid::callVoidMethod(instance(), "showNext");
+    QtAndroid::callVoidMethod(instance(), "showNext");
 }
 
-void QtDroidViewAnimator::showPrevious()
+void QtAndroidViewAnimator::showPrevious()
 {
-    QtDroid::callVoidMethod(instance(), "showPrevious");
+    QtAndroid::callVoidMethod(instance(), "showPrevious");
 }
 
-QAndroidJniObject QtDroidViewAnimator::construct()
+QAndroidJniObject QtAndroidViewAnimator::construct()
 {
     return QAndroidJniObject("android/widget/ViewAnimator",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidViewAnimator::inflate()
+void QtAndroidViewAnimator::inflate()
 {
-    QtDroidFrameLayout::inflate();
+    QtAndroidFrameLayout::inflate();
 
     if (!m_displayedChild.isNull())
-        QtDroid::callIntMethod(instance(), "setDisplayedChild", m_displayedChild.value());
+        QtAndroid::callIntMethod(instance(), "setDisplayedChild", m_displayedChild.value());
     if (!m_inAnimation.isNull())
         instance().callMethod<void>("setInAnimation", "(Landroid/content/Context;I)V", ctx().object(), m_inAnimation.value());
     if (!m_outAnimation.isNull())

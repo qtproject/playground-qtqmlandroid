@@ -8,41 +8,41 @@
 #include <QtAndroidExtras/qandroidfunctions.h>
 #include <QtAndroidExtras/qandroidjnienvironment.h>
 
-QtDroidActivity::QtDroidActivity(QObject *parent) :
-    QtDroidContext(parent), m_view(0), m_optionsMenu(0), m_actionBar(0)
+QtAndroidActivity::QtAndroidActivity(QObject *parent) :
+    QtAndroidContext(parent), m_view(0), m_optionsMenu(0), m_actionBar(0)
 {
     // TODO: multiple activities?
     setInstance(QtAndroid::androidActivity());
 }
 
-QtDroidActionBar *QtDroidActivity::actionBar() const
+QtAndroidActionBar *QtAndroidActivity::actionBar() const
 {
     return m_actionBar;
 }
 
-void QtDroidActivity::setActionBar(QtDroidActionBar *bar)
+void QtAndroidActivity::setActionBar(QtAndroidActionBar *bar)
 {
     // TODO: dynamic changes
     m_actionBar = bar;
 }
 
-QtDroidMenu *QtDroidActivity::optionsMenu() const
+QtAndroidMenu *QtAndroidActivity::optionsMenu() const
 {
     return m_optionsMenu;
 }
 
-void QtDroidActivity::setOptionsMenu(QtDroidMenu *menu)
+void QtAndroidActivity::setOptionsMenu(QtAndroidMenu *menu)
 {
     // TODO: dynamic changes
     m_optionsMenu = menu;
 }
 
-QtDroidView *QtDroidActivity::contentView() const
+QtAndroidView *QtAndroidActivity::contentView() const
 {
     return m_view;
 }
 
-void QtDroidActivity::setContentView(QtDroidView *view)
+void QtAndroidActivity::setContentView(QtAndroidView *view)
 {
     if (m_view != view) {
         if (m_view)
@@ -53,19 +53,19 @@ void QtDroidActivity::setContentView(QtDroidView *view)
     }
 }
 
-void QtDroidActivity::classBegin()
+void QtAndroidActivity::classBegin()
 {
-    QtDroidContext::classBegin();
+    QtAndroidContext::classBegin();
 }
 
-void QtDroidActivity::componentComplete()
+void QtAndroidActivity::componentComplete()
 {
-    QtDroidContext::componentComplete();
+    QtAndroidContext::componentComplete();
 
     QAndroidJniObject activity = instance();
-    QtDroid::callFunction([=]() {
+    QtAndroid::callFunction([=]() {
         if (m_optionsMenu) {
-            foreach (QtDroidMenuItem *item, m_optionsMenu->items()) {
+            foreach (QtAndroidMenuItem *item, m_optionsMenu->items()) {
                 activity.callMethod<void>("addOptionsMenuItem",
                                           "(Ljava/lang/String;)V",
                                           QAndroidJniObject::fromString(item->title()).object());

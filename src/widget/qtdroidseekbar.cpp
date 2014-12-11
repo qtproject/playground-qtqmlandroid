@@ -1,19 +1,19 @@
 #include "qtdroidseekbar_p.h"
 
-QtDroidSeekBar::QtDroidSeekBar(QtDroidView *parent) : QtDroidAbsSeekBar(parent)
+QtAndroidSeekBar::QtAndroidSeekBar(QtAndroidView *parent) : QtAndroidAbsSeekBar(parent)
 {
 }
 
-QAndroidJniObject QtDroidSeekBar::construct()
+QAndroidJniObject QtAndroidSeekBar::construct()
 {
     return QAndroidJniObject("android/widget/SeekBar",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidSeekBar::inflate()
+void QtAndroidSeekBar::inflate()
 {
-    QtDroidAbsSeekBar::inflate();
+    QtAndroidAbsSeekBar::inflate();
 
     QAndroidJniObject bar = instance();
     m_listener = QAndroidJniObject("qtdroid/widget/QtSeekBarListener",
@@ -28,7 +28,7 @@ void QtDroidSeekBar::inflate()
     }
 }
 
-void QtDroidSeekBar::registerNativeMethods(jobject listener)
+void QtAndroidSeekBar::registerNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onProgressChanged", "(JIZ)V", reinterpret_cast<void *>(onProgressChanged)}};
 
@@ -38,11 +38,11 @@ void QtDroidSeekBar::registerNativeMethods(jobject listener)
     env->DeleteLocalRef(cls);
 }
 
-void QtDroidSeekBar::onProgressChanged(JNIEnv *env, jobject object, jlong instance, jint progress, jboolean fromUser)
+void QtAndroidSeekBar::onProgressChanged(JNIEnv *env, jobject object, jlong instance, jint progress, jboolean fromUser)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtDroidSeekBar *bar = reinterpret_cast<QtDroidSeekBar *>(instance);
+    QtAndroidSeekBar *bar = reinterpret_cast<QtAndroidSeekBar *>(instance);
     if (bar && fromUser)
         QMetaObject::invokeMethod(bar, "updateProgress", Qt::QueuedConnection, Q_ARG(int, progress));
 }

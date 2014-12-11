@@ -1,17 +1,17 @@
 #include "qtdroidabsseekbar_p.h"
 
-QtDroidAbsSeekBar::QtDroidAbsSeekBar(QtDroidView *parent) : QtDroidProgressBar(parent)
+QtAndroidAbsSeekBar::QtAndroidAbsSeekBar(QtAndroidView *parent) : QtAndroidProgressBar(parent)
 {
 }
 
-QAndroidJniObject QtDroidAbsSeekBar::construct()
+QAndroidJniObject QtAndroidAbsSeekBar::construct()
 {
     return QAndroidJniObject("android/widget/AbsSeekBar",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidAbsSeekBar::inflate()
+void QtAndroidAbsSeekBar::inflate()
 {
-    QtDroidProgressBar::inflate();
+    QtAndroidProgressBar::inflate();
 }

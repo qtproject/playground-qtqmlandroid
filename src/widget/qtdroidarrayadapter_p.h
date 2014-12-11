@@ -6,13 +6,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidArrayAdapter : public QtDroidBaseAdapter
+class QtAndroidArrayAdapter : public QtAndroidBaseAdapter
 {
     Q_OBJECT
     Q_PROPERTY(QStringList array READ array WRITE setArray NOTIFY arrayChanged)
 
 public:
-    explicit QtDroidArrayAdapter(QObject *parent = 0);
+    explicit QtAndroidArrayAdapter(QObject *parent = 0);
 
     QStringList array() const;
     void setArray(const QStringList &array);
@@ -20,7 +20,7 @@ public:
     int count() const Q_DECL_OVERRIDE;
     Q_INVOKABLE QString getItem(int position) const;
 
-    void setup(QtDroidAdapterView *view) Q_DECL_OVERRIDE;
+    void setup(QtAndroidAdapterView *view) Q_DECL_OVERRIDE;
 
 public Q_SLOTS:
     void clear() Q_DECL_OVERRIDE;

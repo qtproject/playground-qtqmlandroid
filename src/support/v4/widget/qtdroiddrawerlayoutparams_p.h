@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidDrawerLayoutParams : public QtDroidMarginLayoutParams
+class QtAndroidDrawerLayoutParams : public QtAndroidMarginLayoutParams
 {
     Q_OBJECT
     Q_PROPERTY(int gravity READ gravity WRITE setGravity NOTIFY gravityChanged) // TODO Gravity
 
 public:
-    explicit QtDroidDrawerLayoutParams(QtDroidView *view);
+    explicit QtAndroidDrawerLayoutParams(QtAndroidView *view);
 
     int gravity() const;
     void setGravity(int gravity);

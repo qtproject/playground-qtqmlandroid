@@ -5,14 +5,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidScrollView : public QtDroidFrameLayout
+class QtAndroidScrollView : public QtAndroidFrameLayout
 {
     Q_OBJECT
     Q_PROPERTY(int scrollX READ scrollX WRITE setScrollX NOTIFY scrollXChanged)
     Q_PROPERTY(int scrollY READ scrollY WRITE setScrollY NOTIFY scrollYChanged)
 
 public:
-    explicit QtDroidScrollView(QtDroidView *parent = 0);
+    explicit QtAndroidScrollView(QtAndroidView *parent = 0);
 
     int scrollX() const;
     void setScrollX(int x);
@@ -36,8 +36,8 @@ private Q_SLOTS:
     bool updateScrollY(int y);
 
 private:
-    QtDroidOptional<int> m_scrollX;
-    QtDroidOptional<int> m_scrollY;
+    QtAndroidOptional<int> m_scrollX;
+    QtAndroidOptional<int> m_scrollY;
 };
 
 QT_END_NAMESPACE

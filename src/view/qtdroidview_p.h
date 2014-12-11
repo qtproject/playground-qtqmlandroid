@@ -6,15 +6,15 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidContext;
-class QtDroidLayoutParams;
+class QtAndroidContext;
+class QtAndroidLayoutParams;
 
-class QtDroidView : public QtDroidObject
+class QtAndroidView : public QtAndroidObject
 {
     Q_OBJECT
-    Q_PROPERTY(QtDroidContext *context READ context NOTIFY contextChanged)
-    Q_PROPERTY(QtDroidView *parent READ parentView WRITE setParentView NOTIFY parentChanged)
-    Q_PROPERTY(QQmlListProperty<QtDroidView> children READ children NOTIFY childrenChanged)
+    Q_PROPERTY(QtAndroidContext *context READ context NOTIFY contextChanged)
+    Q_PROPERTY(QtAndroidView *parent READ parentView WRITE setParentView NOTIFY parentChanged)
+    Q_PROPERTY(QQmlListProperty<QtAndroidView> children READ children NOTIFY childrenChanged)
     Q_PROPERTY(bool focus READ hasFocus NOTIFY focusChanged)
     Q_PROPERTY(qreal x READ x WRITE setX NOTIFY xChanged)
     Q_PROPERTY(qreal y READ y WRITE setY NOTIFY yChanged)
@@ -22,21 +22,21 @@ class QtDroidView : public QtDroidObject
     Q_PROPERTY(qreal height READ height WRITE setHeight NOTIFY heightChanged) // TODO: reset
 
 public:
-    explicit QtDroidView(QtDroidView *parent = 0);
-    ~QtDroidView();
+    explicit QtAndroidView(QtAndroidView *parent = 0);
+    ~QtAndroidView();
 
     int identifier() const;
     void setIdentifier(int id);
 
     QAndroidJniObject ctx() const;
-    QtDroidContext *context() const;
-    void setContext(QtDroidContext *context);
+    QtAndroidContext *context() const;
+    void setContext(QtAndroidContext *context);
 
-    QtDroidView *parentView() const;
-    void setParentView(QtDroidView *parent);
+    QtAndroidView *parentView() const;
+    void setParentView(QtAndroidView *parent);
 
-    QList<QtDroidView *> childViews() const;
-    QQmlListProperty<QtDroidView> children();
+    QList<QtAndroidView *> childViews() const;
+    QQmlListProperty<QtAndroidView> children();
 
     bool hasFocus() const;
 
@@ -61,13 +61,13 @@ public:
     };
 
     union ViewChangeData {
-        ViewChangeData(QtDroidView *v) : view(v) {}
-        ViewChangeData(QtDroidContext *c) : context(c) {}
+        ViewChangeData(QtAndroidView *v) : view(v) {}
+        ViewChangeData(QtAndroidContext *c) : context(c) {}
         ViewChangeData(qreal n) : number(n) {}
         ViewChangeData(bool b) : boolean(b) {}
 
-        QtDroidView *view;
-        QtDroidContext *context;
+        QtAndroidView *view;
+        QtAndroidContext *context;
         qreal number;
         bool boolean;
     };
@@ -87,13 +87,13 @@ Q_SIGNALS:
 protected:
     virtual void viewChange(ViewChange change, const ViewChangeData &data);
 
-    void addChild(QtDroidView *child);
-    void removeChild(QtDroidView *child);
+    void addChild(QtAndroidView *child);
+    void removeChild(QtAndroidView *child);
 
-    static void children_append(QQmlListProperty<QtDroidView> *list, QtDroidView *child);
-    static int children_count(QQmlListProperty<QtDroidView> *list);
-    static QtDroidView *children_at(QQmlListProperty<QtDroidView> *list, int index);
-    static void children_clear(QQmlListProperty<QtDroidView> *list);
+    static void children_append(QQmlListProperty<QtAndroidView> *list, QtAndroidView *child);
+    static int children_count(QQmlListProperty<QtAndroidView> *list);
+    static QtAndroidView *children_at(QQmlListProperty<QtAndroidView> *list, int index);
+    static void children_clear(QQmlListProperty<QtAndroidView> *list);
 
     virtual QAndroidJniObject construct();
     virtual void inflate();
@@ -112,24 +112,24 @@ private Q_SLOTS:
 
 private:
     void invalidateLayoutParams();
-    void setLayoutParams(QtDroidLayoutParams *params);
+    void setLayoutParams(QtAndroidLayoutParams *params);
 
     int m_id;
-    QtDroidContext *m_context;
-    QtDroidView *m_parent;
-    QList<QtDroidView *> m_children;
+    QtAndroidContext *m_context;
+    QtAndroidView *m_parent;
+    QList<QtAndroidView *> m_children;
 
     QAndroidJniObject m_listener;
 
     bool m_layoutParamsDirty;
-    QtDroidLayoutParams *m_layoutParams;
+    QtAndroidLayoutParams *m_layoutParams;
 
-    QtDroidOptional<bool> m_focus;
+    QtAndroidOptional<bool> m_focus;
     qreal m_x, m_y, m_width, m_height;
 
-    friend class QtDroidLayoutParams;
-    friend class QtDroidViewGroup;
-    friend class QtDroidActivity;
+    friend class QtAndroidLayoutParams;
+    friend class QtAndroidViewGroup;
+    friend class QtAndroidActivity;
 };
 
 QT_END_NAMESPACE

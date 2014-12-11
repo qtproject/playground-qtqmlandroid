@@ -5,18 +5,18 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidRadioButton;
+class QtAndroidRadioButton;
 
-class QtDroidRadioGroup : public QtDroidLinearLayout
+class QtAndroidRadioGroup : public QtAndroidLinearLayout
 {
     Q_OBJECT
-    Q_PROPERTY(QtDroidRadioButton *checkedButton READ checkedButton WRITE setCheckedButton NOTIFY checkedButtonChanged)
+    Q_PROPERTY(QtAndroidRadioButton *checkedButton READ checkedButton WRITE setCheckedButton NOTIFY checkedButtonChanged)
 
 public:
-    explicit QtDroidRadioGroup(QtDroidView *parent = 0);
+    explicit QtAndroidRadioGroup(QtAndroidView *parent = 0);
 
-    QtDroidRadioButton *checkedButton() const;
-    void setCheckedButton(QtDroidRadioButton *button);
+    QtAndroidRadioButton *checkedButton() const;
+    void setCheckedButton(QtAndroidRadioButton *button);
 
 public Q_SLOTS:
     void clearCheck();
@@ -33,11 +33,11 @@ protected:
 
 private Q_SLOTS:
     void updateCheckedButtonId(int checkedId);
-    bool updateCheckedButton(QtDroidRadioButton *button);
+    bool updateCheckedButton(QtAndroidRadioButton *button);
 
 private:
     QAndroidJniObject m_listener;
-    QtDroidRadioButton* m_checkedButton;
+    QtAndroidRadioButton* m_checkedButton;
 };
 
 QT_END_NAMESPACE

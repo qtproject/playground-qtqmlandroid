@@ -5,22 +5,22 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidRelativeLayoutParams : public QtDroidMarginLayoutParams
+class QtAndroidRelativeLayoutParams : public QtAndroidMarginLayoutParams
 {
     Q_OBJECT
-    Q_PROPERTY(QtDroidView *above READ above WRITE setAbove NOTIFY aboveChanged)
-    Q_PROPERTY(QtDroidView *below READ below WRITE setBelow NOTIFY belowChanged)
-    Q_PROPERTY(QtDroidView *alignTop READ alignTop WRITE setAlignTop NOTIFY alignTopChanged)
-    Q_PROPERTY(QtDroidView *alignLeft READ alignLeft WRITE setAlignLeft NOTIFY alignLeftChanged)
-    Q_PROPERTY(QtDroidView *alignRight READ alignRight WRITE setAlignRight NOTIFY alignRightChanged)
-    Q_PROPERTY(QtDroidView *alignBottom READ alignBottom WRITE setAlignBottom NOTIFY alignBottomChanged)
-    Q_PROPERTY(QtDroidView *alignStart READ alignStart WRITE setAlignStart NOTIFY alignStartChanged)
-    Q_PROPERTY(QtDroidView *alignEnd READ alignEnd WRITE setAlignEnd NOTIFY alignEndChanged)
-    Q_PROPERTY(QtDroidView *alignBaseline READ alignBaseline WRITE setAlignBaseline NOTIFY alignBaselineChanged)
-    Q_PROPERTY(QtDroidView *toLeftOf READ toLeftOf WRITE setToLeftOf NOTIFY toLeftOfChanged)
-    Q_PROPERTY(QtDroidView *toRightOf READ toRightOf WRITE setToRightOf NOTIFY toRightOfChanged)
-    Q_PROPERTY(QtDroidView *toStartOf READ toStartOf WRITE setToStartOf NOTIFY toStartOfChanged)
-    Q_PROPERTY(QtDroidView *toEndOf READ toEndOf WRITE setToEndOf NOTIFY toEndOfChanged)
+    Q_PROPERTY(QtAndroidView *above READ above WRITE setAbove NOTIFY aboveChanged)
+    Q_PROPERTY(QtAndroidView *below READ below WRITE setBelow NOTIFY belowChanged)
+    Q_PROPERTY(QtAndroidView *alignTop READ alignTop WRITE setAlignTop NOTIFY alignTopChanged)
+    Q_PROPERTY(QtAndroidView *alignLeft READ alignLeft WRITE setAlignLeft NOTIFY alignLeftChanged)
+    Q_PROPERTY(QtAndroidView *alignRight READ alignRight WRITE setAlignRight NOTIFY alignRightChanged)
+    Q_PROPERTY(QtAndroidView *alignBottom READ alignBottom WRITE setAlignBottom NOTIFY alignBottomChanged)
+    Q_PROPERTY(QtAndroidView *alignStart READ alignStart WRITE setAlignStart NOTIFY alignStartChanged)
+    Q_PROPERTY(QtAndroidView *alignEnd READ alignEnd WRITE setAlignEnd NOTIFY alignEndChanged)
+    Q_PROPERTY(QtAndroidView *alignBaseline READ alignBaseline WRITE setAlignBaseline NOTIFY alignBaselineChanged)
+    Q_PROPERTY(QtAndroidView *toLeftOf READ toLeftOf WRITE setToLeftOf NOTIFY toLeftOfChanged)
+    Q_PROPERTY(QtAndroidView *toRightOf READ toRightOf WRITE setToRightOf NOTIFY toRightOfChanged)
+    Q_PROPERTY(QtAndroidView *toStartOf READ toStartOf WRITE setToStartOf NOTIFY toStartOfChanged)
+    Q_PROPERTY(QtAndroidView *toEndOf READ toEndOf WRITE setToEndOf NOTIFY toEndOfChanged)
     Q_PROPERTY(bool alignParentTop READ alignParentTop WRITE setAlignParentTop NOTIFY alignParentTopChanged)
     Q_PROPERTY(bool alignParentLeft READ alignParentLeft WRITE setAlignParentLeft NOTIFY alignParentLeftChanged)
     Q_PROPERTY(bool alignParentRight READ alignParentRight WRITE setAlignParentRight NOTIFY alignParentRightChanged)
@@ -33,46 +33,46 @@ class QtDroidRelativeLayoutParams : public QtDroidMarginLayoutParams
     Q_PROPERTY(bool centerInParent READ centerInParent WRITE setCenterInParent NOTIFY centerInParentChanged)
 
 public:
-    explicit QtDroidRelativeLayoutParams(QtDroidView *view);
+    explicit QtAndroidRelativeLayoutParams(QtAndroidView *view);
 
-    QtDroidView *above() const;
-    void setAbove(QtDroidView *view);
+    QtAndroidView *above() const;
+    void setAbove(QtAndroidView *view);
 
-    QtDroidView *below() const;
-    void setBelow(QtDroidView *view);
+    QtAndroidView *below() const;
+    void setBelow(QtAndroidView *view);
 
-    QtDroidView *alignTop() const;
-    void setAlignTop(QtDroidView *view);
+    QtAndroidView *alignTop() const;
+    void setAlignTop(QtAndroidView *view);
 
-    QtDroidView *alignLeft() const;
-    void setAlignLeft(QtDroidView *view);
+    QtAndroidView *alignLeft() const;
+    void setAlignLeft(QtAndroidView *view);
 
-    QtDroidView *alignRight() const;
-    void setAlignRight(QtDroidView *view);
+    QtAndroidView *alignRight() const;
+    void setAlignRight(QtAndroidView *view);
 
-    QtDroidView *alignBottom() const;
-    void setAlignBottom(QtDroidView *view);
+    QtAndroidView *alignBottom() const;
+    void setAlignBottom(QtAndroidView *view);
 
-    QtDroidView *alignStart() const;
-    void setAlignStart(QtDroidView *view);
+    QtAndroidView *alignStart() const;
+    void setAlignStart(QtAndroidView *view);
 
-    QtDroidView *alignEnd() const;
-    void setAlignEnd(QtDroidView *view);
+    QtAndroidView *alignEnd() const;
+    void setAlignEnd(QtAndroidView *view);
 
-    QtDroidView *alignBaseline() const;
-    void setAlignBaseline(QtDroidView *view);
+    QtAndroidView *alignBaseline() const;
+    void setAlignBaseline(QtAndroidView *view);
 
-    QtDroidView *toLeftOf() const;
-    void setToLeftOf(QtDroidView *view);
+    QtAndroidView *toLeftOf() const;
+    void setToLeftOf(QtAndroidView *view);
 
-    QtDroidView *toRightOf() const;
-    void setToRightOf(QtDroidView *view);
+    QtAndroidView *toRightOf() const;
+    void setToRightOf(QtAndroidView *view);
 
-    QtDroidView *toStartOf() const;
-    void setToStartOf(QtDroidView *view);
+    QtAndroidView *toStartOf() const;
+    void setToStartOf(QtAndroidView *view);
 
-    QtDroidView *toEndOf() const;
-    void setToEndOf(QtDroidView *view);
+    QtAndroidView *toEndOf() const;
+    void setToEndOf(QtAndroidView *view);
 
     bool alignParentTop() const;
     void setAlignParentTop(bool align);
@@ -135,19 +135,19 @@ protected:
     void inflate(QAndroidJniObject &params) Q_DECL_OVERRIDE;
 
 private:
-    QtDroidView *m_above;
-    QtDroidView *m_below;
-    QtDroidView *m_alignTop;
-    QtDroidView *m_alignLeft;
-    QtDroidView *m_alignRight;
-    QtDroidView *m_alignBottom;
-    QtDroidView *m_alignStart;
-    QtDroidView *m_alignEnd;
-    QtDroidView *m_alignBaseline;
-    QtDroidView *m_toLeftOf;
-    QtDroidView *m_toRightOf;
-    QtDroidView *m_toStartOf;
-    QtDroidView *m_toEndOf;
+    QtAndroidView *m_above;
+    QtAndroidView *m_below;
+    QtAndroidView *m_alignTop;
+    QtAndroidView *m_alignLeft;
+    QtAndroidView *m_alignRight;
+    QtAndroidView *m_alignBottom;
+    QtAndroidView *m_alignStart;
+    QtAndroidView *m_alignEnd;
+    QtAndroidView *m_alignBaseline;
+    QtAndroidView *m_toLeftOf;
+    QtAndroidView *m_toRightOf;
+    QtAndroidView *m_toStartOf;
+    QtAndroidView *m_toEndOf;
 
     bool m_alignParentTop;
     bool m_alignParentLeft;

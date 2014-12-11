@@ -9,7 +9,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidObject : public QObject, public QQmlParserStatus
+class QtAndroidObject : public QObject, public QQmlParserStatus
 {
     Q_OBJECT
     Q_PROPERTY(QQmlListProperty<QObject> data READ data NOTIFY dataChanged)
@@ -17,7 +17,7 @@ class QtDroidObject : public QObject, public QQmlParserStatus
     Q_INTERFACES(QQmlParserStatus)
 
 public:
-    explicit QtDroidObject(QObject *parent = 0);
+    explicit QtAndroidObject(QObject *parent = 0);
 
     QAndroidJniObject instance() const;
     void setInstance(const QAndroidJniObject &instance);

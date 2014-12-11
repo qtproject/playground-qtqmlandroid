@@ -6,7 +6,7 @@
 #include <QtAndroidExtras/qandroidjniobject.h>
 #include <QtAndroidExtras/qandroidjnienvironment.h>
 
-namespace QtDroid {
+namespace QtAndroid {
 
 void callFunction(std::function<void()> method)
 {

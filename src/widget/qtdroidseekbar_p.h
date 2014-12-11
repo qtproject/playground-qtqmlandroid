@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidSeekBar : public QtDroidAbsSeekBar
+class QtAndroidSeekBar : public QtAndroidAbsSeekBar
 {
     Q_OBJECT
 
 public:
-    explicit QtDroidSeekBar(QtDroidView *parent = 0);
+    explicit QtAndroidSeekBar(QtAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject construct() Q_DECL_OVERRIDE;

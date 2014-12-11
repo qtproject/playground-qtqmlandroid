@@ -9,7 +9,7 @@ QT_BEGIN_NAMESPACE
 class QJSEngine;
 class QQmlEngine;
 
-class QtDroidR : public QObject
+class QtAndroidR : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QQmlPropertyMap *anim READ anim CONSTANT)
@@ -36,7 +36,7 @@ class QtDroidR : public QObject
     Q_PROPERTY(QQmlPropertyMap *xml READ xml CONSTANT)
 
 public:
-    QtDroidR();
+    QtAndroidR();
 
     QQmlPropertyMap *anim();
     QQmlPropertyMap *animator();

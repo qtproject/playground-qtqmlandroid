@@ -52,18 +52,18 @@
 
 QT_BEGIN_NAMESPACE
 
-struct QtDroidNothing {};
+struct QtAndroidNothing {};
 
 template<typename T>
-class QtDroidOptional
+class QtAndroidOptional
 {
 private:
-    typedef bool (QtDroidOptional::*RestrictedBool)() const;
+    typedef bool (QtAndroidOptional::*RestrictedBool)() const;
 
 public:
-    Q_DECL_CONSTEXPR inline QtDroidOptional() Q_DECL_NOTHROW : null(true) {}
+    Q_DECL_CONSTEXPR inline QtAndroidOptional() Q_DECL_NOTHROW : null(true) {}
 
-    inline QtDroidOptional(const QtDroidOptional &other) :
+    inline QtAndroidOptional(const QtAndroidOptional &other) :
         null(other.null)
     {
         if (!null)
@@ -71,7 +71,7 @@ public:
     }
 
 #ifdef Q_COMPILER_RVALUE_REFS
-    inline QtDroidOptional(QtDroidOptional &&other) :
+    inline QtAndroidOptional(QtAndroidOptional &&other) :
         null(other.null)
     {
         if (!null)
@@ -79,35 +79,35 @@ public:
     }
 #endif
 
-    Q_DECL_CONSTEXPR inline QtDroidOptional(QtDroidNothing) Q_DECL_NOTHROW : null(true) {}
+    Q_DECL_CONSTEXPR inline QtAndroidOptional(QtAndroidNothing) Q_DECL_NOTHROW : null(true) {}
 
-    inline QtDroidOptional(const T &value) :
+    inline QtAndroidOptional(const T &value) :
         null(false)
     {
         new (ptr()) T(value);
     }
 
 #ifdef Q_COMPILER_RVALUE_REFS
-    inline QtDroidOptional(T &&value) :
+    inline QtAndroidOptional(T &&value) :
         null(false)
     {
         new (ptr()) T(qMove(value));
     }
 #endif
 
-    inline ~QtDroidOptional()
+    inline ~QtAndroidOptional()
     {
         if (!null)
             ptr()->~T();
     }
 
-    inline QtDroidOptional &operator=(QtDroidNothing)
+    inline QtAndroidOptional &operator=(QtAndroidNothing)
     {
         reset();
         return *this;
     }
 
-    inline QtDroidOptional &operator=(const QtDroidOptional &other)
+    inline QtAndroidOptional &operator=(const QtAndroidOptional &other)
     {
         if (other.isNull() == isNull()) {
             if (!null)
@@ -123,7 +123,7 @@ public:
     }
 
 #ifdef Q_COMPILER_RVALUE_REFS
-    inline QtDroidOptional &operator=(QtDroidOptional &&other)
+    inline QtAndroidOptional &operator=(QtAndroidOptional &&other)
     {
         if (other.isNull() == isNull()) {
             if (!null)
@@ -139,7 +139,7 @@ public:
     }
 #endif
 
-    inline QtDroidOptional &operator=(const T &value)
+    inline QtAndroidOptional &operator=(const T &value)
     {
         if (!null) {
             this->value() = value;
@@ -152,7 +152,7 @@ public:
     }
 
 #ifdef Q_COMPILER_RVALUE_REFS
-    inline QtDroidOptional &operator=(T &&value)
+    inline QtAndroidOptional &operator=(T &&value)
     {
         if (!null) {
             this->value() = qMove(value);
@@ -170,20 +170,20 @@ public:
 #ifndef Q_QDOC
     inline T &value() Q_DECL_LVALUE_FUNCTION
     {
-        Q_ASSERT_X(!null, "QtDroidOptional::value", "QtDroidOptional is null");
+        Q_ASSERT_X(!null, "QtAndroidOptional::value", "QtAndroidOptional is null");
         return *ptr();
     }
 
     inline const T &value() const Q_DECL_LVALUE_FUNCTION
     {
-        Q_ASSERT_X(!null, "QtDroidOptional::value", "QtDroidOptional is null");
+        Q_ASSERT_X(!null, "QtAndroidOptional::value", "QtAndroidOptional is null");
         return *ptr();
     }
 
 #ifdef Q_COMPILER_RVALUE_REFS
     inline T &&value() &&
     {
-        Q_ASSERT_X(!null, "QtDroidOptional::value", "QtDroidOptional is null");
+        Q_ASSERT_X(!null, "QtAndroidOptional::value", "QtAndroidOptional is null");
         return qMove(*ptr());
     }
 #endif
@@ -198,7 +198,7 @@ public:
         return null ? defaultValue : value();
     }
 
-    inline void swap(QtDroidOptional &other) Q_DECL_NOEXCEPT_EXPR(noexcept(qSwap(value(), other.value()))
+    inline void swap(QtAndroidOptional &other) Q_DECL_NOEXCEPT_EXPR(noexcept(qSwap(value(), other.value()))
                                                            && noexcept(T(qMove(other.value()))))
     {
         if (null == other.null) {
@@ -227,37 +227,37 @@ public:
 #ifndef Q_QDOC
     inline T &operator*() Q_DECL_LVALUE_FUNCTION
     {
-        Q_ASSERT_X(!null, "QtDroidOptional::operator*", "QtDroidOptional is null");
+        Q_ASSERT_X(!null, "QtAndroidOptional::operator*", "QtAndroidOptional is null");
         return *ptr();
     }
 
     inline const T &operator*() const Q_DECL_LVALUE_FUNCTION
     {
-        Q_ASSERT_X(!null, "QtDroidOptional::operator*", "QtDroidOptional is null");
+        Q_ASSERT_X(!null, "QtAndroidOptional::operator*", "QtAndroidOptional is null");
         return *ptr();
     }
 
 #ifdef Q_COMPILER_RVALUE_REFS
     inline T &&operator * () &&
     {
-        Q_ASSERT_X(!null, "QtDroidOptional::operator*", "QtDroidOptional is null");
+        Q_ASSERT_X(!null, "QtAndroidOptional::operator*", "QtAndroidOptional is null");
         return qMove(*ptr());
     }
 #endif
 
     inline T *operator->()
     {
-        Q_ASSERT_X(!null, "QtDroidOptional::operator->", "QtDroidOptional is null");
+        Q_ASSERT_X(!null, "QtAndroidOptional::operator->", "QtAndroidOptional is null");
         return ptr();
     }
 
     inline const T *operator->() const
     {
-        Q_ASSERT_X(!null, "QtDroidOptional::operator->", "QtDroidOptional is null");
+        Q_ASSERT_X(!null, "QtAndroidOptional::operator->", "QtAndroidOptional is null");
         return ptr();
     }
 
-    Q_DECL_CONSTEXPR inline operator RestrictedBool() const { return null ? Q_NULLPTR : &QtDroidOptional::isNull; }
+    Q_DECL_CONSTEXPR inline operator RestrictedBool() const { return null ? Q_NULLPTR : &QtAndroidOptional::isNull; }
 
 #else
     inline T &operator*();
@@ -288,16 +288,16 @@ private:
 };
 
 template<typename T>
-inline QtDroidOptional<T> qMakeOptional(const T &value)
+inline QtAndroidOptional<T> qMakeOptional(const T &value)
 {
-    return QtDroidOptional<T>(value);
+    return QtAndroidOptional<T>(value);
 }
 
 template <>
-class QtDroidOptional<void>
+class QtAndroidOptional<void>
 {
 private:
-    typedef bool (QtDroidOptional<void>::*RestrictedBool)() const;
+    typedef bool (QtAndroidOptional<void>::*RestrictedBool)() const;
 public:
     // all compiler-generated special member functions are ok!
 
@@ -311,45 +311,45 @@ public:
 };
 
 template<typename T>
-Q_DECL_CONSTEXPR inline bool operator==(const QtDroidOptional<T> &lhs, const QtDroidOptional<T> &rhs)
+Q_DECL_CONSTEXPR inline bool operator==(const QtAndroidOptional<T> &lhs, const QtAndroidOptional<T> &rhs)
 {
     return (rhs.isNull() && lhs.isNull())
             || (!rhs.isNull() && !lhs.isNull() && lhs.value() == rhs.value());
 }
 
 template<typename T>
-Q_DECL_CONSTEXPR inline bool operator!=(const QtDroidOptional<T> &lhs, const QtDroidOptional<T> &rhs)
+Q_DECL_CONSTEXPR inline bool operator!=(const QtAndroidOptional<T> &lhs, const QtAndroidOptional<T> &rhs)
 {
     return !(lhs == rhs);
 }
 
 template<typename T>
-Q_DECL_CONSTEXPR inline bool operator<(const QtDroidOptional<T> &lhs, const QtDroidOptional<T> &rhs)
+Q_DECL_CONSTEXPR inline bool operator<(const QtAndroidOptional<T> &lhs, const QtAndroidOptional<T> &rhs)
 {
     return (lhs.isNull() && !rhs.isNull())
             || (!rhs.isNull() && !lhs.isNull() && lhs.value() < rhs.value());
 }
 
 template<typename T>
-Q_DECL_CONSTEXPR inline bool operator>(const QtDroidOptional<T> &lhs, const QtDroidOptional<T> &rhs)
+Q_DECL_CONSTEXPR inline bool operator>(const QtAndroidOptional<T> &lhs, const QtAndroidOptional<T> &rhs)
 {
     return rhs < lhs;
 }
 
 template<typename T>
-Q_DECL_CONSTEXPR inline bool operator<=(const QtDroidOptional<T> &lhs, const QtDroidOptional<T> &rhs)
+Q_DECL_CONSTEXPR inline bool operator<=(const QtAndroidOptional<T> &lhs, const QtAndroidOptional<T> &rhs)
 {
     return !(lhs > rhs);
 }
 
 template<typename T>
-Q_DECL_CONSTEXPR inline bool operator>=(const QtDroidOptional<T> &lhs, const QtDroidOptional<T> &rhs)
+Q_DECL_CONSTEXPR inline bool operator>=(const QtAndroidOptional<T> &lhs, const QtAndroidOptional<T> &rhs)
 {
     return !(lhs < rhs);
 }
 
 template <typename T>
-Q_DECL_CONSTEXPR inline uint qHash(const QtDroidOptional<T> &key, uint seed = 0)
+Q_DECL_CONSTEXPR inline uint qHash(const QtAndroidOptional<T> &key, uint seed = 0)
 {
     return key ? seed : qHash(*key, seed) ;
 }
@@ -358,4 +358,4 @@ QT_END_NAMESPACE
 
 #undef Q_DECL_LVALUE_FUNCTION
 
-#endif // QtDroidOptional_H
+#endif // QtAndroidOptional_H

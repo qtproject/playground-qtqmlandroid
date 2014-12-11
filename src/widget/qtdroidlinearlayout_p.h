@@ -7,7 +7,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidLinearLayout : public QtDroidViewGroup
+class QtAndroidLinearLayout : public QtAndroidViewGroup
 {
     Q_OBJECT
     Q_PROPERTY(bool baselineAligned READ isBaselineAligned WRITE setBaselineAligned NOTIFY baselineAlignedChanged)
@@ -18,9 +18,9 @@ class QtDroidLinearLayout : public QtDroidViewGroup
     Q_ENUMS(Orientation)
 
 public:
-    explicit QtDroidLinearLayout(QtDroidView *parent = 0);
+    explicit QtAndroidLinearLayout(QtAndroidView *parent = 0);
 
-    static QtDroidLinearLayoutParams *qmlAttachedProperties(QObject *object);
+    static QtAndroidLinearLayoutParams *qmlAttachedProperties(QObject *object);
 
     enum Orientation {
         HORIZONTAL = 0,
@@ -57,17 +57,17 @@ protected:
     void inflate() Q_DECL_OVERRIDE;
 
 private:
-    QtDroidOptional<bool> m_baselineAligned;
-    QtDroidOptional<bool> m_baselineAlignedChildIndex;
+    QtAndroidOptional<bool> m_baselineAligned;
+    QtAndroidOptional<bool> m_baselineAlignedChildIndex;
     // TODO: Drawable divider
     // TODO: int gravity
-    QtDroidOptional<bool> m_measureWithLargestChild;
-    QtDroidOptional<Orientation> m_orientation;
-    QtDroidOptional<qreal> m_weightSum;
+    QtAndroidOptional<bool> m_measureWithLargestChild;
+    QtAndroidOptional<Orientation> m_orientation;
+    QtAndroidOptional<qreal> m_weightSum;
 };
 
 QT_END_NAMESPACE
 
-QML_DECLARE_TYPEINFO(QtDroidLinearLayout, QML_HAS_ATTACHED_PROPERTIES)
+QML_DECLARE_TYPEINFO(QtAndroidLinearLayout, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDLINEARLAYOUT_P_H

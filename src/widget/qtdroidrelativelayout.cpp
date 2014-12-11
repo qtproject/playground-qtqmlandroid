@@ -1,25 +1,25 @@
 #include "qtdroidrelativelayout_p.h"
 
-QtDroidRelativeLayout::QtDroidRelativeLayout(QtDroidView *parent) : QtDroidViewGroup(parent)
+QtAndroidRelativeLayout::QtAndroidRelativeLayout(QtAndroidView *parent) : QtAndroidViewGroup(parent)
 {
 }
 
-QtDroidRelativeLayoutParams *QtDroidRelativeLayout::qmlAttachedProperties(QObject *object)
+QtAndroidRelativeLayoutParams *QtAndroidRelativeLayout::qmlAttachedProperties(QObject *object)
 {
-    QtDroidView *view = qobject_cast<QtDroidView*>(object);
+    QtAndroidView *view = qobject_cast<QtAndroidView*>(object);
     if (view)
-        return new QtDroidRelativeLayoutParams(view);
+        return new QtAndroidRelativeLayoutParams(view);
     return 0;
 }
 
-QAndroidJniObject QtDroidRelativeLayout::construct()
+QAndroidJniObject QtAndroidRelativeLayout::construct()
 {
     return QAndroidJniObject("android/widget/RelativeLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidRelativeLayout::inflate()
+void QtAndroidRelativeLayout::inflate()
 {
-    QtDroidViewGroup::inflate();
+    QtAndroidViewGroup::inflate();
 }

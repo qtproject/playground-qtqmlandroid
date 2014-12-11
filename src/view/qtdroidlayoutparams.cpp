@@ -2,20 +2,20 @@
 #include "qtdroidfunctions_p.h"
 #include "qtdroidview_p.h"
 
-QtDroidLayoutParams::QtDroidLayoutParams(QtDroidView *view) :
+QtAndroidLayoutParams::QtAndroidLayoutParams(QtAndroidView *view) :
     QObject(view), m_view(view)
 {
     m_view->setLayoutParams(this);
 }
 
-int QtDroidLayoutParams::width() const
+int QtAndroidLayoutParams::width() const
 {
     if (m_width.isNull())
         return MATCH_PARENT;
     return m_width.value();
 }
 
-void QtDroidLayoutParams::setWidth(int value)
+void QtAndroidLayoutParams::setWidth(int value)
 {
     if (value != width()) {
         m_width = value;
@@ -24,14 +24,14 @@ void QtDroidLayoutParams::setWidth(int value)
     }
 }
 
-int QtDroidLayoutParams::height() const
+int QtAndroidLayoutParams::height() const
 {
     if (m_height.isNull())
         return MATCH_PARENT;
     return m_height.value();
 }
 
-void QtDroidLayoutParams::setHeight(int value)
+void QtAndroidLayoutParams::setHeight(int value)
 {
     if (value != height()) {
         m_height = value;
@@ -40,10 +40,10 @@ void QtDroidLayoutParams::setHeight(int value)
     }
 }
 
-void QtDroidLayoutParams::apply(QtDroidView *v)
+void QtAndroidLayoutParams::apply(QtAndroidView *v)
 {
     QAndroidJniObject view = v->instance();
-    QtDroid::callFunction([=]() {
+    QtAndroid::callFunction([=]() {
         QAndroidJniObject params = construct();
         inflate(params);
         view.callMethod<void>("setLayoutParams",
@@ -52,14 +52,14 @@ void QtDroidLayoutParams::apply(QtDroidView *v)
     });
 }
 
-QAndroidJniObject QtDroidLayoutParams::construct()
+QAndroidJniObject QtAndroidLayoutParams::construct()
 {
     return QAndroidJniObject("android/view/ViewGroup$LayoutParams",
                              "(II)V",
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtDroidLayoutParams::inflate(QAndroidJniObject &params)
+void QtAndroidLayoutParams::inflate(QAndroidJniObject &params)
 {
     if (!m_width.isNull())
         params.setField<int>("width", m_width.value());

@@ -6,14 +6,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidFrameLayout : public QtDroidViewGroup
+class QtAndroidFrameLayout : public QtAndroidViewGroup
 {
     Q_OBJECT
 
 public:
-    explicit QtDroidFrameLayout(QtDroidView *parent = 0);
+    explicit QtAndroidFrameLayout(QtAndroidView *parent = 0);
 
-    static QtDroidFrameLayoutParams *qmlAttachedProperties(QObject *object);
+    static QtAndroidFrameLayoutParams *qmlAttachedProperties(QObject *object);
 
 protected:
     QAndroidJniObject construct() Q_DECL_OVERRIDE;
@@ -22,6 +22,6 @@ protected:
 
 QT_END_NAMESPACE
 
-QML_DECLARE_TYPEINFO(QtDroidFrameLayout, QML_HAS_ATTACHED_PROPERTIES)
+QML_DECLARE_TYPEINFO(QtAndroidFrameLayout, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTDROIDFRAMELAYOUT_P_H

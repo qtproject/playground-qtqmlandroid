@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidMenuItem : public QObject
+class QtAndroidMenuItem : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
 
 public:
-    explicit QtDroidMenuItem(QObject *parent = 0);
+    explicit QtAndroidMenuItem(QObject *parent = 0);
 
     QString title() const;
     void setTitle(const QString &title);

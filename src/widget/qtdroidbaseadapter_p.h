@@ -5,19 +5,19 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidAdapterView;
+class QtAndroidAdapterView;
 
-class QtDroidBaseAdapter : public QObject
+class QtAndroidBaseAdapter : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int count READ count NOTIFY countChanged)
 
 public:
-    explicit QtDroidBaseAdapter(QObject *parent = 0);
+    explicit QtAndroidBaseAdapter(QObject *parent = 0);
 
     virtual int count() const = 0;
 
-    virtual void setup(QtDroidAdapterView *view) = 0;
+    virtual void setup(QtAndroidAdapterView *view) = 0;
 
 public Q_SLOTS:
     virtual void clear() = 0;

@@ -1,17 +1,17 @@
 #include "qtdroidswitch_p.h"
 
-QtDroidSwitch::QtDroidSwitch(QtDroidView *parent) : QtDroidCompoundButton(parent)
+QtAndroidSwitch::QtAndroidSwitch(QtAndroidView *parent) : QtAndroidCompoundButton(parent)
 {
 }
 
-QAndroidJniObject QtDroidSwitch::construct()
+QAndroidJniObject QtAndroidSwitch::construct()
 {
     return QAndroidJniObject("android/widget/Switch",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidSwitch::inflate()
+void QtAndroidSwitch::inflate()
 {
-    QtDroidCompoundButton::inflate();
+    QtAndroidCompoundButton::inflate();
 }

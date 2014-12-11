@@ -1,5 +1,5 @@
 #include "qtdroidbaseadapter_p.h"
 
-QtDroidBaseAdapter::QtDroidBaseAdapter(QObject *parent) : QObject(parent)
+QtAndroidBaseAdapter::QtAndroidBaseAdapter(QObject *parent) : QObject(parent)
 {
 }

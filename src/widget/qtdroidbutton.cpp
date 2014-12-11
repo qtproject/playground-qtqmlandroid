@@ -1,17 +1,17 @@
 #include "qtdroidbutton_p.h"
 
-QtDroidButton::QtDroidButton(QtDroidView *parent) : QtDroidTextView(parent)
+QtAndroidButton::QtAndroidButton(QtAndroidView *parent) : QtAndroidTextView(parent)
 {
 }
 
-QAndroidJniObject QtDroidButton::construct()
+QAndroidJniObject QtAndroidButton::construct()
 {
     return QAndroidJniObject("android/widget/Button",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidButton::inflate()
+void QtAndroidButton::inflate()
 {
-    QtDroidTextView::inflate();
+    QtAndroidTextView::inflate();
 }

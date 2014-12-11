@@ -5,38 +5,38 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidView;
-class QtDroidMenu;
-class QtDroidActionBar;
+class QtAndroidView;
+class QtAndroidMenu;
+class QtAndroidActionBar;
 
-class QtDroidActivity : public QtDroidContext
+class QtAndroidActivity : public QtAndroidContext
 {
     Q_OBJECT
-    Q_PROPERTY(QtDroidActionBar *actionBar READ actionBar WRITE setActionBar)
-    Q_PROPERTY(QtDroidMenu *optionsMenu READ optionsMenu WRITE setOptionsMenu)
-    Q_PROPERTY(QtDroidView *contentView READ contentView WRITE setContentView)
+    Q_PROPERTY(QtAndroidActionBar *actionBar READ actionBar WRITE setActionBar)
+    Q_PROPERTY(QtAndroidMenu *optionsMenu READ optionsMenu WRITE setOptionsMenu)
+    Q_PROPERTY(QtAndroidView *contentView READ contentView WRITE setContentView)
     Q_CLASSINFO("DefaultProperty", "contentView")
 
 public:
-    explicit QtDroidActivity(QObject *parent = 0);
+    explicit QtAndroidActivity(QObject *parent = 0);
 
-    QtDroidActionBar *actionBar() const;
-    void setActionBar(QtDroidActionBar *bar);
+    QtAndroidActionBar *actionBar() const;
+    void setActionBar(QtAndroidActionBar *bar);
 
-    QtDroidMenu *optionsMenu() const;
-    void setOptionsMenu(QtDroidMenu *menu);
+    QtAndroidMenu *optionsMenu() const;
+    void setOptionsMenu(QtAndroidMenu *menu);
 
-    QtDroidView *contentView() const;
-    void setContentView(QtDroidView *view);
+    QtAndroidView *contentView() const;
+    void setContentView(QtAndroidView *view);
 
 protected:
     void classBegin() Q_DECL_OVERRIDE;
     void componentComplete() Q_DECL_OVERRIDE;
 
 private:
-    QtDroidView *m_view;
-    QtDroidMenu *m_optionsMenu;
-    QtDroidActionBar *m_actionBar;
+    QtAndroidView *m_view;
+    QtAndroidMenu *m_optionsMenu;
+    QtAndroidActionBar *m_actionBar;
 };
 
 QT_END_NAMESPACE

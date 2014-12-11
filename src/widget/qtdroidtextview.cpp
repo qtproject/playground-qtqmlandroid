@@ -2,87 +2,87 @@
 #include "qtdroidfunctions_p.h"
 #include "qtdroidcolor_p.h"
 
-QtDroidTextView::QtDroidTextView(QtDroidView *parent) : QtDroidView(parent)
+QtAndroidTextView::QtAndroidTextView(QtAndroidView *parent) : QtAndroidView(parent)
 {
 }
 
-QString QtDroidTextView::text() const
+QString QtAndroidTextView::text() const
 {
     return m_text;
 }
 
-void QtDroidTextView::setText(const QString &text)
+void QtAndroidTextView::setText(const QString &text)
 {
     if (m_text != text) {
         m_text = text;
-        QtDroid::callTextMethod(instance(), "setText", text);
+        QtAndroid::callTextMethod(instance(), "setText", text);
         emit textChanged();
     }
 }
 
-int QtDroidTextView::textColor() const
+int QtAndroidTextView::textColor() const
 {
     if (m_textColor.isNull())
-        return QtDroidColor::BLACK; // TODO
+        return QtAndroidColor::BLACK; // TODO
     return m_textColor.value();
 }
 
-void QtDroidTextView::setTextColor(int color)
+void QtAndroidTextView::setTextColor(int color)
 {
     if (color != textColor()) {
         m_textColor = color;
-        QtDroid::callIntMethod(instance(), "setTextColor", color);
+        QtAndroid::callIntMethod(instance(), "setTextColor", color);
         emit textColorChanged();
     }
 }
 
-qreal QtDroidTextView::textSize() const
+qreal QtAndroidTextView::textSize() const
 {
     if (m_textSize.isNull())
         return -1;
     return m_textSize.value();
 }
 
-void QtDroidTextView::setTextSize(qreal size)
+void QtAndroidTextView::setTextSize(qreal size)
 {
     if (size != textSize()) {
         m_textSize = size;
-        QtDroid::callRealMethod(instance(), "setTextSize", size);
+        QtAndroid::callRealMethod(instance(), "setTextSize", size);
         emit textSizeChanged();
     }
 }
 
-QString QtDroidTextView::hint() const
+QString QtAndroidTextView::hint() const
 {
     return m_hint;
 }
 
-void QtDroidTextView::setHint(const QString &hint)
+void QtAndroidTextView::setHint(const QString &hint)
 {
     if (m_hint != hint) {
         m_hint = hint;
-        QtDroid::callTextMethod(instance(), "setHint", hint);
+        QtAndroid::callTextMethod(instance(), "setHint", hint);
         emit hintChanged();
     }
 }
 
-QAndroidJniObject QtDroidTextView::construct()
+QAndroidJniObject QtAndroidTextView::construct()
 {
     return QAndroidJniObject("android/widget/TextView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtDroidTextView::inflate()
+void QtAndroidTextView::inflate()
 {
-    QtDroidView::inflate();
+    QtAndroidView::inflate();
 
     if (!m_text.isNull())
-        QtDroid::callTextMethod(instance(), "setText", m_text);
+        QtAndroid::callTextMethod(instance(), "setText", m_text);
     if (!m_textColor.isNull())
-        QtDroid::callIntMethod(instance(), "setTextColor", m_textColor.value());
+        QtAndroid::callIntMethod(instance(), "setTextColor", m_textColor.value());
     if (!m_textSize.isNull())
-        QtDroid::callRealMethod(instance(), "setTextSize", m_textSize.value());
+        QtAndroid::callRealMethod(instance(), "setTextSize", m_textSize.value());
     if (!m_hint.isNull())
-        QtDroid::callTextMethod(instance(), "setHint", m_hint);
+        QtAndroid::callTextMethod(instance(), "setHint", m_hint);
 }

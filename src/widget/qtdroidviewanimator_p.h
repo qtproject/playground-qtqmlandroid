@@ -5,7 +5,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtDroidViewAnimator : public QtDroidFrameLayout
+class QtAndroidViewAnimator : public QtAndroidFrameLayout
 {
     Q_OBJECT
     Q_PROPERTY(int displayedChild READ displayedChild WRITE setDisplayedChild NOTIFY displayedChildChanged)
@@ -13,7 +13,7 @@ class QtDroidViewAnimator : public QtDroidFrameLayout
     Q_PROPERTY(int outAnimation READ outAnimation WRITE setOutAnimation NOTIFY outAnimationChanged)
 
 public:
-    explicit QtDroidViewAnimator(QtDroidView *parent = 0);
+    explicit QtAndroidViewAnimator(QtAndroidView *parent = 0);
 
     int displayedChild() const;
     void setDisplayedChild(int child);
@@ -38,9 +38,9 @@ protected:
     void inflate() Q_DECL_OVERRIDE;
 
 private:
-    QtDroidOptional<int> m_displayedChild;
-    QtDroidOptional<int> m_inAnimation;
-    QtDroidOptional<int> m_outAnimation;
+    QtAndroidOptional<int> m_displayedChild;
+    QtAndroidOptional<int> m_inAnimation;
+    QtAndroidOptional<int> m_outAnimation;
 };
 
 QT_END_NAMESPACE
