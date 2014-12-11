@@ -1,5 +1,5 @@
-#ifndef QTDROIDSCROLLVIEW_P_H
-#define QTDROIDSCROLLVIEW_P_H
+#ifndef QTANDROIDSCROLLVIEW_P_H
+#define QTANDROIDSCROLLVIEW_P_H
 
 #include "qtdroidframelayout_p.h"
 
@@ -42,4 +42,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDSCROLLVIEW_P_H
+#endif // QTANDROIDSCROLLVIEW_P_H

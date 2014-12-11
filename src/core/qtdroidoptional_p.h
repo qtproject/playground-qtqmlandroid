@@ -39,8 +39,8 @@
 **
 ****************************************************************************/
 
-#ifndef QTDROIDOPTIONAL_P_H
-#define QTDROIDOPTIONAL_P_H
+#ifndef QTANDROIDOPTIONAL_P_H
+#define QTANDROIDOPTIONAL_P_H
 
 #include <QtCore/QHash>
 

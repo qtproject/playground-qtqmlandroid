@@ -1,5 +1,5 @@
-#ifndef QTDROIDSPINNER_P_H
-#define QTDROIDSPINNER_P_H
+#ifndef QTANDROIDSPINNER_P_H
+#define QTANDROIDSPINNER_P_H
 
 #include "qtdroidadapterview_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDSPINNER_P_H
+#endif // QTANDROIDSPINNER_P_H

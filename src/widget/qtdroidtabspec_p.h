@@ -1,5 +1,5 @@
-#ifndef QTDROIDTABSPEC_P_H
-#define QTDROIDTABSPEC_P_H
+#ifndef QTANDROIDTABSPEC_P_H
+#define QTANDROIDTABSPEC_P_H
 
 #include <QtCore/qobject.h>
 #include <QtQml/qqml.h>
@@ -35,4 +35,4 @@ QT_END_NAMESPACE
 
 QML_DECLARE_TYPEINFO(QtAndroidTabSpec, QML_HAS_ATTACHED_PROPERTIES)
 
-#endif // QTDROIDTABSPEC_P_H
+#endif // QTANDROIDTABSPEC_P_H

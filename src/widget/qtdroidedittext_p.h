@@ -1,5 +1,5 @@
-#ifndef QTDROIDEDITTEXT_P_H
-#define QTDROIDEDITTEXT_P_H
+#ifndef QTANDROIDEDITTEXT_P_H
+#define QTANDROIDEDITTEXT_P_H
 
 #include "qtdroidtextview_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDEDITTEXT_P_H
+#endif // QTANDROIDEDITTEXT_P_H

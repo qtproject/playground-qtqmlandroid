@@ -1,5 +1,5 @@
-#ifndef QTDROIDVIEWSWITCHER_P_H
-#define QTDROIDVIEWSWITCHER_P_H
+#ifndef QTANDROIDVIEWSWITCHER_P_H
+#define QTANDROIDVIEWSWITCHER_P_H
 
 #include "qtdroidviewanimator_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDVIEWSWITCHER_P_H
+#endif // QTANDROIDVIEWSWITCHER_P_H

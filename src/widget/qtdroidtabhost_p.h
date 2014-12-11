@@ -1,5 +1,5 @@
-#ifndef QTDROIDTABHOST_P_H
-#define QTDROIDTABHOST_P_H
+#ifndef QTANDROIDTABHOST_P_H
+#define QTANDROIDTABHOST_P_H
 
 #include "qtdroidframelayout_p.h"
 
@@ -28,4 +28,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDTABHOST_P_H
+#endif // QTANDROIDTABHOST_P_H

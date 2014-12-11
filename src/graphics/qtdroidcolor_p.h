@@ -1,5 +1,5 @@
-#ifndef QTDROIDCOLOR_P_H
-#define QTDROIDCOLOR_P_H
+#ifndef QTANDROIDCOLOR_P_H
+#define QTANDROIDCOLOR_P_H
 
 #include <QtCore/qobject.h>
 #include <QtQml/qqmlengine.h>
@@ -39,4 +39,4 @@ public:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDCOLOR_P_H
+#endif // QTANDROIDCOLOR_P_H

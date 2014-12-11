@@ -1,5 +1,5 @@
-#ifndef QTDROIDR_P_H
-#define QTDROIDR_P_H
+#ifndef QTANDROIDR_P_H
+#define QTANDROIDR_P_H
 
 #include <QtCore/qobject.h>
 #include <QtQml/qqmlpropertymap.h>
@@ -90,4 +90,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDR_P_H
+#endif // QTANDROIDR_P_H

@@ -1,5 +1,5 @@
-#ifndef QTDROIDACTIONBAR_P_H
-#define QTDROIDACTIONBAR_P_H
+#ifndef QTANDROIDACTIONBAR_P_H
+#define QTANDROIDACTIONBAR_P_H
 
 #include "qtdroidobject_p.h"
 #include "qtdroidoptional_p.h"
@@ -50,4 +50,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDACTIONBAR_P_H
+#endif // QTANDROIDACTIONBAR_P_H

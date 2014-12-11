@@ -1,5 +1,5 @@
-#ifndef QTDROIDMENUITEM_P_H
-#define QTDROIDMENUITEM_P_H
+#ifndef QTANDROIDMENUITEM_P_H
+#define QTANDROIDMENUITEM_P_H
 
 #include <QtCore/qobject.h>
 
@@ -25,4 +25,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDMENUITEM_P_H
+#endif // QTANDROIDMENUITEM_P_H

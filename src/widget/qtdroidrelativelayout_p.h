@@ -1,5 +1,5 @@
-#ifndef QTDROIDRELATIVELAYOUT_P_H
-#define QTDROIDRELATIVELAYOUT_P_H
+#ifndef QTANDROIDRELATIVELAYOUT_P_H
+#define QTANDROIDRELATIVELAYOUT_P_H
 
 #include "qtdroidviewgroup_p.h"
 #include "qtdroidrelativelayoutparams_p.h"
@@ -49,4 +49,4 @@ QT_END_NAMESPACE
 
 QML_DECLARE_TYPEINFO(QtAndroidRelativeLayout, QML_HAS_ATTACHED_PROPERTIES)
 
-#endif // QTDROIDRELATIVELAYOUT_P_H
+#endif // QTANDROIDRELATIVELAYOUT_P_H

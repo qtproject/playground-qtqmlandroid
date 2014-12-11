@@ -1,5 +1,5 @@
-#ifndef QTDROIDVIEWFLIPPER_P_H
-#define QTDROIDVIEWFLIPPER_P_H
+#ifndef QTANDROIDVIEWFLIPPER_P_H
+#define QTANDROIDVIEWFLIPPER_P_H
 
 #include "qtdroidviewanimator_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDVIEWFLIPPER_P_H
+#endif // QTANDROIDVIEWFLIPPER_P_H

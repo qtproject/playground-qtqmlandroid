@@ -1,5 +1,5 @@
-#ifndef QTDROIDTOGGLEBUTTON_P_H
-#define QTDROIDTOGGLEBUTTON_P_H
+#ifndef QTANDROIDTOGGLEBUTTON_P_H
+#define QTANDROIDTOGGLEBUTTON_P_H
 
 #include "qtdroidcompoundbutton_p.h"
 
@@ -35,4 +35,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDTOGGLEBUTTON_P_H
+#endif // QTANDROIDTOGGLEBUTTON_P_H

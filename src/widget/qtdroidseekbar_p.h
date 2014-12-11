@@ -1,5 +1,5 @@
-#ifndef QTDROIDSEEKBAR_P_H
-#define QTDROIDSEEKBAR_P_H
+#ifndef QTANDROIDSEEKBAR_P_H
+#define QTANDROIDSEEKBAR_P_H
 
 #include "qtdroidabsseekbar_p.h"
 
@@ -25,4 +25,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDSEEKBAR_P_H
+#endif // QTANDROIDSEEKBAR_P_H

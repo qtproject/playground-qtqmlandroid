@@ -1,5 +1,5 @@
-#ifndef QTDROIDVIEW_P_H
-#define QTDROIDVIEW_P_H
+#ifndef QTANDROIDVIEW_P_H
+#define QTANDROIDVIEW_P_H
 
 #include "qtdroidobject_p.h"
 #include "qtdroidoptional_p.h"
@@ -134,4 +134,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDVIEW_P_H
+#endif // QTANDROIDVIEW_P_H

@@ -1,5 +1,5 @@
-#ifndef QTDROIDOBJECT_P_H
-#define QTDROIDOBJECT_P_H
+#ifndef QTANDROIDOBJECT_P_H
+#define QTANDROIDOBJECT_P_H
 
 #include <QtCore/qobject.h>
 #include <QtQml/qqmllist.h>
@@ -45,4 +45,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDOBJECT_P_H
+#endif // QTANDROIDOBJECT_P_H

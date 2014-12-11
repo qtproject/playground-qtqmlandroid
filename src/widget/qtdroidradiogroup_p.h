@@ -1,5 +1,5 @@
-#ifndef QTDROIDRADIOGROUP_P_H
-#define QTDROIDRADIOGROUP_P_H
+#ifndef QTANDROIDRADIOGROUP_P_H
+#define QTANDROIDRADIOGROUP_P_H
 
 #include "qtdroidlinearlayout_p.h"
 
@@ -42,4 +42,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDRADIOGROUP_P_H
+#endif // QTANDROIDRADIOGROUP_P_H

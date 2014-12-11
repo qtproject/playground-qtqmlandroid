@@ -1,5 +1,5 @@
-#ifndef QTDROIDLAYOUTPARAMS_P_H
-#define QTDROIDLAYOUTPARAMS_P_H
+#ifndef QTANDROIDLAYOUTPARAMS_P_H
+#define QTANDROIDLAYOUTPARAMS_P_H
 
 #include <QtCore/qobject.h>
 #include <QtAndroidExtras/qandroidjniobject.h>
@@ -49,4 +49,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDLAYOUTPARAMS_P_H
+#endif // QTANDROIDLAYOUTPARAMS_P_H

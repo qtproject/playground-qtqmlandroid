@@ -1,5 +1,5 @@
-#ifndef QTDROIDGRAVITY_P_H
-#define QTDROIDGRAVITY_P_H
+#ifndef QTANDROIDGRAVITY_P_H
+#define QTANDROIDGRAVITY_P_H
 
 #include <QtCore/qobject.h>
 
@@ -49,4 +49,4 @@ Q_DECLARE_OPERATORS_FOR_FLAGS(QtAndroidGravity::Flags)
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDGRAVITY_P_H
+#endif // QTANDROIDGRAVITY_P_H

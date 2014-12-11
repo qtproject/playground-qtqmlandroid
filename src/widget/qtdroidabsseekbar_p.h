@@ -1,5 +1,5 @@
-#ifndef QTDROIDABSSEEKBAR_P_H
-#define QTDROIDABSSEEKBAR_P_H
+#ifndef QTANDROIDABSSEEKBAR_P_H
+#define QTANDROIDABSSEEKBAR_P_H
 
 #include "qtdroidprogressbar_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDABSSEEKBAR_P_H
+#endif // QTANDROIDABSSEEKBAR_P_H

@@ -1,5 +1,5 @@
-#ifndef QTDROIDLINEARLAYOUT_P_H
-#define QTDROIDLINEARLAYOUT_P_H
+#ifndef QTANDROIDLINEARLAYOUT_P_H
+#define QTANDROIDLINEARLAYOUT_P_H
 
 #include "qtdroidviewgroup_p.h"
 #include "qtdroidoptional_p.h"
@@ -70,4 +70,4 @@ QT_END_NAMESPACE
 
 QML_DECLARE_TYPEINFO(QtAndroidLinearLayout, QML_HAS_ATTACHED_PROPERTIES)
 
-#endif // QTDROIDLINEARLAYOUT_P_H
+#endif // QTANDROIDLINEARLAYOUT_P_H

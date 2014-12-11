@@ -1,5 +1,5 @@
-#ifndef QTDROIDPROGRESSBAR_P_H
-#define QTDROIDPROGRESSBAR_P_H
+#ifndef QTANDROIDPROGRESSBAR_P_H
+#define QTANDROIDPROGRESSBAR_P_H
 
 #include "qtdroidview_p.h"
 #include "qtdroidoptional_p.h"
@@ -62,4 +62,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDPROGRESSBAR_P_H
+#endif // QTANDROIDPROGRESSBAR_P_H

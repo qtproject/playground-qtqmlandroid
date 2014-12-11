@@ -1,5 +1,5 @@
-#ifndef QTDROIDDRAWERLAYOUT_P_H
-#define QTDROIDDRAWERLAYOUT_P_H
+#ifndef QTANDROIDDRAWERLAYOUT_P_H
+#define QTANDROIDDRAWERLAYOUT_P_H
 
 #include "qtdroidviewgroup_p.h"
 #include "qtdroiddrawerlayoutparams_p.h"
@@ -35,4 +35,4 @@ QT_END_NAMESPACE
 
 QML_DECLARE_TYPEINFO(QtAndroidDrawerLayout, QML_HAS_ATTACHED_PROPERTIES)
 
-#endif // QTDROIDDRAWERLAYOUT_P_H
+#endif // QTANDROIDDRAWERLAYOUT_P_H

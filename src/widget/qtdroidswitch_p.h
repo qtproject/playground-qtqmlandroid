@@ -1,5 +1,5 @@
-#ifndef QTDROIDSWITCH_P_H
-#define QTDROIDSWITCH_P_H
+#ifndef QTANDROIDSWITCH_P_H
+#define QTANDROIDSWITCH_P_H
 
 #include "qtdroidcompoundbutton_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDSWITCH_P_H
+#endif // QTANDROIDSWITCH_P_H

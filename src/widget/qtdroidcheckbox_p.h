@@ -1,5 +1,5 @@
-#ifndef QTDROIDCHECKBOX_P_H
-#define QTDROIDCHECKBOX_P_H
+#ifndef QTANDROIDCHECKBOX_P_H
+#define QTANDROIDCHECKBOX_P_H
 
 #include "qtdroidcompoundbutton_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDCHECKBOX_P_H
+#endif // QTANDROIDCHECKBOX_P_H

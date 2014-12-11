@@ -1,5 +1,5 @@
-#ifndef QTDROIDTABWIDGET_P_H
-#define QTDROIDTABWIDGET_P_H
+#ifndef QTANDROIDTABWIDGET_P_H
+#define QTANDROIDTABWIDGET_P_H
 
 #include "qtdroidlinearlayout_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDTABWIDGET_P_H
+#endif // QTANDROIDTABWIDGET_P_H

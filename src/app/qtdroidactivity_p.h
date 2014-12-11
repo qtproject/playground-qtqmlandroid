@@ -1,5 +1,5 @@
-#ifndef QTDROIDACTIVITY_P_H
-#define QTDROIDACTIVITY_P_H
+#ifndef QTANDROIDACTIVITY_P_H
+#define QTANDROIDACTIVITY_P_H
 
 #include "qtdroidcontext_p.h"
 
@@ -41,4 +41,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDACTIVITY_P_H
+#endif // QTANDROIDACTIVITY_P_H

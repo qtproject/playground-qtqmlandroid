@@ -1,5 +1,5 @@
-#ifndef QTDROIDPOPUPMENU_P_H
-#define QTDROIDPOPUPMENU_P_H
+#ifndef QTANDROIDPOPUPMENU_P_H
+#define QTANDROIDPOPUPMENU_P_H
 
 #include "qtdroidobject_p.h"
 #include "qtdroidoptional_p.h"
@@ -44,4 +44,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDPOPUPMENU_P_H
+#endif // QTANDROIDPOPUPMENU_P_H

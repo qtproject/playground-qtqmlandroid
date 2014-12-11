@@ -1,5 +1,5 @@
-#ifndef QTDROIDFRAMELAYOUT_P_H
-#define QTDROIDFRAMELAYOUT_P_H
+#ifndef QTANDROIDFRAMELAYOUT_P_H
+#define QTANDROIDFRAMELAYOUT_P_H
 
 #include "qtdroidviewgroup_p.h"
 #include "qtdroidframelayoutparams_p.h"
@@ -24,4 +24,4 @@ QT_END_NAMESPACE
 
 QML_DECLARE_TYPEINFO(QtAndroidFrameLayout, QML_HAS_ATTACHED_PROPERTIES)
 
-#endif // QTDROIDFRAMELAYOUT_P_H
+#endif // QTANDROIDFRAMELAYOUT_P_H

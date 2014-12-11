@@ -1,5 +1,5 @@
-#ifndef QTDROIDVIEWANIMATOR_P_H
-#define QTDROIDVIEWANIMATOR_P_H
+#ifndef QTANDROIDVIEWANIMATOR_P_H
+#define QTANDROIDVIEWANIMATOR_P_H
 
 #include "qtdroidframelayout_p.h"
 
@@ -45,4 +45,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDVIEWANIMATOR_P_H
+#endif // QTANDROIDVIEWANIMATOR_P_H

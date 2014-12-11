@@ -1,5 +1,5 @@
-#ifndef QTDROIDLISTVIEW_P_H
-#define QTDROIDLISTVIEW_P_H
+#ifndef QTANDROIDLISTVIEW_P_H
+#define QTANDROIDLISTVIEW_P_H
 
 #include "qtdroidadapterview_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDLISTVIEW_P_H
+#endif // QTANDROIDLISTVIEW_P_H

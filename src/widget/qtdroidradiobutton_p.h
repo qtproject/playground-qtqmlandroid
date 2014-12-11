@@ -1,5 +1,5 @@
-#ifndef QTDROIDRADIOBUTTON_P_H
-#define QTDROIDRADIOBUTTON_P_H
+#ifndef QTANDROIDRADIOBUTTON_P_H
+#define QTANDROIDRADIOBUTTON_P_H
 
 #include "qtdroidcompoundbutton_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDRADIOBUTTON_P_H
+#endif // QTANDROIDRADIOBUTTON_P_H

@@ -1,5 +1,5 @@
-#ifndef QTDROIDSPACE_P_H
-#define QTDROIDSPACE_P_H
+#ifndef QTANDROIDSPACE_P_H
+#define QTANDROIDSPACE_P_H
 
 #include "qtdroidview_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDSPACE_P_H
+#endif // QTANDROIDSPACE_P_H

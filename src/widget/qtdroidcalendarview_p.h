@@ -1,5 +1,5 @@
-#ifndef QTDROIDCALENDARVIEW_P_H
-#define QTDROIDCALENDARVIEW_P_H
+#ifndef QTANDROIDCALENDARVIEW_P_H
+#define QTANDROIDCALENDARVIEW_P_H
 
 #include "qtdroidframelayout_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDCALENDARVIEW_P_H
+#endif // QTANDROIDCALENDARVIEW_P_H

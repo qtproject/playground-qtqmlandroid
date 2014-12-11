@@ -1,5 +1,5 @@
-#ifndef QTDROIDFUNCTIONS_P_H
-#define QTDROIDFUNCTIONS_P_H
+#ifndef QTANDROIDFUNCTIONS_P_H
+#define QTANDROIDFUNCTIONS_P_H
 
 #include <functional>
 #include <Qtcore/qglobal.h>
@@ -21,4 +21,4 @@ namespace QtAndroid
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDFUNCTIONS_P_H
+#endif // QTANDROIDFUNCTIONS_P_H

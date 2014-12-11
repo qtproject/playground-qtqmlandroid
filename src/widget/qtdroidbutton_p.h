@@ -1,5 +1,5 @@
-#ifndef QTDROIDBUTTON_P_H
-#define QTDROIDBUTTON_P_H
+#ifndef QTANDROIDBUTTON_P_H
+#define QTANDROIDBUTTON_P_H
 
 #include "qtdroidtextview_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDBUTTON_P_H
+#endif // QTANDROIDBUTTON_P_H

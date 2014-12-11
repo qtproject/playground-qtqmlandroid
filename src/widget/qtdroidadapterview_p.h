@@ -1,5 +1,5 @@
-#ifndef QTDROIDADAPTERVIEW_P_H
-#define QTDROIDADAPTERVIEW_P_H
+#ifndef QTANDROIDADAPTERVIEW_P_H
+#define QTANDROIDADAPTERVIEW_P_H
 
 #include "qtdroidviewgroup_p.h"
 
@@ -39,4 +39,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDADAPTERVIEW_P_H
+#endif // QTANDROIDADAPTERVIEW_P_H

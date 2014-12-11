@@ -1,5 +1,5 @@
-#ifndef QTDROIDCONTEXT_P_H
-#define QTDROIDCONTEXT_P_H
+#ifndef QTANDROIDCONTEXT_P_H
+#define QTANDROIDCONTEXT_P_H
 
 #include "qtdroidobject_p.h"
 #include <QtAndroidExtras/qandroidjniobject.h>
@@ -16,4 +16,4 @@ public:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDCONTEXT_P_H
+#endif // QTANDROIDCONTEXT_P_H

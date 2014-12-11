@@ -1,5 +1,5 @@
-#ifndef QTDROIDTEXTVIEW_P_H
-#define QTDROIDTEXTVIEW_P_H
+#ifndef QTANDROIDTEXTVIEW_P_H
+#define QTANDROIDTEXTVIEW_P_H
 
 #include "qtdroidview_p.h"
 #include "qtdroidoptional_p.h"
@@ -49,4 +49,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTDROIDTEXTVIEW_P_H
+#endif // QTANDROIDTEXTVIEW_P_H
