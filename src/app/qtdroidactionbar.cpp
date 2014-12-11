@@ -1,7 +1,8 @@
 #include "qtdroidactionbar_p.h"
 #include "qtdroidfunctions_p.h"
 
-QtDroidActionBar::QtDroidActionBar(QObject *parent) : QtDroidObject(parent), m_visible(true), m_activity(0)
+QtDroidActionBar::QtDroidActionBar(QObject *parent) :
+    QtDroidObject(parent), m_visible(true), m_elevation(0.0), m_activity(0)
 {
 }
 
@@ -19,6 +20,20 @@ void QtDroidActionBar::setVisible(bool arg)
         else
             QtDroid::callVoidMethod(instance(), "hide");
         emit visibleChanged();
+    }
+}
+
+qreal QtDroidActionBar::elevation() const
+{
+    return m_elevation;
+}
+
+void QtDroidActionBar::setElevation(qreal elevation)
+{
+    if (m_elevation != elevation) {
+        m_elevation = elevation;
+        QtDroid::callRealMethod(instance(), "setElevation", elevation);
+        emit elevationChanged();
     }
 }
 
@@ -63,6 +78,7 @@ void QtDroidActionBar::setActivity(QtDroidActivity *activity)
             QtDroid::callVoidMethod(instance(), "show");
         else
             QtDroid::callVoidMethod(instance(), "hide");
+        QtDroid::callRealMethod(instance(), "setElevation", m_elevation);
         if (!m_title.isNull())
             QtDroid::callTextMethod(instance(), "setTitle", m_title);
         if (!m_subtitle.isNull())

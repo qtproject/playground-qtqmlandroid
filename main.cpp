@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<QtDroidLayoutParams>("qtdroid.view", 0, 1, "Layout", "Layout is an attached property");
     qmlRegisterType<QtDroidMenu>("qtdroid.view", 0, 1, "Menu");
     qmlRegisterType<QtDroidMenuItem>("qtdroid.view", 0, 1, "MenuItem");
-    qmlRegisterType<QtDroidView>();
+    qmlRegisterType<QtDroidView>("qtdroid.view", 0, 1, "View");
     qmlRegisterType<QtDroidViewGroup>();
 
     qmlRegisterType<QtDroidArrayAdapter>("qtdroid.widget", 0, 1, "ArrayAdapter");
