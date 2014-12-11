@@ -2,6 +2,7 @@ import qtdroid.app 0.1
 import qtdroid.view 0.1
 import qtdroid.widget 0.1
 import qtdroid.support.v4.widget 0.1
+import qtdroid.R 0.1
 
 Activity {
     actionBar: ActionBar {
@@ -23,6 +24,8 @@ Activity {
 
         ViewAnimator {
             id: switcher
+            inAnimation: R.anim.slide_in_left
+            outAnimation: R.anim.slide_out_right
 
             ButtonsView { }
             ProgressView { }

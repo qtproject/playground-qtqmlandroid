@@ -9,6 +9,8 @@ class QtDroidViewAnimator : public QtDroidFrameLayout
 {
     Q_OBJECT
     Q_PROPERTY(int displayedChild READ displayedChild WRITE setDisplayedChild NOTIFY displayedChildChanged)
+    Q_PROPERTY(int inAnimation READ inAnimation WRITE setInAnimation NOTIFY inAnimationChanged)
+    Q_PROPERTY(int outAnimation READ outAnimation WRITE setOutAnimation NOTIFY outAnimationChanged)
 
 public:
     explicit QtDroidViewAnimator(QtDroidView *parent = 0);
@@ -16,12 +18,20 @@ public:
     int displayedChild() const;
     void setDisplayedChild(int child);
 
+    int inAnimation() const;
+    void setInAnimation(int animation);
+
+    int outAnimation() const;
+    void setOutAnimation(int animation);
+
 public Q_SLOTS:
     void showNext();
     void showPrevious();
 
 Q_SIGNALS:
     void displayedChildChanged();
+    void inAnimationChanged();
+    void outAnimationChanged();
 
 protected:
     QAndroidJniObject construct() Q_DECL_OVERRIDE;
@@ -29,6 +39,8 @@ protected:
 
 private:
     QtDroidOptional<int> m_displayedChild;
+    QtDroidOptional<int> m_inAnimation;
+    QtDroidOptional<int> m_outAnimation;
 };
 
 QT_END_NAMESPACE
