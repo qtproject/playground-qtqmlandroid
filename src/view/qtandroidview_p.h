@@ -111,7 +111,6 @@ protected:
     static bool onLongClick(JNIEnv *env, jobject object, jlong instance);
 
     bool event(QEvent *event) Q_DECL_OVERRIDE;
-    void customEvent(QEvent *event) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
     bool updateFocus(bool focus);

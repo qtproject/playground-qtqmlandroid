@@ -327,24 +327,20 @@ bool QtAndroidView::event(QEvent *event)
         QtAndroidView *view = qobject_cast<QtAndroidView *>(parent());
         if (view)
             setParentView(view);
+    } else if (event->type() == QEvent::LayoutRequest) {
+        if (m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
+            m_layoutParams->apply(this);
+            m_layoutParamsDirty = false;
+        }
     }
     return QtAndroidObject::event(event);
-}
-
-void QtAndroidView::customEvent(QEvent *event)
-{
-    Q_UNUSED(event);
-    if (m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
-        m_layoutParams->apply(this);
-        m_layoutParamsDirty = false;
-    }
 }
 
 void QtAndroidView::invalidateLayoutParams()
 {
     if (!m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
         m_layoutParamsDirty = true;
-        QCoreApplication::postEvent(this, new QEvent(QEvent::User));
+        QCoreApplication::postEvent(this, new QEvent(QEvent::LayoutRequest));
     }
 }
 
