@@ -49,6 +49,7 @@
 #include "qtandroidviewswitcher_p.h"
 
 #include "qtandroiddrawerlayout_p.h"
+#include "qtandroidswiperefreshlayout_p.h"
 
 #include "qtandroidactionbardrawertoggle_p.h"
 
@@ -108,6 +109,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidViewSwitcher>("android.widget", 21, 0, "ViewSwitcher");
 
     qmlRegisterType<QtAndroidDrawerLayout>("android.support.v4.widget", 21, 0, "DrawerLayout");
+    qmlRegisterType<QtAndroidSwipeRefreshLayout>("android.support.v4.widget", 21, 0, "SwipeRefreshLayout");
 
     qmlRegisterType<QtAndroidActionBarDrawerToggle>("android.support.v7.app", 21, 0, "ActionBarDrawerToggle");
 
