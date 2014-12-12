@@ -26,6 +26,7 @@ public:
 
 Q_SIGNALS:
     void dataChanged();
+    void instanceChanged();
 
 protected:
     bool isComponentComplete() const;

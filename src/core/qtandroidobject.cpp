@@ -15,7 +15,10 @@ QAndroidJniObject QtAndroidObject::instance() const
 
 void QtAndroidObject::setInstance(const QAndroidJniObject &instance)
 {
-    m_instance = instance;
+    if (m_instance != instance) {
+        m_instance = instance;
+        emit instanceChanged();
+    }
 }
 
 bool QtAndroidObject::isComponentComplete() const
