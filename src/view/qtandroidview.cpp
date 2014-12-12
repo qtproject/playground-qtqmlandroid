@@ -15,6 +15,8 @@ QtAndroidView::QtAndroidView(QtAndroidView *parent) : QtAndroidObject(parent),
 
     if (parent)
         setParentView(parent);
+    else
+        QCoreApplication::postEvent(this, new QEvent(QEvent::Polish));
 }
 
 QtAndroidView::~QtAndroidView()

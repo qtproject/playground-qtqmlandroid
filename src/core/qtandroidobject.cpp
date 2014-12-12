@@ -5,7 +5,6 @@
 QtAndroidObject::QtAndroidObject(QObject *parent) :
     QObject(parent), m_complete(false)
 {
-    QCoreApplication::postEvent(this, new QEvent(QEvent::Polish));
 }
 
 QAndroidJniObject QtAndroidObject::instance() const
