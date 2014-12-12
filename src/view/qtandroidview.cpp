@@ -234,6 +234,8 @@ void QtAndroidView::children_clear(QQmlListProperty<QtAndroidView> *list)
 
 QAndroidJniObject QtAndroidView::construct()
 {
+    QTANDROID_ASSERT_ANDROID_THREAD();
+
     return QAndroidJniObject("android/view/View",
                              "(Landroid/content/Context;)V",
                              ctx().object());
@@ -241,6 +243,8 @@ QAndroidJniObject QtAndroidView::construct()
 
 void QtAndroidView::inflate()
 {
+    QTANDROID_ASSERT_ANDROID_THREAD();
+
     QAndroidJniObject view = instance();
     m_listener = QAndroidJniObject("qt/android/view/QtViewListener",
                                    "(Landroid/view/View;J)V",

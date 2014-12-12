@@ -1,6 +1,8 @@
 #ifndef QTANDROIDOBJECT_P_H
 #define QTANDROIDOBJECT_P_H
 
+#include "qtandroidglobal_p.h"
+
 #include <QtCore/qobject.h>
 #include <QtQml/qqmllist.h>
 #include <QtQml/qqmlparserstatus.h>

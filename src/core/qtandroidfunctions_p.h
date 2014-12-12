@@ -2,7 +2,7 @@
 #define QTANDROIDFUNCTIONS_P_H
 
 #include <functional>
-#include <Qtcore/qglobal.h>
+#include <QtCore/qglobal.h>
 
 QT_BEGIN_NAMESPACE
 
