@@ -7,6 +7,7 @@
 QT_BEGIN_NAMESPACE
 
 class QtAndroidActivity;
+class QtAndroidDrawable;
 
 class QtAndroidActionBar : public QtAndroidObject
 {
@@ -15,6 +16,7 @@ class QtAndroidActionBar : public QtAndroidObject
     Q_PROPERTY(qreal elevation READ elevation WRITE setElevation NOTIFY elevationChanged)
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
     Q_PROPERTY(QString subtitle READ subtitle WRITE setSubtitle NOTIFY subtitleChanged)
+    Q_PROPERTY(QtAndroidDrawable *background READ background WRITE setBackground NOTIFY backgroundChanged)
 
 public:
     explicit QtAndroidActionBar(QObject *parent = 0);
@@ -31,6 +33,9 @@ public:
     QString subtitle() const;
     void setSubtitle(const QString &subtitle);
 
+    QtAndroidDrawable *background() const;
+    void setBackground(QtAndroidDrawable *background);
+
     QtAndroidActivity *activity() const;
     void setActivity(QtAndroidActivity *activity);
 
@@ -39,6 +44,7 @@ Q_SIGNALS:
     void elevationChanged();
     void titleChanged();
     void subtitleChanged();
+    void backgroundChanged();
 
 private:
     bool m_visible;
@@ -46,6 +52,7 @@ private:
     QString m_title;
     QString m_subtitle;
     QtAndroidActivity *m_activity;
+    QtAndroidDrawable *m_background;
 };
 
 QT_END_NAMESPACE

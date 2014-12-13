@@ -18,6 +18,7 @@ protected:
 
 private:
     friend class QtAndroidView;
+    friend class QtAndroidActionBar;
 };
 
 QT_END_NAMESPACE
