@@ -16,6 +16,7 @@ HEADERS += \
     $$PWD/qtandroidlinearlayoutparams_p.h \
     $$PWD/qtandroidlistview_p.h \
     $$PWD/qtandroidmarginlayoutparams_p.h \
+    $$PWD/qtandroidnumberpicker_p.h \
     $$PWD/qtandroidpopupmenu_p.h \
     $$PWD/qtandroidprogressbar_p.h \
     $$PWD/qtandroidradiobutton_p.h \
@@ -54,6 +55,7 @@ SOURCES += \
     $$PWD/qtandroidlinearlayoutparams.cpp \
     $$PWD/qtandroidlistview.cpp \
     $$PWD/qtandroidmarginlayoutparams.cpp \
+    $$PWD/qtandroidnumberpicker.cpp \
     $$PWD/qtandroidpopupmenu.cpp \
     $$PWD/qtandroidprogressbar.cpp \
     $$PWD/qtandroidradiobutton.cpp \

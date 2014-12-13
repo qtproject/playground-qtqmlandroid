@@ -28,6 +28,7 @@
 #include "qtandroidlinearlayout_p.h"
 #include "qtandroidlinearlayoutparams_p.h"
 #include "qtandroidlistview_p.h"
+#include "qtandroidnumberpicker_p.h"
 #include "qtandroidpopupmenu_p.h"
 #include "qtandroidprogressbar_p.h"
 #include "qtandroidradiobutton_p.h"
@@ -91,6 +92,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidLinearLayout>("android.widget", 21, 0, "LinearLayout");
     qmlRegisterType<QtAndroidLinearLayoutParams>();
     qmlRegisterType<QtAndroidListView>("android.widget", 21, 0, "ListView");
+    qmlRegisterType<QtAndroidNumberPicker>("android.widget", 21, 0, "NumberPicker");
     qmlRegisterType<QtAndroidPopupMenu>("android.widget", 21, 0, "PopupMenu");
     qmlRegisterType<QtAndroidProgressBar>("android.widget", 21, 0, "ProgressBar");
     qmlRegisterType<QtAndroidRadioButton>("android.widget", 21, 0, "RadioButton");
