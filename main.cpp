@@ -43,6 +43,7 @@
 #include "qtandroidtabspec_p.h"
 #include "qtandroidtabwidget_p.h"
 #include "qtandroidtextview_p.h"
+#include "qtandroidtoast_p.h"
 #include "qtandroidtogglebutton_p.h"
 #include "qtandroidviewanimator_p.h"
 #include "qtandroidviewflipper_p.h"
@@ -103,6 +104,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<QtAndroidTabSpec>("android.widget", 21, 0, "TabSpec", "TabSpec is an attached property");
     qmlRegisterType<QtAndroidTabWidget>("android.widget", 21, 0, "TabWidget");
     qmlRegisterType<QtAndroidTextView>("android.widget", 21, 0, "TextView");
+    qmlRegisterType<QtAndroidToast>("android.widget", 21, 0, "Toast");
     qmlRegisterType<QtAndroidToggleButton>("android.widget", 21, 0, "ToggleButton");
     qmlRegisterType<QtAndroidViewAnimator>("android.widget", 21, 0, "ViewAnimator");
     qmlRegisterType<QtAndroidViewFlipper>("android.widget", 21, 0, "ViewFlipper");

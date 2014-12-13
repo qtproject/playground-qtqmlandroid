@@ -13,7 +13,14 @@ ScrollView {
 
         LinearLayout {
             Button { text: "Ok" }
-            Button { text: "Cancel" }
+            Button {
+                text: "Cancel"
+                onClick: toast.show()
+                Toast {
+                    id: toast
+                    text: "Cancelled"
+                }
+            }
             Space {
                 LinearLayout.weight: 1
                 LinearLayout.width: Layout.WRAP_CONTENT
