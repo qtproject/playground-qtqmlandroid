@@ -32,6 +32,7 @@
 #include "qtandroidprogressbar_p.h"
 #include "qtandroidradiobutton_p.h"
 #include "qtandroidradiogroup_p.h"
+#include "qtandroidratingbar_p.h"
 #include "qtandroidrelativelayout_p.h"
 #include "qtandroidrelativelayoutparams_p.h"
 #include "qtandroidscrollview_p.h"
@@ -94,6 +95,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidProgressBar>("android.widget", 21, 0, "ProgressBar");
     qmlRegisterType<QtAndroidRadioButton>("android.widget", 21, 0, "RadioButton");
     qmlRegisterType<QtAndroidRadioGroup>("android.widget", 21, 0, "RadioGroup");
+    qmlRegisterType<QtAndroidRatingBar>("android.widget", 21, 0, "RatingBar");
     qmlRegisterType<QtAndroidRelativeLayout>("android.widget", 21, 0, "RelativeLayout");
     qmlRegisterType<QtAndroidRelativeLayoutParams>();
     qmlRegisterType<QtAndroidScrollView>("android.widget", 21, 0, "ScrollView");

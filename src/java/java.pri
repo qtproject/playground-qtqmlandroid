@@ -7,6 +7,7 @@ OTHER_FILES += \
     $$PWD/src/qt/android/view/QtViewListener.java \
     $$PWD/src/qt/android/widget/QtCompoundButtonListener.java \
     $$PWD/src/qt/android/widget/QtRadioGroupListener.java \
+    $$PWD/src/qt/android/widget/QtRatingBarListener.java \
     $$PWD/src/qt/android/widget/QtScrollView.java \
     $$PWD/src/qt/android/widget/QtSeekBarListener.java \
     $$PWD/src/qt/android/widget/QtTabHostListener.java

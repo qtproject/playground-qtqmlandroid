@@ -20,6 +20,7 @@ HEADERS += \
     $$PWD/qtandroidprogressbar_p.h \
     $$PWD/qtandroidradiobutton_p.h \
     $$PWD/qtandroidradiogroup_p.h \
+    $$PWD/qtandroidratingbar_p.h \
     $$PWD/qtandroidrelativelayout_p.h \
     $$PWD/qtandroidrelativelayoutparams_p.h \
     $$PWD/qtandroidscrollview_p.h \
@@ -57,6 +58,7 @@ SOURCES += \
     $$PWD/qtandroidprogressbar.cpp \
     $$PWD/qtandroidradiobutton.cpp \
     $$PWD/qtandroidradiogroup.cpp \
+    $$PWD/qtandroidratingbar.cpp \
     $$PWD/qtandroidrelativelayout.cpp \
     $$PWD/qtandroidrelativelayoutparams.cpp \
     $$PWD/qtandroidscrollview.cpp \
