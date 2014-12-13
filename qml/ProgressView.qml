@@ -1,37 +1,62 @@
 import android.widget 21.0
+import android.support.v7.widget 21.0
 
 ScrollView {
     LinearLayout {
-        FrameLayout.topMargin: 48
-        FrameLayout.leftMargin: 48
-        FrameLayout.rightMargin: 48
-        FrameLayout.bottomMargin: 48
+        padding: 48
         orientation: LinearLayout.VERTICAL
 
-        TextView { text: "ProgressBar"; textSize: 18 }
+        CardView {
+            LinearLayout {
+                padding: 48
+                orientation: LinearLayout.VERTICAL
 
-        LinearLayout {
-            ProgressBar { style: ProgressBar.Large }
-            ProgressBar { style: ProgressBar.Medium }
-            ProgressBar { style: ProgressBar.Small }
+                TextView { text: "ProgressBar"; textSize: 18 }
+                Space { LinearLayout.height: 48 }
+                LinearLayout {
+                    ProgressBar { style: ProgressBar.Large }
+                    Space { LinearLayout.width: 48 }
+                    ProgressBar { style: ProgressBar.Medium }
+                    Space { LinearLayout.width: 48 }
+                    ProgressBar { style: ProgressBar.Small }
+                }
+            }
         }
 
-        TextView { text: "ProgressBar (horizontal)"; textSize: 18 }
+        Space { LinearLayout.height: 48 }
 
-        ProgressBar {
-            indeterminate: true
-            style: ProgressBar.Horizontal
+        CardView {
+            LinearLayout {
+                padding: 48
+                orientation: LinearLayout.VERTICAL
+
+                TextView { text: "ProgressBar (horizontal)"; textSize: 18 }
+                Space { LinearLayout.height: 48 }
+                ProgressBar {
+                    indeterminate: true
+                    style: ProgressBar.Horizontal
+                }
+                ProgressBar {
+                    progress: seekBar.progress
+                    style: ProgressBar.Horizontal
+                }
+            }
         }
-        ProgressBar {
-            progress: seekBar.progress
-            style: ProgressBar.Horizontal
-        }
 
-        TextView { text: "SeekBar"; textSize: 18 }
+        Space { LinearLayout.height: 48 }
 
-        SeekBar {
-            id: seekBar
-            progress: 50
+        CardView {
+            LinearLayout {
+                padding: 48
+                orientation: LinearLayout.VERTICAL
+
+                TextView { text: "SeekBar"; textSize: 18 }
+                Space { LinearLayout.height: 48 }
+                SeekBar {
+                    id: seekBar
+                    progress: 50
+                }
+            }
         }
     }
 }

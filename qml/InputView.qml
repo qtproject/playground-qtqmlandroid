@@ -1,24 +1,38 @@
 import android.widget 21.0
+import android.support.v7.widget 21.0
 
 ScrollView {
     LinearLayout {
-        FrameLayout.topMargin: 48
-        FrameLayout.leftMargin: 48
-        FrameLayout.rightMargin: 48
-        FrameLayout.bottomMargin: 48
+        padding: 48
         orientation: LinearLayout.VERTICAL
 
-        TextView { text: "EditText"; textSize: 18 }
+        CardView {
+            LinearLayout {
+                padding: 48
+                orientation: LinearLayout.VERTICAL
 
-        EditText {
-            hint: "Hint..."
+                TextView { text: "EditText"; textSize: 18 }
+                Space { LinearLayout.height: 48 }
+                EditText {
+                    hint: "Hint..."
+                }
+            }
         }
 
-        TextView { text: "Spinner"; textSize: 18 }
+        Space { LinearLayout.height: 48 }
 
-        Spinner {
-            adapter: ArrayAdapter {
-                array: ["Apple", "Banana", "Orange"]
+        CardView {
+            LinearLayout {
+                padding: 48
+                orientation: LinearLayout.VERTICAL
+
+                TextView { text: "Spinner"; textSize: 18 }
+                Space { LinearLayout.height: 48 }
+                Spinner {
+                    adapter: ArrayAdapter {
+                        array: ["Apple", "Banana", "Orange"]
+                    }
+                }
             }
         }
     }
