@@ -6,8 +6,6 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtAndroidActionBarDrawerToggle;
-
 class QtAndroidDrawerLayout : public QtAndroidViewGroup
 {
     Q_OBJECT
@@ -24,11 +22,6 @@ public Q_SLOTS:
 protected:
     QAndroidJniObject construct() Q_DECL_OVERRIDE;
     void inflate() Q_DECL_OVERRIDE;
-
-    void childEvent(QChildEvent *event) Q_DECL_OVERRIDE;
-
-private:
-    QtAndroidActionBarDrawerToggle *m_toggle;
 };
 
 QT_END_NAMESPACE

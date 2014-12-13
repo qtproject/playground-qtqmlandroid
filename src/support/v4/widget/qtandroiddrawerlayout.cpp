@@ -4,7 +4,7 @@
 #include <QtCore/qcoreevent.h>
 
 QtAndroidDrawerLayout::QtAndroidDrawerLayout(QtAndroidView *parent) :
-    QtAndroidViewGroup(parent), m_toggle(0)
+    QtAndroidViewGroup(parent)
 {
 }
 
@@ -37,15 +37,9 @@ void QtAndroidDrawerLayout::inflate()
 {
     QtAndroidViewGroup::inflate();
 
-    if (m_toggle)
-        m_toggle->construct(ctx().object(), instance().object());
-}
-
-void QtAndroidDrawerLayout::childEvent(QChildEvent *event)
-{
-    QtAndroidViewGroup::childEvent(event);
-
-    // TODO: dynamic add/remove
-    if (!m_toggle && event->added())
-        m_toggle = qobject_cast<QtAndroidActionBarDrawerToggle *>(event->child());
+    foreach (QObject *child, QObject::children()) {
+        QtAndroidActionBarDrawerToggle *toggle = qobject_cast<QtAndroidActionBarDrawerToggle *>(child);
+        if (toggle)
+            toggle->construct(ctx(), instance());
+    }
 }

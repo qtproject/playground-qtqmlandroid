@@ -78,10 +78,13 @@ void QtAndroidActionBar::setActivity(QtAndroidActivity *activity)
             QtAndroid::callVoidMethod(instance(), "show");
         else
             QtAndroid::callVoidMethod(instance(), "hide");
-        QtAndroid::callRealMethod(instance(), "setElevation", m_elevation);
         if (!m_title.isNull())
             QtAndroid::callTextMethod(instance(), "setTitle", m_title);
         if (!m_subtitle.isNull())
             QtAndroid::callTextMethod(instance(), "setSubtitle", m_subtitle);
+
+        QtAndroid::callRealMethod(instance(), "setElevation", m_elevation);
+        QtAndroid::callBoolMethod(instance(), "setDisplayHomeAsUpEnabled", true);
+        QtAndroid::callBoolMethod(instance(), "setHomeButtonEnabled", true);
     }
 }
