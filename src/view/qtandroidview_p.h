@@ -23,6 +23,12 @@ class QtAndroidView : public QtAndroidObject
     Q_PROPERTY(qreal width READ width WRITE setWidth NOTIFY widthChanged) // TODO: reset
     Q_PROPERTY(qreal height READ height WRITE setHeight NOTIFY heightChanged) // TODO: reset
 
+    Q_PROPERTY(int padding READ padding WRITE setPadding NOTIFY paddingChanged)
+    Q_PROPERTY(int paddingTop READ paddingTop WRITE setPaddingTop NOTIFY paddingTopChanged)
+    Q_PROPERTY(int paddingLeft READ paddingLeft WRITE setPaddingLeft NOTIFY paddingLeftChanged)
+    Q_PROPERTY(int paddingRight READ paddingRight WRITE setPaddingRight NOTIFY paddingRightChanged)
+    Q_PROPERTY(int paddingBottom READ paddingBottom WRITE setPaddingBottom NOTIFY paddingBottomChanged)
+
 public:
     explicit QtAndroidView(QtAndroidView *parent = 0);
     ~QtAndroidView();
@@ -57,6 +63,21 @@ public:
     qreal height() const;
     void setHeight(qreal height);
 
+    int padding() const;
+    void setPadding(int padding);
+
+    int paddingTop() const;
+    void setPaddingTop(int padding);
+
+    int paddingLeft() const;
+    void setPaddingLeft(int padding);
+
+    int paddingRight() const;
+    void setPaddingRight(int padding);
+
+    int paddingBottom() const;
+    void setPaddingBottom(int padding);
+
     enum ViewChange {
         ViewContextChange,      // data.context
         ViewParentChange,       // data.view
@@ -88,6 +109,11 @@ Q_SIGNALS:
     void yChanged();
     void widthChanged();
     void heightChanged();
+    void paddingChanged();
+    void paddingTopChanged();
+    void paddingLeftChanged();
+    void paddingRightChanged();
+    void paddingBottomChanged();
     void longClick(); // TODO: accept
 
 protected:
@@ -132,6 +158,11 @@ private:
 
     QtAndroidOptional<bool> m_focus;
     qreal m_x, m_y, m_width, m_height;
+    QtAndroidOptional<int> m_padding;
+    QtAndroidOptional<int> m_paddingTop;
+    QtAndroidOptional<int> m_paddingLeft;
+    QtAndroidOptional<int> m_paddingRight;
+    QtAndroidOptional<int> m_paddingBottom;
 
     friend class QtAndroidLayoutParams;
     friend class QtAndroidViewGroup;

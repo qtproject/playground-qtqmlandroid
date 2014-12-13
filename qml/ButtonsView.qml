@@ -4,19 +4,13 @@ import android.support.v7.widget 21.0
 
 ScrollView {
     LinearLayout {
-        FrameLayout.topMargin: 48
-        FrameLayout.leftMargin: 48
-        FrameLayout.rightMargin: 48
-        FrameLayout.bottomMargin: 48
+        padding: 48
         orientation: LinearLayout.VERTICAL
 
         CardView {
             LinearLayout {
+                padding: 48
                 orientation: LinearLayout.VERTICAL
-                FrameLayout.topMargin: 48
-                FrameLayout.leftMargin: 48
-                FrameLayout.rightMargin: 48
-                FrameLayout.bottomMargin: 48
 
                 TextView { text: "Button"; textSize: 18 }
                 Space { LinearLayout.height: 48 }
@@ -51,11 +45,8 @@ ScrollView {
 
         CardView {
             LinearLayout {
+                padding: 48
                 orientation: LinearLayout.VERTICAL
-                FrameLayout.topMargin: 48
-                FrameLayout.leftMargin: 48
-                FrameLayout.rightMargin: 48
-                FrameLayout.bottomMargin: 48
 
                 TextView { text: "ToggleButton"; textSize: 18 }
                 Space { LinearLayout.height: 48 }
@@ -70,11 +61,8 @@ ScrollView {
 
         CardView {
             LinearLayout {
+                padding: 48
                 orientation: LinearLayout.VERTICAL
-                FrameLayout.topMargin: 48
-                FrameLayout.leftMargin: 48
-                FrameLayout.rightMargin: 48
-                FrameLayout.bottomMargin: 48
 
                 TextView { text: "CheckBox"; textSize: 18 }
                 Space { LinearLayout.height: 48 }
@@ -88,11 +76,8 @@ ScrollView {
 
         CardView {
             LinearLayout {
+                padding: 48
                 orientation: LinearLayout.VERTICAL
-                FrameLayout.topMargin: 48
-                FrameLayout.leftMargin: 48
-                FrameLayout.rightMargin: 48
-                FrameLayout.bottomMargin: 48
 
                 TextView { text: "RadioButton"; textSize: 18 }
                 Space { LinearLayout.height: 48 }
@@ -108,15 +93,13 @@ ScrollView {
 
         CardView {
             LinearLayout {
+                padding: 48
                 orientation: LinearLayout.VERTICAL
-                FrameLayout.topMargin: 48
-                FrameLayout.leftMargin: 48
-                FrameLayout.rightMargin: 48
-                FrameLayout.bottomMargin: 48
 
                 TextView { text: "Switch"; textSize: 18 }
                 Space { LinearLayout.height: 48 }
                 Switch { text: "Wifi"; checked: true }
+                Space { LinearLayout.height: 24 }
                 Switch { text: "Bluetooth" }
             }
         }

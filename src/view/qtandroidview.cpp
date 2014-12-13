@@ -173,6 +173,81 @@ void QtAndroidView::setHeight(qreal height)
     }
 }
 
+int QtAndroidView::padding() const
+{
+    if (!m_padding.isNull())
+        return m_padding.value();
+    return 0;
+}
+
+void QtAndroidView::setPadding(int padding)
+{
+    if (m_padding.isNull() || m_padding.value() != padding) {
+        m_padding = padding;
+        emit paddingChanged();
+    }
+}
+
+int QtAndroidView::paddingTop() const
+{
+    if (m_paddingTop.isNull())
+        return padding();
+    return m_paddingTop.value();
+}
+
+void QtAndroidView::setPaddingTop(int padding)
+{
+    if (m_paddingTop.isNull() || m_paddingTop.value() != padding) {
+        m_paddingTop = padding;
+        emit paddingTopChanged();
+    }
+}
+
+int QtAndroidView::paddingLeft() const
+{
+    if (m_paddingLeft.isNull())
+        return padding();
+    return m_paddingLeft.value();
+}
+
+void QtAndroidView::setPaddingLeft(int padding)
+{
+    if (m_paddingLeft.isNull() || m_paddingLeft.value() != padding) {
+        m_paddingLeft = padding;
+        emit paddingLeftChanged();
+    }
+}
+
+int QtAndroidView::paddingRight() const
+{
+    if (m_paddingRight.isNull())
+        return padding();
+    return m_paddingRight.value();
+}
+
+void QtAndroidView::setPaddingRight(int padding)
+{
+    if (m_paddingRight.isNull() || m_paddingRight.value() != padding) {
+        m_paddingRight = padding;
+        emit paddingRightChanged();
+    }
+}
+
+int QtAndroidView::paddingBottom() const
+{
+    if (m_paddingBottom.isNull())
+        return padding();
+    return m_paddingBottom.value();
+}
+
+void QtAndroidView::setPaddingBottom(int padding)
+{
+    if (m_paddingBottom.isNull() || m_paddingBottom.value() != padding) {
+        m_paddingBottom = padding;
+        emit paddingBottomChanged();
+    }
+}
+
 void QtAndroidView::viewChange(ViewChange change, const ViewChangeData &data)
 {
     switch (change) {
@@ -267,6 +342,8 @@ void QtAndroidView::inflate()
         registerNativeMethods(m_listener.object());
         nativeMethodsRegistered = true;
     }
+
+    view.callMethod<void>("setPadding", "(IIII)V", paddingLeft(), paddingTop(), paddingRight(), paddingBottom());
 
     invalidateLayoutParams();
 }
