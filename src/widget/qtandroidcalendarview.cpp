@@ -4,14 +4,14 @@ QtAndroidCalendarView::QtAndroidCalendarView(QtAndroidView *parent) : QtAndroidF
 {
 }
 
-QAndroidJniObject QtAndroidCalendarView::construct()
+QAndroidJniObject QtAndroidCalendarView::onCreate()
 {
     return QAndroidJniObject("android/widget/CalendarView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidCalendarView::inflate()
+void QtAndroidCalendarView::onInflate()
 {
-    QtAndroidViewGroup::inflate();
+    QtAndroidViewGroup::onInflate();
 }

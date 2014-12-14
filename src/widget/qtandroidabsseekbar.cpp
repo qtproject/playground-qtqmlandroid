@@ -4,14 +4,14 @@ QtAndroidAbsSeekBar::QtAndroidAbsSeekBar(QtAndroidView *parent) : QtAndroidProgr
 {
 }
 
-QAndroidJniObject QtAndroidAbsSeekBar::construct()
+QAndroidJniObject QtAndroidAbsSeekBar::onCreate()
 {
     return QAndroidJniObject("android/widget/AbsSeekBar",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidAbsSeekBar::inflate()
+void QtAndroidAbsSeekBar::onInflate()
 {
-    QtAndroidProgressBar::inflate();
+    QtAndroidProgressBar::onInflate();
 }

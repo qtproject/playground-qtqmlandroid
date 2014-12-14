@@ -4,14 +4,14 @@ QtAndroidSpace::QtAndroidSpace(QtAndroidView *parent) : QtAndroidView(parent)
 {
 }
 
-QAndroidJniObject QtAndroidSpace::construct()
+QAndroidJniObject QtAndroidSpace::onCreate()
 {
     return QAndroidJniObject("android/widget/Space",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidSpace::inflate()
+void QtAndroidSpace::onInflate()
 {
-    QtAndroidView::inflate();
+    QtAndroidView::onInflate();
 }

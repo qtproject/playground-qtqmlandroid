@@ -31,16 +31,16 @@ void QtAndroidCompoundButton::toggle()
     QtAndroid::callVoidMethod(instance(), "toggle");
 }
 
-QAndroidJniObject QtAndroidCompoundButton::construct()
+QAndroidJniObject QtAndroidCompoundButton::onCreate()
 {
     return QAndroidJniObject("android/widget/CompoundButton",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidCompoundButton::inflate()
+void QtAndroidCompoundButton::onInflate()
 {
-    QtAndroidButton::inflate();
+    QtAndroidButton::onInflate();
 
     QAndroidJniObject view = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtCompoundButtonListener",

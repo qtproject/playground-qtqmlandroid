@@ -4,14 +4,14 @@ QtAndroidCardView::QtAndroidCardView(QtAndroidView *parent) : QtAndroidFrameLayo
 {
 }
 
-QAndroidJniObject QtAndroidCardView::construct()
+QAndroidJniObject QtAndroidCardView::onCreate()
 {
     return QAndroidJniObject("android/support/v7/widget/CardView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidCardView::inflate()
+void QtAndroidCardView::onInflate()
 {
-    QtAndroidFrameLayout::inflate();
+    QtAndroidFrameLayout::onInflate();
 }

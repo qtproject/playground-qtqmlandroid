@@ -4,14 +4,14 @@ QtAndroidSwitch::QtAndroidSwitch(QtAndroidView *parent) : QtAndroidCompoundButto
 {
 }
 
-QAndroidJniObject QtAndroidSwitch::construct()
+QAndroidJniObject QtAndroidSwitch::onCreate()
 {
     return QAndroidJniObject("android/widget/Switch",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidSwitch::inflate()
+void QtAndroidSwitch::onInflate()
 {
-    QtAndroidCompoundButton::inflate();
+    QtAndroidCompoundButton::onInflate();
 }

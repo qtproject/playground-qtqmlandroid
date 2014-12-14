@@ -307,7 +307,7 @@ void QtAndroidView::children_clear(QQmlListProperty<QtAndroidView> *list)
     }
 }
 
-QAndroidJniObject QtAndroidView::construct()
+QAndroidJniObject QtAndroidView::onCreate()
 {
     QTANDROID_ASSERT_ANDROID_THREAD();
 
@@ -316,7 +316,7 @@ QAndroidJniObject QtAndroidView::construct()
                              ctx().object());
 }
 
-void QtAndroidView::inflate()
+void QtAndroidView::onInflate()
 {
     QTANDROID_ASSERT_ANDROID_THREAD();
 
@@ -329,10 +329,10 @@ void QtAndroidView::inflate()
     view.callMethod<void>("setId", "(I)V", m_id);
 
     if (m_background) {
-        QAndroidJniObject bg = m_background->construct();
+        QAndroidJniObject bg = m_background->onConstruct();
         if (bg.isValid()) {
             m_background->setInstance(bg);
-            m_background->inflate();
+            m_background->onInflate();
             view.callMethod<void>("setBackground", "(Landroid/graphics/drawable/Drawable;)V", bg.object());
         }
     }

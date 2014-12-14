@@ -25,8 +25,8 @@ Q_SIGNALS:
     void scrollYChanged();
 
 protected:
-    QAndroidJniObject construct() Q_DECL_OVERRIDE;
-    void inflate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate() Q_DECL_OVERRIDE;
 
     static void registerNativeMethods(jobject listener);
     static void onScrollChanged(JNIEnv *env, jobject object, jlong instance, jint left, jint top);

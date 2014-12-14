@@ -4,14 +4,14 @@ QtAndroidViewSwitcher::QtAndroidViewSwitcher(QtAndroidView *parent) : QtAndroidV
 {
 }
 
-QAndroidJniObject QtAndroidViewSwitcher::construct()
+QAndroidJniObject QtAndroidViewSwitcher::onCreate()
 {
     return QAndroidJniObject("android/widget/ViewSwitcher",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidViewSwitcher::inflate()
+void QtAndroidViewSwitcher::onInflate()
 {
-    QtAndroidViewAnimator::inflate();
+    QtAndroidViewAnimator::onInflate();
 }

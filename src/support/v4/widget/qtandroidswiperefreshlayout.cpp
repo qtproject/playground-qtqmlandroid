@@ -27,16 +27,16 @@ bool QtAndroidSwipeRefreshLayout::updateRefreshing(bool refreshing)
     return false;
 }
 
-QAndroidJniObject QtAndroidSwipeRefreshLayout::construct()
+QAndroidJniObject QtAndroidSwipeRefreshLayout::onCreate()
 {
     return QAndroidJniObject("android/support/v4/widget/SwipeRefreshLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidSwipeRefreshLayout::inflate()
+void QtAndroidSwipeRefreshLayout::onInflate()
 {
-    QtAndroidViewGroup::inflate();
+    QtAndroidViewGroup::onInflate();
 
     QAndroidJniObject layout = instance();
     m_listener = QAndroidJniObject("qt/android/support/v4/widget/QtSwipeRefreshLayoutListener",

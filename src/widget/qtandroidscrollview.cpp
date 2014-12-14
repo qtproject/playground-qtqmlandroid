@@ -49,7 +49,7 @@ bool QtAndroidScrollView::updateScrollY(int y)
     return false;
 }
 
-QAndroidJniObject QtAndroidScrollView::construct()
+QAndroidJniObject QtAndroidScrollView::onCreate()
 {
     return QAndroidJniObject("qt/android/widget/QtScrollView",
                              "(Landroid/content/Context;J)V",
@@ -57,9 +57,9 @@ QAndroidJniObject QtAndroidScrollView::construct()
                              reinterpret_cast<jlong>(this));
 }
 
-void QtAndroidScrollView::inflate()
+void QtAndroidScrollView::onInflate()
 {
-    QtAndroidFrameLayout::inflate();
+    QtAndroidFrameLayout::onInflate();
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {

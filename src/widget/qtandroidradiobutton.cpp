@@ -4,14 +4,14 @@ QtAndroidRadioButton::QtAndroidRadioButton(QtAndroidView *parent) : QtAndroidCom
 {
 }
 
-QAndroidJniObject QtAndroidRadioButton::construct()
+QAndroidJniObject QtAndroidRadioButton::onCreate()
 {
     return QAndroidJniObject("android/widget/RadioButton",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidRadioButton::inflate()
+void QtAndroidRadioButton::onInflate()
 {
-    QtAndroidCompoundButton::inflate();
+    QtAndroidCompoundButton::onInflate();
 }

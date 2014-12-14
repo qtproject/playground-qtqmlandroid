@@ -26,20 +26,20 @@ void QtAndroidDrawerLayout::closeDrawer(int gravity)
     QtAndroid::callIntMethod(instance(), "closeDrawer", gravity);
 }
 
-QAndroidJniObject QtAndroidDrawerLayout::construct()
+QAndroidJniObject QtAndroidDrawerLayout::onCreate()
 {
     return QAndroidJniObject("android/support/v4/widget/DrawerLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidDrawerLayout::inflate()
+void QtAndroidDrawerLayout::onInflate()
 {
-    QtAndroidViewGroup::inflate();
+    QtAndroidViewGroup::onInflate();
 
     foreach (QObject *child, QObject::children()) {
         QtAndroidActionBarDrawerToggle *toggle = qobject_cast<QtAndroidActionBarDrawerToggle *>(child);
         if (toggle)
-            toggle->construct(ctx(), instance());
+            toggle->onConstruct(ctx(), instance());
     }
 }

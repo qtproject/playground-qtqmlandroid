@@ -5,14 +5,14 @@ QtAndroidTabWidget::QtAndroidTabWidget(QtAndroidView *parent) : QtAndroidLinearL
     setIdentifier(16908307); // TODO: android.R.id.tabs
 }
 
-QAndroidJniObject QtAndroidTabWidget::construct()
+QAndroidJniObject QtAndroidTabWidget::onCreate()
 {
     return QAndroidJniObject("android/widget/TabWidget",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidTabWidget::inflate()
+void QtAndroidTabWidget::onInflate()
 {
-    QtAndroidLinearLayout::inflate();
+    QtAndroidLinearLayout::onInflate();
 }

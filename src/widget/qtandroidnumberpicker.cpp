@@ -27,16 +27,16 @@ bool QtAndroidNumberPicker::updateValue(int value)
     return false;
 }
 
-QAndroidJniObject QtAndroidNumberPicker::construct()
+QAndroidJniObject QtAndroidNumberPicker::onCreate()
 {
     return QAndroidJniObject("android/widget/NumberPicker",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidNumberPicker::inflate()
+void QtAndroidNumberPicker::onInflate()
 {
-    QtAndroidLinearLayout::inflate();
+    QtAndroidLinearLayout::onInflate();
 
     QAndroidJniObject picker = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtNumberPickerListener",

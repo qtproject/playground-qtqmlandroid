@@ -4,16 +4,16 @@ QtAndroidSeekBar::QtAndroidSeekBar(QtAndroidView *parent) : QtAndroidAbsSeekBar(
 {
 }
 
-QAndroidJniObject QtAndroidSeekBar::construct()
+QAndroidJniObject QtAndroidSeekBar::onCreate()
 {
     return QAndroidJniObject("android/widget/SeekBar",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidSeekBar::inflate()
+void QtAndroidSeekBar::onInflate()
 {
-    QtAndroidAbsSeekBar::inflate();
+    QtAndroidAbsSeekBar::onInflate();
 
     QAndroidJniObject bar = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtSeekBarListener",

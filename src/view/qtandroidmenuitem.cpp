@@ -76,14 +76,14 @@ void QtAndroidMenuItem::setChecked(bool checked)
     }
 }
 
-QAndroidJniObject QtAndroidMenuItem::construct()
+QAndroidJniObject QtAndroidMenuItem::onConstruct()
 {
     return QAndroidJniObject("qt/android/view/QtMenuItem",
                              "(J)V",
                              reinterpret_cast<jlong>(this));
 }
 
-void QtAndroidMenuItem::inflate()
+void QtAndroidMenuItem::onInflate()
 {
     QAndroidJniObject that = instance();
     that.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_title).object());

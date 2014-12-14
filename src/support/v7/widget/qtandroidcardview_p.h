@@ -13,8 +13,8 @@ public:
     explicit QtAndroidCardView(QtAndroidView *parent = 0);
 
 protected:
-    QAndroidJniObject construct() Q_DECL_OVERRIDE;
-    void inflate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate() Q_DECL_OVERRIDE;
 };
 
 QT_END_NAMESPACE

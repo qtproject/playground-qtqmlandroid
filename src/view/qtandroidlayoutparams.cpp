@@ -44,22 +44,22 @@ void QtAndroidLayoutParams::apply(QtAndroidView *v)
 {
     QAndroidJniObject view = v->instance();
     QtAndroid::callFunction([=]() {
-        QAndroidJniObject params = construct();
-        inflate(params);
+        QAndroidJniObject params = onConstruct();
+        onInflate(params);
         view.callMethod<void>("setLayoutParams",
                               "(Landroid/view/ViewGroup$LayoutParams;)V",
                               params.object());
     });
 }
 
-QAndroidJniObject QtAndroidLayoutParams::construct()
+QAndroidJniObject QtAndroidLayoutParams::onConstruct()
 {
     return QAndroidJniObject("android/view/ViewGroup$LayoutParams",
                              "(II)V",
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtAndroidLayoutParams::inflate(QAndroidJniObject &params)
+void QtAndroidLayoutParams::onInflate(QAndroidJniObject &params)
 {
     if (!m_width.isNull())
         params.setField<int>("width", m_width.value());

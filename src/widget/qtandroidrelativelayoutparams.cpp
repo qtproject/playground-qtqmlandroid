@@ -328,7 +328,7 @@ void QtAndroidRelativeLayoutParams::setCenterInParent(bool center)
     }
 }
 
-QAndroidJniObject QtAndroidRelativeLayoutParams::construct()
+QAndroidJniObject QtAndroidRelativeLayoutParams::onConstruct()
 {
     return QAndroidJniObject("android/widget/RelativeLayout$LayoutParams",
                              "(II)V",
@@ -349,9 +349,9 @@ static void addRule(QAndroidJniObject &params, bool value, QtAndroidRelativeLayo
         params.callMethod<void>("addRule", "(I)V", verb);
 }
 
-void QtAndroidRelativeLayoutParams::inflate(QAndroidJniObject &params)
+void QtAndroidRelativeLayoutParams::onInflate(QAndroidJniObject &params)
 {
-    QtAndroidMarginLayoutParams::inflate(params);
+    QtAndroidMarginLayoutParams::onInflate(params);
 
     params.setField<jboolean>("alignWithParent", m_alignWithParent);
 

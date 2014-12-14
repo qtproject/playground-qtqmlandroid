@@ -20,16 +20,16 @@ void QtAndroidDrawerLayoutParams::setGravity(int value)
     }
 }
 
-QAndroidJniObject QtAndroidDrawerLayoutParams::construct()
+QAndroidJniObject QtAndroidDrawerLayoutParams::onConstruct()
 {
     return QAndroidJniObject("android/support/v4/widget/DrawerLayout$LayoutParams",
                              "(III)V",
                              MATCH_PARENT, MATCH_PARENT, m_gravity);
 }
 
-void QtAndroidDrawerLayoutParams::inflate(QAndroidJniObject &params)
+void QtAndroidDrawerLayoutParams::onInflate(QAndroidJniObject &params)
 {
-    QtAndroidMarginLayoutParams::inflate(params);
+    QtAndroidMarginLayoutParams::onInflate(params);
 
     params.setField<int>("gravity", m_gravity);
 }

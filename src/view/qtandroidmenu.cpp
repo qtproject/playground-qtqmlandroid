@@ -16,18 +16,18 @@ QList<QtAndroidMenuItem *> QtAndroidMenu::items() const
     return lst;
 }
 
-QAndroidJniObject QtAndroidMenu::construct()
+QAndroidJniObject QtAndroidMenu::onConstruct()
 {
     return QAndroidJniObject("qt/android/view/QtMenu");
 }
 
-void QtAndroidMenu::inflate()
+void QtAndroidMenu::onInflate()
 {
     QAndroidJniObject menu = instance();
     foreach (QtAndroidMenuItem *item, items()) {
-        QAndroidJniObject it = item->construct();
+        QAndroidJniObject it = item->onConstruct();
         item->setInstance(it);
-        item->inflate();
+        item->onInflate();
         menu.callMethod<void>("add", "(Lqt/android/view/QtMenuItem;)V", it.object());
     }
 }

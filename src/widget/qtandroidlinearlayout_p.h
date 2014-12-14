@@ -53,8 +53,8 @@ Q_SIGNALS:
     void weightSumChanged();
 
 protected:
-    QAndroidJniObject construct() Q_DECL_OVERRIDE;
-    void inflate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate() Q_DECL_OVERRIDE;
 
 private:
     QtAndroidOptional<bool> m_baselineAligned;

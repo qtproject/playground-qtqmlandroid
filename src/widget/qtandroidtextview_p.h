@@ -37,8 +37,8 @@ Q_SIGNALS:
     void hintChanged();
 
 protected:
-    QAndroidJniObject construct() Q_DECL_OVERRIDE;
-    void inflate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate() Q_DECL_OVERRIDE;
 
 private:
     QString m_text;

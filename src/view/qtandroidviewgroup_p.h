@@ -16,8 +16,8 @@ public:
     static QtAndroidLayoutParams *qmlAttachedProperties(QObject *object);
 
 protected:
-    QAndroidJniObject construct() Q_DECL_OVERRIDE;
-    void inflate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate() Q_DECL_OVERRIDE;
 
     void viewChange(ViewChange change, const ViewChangeData &data) Q_DECL_OVERRIDE;
 };

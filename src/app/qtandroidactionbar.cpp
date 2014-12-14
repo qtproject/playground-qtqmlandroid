@@ -99,10 +99,10 @@ void QtAndroidActionBar::setActivity(QtAndroidActivity *activity)
 
         if (m_background) {
             QtAndroid::callFunction([=]() {
-                QAndroidJniObject bg = m_background->construct();
+                QAndroidJniObject bg = m_background->onConstruct();
                 if (bg.isValid()) {
                     m_background->setInstance(bg);
-                    m_background->inflate();
+                    m_background->onInflate();
                     instance().callMethod<void>("setBackgroundDrawable", "(Landroid/graphics/drawable/Drawable;)V", bg.object());
                 }
             });

@@ -69,16 +69,16 @@ void QtAndroidProgressBar::setStyle(Style style)
     m_style = style; // TODO: warning after construction or re-construct?
 }
 
-QAndroidJniObject QtAndroidProgressBar::construct()
+QAndroidJniObject QtAndroidProgressBar::onCreate()
 {
     return QAndroidJniObject("android/widget/ProgressBar",
                              "(Landroid/content/Context;Landroid/util/AttributeSet;I)V",
                              ctx().object(), 0, style());
 }
 
-void QtAndroidProgressBar::inflate()
+void QtAndroidProgressBar::onInflate()
 {
-    QtAndroidView::inflate();
+    QtAndroidView::onInflate();
 
     QtAndroid::callIntMethod(instance(), "setProgress", m_progress);
     QtAndroid::callBoolMethod(instance(), "setIndeterminate", m_indeterminate);

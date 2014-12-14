@@ -65,16 +65,16 @@ void QtAndroidMarginLayoutParams::setBottomMargin(int margin)
     }
 }
 
-QAndroidJniObject QtAndroidMarginLayoutParams::construct()
+QAndroidJniObject QtAndroidMarginLayoutParams::onConstruct()
 {
     return QAndroidJniObject("android/view/ViewGroup$MarginLayoutParams",
                              "(II)V",
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtAndroidMarginLayoutParams::inflate(QAndroidJniObject &params)
+void QtAndroidMarginLayoutParams::onInflate(QAndroidJniObject &params)
 {
-    QtAndroidLayoutParams::inflate(params);
+    QtAndroidLayoutParams::onInflate(params);
 
     if (!m_topMargin.isNull() || !m_leftMargin.isNull() || !m_rightMargin.isNull() || !m_bottomMargin.isNull()) {
         params.callMethod<void>("setMargins",

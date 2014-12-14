@@ -38,8 +38,8 @@ Q_SIGNALS:
     void heightChanged();
 
 protected:
-    virtual QAndroidJniObject construct();
-    virtual void inflate(QAndroidJniObject &params);
+    virtual QAndroidJniObject onConstruct();
+    virtual void onInflate(QAndroidJniObject &params);
 
 private:
     QtAndroidView *m_view;

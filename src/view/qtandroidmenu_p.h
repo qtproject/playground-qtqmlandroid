@@ -17,8 +17,8 @@ public:
     QList<QtAndroidMenuItem *> items() const;
 
 protected:
-    QAndroidJniObject construct();
-    void inflate();
+    QAndroidJniObject onConstruct();
+    void onInflate();
 
 private:
     friend class QtAndroidActivity;

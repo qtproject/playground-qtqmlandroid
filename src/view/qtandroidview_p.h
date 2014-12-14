@@ -127,8 +127,8 @@ protected:
     static QtAndroidView *children_at(QQmlListProperty<QtAndroidView> *list, int index);
     static void children_clear(QQmlListProperty<QtAndroidView> *list);
 
-    virtual QAndroidJniObject construct();
-    virtual void inflate();
+    virtual QAndroidJniObject onCreate();
+    virtual void onInflate();
 
     static void registerNativeMethods(jobject listener);
     static void onClick(JNIEnv *env, jobject object, jlong instance);

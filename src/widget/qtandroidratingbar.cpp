@@ -27,16 +27,16 @@ bool QtAndroidRatingBar::updateRating(qreal rating)
     return false;
 }
 
-QAndroidJniObject QtAndroidRatingBar::construct()
+QAndroidJniObject QtAndroidRatingBar::onCreate()
 {
     return QAndroidJniObject("android/widget/RatingBar",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidRatingBar::inflate()
+void QtAndroidRatingBar::onInflate()
 {
-    QtAndroidAbsSeekBar::inflate();
+    QtAndroidAbsSeekBar::onInflate();
 
     QAndroidJniObject bar = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtRatingBarListener",

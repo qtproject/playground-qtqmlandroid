@@ -20,8 +20,8 @@ Q_SIGNALS:
     void gravityChanged();
 
 protected:
-    QAndroidJniObject construct() Q_DECL_OVERRIDE;
-    void inflate(QAndroidJniObject &params) Q_DECL_OVERRIDE;
+    QAndroidJniObject onConstruct() Q_DECL_OVERRIDE;
+    void onInflate(QAndroidJniObject &params) Q_DECL_OVERRIDE;
 
 private:
     int m_gravity;

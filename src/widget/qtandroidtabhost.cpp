@@ -5,16 +5,16 @@ QtAndroidTabHost::QtAndroidTabHost(QtAndroidView *parent) : QtAndroidFrameLayout
 {
 }
 
-QAndroidJniObject QtAndroidTabHost::construct()
+QAndroidJniObject QtAndroidTabHost::onCreate()
 {
     return QAndroidJniObject("android/widget/TabHost",
                              "(Landroid/content/Context;Landroid/util/AttributeSet;)V",
                              ctx().object(), 0);
 }
 
-void QtAndroidTabHost::inflate()
+void QtAndroidTabHost::onInflate()
 {
-    QtAndroidFrameLayout::inflate();
+    QtAndroidFrameLayout::onInflate();
 
     QAndroidJniObject host = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtTabHostListener",

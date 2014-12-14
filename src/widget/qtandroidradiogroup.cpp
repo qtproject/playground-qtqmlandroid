@@ -23,16 +23,16 @@ void QtAndroidRadioGroup::clearCheck()
     QtAndroid::callVoidMethod(instance(), "clearCheck");
 }
 
-QAndroidJniObject QtAndroidRadioGroup::construct()
+QAndroidJniObject QtAndroidRadioGroup::onCreate()
 {
     return QAndroidJniObject("android/widget/RadioGroup",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidRadioGroup::inflate()
+void QtAndroidRadioGroup::onInflate()
 {
-    QtAndroidLinearLayout::inflate();
+    QtAndroidLinearLayout::onInflate();
 
     QAndroidJniObject group = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtRadioGroupListener",

@@ -12,14 +12,14 @@ QtAndroidFrameLayoutParams *QtAndroidFrameLayout::qmlAttachedProperties(QObject 
     return 0;
 }
 
-QAndroidJniObject QtAndroidFrameLayout::construct()
+QAndroidJniObject QtAndroidFrameLayout::onCreate()
 {
     return QAndroidJniObject("android/widget/FrameLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidFrameLayout::inflate()
+void QtAndroidFrameLayout::onInflate()
 {
-    QtAndroidViewGroup::inflate();
+    QtAndroidViewGroup::onInflate();
 }

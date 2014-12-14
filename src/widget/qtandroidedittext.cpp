@@ -4,14 +4,14 @@ QtAndroidEditText::QtAndroidEditText(QtAndroidView *parent) : QtAndroidTextView(
 {
 }
 
-QAndroidJniObject QtAndroidEditText::construct()
+QAndroidJniObject QtAndroidEditText::onCreate()
 {
     return QAndroidJniObject("android/widget/EditText",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidEditText::inflate()
+void QtAndroidEditText::onInflate()
 {
-    QtAndroidTextView::inflate();
+    QtAndroidTextView::onInflate();
 }

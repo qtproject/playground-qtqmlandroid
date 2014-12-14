@@ -97,14 +97,14 @@ void QtAndroidLinearLayout::setWeightSum(qreal sum)
     }
 }
 
-QAndroidJniObject QtAndroidLinearLayout::construct()
+QAndroidJniObject QtAndroidLinearLayout::onCreate()
 {
     return QAndroidJniObject("android/widget/LinearLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidLinearLayout::inflate()
+void QtAndroidLinearLayout::onInflate()
 {
     QAndroidJniObject layout = instance();
     if (layout.isValid()) {
@@ -118,7 +118,7 @@ void QtAndroidLinearLayout::inflate()
             layout.callMethod<void>("setWeightSum", "(J)V", m_weightSum.value());
     }
 
-    QtAndroidViewGroup::inflate();
+    QtAndroidViewGroup::onInflate();
 
     if (layout.isValid()) {
         if (!m_baselineAlignedChildIndex.isNull())

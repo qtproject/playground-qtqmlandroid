@@ -13,8 +13,8 @@ public:
     explicit QtAndroidDrawable(QObject *parent = 0);
 
 protected:
-    virtual QAndroidJniObject construct();
-    virtual void inflate();
+    virtual QAndroidJniObject onConstruct();
+    virtual void onInflate();
 
 private:
     friend class QtAndroidView;

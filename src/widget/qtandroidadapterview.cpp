@@ -24,14 +24,14 @@ void QtAndroidAdapterView::setSelection(int position)
     QtAndroid::callIntMethod(instance(), "setSelection", position);
 }
 
-QAndroidJniObject QtAndroidAdapterView::construct()
+QAndroidJniObject QtAndroidAdapterView::onCreate()
 {
     return QAndroidJniObject("android/widget/AdapterView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidAdapterView::inflate()
+void QtAndroidAdapterView::onInflate()
 {
     QAndroidJniObject view = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtAdapterViewListener",
@@ -42,7 +42,7 @@ void QtAndroidAdapterView::inflate()
     if (m_adapter)
         m_adapter->setup(this);
 
-    QtAndroidViewGroup::inflate();
+    QtAndroidViewGroup::onInflate();
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {

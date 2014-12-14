@@ -4,16 +4,16 @@ QtAndroidListView::QtAndroidListView(QtAndroidView *parent) : QtAndroidAdapterVi
 {
 }
 
-QAndroidJniObject QtAndroidListView::construct()
+QAndroidJniObject QtAndroidListView::onCreate()
 {
     return QAndroidJniObject("android/widget/ListView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtAndroidListView::inflate()
+void QtAndroidListView::onInflate()
 {
-    QtAndroidAdapterView::inflate();
+    QtAndroidAdapterView::onInflate();
 
     QAndroidJniObject view = instance();
     view.callMethod<void>("setBackgroundColor", "(I)V", -1); // TODO: Color.WHITE

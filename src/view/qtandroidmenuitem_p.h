@@ -41,8 +41,8 @@ Q_SIGNALS:
     void checkedChanged();
 
 protected:
-    QAndroidJniObject construct();
-    void inflate();
+    QAndroidJniObject onConstruct();
+    void onInflate();
 
     static void registerNativeMethods(jobject item);
     static bool onClick(JNIEnv *env, jobject object, jlong instance);

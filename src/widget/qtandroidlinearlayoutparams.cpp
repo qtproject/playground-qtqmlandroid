@@ -35,16 +35,16 @@ void QtAndroidLinearLayoutParams::setWeight(qreal value)
     }
 }
 
-QAndroidJniObject QtAndroidLinearLayoutParams::construct()
+QAndroidJniObject QtAndroidLinearLayoutParams::onConstruct()
 {
     return QAndroidJniObject("android/widget/LinearLayout$LayoutParams",
                              "(II)V",
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtAndroidLinearLayoutParams::inflate(QAndroidJniObject &params)
+void QtAndroidLinearLayoutParams::onInflate(QAndroidJniObject &params)
 {
-    QtAndroidMarginLayoutParams::inflate(params);
+    QtAndroidMarginLayoutParams::onInflate(params);
 
     if (!m_gravity.isNull())
         params.setField<jint>("gravity", m_gravity.value());
