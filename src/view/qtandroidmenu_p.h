@@ -15,6 +15,13 @@ public:
     explicit QtAndroidMenu(QObject *parent = 0);
 
     QList<QtAndroidMenuItem *> items() const;
+
+protected:
+    QAndroidJniObject construct();
+    void inflate();
+
+private:
+    friend class QtAndroidActivity;
 };
 
 QT_END_NAMESPACE

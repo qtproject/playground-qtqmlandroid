@@ -65,11 +65,10 @@ void QtAndroidActivity::componentComplete()
     QAndroidJniObject activity = instance();
     QtAndroid::callFunction([=]() {
         if (m_optionsMenu) {
-            foreach (QtAndroidMenuItem *item, m_optionsMenu->items()) {
-                activity.callMethod<void>("addOptionsMenuItem",
-                                          "(Ljava/lang/String;)V",
-                                          QAndroidJniObject::fromString(item->title()).object());
-            }
+            QAndroidJniObject menu = m_optionsMenu->construct();
+            m_optionsMenu->setInstance(menu);
+            m_optionsMenu->inflate();
+            activity.callMethod<void>("setOptionsMenu", "(Lqt/android/view/QtMenu;)V", menu.object());
         }
         if (m_actionBar) {
             QAndroidJniObject bar = activity.callObjectMethod("getActionBar", "()Landroid/app/ActionBar;");

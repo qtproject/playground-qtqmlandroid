@@ -22,6 +22,7 @@ Activity {
         }
         MenuItem {
             title: "Exit"
+            onClick: Qt.quit()
         }
     }
 

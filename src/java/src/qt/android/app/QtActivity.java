@@ -1,6 +1,5 @@
 package qt.android.app;
 
-import java.lang.String;
 import java.util.ArrayList;
 
 import android.graphics.drawable.ColorDrawable;
@@ -9,12 +8,20 @@ import android.R.attr;
 import android.util.TypedValue;
 
 import android.view.Menu;
-import android.view.MenuItem;
+
+import qt.android.view.QtMenu;
 
 public class QtActivity extends org.qtproject.qt5.android.bindings.QtActivity
 {
     public QtActivity() {
-        m_menuItems = new ArrayList<String>();
+        m_menu = null;
+    }
+
+    public void setOptionsMenu(QtMenu menu) {
+        if (m_menu != menu) {
+            m_menu = menu;
+            invalidateOptionsMenu();
+        }
     }
 
     @Override
@@ -30,30 +37,22 @@ public class QtActivity extends org.qtproject.qt5.android.bindings.QtActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        for (String title : m_menuItems)
-            menu.add(title);
-        return true;
+        if (m_menu != null)
+            return m_menu.create(menu);
+        return false;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        System.out.println("#### selected " + item.getTitle());
-        return true;
+        if (m_menu != null)
+            return m_menu.prepare(menu);
+        return false;
     }
 
     @Override
     public void onOptionsMenuClosed(Menu menu) {
+        m_menu.closed(menu);
     }
 
-    public void addOptionsMenuItem(String title) {
-        m_menuItems.add(title);
-        invalidateOptionsMenu();
-    }
-
-    ArrayList<String> m_menuItems;
+    private QtMenu m_menu;
 }
