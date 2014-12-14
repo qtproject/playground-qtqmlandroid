@@ -19,7 +19,7 @@ QAndroidJniObject QtAndroidRelativeLayout::onCreate()
                              ctx().object());
 }
 
-void QtAndroidRelativeLayout::onInflate()
+void QtAndroidRelativeLayout::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidViewGroup::onInflate();
+    QtAndroidViewGroup::onInflate(instance);
 }

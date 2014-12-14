@@ -9,7 +9,7 @@
 #include <QtAndroidExtras/qandroidjnienvironment.h>
 
 QtAndroidActivity::QtAndroidActivity(QObject *parent) :
-    QtAndroidContext(parent), m_view(0), m_optionsMenu(0), m_actionBar(0)
+    QtAndroidContext(parent), m_contentView(0), m_optionsMenu(0), m_actionBar(0)
 {
     // TODO: multiple activities?
     setInstance(QtAndroid::androidActivity());
@@ -22,8 +22,13 @@ QtAndroidActionBar *QtAndroidActivity::actionBar() const
 
 void QtAndroidActivity::setActionBar(QtAndroidActionBar *bar)
 {
-    // TODO: dynamic changes
-    m_actionBar = bar;
+    if (m_actionBar != bar) {
+        if (m_actionBar)
+            m_actionBar->destruct();
+        m_actionBar = bar;
+        if (m_actionBar)
+            updateActionBar();
+    }
 }
 
 QtAndroidMenu *QtAndroidActivity::optionsMenu() const
@@ -33,23 +38,40 @@ QtAndroidMenu *QtAndroidActivity::optionsMenu() const
 
 void QtAndroidActivity::setOptionsMenu(QtAndroidMenu *menu)
 {
-    // TODO: dynamic changes
-    m_optionsMenu = menu;
+    if (m_optionsMenu != menu) {
+        if (m_optionsMenu) {
+            disconnect(m_optionsMenu, SIGNAL(instanceChanged()), this, SLOT(updateOptionsMenu()));
+            m_optionsMenu->destruct();
+        }
+        m_optionsMenu = menu;
+        if (m_optionsMenu) {
+            connect(m_optionsMenu, SIGNAL(instanceChanged()), this, SLOT(updateOptionsMenu()));
+            if (isComponentComplete())
+                m_optionsMenu->construct();
+        }
+    }
 }
 
 QtAndroidView *QtAndroidActivity::contentView() const
 {
-    return m_view;
+    return m_contentView;
 }
 
 void QtAndroidActivity::setContentView(QtAndroidView *view)
 {
-    if (m_view != view) {
-        if (m_view)
-            m_view->setContext(0);
-        m_view = view;
-        if (view)
-            view->setContext(this);
+    if (m_contentView != view) {
+        if (m_contentView) {
+            m_contentView->setContext(0);
+            disconnect(m_contentView, SIGNAL(instanceChanged()), this, SLOT(updateContentView()));
+            m_contentView->destruct();
+        }
+        m_contentView = view;
+        if (m_contentView) {
+            m_contentView->setContext(this);
+            connect(m_contentView, SIGNAL(instanceChanged()), this, SLOT(updateContentView()));
+            if (isComponentComplete())
+                m_contentView->construct();
+        }
     }
 }
 
@@ -62,25 +84,55 @@ void QtAndroidActivity::componentComplete()
 {
     QtAndroidContext::componentComplete();
 
+    if (m_contentView)
+        m_contentView->construct();
+
+    if (m_optionsMenu)
+        m_optionsMenu->construct();
+
+    if (m_actionBar)
+        updateActionBar();
+}
+
+void QtAndroidActivity::updateActionBar()
+{
+    if (!isValid())
+        return;
+
     QAndroidJniObject activity = instance();
     QtAndroid::callFunction([=]() {
-        if (m_optionsMenu) {
-            QAndroidJniObject menu = m_optionsMenu->onConstruct();
-            m_optionsMenu->setInstance(menu);
-            m_optionsMenu->onInflate();
-            activity.callMethod<void>("setOptionsMenu", "(Lqt/android/view/QtMenu;)V", menu.object());
-        }
-        if (m_actionBar) {
-            QAndroidJniObject bar = activity.callObjectMethod("getActionBar", "()Landroid/app/ActionBar;");
-            m_actionBar->setInstance(bar);
-            m_actionBar->setActivity(this);
-        }
-        if (m_view) {
-            QAndroidJniObject content = m_view->onCreate();
-            m_view->setInstance(content);
-            m_view->onInflate();
-            if (content.isValid())
-                activity.callMethod<void>("setContentView", "(Landroid/view/View;)V", content.object());
-        }
+        QAndroidJniObject bar = activity.callObjectMethod("getActionBar", "()Landroid/app/ActionBar;");
+        m_actionBar->onInflate(bar);
+        m_actionBar->setInstance(bar);
+    });
+}
+
+void QtAndroidActivity::updateOptionsMenu()
+{
+    if (!isValid())
+        return;
+
+    QAndroidJniObject menu;
+    if (m_optionsMenu)
+        menu = m_optionsMenu->instance();
+
+    QAndroidJniObject activity = instance();
+    QtAndroid::callFunction([=]() {
+        activity.callMethod<void>("setOptionsMenu", "(Lqt/android/view/QtMenu;)V", menu.object());
+    });
+}
+
+void QtAndroidActivity::updateContentView()
+{
+    if (!isValid())
+        return;
+
+    QAndroidJniObject content;
+    if (m_contentView)
+        content = m_contentView->instance();
+
+    QAndroidJniObject activity = instance();
+    QtAndroid::callFunction([=]() {
+        activity.callMethod<void>("setContentView", "(Landroid/view/View;)V", content.object());
     });
 }

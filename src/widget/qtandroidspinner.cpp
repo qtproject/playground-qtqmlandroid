@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidSpinner::onCreate()
                              ctx().object());
 }
 
-void QtAndroidSpinner::onInflate()
+void QtAndroidSpinner::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidAdapterView::onInflate();
+    QtAndroidAdapterView::onInflate(instance);
 }

@@ -17,7 +17,7 @@ Q_SIGNALS:
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
-    void onInflate() Q_DECL_OVERRIDE;
+    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
     static void registerNativeMethods(jobject listener);
     static void onTabChanged(JNIEnv *env, jobject object, jlong instance, jstring tabId);

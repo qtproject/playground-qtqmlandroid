@@ -34,14 +34,13 @@ QAndroidJniObject QtAndroidRatingBar::onCreate()
                              ctx().object());
 }
 
-void QtAndroidRatingBar::onInflate()
+void QtAndroidRatingBar::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidAbsSeekBar::onInflate();
+    QtAndroidAbsSeekBar::onInflate(instance);
 
-    QAndroidJniObject bar = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtRatingBarListener",
                                    "(Landroid/widget/RatingBar;J)V",
-                                   bar.object(),
+                                   instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
@@ -50,7 +49,7 @@ void QtAndroidRatingBar::onInflate()
         nativeMethodsRegistered = true;
     }
 
-    bar.callMethod<void>("setRating", "(F)V", m_rating);
+    instance.callMethod<void>("setRating", "(F)V", m_rating);
 }
 
 void QtAndroidRatingBar::registerNativeMethods(jobject listener)

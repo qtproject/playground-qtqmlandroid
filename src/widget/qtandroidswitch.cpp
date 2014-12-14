@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidSwitch::onCreate()
                              ctx().object());
 }
 
-void QtAndroidSwitch::onInflate()
+void QtAndroidSwitch::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidCompoundButton::onInflate();
+    QtAndroidCompoundButton::onInflate(instance);
 }

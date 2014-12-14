@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidAbsSeekBar::onCreate()
                              ctx().object());
 }
 
-void QtAndroidAbsSeekBar::onInflate()
+void QtAndroidAbsSeekBar::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidProgressBar::onInflate();
+    QtAndroidProgressBar::onInflate(instance);
 }

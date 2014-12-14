@@ -127,8 +127,8 @@ protected:
     static QtAndroidView *children_at(QQmlListProperty<QtAndroidView> *list, int index);
     static void children_clear(QQmlListProperty<QtAndroidView> *list);
 
-    virtual QAndroidJniObject onCreate();
-    virtual void onInflate();
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
     static void registerNativeMethods(jobject listener);
     static void onClick(JNIEnv *env, jobject object, jlong instance);
@@ -139,7 +139,9 @@ protected:
     bool event(QEvent *event) Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
+    void updateBackground();
     bool updateFocus(bool focus);
+    void updateLayoutParams();
 
 private:
     void invalidateLayoutParams();

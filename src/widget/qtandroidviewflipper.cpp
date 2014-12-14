@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidViewFlipper::onCreate()
                              ctx().object());
 }
 
-void QtAndroidViewFlipper::onInflate()
+void QtAndroidViewFlipper::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidViewAnimator::onInflate();
+    QtAndroidViewAnimator::onInflate(instance);
 }

@@ -1,23 +1,76 @@
 #include "qtandroidobject_p.h"
-#include <QtCore/qcoreevent.h>
+#include "qtandroidfunctions_p.h"
 #include <QtCore/qcoreapplication.h>
+#include <QtCore/qcoreevent.h>
 
 QtAndroidObject::QtAndroidObject(QObject *parent) :
     QObject(parent), m_complete(false)
 {
 }
 
+bool QtAndroidObject::isValid() const
+{
+    // TODO: mutex/read-write lock
+    return m_instance.isValid();
+}
+
 QAndroidJniObject QtAndroidObject::instance() const
 {
+    // TODO: mutex/read-write lock
     return m_instance;
 }
 
 void QtAndroidObject::setInstance(const QAndroidJniObject &instance)
 {
+    // TODO: mutex/read-write lock
     if (m_instance != instance) {
         m_instance = instance;
-        emit instanceChanged();
+        // queue to Qt thread if necessary
+        QMetaObject::invokeMethod(this, "instanceChanged", Qt::AutoConnection);
     }
+}
+
+void QtAndroidObject::construct()
+{
+    QTANDROID_ASSERT_QT_THREAD();
+
+    foreach (QObject *obj, children()) {
+        QtAndroidObject *child = qobject_cast<QtAndroidObject *>(obj);
+        if (child)
+            child->construct();
+    }
+
+    QtAndroid::callFunction([=]() {
+        QAndroidJniObject instance = onCreate();
+        if (instance.isValid())
+            onInflate(instance);
+        setInstance(instance);
+    });
+}
+
+void QtAndroidObject::destruct()
+{
+    QTANDROID_ASSERT_QT_THREAD();
+
+    foreach (QObject *obj, children()) {
+        QtAndroidObject *child = qobject_cast<QtAndroidObject *>(obj);
+        if (child)
+            child->destruct();
+    }
+
+    QtAndroid::callFunction([=]() {
+        setInstance(QAndroidJniObject());
+    });
+}
+
+QAndroidJniObject QtAndroidObject::onCreate()
+{
+    return QAndroidJniObject();
+}
+
+void QtAndroidObject::onInflate(QAndroidJniObject &instance)
+{
+    Q_UNUSED(instance);
 }
 
 bool QtAndroidObject::isComponentComplete() const

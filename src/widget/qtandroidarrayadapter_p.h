@@ -20,13 +20,15 @@ public:
     int count() const Q_DECL_OVERRIDE;
     Q_INVOKABLE QString getItem(int position) const;
 
-    void setup(QtAndroidAdapterView *view) Q_DECL_OVERRIDE;
-
 public Q_SLOTS:
     void clear() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
     void arrayChanged();
+
+protected:
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
 private:
     QStringList m_array;

@@ -3,8 +3,9 @@
 #include "qtandroiddrawable_p.h"
 
 QtAndroidActionBar::QtAndroidActionBar(QObject *parent) :
-    QtAndroidObject(parent), m_visible(true), m_elevation(0.0), m_activity(0), m_background(0)
+    QtAndroidObject(parent), m_visible(true), m_elevation(0.0), m_background(0)
 {
+    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
 }
 
 bool QtAndroidActionBar::isVisible() const
@@ -74,42 +75,42 @@ QtAndroidDrawable *QtAndroidActionBar::background() const
 void QtAndroidActionBar::setBackground(QtAndroidDrawable *background)
 {
     if (m_background != background) {
+        if (m_background) {
+            disconnect(m_background, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
+            m_background->destruct();
+        }
         m_background = background;
+        if (m_background) {
+            connect(m_background, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
+            m_background->construct();
+        }
         emit backgroundChanged();
     }
 }
 
-QtAndroidActivity *QtAndroidActionBar::activity() const
+void QtAndroidActionBar::onInflate(QAndroidJniObject &instance)
 {
-    return m_activity;
+    instance.callMethod<void>(m_visible ? "show" : "hide");
+
+    if (!m_title.isNull())
+        instance.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_title).object());
+    if (!m_subtitle.isNull())
+        instance.callMethod<void>("setSubtitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_subtitle).object());
+
+    // TODO: properties
+    instance.callMethod<void>("setElevation", "(F)V", m_elevation);
+    instance.callMethod<void>("setDisplayHomeAsUpEnabled", "(Z)V", true);
+    instance.callMethod<void>("setHomeButtonEnabled", "(Z)V", true);
 }
 
-void QtAndroidActionBar::setActivity(QtAndroidActivity *activity)
+void QtAndroidActionBar::updateBackground()
 {
-    if (m_activity != activity) {
-        m_activity = activity;
-        if (m_visible)
-            QtAndroid::callVoidMethod(instance(), "show");
-        else
-            QtAndroid::callVoidMethod(instance(), "hide");
-        if (!m_title.isNull())
-            QtAndroid::callTextMethod(instance(), "setTitle", m_title);
-        if (!m_subtitle.isNull())
-            QtAndroid::callTextMethod(instance(), "setSubtitle", m_subtitle);
+    if (!isValid() || !m_background)
+        return;
 
-        if (m_background) {
-            QtAndroid::callFunction([=]() {
-                QAndroidJniObject bg = m_background->onConstruct();
-                if (bg.isValid()) {
-                    m_background->setInstance(bg);
-                    m_background->onInflate();
-                    instance().callMethod<void>("setBackgroundDrawable", "(Landroid/graphics/drawable/Drawable;)V", bg.object());
-                }
-            });
-        }
-
-        QtAndroid::callRealMethod(instance(), "setElevation", m_elevation);
-        QtAndroid::callBoolMethod(instance(), "setDisplayHomeAsUpEnabled", true);
-        QtAndroid::callBoolMethod(instance(), "setHomeButtonEnabled", true);
-    }
+    QAndroidJniObject bar = instance();
+    QAndroidJniObject background = m_background->instance();
+    QtAndroid::callFunction([=]() {
+        bar.callMethod<void>("setBackgroundDrawable", "(Landroid/graphics/drawable/Drawable;)V", background.object());
+    });
 }

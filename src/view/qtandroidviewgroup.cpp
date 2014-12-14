@@ -22,15 +22,12 @@ QAndroidJniObject QtAndroidViewGroup::onCreate()
                              ctx().object());
 }
 
-void QtAndroidViewGroup::onInflate()
+void QtAndroidViewGroup::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidView::onInflate();
+    QtAndroidView::onInflate(instance);
 
-    foreach (QtAndroidView *child, m_children) {
-        child->setInstance(child->onCreate());
-        child->onInflate();
-        instance().callMethod<void>("addView", "(Landroid/view/View;)V", child->instance().object());
-    }
+    foreach (QtAndroidView *child, m_children)
+        instance.callMethod<void>("addView", "(Landroid/view/View;)V", child->instance().object());
 }
 
 void QtAndroidViewGroup::viewChange(ViewChange change, const ViewChangeData &data)
@@ -39,21 +36,21 @@ void QtAndroidViewGroup::viewChange(ViewChange change, const ViewChangeData &dat
     switch (change) {
     case ViewChildAddedChange: // data.view
         if (group.isValid()) {
-            QtAndroid::callFunction([=]() {
-                QAndroidJniObject child = data.view->onCreate();
-                data.view->setInstance(child);
-                data.view->onInflate();
-                group.callMethod<void>("addView", "(Landroid/view/View;)V", child.object());
-            });
+//            QtAndroid::callFunction([=]() {
+//                QAndroidJniObject child = data.view->onCreate();
+//                data.view->onInflate(child);
+//                data.view->setInstance(child);
+//                group.callMethod<void>("addView", "(Landroid/view/View;)V", child.object());
+//            });
         }
         break;
     case ViewChildRemovedChange: // data.view
         if (group.isValid()) {
-            QAndroidJniObject child = data.view->instance();
-            QtAndroid::callFunction([=]() {
-                group.callMethod<void>("removeView", "(Landroid/view/View;)V", child.object());
-            });
-            data.view->setInstance(QAndroidJniObject());
+//            QAndroidJniObject child = data.view->instance();
+//            QtAndroid::callFunction([=]() {
+//                group.callMethod<void>("removeView", "(Landroid/view/View;)V", child.object());
+//            });
+//            data.view->setInstance(QAndroidJniObject());
         }
         break;
     default:

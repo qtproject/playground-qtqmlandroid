@@ -38,14 +38,13 @@ QAndroidJniObject QtAndroidCompoundButton::onCreate()
                              ctx().object());
 }
 
-void QtAndroidCompoundButton::onInflate()
+void QtAndroidCompoundButton::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidButton::onInflate();
+    QtAndroidButton::onInflate(instance);
 
-    QAndroidJniObject view = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtCompoundButtonListener",
                                    "(Landroid/widget/CompoundButton;J)V",
-                                   view.object(),
+                                   instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
@@ -54,7 +53,7 @@ void QtAndroidCompoundButton::onInflate()
         nativeMethodsRegistered = true;
     }
 
-    QtAndroid::callBoolMethod(instance(), "setChecked", m_checked);
+    instance.callMethod<void>("setChecked", "(Z)V", m_checked);
 }
 
 void QtAndroidCompoundButton::registerNativeMethods(jobject listener)

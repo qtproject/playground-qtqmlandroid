@@ -73,16 +73,16 @@ QAndroidJniObject QtAndroidTextView::onCreate()
                              ctx().object());
 }
 
-void QtAndroidTextView::onInflate()
+void QtAndroidTextView::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidView::onInflate();
+    QtAndroidView::onInflate(instance);
 
     if (!m_text.isNull())
-        QtAndroid::callTextMethod(instance(), "setText", m_text);
+        instance.callMethod<void>("setText", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_text).object());
     if (!m_textColor.isNull())
-        QtAndroid::callIntMethod(instance(), "setTextColor", m_textColor.value());
+        instance.callMethod<void>("setTextColor", "(I)V", m_textColor.value());
     if (!m_textSize.isNull())
-        QtAndroid::callRealMethod(instance(), "setTextSize", m_textSize.value());
+        instance.callMethod<void>("setTextSize", "(F)V", m_textSize.value());
     if (!m_hint.isNull())
-        QtAndroid::callTextMethod(instance(), "setHint", m_hint);
+        instance.callMethod<void>("setHint", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_hint).object());
 }

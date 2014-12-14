@@ -33,13 +33,13 @@ QAndroidJniObject QtAndroidDrawerLayout::onCreate()
                              ctx().object());
 }
 
-void QtAndroidDrawerLayout::onInflate()
+void QtAndroidDrawerLayout::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidViewGroup::onInflate();
+    QtAndroidViewGroup::onInflate(instance);
 
     foreach (QObject *child, QObject::children()) {
         QtAndroidActionBarDrawerToggle *toggle = qobject_cast<QtAndroidActionBarDrawerToggle *>(child);
         if (toggle)
-            toggle->onConstruct(ctx(), instance());
+            toggle->onCreate(ctx(), instance);
     }
 }

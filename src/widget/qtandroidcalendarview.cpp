@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidCalendarView::onCreate()
                              ctx().object());
 }
 
-void QtAndroidCalendarView::onInflate()
+void QtAndroidCalendarView::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidViewGroup::onInflate();
+    QtAndroidViewGroup::onInflate(instance);
 }

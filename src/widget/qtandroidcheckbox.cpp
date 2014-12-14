@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidCheckBox::onCreate()
                              ctx().object());
 }
 
-void QtAndroidCheckBox::onInflate()
+void QtAndroidCheckBox::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidCompoundButton::onInflate();
+    QtAndroidCompoundButton::onInflate(instance);
 }

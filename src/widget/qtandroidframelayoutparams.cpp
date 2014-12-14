@@ -20,17 +20,17 @@ void QtAndroidFrameLayoutParams::setGravity(int value)
     }
 }
 
-QAndroidJniObject QtAndroidFrameLayoutParams::onConstruct()
+QAndroidJniObject QtAndroidFrameLayoutParams::onCreate()
 {
     return QAndroidJniObject("android/widget/FrameLayout$LayoutParams",
                              "(II)V",
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtAndroidFrameLayoutParams::onInflate(QAndroidJniObject &params)
+void QtAndroidFrameLayoutParams::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidMarginLayoutParams::onInflate(params);
+    QtAndroidMarginLayoutParams::onInflate(instance);
 
     if (!m_gravity.isNull())
-        params.callMethod<void>("setGravity", "(I)V", m_gravity.value());
+        instance.callMethod<void>("setGravity", "(I)V", m_gravity.value());
 }

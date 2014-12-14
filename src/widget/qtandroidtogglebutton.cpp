@@ -40,12 +40,12 @@ QAndroidJniObject QtAndroidToggleButton::onCreate()
                              ctx().object());
 }
 
-void QtAndroidToggleButton::onInflate()
+void QtAndroidToggleButton::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidCompoundButton::onInflate();
+    QtAndroidCompoundButton::onInflate(instance);
 
     if (!m_textOn.isNull())
-        QtAndroid::callTextMethod(instance(), "setTextOn", m_textOn);
+        instance.callMethod<void>("setTextOn", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_textOn).object());
     if (!m_textOff.isNull())
-        QtAndroid::callTextMethod(instance(), "setTextOff", m_textOff);
+        instance.callMethod<void>("setTextOff", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_textOff).object());
 }

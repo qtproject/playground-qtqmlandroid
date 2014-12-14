@@ -57,13 +57,13 @@ QAndroidJniObject QtAndroidScrollView::onCreate()
                              reinterpret_cast<jlong>(this));
 }
 
-void QtAndroidScrollView::onInflate()
+void QtAndroidScrollView::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidFrameLayout::onInflate();
+    QtAndroidFrameLayout::onInflate(instance);
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(instance().object());
+        registerNativeMethods(instance.object());
         nativeMethodsRegistered = true;
     }
 }

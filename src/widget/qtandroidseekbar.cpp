@@ -11,14 +11,13 @@ QAndroidJniObject QtAndroidSeekBar::onCreate()
                              ctx().object());
 }
 
-void QtAndroidSeekBar::onInflate()
+void QtAndroidSeekBar::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidAbsSeekBar::onInflate();
+    QtAndroidAbsSeekBar::onInflate(instance);
 
-    QAndroidJniObject bar = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtSeekBarListener",
                                    "(Landroid/widget/SeekBar;J)V",
-                                   bar.object(),
+                                   instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;

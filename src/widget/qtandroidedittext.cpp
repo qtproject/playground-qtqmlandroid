@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidEditText::onCreate()
                              ctx().object());
 }
 
-void QtAndroidEditText::onInflate()
+void QtAndroidEditText::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidTextView::onInflate();
+    QtAndroidTextView::onInflate(instance);
 }

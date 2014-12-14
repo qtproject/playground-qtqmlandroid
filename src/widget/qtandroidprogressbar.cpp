@@ -76,12 +76,12 @@ QAndroidJniObject QtAndroidProgressBar::onCreate()
                              ctx().object(), 0, style());
 }
 
-void QtAndroidProgressBar::onInflate()
+void QtAndroidProgressBar::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidView::onInflate();
+    QtAndroidView::onInflate(instance);
 
-    QtAndroid::callIntMethod(instance(), "setProgress", m_progress);
-    QtAndroid::callBoolMethod(instance(), "setIndeterminate", m_indeterminate);
+    instance.callMethod<void>("setProgress", "(I)V", m_progress);
+    instance.callMethod<void>("setIndeterminate", "(Z)V", m_indeterminate);
     if (!m_max.isNull())
-        QtAndroid::callIntMethod(instance(), "setMax", m_max.value());
+        instance.callMethod<void>("setMax", "(I)V", m_max.value());
 }

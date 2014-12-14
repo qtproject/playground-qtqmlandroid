@@ -2,6 +2,7 @@
 #define QTANDROIDTABSPEC_P_H
 
 #include <QtCore/qobject.h>
+#include <QtAndroidExtras/qandroidjniobject.h>
 #include <QtQml/qqml.h>
 
 QT_BEGIN_NAMESPACE
@@ -22,7 +23,7 @@ public:
     QString label() const;
     void setLabel(const QString &label);
 
-    void setup(QtAndroidTabHost *host, int index);
+    void setup(QAndroidJniObject &host, int index);
 
 Q_SIGNALS:
     void labelChanged();

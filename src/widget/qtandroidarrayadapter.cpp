@@ -39,19 +39,18 @@ void QtAndroidArrayAdapter::clear()
     }
 }
 
-void QtAndroidArrayAdapter::setup(QtAndroidAdapterView *view)
+QAndroidJniObject QtAndroidArrayAdapter::onCreate()
 {
-    QAndroidJniObject ctx = view->ctx();
-    QAndroidJniObject adv = view->instance();
-    QtAndroid::callFunction([=]() {
-        QAndroidJniObject adapter("android/widget/ArrayAdapter",
-                                  "(Landroid/content/Context;I)V",
-                                  ctx.object(),
-                                  17367043); // TODO: android.R.layout.simple_list_item_1
+    return QAndroidJniObject("android/widget/ArrayAdapter",
+                             "(Landroid/content/Context;I)V",
+                             ctx().object(),
+                             17367043); // TODO: android.R.layout.simple_list_item_1
+}
 
-        foreach (const QString &str, m_array)
-            adapter.callMethod<void>("add", "(Ljava/lang/Object;)V", QAndroidJniObject::fromString(str).object());
+void QtAndroidArrayAdapter::onInflate(QAndroidJniObject &instance)
+{
+    QtAndroidBaseAdapter::onInflate(instance);
 
-        adv.callMethod<void>("setAdapter", "(Landroid/widget/Adapter;)V", adapter.object());
-    });
+    foreach (const QString &str, m_array)
+        instance.callMethod<void>("add", "(Ljava/lang/Object;)V", QAndroidJniObject::fromString(str).object());
 }

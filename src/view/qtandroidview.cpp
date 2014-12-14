@@ -17,6 +17,9 @@ QtAndroidView::QtAndroidView(QtAndroidView *parent) : QtAndroidObject(parent),
         setParentView(parent);
     else
         QCoreApplication::postEvent(this, new QEvent(QEvent::Polish));
+
+    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
+    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
 }
 
 QtAndroidView::~QtAndroidView()
@@ -95,7 +98,15 @@ QtAndroidDrawable *QtAndroidView::background() const
 void QtAndroidView::setBackground(QtAndroidDrawable *background)
 {
     if (m_background != background) {
+        if (m_background) {
+            disconnect(m_background, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
+            m_background->destruct();
+        }
         m_background = background;
+        if (m_background) {
+            connect(m_background, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
+            m_background->construct();
+        }
         emit backgroundChanged();
     }
 }
@@ -316,26 +327,16 @@ QAndroidJniObject QtAndroidView::onCreate()
                              ctx().object());
 }
 
-void QtAndroidView::onInflate()
+void QtAndroidView::onInflate(QAndroidJniObject &instance)
 {
     QTANDROID_ASSERT_ANDROID_THREAD();
 
-    QAndroidJniObject view = instance();
     m_listener = QAndroidJniObject("qt/android/view/QtViewListener",
                                    "(Landroid/view/View;J)V",
-                                   view.object(),
+                                   instance.object(),
                                    reinterpret_cast<jlong>(this));
 
-    view.callMethod<void>("setId", "(I)V", m_id);
-
-    if (m_background) {
-        QAndroidJniObject bg = m_background->onConstruct();
-        if (bg.isValid()) {
-            m_background->setInstance(bg);
-            m_background->onInflate();
-            view.callMethod<void>("setBackground", "(Landroid/graphics/drawable/Drawable;)V", bg.object());
-        }
-    }
+    instance.callMethod<void>("setId", "(I)V", m_id);
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
@@ -343,9 +344,7 @@ void QtAndroidView::onInflate()
         nativeMethodsRegistered = true;
     }
 
-    view.callMethod<void>("setPadding", "(IIII)V", paddingLeft(), paddingTop(), paddingRight(), paddingBottom());
-
-    invalidateLayoutParams();
+    instance.callMethod<void>("setPadding", "(IIII)V", paddingLeft(), paddingTop(), paddingRight(), paddingBottom());
 }
 
 void QtAndroidView::registerNativeMethods(jobject listener)
@@ -409,12 +408,38 @@ bool QtAndroidView::event(QEvent *event)
         if (view)
             setParentView(view);
     } else if (event->type() == QEvent::LayoutRequest) {
-        if (m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
-            m_layoutParams->apply(this);
+        if (m_layoutParamsDirty && m_layoutParams && isValid()) {
+            m_layoutParams->construct();
             m_layoutParamsDirty = false;
         }
     }
     return QtAndroidObject::event(event);
+}
+
+void QtAndroidView::updateBackground()
+{
+    if (!isValid() || !m_background)
+        return;
+
+    QAndroidJniObject view = instance();
+    QAndroidJniObject background = m_background->instance();
+    QtAndroid::callFunction([=]() {
+        view.callMethod<void>("setBackground", "(Landroid/graphics/drawable/Drawable;)V", background.object());
+    });
+}
+
+void QtAndroidView::updateLayoutParams()
+{
+    if (!isValid() || !m_layoutParams)
+        return;
+
+    QAndroidJniObject view = instance();
+    QAndroidJniObject params = m_layoutParams->instance();
+    QtAndroid::callFunction([=]() {
+        view.callMethod<void>("setLayoutParams",
+                              "(Landroid/view/ViewGroup$LayoutParams;)V",
+                              params.object());
+    });
 }
 
 void QtAndroidView::invalidateLayoutParams()
@@ -428,7 +453,16 @@ void QtAndroidView::invalidateLayoutParams()
 void QtAndroidView::setLayoutParams(QtAndroidLayoutParams *params)
 {
     if (m_layoutParams != params) {
+        if (m_layoutParams) {
+            disconnect(m_layoutParams, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
+            m_layoutParams->destruct();
+        }
         m_layoutParams = params;
+        if (m_layoutParams) {
+            connect(m_layoutParams, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
+            if (isValid())
+                m_layoutParams->construct();
+        }
         invalidateLayoutParams();
     }
 }

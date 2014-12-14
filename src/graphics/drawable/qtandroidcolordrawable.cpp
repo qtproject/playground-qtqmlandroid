@@ -20,14 +20,14 @@ void QtAndroidColorDrawable::setColor(int color)
     }
 }
 
-QAndroidJniObject QtAndroidColorDrawable::onConstruct()
+QAndroidJniObject QtAndroidColorDrawable::onCreate()
 {
     return QAndroidJniObject("android/graphics/drawable/ColorDrawable");
 }
 
-void QtAndroidColorDrawable::onInflate()
+void QtAndroidColorDrawable::onInflate(QAndroidJniObject &instance)
 {
-    QAndroidJniObject drawable = instance();
-    if (drawable.isValid())
-        drawable.callMethod<void>("setColor", "(I)V", m_color);
+    QtAndroidDrawable::onInflate(instance);
+
+    instance.callMethod<void>("setColor", "(I)V", m_color);
 }

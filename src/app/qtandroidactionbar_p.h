@@ -6,7 +6,6 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtAndroidActivity;
 class QtAndroidDrawable;
 
 class QtAndroidActionBar : public QtAndroidObject
@@ -36,9 +35,6 @@ public:
     QtAndroidDrawable *background() const;
     void setBackground(QtAndroidDrawable *background);
 
-    QtAndroidActivity *activity() const;
-    void setActivity(QtAndroidActivity *activity);
-
 Q_SIGNALS:
     void visibleChanged();
     void elevationChanged();
@@ -46,13 +42,20 @@ Q_SIGNALS:
     void subtitleChanged();
     void backgroundChanged();
 
+protected:
+    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
+
+private Q_SLOTS:
+    void updateBackground();
+
 private:
     bool m_visible;
     qreal m_elevation;
     QString m_title;
     QString m_subtitle;
-    QtAndroidActivity *m_activity;
     QtAndroidDrawable *m_background;
+
+    friend class QtAndroidActivity;
 };
 
 QT_END_NAMESPACE

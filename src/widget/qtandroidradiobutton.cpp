@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidRadioButton::onCreate()
                              ctx().object());
 }
 
-void QtAndroidRadioButton::onInflate()
+void QtAndroidRadioButton::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidCompoundButton::onInflate();
+    QtAndroidCompoundButton::onInflate(instance);
 }

@@ -12,14 +12,13 @@ QAndroidJniObject QtAndroidTabHost::onCreate()
                              ctx().object(), 0);
 }
 
-void QtAndroidTabHost::onInflate()
+void QtAndroidTabHost::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidFrameLayout::onInflate();
+    QtAndroidFrameLayout::onInflate(instance);
 
-    QAndroidJniObject host = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtTabHostListener",
                                    "(Landroid/widget/TabHost;J)V",
-                                   host.object(),
+                                   instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
@@ -28,12 +27,12 @@ void QtAndroidTabHost::onInflate()
         nativeMethodsRegistered = true;
     }
 
-    host.callMethod<void>("setup");
+    instance.callMethod<void>("setup");
 
     int index = 0;
     QList<QtAndroidTabSpec *> tabs = findChildren<QtAndroidTabSpec *>();
     foreach (QtAndroidTabSpec *tab, tabs)
-        tab->setup(this, index++);
+        tab->setup(instance, index++);
 }
 
 void QtAndroidTabHost::registerNativeMethods(jobject listener)
@@ -46,14 +45,11 @@ void QtAndroidTabHost::registerNativeMethods(jobject listener)
     env->DeleteLocalRef(cls);
 }
 
-#include <QtDebug>
 void QtAndroidTabHost::onTabChanged(JNIEnv *env, jobject object, jlong instance, jstring tabId)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
     QtAndroidTabHost *host = reinterpret_cast<QtAndroidTabHost *>(instance);
-    if (host) {
-        qDebug() << host << QAndroidJniObject(tabId).toString();
+    if (host)
         QMetaObject::invokeMethod(host, "tabChanged", Qt::QueuedConnection, Q_ARG(QString, QAndroidJniObject(tabId).toString()));
-    }
 }

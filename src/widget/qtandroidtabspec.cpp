@@ -33,10 +33,8 @@ void QtAndroidTabSpec::setLabel(const QString &label)
     }
 }
 
-void QtAndroidTabSpec::setup(QtAndroidTabHost *h, int index)
+void QtAndroidTabSpec::setup(QAndroidJniObject &host, int index)
 {
-    QAndroidJniObject host = h->instance();
-
     int id = -1;
     QtAndroidView *content = qobject_cast<QtAndroidView *>(parent());
     if (content)

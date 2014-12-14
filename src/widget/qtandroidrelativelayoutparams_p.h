@@ -131,8 +131,8 @@ Q_SIGNALS:
     bool centerInParentChanged();
 
 protected:
-    QAndroidJniObject onConstruct() Q_DECL_OVERRIDE;
-    void onInflate(QAndroidJniObject &params) Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
 private:
     QtAndroidView *m_above;

@@ -30,14 +30,13 @@ QAndroidJniObject QtAndroidRadioGroup::onCreate()
                              ctx().object());
 }
 
-void QtAndroidRadioGroup::onInflate()
+void QtAndroidRadioGroup::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidLinearLayout::onInflate();
+    QtAndroidLinearLayout::onInflate(instance);
 
-    QAndroidJniObject group = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtRadioGroupListener",
                                    "(Landroid/widget/RadioGroup;J)V",
-                                   group.object(),
+                                   instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
@@ -46,7 +45,7 @@ void QtAndroidRadioGroup::onInflate()
         nativeMethodsRegistered = true;
     }
 
-    int checkedId = group.callMethod<int>("getCheckedRadioButtonId", "()I");
+    int checkedId = instance.callMethod<int>("getCheckedRadioButtonId", "()I");
     QMetaObject::invokeMethod(this, "updateCheckedButtonId", Qt::QueuedConnection, Q_ARG(int, checkedId));
 }
 

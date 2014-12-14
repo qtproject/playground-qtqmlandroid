@@ -12,7 +12,7 @@ QAndroidJniObject QtAndroidTabWidget::onCreate()
                              ctx().object());
 }
 
-void QtAndroidTabWidget::onInflate()
+void QtAndroidTabWidget::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidLinearLayout::onInflate();
+    QtAndroidLinearLayout::onInflate(instance);
 }

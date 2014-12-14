@@ -12,7 +12,7 @@ class QtAndroidActionBarDrawerToggle : public QtAndroidObject
 public:
     explicit QtAndroidActionBarDrawerToggle(QObject *parent = 0);
 
-    void onConstruct(const QAndroidJniObject &activity, const QAndroidJniObject &drawer);
+    void onCreate(const QAndroidJniObject &activity, const QAndroidJniObject &drawer);
 };
 
 QT_END_NAMESPACE

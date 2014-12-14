@@ -3,7 +3,7 @@
 #include "qtandroidview_p.h"
 
 QtAndroidLayoutParams::QtAndroidLayoutParams(QtAndroidView *view) :
-    QObject(view), m_view(view)
+    QtAndroidObject(view), m_view(view)
 {
     m_view->setLayoutParams(this);
 }
@@ -40,29 +40,17 @@ void QtAndroidLayoutParams::setHeight(int value)
     }
 }
 
-void QtAndroidLayoutParams::apply(QtAndroidView *v)
-{
-    QAndroidJniObject view = v->instance();
-    QtAndroid::callFunction([=]() {
-        QAndroidJniObject params = onConstruct();
-        onInflate(params);
-        view.callMethod<void>("setLayoutParams",
-                              "(Landroid/view/ViewGroup$LayoutParams;)V",
-                              params.object());
-    });
-}
-
-QAndroidJniObject QtAndroidLayoutParams::onConstruct()
+QAndroidJniObject QtAndroidLayoutParams::onCreate()
 {
     return QAndroidJniObject("android/view/ViewGroup$LayoutParams",
                              "(II)V",
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtAndroidLayoutParams::onInflate(QAndroidJniObject &params)
+void QtAndroidLayoutParams::onInflate(QAndroidJniObject &instance)
 {
     if (!m_width.isNull())
-        params.setField<int>("width", m_width.value());
+        instance.setField<int>("width", m_width.value());
     if (!m_height.isNull())
-        params.setField<int>("height", m_height.value());
+        instance.setField<int>("height", m_height.value());
 }

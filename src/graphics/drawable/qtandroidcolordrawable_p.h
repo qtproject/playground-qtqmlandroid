@@ -20,8 +20,8 @@ Q_SIGNALS:
     void colorChanged();
 
 protected:
-    QAndroidJniObject onConstruct() Q_DECL_OVERRIDE;
-    void onInflate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
 private:
     int m_color;

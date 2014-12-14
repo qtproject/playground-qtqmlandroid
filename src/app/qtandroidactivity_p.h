@@ -33,8 +33,13 @@ protected:
     void classBegin() Q_DECL_OVERRIDE;
     void componentComplete() Q_DECL_OVERRIDE;
 
+private Q_SLOTS:
+    void updateActionBar();
+    void updateOptionsMenu();
+    void updateContentView();
+
 private:
-    QtAndroidView *m_view;
+    QtAndroidView *m_contentView;
     QtAndroidMenu *m_optionsMenu;
     QtAndroidActionBar *m_actionBar;
 };

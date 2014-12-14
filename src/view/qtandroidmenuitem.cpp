@@ -76,25 +76,24 @@ void QtAndroidMenuItem::setChecked(bool checked)
     }
 }
 
-QAndroidJniObject QtAndroidMenuItem::onConstruct()
+QAndroidJniObject QtAndroidMenuItem::onCreate()
 {
     return QAndroidJniObject("qt/android/view/QtMenuItem",
                              "(J)V",
                              reinterpret_cast<jlong>(this));
 }
 
-void QtAndroidMenuItem::onInflate()
+void QtAndroidMenuItem::onInflate(QAndroidJniObject &instance)
 {
-    QAndroidJniObject that = instance();
-    that.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_title).object());
-    that.callMethod<void>("setEnabled", "(Z)V", m_enabled);
-    that.callMethod<void>("setVisible", "(Z)V", m_visible);
-    that.callMethod<void>("setCheckable", "(Z)V", m_checkable);
-    that.callMethod<void>("setChecked", "(Z)V", m_enabled);
+    instance.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_title).object());
+    instance.callMethod<void>("setEnabled", "(Z)V", m_enabled);
+    instance.callMethod<void>("setVisible", "(Z)V", m_visible);
+    instance.callMethod<void>("setCheckable", "(Z)V", m_checkable);
+    instance.callMethod<void>("setChecked", "(Z)V", m_enabled);
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(that.object());
+        registerNativeMethods(instance.object());
         nativeMethodsRegistered = true;
     }
 }

@@ -328,54 +328,54 @@ void QtAndroidRelativeLayoutParams::setCenterInParent(bool center)
     }
 }
 
-QAndroidJniObject QtAndroidRelativeLayoutParams::onConstruct()
+QAndroidJniObject QtAndroidRelativeLayoutParams::onCreate()
 {
     return QAndroidJniObject("android/widget/RelativeLayout$LayoutParams",
                              "(II)V",
                              WRAP_CONTENT, WRAP_CONTENT);
 }
 
-static void addRule(QAndroidJniObject& params, QtAndroidView *view, QtAndroidRelativeLayout::Verb verb)
+static void addRule(QAndroidJniObject& instance, QtAndroidView *view, QtAndroidRelativeLayout::Verb verb)
 {
     if (view) {
         int anchor = view->instance().callMethod<jint>("getId");
-        params.callMethod<void>("addRule", "(II)V", verb, anchor);
+        instance.callMethod<void>("addRule", "(II)V", verb, anchor);
     }
 }
 
-static void addRule(QAndroidJniObject &params, bool value, QtAndroidRelativeLayout::Verb verb)
+static void addRule(QAndroidJniObject &instance, bool value, QtAndroidRelativeLayout::Verb verb)
 {
     if (value)
-        params.callMethod<void>("addRule", "(I)V", verb);
+        instance.callMethod<void>("addRule", "(I)V", verb);
 }
 
-void QtAndroidRelativeLayoutParams::onInflate(QAndroidJniObject &params)
+void QtAndroidRelativeLayoutParams::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidMarginLayoutParams::onInflate(params);
+    QtAndroidMarginLayoutParams::onInflate(instance);
 
-    params.setField<jboolean>("alignWithParent", m_alignWithParent);
+    instance.setField<jboolean>("alignWithParent", m_alignWithParent);
 
-    addRule(params, m_above, QtAndroidRelativeLayout::ABOVE);
-    addRule(params, m_below, QtAndroidRelativeLayout::BELOW);
-    addRule(params, m_alignTop, QtAndroidRelativeLayout::ALIGN_TOP);
-    addRule(params, m_alignLeft, QtAndroidRelativeLayout::ALIGN_LEFT);
-    addRule(params, m_alignRight, QtAndroidRelativeLayout::ALIGN_RIGHT);
-    addRule(params, m_alignBottom, QtAndroidRelativeLayout::ALIGN_BOTTOM);
-    addRule(params, m_alignStart, QtAndroidRelativeLayout::ALIGN_START);
-    addRule(params, m_alignEnd, QtAndroidRelativeLayout::ALIGN_END);
-    addRule(params, m_alignBaseline, QtAndroidRelativeLayout::ALIGN_BASELINE);
-    addRule(params, m_toLeftOf, QtAndroidRelativeLayout::LEFT_OF);
-    addRule(params, m_toRightOf, QtAndroidRelativeLayout::RIGHT_OF);
-    addRule(params, m_toStartOf, QtAndroidRelativeLayout::START_OF);
-    addRule(params, m_toEndOf, QtAndroidRelativeLayout::END_OF);
+    addRule(instance, m_above, QtAndroidRelativeLayout::ABOVE);
+    addRule(instance, m_below, QtAndroidRelativeLayout::BELOW);
+    addRule(instance, m_alignTop, QtAndroidRelativeLayout::ALIGN_TOP);
+    addRule(instance, m_alignLeft, QtAndroidRelativeLayout::ALIGN_LEFT);
+    addRule(instance, m_alignRight, QtAndroidRelativeLayout::ALIGN_RIGHT);
+    addRule(instance, m_alignBottom, QtAndroidRelativeLayout::ALIGN_BOTTOM);
+    addRule(instance, m_alignStart, QtAndroidRelativeLayout::ALIGN_START);
+    addRule(instance, m_alignEnd, QtAndroidRelativeLayout::ALIGN_END);
+    addRule(instance, m_alignBaseline, QtAndroidRelativeLayout::ALIGN_BASELINE);
+    addRule(instance, m_toLeftOf, QtAndroidRelativeLayout::LEFT_OF);
+    addRule(instance, m_toRightOf, QtAndroidRelativeLayout::RIGHT_OF);
+    addRule(instance, m_toStartOf, QtAndroidRelativeLayout::START_OF);
+    addRule(instance, m_toEndOf, QtAndroidRelativeLayout::END_OF);
 
-    addRule(params, m_alignParentTop, QtAndroidRelativeLayout::ALIGN_PARENT_TOP);
-    addRule(params, m_alignParentLeft, QtAndroidRelativeLayout::ALIGN_PARENT_LEFT);
-    addRule(params, m_alignParentRight, QtAndroidRelativeLayout::ALIGN_PARENT_RIGHT);
-    addRule(params, m_alignParentBottom, QtAndroidRelativeLayout::ALIGN_PARENT_BOTTOM);
-    addRule(params, m_alignParentStart, QtAndroidRelativeLayout::ALIGN_PARENT_START);
-    addRule(params, m_alignParentEnd, QtAndroidRelativeLayout::ALIGN_PARENT_END);
-    addRule(params, m_centerHorizontal, QtAndroidRelativeLayout::CENTER_HORIZONTAL);
-    addRule(params, m_centerVertical, QtAndroidRelativeLayout::CENTER_VERTICAL);
-    addRule(params, m_centerInParent, QtAndroidRelativeLayout::CENTER_IN_PARENT);
+    addRule(instance, m_alignParentTop, QtAndroidRelativeLayout::ALIGN_PARENT_TOP);
+    addRule(instance, m_alignParentLeft, QtAndroidRelativeLayout::ALIGN_PARENT_LEFT);
+    addRule(instance, m_alignParentRight, QtAndroidRelativeLayout::ALIGN_PARENT_RIGHT);
+    addRule(instance, m_alignParentBottom, QtAndroidRelativeLayout::ALIGN_PARENT_BOTTOM);
+    addRule(instance, m_alignParentStart, QtAndroidRelativeLayout::ALIGN_PARENT_START);
+    addRule(instance, m_alignParentEnd, QtAndroidRelativeLayout::ALIGN_PARENT_END);
+    addRule(instance, m_centerHorizontal, QtAndroidRelativeLayout::CENTER_HORIZONTAL);
+    addRule(instance, m_centerVertical, QtAndroidRelativeLayout::CENTER_VERTICAL);
+    addRule(instance, m_centerInParent, QtAndroidRelativeLayout::CENTER_IN_PARENT);
 }

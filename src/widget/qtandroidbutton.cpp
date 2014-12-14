@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidButton::onCreate()
                              ctx().object());
 }
 
-void QtAndroidButton::onInflate()
+void QtAndroidButton::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidTextView::onInflate();
+    QtAndroidTextView::onInflate(instance);
 }

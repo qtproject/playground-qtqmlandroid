@@ -5,11 +5,12 @@ QtAndroidDrawable::QtAndroidDrawable(QObject *parent) :
 {
 }
 
-QAndroidJniObject QtAndroidDrawable::onConstruct()
+QAndroidJniObject QtAndroidDrawable::onCreate()
 {
     return QAndroidJniObject("android/graphics/drawable/Drawable");
 }
 
-void QtAndroidDrawable::onInflate()
+void QtAndroidDrawable::onInflate(QAndroidJniObject &instance)
 {
+    Q_UNUSED(instance);
 }

@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidSpace::onCreate()
                              ctx().object());
 }
 
-void QtAndroidSpace::onInflate()
+void QtAndroidSpace::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidView::onInflate();
+    QtAndroidView::onInflate(instance);
 }

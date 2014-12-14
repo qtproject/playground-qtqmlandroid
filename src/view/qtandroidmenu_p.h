@@ -17,8 +17,8 @@ public:
     QList<QtAndroidMenuItem *> items() const;
 
 protected:
-    QAndroidJniObject onConstruct();
-    void onInflate();
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
 private:
     friend class QtAndroidActivity;

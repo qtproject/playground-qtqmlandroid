@@ -80,14 +80,14 @@ QAndroidJniObject QtAndroidViewAnimator::onCreate()
                              ctx().object());
 }
 
-void QtAndroidViewAnimator::onInflate()
+void QtAndroidViewAnimator::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidFrameLayout::onInflate();
+    QtAndroidFrameLayout::onInflate(instance);
 
     if (!m_displayedChild.isNull())
-        QtAndroid::callIntMethod(instance(), "setDisplayedChild", m_displayedChild.value());
+        instance.callMethod<void>("setDisplayedChild", "(I)V", m_displayedChild.value());
     if (!m_inAnimation.isNull())
-        instance().callMethod<void>("setInAnimation", "(Landroid/content/Context;I)V", ctx().object(), m_inAnimation.value());
+        instance.callMethod<void>("setInAnimation", "(Landroid/content/Context;I)V", ctx().object(), m_inAnimation.value());
     if (!m_outAnimation.isNull())
-        instance().callMethod<void>("setOutAnimation", "(Landroid/content/Context;I)V", ctx().object(), m_outAnimation.value());
+        instance.callMethod<void>("setOutAnimation", "(Landroid/content/Context;I)V", ctx().object(), m_outAnimation.value());
 }

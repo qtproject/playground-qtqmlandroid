@@ -21,8 +21,12 @@ class QtAndroidObject : public QObject, public QQmlParserStatus
 public:
     explicit QtAndroidObject(QObject *parent = 0);
 
+    bool isValid() const;
     QAndroidJniObject instance() const;
-    void setInstance(const QAndroidJniObject &instance);
+    void setInstance(const QAndroidJniObject &instance); // TODO: private
+
+    void construct();
+    void destruct();
 
     QQmlListProperty<QObject> data();
 
@@ -31,6 +35,9 @@ Q_SIGNALS:
     void instanceChanged();
 
 protected:
+    virtual QAndroidJniObject onCreate();
+    virtual void onInflate(QAndroidJniObject &instance);
+
     bool isComponentComplete() const;
     void classBegin() Q_DECL_OVERRIDE;
     void componentComplete() Q_DECL_OVERRIDE;

@@ -34,14 +34,13 @@ QAndroidJniObject QtAndroidNumberPicker::onCreate()
                              ctx().object());
 }
 
-void QtAndroidNumberPicker::onInflate()
+void QtAndroidNumberPicker::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidLinearLayout::onInflate();
+    QtAndroidLinearLayout::onInflate(instance);
 
-    QAndroidJniObject picker = instance();
     m_listener = QAndroidJniObject("qt/android/widget/QtNumberPickerListener",
                                    "(Landroid/widget/NumberPicker;J)V",
-                                   picker.object(),
+                                   instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
@@ -50,7 +49,7 @@ void QtAndroidNumberPicker::onInflate()
         nativeMethodsRegistered = true;
     }
 
-    picker.callMethod<void>("setValue", "(I)V", m_value);
+    instance.callMethod<void>("setValue", "(I)V", m_value);
 }
 
 void QtAndroidNumberPicker::registerNativeMethods(jobject listener)

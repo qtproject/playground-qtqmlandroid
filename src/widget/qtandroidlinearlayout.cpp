@@ -104,24 +104,19 @@ QAndroidJniObject QtAndroidLinearLayout::onCreate()
                              ctx().object());
 }
 
-void QtAndroidLinearLayout::onInflate()
+void QtAndroidLinearLayout::onInflate(QAndroidJniObject &instance)
 {
-    QAndroidJniObject layout = instance();
-    if (layout.isValid()) {
-        if (!m_baselineAligned.isNull())
-            layout.callMethod<void>("setBaselineAligned", "(Z)V", m_baselineAligned.value());
-        if (!m_measureWithLargestChild.isNull())
-            layout.callMethod<void>("setMeasureWithLargestChildEnabled", "(Z)V", m_measureWithLargestChild.value());
-        if (!m_orientation.isNull())
-            layout.callMethod<void>("setOrientation", "(I)V", m_orientation.value());
-        if (!m_weightSum.isNull())
-            layout.callMethod<void>("setWeightSum", "(J)V", m_weightSum.value());
-    }
+    if (!m_baselineAligned.isNull())
+        instance.callMethod<void>("setBaselineAligned", "(Z)V", m_baselineAligned.value());
+    if (!m_measureWithLargestChild.isNull())
+        instance.callMethod<void>("setMeasureWithLargestChildEnabled", "(Z)V", m_measureWithLargestChild.value());
+    if (!m_orientation.isNull())
+        instance.callMethod<void>("setOrientation", "(I)V", m_orientation.value());
+    if (!m_weightSum.isNull())
+        instance.callMethod<void>("setWeightSum", "(J)V", m_weightSum.value());
 
-    QtAndroidViewGroup::onInflate();
+    QtAndroidViewGroup::onInflate(instance);
 
-    if (layout.isValid()) {
-        if (!m_baselineAlignedChildIndex.isNull())
-            layout.callMethod<void>("setBaselineAlignedChildIndex", "(I)V", m_baselineAlignedChildIndex.value());
-    }
+    if (!m_baselineAlignedChildIndex.isNull())
+        instance.callMethod<void>("setBaselineAlignedChildIndex", "(I)V", m_baselineAlignedChildIndex.value());
 }

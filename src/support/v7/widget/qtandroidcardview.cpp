@@ -11,7 +11,7 @@ QAndroidJniObject QtAndroidCardView::onCreate()
                              ctx().object());
 }
 
-void QtAndroidCardView::onInflate()
+void QtAndroidCardView::onInflate(QAndroidJniObject &instance)
 {
-    QtAndroidFrameLayout::onInflate();
+    QtAndroidFrameLayout::onInflate(instance);
 }
