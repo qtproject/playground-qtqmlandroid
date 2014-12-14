@@ -12,7 +12,7 @@ Activity {
         title: "QtAndroid"
         subtitle: adapter.getItem(switcher.displayedChild)
         background: ColorDrawable {
-            color: Color.rgb(0, 151, 137)
+            color: Color.rgb(255, 100, 100)
         }
     }
 
