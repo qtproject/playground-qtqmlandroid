@@ -16,6 +16,7 @@ class QtAndroidView : public QtAndroidContextual
     Q_PROPERTY(QtAndroidView *parent READ parentView WRITE setParentView NOTIFY parentChanged)
     Q_PROPERTY(QQmlListProperty<QtAndroidView> children READ children NOTIFY childrenChanged)
     Q_PROPERTY(QtAndroidDrawable *background READ background WRITE setBackground NOTIFY backgroundChanged)
+    Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
     Q_PROPERTY(bool focus READ hasFocus NOTIFY focusChanged)
     Q_PROPERTY(qreal x READ x WRITE setX NOTIFY xChanged)
     Q_PROPERTY(qreal y READ y WRITE setY NOTIFY yChanged)
@@ -43,6 +44,9 @@ public:
 
     QtAndroidDrawable *background() const;
     void setBackground(QtAndroidDrawable *background);
+
+    bool isVisible() const;
+    void setVisible(bool visible);
 
     bool hasFocus() const;
 
@@ -94,6 +98,7 @@ Q_SIGNALS:
     void parentChanged();
     void backgroundChanged();
     void childrenChanged();
+    void visibleChanged();
     void focusChanged();
     void click();
     void xChanged();
@@ -141,6 +146,7 @@ private:
     QtAndroidView *m_parent;
     QList<QtAndroidView *> m_children;
     QtAndroidDrawable *m_background;
+    bool m_visible;
 
     QAndroidJniObject m_listener;
 
