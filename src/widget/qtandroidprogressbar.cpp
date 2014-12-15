@@ -2,7 +2,7 @@
 #include "qtandroidfunctions_p.h"
 
 QtAndroidProgressBar::QtAndroidProgressBar(QtAndroidView *parent) :
-    QtAndroidView(parent), m_progress(0), m_indeterminate(false)
+    QtAndroidView(parent), m_max(100), m_progress(0), m_secondary(0), m_indeterminate(false)
 {
 }
 
@@ -41,18 +41,30 @@ bool QtAndroidProgressBar::updateProgress(int progress)
     return false;
 }
 
-int QtAndroidProgressBar::max() const
+int QtAndroidProgressBar::secondaryProgress() const
 {
-    if (m_max.isNull())
-        return 100;
-    return m_max.value();
+    return m_secondary;
 }
 
-void QtAndroidProgressBar::setMax(int arg)
+void QtAndroidProgressBar::setSecondaryProgress(int progress)
 {
-    if (arg != max()) {
-        m_max = arg;
-        QtAndroid::callIntMethod(instance(), "setMax", arg);
+    if (m_secondary != progress) {
+        m_secondary = progress;
+        QtAndroid::callIntMethod(instance(), "setSecondaryProgress", progress);
+        emit secondaryProgressChanged();
+    }
+}
+
+int QtAndroidProgressBar::max() const
+{
+    return m_max;
+}
+
+void QtAndroidProgressBar::setMax(int max)
+{
+    if (m_max != max) {
+        m_max = max;
+        QtAndroid::callIntMethod(instance(), "setMax", max);
         emit maxChanged();
     }
 }
@@ -80,8 +92,12 @@ void QtAndroidProgressBar::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidView::onInflate(instance);
 
-    instance.callMethod<void>("setProgress", "(I)V", m_progress);
-    instance.callMethod<void>("setIndeterminate", "(Z)V", m_indeterminate);
-    if (!m_max.isNull())
-        instance.callMethod<void>("setMax", "(I)V", m_max.value());
+    if (m_progress > 0)
+        instance.callMethod<void>("setProgress", "(I)V", m_progress);
+    if (m_secondary > 0)
+        instance.callMethod<void>("setSecondaryProgress", "(I)V", m_secondary);
+    if (m_indeterminate)
+        instance.callMethod<void>("setIndeterminate", "(Z)V", m_indeterminate);
+    if (m_max != 100)
+        instance.callMethod<void>("setMax", "(I)V", m_max);
 }

@@ -11,6 +11,7 @@ class QtAndroidProgressBar : public QtAndroidView
     Q_OBJECT
     Q_PROPERTY(bool indeterminate READ isIndeterminate WRITE setIndeterminate NOTIFY indeterminateChanged)
     Q_PROPERTY(int progress READ progress WRITE setProgress NOTIFY progressChanged)
+    Q_PROPERTY(int secondaryProgress READ secondaryProgress WRITE setSecondaryProgress NOTIFY secondaryProgressChanged)
     Q_PROPERTY(int max READ max WRITE setMax NOTIFY maxChanged)
     Q_PROPERTY(Style style READ style WRITE setStyle)
     Q_ENUMS(Style)
@@ -23,6 +24,9 @@ public:
 
     int progress() const;
     void setProgress(int progress);
+
+    int secondaryProgress() const;
+    void setSecondaryProgress(int progress);
 
     int max() const;
     void setMax(int max);
@@ -44,6 +48,7 @@ public:
 Q_SIGNALS:
     void indeterminateChanged();
     void progressChanged();
+    void secondaryProgressChanged();
     void maxChanged();
 
 protected:
@@ -54,9 +59,10 @@ private Q_SLOTS:
     bool updateProgress(int progress);
 
 private:
+    int m_max;
     int m_progress;
+    int m_secondary;
     bool m_indeterminate;
-    QtAndroidOptional<int> m_max;
     QtAndroidOptional<Style> m_style;
 };
 

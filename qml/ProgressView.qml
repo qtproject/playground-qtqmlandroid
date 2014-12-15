@@ -39,7 +39,8 @@ ScrollView {
                 }
                 Space { LinearLayout.height: 24 }
                 ProgressBar {
-                    progress: seekBar.progress
+                    progress: primaryBar.progress
+                    secondaryProgress: secondaryBar.progress
                     style: ProgressBar.Horizontal
                 }
             }
@@ -52,11 +53,15 @@ ScrollView {
                 padding: 48
                 orientation: LinearLayout.VERTICAL
 
-                TextView { text: qsTr("SeekBar (%1)").arg(seekBar.progress); textSize: 18 }
+                TextView { text: qsTr("SeekBar (%1/%2)").arg(primaryBar.progress).arg(secondaryBar.progress); textSize: 18 }
                 Space { LinearLayout.height: 48 }
                 SeekBar {
-                    id: seekBar
-                    progress: 50
+                    id: primaryBar
+                    progress: 25
+                }
+                SeekBar {
+                    id: secondaryBar
+                    progress: 75
                 }
             }
         }
