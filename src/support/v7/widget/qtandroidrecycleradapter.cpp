@@ -80,12 +80,10 @@ jobject QtAndroidRecyclerAdapter::onCreateViewHolder(JNIEnv *env, jobject object
     if (adapter) {
         QtAndroidView *item = 0;
         QMetaObject::invokeMethod(adapter, "createItem", Qt::BlockingQueuedConnection, Q_RETURN_ARG(QtAndroidView *, item));
-        QAndroidJniObject it = item->onCreate();
-        item->onInflate(it);
-        item->setInstance(it);
+        item->construct();
         adapter->m_holders += QAndroidJniObject("qt/android/support/v7/widget/QtRecyclerAdapter$ViewHolder",
                                                 "(Landroid/view/View;J)V",
-                                                it.object(),
+                                                item->instance().object(),
                                                 reinterpret_cast<jlong>(item));
         return adapter->m_holders.last().object();
     }
