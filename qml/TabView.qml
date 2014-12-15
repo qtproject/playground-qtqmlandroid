@@ -27,8 +27,74 @@ TabHost {
                     onTriggered: layout.refreshing = false
                 }
             }
-            CalendarView {
-                TabSpec.label: "Calendar"
+            ScrollView {
+                TabSpec.label: "CardView"
+                LinearLayout {
+                    FrameLayout.topMargin: 48
+                    FrameLayout.leftMargin: 48
+                    FrameLayout.rightMargin: 48
+                    FrameLayout.bottomMargin: 48
+                    orientation: LinearLayout.VERTICAL
+                    CardView {
+                        RelativeLayout {
+                            TextView { text: "Lorem"; RelativeLayout.centerInParent: true }
+                        }
+                        LinearLayout.height: 512
+                    }
+                    Space { LinearLayout.height: 48 }
+                    CardView {
+                        RelativeLayout { TextView { text: "ipsum";  RelativeLayout.centerInParent: true } }
+                        LinearLayout.height: 512
+                    }
+                    Space { LinearLayout.height: 48 }
+                    CardView {
+                        RelativeLayout {
+                            TextView { text: "dolor"; RelativeLayout.centerInParent: true }
+                        }
+                        LinearLayout.height: 512
+                    }
+                    Space { LinearLayout.height: 48 }
+                    CardView {
+                        RelativeLayout {
+                            TextView { text: "sit"; RelativeLayout.centerInParent: true }
+                        }
+                        LinearLayout.height: 512
+                    }
+                    Space { LinearLayout.height: 48 }
+                    CardView {
+                        RelativeLayout {
+                            TextView { text: "amet"; RelativeLayout.centerInParent: true }
+                        }
+                        LinearLayout.height: 512
+                    }
+                    Space { LinearLayout.height: 48 }
+                    CardView {
+                        RelativeLayout {
+                            TextView { text: "consectetur"; RelativeLayout.centerInParent: true }
+                        }
+                        LinearLayout.height: 512
+                    }
+                    Space { LinearLayout.height: 48 }
+                    CardView {
+                        RelativeLayout {
+                            TextView { text: "adipiscing"; RelativeLayout.centerInParent: true }
+                        }
+                        LinearLayout.height: 512
+                    }
+                    Space { LinearLayout.height: 48 }
+                    CardView {
+                        RelativeLayout {
+                            TextView { text: "elit"; RelativeLayout.centerInParent: true }
+                        }
+                        LinearLayout.height: 512
+                    }
+                }
+            }
+            RecyclerView {
+                TabSpec.label: "RecyclerView"
+                adapter: ArrayAdapter {
+                    array: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"]
+                }
             }
         }
         TabWidget { }

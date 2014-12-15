@@ -47,6 +47,7 @@ Activity {
             ButtonsView { }
             ProgressView { }
             InputView { }
+            CalendarView { }
             TabView { }
         }
 
@@ -54,7 +55,7 @@ Activity {
             DrawerLayout.gravity: Gravity.LEFT
             adapter: ArrayAdapter {
                 id: adapter
-                array: ["Buttons", "Progress", "Input", "Views"]
+                array: ["Buttons", "Progress", "Input", "Calendar", "Views"]
             }
             onClick: {
                 drawer.closeDrawer(Gravity.LEFT)
