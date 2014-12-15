@@ -7,11 +7,12 @@
 
 QT_BEGIN_NAMESPACE
 
-#define QTANDROID_ASSERT_QT_THREAD() \
-    Q_ASSERT(QThread::currentThread() == qApp->thread())
-
-#define QTANDROID_ASSERT_ANDROID_THREAD() \
-    Q_ASSERT(QThread::currentThread() != qApp->thread())
+namespace QtAndroid {
+    static inline bool isMainQtThread()
+    {
+        return QThread::currentThread() == qApp->thread();
+    }
+}
 
 QT_END_NAMESPACE
 

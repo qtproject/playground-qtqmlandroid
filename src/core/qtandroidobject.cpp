@@ -32,7 +32,7 @@ void QtAndroidObject::setInstance(const QAndroidJniObject &instance)
 
 void QtAndroidObject::construct()
 {
-    QTANDROID_ASSERT_QT_THREAD();
+    Q_ASSERT(QtAndroid::isMainQtThread());
 
     foreach (QObject *obj, children()) {
         QtAndroidObject *child = qobject_cast<QtAndroidObject *>(obj);
@@ -50,7 +50,7 @@ void QtAndroidObject::construct()
 
 void QtAndroidObject::destruct()
 {
-    QTANDROID_ASSERT_QT_THREAD();
+    Q_ASSERT(QtAndroid::isMainQtThread());
 
     foreach (QObject *obj, children()) {
         QtAndroidObject *child = qobject_cast<QtAndroidObject *>(obj);

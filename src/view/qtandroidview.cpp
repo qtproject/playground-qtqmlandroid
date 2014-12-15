@@ -295,7 +295,7 @@ void QtAndroidView::children_clear(QQmlListProperty<QtAndroidView> *list)
 
 QAndroidJniObject QtAndroidView::onCreate()
 {
-    QTANDROID_ASSERT_ANDROID_THREAD();
+    Q_ASSERT(!QtAndroid::isMainQtThread());
 
     return QAndroidJniObject("android/view/View",
                              "(Landroid/content/Context;)V",
@@ -304,7 +304,7 @@ QAndroidJniObject QtAndroidView::onCreate()
 
 void QtAndroidView::onInflate(QAndroidJniObject &instance)
 {
-    QTANDROID_ASSERT_ANDROID_THREAD();
+    Q_ASSERT(!QtAndroid::isMainQtThread());
 
     QtAndroidContextual::onInflate(instance);
 
