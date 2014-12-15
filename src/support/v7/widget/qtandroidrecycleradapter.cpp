@@ -1,32 +1,37 @@
 #include "qtandroidrecycleradapter_p.h"
+#include "qtandroidfunctions_p.h"
 
 QtAndroidRecyclerAdapter::QtAndroidRecyclerAdapter(QObject *parent) :
-    QtAndroidContextual(parent)
+    QtAndroidContextual(parent), m_count(0)
 {
 }
 
-QStringList QtAndroidRecyclerAdapter::array() const
+int QtAndroidRecyclerAdapter::count() const
 {
-    return m_array;
+    return m_count;
 }
 
-void QtAndroidRecyclerAdapter::setArray(const QStringList &array)
+void QtAndroidRecyclerAdapter::setCount(int count)
 {
-    if (m_array != array) {
-        m_array = array;
-        emit arrayChanged();
+    if (m_count != count) {
+        m_count = count;
+        QtAndroid::callIntMethod(instance(), "setCount", count);
+        emit countChanged();
     }
 }
 
 QAndroidJniObject QtAndroidRecyclerAdapter::onCreate()
 {
-    return QAndroidJniObject("qt/android/support/v7/widget/QtRecyclerAdapter");
+    return QAndroidJniObject("qt/android/support/v7/widget/QtRecyclerAdapter",
+                             "(IJ)V",
+                             m_count,
+                             reinterpret_cast<jlong>(this));
 }
 
 void QtAndroidRecyclerAdapter::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidContextual::onInflate(instance);
 
-    foreach (const QString &str, m_array)
-        instance.callMethod<void>("add", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(str).object());
+    if (m_count > 0)
+        instance.callMethod<void>("setCount", "(I)V", m_count);
 }
