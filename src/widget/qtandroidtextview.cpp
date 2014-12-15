@@ -81,6 +81,22 @@ void QtAndroidTextView::setSingleLine(bool singleLine)
     }
 }
 
+int QtAndroidTextView::inputType() const
+{
+    if (m_inputType.isNull())
+        return 0; // TODO
+    return m_inputType.value();
+}
+
+void QtAndroidTextView::setInputType(int type)
+{
+    if (m_inputType.isNull() || m_inputType.value() != type) {
+        m_inputType = type;
+        QtAndroid::callIntMethod(instance(), "setInputType", type);
+        emit inputTypeChanged();
+    }
+}
+
 QAndroidJniObject QtAndroidTextView::onCreate()
 {
     return QAndroidJniObject("android/widget/TextView",
@@ -102,4 +118,6 @@ void QtAndroidTextView::onInflate(QAndroidJniObject &instance)
         instance.callMethod<void>("setHint", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_hint).object());
     if (m_singleLine)
         instance.callMethod<void>("setSingleLine");
+    if (!m_inputType.isNull())
+        instance.callMethod<void>("setInputType", "(I)V", m_inputType.value());
 }

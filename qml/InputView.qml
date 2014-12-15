@@ -14,8 +14,14 @@ ScrollView {
                 TextView { text: "EditText"; textSize: 18 }
                 Space { LinearLayout.height: 48 }
                 EditText {
-                    hint: "Hint..."
+                    hint: "Username"
                     singleLine: true
+                }
+                Space { LinearLayout.height: 48 }
+                EditText {
+                    hint: "Password"
+                    singleLine: true
+                    inputType: 1 | 128 // TODO: TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
                 }
             }
         }
