@@ -24,6 +24,8 @@ QtAndroidView::QtAndroidView(QtAndroidView *parent) : QtAndroidObject(parent),
 
 QtAndroidView::~QtAndroidView()
 {
+    foreach (QtAndroidView *child, m_children)
+        child->setParentView(0);
     if (m_parent)
         setParentView(0);
 }
