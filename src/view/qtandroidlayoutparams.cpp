@@ -3,7 +3,7 @@
 #include "qtandroidview_p.h"
 
 QtAndroidLayoutParams::QtAndroidLayoutParams(QtAndroidView *view) :
-    QtAndroidObject(view), m_view(view)
+    QtAndroidObject(view), m_dirty(false), m_view(view)
 {
     m_view->setLayoutParams(this);
 }
@@ -27,7 +27,7 @@ void QtAndroidLayoutParams::setWidth(int value)
 {
     if (value != width()) {
         m_width = value;
-        // TODO: invalidate
+        invalidate();
         emit widthChanged();
     }
 }
@@ -43,8 +43,16 @@ void QtAndroidLayoutParams::setHeight(int value)
 {
     if (value != height()) {
         m_height = value;
-        // TODO: invalidate
+        invalidate();
         emit heightChanged();
+    }
+}
+
+void QtAndroidLayoutParams::invalidate()
+{
+    if (!m_dirty && isValid()) {
+        m_dirty = true;
+        QCoreApplication::postEvent(this, new QEvent(QEvent::LayoutRequest));
     }
 }
 
@@ -61,4 +69,15 @@ void QtAndroidLayoutParams::onInflate(QAndroidJniObject &instance)
         instance.setField<int>("width", m_width.value());
     if (!m_height.isNull())
         instance.setField<int>("height", m_height.value());
+}
+
+bool QtAndroidLayoutParams::event(QEvent *event)
+{
+    if (event->type() == QEvent::LayoutRequest) {
+        if (m_dirty && isValid()) {
+            construct();
+            m_dirty = false;
+        }
+    }
+    return QtAndroidObject::event(event);
 }

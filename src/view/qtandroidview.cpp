@@ -6,8 +6,7 @@
 #include <QtCore/qhash.h>
 
 QtAndroidView::QtAndroidView(QtAndroidView *parent) :
-    QtAndroidContextual(parent), m_parent(0), m_background(0),
-    m_layoutParamsDirty(false), m_layoutParams(0),
+    QtAndroidContextual(parent), m_parent(0), m_background(0), m_layoutParams(0),
     m_x(0), m_y(0), m_width(0), m_height(0)
 {
     static int id = 0;
@@ -384,11 +383,6 @@ bool QtAndroidView::event(QEvent *event)
         QtAndroidView *view = qobject_cast<QtAndroidView *>(parent());
         if (view)
             setParentView(view);
-    } else if (event->type() == QEvent::LayoutRequest) {
-        if (m_layoutParamsDirty && m_layoutParams && isValid()) {
-            m_layoutParams->construct();
-            m_layoutParamsDirty = false;
-        }
     }
     return QtAndroidContextual::event(event);
 }
@@ -419,14 +413,6 @@ void QtAndroidView::updateLayoutParams()
     });
 }
 
-void QtAndroidView::invalidateLayoutParams()
-{
-    if (!m_layoutParamsDirty && m_layoutParams && instance().isValid()) {
-        m_layoutParamsDirty = true;
-        QCoreApplication::postEvent(this, new QEvent(QEvent::LayoutRequest));
-    }
-}
-
 void QtAndroidView::setLayoutParams(QtAndroidLayoutParams *params)
 {
     if (m_layoutParams != params) {
@@ -440,6 +426,5 @@ void QtAndroidView::setLayoutParams(QtAndroidLayoutParams *params)
             if (isValid())
                 m_layoutParams->construct();
         }
-        invalidateLayoutParams();
     }
 }

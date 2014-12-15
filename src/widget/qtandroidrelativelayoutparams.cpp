@@ -38,6 +38,7 @@ void QtAndroidRelativeLayoutParams::setAbove(QtAndroidView *view)
 {
     if (view != m_above) {
         m_above = view;
+        invalidate();
         emit aboveChanged();
     }
 }
@@ -51,6 +52,7 @@ void QtAndroidRelativeLayoutParams::setBelow(QtAndroidView *view)
 {
     if (view != m_below) {
         m_below = view;
+        invalidate();
         emit belowChanged();
     }
 }
@@ -64,6 +66,7 @@ void QtAndroidRelativeLayoutParams::setAlignTop(QtAndroidView *view)
 {
     if (view != m_alignTop) {
         m_alignTop = view;
+        invalidate();
         emit alignTopChanged();
     }
 }
@@ -77,6 +80,7 @@ void QtAndroidRelativeLayoutParams::setAlignLeft(QtAndroidView *view)
 {
     if (view != m_alignLeft) {
         m_alignLeft = view;
+        invalidate();
         emit alignLeftChanged();
     }
 }
@@ -90,6 +94,7 @@ void QtAndroidRelativeLayoutParams::setAlignRight(QtAndroidView *view)
 {
     if (view != m_alignRight) {
         m_alignRight = view;
+        invalidate();
         emit alignRightChanged();
     }
 }
@@ -103,6 +108,7 @@ void QtAndroidRelativeLayoutParams::setAlignBottom(QtAndroidView *view)
 {
     if (view != m_alignBottom) {
         m_alignBottom = view;
+        invalidate();
         emit alignBottomChanged();
     }
 }
@@ -116,6 +122,7 @@ void QtAndroidRelativeLayoutParams::setAlignStart(QtAndroidView *view)
 {
     if (view != m_alignStart) {
         m_alignStart = view;
+        invalidate();
         emit alignStartChanged();
     }
 }
@@ -129,6 +136,7 @@ void QtAndroidRelativeLayoutParams::setAlignEnd(QtAndroidView *view)
 {
     if (view != m_alignEnd) {
         m_alignEnd = view;
+        invalidate();
         emit alignEndChanged();
     }
 }
@@ -142,6 +150,7 @@ void QtAndroidRelativeLayoutParams::setAlignBaseline(QtAndroidView *view)
 {
     if (view != m_alignBaseline) {
         m_alignBaseline = view;
+        invalidate();
         emit alignBaselineChanged();
     }
 }
@@ -155,6 +164,7 @@ void QtAndroidRelativeLayoutParams::setToLeftOf(QtAndroidView *view)
 {
     if (view != m_toLeftOf) {
         m_toLeftOf = view;
+        invalidate();
         emit toLeftOfChanged();
     }
 }
@@ -168,6 +178,7 @@ void QtAndroidRelativeLayoutParams::setToRightOf(QtAndroidView *view)
 {
     if (view != m_toRightOf) {
         m_toRightOf = view;
+        invalidate();
         emit toRightOfChanged();
     }
 }
@@ -181,6 +192,7 @@ void QtAndroidRelativeLayoutParams::setToStartOf(QtAndroidView *view)
 {
     if (view != m_toStartOf) {
         m_toStartOf = view;
+        invalidate();
         emit toStartOfChanged();
     }
 }
@@ -194,6 +206,7 @@ void QtAndroidRelativeLayoutParams::setToEndOf(QtAndroidView *view)
 {
     if (view != m_toEndOf) {
         m_toEndOf = view;
+        invalidate();
         emit toEndOfChanged();
     }
 }
@@ -207,6 +220,7 @@ void QtAndroidRelativeLayoutParams::setAlignParentTop(bool align)
 {
     if (align != alignParentTop()) {
         m_alignParentTop = align;
+        invalidate();
         emit alignParentTopChanged();
     }
 }
@@ -220,6 +234,7 @@ void QtAndroidRelativeLayoutParams::setAlignParentLeft(bool align)
 {
     if (align != alignParentLeft()) {
         m_alignParentLeft = align;
+        invalidate();
         emit alignParentLeftChanged();
     }
 }
@@ -233,6 +248,7 @@ void QtAndroidRelativeLayoutParams::setAlignParentRight(bool align)
 {
     if (align != alignParentRight()) {
         m_alignParentRight = align;
+        invalidate();
         emit alignParentRightChanged();
     }
 }
@@ -246,6 +262,7 @@ void QtAndroidRelativeLayoutParams::setAlignParentBottom(bool align)
 {
     if (align != alignParentBottom()) {
         m_alignParentBottom = align;
+        invalidate();
         emit alignParentBottomChanged();
     }
 }
@@ -259,6 +276,7 @@ void QtAndroidRelativeLayoutParams::setAlignParentStart(bool align)
 {
     if (align != alignParentStart()) {
         m_alignParentStart = align;
+        invalidate();
         emit alignParentStartChanged();
     }
 }
@@ -272,6 +290,7 @@ void QtAndroidRelativeLayoutParams::setAlignParentEnd(bool align)
 {
     if (align != alignParentEnd()) {
         m_alignParentEnd = align;
+        invalidate();
         emit alignParentEndChanged();
     }
 }
@@ -285,6 +304,7 @@ void QtAndroidRelativeLayoutParams::setAlignWithParent(bool align)
 {
     if (align != alignWithParent()) {
         m_alignWithParent = align;
+        invalidate();
         emit alignWithParentChanged();
     }
 }
@@ -298,6 +318,7 @@ void QtAndroidRelativeLayoutParams::setCenterHorizontal(bool center)
 {
     if (center != centerHorizontal()) {
         m_centerHorizontal = center;
+        invalidate();
         emit centerHorizontalChanged();
     }
 }
@@ -311,6 +332,7 @@ void QtAndroidRelativeLayoutParams::setCenterVertical(bool center)
 {
     if (center != centerVertical()) {
         m_centerVertical = center;
+        invalidate();
         emit centerVerticalChanged();
     }
 }
@@ -324,6 +346,7 @@ void QtAndroidRelativeLayoutParams::setCenterInParent(bool center)
 {
     if (center != centerInParent()) {
         m_centerInParent = center;
+        invalidate();
         emit centerInParentChanged();
     }
 }

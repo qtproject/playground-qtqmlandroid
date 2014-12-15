@@ -135,7 +135,6 @@ private Q_SLOTS:
     void updateLayoutParams();
 
 private:
-    void invalidateLayoutParams();
     void setLayoutParams(QtAndroidLayoutParams *params);
 
     int m_id;
@@ -145,7 +144,6 @@ private:
 
     QAndroidJniObject m_listener;
 
-    bool m_layoutParamsDirty;
     QtAndroidLayoutParams *m_layoutParams;
 
     QtAndroidOptional<bool> m_focus;

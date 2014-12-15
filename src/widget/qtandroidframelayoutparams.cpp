@@ -16,6 +16,7 @@ void QtAndroidFrameLayoutParams::setGravity(int value)
 {
     if (value != gravity()) {
         m_gravity = value;
+        invalidate();
         emit gravityChanged();
     }
 }

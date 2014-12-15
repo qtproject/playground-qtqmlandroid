@@ -33,6 +33,9 @@ public:
     int height() const;
     void setHeight(int height);
 
+public Q_SLOTS:
+    void invalidate();
+
 Q_SIGNALS:
     void widthChanged();
     void heightChanged();
@@ -41,7 +44,10 @@ protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
+    bool event(QEvent *event) Q_DECL_OVERRIDE;
+
 private:
+    bool m_dirty;
     QtAndroidView *m_view;
     QtAndroidOptional<int> m_width;
     QtAndroidOptional<int> m_height;

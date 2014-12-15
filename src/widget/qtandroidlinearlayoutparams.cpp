@@ -16,6 +16,7 @@ void QtAndroidLinearLayoutParams::setGravity(int value)
 {
     if (value != gravity()) {
         m_gravity = value;
+        invalidate();
         emit gravityChanged();
     }
 }
@@ -31,6 +32,7 @@ void QtAndroidLinearLayoutParams::setWeight(qreal value)
 {
     if (value != weight()) {
         m_weight = value;
+        invalidate();
         emit weightChanged();
     }
 }

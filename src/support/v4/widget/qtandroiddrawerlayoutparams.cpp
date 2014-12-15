@@ -16,6 +16,7 @@ void QtAndroidDrawerLayoutParams::setGravity(int value)
 {
     if (m_gravity != value) {
         m_gravity = value;
+        invalidate();
         emit gravityChanged();
     }
 }
