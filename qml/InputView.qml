@@ -36,20 +36,20 @@ ScrollView {
             }
         }
 
-        Space { LinearLayout.height: 48 }
+//        Space { LinearLayout.height: 48 }
 
-        CardView {
-            LinearLayout {
-                padding: 48
-                orientation: LinearLayout.VERTICAL
+//        CardView {
+//            LinearLayout {
+//                padding: 48
+//                orientation: LinearLayout.VERTICAL
 
-                TextView { text: qsTr("NumberPicker (%1)").arg(picker.value); textSize: 18 }
-                Space { LinearLayout.height: 48 }
-                NumberPicker {
-                    id: picker
-                    value: 13
-                }
-            }
-        }
+//                TextView { text: qsTr("NumberPicker (%1)").arg(picker.value); textSize: 18 }
+//                Space { LinearLayout.height: 48 }
+//                NumberPicker {
+//                    id: picker
+//                    value: 13
+//                }
+//            }
+//        }
     }
 }
