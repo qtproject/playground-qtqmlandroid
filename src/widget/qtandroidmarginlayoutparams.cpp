@@ -5,16 +5,31 @@ QtAndroidMarginLayoutParams::QtAndroidMarginLayoutParams(QtAndroidView *view) : 
 {
 }
 
+int QtAndroidMarginLayoutParams::margin() const
+{
+    if (m_margin.isNull())
+        return 0;
+    return m_margin.value();
+}
+
+void QtAndroidMarginLayoutParams::setMargin(int margin)
+{
+    if (m_margin.isNull() || m_margin.value() != margin) {
+        m_margin = margin;
+        emit marginChanged();
+    }
+}
+
 int QtAndroidMarginLayoutParams::topMargin() const
 {
     if (m_topMargin.isNull())
-        return 0;
+        return margin();
     return m_topMargin.value();
 }
 
 void QtAndroidMarginLayoutParams::setTopMargin(int margin)
 {
-    if (margin != topMargin()) {
+    if (m_topMargin.isNull() || m_topMargin.value() != margin) {
         m_topMargin = margin;
         emit topMarginChanged();
     }
@@ -23,13 +38,13 @@ void QtAndroidMarginLayoutParams::setTopMargin(int margin)
 int QtAndroidMarginLayoutParams::leftMargin() const
 {
     if (m_leftMargin.isNull())
-        return 0;
+        return margin();
     return m_leftMargin.value();
 }
 
 void QtAndroidMarginLayoutParams::setLeftMargin(int margin)
 {
-    if (margin != leftMargin()) {
+    if (m_leftMargin.isNull() || m_leftMargin.value() != margin) {
         m_leftMargin = margin;
         emit leftMarginChanged();
     }
@@ -38,13 +53,13 @@ void QtAndroidMarginLayoutParams::setLeftMargin(int margin)
 int QtAndroidMarginLayoutParams::rightMargin() const
 {
     if (m_rightMargin.isNull())
-        return 0;
+        return margin();
     return m_rightMargin.value();
 }
 
 void QtAndroidMarginLayoutParams::setRightMargin(int margin)
 {
-    if (margin != rightMargin()) {
+    if (m_rightMargin.isNull() || m_rightMargin.value() != margin) {
         m_rightMargin = margin;
         emit rightMarginChanged();
     }
@@ -53,13 +68,13 @@ void QtAndroidMarginLayoutParams::setRightMargin(int margin)
 int QtAndroidMarginLayoutParams::bottomMargin() const
 {
     if (m_bottomMargin.isNull())
-        return 0;
+        return margin();
     return m_bottomMargin.value();
 }
 
 void QtAndroidMarginLayoutParams::setBottomMargin(int margin)
 {
-    if (margin != bottomMargin()) {
+    if (m_bottomMargin.isNull() || m_bottomMargin.value() != margin) {
         m_bottomMargin = margin;
         emit bottomMarginChanged();
     }
@@ -76,12 +91,10 @@ void QtAndroidMarginLayoutParams::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidLayoutParams::onInflate(instance);
 
-    if (!m_topMargin.isNull() || !m_leftMargin.isNull() || !m_rightMargin.isNull() || !m_bottomMargin.isNull()) {
-        instance.callMethod<void>("setMargins",
-                                  "(IIII)V",
-                                  leftMargin(),
-                                  topMargin(),
-                                  rightMargin(),
-                                  bottomMargin());
-    }
+    instance.callMethod<void>("setMargins",
+                              "(IIII)V",
+                              leftMargin(),
+                              topMargin(),
+                              rightMargin(),
+                              bottomMargin());
 }
