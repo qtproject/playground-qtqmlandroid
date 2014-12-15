@@ -11,7 +11,6 @@ public class QtTabHostListener implements TabHost.OnTabChangeListener
 
     @Override
     public void onTabChanged(String tabId) {
-        System.out.println(tabId);
         onTabChanged(m_instance, tabId);
     }
 
