@@ -1,7 +1,7 @@
 #ifndef QTANDROIDACTIVITY_P_H
 #define QTANDROIDACTIVITY_P_H
 
-#include "qtandroidcontext_p.h"
+#include "qtandroidcontextwrapper_p.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -9,7 +9,7 @@ class QtAndroidView;
 class QtAndroidMenu;
 class QtAndroidActionBar;
 
-class QtAndroidActivity : public QtAndroidContext
+class QtAndroidActivity : public QtAndroidContextWrapper
 {
     Q_OBJECT
     Q_PROPERTY(QtAndroidActionBar *actionBar READ actionBar WRITE setActionBar)

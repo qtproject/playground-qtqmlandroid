@@ -9,7 +9,7 @@
 #include <QtAndroidExtras/qandroidjnienvironment.h>
 
 QtAndroidActivity::QtAndroidActivity(QObject *parent) :
-    QtAndroidContext(parent), m_contentView(0), m_optionsMenu(0), m_actionBar(0)
+    QtAndroidContextWrapper(parent), m_contentView(0), m_optionsMenu(0), m_actionBar(0)
 {
     // TODO: multiple activities?
     setInstance(QtAndroid::androidActivity());
@@ -79,12 +79,12 @@ void QtAndroidActivity::setContentView(QtAndroidView *view)
 
 void QtAndroidActivity::classBegin()
 {
-    QtAndroidContext::classBegin();
+    QtAndroidContextWrapper::classBegin();
 }
 
 void QtAndroidActivity::componentComplete()
 {
-    QtAndroidContext::componentComplete();
+    QtAndroidContextWrapper::componentComplete();
 
     if (m_contentView)
         m_contentView->construct();
