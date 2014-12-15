@@ -155,6 +155,8 @@ private:
     QtAndroidOptional<int> m_paddingRight;
     QtAndroidOptional<int> m_paddingBottom;
 
+    // TODO: cleanup
+    friend class QtAndroidRecyclerAdapter;
     friend class QtAndroidLayoutParams;
     friend class QtAndroidViewGroup;
     friend class QtAndroidActivity;

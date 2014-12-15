@@ -94,6 +94,7 @@ TabHost {
                 TabSpec.label: "RecyclerView"
                 adapter: RecyclerAdapter {
                     count: 50
+                    delegate: TextView { text: position }
                 }
             }
         }

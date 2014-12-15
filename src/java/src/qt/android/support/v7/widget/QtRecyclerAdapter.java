@@ -2,8 +2,6 @@ package qt.android.support.v7.widget;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
 import java.lang.Integer;
@@ -13,30 +11,6 @@ public class QtRecyclerAdapter extends RecyclerView.Adapter<QtRecyclerAdapter.Vi
     public QtRecyclerAdapter(int count, long instance) {
         m_count = count;
         m_instance = instance;
-    }
-
-    // TODO: adapter.delegate?
-    public static class ViewHolder extends RecyclerView.ViewHolder
-    {
-        public ViewHolder(TextView view) {
-            super(view);
-        }
-        public void bind(CharSequence text) {
-            TextView view = (TextView) itemView;
-            if (view != null)
-                view.setText(text);
-        }
-    }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        TextView view = new TextView(parent.getContext());
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(Integer.toString(position));
     }
 
     @Override
@@ -51,6 +25,35 @@ public class QtRecyclerAdapter extends RecyclerView.Adapter<QtRecyclerAdapter.Vi
         }
     }
 
+    public static class ViewHolder extends RecyclerView.ViewHolder
+    {
+        public ViewHolder(View view, long instance) {
+            super(view);
+            m_instance = instance;
+        }
+        public long getInstance() {
+            return m_instance;
+        }
+        private long m_instance;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return onCreateViewHolder(m_instance, parent, viewType);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        onBindViewHolder(m_instance, holder, position);
+    }
+
+    @Override
+    public void onViewRecycled(ViewHolder holder) {
+        // TODO
+    }
+
     private int m_count;
     private long m_instance;
+    private static native ViewHolder onCreateViewHolder(long instance, ViewGroup parent, int viewType);
+    private static native void onBindViewHolder(long instance, ViewHolder holder, int position);
 }
