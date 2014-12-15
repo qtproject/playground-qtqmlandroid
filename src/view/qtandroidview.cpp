@@ -1,5 +1,6 @@
 #include "qtandroidview_p.h"
 #include "qtandroiddrawable_p.h"
+#include "qtandroidcolordrawable_p.h"
 #include "qtandroidfunctions_p.h"
 #include "qtandroidlayoutparams_p.h"
 #include <QtCore/qcoreevent.h>
@@ -85,6 +86,19 @@ void QtAndroidView::setBackground(QtAndroidDrawable *background)
         }
         emit backgroundChanged();
     }
+}
+
+int QtAndroidView::backgroundColor() const
+{
+    QtAndroidColorDrawable *drawable = qobject_cast<QtAndroidColorDrawable *>(m_background);
+    if (drawable)
+        return drawable->color();
+    return 0; // TODO
+}
+
+void QtAndroidView::setBackgroundColor(int color)
+{
+    setBackground(new QtAndroidColorDrawable(color, this));
 }
 
 bool QtAndroidView::isVisible() const

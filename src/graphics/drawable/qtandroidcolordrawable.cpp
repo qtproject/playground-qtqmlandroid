@@ -6,6 +6,11 @@ QtAndroidColorDrawable::QtAndroidColorDrawable(QObject *parent) :
 {
 }
 
+QtAndroidColorDrawable::QtAndroidColorDrawable(int color, QObject *parent) :
+    QtAndroidDrawable(parent), m_color(color)
+{
+}
+
 int QtAndroidColorDrawable::color() const
 {
     return m_color;

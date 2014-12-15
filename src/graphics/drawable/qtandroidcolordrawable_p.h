@@ -12,6 +12,7 @@ class QtAndroidColorDrawable : public QtAndroidDrawable
 
 public:
     explicit QtAndroidColorDrawable(QObject *parent = 0);
+    explicit QtAndroidColorDrawable(int color, QObject *parent = 0);
 
     int color() const;
     void setColor(int color);
