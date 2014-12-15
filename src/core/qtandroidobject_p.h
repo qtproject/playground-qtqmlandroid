@@ -4,6 +4,7 @@
 #include "qtandroidglobal_p.h"
 
 #include <QtCore/qobject.h>
+#include <QtCore/qreadwritelock.h>
 #include <QtQml/qqmllist.h>
 #include <QtQml/qqmlparserstatus.h>
 #include <QtAndroidExtras/qandroidjniobject.h>

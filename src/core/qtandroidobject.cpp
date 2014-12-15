@@ -3,6 +3,8 @@
 #include <QtCore/qcoreapplication.h>
 #include <QtCore/qcoreevent.h>
 
+Q_GLOBAL_STATIC(QReadWriteLock, instanceLock)
+
 QtAndroidObject::QtAndroidObject(QObject *parent) :
     QObject(parent), m_complete(false)
 {
@@ -10,19 +12,19 @@ QtAndroidObject::QtAndroidObject(QObject *parent) :
 
 bool QtAndroidObject::isValid() const
 {
-    // TODO: mutex/read-write lock
+    QReadLocker locker(instanceLock());
     return m_instance.isValid();
 }
 
 QAndroidJniObject QtAndroidObject::instance() const
 {
-    // TODO: mutex/read-write lock
+    QReadLocker locker(instanceLock());
     return m_instance;
 }
 
 void QtAndroidObject::setInstance(const QAndroidJniObject &instance)
 {
-    // TODO: mutex/read-write lock
+    QWriteLocker locker(instanceLock());
     if (m_instance != instance) {
         m_instance = instance;
         // queue to Qt thread if necessary
