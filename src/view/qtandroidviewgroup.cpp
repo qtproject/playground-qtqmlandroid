@@ -3,7 +3,8 @@
 #include "qtandroidfunctions_p.h"
 #include "qtandroidcontext_p.h"
 
-QtAndroidViewGroup::QtAndroidViewGroup(QtAndroidView *parent) : QtAndroidView(parent)
+QtAndroidViewGroup::QtAndroidViewGroup(QtAndroidView *parent) :
+    QtAndroidView(parent)
 {
 }
 

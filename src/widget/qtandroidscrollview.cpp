@@ -1,7 +1,8 @@
 #include "qtandroidscrollview_p.h"
 #include "qtandroidfunctions_p.h"
 
-QtAndroidScrollView::QtAndroidScrollView(QtAndroidView *parent) : QtAndroidFrameLayout(parent)
+QtAndroidScrollView::QtAndroidScrollView(QtAndroidView *parent) :
+    QtAndroidFrameLayout(parent)
 {
 }
 

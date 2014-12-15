@@ -1,7 +1,8 @@
 #include "qtandroidtabhost_p.h"
 #include "qtandroidtabspec_p.h"
 
-QtAndroidTabHost::QtAndroidTabHost(QtAndroidView *parent) : QtAndroidFrameLayout(parent)
+QtAndroidTabHost::QtAndroidTabHost(QtAndroidView *parent) :
+    QtAndroidFrameLayout(parent)
 {
 }
 

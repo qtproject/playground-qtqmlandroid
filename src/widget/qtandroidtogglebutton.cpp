@@ -1,7 +1,8 @@
 #include "qtandroidtogglebutton_p.h"
 #include "qtandroidfunctions_p.h"
 
-QtAndroidToggleButton::QtAndroidToggleButton(QtAndroidView *parent) : QtAndroidCompoundButton(parent)
+QtAndroidToggleButton::QtAndroidToggleButton(QtAndroidView *parent) :
+    QtAndroidCompoundButton(parent)
 {
 }
 

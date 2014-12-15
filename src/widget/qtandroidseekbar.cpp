@@ -1,6 +1,7 @@
 #include "qtandroidseekbar_p.h"
 
-QtAndroidSeekBar::QtAndroidSeekBar(QtAndroidView *parent) : QtAndroidAbsSeekBar(parent)
+QtAndroidSeekBar::QtAndroidSeekBar(QtAndroidView *parent) :
+    QtAndroidAbsSeekBar(parent)
 {
 }
 

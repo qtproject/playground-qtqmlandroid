@@ -1,6 +1,7 @@
 #include "qtandroidbutton_p.h"
 
-QtAndroidButton::QtAndroidButton(QtAndroidView *parent) : QtAndroidTextView(parent)
+QtAndroidButton::QtAndroidButton(QtAndroidView *parent) :
+    QtAndroidTextView(parent)
 {
 }
 

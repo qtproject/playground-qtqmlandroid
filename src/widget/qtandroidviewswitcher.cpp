@@ -1,6 +1,7 @@
 #include "qtandroidviewswitcher_p.h"
 
-QtAndroidViewSwitcher::QtAndroidViewSwitcher(QtAndroidView *parent) : QtAndroidViewAnimator(parent)
+QtAndroidViewSwitcher::QtAndroidViewSwitcher(QtAndroidView *parent) :
+    QtAndroidViewAnimator(parent)
 {
 }
 

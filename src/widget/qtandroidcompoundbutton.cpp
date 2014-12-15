@@ -1,7 +1,8 @@
 #include "qtandroidcompoundbutton_p.h"
 #include "qtandroidfunctions_p.h"
 
-QtAndroidCompoundButton::QtAndroidCompoundButton(QtAndroidView *parent) : QtAndroidButton(parent), m_checked(false)
+QtAndroidCompoundButton::QtAndroidCompoundButton(QtAndroidView *parent) :
+    QtAndroidButton(parent), m_checked(false)
 {
 }
 

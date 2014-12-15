@@ -1,6 +1,7 @@
 #include "qtandroidspace_p.h"
 
-QtAndroidSpace::QtAndroidSpace(QtAndroidView *parent) : QtAndroidView(parent)
+QtAndroidSpace::QtAndroidSpace(QtAndroidView *parent) :
+    QtAndroidView(parent)
 {
 }
 

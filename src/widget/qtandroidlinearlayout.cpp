@@ -1,6 +1,7 @@
 #include "qtandroidlinearlayout_p.h"
 
-QtAndroidLinearLayout::QtAndroidLinearLayout(QtAndroidView *parent) : QtAndroidViewGroup(parent)
+QtAndroidLinearLayout::QtAndroidLinearLayout(QtAndroidView *parent) :
+    QtAndroidViewGroup(parent)
 {
 }
 

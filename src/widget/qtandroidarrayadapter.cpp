@@ -2,7 +2,8 @@
 #include "qtandroidadapterview_p.h"
 #include "qtandroidfunctions_p.h"
 
-QtAndroidArrayAdapter::QtAndroidArrayAdapter(QObject *parent) : QtAndroidBaseAdapter(parent)
+QtAndroidArrayAdapter::QtAndroidArrayAdapter(QObject *parent) :
+    QtAndroidBaseAdapter(parent)
 {
 }
 

@@ -1,6 +1,7 @@
 #include "qtandroidcalendarview_p.h"
 
-QtAndroidCalendarView::QtAndroidCalendarView(QtAndroidView *parent) : QtAndroidFrameLayout(parent)
+QtAndroidCalendarView::QtAndroidCalendarView(QtAndroidView *parent) :
+    QtAndroidFrameLayout(parent)
 {
 }
 

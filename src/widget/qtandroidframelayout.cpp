@@ -1,6 +1,7 @@
 #include "qtandroidframelayout_p.h"
 
-QtAndroidFrameLayout::QtAndroidFrameLayout(QtAndroidView *parent) : QtAndroidViewGroup(parent)
+QtAndroidFrameLayout::QtAndroidFrameLayout(QtAndroidView *parent) :
+    QtAndroidViewGroup(parent)
 {
 }
 

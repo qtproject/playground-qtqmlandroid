@@ -1,6 +1,7 @@
 #include "qtandroidrelativelayout_p.h"
 
-QtAndroidRelativeLayout::QtAndroidRelativeLayout(QtAndroidView *parent) : QtAndroidViewGroup(parent)
+QtAndroidRelativeLayout::QtAndroidRelativeLayout(QtAndroidView *parent) :
+    QtAndroidViewGroup(parent)
 {
 }
 

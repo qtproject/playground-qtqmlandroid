@@ -2,7 +2,8 @@
 #include "qtandroidrelativelayout_p.h"
 #include "qtandroidview_p.h"
 
-QtAndroidRelativeLayoutParams::QtAndroidRelativeLayoutParams(QtAndroidView *view) : QtAndroidMarginLayoutParams(view),
+QtAndroidRelativeLayoutParams::QtAndroidRelativeLayoutParams(QtAndroidView *view) :
+    QtAndroidMarginLayoutParams(view),
     m_above(0),
     m_below(0),
     m_alignTop(0),

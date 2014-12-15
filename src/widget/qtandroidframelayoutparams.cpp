@@ -1,7 +1,8 @@
 #include "qtandroidframelayoutparams_p.h"
 #include "qtandroidview_p.h"
 
-QtAndroidFrameLayoutParams::QtAndroidFrameLayoutParams(QtAndroidView *view) : QtAndroidMarginLayoutParams(view)
+QtAndroidFrameLayoutParams::QtAndroidFrameLayoutParams(QtAndroidView *view) :
+    QtAndroidMarginLayoutParams(view)
 {
 }
 

@@ -1,6 +1,7 @@
 #include "qtandroidedittext_p.h"
 
-QtAndroidEditText::QtAndroidEditText(QtAndroidView *parent) : QtAndroidTextView(parent)
+QtAndroidEditText::QtAndroidEditText(QtAndroidView *parent) :
+    QtAndroidTextView(parent)
 {
 }
 

@@ -1,6 +1,7 @@
 #include "qtandroidviewflipper_p.h"
 
-QtAndroidViewFlipper::QtAndroidViewFlipper(QtAndroidView *parent) : QtAndroidViewAnimator(parent)
+QtAndroidViewFlipper::QtAndroidViewFlipper(QtAndroidView *parent) :
+    QtAndroidViewAnimator(parent)
 {
 }
 

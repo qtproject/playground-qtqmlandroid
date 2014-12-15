@@ -1,6 +1,7 @@
 #include "qtandroidlistview_p.h"
 
-QtAndroidListView::QtAndroidListView(QtAndroidView *parent) : QtAndroidAdapterView(parent)
+QtAndroidListView::QtAndroidListView(QtAndroidView *parent) :
+    QtAndroidAdapterView(parent)
 {
 }
 

@@ -1,6 +1,7 @@
 #include "qtandroidcheckbox_p.h"
 
-QtAndroidCheckBox::QtAndroidCheckBox(QtAndroidView *parent) : QtAndroidCompoundButton(parent)
+QtAndroidCheckBox::QtAndroidCheckBox(QtAndroidView *parent) :
+    QtAndroidCompoundButton(parent)
 {
 }
 

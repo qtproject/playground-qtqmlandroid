@@ -1,6 +1,7 @@
 #include "qtandroidcardview_p.h"
 
-QtAndroidCardView::QtAndroidCardView(QtAndroidView *parent) : QtAndroidFrameLayout(parent)
+QtAndroidCardView::QtAndroidCardView(QtAndroidView *parent) :
+    QtAndroidFrameLayout(parent)
 {
 }
 

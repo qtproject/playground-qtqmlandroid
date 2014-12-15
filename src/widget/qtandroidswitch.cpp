@@ -1,6 +1,7 @@
 #include "qtandroidswitch_p.h"
 
-QtAndroidSwitch::QtAndroidSwitch(QtAndroidView *parent) : QtAndroidCompoundButton(parent)
+QtAndroidSwitch::QtAndroidSwitch(QtAndroidView *parent) :
+    QtAndroidCompoundButton(parent)
 {
 }
 

@@ -5,7 +5,8 @@
 #include "qtandroidview_p.h"
 #include <QtCore/qdebug.h>
 
-QtAndroidPopupMenu::QtAndroidPopupMenu(QObject *parent) : QtAndroidObject(parent), m_anchor(0)
+QtAndroidPopupMenu::QtAndroidPopupMenu(QObject *parent) :
+    QtAndroidObject(parent), m_anchor(0)
 {
 }
 

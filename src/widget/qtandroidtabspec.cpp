@@ -4,7 +4,8 @@
 #include "qtandroidfunctions_p.h"
 #include <QtAndroidExtras/qandroidjniobject.h>
 
-QtAndroidTabSpec::QtAndroidTabSpec(QtAndroidView *view) : QObject(view)
+QtAndroidTabSpec::QtAndroidTabSpec(QtAndroidView *view) :
+    QObject(view)
 {
     QtAndroidView *parent = qobject_cast<QtAndroidView *>(view->parent());
     if (parent)

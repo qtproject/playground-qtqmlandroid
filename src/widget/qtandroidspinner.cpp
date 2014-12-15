@@ -1,6 +1,7 @@
 #include "qtandroidspinner_p.h"
 
-QtAndroidSpinner::QtAndroidSpinner(QtAndroidView *parent) : QtAndroidAdapterView(parent)
+QtAndroidSpinner::QtAndroidSpinner(QtAndroidView *parent) :
+    QtAndroidAdapterView(parent)
 {
 }
 

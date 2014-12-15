@@ -1,6 +1,7 @@
 #include "qtandroidradiobutton_p.h"
 
-QtAndroidRadioButton::QtAndroidRadioButton(QtAndroidView *parent) : QtAndroidCompoundButton(parent)
+QtAndroidRadioButton::QtAndroidRadioButton(QtAndroidView *parent) :
+    QtAndroidCompoundButton(parent)
 {
 }
 

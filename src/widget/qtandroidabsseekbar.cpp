@@ -1,6 +1,7 @@
 #include "qtandroidabsseekbar_p.h"
 
-QtAndroidAbsSeekBar::QtAndroidAbsSeekBar(QtAndroidView *parent) : QtAndroidProgressBar(parent)
+QtAndroidAbsSeekBar::QtAndroidAbsSeekBar(QtAndroidView *parent) :
+    QtAndroidProgressBar(parent)
 {
 }
 

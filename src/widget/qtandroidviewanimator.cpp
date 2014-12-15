@@ -1,7 +1,8 @@
 #include "qtandroidviewanimator_p.h"
 #include "qtandroidfunctions_p.h"
 
-QtAndroidViewAnimator::QtAndroidViewAnimator(QtAndroidView *parent) : QtAndroidFrameLayout(parent)
+QtAndroidViewAnimator::QtAndroidViewAnimator(QtAndroidView *parent) :
+    QtAndroidFrameLayout(parent)
 {
 }
 

@@ -2,7 +2,8 @@
 #include "qtandroidbaseadapter_p.h"
 #include "qtandroidfunctions_p.h"
 
-QtAndroidAdapterView::QtAndroidAdapterView(QtAndroidView *parent) : QtAndroidViewGroup(parent), m_adapter(0)
+QtAndroidAdapterView::QtAndroidAdapterView(QtAndroidView *parent) :
+    QtAndroidViewGroup(parent), m_adapter(0)
 {
     connect(this, SIGNAL(instanceChanged()), this, SLOT(updateAdapter()));
 }
