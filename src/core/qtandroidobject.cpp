@@ -32,35 +32,34 @@ void QtAndroidObject::setInstance(const QAndroidJniObject &instance)
 
 void QtAndroidObject::construct()
 {
-    Q_ASSERT(QtAndroid::isMainQtThread());
-
     foreach (QObject *obj, children()) {
         QtAndroidObject *child = qobject_cast<QtAndroidObject *>(obj);
         if (child)
             child->construct();
     }
 
-    QtAndroid::callFunction([=]() {
+    std::function<void()> method = [=]() {
         QAndroidJniObject instance = onCreate();
         if (instance.isValid())
             onInflate(instance);
         setInstance(instance);
-    });
+    };
+
+    if (QtAndroid::isMainQtThread())
+        QtAndroid::callFunction(method);
+    else
+        method();
 }
 
 void QtAndroidObject::destruct()
 {
-    Q_ASSERT(QtAndroid::isMainQtThread());
-
     foreach (QObject *obj, children()) {
         QtAndroidObject *child = qobject_cast<QtAndroidObject *>(obj);
         if (child)
             child->destruct();
     }
 
-    QtAndroid::callFunction([=]() {
-        setInstance(QAndroidJniObject());
-    });
+    setInstance(QAndroidJniObject());
 }
 
 QAndroidJniObject QtAndroidObject::onCreate()
