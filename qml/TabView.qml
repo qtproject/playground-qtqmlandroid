@@ -106,7 +106,6 @@ TabHost {
                             LinearLayout.height: 480
                             LinearLayout.width: Layout.MATCH_PARENT
                         }
-                        //Layout.width: Layout.MATCH_PARENT
                     }
                 }
             }

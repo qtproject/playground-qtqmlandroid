@@ -39,7 +39,11 @@ public class QtRecyclerAdapter extends RecyclerView.Adapter<QtRecyclerAdapter.Vi
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return onCreateViewHolder(m_instance, parent, viewType);
+        ViewHolder vh = onCreateViewHolder(m_instance, parent, viewType);
+        // TODO:
+        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(-1, -2);
+        vh.itemView.setLayoutParams(params);
+        return vh;
     }
 
     @Override
