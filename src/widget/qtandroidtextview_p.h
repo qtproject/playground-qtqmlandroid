@@ -14,6 +14,7 @@ class QtAndroidTextView : public QtAndroidView
     Q_PROPERTY(int textColor READ textColor WRITE setTextColor NOTIFY textColorChanged)
     Q_PROPERTY(qreal textSize READ textSize WRITE setTextSize NOTIFY textSizeChanged)
     Q_PROPERTY(QString hint READ hint WRITE setHint NOTIFY hintChanged)
+    Q_PROPERTY(bool singleLine READ isSingleLine WRITE setSingleLine NOTIFY singleLineChanged)
 
 public:
     explicit QtAndroidTextView(QtAndroidView *parent = 0);
@@ -30,11 +31,15 @@ public:
     QString hint() const;
     void setHint(const QString &hint);
 
+    bool isSingleLine() const;
+    void setSingleLine(bool singleLine);
+
 Q_SIGNALS:
     void textChanged();
     void textColorChanged();
     void textSizeChanged();
     void hintChanged();
+    void singleLineChanged();
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
@@ -45,6 +50,7 @@ private:
     QString m_hint;
     QtAndroidOptional<int> m_textColor;
     QtAndroidOptional<qreal> m_textSize;
+    bool m_singleLine;
 };
 
 QT_END_NAMESPACE

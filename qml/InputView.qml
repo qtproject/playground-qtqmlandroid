@@ -15,6 +15,7 @@ ScrollView {
                 Space { LinearLayout.height: 48 }
                 EditText {
                     hint: "Hint..."
+                    singleLine: true
                 }
             }
         }

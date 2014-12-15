@@ -2,7 +2,8 @@
 #include "qtandroidfunctions_p.h"
 #include "qtandroidcolor_p.h"
 
-QtAndroidTextView::QtAndroidTextView(QtAndroidView *parent) : QtAndroidView(parent)
+QtAndroidTextView::QtAndroidTextView(QtAndroidView *parent) :
+    QtAndroidView(parent), m_singleLine(false)
 {
 }
 
@@ -66,6 +67,20 @@ void QtAndroidTextView::setHint(const QString &hint)
     }
 }
 
+bool QtAndroidTextView::isSingleLine() const
+{
+    return m_singleLine;
+}
+
+void QtAndroidTextView::setSingleLine(bool singleLine)
+{
+    if (m_singleLine != singleLine) {
+        m_singleLine = singleLine;
+        QtAndroid::callBoolMethod(instance(), "setSingleLine", singleLine);
+        emit singleLineChanged();
+    }
+}
+
 QAndroidJniObject QtAndroidTextView::onCreate()
 {
     return QAndroidJniObject("android/widget/TextView",
@@ -85,4 +100,6 @@ void QtAndroidTextView::onInflate(QAndroidJniObject &instance)
         instance.callMethod<void>("setTextSize", "(F)V", m_textSize.value());
     if (!m_hint.isNull())
         instance.callMethod<void>("setHint", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_hint).object());
+    if (m_singleLine)
+        instance.callMethod<void>("setSingleLine");
 }
