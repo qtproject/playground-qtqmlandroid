@@ -5,28 +5,31 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtAndroidBaseAdapter;
+class QtAndroidRecyclerAdapter;
 
 class QtAndroidRecyclerView : public QtAndroidViewGroup
 {
     Q_OBJECT
-    Q_PROPERTY(QtAndroidBaseAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged) // TODO: Adapter
+    Q_PROPERTY(QtAndroidRecyclerAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged)
 
 public:
     explicit QtAndroidRecyclerView(QtAndroidView *parent = 0);
 
-    QtAndroidBaseAdapter *adapter() const;
-    void setAdapter(QtAndroidBaseAdapter *adapter);
+    QtAndroidRecyclerAdapter *adapter() const;
+    void setAdapter(QtAndroidRecyclerAdapter *adapter);
 
 Q_SIGNALS:
     void adapterChanged();
 
 protected:
-    QAndroidJniObject construct() Q_DECL_OVERRIDE;
-    void inflate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate(QAndroidJniObject& instance) Q_DECL_OVERRIDE;
+
+private Q_SLOTS:
+    void updateAdapter();
 
 private:
-    QtAndroidBaseAdapter *m_adapter;
+    QtAndroidRecyclerAdapter *m_adapter;
     QAndroidJniObject m_layoutManager;
 };
 

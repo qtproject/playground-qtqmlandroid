@@ -58,6 +58,7 @@
 
 #include "qtandroidactionbardrawertoggle_p.h"
 #include "qtandroidcardview_p.h"
+#include "qtandroidrecycleradapter_p.h"
 #include "qtandroidrecyclerview_p.h"
 
 int main(int argc, char *argv[])
@@ -125,6 +126,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<QtAndroidActionBarDrawerToggle>("android.support.v7.app", 21, 0, "ActionBarDrawerToggle");
     qmlRegisterType<QtAndroidCardView>("android.support.v7.widget", 21, 0, "CardView");
+    qmlRegisterType<QtAndroidRecyclerAdapter>("android.support.v7.widget", 21, 0, "RecyclerAdapter");
     qmlRegisterType<QtAndroidRecyclerView>("android.support.v7.widget", 21, 0, "RecyclerView");
 
     QQmlApplicationEngine engine;

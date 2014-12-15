@@ -4,6 +4,7 @@ OTHER_FILES += \
     $$PWD/AndroidManifest.xml \
     $$PWD/src/qt/android/app/QtActivity.java \
     $$PWD/src/qt/android/support/v4/widget/QtSwipeRefreshLayoutListener.java \
+    $$PWD/src/qt/android/support/v7/widget/QtRecyclerAdapter.java \
     $$PWD/src/qt/android/view/QtMenu.java \
     $$PWD/src/qt/android/view/QtMenuItem.java \
     $$PWD/src/qt/android/view/QtViewListener.java \
