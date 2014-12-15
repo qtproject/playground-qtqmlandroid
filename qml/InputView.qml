@@ -11,7 +11,7 @@ ScrollView {
                 padding: 48
                 orientation: LinearLayout.VERTICAL
 
-                TextView { text: "EditText"; textSize: 18 }
+                TextView { text: "EditText (single line)"; textSize: 18 }
                 Space { LinearLayout.height: 48 }
                 EditText {
                     hint: "Username"
@@ -22,6 +22,21 @@ ScrollView {
                     hint: "Password"
                     singleLine: true
                     inputType: 1 | 128 // TODO: TYPE_CLASS_TEXT | TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                }
+            }
+        }
+
+        Space { LinearLayout.height: 48 }
+
+        CardView {
+            LinearLayout {
+                padding: 48
+                orientation: LinearLayout.VERTICAL
+
+                TextView { text: "EditText (multi-line)"; textSize: 18 }
+                Space { LinearLayout.height: 48 }
+                EditText {
+                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat purus urna, in feugiat diam pulvinar non. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Interdum et malesuada fames ac ante ipsum primis in faucibus."
                 }
             }
         }
