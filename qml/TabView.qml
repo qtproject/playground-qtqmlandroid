@@ -31,17 +31,15 @@ TabHost {
                 TabSpec.label: "RecyclerView"
                 adapter: RecyclerAdapter {
                     count: 50
-                    delegate: LinearLayout {
-                        paddingTop: 24
-                        paddingLeft: 48
-                        paddingRight: 48
-                        paddingBottom: 24
+                    delegate: FrameLayout {
                         CardView {
                             RelativeLayout {
                                 TextView { text: position; RelativeLayout.centerInParent: true }
                             }
-                            LinearLayout.height: 480
-                            LinearLayout.width: Layout.MATCH_PARENT
+                            FrameLayout.margin: 48
+                            FrameLayout.topMargin: position == 0 ? 48 : 0
+                            FrameLayout.width: Layout.MATCH_PARENT
+                            FrameLayout.height: 288
                         }
                     }
                 }
