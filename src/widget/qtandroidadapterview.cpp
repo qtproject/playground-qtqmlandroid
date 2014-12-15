@@ -78,14 +78,6 @@ void QtAndroidAdapterView::onItemClick(JNIEnv *env, jobject object, jlong instan
         QMetaObject::invokeMethod(view, "click", Qt::QueuedConnection, Q_ARG(int, position));
 }
 
-void QtAndroidAdapterView::viewChange(ViewChange change, const ViewChangeData &data)
-{
-    if (m_adapter && change == ViewContextChange)
-        m_adapter->setContext(data.context);
-
-    QtAndroidViewGroup::viewChange(change, data);
-}
-
 void QtAndroidAdapterView::updateAdapter()
 {
     if (!isValid())

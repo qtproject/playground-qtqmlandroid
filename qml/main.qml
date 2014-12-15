@@ -21,7 +21,6 @@ Activity {
     optionsMenu: Menu {
         AlertDialog {
             id: dialog
-            context: activity // TODO
             title: "About"
             message: "Native UI controls for Android"
         }

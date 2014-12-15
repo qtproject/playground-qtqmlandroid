@@ -1,30 +1,9 @@
 #include "qtandroiddialog_p.h"
-#include "qtandroidcontext_p.h"
 #include "qtandroidfunctions_p.h"
 
 QtAndroidDialog::QtAndroidDialog(QObject *parent) :
-    QtAndroidObject(parent), m_context(0)
+    QtAndroidContextual(parent)
 {
-}
-
-QAndroidJniObject QtAndroidDialog::ctx() const
-{
-    if (!m_context)
-        return QAndroidJniObject();
-    return m_context->instance();
-}
-
-QtAndroidContext *QtAndroidDialog::context() const
-{
-    return m_context;
-}
-
-void QtAndroidDialog::setContext(QtAndroidContext *context)
-{
-    if (m_context != context) {
-        m_context = context;
-        emit contextChanged();
-    }
 }
 
 void QtAndroidDialog::cancel()
@@ -56,5 +35,5 @@ QAndroidJniObject QtAndroidDialog::onCreate()
 
 void QtAndroidDialog::onInflate(QAndroidJniObject& instance)
 {
-    QtAndroidObject::onInflate(instance);
+    QtAndroidContextual::onInflate(instance);
 }

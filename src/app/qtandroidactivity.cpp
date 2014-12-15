@@ -40,11 +40,13 @@ void QtAndroidActivity::setOptionsMenu(QtAndroidMenu *menu)
 {
     if (m_optionsMenu != menu) {
         if (m_optionsMenu) {
+            m_optionsMenu->setContext(0);
             disconnect(m_optionsMenu, SIGNAL(instanceChanged()), this, SLOT(updateOptionsMenu()));
             m_optionsMenu->destruct();
         }
         m_optionsMenu = menu;
         if (m_optionsMenu) {
+            m_optionsMenu->setContext(this);
             connect(m_optionsMenu, SIGNAL(instanceChanged()), this, SLOT(updateOptionsMenu()));
             if (isComponentComplete())
                 m_optionsMenu->construct();

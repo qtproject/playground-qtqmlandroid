@@ -1,19 +1,17 @@
 #ifndef QTANDROIDVIEW_P_H
 #define QTANDROIDVIEW_P_H
 
-#include "qtandroidobject_p.h"
+#include "qtandroidcontextual_p.h"
 #include "qtandroidoptional_p.h"
 
 QT_BEGIN_NAMESPACE
 
-class QtAndroidContext;
 class QtAndroidDrawable;
 class QtAndroidLayoutParams;
 
-class QtAndroidView : public QtAndroidObject
+class QtAndroidView : public QtAndroidContextual
 {
     Q_OBJECT
-    Q_PROPERTY(QtAndroidContext *context READ context NOTIFY contextChanged)
     Q_PROPERTY(QtAndroidView *parent READ parentView WRITE setParentView NOTIFY parentChanged)
     Q_PROPERTY(QQmlListProperty<QtAndroidView> children READ children NOTIFY childrenChanged)
     Q_PROPERTY(QtAndroidDrawable *background READ background WRITE setBackground NOTIFY backgroundChanged)
@@ -35,10 +33,6 @@ public:
 
     int identifier() const;
     void setIdentifier(int id);
-
-    QAndroidJniObject ctx() const;
-    QtAndroidContext *context() const;
-    void setContext(QtAndroidContext *context);
 
     QtAndroidView *parentView() const;
     void setParentView(QtAndroidView *parent);
@@ -79,7 +73,6 @@ public:
     void setPaddingBottom(int padding);
 
     enum ViewChange {
-        ViewContextChange,      // data.context
         ViewParentChange,       // data.view
         ViewChildAddedChange,   // data.view
         ViewChildRemovedChange, // data.view
@@ -88,18 +81,15 @@ public:
 
     union ViewChangeData {
         ViewChangeData(QtAndroidView *v) : view(v) {}
-        ViewChangeData(QtAndroidContext *c) : context(c) {}
         ViewChangeData(qreal n) : number(n) {}
         ViewChangeData(bool b) : boolean(b) {}
 
         QtAndroidView *view;
-        QtAndroidContext *context;
         qreal number;
         bool boolean;
     };
 
 Q_SIGNALS:
-    void contextChanged();
     void parentChanged();
     void backgroundChanged();
     void childrenChanged();
@@ -148,7 +138,6 @@ private:
     void setLayoutParams(QtAndroidLayoutParams *params);
 
     int m_id;
-    QtAndroidContext *m_context;
     QtAndroidView *m_parent;
     QList<QtAndroidView *> m_children;
     QtAndroidDrawable *m_background;

@@ -32,8 +32,6 @@ protected:
     static void registerNativeMethods(jobject listener);
     static void onItemClick(JNIEnv *env, jobject object, jlong instance, jint position);
 
-    void viewChange(ViewChange change, const ViewChangeData &data) Q_DECL_OVERRIDE;
-
 private Q_SLOTS:
     void updateAdapter();
 

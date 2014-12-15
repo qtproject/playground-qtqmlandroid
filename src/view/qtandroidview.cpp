@@ -1,22 +1,20 @@
 #include "qtandroidview_p.h"
-#include "qtandroidcontext_p.h"
 #include "qtandroiddrawable_p.h"
 #include "qtandroidfunctions_p.h"
 #include "qtandroidlayoutparams_p.h"
-#include <QtCore/qcoreapplication.h>
+#include <QtCore/qcoreevent.h>
 #include <QtCore/qhash.h>
 
-QtAndroidView::QtAndroidView(QtAndroidView *parent) : QtAndroidObject(parent),
-    m_context(0), m_parent(0), m_background(0), m_layoutParamsDirty(false),
-    m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
+QtAndroidView::QtAndroidView(QtAndroidView *parent) :
+    QtAndroidContextual(parent), m_parent(0), m_background(0),
+    m_layoutParamsDirty(false), m_layoutParams(0),
+    m_x(0), m_y(0), m_width(0), m_height(0)
 {
     static int id = 0;
     m_id = ++id;
 
     if (parent)
         setParentView(parent);
-    else
-        QCoreApplication::postEvent(this, new QEvent(QEvent::Polish));
 
     connect(this, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
     connect(this, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
@@ -38,29 +36,6 @@ int QtAndroidView::identifier() const
 void QtAndroidView::setIdentifier(int identifier)
 {
     m_id = identifier;
-}
-
-QAndroidJniObject QtAndroidView::ctx() const
-{
-    if (!m_context)
-        return QAndroidJniObject();
-    return m_context->instance();
-}
-
-QtAndroidContext *QtAndroidView::context() const
-{
-    return m_context;
-}
-
-void QtAndroidView::setContext(QtAndroidContext *context)
-{
-    if (m_context != context) {
-        m_context = context;
-        foreach (QtAndroidView *child, m_children)
-            child->setContext(context);
-        viewChange(ViewContextChange, context);
-        emit contextChanged();
-    }
 }
 
 QtAndroidView *QtAndroidView::parentView() const
@@ -264,7 +239,6 @@ void QtAndroidView::setPaddingBottom(int padding)
 void QtAndroidView::viewChange(ViewChange change, const ViewChangeData &data)
 {
     switch (change) {
-    case ViewContextChange:      // data.context
     case ViewParentChange:       // data.view
     case ViewChildAddedChange:   // data.view
     case ViewChildRemovedChange: // data.view
@@ -278,7 +252,6 @@ void QtAndroidView::addChild(QtAndroidView *child)
 {
     if (!m_children.contains(child)) {
         m_children.append(child);
-        child->setContext(m_context);
         viewChange(ViewChildAddedChange, child);
         emit childrenChanged();
     }
@@ -332,6 +305,8 @@ QAndroidJniObject QtAndroidView::onCreate()
 void QtAndroidView::onInflate(QAndroidJniObject &instance)
 {
     QTANDROID_ASSERT_ANDROID_THREAD();
+
+    QtAndroidContextual::onInflate(instance);
 
     m_listener = QAndroidJniObject("qt/android/view/QtViewListener",
                                    "(Landroid/view/View;J)V",
@@ -415,7 +390,7 @@ bool QtAndroidView::event(QEvent *event)
             m_layoutParamsDirty = false;
         }
     }
-    return QtAndroidObject::event(event);
+    return QtAndroidContextual::event(event);
 }
 
 void QtAndroidView::updateBackground()

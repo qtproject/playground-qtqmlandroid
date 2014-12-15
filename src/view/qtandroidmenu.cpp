@@ -1,7 +1,7 @@
 #include "qtandroidmenu_p.h"
 #include "qtandroidmenuitem_p.h"
 
-QtAndroidMenu::QtAndroidMenu(QObject *parent) : QtAndroidObject(parent)
+QtAndroidMenu::QtAndroidMenu(QObject *parent) : QtAndroidContextual(parent)
 {
 }
 

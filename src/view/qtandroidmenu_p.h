@@ -1,13 +1,13 @@
 #ifndef QTANDROIDMENU_P_H
 #define QTANDROIDMENU_P_H
 
-#include "qtandroidobject_p.h"
+#include "qtandroidcontextual_p.h"
 
 QT_BEGIN_NAMESPACE
 
 class QtAndroidMenuItem;
 
-class QtAndroidMenu : public QtAndroidObject
+class QtAndroidMenu : public QtAndroidContextual
 {
     Q_OBJECT
 
