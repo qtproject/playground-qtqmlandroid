@@ -37,6 +37,7 @@ ScrollView {
                     indeterminate: true
                     style: ProgressBar.Horizontal
                 }
+                Space { LinearLayout.height: 24 }
                 ProgressBar {
                     progress: seekBar.progress
                     style: ProgressBar.Horizontal
