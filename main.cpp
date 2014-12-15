@@ -2,6 +2,8 @@
 
 #include "qtandroidactionbar_p.h"
 #include "qtandroidactivity_p.h"
+#include "qtandroidalertdialog_p.h"
+#include "qtandroiddialog_p.h"
 
 #include "qtandroidcontext_p.h"
 
@@ -65,6 +67,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<QtAndroidActionBar>("android.app", 21, 0, "ActionBar");
     qmlRegisterType<QtAndroidActivity>("android.app", 21, 0, "Activity");
+    qmlRegisterType<QtAndroidAlertDialog>("android.app", 21, 0, "AlertDialog");
+    qmlRegisterType<QtAndroidDialog>("android.app", 21, 0, "Dialog");
 
     qmlRegisterType<QtAndroidContext>();
 

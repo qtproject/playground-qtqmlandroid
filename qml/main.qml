@@ -8,6 +8,8 @@ import android.support.v7.app 21.0
 import android.R 21.0
 
 Activity {
+    id: activity
+
     actionBar: ActionBar {
         title: "QtAndroid"
         subtitle: adapter.getItem(switcher.displayedChild)
@@ -17,8 +19,15 @@ Activity {
     }
 
     optionsMenu: Menu {
+        AlertDialog {
+            id: dialog
+            context: activity // TODO
+            title: "About"
+            message: "Native UI controls for Android"
+        }
         MenuItem {
-            title: "Help"
+            title: "About"
+            onClick: dialog.show()
         }
         MenuItem {
             title: "Exit"
