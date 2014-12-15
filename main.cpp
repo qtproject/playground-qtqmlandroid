@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidMenu>("android.view", 21, 0, "Menu");
     qmlRegisterType<QtAndroidMenuItem>("android.view", 21, 0, "MenuItem");
     qmlRegisterType<QtAndroidView>("android.view", 21, 0, "View");
-    qmlRegisterType<QtAndroidViewGroup>();
+    qmlRegisterType<QtAndroidViewGroup>("android.view", 21, 0, "ViewGroup");
 
     qmlRegisterType<QtAndroidArrayAdapter>("android.widget", 21, 0, "ArrayAdapter");
     qmlRegisterType<QtAndroidBaseAdapter>();

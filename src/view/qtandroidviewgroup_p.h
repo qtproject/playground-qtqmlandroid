@@ -2,7 +2,6 @@
 #define QTANDROIDVIEWGROUP_P_H
 
 #include "qtandroidview_p.h"
-#include <QtQml/qqml.h>
 
 QT_BEGIN_NAMESPACE
 

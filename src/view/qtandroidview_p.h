@@ -3,6 +3,7 @@
 
 #include "qtandroidcontextual_p.h"
 #include "qtandroidoptional_p.h"
+#include <QtQml/qqml.h>
 
 QT_BEGIN_NAMESPACE
 

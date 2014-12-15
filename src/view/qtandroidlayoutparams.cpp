@@ -8,6 +8,14 @@ QtAndroidLayoutParams::QtAndroidLayoutParams(QtAndroidView *view) :
     m_view->setLayoutParams(this);
 }
 
+QtAndroidLayoutParams *QtAndroidLayoutParams::qmlAttachedProperties(QObject *object)
+{
+    QtAndroidView *view = qobject_cast<QtAndroidView*>(object);
+    if (view)
+        return new QtAndroidLayoutParams(view);
+    return 0;
+}
+
 int QtAndroidLayoutParams::width() const
 {
     if (m_width.isNull())

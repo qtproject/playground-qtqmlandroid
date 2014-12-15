@@ -3,6 +3,7 @@
 
 #include "qtandroidobject_p.h"
 #include "qtandroidoptional_p.h"
+#include <QtQml/qqml.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -17,6 +18,8 @@ class QtAndroidLayoutParams : public QtAndroidObject
 
 public:
     explicit QtAndroidLayoutParams(QtAndroidView *view);
+
+    static QtAndroidLayoutParams *qmlAttachedProperties(QObject *object);
 
     enum Size {
         FILL_PARENT = -1,
@@ -45,5 +48,7 @@ private:
 };
 
 QT_END_NAMESPACE
+
+QML_DECLARE_TYPEINFO(QtAndroidLayoutParams, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTANDROIDLAYOUTPARAMS_P_H
