@@ -3,8 +3,21 @@
 #include "qtandroidfunctions_p.h"
 
 QtAndroidArrayAdapter::QtAndroidArrayAdapter(QObject *parent) :
-    QtAndroidBaseAdapter(parent)
+    QtAndroidBaseAdapter(parent), m_style(17367043) // TODO: android.R.layout.simple_list_item_1
 {
+}
+
+int QtAndroidArrayAdapter::style() const
+{
+    return m_style;
+}
+
+void QtAndroidArrayAdapter::setStyle(int style)
+{
+    if (m_style != style) {
+        m_style = style;
+        emit styleChanged();
+    }
 }
 
 QStringList QtAndroidArrayAdapter::array() const
@@ -45,7 +58,7 @@ QAndroidJniObject QtAndroidArrayAdapter::onCreate()
     return QAndroidJniObject("android/widget/ArrayAdapter",
                              "(Landroid/content/Context;I)V",
                              ctx().object(),
-                             17367043); // TODO: android.R.layout.simple_list_item_1
+                             m_style);
 }
 
 void QtAndroidArrayAdapter::onInflate(QAndroidJniObject &instance)

@@ -15,6 +15,4 @@ QAndroidJniObject QtAndroidListView::onCreate()
 void QtAndroidListView::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidAdapterView::onInflate(instance);
-
-    instance.callMethod<void>("setBackgroundColor", "(I)V", -1); // TODO: Color.WHITE
 }

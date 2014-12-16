@@ -9,10 +9,14 @@ QT_BEGIN_NAMESPACE
 class QtAndroidArrayAdapter : public QtAndroidBaseAdapter
 {
     Q_OBJECT
+    Q_PROPERTY(int style READ style WRITE setStyle NOTIFY styleChanged)
     Q_PROPERTY(QStringList array READ array WRITE setArray NOTIFY arrayChanged)
 
 public:
     explicit QtAndroidArrayAdapter(QObject *parent = 0);
+
+    int style() const;
+    void setStyle(int style);
 
     QStringList array() const;
     void setArray(const QStringList &array);
@@ -24,6 +28,7 @@ public Q_SLOTS:
     void clear() Q_DECL_OVERRIDE;
 
 Q_SIGNALS:
+    void styleChanged();
     void arrayChanged();
 
 protected:
@@ -31,6 +36,7 @@ protected:
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
 private:
+    int m_style;
     QStringList m_array;
 };
 

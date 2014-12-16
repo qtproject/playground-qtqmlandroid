@@ -55,8 +55,10 @@ Activity {
 
         ListView {
             DrawerLayout.gravity: Gravity.LEFT
+            backgroundColor: Color.name("#eee")
             adapter: ArrayAdapter {
                 id: adapter
+                style: R.layout.simple_selectable_list_item
                 array: ["Buttons", "Progress", "Input", "Calendar", "Views"]
             }
             onClick: {
