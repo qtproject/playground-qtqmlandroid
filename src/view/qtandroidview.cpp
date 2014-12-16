@@ -7,8 +7,8 @@
 #include <QtCore/qhash.h>
 
 QtAndroidView::QtAndroidView(QtAndroidView *parent) :
-    QtAndroidContextual(parent), m_parent(0), m_background(0), m_visible(true),
-    m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
+    QtAndroidContextual(parent), m_parent(0), m_background(0), m_backgroundResource(0),
+    m_visible(true), m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
 {
     static int id = 0;
     m_id = ++id;
@@ -72,7 +72,7 @@ QtAndroidDrawable *QtAndroidView::background() const
     return m_background;
 }
 
-void QtAndroidView::setBackground(QtAndroidDrawable *background)
+void QtAndroidView::setBackground(QtAndroidDrawable *background, int resource)
 {
     if (m_background != background) {
         if (m_background) {
@@ -80,9 +80,11 @@ void QtAndroidView::setBackground(QtAndroidDrawable *background)
             m_background->destruct();
         }
         m_background = background;
+        m_backgroundResource = resource;
         if (m_background) {
             connect(m_background, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
-            m_background->construct();
+            if (!resource)
+                m_background->construct();
         }
         emit backgroundChanged();
     }
@@ -99,6 +101,19 @@ int QtAndroidView::backgroundColor() const
 void QtAndroidView::setBackgroundColor(int color)
 {
     setBackground(new QtAndroidColorDrawable(color, this));
+}
+
+int QtAndroidView::backgroundResource() const
+{
+    return m_backgroundResource;
+}
+
+void QtAndroidView::setBackgroundResource(int resource)
+{
+    if (m_backgroundResource != resource) {
+        setBackground(new QtAndroidDrawable(this), resource);
+        emit backgroundResourceChanged();
+    }
 }
 
 bool QtAndroidView::isVisible() const
@@ -352,6 +367,11 @@ void QtAndroidView::onInflate(QAndroidJniObject &instance)
     // TODO: VISIBLE(0), INVISIBLE(4), GONE(8)
     instance.callMethod<void>("setVisibility", "(I)V", m_visible ? 0 : 4);
     instance.callMethod<void>("setPadding", "(IIII)V", paddingLeft(), paddingTop(), paddingRight(), paddingBottom());
+
+    if (m_backgroundResource != 0) {
+        QAndroidJniObject background = ctx().callObjectMethod("getDrawable", "(I)Landroid/graphics/drawable/Drawable;", m_backgroundResource);
+        m_background->inflate(background);
+    }
 }
 
 void QtAndroidView::registerNativeMethods(jobject listener)
