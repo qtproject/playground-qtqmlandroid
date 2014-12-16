@@ -1,14 +1,15 @@
 #include "qtandroidview_p.h"
 #include "qtandroiddrawable_p.h"
 #include "qtandroidcolordrawable_p.h"
-#include "qtandroidfunctions_p.h"
 #include "qtandroidlayoutparams_p.h"
+#include "qtandroidanimation_p.h"
+#include "qtandroidfunctions_p.h"
 #include <QtCore/qcoreevent.h>
 #include <QtCore/qhash.h>
 
 QtAndroidView::QtAndroidView(QtAndroidView *parent) :
     QtAndroidContextual(parent), m_parent(0), m_background(0), m_backgroundResource(0),
-    m_visible(true), m_layoutParams(0), m_top(0), m_left(0), m_right(0), m_bottom(0)
+    m_animation(0), m_visible(true), m_layoutParams(0), m_top(0), m_left(0), m_right(0), m_bottom(0)
 {
     static int id = 0;
     m_id = ++id;
@@ -16,8 +17,10 @@ QtAndroidView::QtAndroidView(QtAndroidView *parent) :
     if (parent)
         setParentView(parent);
 
+    // TODO: virtual "instantiated" handler
     connect(this, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
     connect(this, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
+    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateAnimation()));
 }
 
 QtAndroidView::~QtAndroidView()
@@ -108,6 +111,28 @@ void QtAndroidView::setBackground(QtAndroidDrawable *background, int resource)
                 m_background->construct();
         }
         emit backgroundChanged();
+    }
+}
+
+QtAndroidAnimation *QtAndroidView::animation() const
+{
+    return m_animation;
+}
+
+void QtAndroidView::setAnimation(QtAndroidAnimation *animation)
+{
+    if (m_animation != animation) {
+        if (m_animation) {
+            disconnect(m_animation, SIGNAL(instanceChanged()), this, SLOT(updateAnimation()));
+            m_animation->destruct();
+        }
+        m_animation = animation;
+        if (m_animation) {
+            connect(m_animation, SIGNAL(instanceChanged()), this, SLOT(updateAnimation()));
+            if (isValid())
+                m_animation->construct();
+        }
+        emit animationChanged();
     }
 }
 
@@ -536,6 +561,18 @@ void QtAndroidView::updateBackground()
     QAndroidJniObject background = m_background->instance();
     QtAndroid::callFunction([=]() {
         view.callMethod<void>("setBackground", "(Landroid/graphics/drawable/Drawable;)V", background.object());
+    });
+}
+
+void QtAndroidView::updateAnimation()
+{
+    if (!isValid() || !m_animation)
+        return;
+
+    QAndroidJniObject view = instance();
+    QAndroidJniObject animation = m_animation->instance();
+    QtAndroid::callFunction([=]() {
+        view.callMethod<void>("startAnimation", "(Landroid/view/animation/Animation;)V", animation.object());
     });
 }
 

@@ -21,6 +21,8 @@
 #include "qtandroidviewgroup_p.h"
 #include "qtandroidwindow_p.h"
 
+#include "qtandroidanimation_p.h"
+
 #include "qtandroidarrayadapter_p.h"
 #include "qtandroidbutton_p.h"
 #include "qtandroidcalendarview_p.h"
@@ -89,6 +91,8 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidView>("android.view", 21, 0, "View");
     qmlRegisterType<QtAndroidViewGroup>("android.view", 21, 0, "ViewGroup");
     qmlRegisterType<QtAndroidWindow>();
+
+    qmlRegisterType<QtAndroidAnimation>("android.view.animation", 21, 0, "Animation");
 
     qmlRegisterType<QtAndroidArrayAdapter>("android.widget", 21, 0, "ArrayAdapter");
     qmlRegisterType<QtAndroidBaseAdapter>();

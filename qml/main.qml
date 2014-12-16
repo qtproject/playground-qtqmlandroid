@@ -51,6 +51,7 @@ Activity {
             InputView { }
             CalendarView { }
             TabView { }
+            AwesomeView { }
         }
 
         ListView {
@@ -59,7 +60,7 @@ Activity {
             adapter: ArrayAdapter {
                 id: adapter
                 style: R.layout.simple_selectable_list_item
-                array: ["Buttons", "Progress", "Input", "Calendar", "Views"]
+                array: ["Buttons", "Progress", "Input", "Calendar", "Views", "100%"]
             }
             onClick: {
                 drawer.closeDrawer(Gravity.LEFT)

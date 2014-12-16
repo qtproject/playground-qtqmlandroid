@@ -16,3 +16,5 @@ SOURCES += \
     $$PWD/qtandroidview.cpp \
     $$PWD/qtandroidviewgroup.cpp \
     $$PWD/qtandroidwindow.cpp
+
+include(animation/animation.pri)

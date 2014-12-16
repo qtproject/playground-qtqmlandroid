@@ -8,6 +8,7 @@
 QT_BEGIN_NAMESPACE
 
 class QtAndroidDrawable;
+class QtAndroidAnimation;
 class QtAndroidLayoutParams;
 
 class QtAndroidView : public QtAndroidContextual
@@ -19,6 +20,8 @@ class QtAndroidView : public QtAndroidContextual
     Q_PROPERTY(QtAndroidDrawable *background READ background WRITE setBackground NOTIFY backgroundChanged)
     Q_PROPERTY(int backgroundColor READ backgroundColor WRITE setBackgroundColor NOTIFY backgroundColorChanged)
     Q_PROPERTY(int backgroundResource READ backgroundResource WRITE setBackgroundResource NOTIFY backgroundResourceChanged)
+
+    Q_PROPERTY(QtAndroidAnimation *animation READ animation WRITE setAnimation NOTIFY animationChanged)
 
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
     Q_PROPERTY(bool focus READ hasFocus NOTIFY focusChanged)
@@ -62,6 +65,9 @@ public:
 
     int backgroundResource() const;
     void setBackgroundResource(int resource);
+
+    QtAndroidAnimation *animation() const;
+    void setAnimation(QtAndroidAnimation *animation);
 
     bool isVisible() const;
     void setVisible(bool visible);
@@ -126,6 +132,7 @@ Q_SIGNALS:
     void backgroundChanged();
     void backgroundColorChanged();
     void backgroundResourceChanged();
+    void animationChanged();
     void childrenChanged();
     void visibleChanged();
     void focusChanged();
@@ -169,6 +176,7 @@ protected:
 
 private Q_SLOTS:
     void updateBackground();
+    void updateAnimation();
     bool updateFocus(bool focus);
     void updateLayoutParams();
     void updateGeometry(int top, int left, int right, int bottom);
@@ -179,6 +187,7 @@ private:
     QList<QtAndroidView *> m_children;
     QtAndroidDrawable *m_background;
     int m_backgroundResource;
+    QtAndroidAnimation *m_animation;
     bool m_visible;
 
     QAndroidJniObject m_listener;
