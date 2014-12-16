@@ -8,7 +8,7 @@
 
 QtAndroidView::QtAndroidView(QtAndroidView *parent) :
     QtAndroidContextual(parent), m_parent(0), m_background(0), m_backgroundResource(0),
-    m_visible(true), m_layoutParams(0), m_x(0), m_y(0), m_width(0), m_height(0)
+    m_visible(true), m_layoutParams(0), m_top(0), m_left(0), m_right(0), m_bottom(0)
 {
     static int id = 0;
     m_id = ++id;
@@ -171,57 +171,119 @@ bool QtAndroidView::updateFocus(bool arg)
 
 qreal QtAndroidView::x() const
 {
-    return m_x;
-    //return jniObject().callMethod<jfloat>("getX");
-}
-
-void QtAndroidView::setX(qreal x)
-{
-    if (m_x != x) {
-        m_x = x;
-        //jniObject().callMethod<jfloat>("setX", "(F)V", x);
-    }
+    return left(); // TODO: + translationX
 }
 
 qreal QtAndroidView::y() const
 {
-    return m_y;
-    //return jniObject().callMethod<jfloat>("getY");
+    return top(); // TODO: + translationY
 }
 
-void QtAndroidView::setY(qreal y)
+int QtAndroidView::top() const
 {
-    if (m_y != y) {
-        m_y = y;
-        //jniObject().callMethod<jfloat>("setX", "(F)V", y);
+    if (m_top.isNull())
+        return 0;
+    return m_top.value();
+}
+
+void QtAndroidView::setTop(int top)
+{
+    if (m_top.isNull() || m_top.value() != top) {
+        m_top = top;
+        QtAndroid::callIntMethod(instance(), "setTop", top);
+        emit topChanged();
     }
 }
 
-qreal QtAndroidView::width() const
+int QtAndroidView::left() const
 {
-    return m_width;
-    //return jniObject().callMethod<jfloat>("getWidth");
+    if (m_left.isNull())
+        return 0;
+    return m_left.value();
 }
 
-void QtAndroidView::setWidth(qreal width)
+void QtAndroidView::setLeft(int left)
 {
-    if (m_width != width) {
-        m_width = width;
-        //jniObject().callMethod<jfloat>("setWidth", "(F)V", width);
+    if (m_left.isNull() || m_left.value() != left) {
+        m_left = left;
+        QtAndroid::callIntMethod(instance(), "setLeft", left);
+        emit leftChanged();
     }
 }
 
-qreal QtAndroidView::height() const
+int QtAndroidView::right() const
 {
-    return m_height;
-    //return jniObject().callMethod<jfloat>("getHeight");
+    if (m_right.isNull())
+        return 0;
+    return m_right.value();
 }
 
-void QtAndroidView::setHeight(qreal height)
+void QtAndroidView::setRight(int right)
 {
-    if (m_height != height) {
-        m_height = height;
-        //jniObject().callMethod<jfloat>("setHeight", "(F)V", height);
+    if (m_right.isNull() || m_right.value() != right) {
+        m_right = right;
+        QtAndroid::callIntMethod(instance(), "setRight", right);
+        emit rightChanged();
+    }
+}
+
+int QtAndroidView::bottom() const
+{
+    if (m_bottom.isNull())
+        return 0;
+    return m_bottom.value();
+}
+
+void QtAndroidView::setBottom(int bottom)
+{
+    if (m_bottom.isNull() || m_bottom.value() != bottom) {
+        m_bottom = bottom;
+        QtAndroid::callIntMethod(instance(), "setBottom", bottom);
+        emit bottomChanged();
+    }
+}
+
+int QtAndroidView::width() const
+{
+    return right() - left();
+}
+
+void QtAndroidView::setWidth(int width)
+{
+    setRight(left() + width);
+}
+
+int QtAndroidView::height() const
+{
+    return bottom() - top();
+}
+
+void QtAndroidView::setHeight(int height)
+{
+    setBottom(top() + height);
+}
+
+void QtAndroidView::updateGeometry(int t, int l, int r, int b)
+{
+    if (t != top()) {
+        m_top = t;
+        emit topChanged();
+        emit yChanged();
+    }
+    if (l != left()) {
+        m_left = l;
+        emit leftChanged();
+        emit xChanged();
+    }
+    if (r != right()) {
+        m_right = r;
+        emit rightChanged();
+        emit widthChanged();
+    }
+    if (b != bottom()) {
+        m_bottom = b;
+        emit bottomChanged();
+        emit heightChanged();
     }
 }
 
@@ -388,6 +450,14 @@ void QtAndroidView::onInflate(QAndroidJniObject &instance)
     // TODO: VISIBLE(0), INVISIBLE(4), GONE(8)
     instance.callMethod<void>("setVisibility", "(I)V", m_visible ? 0 : 4);
     instance.callMethod<void>("setPadding", "(IIII)V", paddingLeft(), paddingTop(), paddingRight(), paddingBottom());
+    if (!m_top.isNull())
+        instance.callMethod<void>("setTop", "(I)V", m_top.value());
+    if (!m_left.isNull())
+        instance.callMethod<void>("setLeft", "(I)V", m_left.value());
+    if (!m_right.isNull())
+        instance.callMethod<void>("setRight", "(I)V", m_right.value());
+    if (!m_bottom.isNull())
+        instance.callMethod<void>("setBottom", "(I)V", m_bottom.value());
 
     if (m_backgroundResource != 0) {
         QAndroidJniObject background = ctx().callObjectMethod("getDrawable", "(I)Landroid/graphics/drawable/Drawable;", m_backgroundResource);
@@ -426,15 +496,13 @@ void QtAndroidView::onFocusChange(JNIEnv *env, jobject object, jlong instance, j
         QMetaObject::invokeMethod(view, "updateFocus", Qt::QueuedConnection, Q_ARG(bool, hasFocus));
 }
 
-#include <QtDebug>
-void QtAndroidView::onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint top, jint left, jint right, jint bottom)
+void QtAndroidView::onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint left, jint top, jint right, jint bottom)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
     QtAndroidView *view = reinterpret_cast<QtAndroidView *>(instance);
-    if (view) {
-        //qDebug() << "onLayoutChange:" << view << top << left << right << bottom;
-    }
+    if (view)
+        QMetaObject::invokeMethod(view, "updateGeometry", Qt::QueuedConnection, Q_ARG(int, top), Q_ARG(int, left), Q_ARG(int, right), Q_ARG(int, bottom));
 }
 
 bool QtAndroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)

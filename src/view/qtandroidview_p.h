@@ -22,10 +22,15 @@ class QtAndroidView : public QtAndroidContextual
 
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
     Q_PROPERTY(bool focus READ hasFocus NOTIFY focusChanged)
-    Q_PROPERTY(qreal x READ x WRITE setX NOTIFY xChanged)
-    Q_PROPERTY(qreal y READ y WRITE setY NOTIFY yChanged)
-    Q_PROPERTY(qreal width READ width WRITE setWidth NOTIFY widthChanged) // TODO: reset
-    Q_PROPERTY(qreal height READ height WRITE setHeight NOTIFY heightChanged) // TODO: reset
+
+    Q_PROPERTY(qreal x READ x NOTIFY xChanged)
+    Q_PROPERTY(qreal y READ y NOTIFY yChanged)
+    Q_PROPERTY(int top READ top WRITE setTop NOTIFY topChanged)
+    Q_PROPERTY(int left READ left WRITE setLeft NOTIFY leftChanged)
+    Q_PROPERTY(int right READ right WRITE setRight NOTIFY rightChanged)
+    Q_PROPERTY(int bottom READ bottom WRITE setBottom NOTIFY bottomChanged)
+    Q_PROPERTY(int width READ width WRITE setWidth NOTIFY widthChanged)
+    Q_PROPERTY(int height READ height WRITE setHeight NOTIFY heightChanged)
 
     Q_PROPERTY(int padding READ padding WRITE setPadding NOTIFY paddingChanged)
     Q_PROPERTY(int paddingTop READ paddingTop WRITE setPaddingTop NOTIFY paddingTopChanged)
@@ -64,16 +69,25 @@ public:
     bool hasFocus() const;
 
     qreal x() const;
-    void setX(qreal x);
-
     qreal y() const;
-    void setY(qreal y);
 
-    qreal width() const;
-    void setWidth(qreal width);
+    int top() const;
+    void setTop(int top);
 
-    qreal height() const;
-    void setHeight(qreal height);
+    int left() const;
+    void setLeft(int left);
+
+    int right() const;
+    void setRight(int right);
+
+    int bottom() const;
+    void setBottom(int bottom);
+
+    int width() const;
+    void setWidth(int width);
+
+    int height() const;
+    void setHeight(int height);
 
     int padding() const;
     void setPadding(int padding);
@@ -118,6 +132,10 @@ Q_SIGNALS:
     void click();
     void xChanged();
     void yChanged();
+    void topChanged();
+    void leftChanged();
+    void rightChanged();
+    void bottomChanged();
     void widthChanged();
     void heightChanged();
     void paddingChanged();
@@ -144,7 +162,7 @@ protected:
     static void registerNativeMethods(jobject listener);
     static void onClick(JNIEnv *env, jobject object, jlong instance);
     static void onFocusChange(JNIEnv *env, jobject object, jlong instance, jboolean hasFocus);
-    static void onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint top, jint left, jint right, jint bottom);
+    static void onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint left, jint top, jint right, jint bottom);
     static bool onLongClick(JNIEnv *env, jobject object, jlong instance);
 
     bool event(QEvent *event) Q_DECL_OVERRIDE;
@@ -153,6 +171,7 @@ private Q_SLOTS:
     void updateBackground();
     bool updateFocus(bool focus);
     void updateLayoutParams();
+    void updateGeometry(int top, int left, int right, int bottom);
 
 private:
     int m_id;
@@ -167,7 +186,10 @@ private:
     QtAndroidLayoutParams *m_layoutParams;
 
     QtAndroidOptional<bool> m_focus;
-    qreal m_x, m_y, m_width, m_height;
+    QtAndroidOptional<int> m_top;
+    QtAndroidOptional<int> m_left;
+    QtAndroidOptional<int> m_right;
+    QtAndroidOptional<int> m_bottom;
     QtAndroidOptional<int> m_padding;
     QtAndroidOptional<int> m_paddingTop;
     QtAndroidOptional<int> m_paddingLeft;
