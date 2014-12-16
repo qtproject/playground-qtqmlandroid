@@ -10,6 +10,7 @@ import QtQml 2.1
 TabHost {
     LinearLayout {
         orientation: LinearLayout.VERTICAL
+        TabWidget { }
         FrameLayout {
             LinearLayout.weight: 1
             LinearLayout.height: Layout.WRAP_CONTENT
@@ -54,6 +55,5 @@ TabHost {
                 }
             }
         }
-        TabWidget { }
     }
 }
