@@ -4,6 +4,7 @@
 #include "qtandroidactivity_p.h"
 #include "qtandroidalertdialog_p.h"
 #include "qtandroiddialog_p.h"
+#include "qtandroidservice_p.h"
 
 #include "qtandroidcontext_p.h"
 
@@ -78,6 +79,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidActivity>("android.app", 21, 0, "Activity");
     qmlRegisterType<QtAndroidAlertDialog>("android.app", 21, 0, "AlertDialog");
     qmlRegisterType<QtAndroidDialog>("android.app", 21, 0, "Dialog");
+    qmlRegisterType<QtAndroidService>("android.app", 21, 0, "Service");
 
     qmlRegisterType<QtAndroidContext>();
 
