@@ -67,6 +67,27 @@ QQmlListProperty<QtAndroidView> QtAndroidView::children()
                                                    &QtAndroidView::children_at, &QtAndroidView::children_clear);
 }
 
+QtAndroidLayoutParams *QtAndroidView::layoutParams() const
+{
+    return m_layoutParams;
+}
+
+void QtAndroidView::setLayoutParams(QtAndroidLayoutParams *params)
+{
+    if (m_layoutParams != params) {
+        if (m_layoutParams) {
+            disconnect(m_layoutParams, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
+            m_layoutParams->destruct();
+        }
+        m_layoutParams = params;
+        if (m_layoutParams) {
+            connect(m_layoutParams, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
+            if (isValid())
+                m_layoutParams->construct();
+        }
+    }
+}
+
 QtAndroidDrawable *QtAndroidView::background() const
 {
     return m_background;
@@ -462,20 +483,4 @@ void QtAndroidView::updateLayoutParams()
                               "(Landroid/view/ViewGroup$LayoutParams;)V",
                               params.object());
     });
-}
-
-void QtAndroidView::setLayoutParams(QtAndroidLayoutParams *params)
-{
-    if (m_layoutParams != params) {
-        if (m_layoutParams) {
-            disconnect(m_layoutParams, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
-            m_layoutParams->destruct();
-        }
-        m_layoutParams = params;
-        if (m_layoutParams) {
-            connect(m_layoutParams, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
-            if (isValid())
-                m_layoutParams->construct();
-        }
-    }
 }

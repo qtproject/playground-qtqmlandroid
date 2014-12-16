@@ -46,6 +46,9 @@ public:
     QList<QtAndroidView *> childViews() const;
     QQmlListProperty<QtAndroidView> children();
 
+    QtAndroidLayoutParams *layoutParams() const;
+    void setLayoutParams(QtAndroidLayoutParams *params);
+
     QtAndroidDrawable *background() const;
     void setBackground(QtAndroidDrawable *background, int resource = 0);
 
@@ -152,8 +155,6 @@ private Q_SLOTS:
     void updateLayoutParams();
 
 private:
-    void setLayoutParams(QtAndroidLayoutParams *params);
-
     int m_id;
     QtAndroidView *m_parent;
     QList<QtAndroidView *> m_children;
@@ -172,9 +173,6 @@ private:
     QtAndroidOptional<int> m_paddingLeft;
     QtAndroidOptional<int> m_paddingRight;
     QtAndroidOptional<int> m_paddingBottom;
-
-    // TODO: cleanup
-    friend class QtAndroidLayoutParams;
 };
 
 QT_END_NAMESPACE
