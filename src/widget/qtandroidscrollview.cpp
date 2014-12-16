@@ -64,12 +64,12 @@ void QtAndroidScrollView::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(instance.object());
+        onRegisterNativeMethods(instance.object());
         nativeMethodsRegistered = true;
     }
 }
 
-void QtAndroidScrollView::registerNativeMethods(jobject listener)
+void QtAndroidScrollView::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onScrollChanged", "(JII)V", reinterpret_cast<void *>(onScrollChanged)}};
 

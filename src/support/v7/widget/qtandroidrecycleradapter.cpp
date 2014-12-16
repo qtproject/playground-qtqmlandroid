@@ -51,7 +51,7 @@ void QtAndroidRecyclerAdapter::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(instance.object());
+        onRegisterNativeMethods(instance.object());
         nativeMethodsRegistered = true;
     }
 
@@ -59,7 +59,7 @@ void QtAndroidRecyclerAdapter::onInflate(QAndroidJniObject &instance)
         instance.callMethod<void>("setItemCount", "(I)V", m_count);
 }
 
-void QtAndroidRecyclerAdapter::registerNativeMethods(jobject adapter)
+void QtAndroidRecyclerAdapter::onRegisterNativeMethods(jobject adapter)
 {
     JNINativeMethod methods[] {{"onCreateViewHolder", "(JLandroid/view/ViewGroup;I)Lqt/android/support/v7/widget/QtRecyclerAdapter$ViewHolder;", reinterpret_cast<void *>(onCreateViewHolder)},
                                {"onBindViewHolder", "(JLqt/android/support/v7/widget/QtRecyclerAdapter$ViewHolder;I)V", reinterpret_cast<void *>(onBindViewHolder)}};

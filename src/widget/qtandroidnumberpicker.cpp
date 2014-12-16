@@ -45,14 +45,14 @@ void QtAndroidNumberPicker::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(m_listener.object());
+        onRegisterNativeMethods(m_listener.object());
         nativeMethodsRegistered = true;
     }
 
     instance.callMethod<void>("setValue", "(I)V", m_value);
 }
 
-void QtAndroidNumberPicker::registerNativeMethods(jobject listener)
+void QtAndroidNumberPicker::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onValueChange", "(JI)V", reinterpret_cast<void *>(onValueChange)}};
 

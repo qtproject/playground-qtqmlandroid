@@ -93,12 +93,12 @@ void QtAndroidMenuItem::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(instance.object());
+        onRegisterNativeMethods(instance.object());
         nativeMethodsRegistered = true;
     }
 }
 
-void QtAndroidMenuItem::registerNativeMethods(jobject item)
+void QtAndroidMenuItem::onRegisterNativeMethods(jobject item)
 {
     JNINativeMethod methods[] {{"onClick", "(J)Z", reinterpret_cast<void *>(onClick)}};
 

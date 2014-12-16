@@ -45,14 +45,14 @@ void QtAndroidRatingBar::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(m_listener.object());
+        onRegisterNativeMethods(m_listener.object());
         nativeMethodsRegistered = true;
     }
 
     instance.callMethod<void>("setRating", "(F)V", m_rating);
 }
 
-void QtAndroidRatingBar::registerNativeMethods(jobject listener)
+void QtAndroidRatingBar::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onRatingChanged", "(JFZ)V", reinterpret_cast<void *>(onRatingChanged)}};
 

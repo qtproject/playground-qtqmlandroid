@@ -44,7 +44,7 @@ protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
-    static void registerNativeMethods(jobject item);
+    static void onRegisterNativeMethods(jobject item);
     static bool onClick(JNIEnv *env, jobject object, jlong instance);
 
 private:

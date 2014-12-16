@@ -41,7 +41,7 @@ void QtAndroidRadioGroup::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(m_listener.object());
+        onRegisterNativeMethods(m_listener.object());
         nativeMethodsRegistered = true;
     }
 
@@ -49,7 +49,7 @@ void QtAndroidRadioGroup::onInflate(QAndroidJniObject &instance)
     QMetaObject::invokeMethod(this, "updateCheckedButtonId", Qt::QueuedConnection, Q_ARG(int, checkedId));
 }
 
-void QtAndroidRadioGroup::registerNativeMethods(jobject listener)
+void QtAndroidRadioGroup::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onCheckedChanged", "(JI)V", reinterpret_cast<void *>(onCheckedChanged)}};
 

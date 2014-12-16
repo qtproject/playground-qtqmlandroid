@@ -31,7 +31,7 @@ protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
-    static void registerNativeMethods(jobject adapter);
+    static void onRegisterNativeMethods(jobject adapter);
     static jobject onCreateViewHolder(JNIEnv *env, jobject object, jlong instance, jobject parent, jint viewType);
     static void onBindViewHolder(JNIEnv *env, jobject object, jlong instance, jobject holder, jint position);
 

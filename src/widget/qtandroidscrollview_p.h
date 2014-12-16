@@ -28,7 +28,7 @@ protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
-    static void registerNativeMethods(jobject listener);
+    static void onRegisterNativeMethods(jobject listener);
     static void onScrollChanged(JNIEnv *env, jobject object, jlong instance, jint left, jint top);
 
 private Q_SLOTS:

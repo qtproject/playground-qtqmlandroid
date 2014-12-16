@@ -24,7 +24,7 @@ void QtAndroidTabHost::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(m_listener.object());
+        onRegisterNativeMethods(m_listener.object());
         nativeMethodsRegistered = true;
     }
 
@@ -36,7 +36,7 @@ void QtAndroidTabHost::onInflate(QAndroidJniObject &instance)
         tab->setup(instance, index++);
 }
 
-void QtAndroidTabHost::registerNativeMethods(jobject listener)
+void QtAndroidTabHost::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onTabChanged", "(JLjava/lang/String;)V", reinterpret_cast<void *>(onTabChanged)}};
 

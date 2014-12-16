@@ -50,14 +50,14 @@ void QtAndroidCompoundButton::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(m_listener.object());
+        onRegisterNativeMethods(m_listener.object());
         nativeMethodsRegistered = true;
     }
 
     instance.callMethod<void>("setChecked", "(Z)V", m_checked);
 }
 
-void QtAndroidCompoundButton::registerNativeMethods(jobject listener)
+void QtAndroidCompoundButton::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onCheckedChanged", "(JZ)V", reinterpret_cast<void *>(onCheckedChanged)}};
 

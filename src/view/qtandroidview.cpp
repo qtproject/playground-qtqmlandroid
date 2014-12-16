@@ -443,7 +443,7 @@ void QtAndroidView::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(m_listener.object());
+        onRegisterNativeMethods(m_listener.object());
         nativeMethodsRegistered = true;
     }
 
@@ -465,7 +465,7 @@ void QtAndroidView::onInflate(QAndroidJniObject &instance)
     }
 }
 
-void QtAndroidView::registerNativeMethods(jobject listener)
+void QtAndroidView::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onClick", "(J)V", reinterpret_cast<void *>(onClick)},
                                {"onFocusChange", "(JZ)V", reinterpret_cast<void *>(onFocusChange)},

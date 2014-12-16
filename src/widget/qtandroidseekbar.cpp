@@ -23,12 +23,12 @@ void QtAndroidSeekBar::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(m_listener.object());
+        onRegisterNativeMethods(m_listener.object());
         nativeMethodsRegistered = true;
     }
 }
 
-void QtAndroidSeekBar::registerNativeMethods(jobject listener)
+void QtAndroidSeekBar::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onProgressChanged", "(JIZ)V", reinterpret_cast<void *>(onProgressChanged)}};
 

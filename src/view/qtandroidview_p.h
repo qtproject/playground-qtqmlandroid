@@ -159,7 +159,7 @@ protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
-    static void registerNativeMethods(jobject listener);
+    static void onRegisterNativeMethods(jobject listener);
     static void onClick(JNIEnv *env, jobject object, jlong instance);
     static void onFocusChange(JNIEnv *env, jobject object, jlong instance, jboolean hasFocus);
     static void onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint left, jint top, jint right, jint bottom);

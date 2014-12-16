@@ -45,12 +45,12 @@ void QtAndroidSwipeRefreshLayout::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(m_listener.object());
+        onRegisterNativeMethods(m_listener.object());
         nativeMethodsRegistered = true;
     }
 }
 
-void QtAndroidSwipeRefreshLayout::registerNativeMethods(jobject listener)
+void QtAndroidSwipeRefreshLayout::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onRefresh", "(J)V", reinterpret_cast<void *>(onRefresh)}};
 

@@ -55,12 +55,12 @@ void QtAndroidAdapterView::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        registerNativeMethods(m_listener.object());
+        onRegisterNativeMethods(m_listener.object());
         nativeMethodsRegistered = true;
     }
 }
 
-void QtAndroidAdapterView::registerNativeMethods(jobject listener)
+void QtAndroidAdapterView::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onItemClick", "(JI)V", reinterpret_cast<void *>(onItemClick)}};
 
