@@ -5,8 +5,6 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtAndroidContext;
-
 class QtAndroidDialog : public QtAndroidContextual
 {
     Q_OBJECT

@@ -3,16 +3,23 @@
 #include "qtandroidmenuitem_p.h"
 #include "qtandroidmenu_p.h"
 #include "qtandroidview_p.h"
+#include "qtandroidwindow_p.h"
 #include "qtandroidfunctions_p.h"
 #include <QtCore/private/qjnihelpers_p.h>
 #include <QtAndroidExtras/qandroidfunctions.h>
 #include <QtAndroidExtras/qandroidjnienvironment.h>
 
 QtAndroidActivity::QtAndroidActivity(QObject *parent) :
-    QtAndroidContextWrapper(parent), m_contentView(0), m_optionsMenu(0), m_actionBar(0)
+    QtAndroidContextWrapper(parent), m_window(new QtAndroidWindow(this)),
+    m_contentView(0), m_optionsMenu(0), m_actionBar(0)
 {
     // TODO: multiple activities?
     setInstance(QtAndroid::androidActivity());
+}
+
+QtAndroidWindow *QtAndroidActivity::window() const
+{
+    return m_window;
 }
 
 QtAndroidActionBar *QtAndroidActivity::actionBar() const
@@ -27,7 +34,7 @@ void QtAndroidActivity::setActionBar(QtAndroidActionBar *bar)
             m_actionBar->destruct();
         m_actionBar = bar;
         if (m_actionBar)
-            updateActionBar();
+            setupActionBar();
     }
 }
 
@@ -93,10 +100,26 @@ void QtAndroidActivity::componentComplete()
         m_optionsMenu->construct();
 
     if (m_actionBar)
-        updateActionBar();
+        setupActionBar();
+
+    if (m_window)
+        setupWindow();
 }
 
-void QtAndroidActivity::updateActionBar()
+void QtAndroidActivity::setupWindow()
+{
+    if (!isValid())
+        return;
+
+    QAndroidJniObject activity = instance();
+    QtAndroid::callFunction([=]() {
+        QAndroidJniObject wnd = activity.callObjectMethod("getWindow", "()Landroid/view/Window;");
+        m_window->onInflate(wnd);
+        m_window->setInstance(wnd);
+    });
+}
+
+void QtAndroidActivity::setupActionBar()
 {
     if (!isValid())
         return;

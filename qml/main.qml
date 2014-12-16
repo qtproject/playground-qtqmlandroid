@@ -10,6 +10,8 @@ import android.R 21.0
 Activity {
     id: activity
 
+    window.statusBarColor: Color.rgb(255, 50, 50)
+
     actionBar: ActionBar {
         title: "QtAndroid"
         subtitle: adapter.getItem(switcher.displayedChild)
