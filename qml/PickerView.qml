@@ -11,8 +11,8 @@ TabHost {
             NumberPicker {
                 TabSpec.label: "NumberPicker"
             }
-            TextView {
-                TabSpec.label: "FooPicker"
+            TimePicker {
+                TabSpec.label: "TimePicker"
             }
         }
     }

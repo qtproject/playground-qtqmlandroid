@@ -34,6 +34,7 @@ HEADERS += \
     $$PWD/qtandroidtabspec_p.h \
     $$PWD/qtandroidtabwidget_p.h \
     $$PWD/qtandroidtextview_p.h \
+    $$PWD/qtandroidtimepicker_p.h \
     $$PWD/qtandroidtoast_p.h \
     $$PWD/qtandroidtogglebutton_p.h \
     $$PWD/qtandroidviewanimator_p.h \
@@ -74,6 +75,7 @@ SOURCES += \
     $$PWD/qtandroidtabspec.cpp \
     $$PWD/qtandroidtabwidget.cpp \
     $$PWD/qtandroidtextview.cpp \
+    $$PWD/qtandroidtimepicker.cpp \
     $$PWD/qtandroidtoast.cpp \
     $$PWD/qtandroidtogglebutton.cpp \
     $$PWD/qtandroidviewanimator.cpp \
