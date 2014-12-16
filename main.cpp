@@ -44,6 +44,7 @@
 #include "qtandroidrelativelayout_p.h"
 #include "qtandroidrelativelayoutparams_p.h"
 #include "qtandroidscrollview_p.h"
+#include "qtandroidsearchview_p.h"
 #include "qtandroidseekbar_p.h"
 #include "qtandroidspace_p.h"
 #include "qtandroidspinner_p.h"
@@ -118,6 +119,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidRelativeLayout>("android.widget", 21, 0, "RelativeLayout");
     qmlRegisterType<QtAndroidRelativeLayoutParams>();
     qmlRegisterType<QtAndroidScrollView>("android.widget", 21, 0, "ScrollView");
+    qmlRegisterType<QtAndroidSearchView>("android.widget", 21, 0, "SearchView");
     qmlRegisterType<QtAndroidSeekBar>("android.widget", 21, 0, "SeekBar");
     qmlRegisterType<QtAndroidSpace>("android.widget", 21, 0, "Space");
     qmlRegisterType<QtAndroidSpinner>("android.widget", 21, 0, "Spinner");

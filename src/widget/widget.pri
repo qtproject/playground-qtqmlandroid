@@ -27,6 +27,7 @@ HEADERS += \
     $$PWD/qtandroidrelativelayout_p.h \
     $$PWD/qtandroidrelativelayoutparams_p.h \
     $$PWD/qtandroidscrollview_p.h \
+    $$PWD/qtandroidsearchview_p.h \
     $$PWD/qtandroidseekbar_p.h \
     $$PWD/qtandroidspace_p.h \
     $$PWD/qtandroidspinner_p.h \
@@ -69,6 +70,7 @@ SOURCES += \
     $$PWD/qtandroidrelativelayout.cpp \
     $$PWD/qtandroidrelativelayoutparams.cpp \
     $$PWD/qtandroidscrollview.cpp \
+    $$PWD/qtandroidsearchview.cpp \
     $$PWD/qtandroidseekbar.cpp \
     $$PWD/qtandroidspace.cpp \
     $$PWD/qtandroidspinner.cpp \
