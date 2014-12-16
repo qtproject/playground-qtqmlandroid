@@ -145,6 +145,11 @@ void QtAndroidActivity::updateOptionsMenu()
     });
 }
 
+void QtAndroidActivity::invalidateOptionsMenu()
+{
+    QtAndroid::callVoidMethod(instance(), "invalidateOptionsMenu");
+}
+
 void QtAndroidActivity::updateContentView()
 {
     if (!isValid())

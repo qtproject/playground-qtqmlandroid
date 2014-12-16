@@ -27,6 +27,12 @@ Activity {
             message: "Native UI controls for Android"
         }
         MenuItem {
+            title: "Search"
+            showAs: MenuItem.SHOW_AS_ACTION_ALWAYS
+            visible: switcher.displayedChild == 2
+            actionView: SearchView { }
+        }
+        MenuItem {
             title: "About"
             onClick: dialog.show()
         }

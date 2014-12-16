@@ -40,6 +40,7 @@ private Q_SLOTS:
     void setupWindow();
     void setupActionBar();
     void updateOptionsMenu();
+    void invalidateOptionsMenu();
     void updateContentView();
 
 private:

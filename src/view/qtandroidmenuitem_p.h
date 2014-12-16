@@ -1,11 +1,13 @@
 #ifndef QTANDROIDMENUITEM_P_H
 #define QTANDROIDMENUITEM_P_H
 
-#include "qtandroidobject_p.h"
+#include "qtandroidcontextual_p.h"
 
 QT_BEGIN_NAMESPACE
 
-class QtAndroidMenuItem : public QtAndroidObject
+class QtAndroidView;
+
+class QtAndroidMenuItem : public QtAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
@@ -13,6 +15,9 @@ class QtAndroidMenuItem : public QtAndroidObject
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
     Q_PROPERTY(bool checkable READ isCheckable WRITE setCheckable NOTIFY checkableChanged)
     Q_PROPERTY(bool checked READ isChecked WRITE setChecked NOTIFY checkedChanged)
+    Q_PROPERTY(int showAs READ showAs WRITE setShowAs NOTIFY showAsChanged)
+    Q_PROPERTY(QtAndroidView *actionView READ actionView WRITE setActionView NOTIFY actionViewChanged)
+    Q_ENUMS(ShowAs)
 
 public:
     explicit QtAndroidMenuItem(QObject *parent = 0);
@@ -32,6 +37,20 @@ public:
     bool isChecked() const;
     void setChecked(bool checked);
 
+    enum ShowAs {
+        SHOW_AS_ACTION_NEVER = 0,
+        SHOW_AS_ACTION_IF_ROOM = 1,
+        SHOW_AS_ACTION_ALWAYS = 2,
+        SHOW_AS_ACTION_WITH_TEXT = 4,
+        SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW = 8
+    };
+
+    int showAs() const;
+    void setShowAs(int showAs);
+
+    QtAndroidView *actionView() const;
+    void setActionView(QtAndroidView *view);
+
 Q_SIGNALS:
     void click();
     void titleChanged();
@@ -39,6 +58,8 @@ Q_SIGNALS:
     void visibleChanged();
     void checkableChanged();
     void checkedChanged();
+    void showAsChanged();
+    void actionViewChanged();
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
@@ -46,6 +67,11 @@ protected:
 
     static void onRegisterNativeMethods(jobject item);
     static bool onClick(JNIEnv *env, jobject object, jlong instance);
+    static bool onMenuItemActionCollapse(JNIEnv *env, jobject object, jlong instance);
+    static bool onMenuItemActionExpand(JNIEnv *env, jobject object, jlong instance);
+
+private Q_SLOTS:
+    void updateActionView();
 
 private:
     QString m_title;
@@ -53,6 +79,8 @@ private:
     bool m_visible;
     bool m_checkable;
     bool m_checked;
+    int m_showAs;
+    QtAndroidView *m_actionView;
 };
 
 QT_END_NAMESPACE

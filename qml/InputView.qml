@@ -48,20 +48,6 @@ ScrollView {
                 padding: 48
                 orientation: LinearLayout.VERTICAL
 
-                TextView { text: "SearchView"; textSize: 18 }
-                Space { LinearLayout.height: 48 }
-                SearchView {
-                }
-            }
-        }
-
-        Space { LinearLayout.height: 48 }
-
-        CardView {
-            LinearLayout {
-                padding: 48
-                orientation: LinearLayout.VERTICAL
-
                 TextView { text: "Spinner"; textSize: 18 }
                 Space { LinearLayout.height: 48 }
                 Spinner {
