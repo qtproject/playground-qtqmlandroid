@@ -10,13 +10,13 @@ import android.R 21.0
 Activity {
     id: activity
 
-    window.statusBarColor: Color.name("#f50057")
+    window.statusBarColor: Color.name("#689f38")
 
     actionBar: ActionBar {
         title: "QtAndroid"
         subtitle: adapter.getItem(switcher.displayedChild)
         background: ColorDrawable {
-            color: Color.name("#ff4081")
+            color: Color.name("#8bc34a")
         }
     }
 
