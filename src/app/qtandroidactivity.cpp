@@ -47,13 +47,11 @@ void QtAndroidActivity::setOptionsMenu(QtAndroidMenu *menu)
 {
     if (m_optionsMenu != menu) {
         if (m_optionsMenu) {
-            m_optionsMenu->setContext(0);
             disconnect(m_optionsMenu, SIGNAL(instanceChanged()), this, SLOT(updateOptionsMenu()));
             m_optionsMenu->destruct();
         }
         m_optionsMenu = menu;
         if (m_optionsMenu) {
-            m_optionsMenu->setContext(this);
             connect(m_optionsMenu, SIGNAL(instanceChanged()), this, SLOT(updateOptionsMenu()));
             if (isComponentComplete())
                 m_optionsMenu->construct();
@@ -70,13 +68,11 @@ void QtAndroidActivity::setContentView(QtAndroidView *view)
 {
     if (m_contentView != view) {
         if (m_contentView) {
-            m_contentView->setContext(0);
             disconnect(m_contentView, SIGNAL(instanceChanged()), this, SLOT(updateContentView()));
             m_contentView->destruct();
         }
         m_contentView = view;
         if (m_contentView) {
-            m_contentView->setContext(this);
             connect(m_contentView, SIGNAL(instanceChanged()), this, SLOT(updateContentView()));
             if (isComponentComplete())
                 m_contentView->construct();
@@ -93,11 +89,11 @@ void QtAndroidActivity::componentComplete()
 {
     QtAndroidContextWrapper::componentComplete();
 
-    if (m_contentView)
-        m_contentView->construct();
-
-    if (m_optionsMenu)
-        m_optionsMenu->construct();
+    foreach (QObject *child, children()) {
+        QtAndroidObject *object = qobject_cast<QtAndroidObject *>(child);
+        if (object)
+            object->construct();
+    }
 
     if (m_actionBar)
         setupActionBar();

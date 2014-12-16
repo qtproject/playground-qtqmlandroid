@@ -15,6 +15,7 @@ class QtAndroidContextual : public QtAndroidObject
 
 public:
     explicit QtAndroidContextual(QObject *parent = 0);
+    explicit QtAndroidContextual(QtAndroidContext *context, QObject *parent = 0);
 
     QAndroidJniObject ctx() const;
     QtAndroidContext *context() const;
@@ -24,10 +25,12 @@ Q_SIGNALS:
     void contextChanged();
 
 protected:
+    void componentComplete() Q_DECL_OVERRIDE;
     bool event(QEvent *event) Q_DECL_OVERRIDE;
 
 private:
-    bool findContext();
+    QtAndroidContext *findContext();
+    void inheritContext();
 
     QtAndroidContext *m_context;
 };

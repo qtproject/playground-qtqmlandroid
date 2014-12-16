@@ -21,11 +21,6 @@ Activity {
     }
 
     optionsMenu: Menu {
-        AlertDialog {
-            id: dialog
-            title: "About"
-            message: "Native UI controls for Android"
-        }
         MenuItem {
             title: "Search"
             showAs: MenuItem.SHOW_AS_ACTION_ALWAYS
@@ -40,6 +35,12 @@ Activity {
             title: "Exit"
             onClick: Qt.quit()
         }
+    }
+
+    AlertDialog {
+        id: dialog
+        title: "About"
+        message: "Native UI controls for Android"
     }
 
     contentView: DrawerLayout {

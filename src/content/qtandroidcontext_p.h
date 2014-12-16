@@ -1,12 +1,12 @@
 #ifndef QTANDROIDCONTEXT_P_H
 #define QTANDROIDCONTEXT_P_H
 
-#include "qtandroidobject_p.h"
+#include "qtandroidcontextual_p.h"
 #include <QtAndroidExtras/qandroidjniobject.h>
 
 QT_BEGIN_NAMESPACE
 
-class QtAndroidContext : public QtAndroidObject
+class QtAndroidContext : public QtAndroidContextual
 {
     Q_OBJECT
 
