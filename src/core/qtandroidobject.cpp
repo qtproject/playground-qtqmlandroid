@@ -41,10 +41,22 @@ void QtAndroidObject::construct()
     }
 
     std::function<void()> method = [=]() {
-        QAndroidJniObject instance = onCreate();
-        if (instance.isValid())
-            onInflate(instance);
-        setInstance(instance);
+        inflate(onCreate());
+    };
+
+    if (QtAndroid::isMainQtThread())
+        QtAndroid::callFunction(method);
+    else
+        method();
+}
+
+void QtAndroidObject::inflate(const QAndroidJniObject &instance)
+{
+    std::function<void()> method = [=]() {
+        QAndroidJniObject object(instance);
+        if (object.isValid())
+            onInflate(object);
+        setInstance(object);
     };
 
     if (QtAndroid::isMainQtThread())

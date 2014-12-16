@@ -77,7 +77,7 @@ void QtAndroidPopupMenu::show()
                                       "(Landroid/content/Context;Landroid/view/View;)V",
                                       c.object(), a.object());
         }
-        setInstance(popup);
+        inflate(popup);
 
         QAndroidJniObject menu = popup.callObjectMethod("getMenu", "()Landroid/view/Menu;");
         foreach (QtAndroidMenuItem *item, items()) {

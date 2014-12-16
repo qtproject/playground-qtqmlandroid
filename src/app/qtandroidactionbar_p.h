@@ -54,8 +54,6 @@ private:
     QString m_title;
     QString m_subtitle;
     QtAndroidDrawable *m_background;
-
-    friend class QtAndroidActivity;
 };
 
 QT_END_NAMESPACE

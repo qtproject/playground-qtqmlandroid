@@ -27,7 +27,7 @@ void QtAndroidViewGroup::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidView::onInflate(instance);
 
-    foreach (QtAndroidView *child, m_children)
+    foreach (QtAndroidView *child, childViews())
         instance.callMethod<void>("addView", "(Landroid/view/View;)V", child->instance().object());
 }
 

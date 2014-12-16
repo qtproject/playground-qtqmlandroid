@@ -25,9 +25,8 @@ QAndroidJniObject QtAndroidMenu::onCreate()
 void QtAndroidMenu::onInflate(QAndroidJniObject &instance)
 {
     foreach (QtAndroidMenuItem *item, items()) {
-        QAndroidJniObject it = item->onCreate();
-        item->setInstance(it);
-        item->onInflate(it);
-        instance.callMethod<void>("add", "(Lqt/android/view/QtMenuItem;)V", it.object());
+        item->construct();
+        if (item->isValid())
+            instance.callMethod<void>("add", "(Lqt/android/view/QtMenuItem;)V", item->instance().object());
     }
 }

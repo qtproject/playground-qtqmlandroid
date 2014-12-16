@@ -53,8 +53,6 @@ private:
     bool m_visible;
     bool m_checkable;
     bool m_checked;
-
-    friend class QtAndroidMenu;
 };
 
 QT_END_NAMESPACE

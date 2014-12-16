@@ -24,9 +24,9 @@ public:
 
     bool isValid() const;
     QAndroidJniObject instance() const;
-    void setInstance(const QAndroidJniObject &instance); // TODO: private
 
     void construct();
+    void inflate(const QAndroidJniObject &instance);
     void destruct();
 
     QQmlListProperty<QObject> data();
@@ -50,8 +50,11 @@ protected:
     void childEvent(QChildEvent *event) Q_DECL_OVERRIDE;
 
 private:
+    void setInstance(const QAndroidJniObject &instance);
+
     bool m_complete;
     QAndroidJniObject m_instance;
+    friend class QtAndroidActivity;
 };
 
 QT_END_NAMESPACE

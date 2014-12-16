@@ -114,8 +114,7 @@ void QtAndroidActivity::setupWindow()
     QAndroidJniObject activity = instance();
     QtAndroid::callFunction([=]() {
         QAndroidJniObject wnd = activity.callObjectMethod("getWindow", "()Landroid/view/Window;");
-        m_window->onInflate(wnd);
-        m_window->setInstance(wnd);
+        m_window->inflate(wnd);
     });
 }
 
@@ -127,8 +126,7 @@ void QtAndroidActivity::setupActionBar()
     QAndroidJniObject activity = instance();
     QtAndroid::callFunction([=]() {
         QAndroidJniObject bar = activity.callObjectMethod("getActionBar", "()Landroid/app/ActionBar;");
-        m_actionBar->onInflate(bar);
-        m_actionBar->setInstance(bar);
+        m_actionBar->inflate(bar);
     });
 }
 

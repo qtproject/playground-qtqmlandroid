@@ -15,10 +15,6 @@ public:
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
-
-private:
-    friend class QtAndroidView;
-    friend class QtAndroidActionBar;
 };
 
 QT_END_NAMESPACE

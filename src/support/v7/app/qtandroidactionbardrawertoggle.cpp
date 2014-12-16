@@ -15,5 +15,5 @@ void QtAndroidActionBarDrawerToggle::onCreate(const QAndroidJniObject &activity,
                              17039375); // TODO: R.string.drawer_close
     drawer.callMethod<void>("setDrawerListener", "(Landroid/support/v4/widget/DrawerLayout$DrawerListener;)V", toggle.object());
     toggle.callMethod<void>("syncState");
-    setInstance(toggle);
+    inflate(toggle);
 }

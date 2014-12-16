@@ -25,7 +25,6 @@ protected:
 
 private:
     QtAndroidOptional<int> m_statusBarColor;
-    friend class QtAndroidActivity;
 };
 
 QT_END_NAMESPACE

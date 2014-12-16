@@ -169,8 +169,6 @@ private:
 
     // TODO: cleanup
     friend class QtAndroidLayoutParams;
-    friend class QtAndroidViewGroup;
-    friend class QtAndroidActivity;
 };
 
 QT_END_NAMESPACE

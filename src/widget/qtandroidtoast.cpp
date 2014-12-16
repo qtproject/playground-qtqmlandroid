@@ -64,7 +64,7 @@ void QtAndroidToast::show()
                                       "(Landroid/content/Context;)V",
                                       ctx.object());
         }
-        setInstance(toast);
+        inflate(toast);
 
         if (!m_gravity.isNull())
             toast.callMethod<void>("setGravity", "(I)V", m_gravity.value());
