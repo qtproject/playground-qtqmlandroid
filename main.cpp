@@ -27,6 +27,7 @@
 #include "qtandroidbutton_p.h"
 #include "qtandroidcalendarview_p.h"
 #include "qtandroidcheckbox_p.h"
+#include "qtandroiddatepicker_p.h"
 #include "qtandroidedittext_p.h"
 #include "qtandroidframelayout_p.h"
 #include "qtandroidframelayoutparams_p.h"
@@ -100,6 +101,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidButton>("android.widget", 21, 0, "Button");
     qmlRegisterType<QtAndroidCalendarView>("android.widget", 21, 0, "CalendarView");
     qmlRegisterType<QtAndroidCheckBox>("android.widget", 21, 0, "CheckBox");
+    qmlRegisterType<QtAndroidDatePicker>("android.widget", 21, 0, "DatePicker");
     qmlRegisterType<QtAndroidEditText>("android.widget", 21, 0, "EditText");
     qmlRegisterType<QtAndroidFrameLayout>("android.widget", 21, 0, "FrameLayout");
     qmlRegisterType<QtAndroidFrameLayoutParams>();

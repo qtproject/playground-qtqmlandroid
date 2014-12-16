@@ -9,6 +9,7 @@ HEADERS += \
     $$PWD/qtandroidcalendarview_p.h \
     $$PWD/qtandroidcheckbox_p.h \
     $$PWD/qtandroidcompoundbutton_p.h \
+    $$PWD/qtandroiddatepicker_p.h \
     $$PWD/qtandroidedittext_p.h \
     $$PWD/qtandroidframelayout_p.h \
     $$PWD/qtandroidframelayoutparams_p.h \
@@ -50,6 +51,7 @@ SOURCES += \
     $$PWD/qtandroidcalendarview.cpp \
     $$PWD/qtandroidcheckbox.cpp \
     $$PWD/qtandroidcompoundbutton.cpp \
+    $$PWD/qtandroiddatepicker.cpp \
     $$PWD/qtandroidedittext.cpp \
     $$PWD/qtandroidframelayout.cpp \
     $$PWD/qtandroidframelayoutparams.cpp \
