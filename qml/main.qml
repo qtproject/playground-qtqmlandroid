@@ -46,11 +46,12 @@ Activity {
             inAnimation: R.anim.slide_in_left
             outAnimation: R.anim.slide_out_right
 
-            ButtonsView { }
+            ButtonView { }
             ProgressView { }
             InputView { }
             CalendarView { }
-            TabView { }
+            PickerView { }
+            ModelView { }
             AwesomeView { }
         }
 
@@ -60,7 +61,7 @@ Activity {
             adapter: ArrayAdapter {
                 id: adapter
                 style: R.layout.simple_selectable_list_item
-                array: ["Buttons", "Progress", "Input", "Calendar", "Views", "100%"]
+                array: ["Buttons", "Progress", "Input", "Calendar", "Pickers", "Views", "100%"]
             }
             onClick: {
                 drawer.closeDrawer(Gravity.LEFT)

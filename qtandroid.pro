@@ -4,6 +4,15 @@ QT += androidextras qml core-private # qjnihelpers
 SOURCES += main.cpp
 RESOURCES += qtandroid.qrc
 
+OTHER_FILES += \
+    qml/main.qml \
+    qml/AwesomeView.qml \
+    qml/ButtonView.qml \
+    qml/InputView.qml \
+    qml/ModelView.qml \
+    qml/PickerView.qml \
+    qml/ProgressView.qml
+
 include(src/src.pri)
 
 DISTFILES += \
