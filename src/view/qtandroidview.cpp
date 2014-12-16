@@ -474,7 +474,8 @@ void QtAndroidView::onInflate(QAndroidJniObject &instance)
 
     // TODO: VISIBLE(0), INVISIBLE(4), GONE(8)
     instance.callMethod<void>("setVisibility", "(I)V", m_visible ? 0 : 4);
-    instance.callMethod<void>("setPadding", "(IIII)V", paddingLeft(), paddingTop(), paddingRight(), paddingBottom());
+    if (!m_padding.isNull() || !m_paddingTop.isNull() || !m_paddingLeft.isNull() || !m_paddingRight.isNull() || !m_paddingBottom.isNull())
+        instance.callMethod<void>("setPadding", "(IIII)V", paddingLeft(), paddingTop(), paddingRight(), paddingBottom());
     if (!m_top.isNull())
         instance.callMethod<void>("setTop", "(I)V", m_top.value());
     if (!m_left.isNull())
