@@ -40,6 +40,31 @@ void QtAndroidImageView::setImageResource(int resource)
     }
 }
 
+int QtAndroidImageView::imageTintColor() const
+{
+    if (m_tint.isNull())
+        return 0; // TODO
+    return m_tint.value();
+}
+
+void QtAndroidImageView::setImageTintColor(int color)
+{
+    if (m_tint.isNull() || m_tint.value() != color) {
+        m_tint = color;
+        if (isValid()) {
+            QAndroidJniObject view = instance();
+            QtAndroid::callFunction([=]() {
+                QAndroidJniObject tint = QAndroidJniObject::callStaticObjectMethod("android/content/res/ColorStateList",
+                                                                                   "valueOf",
+                                                                                   "(I)Landroid/content/res/ColorStateList;",
+                                                                                   color);
+                view.callMethod<void>("setImageTintList", "(Landroid/content/res/ColorStateList;)v", tint.object());
+            });
+        }
+        emit imageTintColorChanged();
+    }
+}
+
 QAndroidJniObject QtAndroidImageView::onCreate()
 {
     return QAndroidJniObject("android/widget/ImageView",
@@ -55,6 +80,13 @@ void QtAndroidImageView::onInflate(QAndroidJniObject &instance)
         instance.callMethod<void>("setImageURI", "(Landroid/net/Uri;)V", getUri().object());
     if (m_resource > 0)
         instance.callMethod<void>("setImageResource", "(I)V", m_resource);
+    if (!m_tint.isNull()) {
+        QAndroidJniObject tint = QAndroidJniObject::callStaticObjectMethod("android/content/res/ColorStateList",
+                                                                           "valueOf",
+                                                                           "(I)Landroid/content/res/ColorStateList;",
+                                                                           m_tint.value());
+        instance.callMethod<void>("setImageTintList", "(Landroid/content/res/ColorStateList;)v", tint.object());
+    }
 }
 
 QAndroidJniObject QtAndroidImageView::getUri() const
