@@ -17,7 +17,6 @@ class QtAndroidActivity : public QtAndroidContextWrapper
     Q_PROPERTY(QtAndroidActionBar *actionBar READ actionBar WRITE setActionBar)
     Q_PROPERTY(QtAndroidMenu *optionsMenu READ optionsMenu WRITE setOptionsMenu)
     Q_PROPERTY(QtAndroidView *contentView READ contentView WRITE setContentView)
-    Q_CLASSINFO("DefaultProperty", "contentView")
 
 public:
     explicit QtAndroidActivity(QObject *parent = 0);

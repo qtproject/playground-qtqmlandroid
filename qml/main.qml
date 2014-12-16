@@ -36,7 +36,7 @@ Activity {
         }
     }
 
-    DrawerLayout {
+    contentView: DrawerLayout {
         id: drawer
 
         ActionBarDrawerToggle { }
