@@ -27,6 +27,7 @@
 #include "qtandroidedittext_p.h"
 #include "qtandroidframelayout_p.h"
 #include "qtandroidframelayoutparams_p.h"
+#include "qtandroidimageview_p.h"
 #include "qtandroidlinearlayout_p.h"
 #include "qtandroidlinearlayoutparams_p.h"
 #include "qtandroidlistview_p.h"
@@ -95,6 +96,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidEditText>("android.widget", 21, 0, "EditText");
     qmlRegisterType<QtAndroidFrameLayout>("android.widget", 21, 0, "FrameLayout");
     qmlRegisterType<QtAndroidFrameLayoutParams>();
+    qmlRegisterType<QtAndroidImageView>("android.widget", 21, 0, "ImageView");
     qmlRegisterType<QtAndroidLinearLayout>("android.widget", 21, 0, "LinearLayout");
     qmlRegisterType<QtAndroidLinearLayoutParams>();
     qmlRegisterType<QtAndroidListView>("android.widget", 21, 0, "ListView");

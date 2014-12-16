@@ -12,6 +12,7 @@ HEADERS += \
     $$PWD/qtandroidedittext_p.h \
     $$PWD/qtandroidframelayout_p.h \
     $$PWD/qtandroidframelayoutparams_p.h \
+    $$PWD/qtandroidimageview_p.h \
     $$PWD/qtandroidlinearlayout_p.h \
     $$PWD/qtandroidlinearlayoutparams_p.h \
     $$PWD/qtandroidlistview_p.h \
@@ -51,6 +52,7 @@ SOURCES += \
     $$PWD/qtandroidedittext.cpp \
     $$PWD/qtandroidframelayout.cpp \
     $$PWD/qtandroidframelayoutparams.cpp \
+    $$PWD/qtandroidimageview.cpp \
     $$PWD/qtandroidlinearlayout.cpp \
     $$PWD/qtandroidlinearlayoutparams.cpp \
     $$PWD/qtandroidlistview.cpp \

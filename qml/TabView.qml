@@ -34,12 +34,21 @@ TabHost {
                     delegate: FrameLayout {
                         CardView {
                             RelativeLayout {
-                                TextView { text: position; RelativeLayout.centerInParent: true }
+                                padding: 48
+                                ImageView {
+                                    imageResource: 2130837556 // TODO: R.drawable.logo
+                                    RelativeLayout.centerVertical: true
+                                    RelativeLayout.alignParentLeft: true
+                                }
+                                TextView {
+                                    text: position
+                                    RelativeLayout.alignParentRight: true
+                                    RelativeLayout.alignParentBottom: true
+                                }
                             }
                             FrameLayout.margin: 48
                             FrameLayout.topMargin: position == 0 ? 48 : 0
                             FrameLayout.width: Layout.MATCH_PARENT
-                            FrameLayout.height: 288
                         }
                     }
                 }
