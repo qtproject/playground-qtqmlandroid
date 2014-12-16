@@ -2,7 +2,6 @@
 #define QTANDROIDCONTEXT_P_H
 
 #include "qtandroidcontextual_p.h"
-#include <QtAndroidExtras/qandroidjniobject.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -12,6 +11,7 @@ class QtAndroidContext : public QtAndroidContextual
 
 public:
     explicit QtAndroidContext(QObject *parent = 0);
+    explicit QtAndroidContext(QtAndroidContext *context, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

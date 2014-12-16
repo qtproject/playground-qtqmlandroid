@@ -2,7 +2,6 @@
 #define QTANDROIDCONTEXTUAL_P_H
 
 #include "qtandroidobject_p.h"
-#include <QtAndroidExtras/qandroidjniobject.h>
 
 QT_BEGIN_NAMESPACE
 

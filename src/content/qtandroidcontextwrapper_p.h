@@ -11,6 +11,7 @@ class QtAndroidContextWrapper : public QtAndroidContext
 
 public:
     explicit QtAndroidContextWrapper(QObject *parent = 0);
+    explicit QtAndroidContextWrapper(QtAndroidContext *context, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

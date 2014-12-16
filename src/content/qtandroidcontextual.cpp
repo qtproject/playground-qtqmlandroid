@@ -15,6 +15,8 @@ QtAndroidContextual::QtAndroidContextual(QtAndroidContext* context, QObject *par
     QtAndroidObject(parent), m_context(0)
 {
     setContext(context);
+    if (!m_context && !findContext())
+        QCoreApplication::postEvent(this, new QEvent(QEvent::Polish));
 }
 
 QAndroidJniObject QtAndroidContextual::ctx() const
