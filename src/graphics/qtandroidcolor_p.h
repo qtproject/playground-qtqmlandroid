@@ -33,6 +33,7 @@ public:
     Q_INVOKABLE static int green(int color);
     Q_INVOKABLE static int red(int color);
     Q_INVOKABLE static int rgb(int red, int green, int blue);
+    Q_INVOKABLE static int name(const QString &name);
 
     static QObject *provider(QQmlEngine *engine, QJSEngine *scriptEngine);
 };

@@ -1,4 +1,5 @@
 #include "qtandroidcolor_p.h"
+#include <QtGui/qcolor.h>
 
 int QtAndroidColor::alpha(int color)
 {
@@ -28,6 +29,11 @@ int QtAndroidColor::red(int color)
 int QtAndroidColor::rgb(int red, int green, int blue)
 {
     return (0xFF << 24) | (red << 16) | (green << 8) | blue;
+}
+
+int QtAndroidColor::name(const QString &name)
+{
+    return QColor(name).rgba();
 }
 
 QObject *QtAndroidColor::provider(QQmlEngine *engine, QJSEngine *scriptEngine)
