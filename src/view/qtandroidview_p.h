@@ -177,6 +177,8 @@ protected:
 
     bool event(QEvent *event) Q_DECL_OVERRIDE;
 
+    void objectChange(ObjectChange change) Q_DECL_OVERRIDE;
+
 private Q_SLOTS:
     void updateBackground();
     void updateAnimation();

@@ -5,7 +5,6 @@
 QtAndroidAdapterView::QtAndroidAdapterView(QtAndroidView *parent) :
     QtAndroidViewGroup(parent), m_adapter(0)
 {
-    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateAdapter()));
 }
 
 QtAndroidBaseAdapter *QtAndroidAdapterView::adapter() const
@@ -77,6 +76,13 @@ void QtAndroidAdapterView::onItemClick(JNIEnv *env, jobject object, jlong instan
     QtAndroidAdapterView *view = reinterpret_cast<QtAndroidAdapterView *>(instance);
     if (view)
         QMetaObject::invokeMethod(view, "click", Qt::QueuedConnection, Q_ARG(int, position));
+}
+
+void QtAndroidAdapterView::objectChange(ObjectChange change)
+{
+    QtAndroidViewGroup::objectChange(change);
+    if (change == InstanceChange)
+        updateAdapter();
 }
 
 void QtAndroidAdapterView::updateAdapter()

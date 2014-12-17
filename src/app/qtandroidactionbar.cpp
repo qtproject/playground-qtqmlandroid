@@ -5,7 +5,6 @@
 QtAndroidActionBar::QtAndroidActionBar(QObject *parent) :
     QtAndroidObject(parent), m_visible(true), m_elevation(0.0), m_background(0)
 {
-    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
 }
 
 bool QtAndroidActionBar::isVisible() const
@@ -101,6 +100,13 @@ void QtAndroidActionBar::onInflate(QAndroidJniObject &instance)
     instance.callMethod<void>("setElevation", "(F)V", m_elevation);
     instance.callMethod<void>("setDisplayHomeAsUpEnabled", "(Z)V", true);
     instance.callMethod<void>("setHomeButtonEnabled", "(Z)V", true);
+}
+
+void QtAndroidActionBar::objectChange(ObjectChange change)
+{
+    QtAndroidObject::objectChange(change);
+    if (change == InstanceChange)
+        updateBackground();
 }
 
 void QtAndroidActionBar::updateBackground()

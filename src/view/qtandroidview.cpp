@@ -19,11 +19,6 @@ QtAndroidView::QtAndroidView(QtAndroidView *parent) :
     if (parent)
         setParentView(parent);
 
-    // TODO: virtual "instantiated" handler
-    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
-    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
-    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateAnimation()));
-
     // TODO: find a better place for this (upon construction of the native control perhaps?)
     requestPolish();
 }
@@ -570,6 +565,16 @@ bool QtAndroidView::event(QEvent *event)
         m_polishing = false;
     }
     return QtAndroidContextual::event(event);
+}
+
+void QtAndroidView::objectChange(ObjectChange change)
+{
+    QtAndroidContextual::objectChange(change);
+    if (change == InstanceChange) {
+        updateLayoutParams();
+        updateBackground();
+        updateAnimation();
+    }
 }
 
 void QtAndroidView::updateBackground()

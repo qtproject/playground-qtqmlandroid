@@ -45,6 +45,8 @@ Q_SIGNALS:
 protected:
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
+    void objectChange(ObjectChange change) Q_DECL_OVERRIDE;
+
 private Q_SLOTS:
     void updateBackground();
 

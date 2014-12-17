@@ -9,7 +9,6 @@ QtAndroidMenuItem::QtAndroidMenuItem(QObject *parent) :
     m_showAs(0), // TODO: SHOW_AS_ACTION_NEVER
     m_actionView(0)
 {
-    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateActionView()));
 }
 
 QString QtAndroidMenuItem::title() const
@@ -190,6 +189,13 @@ bool QtAndroidMenuItem::onMenuItemActionExpand(JNIEnv *env, jobject object, jlon
     }
     return false;
 
+}
+
+void QtAndroidMenuItem::objectChange(ObjectChange change)
+{
+    QtAndroidContextual::objectChange(change);
+    if (change == InstanceChange)
+        updateActionView();
 }
 
 void QtAndroidMenuItem::updateActionView()

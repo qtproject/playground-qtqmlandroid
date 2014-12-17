@@ -70,6 +70,8 @@ protected:
     static bool onMenuItemActionCollapse(JNIEnv *env, jobject object, jlong instance);
     static bool onMenuItemActionExpand(JNIEnv *env, jobject object, jlong instance);
 
+    void objectChange(ObjectChange change) Q_DECL_OVERRIDE;
+
 private Q_SLOTS:
     void updateActionView();
 

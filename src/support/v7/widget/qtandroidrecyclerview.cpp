@@ -5,7 +5,6 @@
 QtAndroidRecyclerView::QtAndroidRecyclerView(QtAndroidView *parent) :
     QtAndroidViewGroup(parent), m_adapter(0)
 {
-    connect(this, SIGNAL(instanceChanged()), this, SLOT(updateAdapter()));
 }
 
 QtAndroidRecyclerAdapter *QtAndroidRecyclerView::adapter() const
@@ -49,6 +48,13 @@ void QtAndroidRecyclerView::onInflate(QAndroidJniObject& instance)
                               m_layoutManager.object());
 
     QtAndroidViewGroup::onInflate(instance);
+}
+
+void QtAndroidRecyclerView::objectChange(ObjectChange change)
+{
+    QtAndroidViewGroup::objectChange(change);
+    if (change == InstanceChange)
+        updateAdapter();
 }
 
 void QtAndroidRecyclerView::updateAdapter()
