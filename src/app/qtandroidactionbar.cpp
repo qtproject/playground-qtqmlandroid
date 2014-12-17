@@ -75,12 +75,12 @@ void QtAndroidActionBar::setBackground(QtAndroidDrawable *background)
 {
     if (m_background != background) {
         if (m_background) {
-            disconnect(m_background, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
+            disconnect(m_background, &QtAndroidObject::instanceChanged, this, &QtAndroidActionBar::updateBackground);
             m_background->destruct();
         }
         m_background = background;
         if (m_background) {
-            connect(m_background, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
+            connect(m_background, &QtAndroidObject::instanceChanged, this, &QtAndroidActionBar::updateBackground);
             m_background->construct();
         }
         emit backgroundChanged();

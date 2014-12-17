@@ -47,12 +47,12 @@ void QtAndroidActivity::setOptionsMenu(QtAndroidMenu *menu)
 {
     if (m_optionsMenu != menu) {
         if (m_optionsMenu) {
-            disconnect(m_optionsMenu, SIGNAL(instanceChanged()), this, SLOT(updateOptionsMenu()));
+            disconnect(m_optionsMenu, &QtAndroidObject::instanceChanged, this, &QtAndroidActivity::updateOptionsMenu);
             m_optionsMenu->destruct();
         }
         m_optionsMenu = menu;
         if (m_optionsMenu) {
-            connect(m_optionsMenu, SIGNAL(instanceChanged()), this, SLOT(updateOptionsMenu()));
+            connect(m_optionsMenu, &QtAndroidObject::instanceChanged, this, &QtAndroidActivity::updateOptionsMenu);
             if (isComponentComplete())
                 m_optionsMenu->construct();
         }
@@ -68,12 +68,12 @@ void QtAndroidActivity::setContentView(QtAndroidView *view)
 {
     if (m_contentView != view) {
         if (m_contentView) {
-            disconnect(m_contentView, SIGNAL(instanceChanged()), this, SLOT(updateContentView()));
+            disconnect(m_contentView, &QtAndroidObject::instanceChanged, this, &QtAndroidActivity::updateContentView);
             m_contentView->destruct();
         }
         m_contentView = view;
         if (m_contentView) {
-            connect(m_contentView, SIGNAL(instanceChanged()), this, SLOT(updateContentView()));
+            connect(m_contentView, &QtAndroidObject::instanceChanged, this, &QtAndroidActivity::updateContentView);
             if (isComponentComplete())
                 m_contentView->construct();
         }

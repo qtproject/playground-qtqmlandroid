@@ -106,12 +106,12 @@ void QtAndroidMenuItem::setActionView(QtAndroidView *view)
 {
     if (m_actionView != view) {
         if (m_actionView) {
-            disconnect(m_actionView, SIGNAL(instanceChanged()), this, SLOT(updateActionView()));
+            disconnect(m_actionView, &QtAndroidObject::instanceChanged, this, &QtAndroidMenuItem::updateActionView);
             m_actionView->destruct();
         }
         m_actionView = view;
         if (m_actionView) {
-            connect(m_actionView, SIGNAL(instanceChanged()), this, SLOT(updateActionView()));
+            connect(m_actionView, &QtAndroidObject::instanceChanged, this, &QtAndroidMenuItem::updateActionView);
             if (isValid())
                 m_actionView->construct();
         }

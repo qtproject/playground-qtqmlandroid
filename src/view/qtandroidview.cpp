@@ -79,12 +79,12 @@ void QtAndroidView::setLayoutParams(QtAndroidLayoutParams *params)
 {
     if (m_layoutParams != params) {
         if (m_layoutParams) {
-            disconnect(m_layoutParams, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
+            disconnect(m_layoutParams, &QtAndroidObject::instanceChanged, this, &QtAndroidView::updateLayoutParams);
             m_layoutParams->destruct();
         }
         m_layoutParams = params;
         if (m_layoutParams) {
-            connect(m_layoutParams, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
+            connect(m_layoutParams, &QtAndroidObject::instanceChanged, this, &QtAndroidView::updateLayoutParams);
             if (isValid())
                 m_layoutParams->construct();
         }
@@ -100,13 +100,13 @@ void QtAndroidView::setBackground(QtAndroidDrawable *background, int resource)
 {
     if (m_background != background) {
         if (m_background) {
-            disconnect(m_background, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
+            disconnect(m_background, &QtAndroidObject::instanceChanged, this, &QtAndroidView::updateBackground);
             m_background->destruct();
         }
         m_background = background;
         m_backgroundResource = resource;
         if (m_background) {
-            connect(m_background, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
+            connect(m_background, &QtAndroidObject::instanceChanged, this, &QtAndroidView::updateBackground);
             if (!resource)
                 m_background->construct();
         }
@@ -123,12 +123,12 @@ void QtAndroidView::setAnimation(QtAndroidAnimation *animation)
 {
     if (m_animation != animation) {
         if (m_animation) {
-            disconnect(m_animation, SIGNAL(instanceChanged()), this, SLOT(updateAnimation()));
+            disconnect(m_animation, &QtAndroidObject::instanceChanged, this, &QtAndroidView::updateAnimation);
             m_animation->destruct();
         }
         m_animation = animation;
         if (m_animation) {
-            connect(m_animation, SIGNAL(instanceChanged()), this, SLOT(updateAnimation()));
+            connect(m_animation, &QtAndroidObject::instanceChanged, this, &QtAndroidView::updateAnimation);
             if (isValid())
                 m_animation->construct();
         }

@@ -17,13 +17,13 @@ void QtAndroidAdapterView::setAdapter(QtAndroidBaseAdapter *adapter)
     if (m_adapter != adapter) {
         if (m_adapter) {
             m_adapter->setContext(0);
-            disconnect(m_adapter, SIGNAL(instanceChanged()), this, SLOT(updateAdapter()));
+            disconnect(m_adapter, &QtAndroidObject::instanceChanged, this, &QtAndroidAdapterView::updateAdapter);
             m_adapter->destruct();
         }
         m_adapter = adapter;
         if (m_adapter) {
             m_adapter->setContext(context());
-            connect(m_adapter, SIGNAL(instanceChanged()), this, SLOT(updateAdapter()));
+            connect(m_adapter, &QtAndroidObject::instanceChanged, this, &QtAndroidAdapterView::updateAdapter);
             if (isValid())
                 m_adapter->construct();
         }
