@@ -110,6 +110,8 @@ public:
     int paddingBottom() const;
     void setPaddingBottom(int padding);
 
+    void requestPolish();
+
     enum ViewChange {
         ViewParentChange,       // data.view
         ViewChildAddedChange,   // data.view
@@ -153,6 +155,7 @@ Q_SIGNALS:
     void longClick(); // TODO: accept
 
 protected:
+    virtual void polish();
     virtual void viewChange(ViewChange change, const ViewChangeData &data);
 
     void addChild(QtAndroidView *child);
@@ -188,6 +191,7 @@ private:
     QtAndroidDrawable *m_background;
     int m_backgroundResource;
     QtAndroidAnimation *m_animation;
+    bool m_polishing;
     bool m_visible;
 
     QAndroidJniObject m_listener;

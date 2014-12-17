@@ -4,12 +4,14 @@
 #include "qtandroidlayoutparams_p.h"
 #include "qtandroidanimation_p.h"
 #include "qtandroidfunctions_p.h"
+#include <QtCore/qcoreapplication.h>
 #include <QtCore/qcoreevent.h>
 #include <QtCore/qhash.h>
 
 QtAndroidView::QtAndroidView(QtAndroidView *parent) :
     QtAndroidContextual(parent), m_parent(0), m_background(0), m_backgroundResource(0),
-    m_animation(0), m_visible(true), m_layoutParams(0), m_top(0), m_left(0), m_right(0), m_bottom(0)
+    m_animation(0), m_polishing(false), m_visible(true), m_layoutParams(0),
+    m_top(0), m_left(0), m_right(0), m_bottom(0)
 {
     static int id = 0;
     m_id = ++id;
@@ -21,6 +23,9 @@ QtAndroidView::QtAndroidView(QtAndroidView *parent) :
     connect(this, SIGNAL(instanceChanged()), this, SLOT(updateLayoutParams()));
     connect(this, SIGNAL(instanceChanged()), this, SLOT(updateBackground()));
     connect(this, SIGNAL(instanceChanged()), this, SLOT(updateAnimation()));
+
+    // TODO: find a better place for this (upon construction of the native control perhaps?)
+    requestPolish();
 }
 
 QtAndroidView::~QtAndroidView()
@@ -543,12 +548,26 @@ bool QtAndroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)
     return true; // TODO: accept
 }
 
+void QtAndroidView::requestPolish()
+{
+    if (!m_polishing) {
+        m_polishing = true;
+        QCoreApplication::postEvent(this, new QEvent(QEvent::PolishRequest));
+    }
+}
+
+void QtAndroidView::polish()
+{
+}
+
 bool QtAndroidView::event(QEvent *event)
 {
-    if (event->type() == QEvent::Polish) {
+    if (event->type() == QEvent::PolishRequest) {
         QtAndroidView *view = qobject_cast<QtAndroidView *>(parent());
         if (view)
             setParentView(view);
+        polish();
+        m_polishing = false;
     }
     return QtAndroidContextual::event(event);
 }
