@@ -1,8 +1,15 @@
 TEMPLATE = app
 TARGET = qtandroid
 QT += androidextras qml core-private # qjnihelpers
-SOURCES += main.cpp
-RESOURCES += qtandroid.qrc
+CONFIG += c++11
+
+SOURCES += \
+    main.cpp
+
+RESOURCES += \
+    qtandroid.qrc
+
+include(src/src.pri)
 
 OTHER_FILES += \
     qml/main.qml \
@@ -12,8 +19,6 @@ OTHER_FILES += \
     qml/ModelView.qml \
     qml/PickerView.qml \
     qml/ProgressView.qml
-
-include(src/src.pri)
 
 DISTFILES += \
     src/java/gradle/wrapper/gradle-wrapper.jar \
