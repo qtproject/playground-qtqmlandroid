@@ -2,6 +2,8 @@
 #include "qtandroidrecycleradapter_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidRecyclerView::QtAndroidRecyclerView(QtAndroidView *parent) :
     QtAndroidViewGroup(parent), m_adapter(0)
 {
@@ -68,3 +70,5 @@ void QtAndroidRecyclerView::updateAdapter()
         view.callMethod<void>("setAdapter", "(Landroid/support/v7/widget/RecyclerView$Adapter;)V", adapter.object());
     });
 }
+
+QT_END_NAMESPACE

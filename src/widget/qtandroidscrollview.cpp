@@ -1,6 +1,8 @@
 #include "qtandroidscrollview_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidScrollView::QtAndroidScrollView(QtAndroidView *parent) :
     QtAndroidFrameLayout(parent)
 {
@@ -89,3 +91,5 @@ void QtAndroidScrollView::onScrollChanged(JNIEnv *env, jobject object, jlong ins
         QMetaObject::invokeMethod(view, "updateScrollY", Qt::QueuedConnection, Q_ARG(int, top));
     }
 }
+
+QT_END_NAMESPACE

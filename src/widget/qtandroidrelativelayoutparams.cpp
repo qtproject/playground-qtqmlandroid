@@ -2,6 +2,8 @@
 #include "qtandroidrelativelayout_p.h"
 #include "qtandroidview_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidRelativeLayoutParams::QtAndroidRelativeLayoutParams(QtAndroidView *view) :
     QtAndroidMarginLayoutParams(view),
     m_above(0),
@@ -403,3 +405,5 @@ void QtAndroidRelativeLayoutParams::onInflate(QAndroidJniObject &instance)
     addRule(instance, m_centerVertical, QtAndroidRelativeLayout::CENTER_VERTICAL);
     addRule(instance, m_centerInParent, QtAndroidRelativeLayout::CENTER_IN_PARENT);
 }
+
+QT_END_NAMESPACE

@@ -1,6 +1,8 @@
 #include "qtandroidviewanimator_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidViewAnimator::QtAndroidViewAnimator(QtAndroidView *parent) :
     QtAndroidFrameLayout(parent)
 {
@@ -92,3 +94,5 @@ void QtAndroidViewAnimator::onInflate(QAndroidJniObject &instance)
     if (!m_outAnimation.isNull())
         instance.callMethod<void>("setOutAnimation", "(Landroid/content/Context;I)V", ctx().object(), m_outAnimation.value());
 }
+
+QT_END_NAMESPACE

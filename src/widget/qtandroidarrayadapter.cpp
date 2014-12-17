@@ -2,6 +2,8 @@
 #include "qtandroidadapterview_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidArrayAdapter::QtAndroidArrayAdapter(QObject *parent) :
     QtAndroidBaseAdapter(parent), m_style(17367043) // TODO: android.R.layout.simple_list_item_1
 {
@@ -68,3 +70,5 @@ void QtAndroidArrayAdapter::onInflate(QAndroidJniObject &instance)
     foreach (const QString &str, m_array)
         instance.callMethod<void>("add", "(Ljava/lang/Object;)V", QAndroidJniObject::fromString(str).object());
 }
+
+QT_END_NAMESPACE

@@ -1,6 +1,8 @@
 #include "qtandroidratingbar_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidRatingBar::QtAndroidRatingBar(QtAndroidView *parent) :
     QtAndroidAbsSeekBar(parent), m_rating(0.0)
 {
@@ -70,3 +72,5 @@ void QtAndroidRatingBar::onRatingChanged(JNIEnv *env, jobject object, jlong inst
     if (bar && fromUser)
         QMetaObject::invokeMethod(bar, "updateRating", Qt::QueuedConnection, Q_ARG(qreal, rating));
 }
+
+QT_END_NAMESPACE

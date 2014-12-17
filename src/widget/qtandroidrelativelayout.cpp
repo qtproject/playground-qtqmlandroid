@@ -1,5 +1,7 @@
 #include "qtandroidrelativelayout_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidRelativeLayout::QtAndroidRelativeLayout(QtAndroidView *parent) :
     QtAndroidViewGroup(parent)
 {
@@ -24,3 +26,5 @@ void QtAndroidRelativeLayout::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidViewGroup::onInflate(instance);
 }
+
+QT_END_NAMESPACE

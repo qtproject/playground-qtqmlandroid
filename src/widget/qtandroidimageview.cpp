@@ -1,6 +1,8 @@
 #include "qtandroidimageview_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidImageView::QtAndroidImageView(QtAndroidView *parent) :
     QtAndroidView(parent), m_resource(0)
 {
@@ -94,3 +96,5 @@ QAndroidJniObject QtAndroidImageView::getUri() const
     QAndroidJniObject str = QAndroidJniObject::fromString(m_uri.toString());
     return QAndroidJniObject::callStaticObjectMethod("android/net/Uri", "parse", "(Ljava/lang/String;)Landroid/net/Uri;", str.object());
 }
+
+QT_END_NAMESPACE

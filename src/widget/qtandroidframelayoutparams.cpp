@@ -1,6 +1,8 @@
 #include "qtandroidframelayoutparams_p.h"
 #include "qtandroidview_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidFrameLayoutParams::QtAndroidFrameLayoutParams(QtAndroidView *view) :
     QtAndroidMarginLayoutParams(view)
 {
@@ -36,3 +38,5 @@ void QtAndroidFrameLayoutParams::onInflate(QAndroidJniObject &instance)
     if (!m_gravity.isNull())
         instance.callMethod<void>("setGravity", "(I)V", m_gravity.value());
 }
+
+QT_END_NAMESPACE

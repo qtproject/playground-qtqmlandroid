@@ -1,6 +1,8 @@
 #include "qtandroidtabhost_p.h"
 #include "qtandroidtabspec_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidTabHost::QtAndroidTabHost(QtAndroidView *parent) :
     QtAndroidFrameLayout(parent)
 {
@@ -54,3 +56,5 @@ void QtAndroidTabHost::onTabChanged(JNIEnv *env, jobject object, jlong instance,
     if (host)
         QMetaObject::invokeMethod(host, "tabChanged", Qt::QueuedConnection, Q_ARG(QString, QAndroidJniObject(tabId).toString()));
 }
+
+QT_END_NAMESPACE

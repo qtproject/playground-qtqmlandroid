@@ -1,5 +1,7 @@
 #include "qtandroidlinearlayout_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidLinearLayout::QtAndroidLinearLayout(QtAndroidView *parent) :
     QtAndroidViewGroup(parent)
 {
@@ -121,3 +123,5 @@ void QtAndroidLinearLayout::onInflate(QAndroidJniObject &instance)
     if (!m_baselineAlignedChildIndex.isNull())
         instance.callMethod<void>("setBaselineAlignedChildIndex", "(I)V", m_baselineAlignedChildIndex.value());
 }
+
+QT_END_NAMESPACE

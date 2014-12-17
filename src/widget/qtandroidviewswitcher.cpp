@@ -1,5 +1,7 @@
 #include "qtandroidviewswitcher_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidViewSwitcher::QtAndroidViewSwitcher(QtAndroidView *parent) :
     QtAndroidViewAnimator(parent)
 {
@@ -16,3 +18,5 @@ void QtAndroidViewSwitcher::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidViewAnimator::onInflate(instance);
 }
+
+QT_END_NAMESPACE

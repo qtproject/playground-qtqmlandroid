@@ -1,6 +1,8 @@
 #include "qtandroidalertdialog_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidAlertDialog::QtAndroidAlertDialog(QObject *parent) :
     QtAndroidDialog(parent)
 {
@@ -50,3 +52,5 @@ void QtAndroidAlertDialog::onInflate(QAndroidJniObject& instance)
     if (!m_message.isNull())
         instance.callMethod<void>("setMessage", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_message).object());
 }
+
+QT_END_NAMESPACE

@@ -1,6 +1,8 @@
 #include "qtandroidcompoundbutton_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidCompoundButton::QtAndroidCompoundButton(QtAndroidView *parent) :
     QtAndroidButton(parent), m_checked(false)
 {
@@ -75,3 +77,5 @@ void QtAndroidCompoundButton::onCheckedChanged(JNIEnv *env, jobject object, jlon
     if (button)
         QMetaObject::invokeMethod(button, "updateChecked", Qt::QueuedConnection, Q_ARG(bool, isChecked));
 }
+
+QT_END_NAMESPACE

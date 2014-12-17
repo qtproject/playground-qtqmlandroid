@@ -1,5 +1,7 @@
 #include "qtandroidseekbar_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidSeekBar::QtAndroidSeekBar(QtAndroidView *parent) :
     QtAndroidAbsSeekBar(parent)
 {
@@ -46,3 +48,5 @@ void QtAndroidSeekBar::onProgressChanged(JNIEnv *env, jobject object, jlong inst
     if (bar && fromUser)
         QMetaObject::invokeMethod(bar, "updateProgress", Qt::QueuedConnection, Q_ARG(int, progress));
 }
+
+QT_END_NAMESPACE

@@ -1,5 +1,7 @@
 #include "qtandroidedittext_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidEditText::QtAndroidEditText(QtAndroidView *parent) :
     QtAndroidTextView(parent)
 {
@@ -16,3 +18,5 @@ void QtAndroidEditText::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidTextView::onInflate(instance);
 }
+
+QT_END_NAMESPACE

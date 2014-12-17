@@ -2,6 +2,8 @@
 #include "qtandroidcontext_p.h"
 #include <QtCore/qdebug.h>
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidContextual::QtAndroidContextual(QObject *parent) :
     QtAndroidObject(parent), m_context(0)
 {
@@ -81,3 +83,5 @@ void QtAndroidContextual::propagateContext()
             contextual->setContext(m_context);
     }
 }
+
+QT_END_NAMESPACE

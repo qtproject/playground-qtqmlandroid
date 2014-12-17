@@ -1,6 +1,8 @@
 #include "qtandroidnumberpicker_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidNumberPicker::QtAndroidNumberPicker(QtAndroidView *parent) :
     QtAndroidLinearLayout(parent), m_value(0)
 {
@@ -70,3 +72,5 @@ void QtAndroidNumberPicker::onValueChange(JNIEnv *env, jobject object, jlong ins
     if (picker)
         QMetaObject::invokeMethod(picker, "updateValue", Qt::QueuedConnection, Q_ARG(int, value));
 }
+
+QT_END_NAMESPACE

@@ -1,5 +1,7 @@
 #include "qtandroidtabwidget_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidTabWidget::QtAndroidTabWidget(QtAndroidView *parent) :
     QtAndroidLinearLayout(parent)
 {
@@ -17,3 +19,5 @@ void QtAndroidTabWidget::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidLinearLayout::onInflate(instance);
 }
+
+QT_END_NAMESPACE

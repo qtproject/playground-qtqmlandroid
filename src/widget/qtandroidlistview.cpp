@@ -1,5 +1,7 @@
 #include "qtandroidlistview_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidListView::QtAndroidListView(QtAndroidView *parent) :
     QtAndroidAdapterView(parent)
 {
@@ -16,3 +18,5 @@ void QtAndroidListView::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidAdapterView::onInflate(instance);
 }
+
+QT_END_NAMESPACE

@@ -6,6 +6,8 @@
 #include <QtAndroidExtras/qandroidjniobject.h>
 #include <QtAndroidExtras/qandroidjnienvironment.h>
 
+QT_BEGIN_NAMESPACE
+
 namespace QtAndroid {
 
 void callFunction(std::function<void()> method)
@@ -61,3 +63,5 @@ void callVoidMethod(const QAndroidJniObject &obj, const char *method)
 }
 
 }
+
+QT_END_NAMESPACE

@@ -1,5 +1,7 @@
 #include "qtandroiddrawable_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidDrawable::QtAndroidDrawable(QObject *parent) :
     QtAndroidObject(parent)
 {
@@ -14,3 +16,5 @@ void QtAndroidDrawable::onInflate(QAndroidJniObject &instance)
 {
     Q_UNUSED(instance);
 }
+
+QT_END_NAMESPACE

@@ -4,6 +4,8 @@
 #include "qtandroidfunctions_p.h"
 #include <QtAndroidExtras/qandroidjniobject.h>
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidTabSpec::QtAndroidTabSpec(QtAndroidView *view) :
     QObject(view)
 {
@@ -59,3 +61,5 @@ void QtAndroidTabSpec::setup(QAndroidJniObject &host, int index)
         host.callMethod<void>("addTab", "(Landroid/widget/TabHost$TabSpec;)V", spec.object());
     });
 }
+
+QT_END_NAMESPACE

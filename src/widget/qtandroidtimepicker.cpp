@@ -1,5 +1,7 @@
 #include "qtandroidtimepicker_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidTimePicker::QtAndroidTimePicker(QtAndroidView *parent) :
     QtAndroidFrameLayout(parent)
 {
@@ -16,3 +18,5 @@ void QtAndroidTimePicker::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidFrameLayout::onInflate(instance);
 }
+
+QT_END_NAMESPACE

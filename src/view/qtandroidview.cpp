@@ -8,6 +8,8 @@
 #include <QtCore/qcoreevent.h>
 #include <QtCore/qhash.h>
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidView::QtAndroidView(QtAndroidView *parent) :
     QtAndroidContextual(parent), m_parent(0), m_background(0), m_backgroundResource(0),
     m_animation(0), m_polishing(false), m_visible(true), m_layoutParams(0),
@@ -614,3 +616,5 @@ void QtAndroidView::updateLayoutParams()
                               params.object());
     });
 }
+
+QT_END_NAMESPACE

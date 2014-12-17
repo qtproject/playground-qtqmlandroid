@@ -4,6 +4,8 @@
 #include <QtQml/qqmlcomponent.h>
 #include <QtQml/qqmlcontext.h>
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidRecyclerAdapter::QtAndroidRecyclerAdapter(QObject *parent) :
     QtAndroidContextual(parent), m_count(0), m_delegate(0)
 {
@@ -139,3 +141,5 @@ void QtAndroidRecyclerAdapter::setItemPosition(QtAndroidView *item, int position
     if (context)
         context->setContextProperty("position", position);
 }
+
+QT_END_NAMESPACE

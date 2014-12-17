@@ -3,6 +3,8 @@
 #include "qtandroidfunctions_p.h"
 #include "qtandroidcontext_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidViewGroup::QtAndroidViewGroup(QtAndroidView *parent) :
     QtAndroidView(parent)
 {
@@ -58,3 +60,5 @@ void QtAndroidViewGroup::viewChange(ViewChange change, const ViewChangeData &dat
         break;
     }
 }
+
+QT_END_NAMESPACE

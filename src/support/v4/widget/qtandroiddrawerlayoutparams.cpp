@@ -2,6 +2,8 @@
 #include "qtandroiddrawerlayout_p.h"
 #include "qtandroidview_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidDrawerLayoutParams::QtAndroidDrawerLayoutParams(QtAndroidView *view) :
     QtAndroidMarginLayoutParams(view), m_gravity(0)
 {
@@ -34,3 +36,5 @@ void QtAndroidDrawerLayoutParams::onInflate(QAndroidJniObject &instance)
 
     instance.setField<int>("gravity", m_gravity);
 }
+
+QT_END_NAMESPACE

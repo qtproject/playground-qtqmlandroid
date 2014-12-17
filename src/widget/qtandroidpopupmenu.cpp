@@ -5,6 +5,8 @@
 #include "qtandroidview_p.h"
 #include <QtCore/qdebug.h>
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidPopupMenu::QtAndroidPopupMenu(QObject *parent) :
     QtAndroidObject(parent), m_anchor(0)
 {
@@ -95,3 +97,5 @@ void QtAndroidPopupMenu::dismiss()
 {
     QtAndroid::callVoidMethod(instance(), "dismiss");
 }
+
+QT_END_NAMESPACE

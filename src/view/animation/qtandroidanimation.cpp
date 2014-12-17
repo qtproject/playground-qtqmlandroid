@@ -1,6 +1,8 @@
 #include "qtandroidanimation_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidAnimation::QtAndroidAnimation(QObject *parent) :
     QtAndroidContextual(parent), m_resource(0)
 {
@@ -61,3 +63,5 @@ void QtAndroidAnimation::onInflate(QAndroidJniObject &instance)
     if (!m_repeatCount.isNull())
         instance.callMethod<void>("setRepeatCount", "(I)V", m_repeatCount.value());
 }
+
+QT_END_NAMESPACE

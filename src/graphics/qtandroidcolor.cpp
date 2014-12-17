@@ -1,6 +1,8 @@
 #include "qtandroidcolor_p.h"
 #include <QtGui/qcolor.h>
 
+QT_BEGIN_NAMESPACE
+
 int QtAndroidColor::alpha(int color)
 {
     return static_cast<uint>(color) >> 24;
@@ -42,3 +44,5 @@ QObject *QtAndroidColor::provider(QQmlEngine *engine, QJSEngine *scriptEngine)
     Q_UNUSED(scriptEngine);
     return new QtAndroidColor;
 }
+
+QT_END_NAMESPACE

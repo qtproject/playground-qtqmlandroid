@@ -3,6 +3,8 @@
 #include "qtandroidcontext_p.h"
 #include "qtandroidview_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidMenuItem::QtAndroidMenuItem(QObject *parent) :
     QtAndroidContextual(parent), m_enabled(true), m_visible(true),
     m_checkable(false), m_checked(false),
@@ -209,3 +211,5 @@ void QtAndroidMenuItem::updateActionView()
         item.callMethod<void>("setActionView", "(Landroid/view/View;)V", view.object());
     });
 }
+
+QT_END_NAMESPACE

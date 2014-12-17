@@ -1,6 +1,8 @@
 #include "qtandroidmenu_p.h"
 #include "qtandroidmenuitem_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidMenu::QtAndroidMenu(QObject *parent) :
     QtAndroidContextual(parent)
 {
@@ -30,3 +32,5 @@ void QtAndroidMenu::onInflate(QAndroidJniObject &instance)
             instance.callMethod<void>("add", "(Lqt/android/view/QtMenuItem;)V", item->instance().object());
     }
 }
+
+QT_END_NAMESPACE

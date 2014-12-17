@@ -1,6 +1,8 @@
 #include "qtandroidservice_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidService::QtAndroidService(QObject *parent) :
     QtAndroidContextWrapper(0, parent), m_sticky(true)
 {
@@ -133,3 +135,5 @@ bool QtAndroidService::startCommand(int flags, int startId)
     Q_UNUSED(startId);
     return m_sticky;
 }
+
+QT_END_NAMESPACE

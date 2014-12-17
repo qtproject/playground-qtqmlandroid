@@ -2,6 +2,8 @@
 #include "qtandroidfunctions_p.h"
 #include "qtandroidcolor_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidTextView::QtAndroidTextView(QtAndroidView *parent) :
     QtAndroidView(parent), m_singleLine(false)
 {
@@ -121,3 +123,5 @@ void QtAndroidTextView::onInflate(QAndroidJniObject &instance)
     if (!m_inputType.isNull())
         instance.callMethod<void>("setInputType", "(I)V", m_inputType.value());
 }
+
+QT_END_NAMESPACE

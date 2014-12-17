@@ -1,5 +1,7 @@
 #include "qtandroiddatepicker_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidDatePicker::QtAndroidDatePicker(QtAndroidView *parent) :
     QtAndroidFrameLayout(parent)
 {
@@ -16,3 +18,5 @@ void QtAndroidDatePicker::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidFrameLayout::onInflate(instance);
 }
+
+QT_END_NAMESPACE

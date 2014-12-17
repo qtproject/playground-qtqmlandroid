@@ -1,6 +1,8 @@
 #include "qtandroidmarginlayoutparams_p.h"
 #include "qtandroidview_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidMarginLayoutParams::QtAndroidMarginLayoutParams(QtAndroidView *view) :
     QtAndroidLayoutParams(view)
 {
@@ -104,3 +106,5 @@ void QtAndroidMarginLayoutParams::onInflate(QAndroidJniObject &instance)
                               rightMargin(),
                               bottomMargin());
 }
+
+QT_END_NAMESPACE

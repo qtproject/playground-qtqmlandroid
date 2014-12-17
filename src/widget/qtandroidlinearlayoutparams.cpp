@@ -1,6 +1,8 @@
 #include "qtandroidlinearlayoutparams_p.h"
 #include "qtandroidview_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidLinearLayoutParams::QtAndroidLinearLayoutParams(QtAndroidView *view) :
     QtAndroidMarginLayoutParams(view)
 {
@@ -54,3 +56,5 @@ void QtAndroidLinearLayoutParams::onInflate(QAndroidJniObject &instance)
     if (!m_weight.isNull())
         instance.setField<jfloat>("weight", m_weight.value());
 }
+
+QT_END_NAMESPACE

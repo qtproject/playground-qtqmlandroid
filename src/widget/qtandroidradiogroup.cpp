@@ -2,6 +2,8 @@
 #include "qtandroidradiobutton_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidRadioGroup::QtAndroidRadioGroup(QtAndroidView *parent) :
     QtAndroidLinearLayout(parent), m_checkedButton(0)
 {
@@ -89,3 +91,5 @@ bool QtAndroidRadioGroup::updateCheckedButton(QtAndroidRadioButton *button)
     }
     return false;
 }
+
+QT_END_NAMESPACE

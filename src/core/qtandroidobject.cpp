@@ -3,6 +3,8 @@
 #include <QtCore/qcoreapplication.h>
 #include <QtCore/qcoreevent.h>
 
+QT_BEGIN_NAMESPACE
+
 Q_GLOBAL_STATIC(QReadWriteLock, instanceLock)
 
 QtAndroidObject::QtAndroidObject(QObject *parent) :
@@ -147,3 +149,5 @@ void QtAndroidObject::childEvent(QChildEvent *event)
     else if (event->removed())
         emit dataChanged();
 }
+
+QT_END_NAMESPACE

@@ -2,6 +2,8 @@
 #include "qtandroidfunctions_p.h"
 #include "qtandroiddrawable_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidActionBar::QtAndroidActionBar(QObject *parent) :
     QtAndroidObject(parent), m_visible(true), m_elevation(0.0), m_background(0)
 {
@@ -120,3 +122,5 @@ void QtAndroidActionBar::updateBackground()
         bar.callMethod<void>("setBackgroundDrawable", "(Landroid/graphics/drawable/Drawable;)V", background.object());
     });
 }
+
+QT_END_NAMESPACE

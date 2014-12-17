@@ -1,5 +1,7 @@
 #include "qtandroidactionbardrawertoggle_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidActionBarDrawerToggle::QtAndroidActionBarDrawerToggle(QObject *parent) :
     QtAndroidObject(parent)
 {
@@ -17,3 +19,5 @@ void QtAndroidActionBarDrawerToggle::onCreate(const QAndroidJniObject &activity,
     toggle.callMethod<void>("syncState");
     inflate(toggle);
 }
+
+QT_END_NAMESPACE

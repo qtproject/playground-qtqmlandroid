@@ -1,5 +1,7 @@
 #include "qtandroidspace_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidSpace::QtAndroidSpace(QtAndroidView *parent) :
     QtAndroidView(parent)
 {
@@ -16,3 +18,5 @@ void QtAndroidSpace::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidView::onInflate(instance);
 }
+
+QT_END_NAMESPACE

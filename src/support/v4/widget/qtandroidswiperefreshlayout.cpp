@@ -1,6 +1,8 @@
 #include "qtandroidswiperefreshlayout_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidSwipeRefreshLayout::QtAndroidSwipeRefreshLayout(QtAndroidView *parent) :
     QtAndroidViewGroup(parent), m_refreshing(false)
 {
@@ -68,3 +70,5 @@ void QtAndroidSwipeRefreshLayout::onRefresh(JNIEnv *env, jobject object, jlong i
     if (layout)
         QMetaObject::invokeMethod(layout, "updateRefreshing", Qt::QueuedConnection, Q_ARG(bool, true));
 }
+
+QT_END_NAMESPACE

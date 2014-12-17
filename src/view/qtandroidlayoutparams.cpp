@@ -2,6 +2,8 @@
 #include "qtandroidfunctions_p.h"
 #include "qtandroidview_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidLayoutParams::QtAndroidLayoutParams(QtAndroidView *view) :
     QtAndroidObject(view), m_dirty(false), m_view(view)
 {
@@ -81,3 +83,5 @@ bool QtAndroidLayoutParams::event(QEvent *event)
     }
     return QtAndroidObject::event(event);
 }
+
+QT_END_NAMESPACE

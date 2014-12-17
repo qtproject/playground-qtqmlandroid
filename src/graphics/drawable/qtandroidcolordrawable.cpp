@@ -1,6 +1,8 @@
 #include "qtandroidcolordrawable_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidColorDrawable::QtAndroidColorDrawable(QObject *parent) :
     QtAndroidDrawable(parent), m_color(0)
 {
@@ -36,3 +38,5 @@ void QtAndroidColorDrawable::onInflate(QAndroidJniObject &instance)
 
     instance.callMethod<void>("setColor", "(I)V", m_color);
 }
+
+QT_END_NAMESPACE

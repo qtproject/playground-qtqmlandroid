@@ -358,4 +358,4 @@ QT_END_NAMESPACE
 
 #undef Q_DECL_LVALUE_FUNCTION
 
-#endif // QtAndroidOptional_H
+#endif // QTANDROIDOPTIONAL_H

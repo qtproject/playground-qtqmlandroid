@@ -2,6 +2,8 @@
 #include "qtandroidbaseadapter_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidAdapterView::QtAndroidAdapterView(QtAndroidView *parent) :
     QtAndroidViewGroup(parent), m_adapter(0)
 {
@@ -99,3 +101,5 @@ void QtAndroidAdapterView::updateAdapter()
         view.callMethod<void>("setAdapter", "(Landroid/widget/Adapter;)V", adapter.object());
     });
 }
+
+QT_END_NAMESPACE

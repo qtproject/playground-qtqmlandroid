@@ -1,5 +1,7 @@
 #include "qtandroidcardview_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidCardView::QtAndroidCardView(QtAndroidView *parent) :
     QtAndroidFrameLayout(parent)
 {
@@ -16,3 +18,5 @@ void QtAndroidCardView::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidFrameLayout::onInflate(instance);
 }
+
+QT_END_NAMESPACE

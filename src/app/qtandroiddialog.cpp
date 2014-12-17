@@ -1,6 +1,8 @@
 #include "qtandroiddialog_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidDialog::QtAndroidDialog(QObject *parent) :
     QtAndroidContextual(parent)
 {
@@ -37,3 +39,5 @@ void QtAndroidDialog::onInflate(QAndroidJniObject& instance)
 {
     QtAndroidContextual::onInflate(instance);
 }
+
+QT_END_NAMESPACE

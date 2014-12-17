@@ -2,6 +2,8 @@
 #include <QtAndroidExtras/qandroidjniobject.h>
 #include <QtAndroidExtras/qandroidjnienvironment.h>
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidR::QtAndroidR() :
     m_anim(0),
     m_animator(0),
@@ -208,3 +210,5 @@ QObject *QtAndroidR::provider(QQmlEngine *engine, QJSEngine *scriptEngine)
     Q_UNUSED(scriptEngine);
     return new QtAndroidR;
 }
+
+QT_END_NAMESPACE

@@ -2,6 +2,8 @@
 #include "qtandroidcontext_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidWindow::QtAndroidWindow(QtAndroidContext *context) :
     QtAndroidContextual(context)
 {
@@ -34,3 +36,5 @@ void QtAndroidWindow::onInflate(QAndroidJniObject &instance)
         instance.callMethod<void>("setStatusBarColor", "(I)V", m_statusBarColor.value());
     }
 }
+
+QT_END_NAMESPACE

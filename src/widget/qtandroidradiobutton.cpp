@@ -1,5 +1,7 @@
 #include "qtandroidradiobutton_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidRadioButton::QtAndroidRadioButton(QtAndroidView *parent) :
     QtAndroidCompoundButton(parent)
 {
@@ -16,3 +18,5 @@ void QtAndroidRadioButton::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidCompoundButton::onInflate(instance);
 }
+
+QT_END_NAMESPACE

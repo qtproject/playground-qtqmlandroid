@@ -9,6 +9,8 @@
 #include <QtAndroidExtras/qandroidfunctions.h>
 #include <QtAndroidExtras/qandroidjnienvironment.h>
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidActivity::QtAndroidActivity(QObject *parent) :
     QtAndroidContextWrapper(parent), m_window(new QtAndroidWindow(this)),
     m_contentView(0), m_optionsMenu(0), m_actionBar(0)
@@ -160,3 +162,5 @@ void QtAndroidActivity::updateContentView()
         activity.callMethod<void>("setContentView", "(Landroid/view/View;)V", content.object());
     });
 }
+
+QT_END_NAMESPACE

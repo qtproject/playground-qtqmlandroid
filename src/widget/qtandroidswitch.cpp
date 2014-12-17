@@ -1,5 +1,7 @@
 #include "qtandroidswitch_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidSwitch::QtAndroidSwitch(QtAndroidView *parent) :
     QtAndroidCompoundButton(parent)
 {
@@ -16,3 +18,5 @@ void QtAndroidSwitch::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidCompoundButton::onInflate(instance);
 }
+
+QT_END_NAMESPACE

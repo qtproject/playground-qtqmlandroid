@@ -1,5 +1,7 @@
 #include "qtandroidframelayout_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidFrameLayout::QtAndroidFrameLayout(QtAndroidView *parent) :
     QtAndroidViewGroup(parent)
 {
@@ -24,3 +26,5 @@ void QtAndroidFrameLayout::onInflate(QAndroidJniObject &instance)
 {
     QtAndroidViewGroup::onInflate(instance);
 }
+
+QT_END_NAMESPACE

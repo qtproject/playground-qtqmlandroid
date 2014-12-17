@@ -1,6 +1,8 @@
 #include "qtandroidprogressbar_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidProgressBar::QtAndroidProgressBar(QtAndroidView *parent) :
     QtAndroidView(parent), m_max(100), m_progress(0), m_secondary(0), m_indeterminate(false)
 {
@@ -101,3 +103,5 @@ void QtAndroidProgressBar::onInflate(QAndroidJniObject &instance)
     if (m_max != 100)
         instance.callMethod<void>("setMax", "(I)V", m_max);
 }
+
+QT_END_NAMESPACE

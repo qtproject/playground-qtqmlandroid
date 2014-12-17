@@ -1,7 +1,8 @@
 #include "qtandroiddrawerlayout_p.h"
 #include "qtandroidactionbardrawertoggle_p.h"
 #include "qtandroidfunctions_p.h"
-#include <QtCore/qcoreevent.h>
+
+QT_BEGIN_NAMESPACE
 
 QtAndroidDrawerLayout::QtAndroidDrawerLayout(QtAndroidView *parent) :
     QtAndroidViewGroup(parent)
@@ -43,3 +44,5 @@ void QtAndroidDrawerLayout::onInflate(QAndroidJniObject &instance)
             toggle->onCreate(ctx(), instance);
     }
 }
+
+QT_END_NAMESPACE

@@ -3,6 +3,8 @@
 #include "qtandroidview_p.h"
 #include <QtCore/qdebug.h>
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidToast::QtAndroidToast(QObject *parent) :
     QtAndroidObject(parent)
 {
@@ -77,3 +79,5 @@ void QtAndroidToast::cancel()
 {
     QtAndroid::callVoidMethod(instance(), "cancel");
 }
+
+QT_END_NAMESPACE

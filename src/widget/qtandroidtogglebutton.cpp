@@ -1,6 +1,8 @@
 #include "qtandroidtogglebutton_p.h"
 #include "qtandroidfunctions_p.h"
 
+QT_BEGIN_NAMESPACE
+
 QtAndroidToggleButton::QtAndroidToggleButton(QtAndroidView *parent) :
     QtAndroidCompoundButton(parent)
 {
@@ -50,3 +52,5 @@ void QtAndroidToggleButton::onInflate(QAndroidJniObject &instance)
     if (!m_textOff.isNull())
         instance.callMethod<void>("setTextOff", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_textOff).object());
 }
+
+QT_END_NAMESPACE
