@@ -31,6 +31,10 @@ public:
 
     QQmlListProperty<QObject> data();
 
+    enum ObjectChange {
+        InstanceChange
+    };
+
 Q_SIGNALS:
     void dataChanged();
     void instanceChanged();
@@ -43,11 +47,16 @@ protected:
     void classBegin() Q_DECL_OVERRIDE;
     void componentComplete() Q_DECL_OVERRIDE;
 
+    virtual void objectChange(ObjectChange change);
+
     static void data_append(QQmlListProperty<QObject> *list, QObject *object);
     static int data_count(QQmlListProperty<QObject> *list);
     static QObject *data_at(QQmlListProperty<QObject> *list, int index);
 
     void childEvent(QChildEvent *event) Q_DECL_OVERRIDE;
+
+private Q_SLOTS:
+    void changeInstance();
 
 private:
     void setInstance(const QAndroidJniObject &instance);

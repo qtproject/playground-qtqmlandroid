@@ -28,8 +28,15 @@ void QtAndroidObject::setInstance(const QAndroidJniObject &instance)
     if (m_instance != instance) {
         m_instance = instance;
         // queue to Qt thread if necessary
-        QMetaObject::invokeMethod(this, "instanceChanged", Qt::AutoConnection);
+        QMetaObject::invokeMethod(this, "changeInstance", Qt::AutoConnection);
     }
+}
+
+void QtAndroidObject::changeInstance()
+{
+    Q_ASSERT(QtAndroid::isMainQtThread());
+    objectChange(InstanceChange);
+    emit instanceChanged();
 }
 
 void QtAndroidObject::construct()
@@ -84,6 +91,7 @@ QAndroidJniObject QtAndroidObject::onCreate()
 void QtAndroidObject::onInflate(QAndroidJniObject &instance)
 {
     Q_UNUSED(instance);
+    Q_ASSERT(!QtAndroid::isMainQtThread());
 }
 
 bool QtAndroidObject::isComponentComplete() const
@@ -98,6 +106,12 @@ void QtAndroidObject::classBegin()
 void QtAndroidObject::componentComplete()
 {
     m_complete = true;
+}
+
+void QtAndroidObject::objectChange(ObjectChange change)
+{
+    Q_ASSERT(QtAndroid::isMainQtThread());
+    Q_UNUSED(change);
 }
 
 QQmlListProperty<QObject> QtAndroidObject::data()
