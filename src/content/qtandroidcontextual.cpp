@@ -1,22 +1,19 @@
 #include "qtandroidcontextual_p.h"
 #include "qtandroidcontext_p.h"
-#include <QtCore/qcoreapplication.h>
-#include <QtCore/qcoreevent.h>
 #include <QtCore/qdebug.h>
 
 QtAndroidContextual::QtAndroidContextual(QObject *parent) :
     QtAndroidObject(parent), m_context(0)
 {
-    if (!findContext())
-        QCoreApplication::postEvent(this, new QEvent(QEvent::Polish));
+    if (!initContext())
+        QMetaObject::invokeMethod(this, "resolveContext", Qt::QueuedConnection);
 }
 
 QtAndroidContextual::QtAndroidContextual(QtAndroidContext* context, QObject *parent) :
     QtAndroidObject(parent), m_context(0)
 {
-    setContext(context);
-    if (!m_context && !findContext())
-        QCoreApplication::postEvent(this, new QEvent(QEvent::Polish));
+    if (!initContext(context))
+        QMetaObject::invokeMethod(this, "resolveContext", Qt::QueuedConnection);
 }
 
 QAndroidJniObject QtAndroidContextual::ctx() const
@@ -35,7 +32,7 @@ void QtAndroidContextual::setContext(QtAndroidContext *context)
 {
     if (m_context != context) {
         m_context = context;
-        inheritContext();
+        propagateContext();
         emit contextChanged();
     }
 }
@@ -43,25 +40,13 @@ void QtAndroidContextual::setContext(QtAndroidContext *context)
 void QtAndroidContextual::componentComplete()
 {
     QtAndroidObject::componentComplete();
-    inheritContext();
+    propagateContext();
 }
 
-bool QtAndroidContextual::event(QEvent *event)
+static QtAndroidContext *findContext(QtAndroidObject *object)
 {
-    if (event->type() == QEvent::Polish) {
-        if (!m_context) {
-            setContext(findContext());
-            if (!m_context)
-                qWarning() << "QtAndroidContextual: could not find context for" << this;
-        }
-    }
-    return QtAndroidObject::event(event);
-}
-
-QtAndroidContext *QtAndroidContextual::findContext()
-{
-    QtAndroidContext *context = qobject_cast<QtAndroidContext *>(this);
-    QObject *p = parent();
+    QtAndroidContext *context = qobject_cast<QtAndroidContext *>(object);
+    QObject *p = object->parent();
     while (p && !context) {
         QtAndroidContextual *contextual = qobject_cast<QtAndroidContextual *>(p);
         if (contextual)
@@ -71,7 +56,24 @@ QtAndroidContext *QtAndroidContextual::findContext()
     return context;
 }
 
-void QtAndroidContextual::inheritContext()
+bool QtAndroidContextual::initContext(QtAndroidContext *context)
+{
+    if (!context)
+        context = findContext(this);
+    setContext(context);
+    return context;
+}
+
+void QtAndroidContextual::resolveContext()
+{
+    if (!m_context) {
+        setContext(findContext(this));
+        if (!m_context)
+            qWarning() << "QtAndroidContextual: could not resolve context for" << this;
+    }
+}
+
+void QtAndroidContextual::propagateContext()
 {
     foreach (QObject *child, children()) {
         QtAndroidContextual *contextual = qobject_cast<QtAndroidContextual *>(child);

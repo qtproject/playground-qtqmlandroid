@@ -25,12 +25,13 @@ Q_SIGNALS:
 
 protected:
     void componentComplete() Q_DECL_OVERRIDE;
-    bool event(QEvent *event) Q_DECL_OVERRIDE;
+
+private Q_SLOTS:
+    bool initContext(QtAndroidContext *context = 0);
+    void resolveContext();
+    void propagateContext();
 
 private:
-    QtAndroidContext *findContext();
-    void inheritContext();
-
     QtAndroidContext *m_context;
 };
 
