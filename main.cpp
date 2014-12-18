@@ -2,10 +2,7 @@
 
 #include "qtandroidappmodule_p.h"
 #include "qtandroidcontentmodule_p.h"
-
-#include "qtandroidcolor_p.h"
-#include "qtandroidcolordrawable_p.h"
-#include "qtandroiddrawable_p.h"
+#include "qtandroidgraphicsmodule_p.h"
 
 #include "qtandroidr_p.h"
 
@@ -28,10 +25,8 @@ int main(int argc, char *argv[])
 
     QtAndroid::registerAppModule("android.app");
     QtAndroid::registerContentModule("android.content");
-
-    qmlRegisterSingletonType<QtAndroidColor>("android.graphics", 0, 21, "Color", QtAndroidColor::provider);
-    qmlRegisterType<QtAndroidColorDrawable>("android.graphics.drawable", 0, 21, "ColorDrawable");
-    qmlRegisterType<QtAndroidDrawable>("android.graphics.drawable", 0, 21, "Drawable");
+    QtAndroid::registerGraphicsModule("android.graphics");
+    QtAndroid::registerDrawableModule("android.graphics.drawable");
 
     qmlRegisterSingletonType<QtAndroidR>("android.R", 0, 21, "R", QtAndroidR::provider);
 
