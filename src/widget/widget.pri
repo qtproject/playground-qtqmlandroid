@@ -41,7 +41,8 @@ HEADERS += \
     $$PWD/qtandroidtogglebutton_p.h \
     $$PWD/qtandroidviewanimator_p.h \
     $$PWD/qtandroidviewflipper_p.h \
-    $$PWD/qtandroidviewswitcher_p.h
+    $$PWD/qtandroidviewswitcher_p.h \
+    $$PWD/qtandroidwidgetmodule_p.h
 
 SOURCES += \
     $$PWD/qtandroidabsseekbar.cpp \
@@ -84,4 +85,5 @@ SOURCES += \
     $$PWD/qtandroidtogglebutton.cpp \
     $$PWD/qtandroidviewanimator.cpp \
     $$PWD/qtandroidviewflipper.cpp \
-    $$PWD/qtandroidviewswitcher.cpp
+    $$PWD/qtandroidviewswitcher.cpp \
+    $$PWD/qtandroidwidgetmodule.cpp
