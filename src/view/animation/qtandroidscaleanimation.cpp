@@ -86,12 +86,12 @@ void QtAndroidScaleAnimation::setPivotY(qreal pivotY)
     }
 }
 
-QtAndroidAnimation::PivotType QtAndroidScaleAnimation::pivotXType() const
+QtAndroidAnimation::Relation QtAndroidScaleAnimation::pivotXType() const
 {
     return m_pivotXType;
 }
 
-void QtAndroidScaleAnimation::setPivotXType(PivotType type)
+void QtAndroidScaleAnimation::setPivotXType(Relation type)
 {
     if (m_pivotXType != type) {
         m_pivotXType = type;
@@ -99,12 +99,12 @@ void QtAndroidScaleAnimation::setPivotXType(PivotType type)
     }
 }
 
-QtAndroidAnimation::PivotType QtAndroidScaleAnimation::pivotYType() const
+QtAndroidAnimation::Relation QtAndroidScaleAnimation::pivotYType() const
 {
     return m_pivotYType;
 }
 
-void QtAndroidScaleAnimation::setPivotYType(PivotType type)
+void QtAndroidScaleAnimation::setPivotYType(Relation type)
 {
     if (m_pivotYType != type) {
         m_pivotYType = type;
@@ -118,11 +118,6 @@ QAndroidJniObject QtAndroidScaleAnimation::onCreate()
                              "(FFFFIFIF)V",
                              m_fromX, m_toX, m_fromY, m_toY,
                              m_pivotXType, m_pivotX, m_pivotYType, m_pivotY);
-}
-
-void QtAndroidScaleAnimation::onInflate(QAndroidJniObject &instance)
-{
-    QtAndroidAnimation::onInflate(instance);
 }
 
 QT_END_NAMESPACE

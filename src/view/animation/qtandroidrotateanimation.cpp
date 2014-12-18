@@ -60,12 +60,12 @@ void QtAndroidRotateAnimation::setPivotY(qreal pivotY)
     }
 }
 
-QtAndroidRotateAnimation::PivotType QtAndroidRotateAnimation::pivotXType() const
+QtAndroidRotateAnimation::Relation QtAndroidRotateAnimation::pivotXType() const
 {
     return m_pivotXType;
 }
 
-void QtAndroidRotateAnimation::setPivotXType(PivotType type)
+void QtAndroidRotateAnimation::setPivotXType(Relation type)
 {
     if (m_pivotXType != type) {
         m_pivotXType = type;
@@ -73,12 +73,12 @@ void QtAndroidRotateAnimation::setPivotXType(PivotType type)
     }
 }
 
-QtAndroidRotateAnimation::PivotType QtAndroidRotateAnimation::pivotYType() const
+QtAndroidRotateAnimation::Relation QtAndroidRotateAnimation::pivotYType() const
 {
     return m_pivotYType;
 }
 
-void QtAndroidRotateAnimation::setPivotYType(PivotType type)
+void QtAndroidRotateAnimation::setPivotYType(Relation type)
 {
     if (m_pivotYType != type) {
         m_pivotYType = type;
@@ -92,11 +92,6 @@ QAndroidJniObject QtAndroidRotateAnimation::onCreate()
                              "(FFIFIF)V",
                              m_from, m_to,
                              m_pivotXType, m_pivotX, m_pivotYType, m_pivotY);
-}
-
-void QtAndroidRotateAnimation::onInflate(QAndroidJniObject &instance)
-{
-    QtAndroidAnimation::onInflate(instance);
 }
 
 QT_END_NAMESPACE

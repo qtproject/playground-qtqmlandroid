@@ -21,7 +21,7 @@ class QtAndroidAnimation : public QtAndroidContextual
     Q_PROPERTY(RepeatMode repeatMode READ repeatMode WRITE setRepeatMode NOTIFY repeatModeChanged)
     Q_PROPERTY(int startOffset READ startOffset WRITE setStartOffset NOTIFY startOffsetChanged)
     Q_PROPERTY(ZAdjustment zAdjustment READ zAdjustment WRITE setZAdjustment NOTIFY zAdjustmentChanged)
-    Q_ENUMS(RepeatMode ZAdjustment Infinity PivotType)
+    Q_ENUMS(RepeatMode ZAdjustment Infinity Relation)
 
 public:
     explicit QtAndroidAnimation(QObject *parent = 0);
@@ -29,7 +29,7 @@ public:
     int resource() const;
     void setResource(int resource);
 
-    enum PivotType {
+    enum Relation {
         ABSOLUTE = 0,
         RELATIVE_TO_SELF = 1,
         RELATIVE_TO_PARENT = 2

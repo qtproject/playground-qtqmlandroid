@@ -3,6 +3,7 @@ INCLUDEPATH += $$PWD
 HEADERS += \
     $$PWD/qtandroidacceleratedecelerateinterpolator_p.h \
     $$PWD/qtandroidaccelerateinterpolator_p.h \
+    $$PWD/qtandroidalphaanimation_p.h \
     $$PWD/qtandroidanimation_p.h \
     $$PWD/qtandroidanimationset_p.h \
     $$PWD/qtandroidanticipateinterpolator_p.h \
@@ -15,11 +16,13 @@ HEADERS += \
     $$PWD/qtandroidovershootinterpolator_p.h \
     $$PWD/qtandroidpathinterpolator_p.h \
     $$PWD/qtandroidrotateanimation_p.h \
-    $$PWD/qtandroidscaleanimation_p.h
+    $$PWD/qtandroidscaleanimation_p.h \
+    $$PWD/qtandroidtranslateanimation_p.h
 
 SOURCES += \
     $$PWD/qtandroidacceleratedecelerateinterpolator.cpp \
     $$PWD/qtandroidaccelerateinterpolator.cpp \
+    $$PWD/qtandroidalphaanimation.cpp \
     $$PWD/qtandroidanimation.cpp \
     $$PWD/qtandroidanimationset.cpp \
     $$PWD/qtandroidanticipateinterpolator.cpp \
@@ -32,4 +35,5 @@ SOURCES += \
     $$PWD/qtandroidovershootinterpolator.cpp \
     $$PWD/qtandroidpathinterpolator.cpp \
     $$PWD/qtandroidrotateanimation.cpp \
-    $$PWD/qtandroidscaleanimation.cpp
+    $$PWD/qtandroidscaleanimation.cpp \
+    $$PWD/qtandroidtranslateanimation.cpp
