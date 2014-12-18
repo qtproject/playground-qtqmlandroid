@@ -22,7 +22,14 @@
 #include "qtandroidviewgroup_p.h"
 #include "qtandroidwindow_p.h"
 
+#include "qtandroidacceleratedecelerateinterpolator_p.h"
+#include "qtandroidaccelerateinterpolator_p.h"
 #include "qtandroidanimation_p.h"
+#include "qtandroidanimationset_p.h"
+#include "qtandroiddecelerateinterpolator_p.h"
+#include "qtandroidlinearinterpolator_p.h"
+#include "qtandroidrotateanimation_p.h"
+#include "qtandroidscaleanimation_p.h"
 
 #include "qtandroidarrayadapter_p.h"
 #include "qtandroidbutton_p.h"
@@ -97,7 +104,15 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidViewGroup>("android.view", 21, 0, "ViewGroup");
     qmlRegisterType<QtAndroidWindow>();
 
+    qmlRegisterType<QtAndroidAccelerateDecelerateInterpolator>("android.view.animation", 21, 0, "AccelerateDecelerateInterpolator");
+    qmlRegisterType<QtAndroidAccelerateInterpolator>("android.view.animation", 21, 0, "AccelerateInterpolator");
     qmlRegisterType<QtAndroidAnimation>("android.view.animation", 21, 0, "Animation");
+    qmlRegisterType<QtAndroidAnimationSet>("android.view.animation", 21, 0, "AnimationSet");
+    qmlRegisterType<QtAndroidDecelerateInterpolator>("android.view.animation", 21, 0, "DecelerateInterpolator");
+    qmlRegisterUncreatableType<QtAndroidInterpolator>("android.view", 21, 0, "Interpolator", "Interpolator is abstract");
+    qmlRegisterType<QtAndroidLinearInterpolator>("android.view.animation", 21, 0, "LinearInterpolator");
+    qmlRegisterType<QtAndroidRotateAnimation>("android.view.animation", 21, 0, "RotateAnimation");
+    qmlRegisterType<QtAndroidScaleAnimation>("android.view.animation", 21, 0, "ScaleAnimation");
 
     qmlRegisterType<QtAndroidArrayAdapter>("android.widget", 21, 0, "ArrayAdapter");
     qmlRegisterType<QtAndroidBaseAdapter>();

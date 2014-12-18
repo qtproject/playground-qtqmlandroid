@@ -593,7 +593,7 @@ void QtAndroidView::updateBackground()
 
 void QtAndroidView::updateAnimation()
 {
-    if (!isValid() || !m_animation)
+    if (!isValid() || !m_animation || !m_animation->isValid())
         return;
 
     QAndroidJniObject view = instance();
