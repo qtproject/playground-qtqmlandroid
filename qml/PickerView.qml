@@ -1,5 +1,5 @@
-import android.view 21.0
-import android.widget 21.0
+import android.view 0.21
+import android.widget 0.21
 
 TabHost {
     LinearLayout {

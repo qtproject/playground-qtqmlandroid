@@ -1,5 +1,5 @@
-import android.widget 21.0
-import android.support.v7.widget 21.0
+import android.widget 0.21
+import android.support.v7.widget 0.21
 
 ScrollView {
     LinearLayout {

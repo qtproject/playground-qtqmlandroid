@@ -1,9 +1,9 @@
-import android.view 21.0
-import android.widget 21.0
-import android.graphics 21.0
-import android.graphics.drawable 21.0
-import android.support.v4.widget 21.0
-import android.support.v7.widget 21.0
+import android.view 0.21
+import android.widget 0.21
+import android.graphics 0.21
+import android.graphics.drawable 0.21
+import android.support.v4.widget 0.21
+import android.support.v7.widget 0.21
 
 import QtQml 2.1
 
