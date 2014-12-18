@@ -9,7 +9,7 @@ SOURCES += \
 RESOURCES += \
     qtandroid.qrc
 
-include(src/src.pri)
+include(src/android/android.pri)
 
 OTHER_FILES += \
     qml/main.qml \
