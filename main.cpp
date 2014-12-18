@@ -1,13 +1,6 @@
 #include <QtQml>
 
-#include "qtandroidappmodule_p.h"
-#include "qtandroidcontentmodule_p.h"
-#include "qtandroidgraphicsmodule_p.h"
-
-#include "qtandroidr_p.h"
-
-#include "qtandroidviewmodule_p.h"
-#include "qtandroidwidgetmodule_p.h"
+#include "qtandroidmodule_p.h"
 
 #include "qtandroiddrawerlayout_p.h"
 #include "qtandroidswiperefreshlayout_p.h"
@@ -23,16 +16,7 @@ int main(int argc, char *argv[])
 
     qRegisterMetaType<QQmlPropertyMap *>();
 
-    QtAndroid::registerAppModule("android.app");
-    QtAndroid::registerContentModule("android.content");
-    QtAndroid::registerGraphicsModule("android.graphics");
-    QtAndroid::registerDrawableModule("android.graphics.drawable");
-
-    qmlRegisterSingletonType<QtAndroidR>("android.R", 0, 21, "R", QtAndroidR::provider);
-
-    QtAndroid::registerViewModule("android.view");
-    QtAndroid::registerAnimationModule("android.view.animation");
-    QtAndroid::registerWidgetModule("android.widget");
+    QtAndroid::registerModule();
 
     qmlRegisterType<QtAndroidDrawerLayout>("android.support.v4.widget", 0, 21, "DrawerLayout");
     qmlRegisterType<QtAndroidSwipeRefreshLayout>("android.support.v4.widget", 0, 21, "SwipeRefreshLayout");
