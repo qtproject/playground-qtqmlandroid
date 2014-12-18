@@ -1,10 +1,6 @@
 #include <QtQml>
 
-#include "qtandroidactionbar_p.h"
-#include "qtandroidactivity_p.h"
-#include "qtandroidalertdialog_p.h"
-#include "qtandroiddialog_p.h"
-#include "qtandroidservice_p.h"
+#include "qtandroidappmodule_p.h"
 
 #include "qtandroidcontext_p.h"
 
@@ -55,11 +51,7 @@ int main(int argc, char *argv[])
 
     qRegisterMetaType<QQmlPropertyMap *>();
 
-    qmlRegisterType<QtAndroidActionBar>("android.app", 0, 21, "ActionBar");
-    qmlRegisterType<QtAndroidActivity>("android.app", 0, 21, "Activity");
-    qmlRegisterType<QtAndroidAlertDialog>("android.app", 0, 21, "AlertDialog");
-    qmlRegisterType<QtAndroidDialog>("android.app", 0, 21, "Dialog");
-    qmlRegisterType<QtAndroidService>("android.app", 0, 21, "Service");
+    QtAndroid::registerAppModule("android.app");
 
     qmlRegisterType<QtAndroidContext>();
 
