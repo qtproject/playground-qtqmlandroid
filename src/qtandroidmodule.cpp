@@ -5,6 +5,7 @@
 #include "qtandroidappmodule_p.h"
 #include "qtandroidcontentmodule_p.h"
 #include "qtandroidgraphicsmodule_p.h"
+#include "qtandroidsupportmodule_p.h"
 #include "qtandroidviewmodule_p.h"
 #include "qtandroidwidgetmodule_p.h"
 
@@ -22,6 +23,9 @@ void registerModule()
     QtAndroid::registerContentModule("android.content");
     QtAndroid::registerGraphicsModule("android.graphics");
     QtAndroid::registerDrawableModule("android.graphics.drawable");
+    QtAndroid::registerSupportV4WidgetModule("android.support.v4.widget");
+    QtAndroid::registerSupportV7AppModule("android.support.v7.app");
+    QtAndroid::registerSupportV7WidgetModule("android.support.v7.widget");
     QtAndroid::registerViewModule("android.view");
     QtAndroid::registerAnimationModule("android.view.animation");
     QtAndroid::registerWidgetModule("android.widget");
