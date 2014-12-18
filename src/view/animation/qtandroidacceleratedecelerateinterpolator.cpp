@@ -12,9 +12,4 @@ QAndroidJniObject QtAndroidAccelerateDecelerateInterpolator::onCreate()
     return QAndroidJniObject("android/view/animation/AccelerateDecelerateInterpolator");
 }
 
-void QtAndroidAccelerateDecelerateInterpolator::onInflate(QAndroidJniObject &instance)
-{
-    QtAndroidInterpolator::onInflate(instance);
-}
-
 QT_END_NAMESPACE

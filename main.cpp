@@ -26,8 +26,14 @@
 #include "qtandroidaccelerateinterpolator_p.h"
 #include "qtandroidanimation_p.h"
 #include "qtandroidanimationset_p.h"
+#include "qtandroidanticipateinterpolator_p.h"
+#include "qtandroidanticipateovershootinterpolator_p.h"
+#include "qtandroidbounceinterpolator_p.h"
+#include "qtandroidcycleinterpolator_p.h"
 #include "qtandroiddecelerateinterpolator_p.h"
 #include "qtandroidlinearinterpolator_p.h"
+#include "qtandroidovershootinterpolator_p.h"
+#include "qtandroidpathinterpolator_p.h"
 #include "qtandroidrotateanimation_p.h"
 #include "qtandroidscaleanimation_p.h"
 
@@ -108,9 +114,15 @@ int main(int argc, char *argv[])
     qmlRegisterType<QtAndroidAccelerateInterpolator>("android.view.animation", 21, 0, "AccelerateInterpolator");
     qmlRegisterType<QtAndroidAnimation>("android.view.animation", 21, 0, "Animation");
     qmlRegisterType<QtAndroidAnimationSet>("android.view.animation", 21, 0, "AnimationSet");
+    qmlRegisterType<QtAndroidAnticipateInterpolator>("android.view.animation", 21, 0, "AnticipateInterpolator");
+    qmlRegisterType<QtAndroidAnticipateOvershootInterpolator>("android.view.animation", 21, 0, "AnticipateOvershootInterpolator");
+    qmlRegisterType<QtAndroidBounceInterpolator>("android.view.animation", 21, 0, "BounceInterpolator");
+    qmlRegisterType<QtAndroidCycleInterpolator>("android.view.animation", 21, 0, "CycleInterpolator");
     qmlRegisterType<QtAndroidDecelerateInterpolator>("android.view.animation", 21, 0, "DecelerateInterpolator");
     qmlRegisterUncreatableType<QtAndroidInterpolator>("android.view", 21, 0, "Interpolator", "Interpolator is abstract");
     qmlRegisterType<QtAndroidLinearInterpolator>("android.view.animation", 21, 0, "LinearInterpolator");
+    qmlRegisterType<QtAndroidOvershootInterpolator>("android.view.animation", 21, 0, "OvershootInterpolator");
+    qmlRegisterType<QtAndroidPathInterpolator>("android.view.animation", 21, 0, "PathInterpolator");
     qmlRegisterType<QtAndroidRotateAnimation>("android.view.animation", 21, 0, "RotateAnimation");
     qmlRegisterType<QtAndroidScaleAnimation>("android.view.animation", 21, 0, "ScaleAnimation");
 

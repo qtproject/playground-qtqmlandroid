@@ -12,9 +12,4 @@ QAndroidJniObject QtAndroidLinearInterpolator::onCreate()
     return QAndroidJniObject("android/view/animation/LinearInterpolator");
 }
 
-void QtAndroidLinearInterpolator::onInflate(QAndroidJniObject &instance)
-{
-    QtAndroidInterpolator::onInflate(instance);
-}
-
 QT_END_NAMESPACE
