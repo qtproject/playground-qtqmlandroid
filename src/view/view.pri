@@ -7,6 +7,7 @@ HEADERS += \
     $$PWD/qtandroidmenuitem_p.h \
     $$PWD/qtandroidview_p.h \
     $$PWD/qtandroidviewgroup_p.h \
+    $$PWD/qtandroidviewmodule_p.h \
     $$PWD/qtandroidwindow_p.h
 
 SOURCES += \
@@ -15,6 +16,7 @@ SOURCES += \
     $$PWD/qtandroidmenuitem.cpp \
     $$PWD/qtandroidview.cpp \
     $$PWD/qtandroidviewgroup.cpp \
+    $$PWD/qtandroidviewmodule.cpp \
     $$PWD/qtandroidwindow.cpp
 
 include(animation/animation.pri)
