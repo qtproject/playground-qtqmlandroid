@@ -1,8 +1,7 @@
 #include <QtQml>
 
 #include "qtandroidappmodule_p.h"
-
-#include "qtandroidcontext_p.h"
+#include "qtandroidcontentmodule_p.h"
 
 #include "qtandroidcolor_p.h"
 #include "qtandroidcolordrawable_p.h"
@@ -52,8 +51,7 @@ int main(int argc, char *argv[])
     qRegisterMetaType<QQmlPropertyMap *>();
 
     QtAndroid::registerAppModule("android.app");
-
-    qmlRegisterType<QtAndroidContext>();
+    QtAndroid::registerContentModule("android.content");
 
     qmlRegisterSingletonType<QtAndroidColor>("android.graphics", 0, 21, "Color", QtAndroidColor::provider);
     qmlRegisterType<QtAndroidColorDrawable>("android.graphics.drawable", 0, 21, "ColorDrawable");
