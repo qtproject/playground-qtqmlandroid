@@ -4,6 +4,7 @@ Makefile
 *.so
 *.o
 .qmake.cache
+.qmake.stash
 *-deployment-settings.json
 .moc
 .rcc
