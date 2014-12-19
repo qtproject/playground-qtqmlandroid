@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDOBJECT_P_H
-#define QTQMLANDROIDOBJECT_P_H
+#ifndef QQMLANDROIDOBJECT_P_H
+#define QQMLANDROIDOBJECT_P_H
 
 #include "qtqmlandroidglobal_p.h"
 
@@ -68,4 +68,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDOBJECT_P_H
+#endif // QQMLANDROIDOBJECT_P_H

@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDACTIONBAR_P_H
-#define QTQMLANDROIDACTIONBAR_P_H
+#ifndef QQMLANDROIDACTIONBAR_P_H
+#define QQMLANDROIDACTIONBAR_P_H
 
 #include "qtqmlandroidobject_p.h"
 #include "qtqmlandroidoptional_p.h"
@@ -60,4 +60,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDACTIONBAR_P_H
+#endif // QQMLANDROIDACTIONBAR_P_H

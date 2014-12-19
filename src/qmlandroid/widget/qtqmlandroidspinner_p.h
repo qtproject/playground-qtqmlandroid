@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDSPINNER_P_H
-#define QTQMLANDROIDSPINNER_P_H
+#ifndef QQMLANDROIDSPINNER_P_H
+#define QQMLANDROIDSPINNER_P_H
 
 #include "qtqmlandroidadapterview_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDSPINNER_P_H
+#endif // QQMLANDROIDSPINNER_P_H

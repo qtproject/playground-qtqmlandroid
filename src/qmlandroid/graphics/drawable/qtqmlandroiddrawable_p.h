@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDDRAWABLE_P_H
-#define QTQMLANDROIDDRAWABLE_P_H
+#ifndef QQMLANDROIDDRAWABLE_P_H
+#define QQMLANDROIDDRAWABLE_P_H
 
 #include "qtqmlandroidobject_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDDRAWABLE_P_H
+#endif // QQMLANDROIDDRAWABLE_P_H

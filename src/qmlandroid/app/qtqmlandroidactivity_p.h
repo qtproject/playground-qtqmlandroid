@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDACTIVITY_P_H
-#define QTQMLANDROIDACTIVITY_P_H
+#ifndef QQMLANDROIDACTIVITY_P_H
+#define QQMLANDROIDACTIVITY_P_H
 
 #include "qtqmlandroidcontextwrapper_p.h"
 
@@ -52,4 +52,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDACTIVITY_P_H
+#endif // QQMLANDROIDACTIVITY_P_H

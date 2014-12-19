@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDR_P_H
-#define QTQMLANDROIDR_P_H
+#ifndef QQMLANDROIDR_P_H
+#define QQMLANDROIDR_P_H
 
 #include <QtCore/qobject.h>
 #include <QtQml/qqmlpropertymap.h>
@@ -90,4 +90,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDR_P_H
+#endif // QQMLANDROIDR_P_H

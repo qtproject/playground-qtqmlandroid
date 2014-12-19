@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDDIALOG_P_H
-#define QTQMLANDROIDDIALOG_P_H
+#ifndef QQMLANDROIDDIALOG_P_H
+#define QQMLANDROIDDIALOG_P_H
 
 #include "qtqmlandroidcontextual_p.h"
 
@@ -25,4 +25,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDDIALOG_P_H
+#endif // QQMLANDROIDDIALOG_P_H

@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDPROGRESSBAR_P_H
-#define QTQMLANDROIDPROGRESSBAR_P_H
+#ifndef QQMLANDROIDPROGRESSBAR_P_H
+#define QQMLANDROIDPROGRESSBAR_P_H
 
 #include "qtqmlandroidview_p.h"
 #include "qtqmlandroidoptional_p.h"
@@ -68,4 +68,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDPROGRESSBAR_P_H
+#endif // QQMLANDROIDPROGRESSBAR_P_H

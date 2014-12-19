@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDCOLOR_P_H
-#define QTQMLANDROIDCOLOR_P_H
+#ifndef QQMLANDROIDCOLOR_P_H
+#define QQMLANDROIDCOLOR_P_H
 
 #include <QtCore/qobject.h>
 #include <QtQml/qqmlengine.h>
@@ -40,4 +40,4 @@ public:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDCOLOR_P_H
+#endif // QQMLANDROIDCOLOR_P_H

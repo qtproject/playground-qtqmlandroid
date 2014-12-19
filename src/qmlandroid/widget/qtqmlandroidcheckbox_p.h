@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDCHECKBOX_P_H
-#define QTQMLANDROIDCHECKBOX_P_H
+#ifndef QQMLANDROIDCHECKBOX_P_H
+#define QQMLANDROIDCHECKBOX_P_H
 
 #include "qtqmlandroidcompoundbutton_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDCHECKBOX_P_H
+#endif // QQMLANDROIDCHECKBOX_P_H

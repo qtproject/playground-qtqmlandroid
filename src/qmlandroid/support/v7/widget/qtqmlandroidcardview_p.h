@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDCARDVIEW_P_H
-#define QTQMLANDROIDCARDVIEW_P_H
+#ifndef QQMLANDROIDCARDVIEW_P_H
+#define QQMLANDROIDCARDVIEW_P_H
 
 #include "qtqmlandroidframelayout_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDCARDVIEW_P_H
+#endif // QQMLANDROIDCARDVIEW_P_H

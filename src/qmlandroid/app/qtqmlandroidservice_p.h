@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDSERVICE_P_H
-#define QTQMLANDROIDSERVICE_P_H
+#ifndef QQMLANDROIDSERVICE_P_H
+#define QQMLANDROIDSERVICE_P_H
 
 #include "qtqmlandroidcontextwrapper_p.h"
 
@@ -43,4 +43,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDSERVICE_P_H
+#endif // QQMLANDROIDSERVICE_P_H

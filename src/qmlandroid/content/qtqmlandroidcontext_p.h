@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDCONTEXT_P_H
-#define QTQMLANDROIDCONTEXT_P_H
+#ifndef QQMLANDROIDCONTEXT_P_H
+#define QQMLANDROIDCONTEXT_P_H
 
 #include "qtqmlandroidcontextual_p.h"
 
@@ -16,4 +16,4 @@ public:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDCONTEXT_P_H
+#endif // QQMLANDROIDCONTEXT_P_H

@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDTABHOST_P_H
-#define QTQMLANDROIDTABHOST_P_H
+#ifndef QQMLANDROIDTABHOST_P_H
+#define QQMLANDROIDTABHOST_P_H
 
 #include "qtqmlandroidframelayout_p.h"
 
@@ -28,4 +28,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDTABHOST_P_H
+#endif // QQMLANDROIDTABHOST_P_H

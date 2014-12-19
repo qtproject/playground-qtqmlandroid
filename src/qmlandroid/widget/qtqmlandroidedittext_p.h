@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDEDITTEXT_P_H
-#define QTQMLANDROIDEDITTEXT_P_H
+#ifndef QQMLANDROIDEDITTEXT_P_H
+#define QQMLANDROIDEDITTEXT_P_H
 
 #include "qtqmlandroidtextview_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDEDITTEXT_P_H
+#endif // QQMLANDROIDEDITTEXT_P_H

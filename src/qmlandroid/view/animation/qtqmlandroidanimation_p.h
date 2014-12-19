@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDANIMATION_P_H
-#define QTQMLANDROIDANIMATION_P_H
+#ifndef QQMLANDROIDANIMATION_P_H
+#define QQMLANDROIDANIMATION_P_H
 
 #include "qtqmlandroidcontextual_p.h"
 #include "qtqmlandroidoptional_p.h"
@@ -118,4 +118,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDANIMATION_P_H
+#endif // QQMLANDROIDANIMATION_P_H

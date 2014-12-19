@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDSEEKBAR_P_H
-#define QTQMLANDROIDSEEKBAR_P_H
+#ifndef QQMLANDROIDSEEKBAR_P_H
+#define QQMLANDROIDSEEKBAR_P_H
 
 #include "qtqmlandroidabsseekbar_p.h"
 
@@ -25,4 +25,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDSEEKBAR_P_H
+#endif // QQMLANDROIDSEEKBAR_P_H

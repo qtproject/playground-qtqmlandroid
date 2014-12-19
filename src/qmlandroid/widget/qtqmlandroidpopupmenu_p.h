@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDPOPUPMENU_P_H
-#define QTQMLANDROIDPOPUPMENU_P_H
+#ifndef QQMLANDROIDPOPUPMENU_P_H
+#define QQMLANDROIDPOPUPMENU_P_H
 
 #include "qtqmlandroidobject_p.h"
 #include "qtqmlandroidoptional_p.h"
@@ -44,4 +44,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDPOPUPMENU_P_H
+#endif // QQMLANDROIDPOPUPMENU_P_H

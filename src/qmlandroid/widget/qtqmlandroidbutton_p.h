@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDBUTTON_P_H
-#define QTQMLANDROIDBUTTON_P_H
+#ifndef QQMLANDROIDBUTTON_P_H
+#define QQMLANDROIDBUTTON_P_H
 
 #include "qtqmlandroidtextview_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDBUTTON_P_H
+#endif // QQMLANDROIDBUTTON_P_H

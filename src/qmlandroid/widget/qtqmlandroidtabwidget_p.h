@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDTABWIDGET_P_H
-#define QTQMLANDROIDTABWIDGET_P_H
+#ifndef QQMLANDROIDTABWIDGET_P_H
+#define QQMLANDROIDTABWIDGET_P_H
 
 #include "qtqmlandroidlinearlayout_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDTABWIDGET_P_H
+#endif // QQMLANDROIDTABWIDGET_P_H

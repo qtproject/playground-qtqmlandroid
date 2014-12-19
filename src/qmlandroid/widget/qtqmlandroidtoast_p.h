@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDTOAST_P_H
-#define QTQMLANDROIDTOAST_P_H
+#ifndef QQMLANDROIDTOAST_P_H
+#define QQMLANDROIDTOAST_P_H
 
 #include "qtqmlandroidobject_p.h"
 #include "qtqmlandroidoptional_p.h"
@@ -38,4 +38,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDTOAST_P_H
+#endif // QQMLANDROIDTOAST_P_H

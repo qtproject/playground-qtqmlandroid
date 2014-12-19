@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDSPACE_P_H
-#define QTQMLANDROIDSPACE_P_H
+#ifndef QQMLANDROIDSPACE_P_H
+#define QQMLANDROIDSPACE_P_H
 
 #include "qtqmlandroidview_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDSPACE_P_H
+#endif // QQMLANDROIDSPACE_P_H

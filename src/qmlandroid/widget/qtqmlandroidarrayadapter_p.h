@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDARRAYADAPTER_P_H
-#define QTQMLANDROIDARRAYADAPTER_P_H
+#ifndef QQMLANDROIDARRAYADAPTER_P_H
+#define QQMLANDROIDARRAYADAPTER_P_H
 
 #include "qtqmlandroidbaseadapter_p.h"
 #include <QtCore/qstringlist.h>
@@ -42,4 +42,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDARRAYADAPTER_P_H
+#endif // QQMLANDROIDARRAYADAPTER_P_H

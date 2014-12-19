@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDIMAGEVIEW_P_H
-#define QTQMLANDROIDIMAGEVIEW_P_H
+#ifndef QQMLANDROIDIMAGEVIEW_P_H
+#define QQMLANDROIDIMAGEVIEW_P_H
 
 #include "qtqmlandroidview_p.h"
 #include "qtqmlandroidoptional_p.h"
@@ -45,4 +45,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDTEXTVIEW_P_H
+#endif // QQMLANDROIDTEXTVIEW_P_H

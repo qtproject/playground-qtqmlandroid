@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDSWITCH_P_H
-#define QTQMLANDROIDSWITCH_P_H
+#ifndef QQMLANDROIDSWITCH_P_H
+#define QQMLANDROIDSWITCH_P_H
 
 #include "qtqmlandroidcompoundbutton_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDSWITCH_P_H
+#endif // QQMLANDROIDSWITCH_P_H

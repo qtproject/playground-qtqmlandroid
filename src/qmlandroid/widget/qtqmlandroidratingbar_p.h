@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDRATINGBAR_P_H
-#define QTQMLANDROIDRATINGBAR_P_H
+#ifndef QQMLANDROIDRATINGBAR_P_H
+#define QQMLANDROIDRATINGBAR_P_H
 
 #include "qtqmlandroidabsseekbar_p.h"
 
@@ -36,4 +36,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDRATINGBAR_P_H
+#endif // QQMLANDROIDRATINGBAR_P_H

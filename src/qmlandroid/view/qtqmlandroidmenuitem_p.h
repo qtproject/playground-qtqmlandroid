@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDMENUITEM_P_H
-#define QTQMLANDROIDMENUITEM_P_H
+#ifndef QQMLANDROIDMENUITEM_P_H
+#define QQMLANDROIDMENUITEM_P_H
 
 #include "qtqmlandroidcontextual_p.h"
 
@@ -87,4 +87,4 @@ private:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDMENUITEM_P_H
+#endif // QQMLANDROIDMENUITEM_P_H

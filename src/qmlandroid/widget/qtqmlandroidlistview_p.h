@@ -1,5 +1,5 @@
-#ifndef QTQMLANDROIDLISTVIEW_P_H
-#define QTQMLANDROIDLISTVIEW_P_H
+#ifndef QQMLANDROIDLISTVIEW_P_H
+#define QQMLANDROIDLISTVIEW_P_H
 
 #include "qtqmlandroidadapterview_p.h"
 
@@ -19,4 +19,4 @@ protected:
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDLISTVIEW_P_H
+#endif // QQMLANDROIDLISTVIEW_P_H
