@@ -1,2 +1,13 @@
 *~
 *.user
+Makefile
+*.so
+*.o
+.qmake.cache
+*-deployment-settings.json
+.moc
+.rcc
+moc_*.cpp
+qrc_*.cpp
+app_process
+android-build
