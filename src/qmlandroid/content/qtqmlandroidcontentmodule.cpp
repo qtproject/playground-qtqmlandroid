@@ -10,7 +10,7 @@ namespace QtQmlAndroid {
 
 void registerContentModule(const char *uri)
 {
-    qmlRegisterUncreatableType<QQmlAndroidContext>(uri, 0, 21, "Context", "Cannot create Context");
+    qmlRegisterUncreatableType<QQmlAndroidContext>(uri, 0, 21, "Context", QStringLiteral("Cannot create Context"));
 }
 
 }

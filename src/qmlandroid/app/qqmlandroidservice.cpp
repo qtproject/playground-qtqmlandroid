@@ -37,7 +37,7 @@ void QQmlAndroidService::start()
                                                      cls.object());
         intent.callObjectMethod("putExtra",
                                 "(Ljava/lang/String;J)Landroid/content/Intent;",
-                                QAndroidJniObject::fromString("QtService").object(),
+                                QAndroidJniObject::fromString(QStringLiteral("QtService")).object(),
                                 reinterpret_cast<jlong>(this));
         QAndroidJniObject component = context.callObjectMethod("startService",
                                                                "(Landroid/content/Intent;)Landroid/content/ComponentName;",
@@ -62,7 +62,7 @@ void QQmlAndroidService::stop()
                                                      cls.object());
         intent.callObjectMethod("putExtra",
                                 "(Ljava/lang/String;J)Landroid/content/Intent;",
-                                QAndroidJniObject::fromString("QtService").object(),
+                                QAndroidJniObject::fromString(QStringLiteral("QtService")).object(),
                                 reinterpret_cast<jlong>(this));
         context.callMethod<jboolean>("stopService",
                                      "(Landroid/content/Intent;)Z",

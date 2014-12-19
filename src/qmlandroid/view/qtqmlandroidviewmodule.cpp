@@ -16,8 +16,8 @@ namespace QtQmlAndroid {
 
 void registerViewModule(const char *uri)
 {
-    qmlRegisterUncreatableType<QQmlAndroidGravity>(uri, 0, 21, "Gravity", "Gravity is an enum");
-    qmlRegisterUncreatableType<QQmlAndroidLayoutParams>(uri, 0, 21, "Layout", "Layout is an attached property");
+    qmlRegisterUncreatableType<QQmlAndroidGravity>(uri, 0, 21, "Gravity", QStringLiteral("Gravity is an enum"));
+    qmlRegisterUncreatableType<QQmlAndroidLayoutParams>(uri, 0, 21, "Layout", QStringLiteral("Layout is an attached property"));
     qmlRegisterType<QQmlAndroidMenu>(uri, 0, 21, "Menu");
     qmlRegisterType<QQmlAndroidMenuItem>(uri, 0, 21, "MenuItem");
     qmlRegisterType<QQmlAndroidView>(uri, 0, 21, "View");

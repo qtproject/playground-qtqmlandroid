@@ -73,7 +73,7 @@ void registerWidgetModule(const char *uri)
     qmlRegisterType<QQmlAndroidSpinner>(uri, 0, 21, "Spinner");
     qmlRegisterType<QQmlAndroidSwitch>(uri, 0, 21, "Switch");
     qmlRegisterType<QQmlAndroidTabHost>(uri, 0, 21, "TabHost");
-    qmlRegisterUncreatableType<QQmlAndroidTabSpec>(uri, 0, 21, "TabSpec", "TabSpec is an attached property");
+    qmlRegisterUncreatableType<QQmlAndroidTabSpec>(uri, 0, 21, "TabSpec", QStringLiteral("TabSpec is an attached property"));
     qmlRegisterType<QQmlAndroidTabWidget>(uri, 0, 21, "TabWidget");
     qmlRegisterType<QQmlAndroidTextView>(uri, 0, 21, "TextView");
     qmlRegisterType<QQmlAndroidTimePicker>(uri, 0, 21, "TimePicker");
