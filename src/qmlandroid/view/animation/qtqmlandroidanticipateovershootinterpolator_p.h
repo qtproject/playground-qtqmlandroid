@@ -6,14 +6,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidAnticipateOvershootInterpolator : public QtQmlAndroidInterpolator
+class QQmlAndroidAnticipateOvershootInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
     Q_PROPERTY(qreal tension READ tension WRITE setTension NOTIFY tensionChanged)
     Q_PROPERTY(qreal extraTension READ extraTension WRITE setExtraTension NOTIFY extraTensionChanged)
 
 public:
-    explicit QtQmlAndroidAnticipateOvershootInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidAnticipateOvershootInterpolator(QObject *parent = 0);
 
     qreal tension() const;
     void setTension(qreal tension);
@@ -29,8 +29,8 @@ protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
 
 private:
-    QtQmlAndroidOptional<qreal> m_tension;
-    QtQmlAndroidOptional<qreal> m_extraTension;
+    QQmlAndroidOptional<qreal> m_tension;
+    QQmlAndroidOptional<qreal> m_extraTension;
 };
 
 QT_END_NAMESPACE

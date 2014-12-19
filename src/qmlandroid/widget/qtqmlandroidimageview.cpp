@@ -3,17 +3,17 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidImageView::QtQmlAndroidImageView(QtQmlAndroidView *parent) :
-    QtQmlAndroidView(parent), m_resource(0)
+QQmlAndroidImageView::QQmlAndroidImageView(QQmlAndroidView *parent) :
+    QQmlAndroidView(parent), m_resource(0)
 {
 }
 
-QUrl QtQmlAndroidImageView::imageURI() const
+QUrl QQmlAndroidImageView::imageURI() const
 {
     return m_uri;
 }
 
-void QtQmlAndroidImageView::setImageURI(const QUrl &uri)
+void QQmlAndroidImageView::setImageURI(const QUrl &uri)
 {
     if (m_uri != uri) {
         m_uri = uri;
@@ -28,12 +28,12 @@ void QtQmlAndroidImageView::setImageURI(const QUrl &uri)
     }
 }
 
-int QtQmlAndroidImageView::imageResource() const
+int QQmlAndroidImageView::imageResource() const
 {
     return m_resource;
 }
 
-void QtQmlAndroidImageView::setImageResource(int resource)
+void QQmlAndroidImageView::setImageResource(int resource)
 {
     if (m_resource != resource) {
         m_resource = resource;
@@ -42,14 +42,14 @@ void QtQmlAndroidImageView::setImageResource(int resource)
     }
 }
 
-int QtQmlAndroidImageView::imageTintColor() const
+int QQmlAndroidImageView::imageTintColor() const
 {
     if (m_tint.isNull())
         return 0; // TODO
     return m_tint.value();
 }
 
-void QtQmlAndroidImageView::setImageTintColor(int color)
+void QQmlAndroidImageView::setImageTintColor(int color)
 {
     if (m_tint.isNull() || m_tint.value() != color) {
         m_tint = color;
@@ -67,16 +67,16 @@ void QtQmlAndroidImageView::setImageTintColor(int color)
     }
 }
 
-QAndroidJniObject QtQmlAndroidImageView::onCreate()
+QAndroidJniObject QQmlAndroidImageView::onCreate()
 {
     return QAndroidJniObject("android/widget/ImageView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidImageView::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidImageView::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidView::onInflate(instance);
+    QQmlAndroidView::onInflate(instance);
 
     if (m_uri.isValid())
         instance.callMethod<void>("setImageURI", "(Landroid/net/Uri;)V", getUri().object());
@@ -91,7 +91,7 @@ void QtQmlAndroidImageView::onInflate(QAndroidJniObject &instance)
     }
 }
 
-QAndroidJniObject QtQmlAndroidImageView::getUri() const
+QAndroidJniObject QQmlAndroidImageView::getUri() const
 {
     QAndroidJniObject str = QAndroidJniObject::fromString(m_uri.toString());
     return QAndroidJniObject::callStaticObjectMethod("android/net/Uri", "parse", "(Ljava/lang/String;)Landroid/net/Uri;", str.object());

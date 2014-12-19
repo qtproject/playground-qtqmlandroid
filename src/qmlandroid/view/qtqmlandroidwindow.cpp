@@ -4,20 +4,20 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidWindow::QtQmlAndroidWindow(QtQmlAndroidContext *context) :
-    QtQmlAndroidContextual(context)
+QQmlAndroidWindow::QQmlAndroidWindow(QQmlAndroidContext *context) :
+    QQmlAndroidContextual(context)
 {
     setContext(context);
 }
 
-int QtQmlAndroidWindow::statusBarColor() const
+int QQmlAndroidWindow::statusBarColor() const
 {
     if (m_statusBarColor.isNull())
         return 0; // TODO
     return m_statusBarColor.value();
 }
 
-void QtQmlAndroidWindow::setStatusBarColor(int color)
+void QQmlAndroidWindow::setStatusBarColor(int color)
 {
     if (m_statusBarColor.isNull() || m_statusBarColor.value() != color) {
         m_statusBarColor = color;
@@ -26,7 +26,7 @@ void QtQmlAndroidWindow::setStatusBarColor(int color)
     }
 }
 
-void QtQmlAndroidWindow::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidWindow::onInflate(QAndroidJniObject &instance)
 {
     if (!m_statusBarColor.isNull()) {
         // TODO: WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS

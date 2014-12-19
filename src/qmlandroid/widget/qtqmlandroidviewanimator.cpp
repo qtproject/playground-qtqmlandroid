@@ -3,19 +3,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidViewAnimator::QtQmlAndroidViewAnimator(QtQmlAndroidView *parent) :
-    QtQmlAndroidFrameLayout(parent)
+QQmlAndroidViewAnimator::QQmlAndroidViewAnimator(QQmlAndroidView *parent) :
+    QQmlAndroidFrameLayout(parent)
 {
 }
 
-int QtQmlAndroidViewAnimator::displayedChild() const
+int QQmlAndroidViewAnimator::displayedChild() const
 {
     if (m_displayedChild.isNull())
         return 0;
     return m_displayedChild.value();
 }
 
-void QtQmlAndroidViewAnimator::setDisplayedChild(int child)
+void QQmlAndroidViewAnimator::setDisplayedChild(int child)
 {
     if (child != displayedChild()) {
         m_displayedChild = child;
@@ -24,14 +24,14 @@ void QtQmlAndroidViewAnimator::setDisplayedChild(int child)
     }
 }
 
-int QtQmlAndroidViewAnimator::inAnimation() const
+int QQmlAndroidViewAnimator::inAnimation() const
 {
     if (m_inAnimation.isNull())
         return -1;
     return m_inAnimation.value();
 }
 
-void QtQmlAndroidViewAnimator::setInAnimation(int animation)
+void QQmlAndroidViewAnimator::setInAnimation(int animation)
 {
     if (animation != inAnimation()) {
         m_inAnimation = animation;
@@ -45,14 +45,14 @@ void QtQmlAndroidViewAnimator::setInAnimation(int animation)
     }
 }
 
-int QtQmlAndroidViewAnimator::outAnimation() const
+int QQmlAndroidViewAnimator::outAnimation() const
 {
     if (m_outAnimation.isNull())
         return -1;
     return m_outAnimation.value();
 }
 
-void QtQmlAndroidViewAnimator::setOutAnimation(int animation)
+void QQmlAndroidViewAnimator::setOutAnimation(int animation)
 {
     if (animation != outAnimation()) {
         m_outAnimation = animation;
@@ -66,26 +66,26 @@ void QtQmlAndroidViewAnimator::setOutAnimation(int animation)
     }
 }
 
-void QtQmlAndroidViewAnimator::showNext()
+void QQmlAndroidViewAnimator::showNext()
 {
     QtQmlAndroid::callVoidMethod(instance(), "showNext");
 }
 
-void QtQmlAndroidViewAnimator::showPrevious()
+void QQmlAndroidViewAnimator::showPrevious()
 {
     QtQmlAndroid::callVoidMethod(instance(), "showPrevious");
 }
 
-QAndroidJniObject QtQmlAndroidViewAnimator::onCreate()
+QAndroidJniObject QQmlAndroidViewAnimator::onCreate()
 {
     return QAndroidJniObject("android/widget/ViewAnimator",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidViewAnimator::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidViewAnimator::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidFrameLayout::onInflate(instance);
+    QQmlAndroidFrameLayout::onInflate(instance);
 
     if (!m_displayedChild.isNull())
         instance.callMethod<void>("setDisplayedChild", "(I)V", m_displayedChild.value());

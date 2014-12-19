@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidAccelerateDecelerateInterpolator : public QtQmlAndroidInterpolator
+class QQmlAndroidAccelerateDecelerateInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidAccelerateDecelerateInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidAccelerateDecelerateInterpolator(QObject *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

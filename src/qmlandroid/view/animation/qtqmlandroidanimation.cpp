@@ -4,19 +4,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidAnimation::QtQmlAndroidAnimation(QObject *parent) :
-    QtQmlAndroidContextual(parent), m_interpolator(0)
+QQmlAndroidAnimation::QQmlAndroidAnimation(QObject *parent) :
+    QQmlAndroidContextual(parent), m_interpolator(0)
 {
 }
 
-int QtQmlAndroidAnimation::resource() const
+int QQmlAndroidAnimation::resource() const
 {
     if (m_resource.isNull())
         return 0;
     return m_resource.value();
 }
 
-void QtQmlAndroidAnimation::setResource(int resource)
+void QQmlAndroidAnimation::setResource(int resource)
 {
     if (m_resource.isNull() || m_resource.value() != resource) {
         m_resource = resource;
@@ -24,14 +24,14 @@ void QtQmlAndroidAnimation::setResource(int resource)
     }
 }
 
-int QtQmlAndroidAnimation::duration() const
+int QQmlAndroidAnimation::duration() const
 {
     if (m_duration.isNull())
         return 0;
     return m_duration.value();
 }
 
-void QtQmlAndroidAnimation::setDuration(int duration)
+void QQmlAndroidAnimation::setDuration(int duration)
 {
     if (m_duration.isNull() || m_duration.value() != duration) {
         m_duration = duration;
@@ -40,14 +40,14 @@ void QtQmlAndroidAnimation::setDuration(int duration)
     }
 }
 
-bool QtQmlAndroidAnimation::fillAfter() const
+bool QQmlAndroidAnimation::fillAfter() const
 {
     if (m_fillAfter.isNull())
         return false;
     return m_fillAfter.value();
 }
 
-void QtQmlAndroidAnimation::setFillAfter(bool fill)
+void QQmlAndroidAnimation::setFillAfter(bool fill)
 {
     if (m_fillAfter.isNull() || m_fillAfter.value() != fill) {
         m_fillAfter = fill;
@@ -56,14 +56,14 @@ void QtQmlAndroidAnimation::setFillAfter(bool fill)
     }
 }
 
-bool QtQmlAndroidAnimation::fillBefore() const
+bool QQmlAndroidAnimation::fillBefore() const
 {
     if (m_fillBefore.isNull())
         return true;
     return m_fillBefore.value();
 }
 
-void QtQmlAndroidAnimation::setFillBefore(bool fill)
+void QQmlAndroidAnimation::setFillBefore(bool fill)
 {
     if (m_fillBefore.isNull() || m_fillBefore.value() != fill) {
         m_fillBefore = fill;
@@ -72,14 +72,14 @@ void QtQmlAndroidAnimation::setFillBefore(bool fill)
     }
 }
 
-bool QtQmlAndroidAnimation::fillEnabled() const
+bool QQmlAndroidAnimation::fillEnabled() const
 {
     if (!m_fillEnabled.isNull())
         return false;
     return m_fillEnabled.value();
 }
 
-void QtQmlAndroidAnimation::setFillEnabled(bool fill)
+void QQmlAndroidAnimation::setFillEnabled(bool fill)
 {
     if (m_fillEnabled.isNull() || m_fillEnabled.value()!= fill) {
         m_fillEnabled = fill;
@@ -88,35 +88,35 @@ void QtQmlAndroidAnimation::setFillEnabled(bool fill)
     }
 }
 
-QtQmlAndroidInterpolator *QtQmlAndroidAnimation::interpolator() const
+QQmlAndroidInterpolator *QQmlAndroidAnimation::interpolator() const
 {
     return m_interpolator;
 }
 
-void QtQmlAndroidAnimation::setInterpolator(QtQmlAndroidInterpolator *interpolator)
+void QQmlAndroidAnimation::setInterpolator(QQmlAndroidInterpolator *interpolator)
 {
     if (m_interpolator != interpolator) {
         if (m_interpolator) {
-            disconnect(m_interpolator, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidAnimation::updateInterpolator);
+            disconnect(m_interpolator, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidAnimation::updateInterpolator);
             m_interpolator->destruct();
         }
         m_interpolator = interpolator;
         if (m_interpolator) {
-            connect(m_interpolator, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidAnimation::updateInterpolator);
+            connect(m_interpolator, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidAnimation::updateInterpolator);
             if (isValid())
                 m_interpolator->construct();
         }
     }
 }
 
-int QtQmlAndroidAnimation::repeatCount() const
+int QQmlAndroidAnimation::repeatCount() const
 {
     if (m_repeatCount.isNull())
         return 0;
     return m_repeatCount.value();
 }
 
-void QtQmlAndroidAnimation::setRepeatCount(int count)
+void QQmlAndroidAnimation::setRepeatCount(int count)
 {
     if (m_repeatCount.isNull() || m_repeatCount.value() != count) {
         m_repeatCount = count;
@@ -125,14 +125,14 @@ void QtQmlAndroidAnimation::setRepeatCount(int count)
     }
 }
 
-QtQmlAndroidAnimation::RepeatMode QtQmlAndroidAnimation::repeatMode() const
+QQmlAndroidAnimation::RepeatMode QQmlAndroidAnimation::repeatMode() const
 {
     if (m_repeatMode.isNull())
         return RESTART;
     return m_repeatMode.value();
 }
 
-void QtQmlAndroidAnimation::setRepeatMode(RepeatMode mode)
+void QQmlAndroidAnimation::setRepeatMode(RepeatMode mode)
 {
     if (m_repeatMode.isNull() || m_repeatMode.value() != mode) {
         m_repeatMode = mode;
@@ -141,14 +141,14 @@ void QtQmlAndroidAnimation::setRepeatMode(RepeatMode mode)
     }
 }
 
-int QtQmlAndroidAnimation::startOffset() const
+int QQmlAndroidAnimation::startOffset() const
 {
     if (m_startOffset.isNull())
         return 0;
     return m_startOffset.value();
 }
 
-void QtQmlAndroidAnimation::setStartOffset(int offset)
+void QQmlAndroidAnimation::setStartOffset(int offset)
 {
     if (m_startOffset.isNull() || m_startOffset.value() != offset) {
         m_startOffset = offset;
@@ -157,14 +157,14 @@ void QtQmlAndroidAnimation::setStartOffset(int offset)
     }
 }
 
-QtQmlAndroidAnimation::ZAdjustment QtQmlAndroidAnimation::zAdjustment() const
+QQmlAndroidAnimation::ZAdjustment QQmlAndroidAnimation::zAdjustment() const
 {
     if (m_zAdjustment.isNull())
         return ZORDER_NORMAL;
     return m_zAdjustment.value();
 }
 
-void QtQmlAndroidAnimation::setZAdjustment(ZAdjustment adjustment)
+void QQmlAndroidAnimation::setZAdjustment(ZAdjustment adjustment)
 {
     if (m_zAdjustment.isNull() || m_zAdjustment.value() != adjustment) {
         m_zAdjustment = adjustment;
@@ -173,22 +173,22 @@ void QtQmlAndroidAnimation::setZAdjustment(ZAdjustment adjustment)
     }
 }
 
-void QtQmlAndroidAnimation::cancel()
+void QQmlAndroidAnimation::cancel()
 {
     QtQmlAndroid::callVoidMethod(instance(), "cancel");
 }
 
-void QtQmlAndroidAnimation::start()
+void QQmlAndroidAnimation::start()
 {
     QtQmlAndroid::callVoidMethod(instance(), "start");
 }
 
-void QtQmlAndroidAnimation::startNow()
+void QQmlAndroidAnimation::startNow()
 {
     QtQmlAndroid::callVoidMethod(instance(), "startNow");
 }
 
-QAndroidJniObject QtQmlAndroidAnimation::onCreate()
+QAndroidJniObject QQmlAndroidAnimation::onCreate()
 {
     if (m_resource.isNull())
         return QAndroidJniObject("android/view/animation/Animation");
@@ -200,9 +200,9 @@ QAndroidJniObject QtQmlAndroidAnimation::onCreate()
                                                      m_resource.value());
 }
 
-void QtQmlAndroidAnimation::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidAnimation::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidContextual::onInflate(instance);
+    QQmlAndroidContextual::onInflate(instance);
 
     if (m_resource.isNull()) {
         if (!m_duration.isNull())
@@ -224,13 +224,13 @@ void QtQmlAndroidAnimation::onInflate(QAndroidJniObject &instance)
     }
 }
 
-void QtQmlAndroidAnimation::objectChange(ObjectChange change)
+void QQmlAndroidAnimation::objectChange(ObjectChange change)
 {
     if (change == InstanceChange)
         updateInterpolator();
 }
 
-void QtQmlAndroidAnimation::updateInterpolator()
+void QQmlAndroidAnimation::updateInterpolator()
 {
     if (!isValid() || !m_interpolator || !m_interpolator->isValid())
         return;

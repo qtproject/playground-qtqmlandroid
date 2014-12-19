@@ -2,21 +2,21 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidViewSwitcher::QtQmlAndroidViewSwitcher(QtQmlAndroidView *parent) :
-    QtQmlAndroidViewAnimator(parent)
+QQmlAndroidViewSwitcher::QQmlAndroidViewSwitcher(QQmlAndroidView *parent) :
+    QQmlAndroidViewAnimator(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidViewSwitcher::onCreate()
+QAndroidJniObject QQmlAndroidViewSwitcher::onCreate()
 {
     return QAndroidJniObject("android/widget/ViewSwitcher",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidViewSwitcher::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidViewSwitcher::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidViewAnimator::onInflate(instance);
+    QQmlAndroidViewAnimator::onInflate(instance);
 }
 
 QT_END_NAMESPACE

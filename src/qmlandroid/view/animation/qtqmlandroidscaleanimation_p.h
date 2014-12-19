@@ -5,7 +5,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidScaleAnimation : public QtQmlAndroidAnimation
+class QQmlAndroidScaleAnimation : public QQmlAndroidAnimation
 {
     Q_OBJECT
     Q_PROPERTY(qreal fromXScale READ fromXScale WRITE setFromXScale NOTIFY fromXScaleChanged)
@@ -18,7 +18,7 @@ class QtQmlAndroidScaleAnimation : public QtQmlAndroidAnimation
     Q_PROPERTY(Relation pivotYType READ pivotYType WRITE setPivotYType NOTIFY pivotYTypeChanged)
 
 public:
-    explicit QtQmlAndroidScaleAnimation(QObject *parent = 0);
+    explicit QQmlAndroidScaleAnimation(QObject *parent = 0);
 
     qreal fromXScale() const;
     void setFromXScale(qreal scale);

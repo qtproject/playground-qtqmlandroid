@@ -5,14 +5,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidToggleButton : public QtQmlAndroidCompoundButton
+class QQmlAndroidToggleButton : public QQmlAndroidCompoundButton
 {
     Q_OBJECT
     Q_PROPERTY(QString textOn READ textOn WRITE setTextOn NOTIFY textOnChanged)
     Q_PROPERTY(QString textOff READ textOff WRITE setTextOff NOTIFY textOffChanged)
 
 public:
-    explicit QtQmlAndroidToggleButton(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidToggleButton(QQmlAndroidView *parent = 0);
 
     QString textOn() const;
     void setTextOn(const QString &text);

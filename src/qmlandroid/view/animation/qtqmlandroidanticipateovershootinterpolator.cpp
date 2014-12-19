@@ -2,19 +2,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidAnticipateOvershootInterpolator::QtQmlAndroidAnticipateOvershootInterpolator(QObject *parent) :
-    QtQmlAndroidInterpolator(parent)
+QQmlAndroidAnticipateOvershootInterpolator::QQmlAndroidAnticipateOvershootInterpolator(QObject *parent) :
+    QQmlAndroidInterpolator(parent)
 {
 }
 
-qreal QtQmlAndroidAnticipateOvershootInterpolator::tension() const
+qreal QQmlAndroidAnticipateOvershootInterpolator::tension() const
 {
     if (m_tension.isNull())
         return 1.0;
     return m_tension.value();
 }
 
-void QtQmlAndroidAnticipateOvershootInterpolator::setTension(qreal tension)
+void QQmlAndroidAnticipateOvershootInterpolator::setTension(qreal tension)
 {
     if (m_tension.isNull() || m_tension.value() != tension) {
         m_tension = tension;
@@ -22,14 +22,14 @@ void QtQmlAndroidAnticipateOvershootInterpolator::setTension(qreal tension)
     }
 }
 
-qreal QtQmlAndroidAnticipateOvershootInterpolator::extraTension() const
+qreal QQmlAndroidAnticipateOvershootInterpolator::extraTension() const
 {
     if (m_extraTension.isNull())
         return 1.0;
     return m_extraTension.value();
 }
 
-void QtQmlAndroidAnticipateOvershootInterpolator::setExtraTension(qreal tension)
+void QQmlAndroidAnticipateOvershootInterpolator::setExtraTension(qreal tension)
 {
     if (m_extraTension.isNull() || m_extraTension.value() != tension) {
         m_extraTension = tension;
@@ -37,7 +37,7 @@ void QtQmlAndroidAnticipateOvershootInterpolator::setExtraTension(qreal tension)
     }
 }
 
-QAndroidJniObject QtQmlAndroidAnticipateOvershootInterpolator::onCreate()
+QAndroidJniObject QQmlAndroidAnticipateOvershootInterpolator::onCreate()
 {
     if (m_tension.isNull() && m_extraTension.isNull())
         return QAndroidJniObject("android/view/animation/AnticipateOvershootInterpolator");

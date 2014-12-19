@@ -12,7 +12,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidObject : public QObject, public QQmlParserStatus
+class QQmlAndroidObject : public QObject, public QQmlParserStatus
 {
     Q_OBJECT
     Q_PROPERTY(QQmlListProperty<QObject> data READ data NOTIFY dataChanged)
@@ -20,7 +20,7 @@ class QtQmlAndroidObject : public QObject, public QQmlParserStatus
     Q_INTERFACES(QQmlParserStatus)
 
 public:
-    explicit QtQmlAndroidObject(QObject *parent = 0);
+    explicit QQmlAndroidObject(QObject *parent = 0);
 
     bool isValid() const;
     QAndroidJniObject instance() const;
@@ -63,7 +63,7 @@ private:
 
     bool m_complete;
     QAndroidJniObject m_instance;
-    friend class QtQmlAndroidActivity;
+    friend class QQmlAndroidActivity;
 };
 
 QT_END_NAMESPACE

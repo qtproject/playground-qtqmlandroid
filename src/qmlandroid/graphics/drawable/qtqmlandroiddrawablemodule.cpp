@@ -11,8 +11,8 @@ namespace QtQmlAndroid {
 
 void registerDrawableModule(const char *uri)
 {
-    qmlRegisterType<QtQmlAndroidColorDrawable>(uri, 0, 21, "ColorDrawable");
-    qmlRegisterType<QtQmlAndroidDrawable>(uri, 0, 21, "Drawable");
+    qmlRegisterType<QQmlAndroidColorDrawable>(uri, 0, 21, "ColorDrawable");
+    qmlRegisterType<QQmlAndroidDrawable>(uri, 0, 21, "Drawable");
 }
 
 }

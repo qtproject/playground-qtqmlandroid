@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidLinearInterpolator : public QtQmlAndroidInterpolator
+class QQmlAndroidLinearInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidLinearInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidLinearInterpolator(QObject *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidSpinner : public QtQmlAndroidAdapterView // TODO: AbsSpinner
+class QQmlAndroidSpinner : public QQmlAndroidAdapterView // TODO: AbsSpinner
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidSpinner(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidSpinner(QQmlAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

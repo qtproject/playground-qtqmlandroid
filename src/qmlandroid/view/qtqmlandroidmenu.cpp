@@ -3,30 +3,30 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidMenu::QtQmlAndroidMenu(QObject *parent) :
-    QtQmlAndroidContextual(parent)
+QQmlAndroidMenu::QQmlAndroidMenu(QObject *parent) :
+    QQmlAndroidContextual(parent)
 {
 }
 
-QList<QtQmlAndroidMenuItem *> QtQmlAndroidMenu::items() const
+QList<QQmlAndroidMenuItem *> QQmlAndroidMenu::items() const
 {
-    QList<QtQmlAndroidMenuItem *> lst;
+    QList<QQmlAndroidMenuItem *> lst;
     foreach (QObject *child, children()) {
-        QtQmlAndroidMenuItem *item = qobject_cast<QtQmlAndroidMenuItem *>(child);
+        QQmlAndroidMenuItem *item = qobject_cast<QQmlAndroidMenuItem *>(child);
         if (item)
             lst += item;
     }
     return lst;
 }
 
-QAndroidJniObject QtQmlAndroidMenu::onCreate()
+QAndroidJniObject QQmlAndroidMenu::onCreate()
 {
     return QAndroidJniObject("qt/android/view/QtMenu");
 }
 
-void QtQmlAndroidMenu::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidMenu::onInflate(QAndroidJniObject &instance)
 {
-    foreach (QtQmlAndroidMenuItem *item, items()) {
+    foreach (QQmlAndroidMenuItem *item, items()) {
         item->construct();
         if (item->isValid())
             instance.callMethod<void>("add", "(Lqt/android/view/QtMenuItem;)V", item->instance().object());

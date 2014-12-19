@@ -6,13 +6,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidAccelerateInterpolator : public QtQmlAndroidInterpolator
+class QQmlAndroidAccelerateInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
     Q_PROPERTY(qreal factor READ factor WRITE setFactor NOTIFY factorChanged)
 
 public:
-    explicit QtQmlAndroidAccelerateInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidAccelerateInterpolator(QObject *parent = 0);
 
     qreal factor() const;
     void setFactor(qreal factor);
@@ -24,7 +24,7 @@ protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
 
 private:
-    QtQmlAndroidOptional<qreal> m_factor;
+    QQmlAndroidOptional<qreal> m_factor;
 };
 
 QT_END_NAMESPACE

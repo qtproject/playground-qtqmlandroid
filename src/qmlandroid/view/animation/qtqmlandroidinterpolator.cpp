@@ -2,12 +2,12 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidInterpolator::QtQmlAndroidInterpolator(QObject *parent) :
-    QtQmlAndroidObject(parent)
+QQmlAndroidInterpolator::QQmlAndroidInterpolator(QObject *parent) :
+    QQmlAndroidObject(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidInterpolator::onCreate()
+QAndroidJniObject QQmlAndroidInterpolator::onCreate()
 {
     return QAndroidJniObject();
 }

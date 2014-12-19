@@ -3,17 +3,17 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidToggleButton::QtQmlAndroidToggleButton(QtQmlAndroidView *parent) :
-    QtQmlAndroidCompoundButton(parent)
+QQmlAndroidToggleButton::QQmlAndroidToggleButton(QQmlAndroidView *parent) :
+    QQmlAndroidCompoundButton(parent)
 {
 }
 
-QString QtQmlAndroidToggleButton::textOn() const
+QString QQmlAndroidToggleButton::textOn() const
 {
     return m_textOn;
 }
 
-void QtQmlAndroidToggleButton::setTextOn(const QString &text)
+void QQmlAndroidToggleButton::setTextOn(const QString &text)
 {
     if (m_textOn != text) {
         m_textOn = text;
@@ -22,12 +22,12 @@ void QtQmlAndroidToggleButton::setTextOn(const QString &text)
     }
 }
 
-QString QtQmlAndroidToggleButton::textOff() const
+QString QQmlAndroidToggleButton::textOff() const
 {
     return m_textOff;
 }
 
-void QtQmlAndroidToggleButton::setTextOff(const QString &text)
+void QQmlAndroidToggleButton::setTextOff(const QString &text)
 {
     if (m_textOff != text) {
         m_textOff = text;
@@ -36,16 +36,16 @@ void QtQmlAndroidToggleButton::setTextOff(const QString &text)
     }
 }
 
-QAndroidJniObject QtQmlAndroidToggleButton::onCreate()
+QAndroidJniObject QQmlAndroidToggleButton::onCreate()
 {
     return QAndroidJniObject("android/widget/ToggleButton",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidToggleButton::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidToggleButton::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidCompoundButton::onInflate(instance);
+    QQmlAndroidCompoundButton::onInflate(instance);
 
     if (!m_textOn.isNull())
         instance.callMethod<void>("setTextOn", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_textOn).object());

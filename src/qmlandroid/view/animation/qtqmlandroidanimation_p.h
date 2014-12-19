@@ -6,9 +6,9 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidInterpolator;
+class QQmlAndroidInterpolator;
 
-class QtQmlAndroidAnimation : public QtQmlAndroidContextual
+class QQmlAndroidAnimation : public QQmlAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(int resource READ resource WRITE setResource NOTIFY resourceChanged)
@@ -16,7 +16,7 @@ class QtQmlAndroidAnimation : public QtQmlAndroidContextual
     Q_PROPERTY(bool fillAfter READ fillAfter WRITE setFillAfter NOTIFY fillAfterChanged)
     Q_PROPERTY(bool fillBefore READ fillBefore WRITE setFillBefore NOTIFY fillBeforeChanged)
     Q_PROPERTY(bool fillEnabled READ fillEnabled WRITE setFillEnabled NOTIFY fillEnabledChanged)
-    Q_PROPERTY(QtQmlAndroidInterpolator *interpolator READ interpolator WRITE setInterpolator NOTIFY interpolatorChanged)
+    Q_PROPERTY(QQmlAndroidInterpolator *interpolator READ interpolator WRITE setInterpolator NOTIFY interpolatorChanged)
     Q_PROPERTY(int repeatCount READ repeatCount WRITE setRepeatCount NOTIFY repeatCountChanged)
     Q_PROPERTY(RepeatMode repeatMode READ repeatMode WRITE setRepeatMode NOTIFY repeatModeChanged)
     Q_PROPERTY(int startOffset READ startOffset WRITE setStartOffset NOTIFY startOffsetChanged)
@@ -24,7 +24,7 @@ class QtQmlAndroidAnimation : public QtQmlAndroidContextual
     Q_ENUMS(RepeatMode ZAdjustment Infinity Relation)
 
 public:
-    explicit QtQmlAndroidAnimation(QObject *parent = 0);
+    explicit QQmlAndroidAnimation(QObject *parent = 0);
 
     int resource() const;
     void setResource(int resource);
@@ -51,8 +51,8 @@ public:
     bool fillEnabled() const;
     void setFillEnabled(bool enabled);
 
-    QtQmlAndroidInterpolator *interpolator() const;
-    void setInterpolator(QtQmlAndroidInterpolator *interpolator);
+    QQmlAndroidInterpolator *interpolator() const;
+    void setInterpolator(QQmlAndroidInterpolator *interpolator);
 
     int repeatCount() const;
     void setRepeatCount(int count);
@@ -104,16 +104,16 @@ private Q_SLOTS:
     void updateInterpolator();
 
 private:
-    QtQmlAndroidOptional<int> m_resource;
-    QtQmlAndroidOptional<int> m_duration;
-    QtQmlAndroidOptional<bool> m_fillAfter;
-    QtQmlAndroidOptional<bool> m_fillBefore;
-    QtQmlAndroidOptional<bool> m_fillEnabled;
-    QtQmlAndroidInterpolator *m_interpolator;
-    QtQmlAndroidOptional<int> m_repeatCount;
-    QtQmlAndroidOptional<RepeatMode> m_repeatMode;
-    QtQmlAndroidOptional<int> m_startOffset;
-    QtQmlAndroidOptional<ZAdjustment> m_zAdjustment;
+    QQmlAndroidOptional<int> m_resource;
+    QQmlAndroidOptional<int> m_duration;
+    QQmlAndroidOptional<bool> m_fillAfter;
+    QQmlAndroidOptional<bool> m_fillBefore;
+    QQmlAndroidOptional<bool> m_fillEnabled;
+    QQmlAndroidInterpolator *m_interpolator;
+    QQmlAndroidOptional<int> m_repeatCount;
+    QQmlAndroidOptional<RepeatMode> m_repeatMode;
+    QQmlAndroidOptional<int> m_startOffset;
+    QQmlAndroidOptional<ZAdjustment> m_zAdjustment;
 };
 
 QT_END_NAMESPACE

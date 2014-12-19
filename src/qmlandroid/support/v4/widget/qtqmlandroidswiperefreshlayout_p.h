@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidSwipeRefreshLayout : public QtQmlAndroidViewGroup
+class QQmlAndroidSwipeRefreshLayout : public QQmlAndroidViewGroup
 {
     Q_OBJECT
     Q_PROPERTY(bool refreshing READ isRefreshing WRITE setRefreshing NOTIFY refreshingChanged)
 
 public:
-    explicit QtQmlAndroidSwipeRefreshLayout(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidSwipeRefreshLayout(QQmlAndroidView *parent = 0);
 
     bool isRefreshing() const;
     void setRefreshing(bool refreshing);

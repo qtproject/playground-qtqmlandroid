@@ -2,19 +2,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidBaseAdapter::QtQmlAndroidBaseAdapter(QObject *parent) :
-    QtQmlAndroidContextual(parent)
+QQmlAndroidBaseAdapter::QQmlAndroidBaseAdapter(QObject *parent) :
+    QQmlAndroidContextual(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidBaseAdapter::onCreate()
+QAndroidJniObject QQmlAndroidBaseAdapter::onCreate()
 {
     return QAndroidJniObject("android/widget/BaseAdapter");
 }
 
-void QtQmlAndroidBaseAdapter::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidBaseAdapter::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidContextual::onInflate(instance);
+    QQmlAndroidContextual::onInflate(instance);
 }
 
 QT_END_NAMESPACE

@@ -5,22 +5,22 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidRelativeLayoutParams : public QtQmlAndroidMarginLayoutParams
+class QQmlAndroidRelativeLayoutParams : public QQmlAndroidMarginLayoutParams
 {
     Q_OBJECT
-    Q_PROPERTY(QtQmlAndroidView *above READ above WRITE setAbove NOTIFY aboveChanged)
-    Q_PROPERTY(QtQmlAndroidView *below READ below WRITE setBelow NOTIFY belowChanged)
-    Q_PROPERTY(QtQmlAndroidView *alignTop READ alignTop WRITE setAlignTop NOTIFY alignTopChanged)
-    Q_PROPERTY(QtQmlAndroidView *alignLeft READ alignLeft WRITE setAlignLeft NOTIFY alignLeftChanged)
-    Q_PROPERTY(QtQmlAndroidView *alignRight READ alignRight WRITE setAlignRight NOTIFY alignRightChanged)
-    Q_PROPERTY(QtQmlAndroidView *alignBottom READ alignBottom WRITE setAlignBottom NOTIFY alignBottomChanged)
-    Q_PROPERTY(QtQmlAndroidView *alignStart READ alignStart WRITE setAlignStart NOTIFY alignStartChanged)
-    Q_PROPERTY(QtQmlAndroidView *alignEnd READ alignEnd WRITE setAlignEnd NOTIFY alignEndChanged)
-    Q_PROPERTY(QtQmlAndroidView *alignBaseline READ alignBaseline WRITE setAlignBaseline NOTIFY alignBaselineChanged)
-    Q_PROPERTY(QtQmlAndroidView *toLeftOf READ toLeftOf WRITE setToLeftOf NOTIFY toLeftOfChanged)
-    Q_PROPERTY(QtQmlAndroidView *toRightOf READ toRightOf WRITE setToRightOf NOTIFY toRightOfChanged)
-    Q_PROPERTY(QtQmlAndroidView *toStartOf READ toStartOf WRITE setToStartOf NOTIFY toStartOfChanged)
-    Q_PROPERTY(QtQmlAndroidView *toEndOf READ toEndOf WRITE setToEndOf NOTIFY toEndOfChanged)
+    Q_PROPERTY(QQmlAndroidView *above READ above WRITE setAbove NOTIFY aboveChanged)
+    Q_PROPERTY(QQmlAndroidView *below READ below WRITE setBelow NOTIFY belowChanged)
+    Q_PROPERTY(QQmlAndroidView *alignTop READ alignTop WRITE setAlignTop NOTIFY alignTopChanged)
+    Q_PROPERTY(QQmlAndroidView *alignLeft READ alignLeft WRITE setAlignLeft NOTIFY alignLeftChanged)
+    Q_PROPERTY(QQmlAndroidView *alignRight READ alignRight WRITE setAlignRight NOTIFY alignRightChanged)
+    Q_PROPERTY(QQmlAndroidView *alignBottom READ alignBottom WRITE setAlignBottom NOTIFY alignBottomChanged)
+    Q_PROPERTY(QQmlAndroidView *alignStart READ alignStart WRITE setAlignStart NOTIFY alignStartChanged)
+    Q_PROPERTY(QQmlAndroidView *alignEnd READ alignEnd WRITE setAlignEnd NOTIFY alignEndChanged)
+    Q_PROPERTY(QQmlAndroidView *alignBaseline READ alignBaseline WRITE setAlignBaseline NOTIFY alignBaselineChanged)
+    Q_PROPERTY(QQmlAndroidView *toLeftOf READ toLeftOf WRITE setToLeftOf NOTIFY toLeftOfChanged)
+    Q_PROPERTY(QQmlAndroidView *toRightOf READ toRightOf WRITE setToRightOf NOTIFY toRightOfChanged)
+    Q_PROPERTY(QQmlAndroidView *toStartOf READ toStartOf WRITE setToStartOf NOTIFY toStartOfChanged)
+    Q_PROPERTY(QQmlAndroidView *toEndOf READ toEndOf WRITE setToEndOf NOTIFY toEndOfChanged)
     Q_PROPERTY(bool alignParentTop READ alignParentTop WRITE setAlignParentTop NOTIFY alignParentTopChanged)
     Q_PROPERTY(bool alignParentLeft READ alignParentLeft WRITE setAlignParentLeft NOTIFY alignParentLeftChanged)
     Q_PROPERTY(bool alignParentRight READ alignParentRight WRITE setAlignParentRight NOTIFY alignParentRightChanged)
@@ -33,46 +33,46 @@ class QtQmlAndroidRelativeLayoutParams : public QtQmlAndroidMarginLayoutParams
     Q_PROPERTY(bool centerInParent READ centerInParent WRITE setCenterInParent NOTIFY centerInParentChanged)
 
 public:
-    explicit QtQmlAndroidRelativeLayoutParams(QtQmlAndroidView *view);
+    explicit QQmlAndroidRelativeLayoutParams(QQmlAndroidView *view);
 
-    QtQmlAndroidView *above() const;
-    void setAbove(QtQmlAndroidView *view);
+    QQmlAndroidView *above() const;
+    void setAbove(QQmlAndroidView *view);
 
-    QtQmlAndroidView *below() const;
-    void setBelow(QtQmlAndroidView *view);
+    QQmlAndroidView *below() const;
+    void setBelow(QQmlAndroidView *view);
 
-    QtQmlAndroidView *alignTop() const;
-    void setAlignTop(QtQmlAndroidView *view);
+    QQmlAndroidView *alignTop() const;
+    void setAlignTop(QQmlAndroidView *view);
 
-    QtQmlAndroidView *alignLeft() const;
-    void setAlignLeft(QtQmlAndroidView *view);
+    QQmlAndroidView *alignLeft() const;
+    void setAlignLeft(QQmlAndroidView *view);
 
-    QtQmlAndroidView *alignRight() const;
-    void setAlignRight(QtQmlAndroidView *view);
+    QQmlAndroidView *alignRight() const;
+    void setAlignRight(QQmlAndroidView *view);
 
-    QtQmlAndroidView *alignBottom() const;
-    void setAlignBottom(QtQmlAndroidView *view);
+    QQmlAndroidView *alignBottom() const;
+    void setAlignBottom(QQmlAndroidView *view);
 
-    QtQmlAndroidView *alignStart() const;
-    void setAlignStart(QtQmlAndroidView *view);
+    QQmlAndroidView *alignStart() const;
+    void setAlignStart(QQmlAndroidView *view);
 
-    QtQmlAndroidView *alignEnd() const;
-    void setAlignEnd(QtQmlAndroidView *view);
+    QQmlAndroidView *alignEnd() const;
+    void setAlignEnd(QQmlAndroidView *view);
 
-    QtQmlAndroidView *alignBaseline() const;
-    void setAlignBaseline(QtQmlAndroidView *view);
+    QQmlAndroidView *alignBaseline() const;
+    void setAlignBaseline(QQmlAndroidView *view);
 
-    QtQmlAndroidView *toLeftOf() const;
-    void setToLeftOf(QtQmlAndroidView *view);
+    QQmlAndroidView *toLeftOf() const;
+    void setToLeftOf(QQmlAndroidView *view);
 
-    QtQmlAndroidView *toRightOf() const;
-    void setToRightOf(QtQmlAndroidView *view);
+    QQmlAndroidView *toRightOf() const;
+    void setToRightOf(QQmlAndroidView *view);
 
-    QtQmlAndroidView *toStartOf() const;
-    void setToStartOf(QtQmlAndroidView *view);
+    QQmlAndroidView *toStartOf() const;
+    void setToStartOf(QQmlAndroidView *view);
 
-    QtQmlAndroidView *toEndOf() const;
-    void setToEndOf(QtQmlAndroidView *view);
+    QQmlAndroidView *toEndOf() const;
+    void setToEndOf(QQmlAndroidView *view);
 
     bool alignParentTop() const;
     void setAlignParentTop(bool align);
@@ -135,19 +135,19 @@ protected:
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
 private:
-    QtQmlAndroidView *m_above;
-    QtQmlAndroidView *m_below;
-    QtQmlAndroidView *m_alignTop;
-    QtQmlAndroidView *m_alignLeft;
-    QtQmlAndroidView *m_alignRight;
-    QtQmlAndroidView *m_alignBottom;
-    QtQmlAndroidView *m_alignStart;
-    QtQmlAndroidView *m_alignEnd;
-    QtQmlAndroidView *m_alignBaseline;
-    QtQmlAndroidView *m_toLeftOf;
-    QtQmlAndroidView *m_toRightOf;
-    QtQmlAndroidView *m_toStartOf;
-    QtQmlAndroidView *m_toEndOf;
+    QQmlAndroidView *m_above;
+    QQmlAndroidView *m_below;
+    QQmlAndroidView *m_alignTop;
+    QQmlAndroidView *m_alignLeft;
+    QQmlAndroidView *m_alignRight;
+    QQmlAndroidView *m_alignBottom;
+    QQmlAndroidView *m_alignStart;
+    QQmlAndroidView *m_alignEnd;
+    QQmlAndroidView *m_alignBaseline;
+    QQmlAndroidView *m_toLeftOf;
+    QQmlAndroidView *m_toRightOf;
+    QQmlAndroidView *m_toStartOf;
+    QQmlAndroidView *m_toEndOf;
 
     bool m_alignParentTop;
     bool m_alignParentLeft;

@@ -2,21 +2,21 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidRadioButton::QtQmlAndroidRadioButton(QtQmlAndroidView *parent) :
-    QtQmlAndroidCompoundButton(parent)
+QQmlAndroidRadioButton::QQmlAndroidRadioButton(QQmlAndroidView *parent) :
+    QQmlAndroidCompoundButton(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidRadioButton::onCreate()
+QAndroidJniObject QQmlAndroidRadioButton::onCreate()
 {
     return QAndroidJniObject("android/widget/RadioButton",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidRadioButton::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidRadioButton::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidCompoundButton::onInflate(instance);
+    QQmlAndroidCompoundButton::onInflate(instance);
 }
 
 QT_END_NAMESPACE

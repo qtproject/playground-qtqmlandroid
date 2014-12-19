@@ -11,25 +11,25 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidActivity::QtQmlAndroidActivity(QObject *parent) :
-    QtQmlAndroidContextWrapper(parent), m_window(new QtQmlAndroidWindow(this)),
+QQmlAndroidActivity::QQmlAndroidActivity(QObject *parent) :
+    QQmlAndroidContextWrapper(parent), m_window(new QQmlAndroidWindow(this)),
     m_contentView(0), m_optionsMenu(0), m_actionBar(0)
 {
     // TODO: multiple activities?
     setInstance(QtAndroid::androidActivity());
 }
 
-QtQmlAndroidWindow *QtQmlAndroidActivity::window() const
+QQmlAndroidWindow *QQmlAndroidActivity::window() const
 {
     return m_window;
 }
 
-QtQmlAndroidActionBar *QtQmlAndroidActivity::actionBar() const
+QQmlAndroidActionBar *QQmlAndroidActivity::actionBar() const
 {
     return m_actionBar;
 }
 
-void QtQmlAndroidActivity::setActionBar(QtQmlAndroidActionBar *bar)
+void QQmlAndroidActivity::setActionBar(QQmlAndroidActionBar *bar)
 {
     if (m_actionBar != bar) {
         if (m_actionBar)
@@ -40,59 +40,59 @@ void QtQmlAndroidActivity::setActionBar(QtQmlAndroidActionBar *bar)
     }
 }
 
-QtQmlAndroidMenu *QtQmlAndroidActivity::optionsMenu() const
+QQmlAndroidMenu *QQmlAndroidActivity::optionsMenu() const
 {
     return m_optionsMenu;
 }
 
-void QtQmlAndroidActivity::setOptionsMenu(QtQmlAndroidMenu *menu)
+void QQmlAndroidActivity::setOptionsMenu(QQmlAndroidMenu *menu)
 {
     if (m_optionsMenu != menu) {
         if (m_optionsMenu) {
-            disconnect(m_optionsMenu, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidActivity::updateOptionsMenu);
+            disconnect(m_optionsMenu, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidActivity::updateOptionsMenu);
             m_optionsMenu->destruct();
         }
         m_optionsMenu = menu;
         if (m_optionsMenu) {
-            connect(m_optionsMenu, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidActivity::updateOptionsMenu);
+            connect(m_optionsMenu, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidActivity::updateOptionsMenu);
             if (isComponentComplete())
                 m_optionsMenu->construct();
         }
     }
 }
 
-QtQmlAndroidView *QtQmlAndroidActivity::contentView() const
+QQmlAndroidView *QQmlAndroidActivity::contentView() const
 {
     return m_contentView;
 }
 
-void QtQmlAndroidActivity::setContentView(QtQmlAndroidView *view)
+void QQmlAndroidActivity::setContentView(QQmlAndroidView *view)
 {
     if (m_contentView != view) {
         if (m_contentView) {
-            disconnect(m_contentView, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidActivity::updateContentView);
+            disconnect(m_contentView, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidActivity::updateContentView);
             m_contentView->destruct();
         }
         m_contentView = view;
         if (m_contentView) {
-            connect(m_contentView, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidActivity::updateContentView);
+            connect(m_contentView, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidActivity::updateContentView);
             if (isComponentComplete())
                 m_contentView->construct();
         }
     }
 }
 
-void QtQmlAndroidActivity::classBegin()
+void QQmlAndroidActivity::classBegin()
 {
-    QtQmlAndroidContextWrapper::classBegin();
+    QQmlAndroidContextWrapper::classBegin();
 }
 
-void QtQmlAndroidActivity::componentComplete()
+void QQmlAndroidActivity::componentComplete()
 {
-    QtQmlAndroidContextWrapper::componentComplete();
+    QQmlAndroidContextWrapper::componentComplete();
 
     foreach (QObject *child, children()) {
-        QtQmlAndroidObject *object = qobject_cast<QtQmlAndroidObject *>(child);
+        QQmlAndroidObject *object = qobject_cast<QQmlAndroidObject *>(child);
         if (object)
             object->construct();
     }
@@ -104,7 +104,7 @@ void QtQmlAndroidActivity::componentComplete()
         setupWindow();
 }
 
-void QtQmlAndroidActivity::setupWindow()
+void QQmlAndroidActivity::setupWindow()
 {
     if (!isValid())
         return;
@@ -116,7 +116,7 @@ void QtQmlAndroidActivity::setupWindow()
     });
 }
 
-void QtQmlAndroidActivity::setupActionBar()
+void QQmlAndroidActivity::setupActionBar()
 {
     if (!isValid())
         return;
@@ -128,7 +128,7 @@ void QtQmlAndroidActivity::setupActionBar()
     });
 }
 
-void QtQmlAndroidActivity::updateOptionsMenu()
+void QQmlAndroidActivity::updateOptionsMenu()
 {
     if (!isValid())
         return;
@@ -143,12 +143,12 @@ void QtQmlAndroidActivity::updateOptionsMenu()
     });
 }
 
-void QtQmlAndroidActivity::invalidateOptionsMenu()
+void QQmlAndroidActivity::invalidateOptionsMenu()
 {
     QtQmlAndroid::callVoidMethod(instance(), "invalidateOptionsMenu");
 }
 
-void QtQmlAndroidActivity::updateContentView()
+void QQmlAndroidActivity::updateContentView()
 {
     if (!isValid())
         return;

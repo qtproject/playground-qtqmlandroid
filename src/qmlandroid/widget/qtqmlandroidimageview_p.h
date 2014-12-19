@@ -7,7 +7,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidImageView : public QtQmlAndroidView
+class QQmlAndroidImageView : public QQmlAndroidView
 {
     Q_OBJECT
     Q_PROPERTY(QUrl imageURI READ imageURI WRITE setImageURI NOTIFY imageURIChanged)
@@ -15,7 +15,7 @@ class QtQmlAndroidImageView : public QtQmlAndroidView
     Q_PROPERTY(int imageTintColor READ imageTintColor WRITE setImageTintColor NOTIFY imageTintColorChanged)
 
 public:
-    explicit QtQmlAndroidImageView(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidImageView(QQmlAndroidView *parent = 0);
 
     QUrl imageURI() const;
     void setImageURI(const QUrl &uri);
@@ -40,7 +40,7 @@ private:
 
     QUrl m_uri;
     int m_resource;
-    QtQmlAndroidOptional<int> m_tint;
+    QQmlAndroidOptional<int> m_tint;
 };
 
 QT_END_NAMESPACE

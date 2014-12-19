@@ -5,9 +5,9 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidView;
+class QQmlAndroidView;
 
-class QtQmlAndroidMenuItem : public QtQmlAndroidContextual
+class QQmlAndroidMenuItem : public QQmlAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
@@ -16,11 +16,11 @@ class QtQmlAndroidMenuItem : public QtQmlAndroidContextual
     Q_PROPERTY(bool checkable READ isCheckable WRITE setCheckable NOTIFY checkableChanged)
     Q_PROPERTY(bool checked READ isChecked WRITE setChecked NOTIFY checkedChanged)
     Q_PROPERTY(int showAs READ showAs WRITE setShowAs NOTIFY showAsChanged)
-    Q_PROPERTY(QtQmlAndroidView *actionView READ actionView WRITE setActionView NOTIFY actionViewChanged)
+    Q_PROPERTY(QQmlAndroidView *actionView READ actionView WRITE setActionView NOTIFY actionViewChanged)
     Q_ENUMS(ShowAs)
 
 public:
-    explicit QtQmlAndroidMenuItem(QObject *parent = 0);
+    explicit QQmlAndroidMenuItem(QObject *parent = 0);
 
     QString title() const;
     void setTitle(const QString &title);
@@ -48,8 +48,8 @@ public:
     int showAs() const;
     void setShowAs(int showAs);
 
-    QtQmlAndroidView *actionView() const;
-    void setActionView(QtQmlAndroidView *view);
+    QQmlAndroidView *actionView() const;
+    void setActionView(QQmlAndroidView *view);
 
 Q_SIGNALS:
     void click();
@@ -82,7 +82,7 @@ private:
     bool m_checkable;
     bool m_checked;
     int m_showAs;
-    QtQmlAndroidView *m_actionView;
+    QQmlAndroidView *m_actionView;
 };
 
 QT_END_NAMESPACE

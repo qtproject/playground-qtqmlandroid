@@ -2,21 +2,21 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidCheckBox::QtQmlAndroidCheckBox(QtQmlAndroidView *parent) :
-    QtQmlAndroidCompoundButton(parent)
+QQmlAndroidCheckBox::QQmlAndroidCheckBox(QQmlAndroidView *parent) :
+    QQmlAndroidCompoundButton(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidCheckBox::onCreate()
+QAndroidJniObject QQmlAndroidCheckBox::onCreate()
 {
     return QAndroidJniObject("android/widget/CheckBox",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidCheckBox::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidCheckBox::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidCompoundButton::onInflate(instance);
+    QQmlAndroidCompoundButton::onInflate(instance);
 }
 
 QT_END_NAMESPACE

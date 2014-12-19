@@ -7,21 +7,21 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidDrawable;
-class QtQmlAndroidAnimation;
-class QtQmlAndroidLayoutParams;
+class QQmlAndroidDrawable;
+class QQmlAndroidAnimation;
+class QQmlAndroidLayoutParams;
 
-class QtQmlAndroidView : public QtQmlAndroidContextual
+class QQmlAndroidView : public QQmlAndroidContextual
 {
     Q_OBJECT
-    Q_PROPERTY(QtQmlAndroidView *parent READ parentView WRITE setParentView NOTIFY parentChanged)
-    Q_PROPERTY(QQmlListProperty<QtQmlAndroidView> children READ children NOTIFY childrenChanged)
+    Q_PROPERTY(QQmlAndroidView *parent READ parentView WRITE setParentView NOTIFY parentChanged)
+    Q_PROPERTY(QQmlListProperty<QQmlAndroidView> children READ children NOTIFY childrenChanged)
 
-    Q_PROPERTY(QtQmlAndroidDrawable *background READ background WRITE setBackground NOTIFY backgroundChanged)
+    Q_PROPERTY(QQmlAndroidDrawable *background READ background WRITE setBackground NOTIFY backgroundChanged)
     Q_PROPERTY(int backgroundColor READ backgroundColor WRITE setBackgroundColor NOTIFY backgroundColorChanged)
     Q_PROPERTY(int backgroundResource READ backgroundResource WRITE setBackgroundResource NOTIFY backgroundResourceChanged)
 
-    Q_PROPERTY(QtQmlAndroidAnimation *animation READ animation WRITE setAnimation NOTIFY animationChanged)
+    Q_PROPERTY(QQmlAndroidAnimation *animation READ animation WRITE setAnimation NOTIFY animationChanged)
 
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
     Q_PROPERTY(bool focus READ hasFocus NOTIFY focusChanged)
@@ -42,23 +42,23 @@ class QtQmlAndroidView : public QtQmlAndroidContextual
     Q_PROPERTY(int paddingBottom READ paddingBottom WRITE setPaddingBottom NOTIFY paddingBottomChanged)
 
 public:
-    explicit QtQmlAndroidView(QtQmlAndroidView *parent = 0);
-    ~QtQmlAndroidView();
+    explicit QQmlAndroidView(QQmlAndroidView *parent = 0);
+    ~QQmlAndroidView();
 
     int identifier() const;
     void setIdentifier(int id);
 
-    QtQmlAndroidView *parentView() const;
-    void setParentView(QtQmlAndroidView *parent);
+    QQmlAndroidView *parentView() const;
+    void setParentView(QQmlAndroidView *parent);
 
-    QList<QtQmlAndroidView *> childViews() const;
-    QQmlListProperty<QtQmlAndroidView> children();
+    QList<QQmlAndroidView *> childViews() const;
+    QQmlListProperty<QQmlAndroidView> children();
 
-    QtQmlAndroidLayoutParams *layoutParams() const;
-    void setLayoutParams(QtQmlAndroidLayoutParams *params);
+    QQmlAndroidLayoutParams *layoutParams() const;
+    void setLayoutParams(QQmlAndroidLayoutParams *params);
 
-    QtQmlAndroidDrawable *background() const;
-    void setBackground(QtQmlAndroidDrawable *background, int resource = 0);
+    QQmlAndroidDrawable *background() const;
+    void setBackground(QQmlAndroidDrawable *background, int resource = 0);
 
     int backgroundColor() const;
     void setBackgroundColor(int color);
@@ -66,8 +66,8 @@ public:
     int backgroundResource() const;
     void setBackgroundResource(int resource);
 
-    QtQmlAndroidAnimation *animation() const;
-    void setAnimation(QtQmlAndroidAnimation *animation);
+    QQmlAndroidAnimation *animation() const;
+    void setAnimation(QQmlAndroidAnimation *animation);
 
     bool isVisible() const;
     void setVisible(bool visible);
@@ -120,11 +120,11 @@ public:
     };
 
     union ViewChangeData {
-        ViewChangeData(QtQmlAndroidView *v) : view(v) {}
+        ViewChangeData(QQmlAndroidView *v) : view(v) {}
         ViewChangeData(qreal n) : number(n) {}
         ViewChangeData(bool b) : boolean(b) {}
 
-        QtQmlAndroidView *view;
+        QQmlAndroidView *view;
         qreal number;
         bool boolean;
     };
@@ -158,13 +158,13 @@ protected:
     virtual void polish();
     virtual void viewChange(ViewChange change, const ViewChangeData &data);
 
-    void addChild(QtQmlAndroidView *child);
-    void removeChild(QtQmlAndroidView *child);
+    void addChild(QQmlAndroidView *child);
+    void removeChild(QQmlAndroidView *child);
 
-    static void children_append(QQmlListProperty<QtQmlAndroidView> *list, QtQmlAndroidView *child);
-    static int children_count(QQmlListProperty<QtQmlAndroidView> *list);
-    static QtQmlAndroidView *children_at(QQmlListProperty<QtQmlAndroidView> *list, int index);
-    static void children_clear(QQmlListProperty<QtQmlAndroidView> *list);
+    static void children_append(QQmlListProperty<QQmlAndroidView> *list, QQmlAndroidView *child);
+    static int children_count(QQmlListProperty<QQmlAndroidView> *list);
+    static QQmlAndroidView *children_at(QQmlListProperty<QQmlAndroidView> *list, int index);
+    static void children_clear(QQmlListProperty<QQmlAndroidView> *list);
 
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
@@ -188,28 +188,28 @@ private Q_SLOTS:
 
 private:
     int m_id;
-    QtQmlAndroidView *m_parent;
-    QList<QtQmlAndroidView *> m_children;
-    QtQmlAndroidDrawable *m_background;
+    QQmlAndroidView *m_parent;
+    QList<QQmlAndroidView *> m_children;
+    QQmlAndroidDrawable *m_background;
     int m_backgroundResource;
-    QtQmlAndroidAnimation *m_animation;
+    QQmlAndroidAnimation *m_animation;
     bool m_polishing;
     bool m_visible;
 
     QAndroidJniObject m_listener;
 
-    QtQmlAndroidLayoutParams *m_layoutParams;
+    QQmlAndroidLayoutParams *m_layoutParams;
 
-    QtQmlAndroidOptional<bool> m_focus;
-    QtQmlAndroidOptional<int> m_top;
-    QtQmlAndroidOptional<int> m_left;
-    QtQmlAndroidOptional<int> m_right;
-    QtQmlAndroidOptional<int> m_bottom;
-    QtQmlAndroidOptional<int> m_padding;
-    QtQmlAndroidOptional<int> m_paddingTop;
-    QtQmlAndroidOptional<int> m_paddingLeft;
-    QtQmlAndroidOptional<int> m_paddingRight;
-    QtQmlAndroidOptional<int> m_paddingBottom;
+    QQmlAndroidOptional<bool> m_focus;
+    QQmlAndroidOptional<int> m_top;
+    QQmlAndroidOptional<int> m_left;
+    QQmlAndroidOptional<int> m_right;
+    QQmlAndroidOptional<int> m_bottom;
+    QQmlAndroidOptional<int> m_padding;
+    QQmlAndroidOptional<int> m_paddingTop;
+    QQmlAndroidOptional<int> m_paddingLeft;
+    QQmlAndroidOptional<int> m_paddingRight;
+    QQmlAndroidOptional<int> m_paddingBottom;
 };
 
 QT_END_NAMESPACE

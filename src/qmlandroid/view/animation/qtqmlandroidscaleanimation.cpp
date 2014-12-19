@@ -2,18 +2,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidScaleAnimation::QtQmlAndroidScaleAnimation(QObject *parent) :
-    QtQmlAndroidAnimation(parent), m_fromX(0), m_fromY(0), m_toX(0), m_toY(0),
+QQmlAndroidScaleAnimation::QQmlAndroidScaleAnimation(QObject *parent) :
+    QQmlAndroidAnimation(parent), m_fromX(0), m_fromY(0), m_toX(0), m_toY(0),
     m_pivotX(0), m_pivotY(0), m_pivotXType(ABSOLUTE), m_pivotYType(ABSOLUTE)
 {
 }
 
-qreal QtQmlAndroidScaleAnimation::fromXScale() const
+qreal QQmlAndroidScaleAnimation::fromXScale() const
 {
     return m_fromX;
 }
 
-void QtQmlAndroidScaleAnimation::setFromXScale(qreal x)
+void QQmlAndroidScaleAnimation::setFromXScale(qreal x)
 {
     if (m_fromX != x) {
         m_fromX = x;
@@ -21,12 +21,12 @@ void QtQmlAndroidScaleAnimation::setFromXScale(qreal x)
     }
 }
 
-qreal QtQmlAndroidScaleAnimation::fromYScale() const
+qreal QQmlAndroidScaleAnimation::fromYScale() const
 {
     return m_fromY;
 }
 
-void QtQmlAndroidScaleAnimation::setFromYScale(qreal y)
+void QQmlAndroidScaleAnimation::setFromYScale(qreal y)
 {
     if (m_fromY != y) {
         m_fromY = y;
@@ -34,12 +34,12 @@ void QtQmlAndroidScaleAnimation::setFromYScale(qreal y)
     }
 }
 
-qreal QtQmlAndroidScaleAnimation::toXScale() const
+qreal QQmlAndroidScaleAnimation::toXScale() const
 {
     return m_toX;
 }
 
-void QtQmlAndroidScaleAnimation::setToXScale(qreal x)
+void QQmlAndroidScaleAnimation::setToXScale(qreal x)
 {
     if (m_toX != x) {
         m_toX = x;
@@ -47,12 +47,12 @@ void QtQmlAndroidScaleAnimation::setToXScale(qreal x)
     }
 }
 
-qreal QtQmlAndroidScaleAnimation::toYScale() const
+qreal QQmlAndroidScaleAnimation::toYScale() const
 {
     return m_toY;
 }
 
-void QtQmlAndroidScaleAnimation::setToYScale(qreal y)
+void QQmlAndroidScaleAnimation::setToYScale(qreal y)
 {
     if (m_toY != y) {
         m_toY = y;
@@ -60,12 +60,12 @@ void QtQmlAndroidScaleAnimation::setToYScale(qreal y)
     }
 }
 
-qreal QtQmlAndroidScaleAnimation::pivotX() const
+qreal QQmlAndroidScaleAnimation::pivotX() const
 {
     return m_pivotX;
 }
 
-void QtQmlAndroidScaleAnimation::setPivotX(qreal pivotX)
+void QQmlAndroidScaleAnimation::setPivotX(qreal pivotX)
 {
     if (m_pivotX != pivotX) {
         m_pivotX = pivotX;
@@ -73,12 +73,12 @@ void QtQmlAndroidScaleAnimation::setPivotX(qreal pivotX)
     }
 }
 
-qreal QtQmlAndroidScaleAnimation::pivotY() const
+qreal QQmlAndroidScaleAnimation::pivotY() const
 {
     return m_pivotY;
 }
 
-void QtQmlAndroidScaleAnimation::setPivotY(qreal pivotY)
+void QQmlAndroidScaleAnimation::setPivotY(qreal pivotY)
 {
     if (m_pivotY != pivotY) {
         m_pivotY = pivotY;
@@ -86,12 +86,12 @@ void QtQmlAndroidScaleAnimation::setPivotY(qreal pivotY)
     }
 }
 
-QtQmlAndroidAnimation::Relation QtQmlAndroidScaleAnimation::pivotXType() const
+QQmlAndroidAnimation::Relation QQmlAndroidScaleAnimation::pivotXType() const
 {
     return m_pivotXType;
 }
 
-void QtQmlAndroidScaleAnimation::setPivotXType(Relation type)
+void QQmlAndroidScaleAnimation::setPivotXType(Relation type)
 {
     if (m_pivotXType != type) {
         m_pivotXType = type;
@@ -99,12 +99,12 @@ void QtQmlAndroidScaleAnimation::setPivotXType(Relation type)
     }
 }
 
-QtQmlAndroidAnimation::Relation QtQmlAndroidScaleAnimation::pivotYType() const
+QQmlAndroidAnimation::Relation QQmlAndroidScaleAnimation::pivotYType() const
 {
     return m_pivotYType;
 }
 
-void QtQmlAndroidScaleAnimation::setPivotYType(Relation type)
+void QQmlAndroidScaleAnimation::setPivotYType(Relation type)
 {
     if (m_pivotYType != type) {
         m_pivotYType = type;
@@ -112,7 +112,7 @@ void QtQmlAndroidScaleAnimation::setPivotYType(Relation type)
     }
 }
 
-QAndroidJniObject QtQmlAndroidScaleAnimation::onCreate()
+QAndroidJniObject QQmlAndroidScaleAnimation::onCreate()
 {
     return QAndroidJniObject("android/view/animation/ScaleAnimation",
                              "(FFFFIFIF)V",

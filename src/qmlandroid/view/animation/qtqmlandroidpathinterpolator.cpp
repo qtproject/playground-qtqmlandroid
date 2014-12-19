@@ -2,19 +2,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidPathInterpolator::QtQmlAndroidPathInterpolator(QObject *parent) :
-    QtQmlAndroidInterpolator(parent)
+QQmlAndroidPathInterpolator::QQmlAndroidPathInterpolator(QObject *parent) :
+    QQmlAndroidInterpolator(parent)
 {
 }
 
-qreal QtQmlAndroidPathInterpolator::controlX() const
+qreal QQmlAndroidPathInterpolator::controlX() const
 {
     if (m_controlX.isNull())
         return 0.0;
     return m_controlX.value();
 }
 
-void QtQmlAndroidPathInterpolator::setControlX(qreal x)
+void QQmlAndroidPathInterpolator::setControlX(qreal x)
 {
     if (m_controlX.isNull() || m_controlX.value() != x) {
         m_controlX = x;
@@ -22,14 +22,14 @@ void QtQmlAndroidPathInterpolator::setControlX(qreal x)
     }
 }
 
-qreal QtQmlAndroidPathInterpolator::controlY() const
+qreal QQmlAndroidPathInterpolator::controlY() const
 {
     if (m_controlY.isNull())
         return 0.0;
     return m_controlY.value();
 }
 
-void QtQmlAndroidPathInterpolator::setControlY(qreal y)
+void QQmlAndroidPathInterpolator::setControlY(qreal y)
 {
     if (m_controlY.isNull() || m_controlY.value() != y) {
         m_controlY = y;
@@ -37,14 +37,14 @@ void QtQmlAndroidPathInterpolator::setControlY(qreal y)
     }
 }
 
-qreal QtQmlAndroidPathInterpolator::controlX2() const
+qreal QQmlAndroidPathInterpolator::controlX2() const
 {
     if (m_controlX2.isNull())
         return 0.0;
     return m_controlX2.value();
 }
 
-void QtQmlAndroidPathInterpolator::setControlX2(qreal x)
+void QQmlAndroidPathInterpolator::setControlX2(qreal x)
 {
     if (m_controlX2.isNull() || m_controlX2.value() != x) {
         m_controlX2 = x;
@@ -52,14 +52,14 @@ void QtQmlAndroidPathInterpolator::setControlX2(qreal x)
     }
 }
 
-qreal QtQmlAndroidPathInterpolator::controlY2() const
+qreal QQmlAndroidPathInterpolator::controlY2() const
 {
     if (m_controlY2.isNull())
         return 0.0;
     return m_controlY2.value();
 }
 
-void QtQmlAndroidPathInterpolator::setControlY2(qreal y)
+void QQmlAndroidPathInterpolator::setControlY2(qreal y)
 {
     if (m_controlY2.isNull() || m_controlY2.value() != y) {
         m_controlY2 = y;
@@ -67,7 +67,7 @@ void QtQmlAndroidPathInterpolator::setControlY2(qreal y)
     }
 }
 
-QAndroidJniObject QtQmlAndroidPathInterpolator::onCreate()
+QAndroidJniObject QQmlAndroidPathInterpolator::onCreate()
 {
     if (!m_controlX.isNull() && !m_controlY.isNull() && !m_controlX2.isNull() && !m_controlY2.isNull())
         return QAndroidJniObject("android/view/animation/PathInterpolator",

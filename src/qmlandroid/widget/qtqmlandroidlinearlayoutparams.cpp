@@ -3,19 +3,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidLinearLayoutParams::QtQmlAndroidLinearLayoutParams(QtQmlAndroidView *view) :
-    QtQmlAndroidMarginLayoutParams(view)
+QQmlAndroidLinearLayoutParams::QQmlAndroidLinearLayoutParams(QQmlAndroidView *view) :
+    QQmlAndroidMarginLayoutParams(view)
 {
 }
 
-int QtQmlAndroidLinearLayoutParams::gravity() const
+int QQmlAndroidLinearLayoutParams::gravity() const
 {
     if (m_gravity.isNull())
         return 0; // TODO
     return m_gravity.value();
 }
 
-void QtQmlAndroidLinearLayoutParams::setGravity(int value)
+void QQmlAndroidLinearLayoutParams::setGravity(int value)
 {
     if (value != gravity()) {
         m_gravity = value;
@@ -24,14 +24,14 @@ void QtQmlAndroidLinearLayoutParams::setGravity(int value)
     }
 }
 
-qreal QtQmlAndroidLinearLayoutParams::weight() const
+qreal QQmlAndroidLinearLayoutParams::weight() const
 {
     if (m_weight.isNull())
         return 0.0; // TODO
     return m_weight.value();
 }
 
-void QtQmlAndroidLinearLayoutParams::setWeight(qreal value)
+void QQmlAndroidLinearLayoutParams::setWeight(qreal value)
 {
     if (value != weight()) {
         m_weight = value;
@@ -40,16 +40,16 @@ void QtQmlAndroidLinearLayoutParams::setWeight(qreal value)
     }
 }
 
-QAndroidJniObject QtQmlAndroidLinearLayoutParams::onCreate()
+QAndroidJniObject QQmlAndroidLinearLayoutParams::onCreate()
 {
     return QAndroidJniObject("android/widget/LinearLayout$LayoutParams",
                              "(II)V",
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtQmlAndroidLinearLayoutParams::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidLinearLayoutParams::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidMarginLayoutParams::onInflate(instance);
+    QQmlAndroidMarginLayoutParams::onInflate(instance);
 
     if (!m_gravity.isNull())
         instance.setField<jint>("gravity", m_gravity.value());

@@ -6,19 +6,19 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidDrawable;
+class QQmlAndroidDrawable;
 
-class QtQmlAndroidActionBar : public QtQmlAndroidObject
+class QQmlAndroidActionBar : public QQmlAndroidObject
 {
     Q_OBJECT
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
     Q_PROPERTY(qreal elevation READ elevation WRITE setElevation NOTIFY elevationChanged)
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
     Q_PROPERTY(QString subtitle READ subtitle WRITE setSubtitle NOTIFY subtitleChanged)
-    Q_PROPERTY(QtQmlAndroidDrawable *background READ background WRITE setBackground NOTIFY backgroundChanged)
+    Q_PROPERTY(QQmlAndroidDrawable *background READ background WRITE setBackground NOTIFY backgroundChanged)
 
 public:
-    explicit QtQmlAndroidActionBar(QObject *parent = 0);
+    explicit QQmlAndroidActionBar(QObject *parent = 0);
 
     bool isVisible() const;
     void setVisible(bool visible);
@@ -32,8 +32,8 @@ public:
     QString subtitle() const;
     void setSubtitle(const QString &subtitle);
 
-    QtQmlAndroidDrawable *background() const;
-    void setBackground(QtQmlAndroidDrawable *background);
+    QQmlAndroidDrawable *background() const;
+    void setBackground(QQmlAndroidDrawable *background);
 
 Q_SIGNALS:
     void visibleChanged();
@@ -55,7 +55,7 @@ private:
     qreal m_elevation;
     QString m_title;
     QString m_subtitle;
-    QtQmlAndroidDrawable *m_background;
+    QQmlAndroidDrawable *m_background;
 };
 
 QT_END_NAMESPACE

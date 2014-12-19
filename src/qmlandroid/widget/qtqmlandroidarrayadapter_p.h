@@ -6,14 +6,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidArrayAdapter : public QtQmlAndroidBaseAdapter
+class QQmlAndroidArrayAdapter : public QQmlAndroidBaseAdapter
 {
     Q_OBJECT
     Q_PROPERTY(int style READ style WRITE setStyle NOTIFY styleChanged)
     Q_PROPERTY(QStringList array READ array WRITE setArray NOTIFY arrayChanged)
 
 public:
-    explicit QtQmlAndroidArrayAdapter(QObject *parent = 0);
+    explicit QQmlAndroidArrayAdapter(QObject *parent = 0);
 
     int style() const;
     void setStyle(int style);

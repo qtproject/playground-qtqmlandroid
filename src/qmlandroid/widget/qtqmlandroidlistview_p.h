@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidListView : public QtQmlAndroidAdapterView // TODO: AbsListView
+class QQmlAndroidListView : public QQmlAndroidAdapterView // TODO: AbsListView
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidListView(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidListView(QQmlAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

@@ -2,19 +2,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidDecelerateInterpolator::QtQmlAndroidDecelerateInterpolator(QObject *parent) :
-    QtQmlAndroidInterpolator(parent)
+QQmlAndroidDecelerateInterpolator::QQmlAndroidDecelerateInterpolator(QObject *parent) :
+    QQmlAndroidInterpolator(parent)
 {
 }
 
-qreal QtQmlAndroidDecelerateInterpolator::factor() const
+qreal QQmlAndroidDecelerateInterpolator::factor() const
 {
     if (m_factor.isNull())
         return 1.0;
     return m_factor.value();
 }
 
-void QtQmlAndroidDecelerateInterpolator::setFactor(qreal factor)
+void QQmlAndroidDecelerateInterpolator::setFactor(qreal factor)
 {
     if (m_factor.isNull() || m_factor.value() != factor) {
         m_factor = factor;
@@ -22,7 +22,7 @@ void QtQmlAndroidDecelerateInterpolator::setFactor(qreal factor)
     }
 }
 
-QAndroidJniObject QtQmlAndroidDecelerateInterpolator::onCreate()
+QAndroidJniObject QQmlAndroidDecelerateInterpolator::onCreate()
 {
     if (m_factor.isNull())
         return QAndroidJniObject("android/view/animation/DecelerateInterpolator");

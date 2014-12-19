@@ -4,42 +4,42 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidDrawerLayout::QtQmlAndroidDrawerLayout(QtQmlAndroidView *parent) :
-    QtQmlAndroidViewGroup(parent)
+QQmlAndroidDrawerLayout::QQmlAndroidDrawerLayout(QQmlAndroidView *parent) :
+    QQmlAndroidViewGroup(parent)
 {
 }
 
-QtQmlAndroidDrawerLayoutParams *QtQmlAndroidDrawerLayout::qmlAttachedProperties(QObject *object)
+QQmlAndroidDrawerLayoutParams *QQmlAndroidDrawerLayout::qmlAttachedProperties(QObject *object)
 {
-    QtQmlAndroidView *view = qobject_cast<QtQmlAndroidView*>(object);
+    QQmlAndroidView *view = qobject_cast<QQmlAndroidView*>(object);
     if (view)
-        return new QtQmlAndroidDrawerLayoutParams(view);
+        return new QQmlAndroidDrawerLayoutParams(view);
     return 0;
 }
 
-void QtQmlAndroidDrawerLayout::closeDrawers()
+void QQmlAndroidDrawerLayout::closeDrawers()
 {
     QtQmlAndroid::callVoidMethod(instance(), "closeDrawers");
 }
 
-void QtQmlAndroidDrawerLayout::closeDrawer(int gravity)
+void QQmlAndroidDrawerLayout::closeDrawer(int gravity)
 {
     QtQmlAndroid::callIntMethod(instance(), "closeDrawer", gravity);
 }
 
-QAndroidJniObject QtQmlAndroidDrawerLayout::onCreate()
+QAndroidJniObject QQmlAndroidDrawerLayout::onCreate()
 {
     return QAndroidJniObject("android/support/v4/widget/DrawerLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidDrawerLayout::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidDrawerLayout::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidViewGroup::onInflate(instance);
+    QQmlAndroidViewGroup::onInflate(instance);
 
     foreach (QObject *child, QObject::children()) {
-        QtQmlAndroidActionBarDrawerToggle *toggle = qobject_cast<QtQmlAndroidActionBarDrawerToggle *>(child);
+        QQmlAndroidActionBarDrawerToggle *toggle = qobject_cast<QQmlAndroidActionBarDrawerToggle *>(child);
         if (toggle)
             toggle->onCreate(ctx(), instance);
     }

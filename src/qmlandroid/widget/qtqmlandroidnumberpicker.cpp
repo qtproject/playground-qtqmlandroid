@@ -3,23 +3,23 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidNumberPicker::QtQmlAndroidNumberPicker(QtQmlAndroidView *parent) :
-    QtQmlAndroidLinearLayout(parent), m_value(0)
+QQmlAndroidNumberPicker::QQmlAndroidNumberPicker(QQmlAndroidView *parent) :
+    QQmlAndroidLinearLayout(parent), m_value(0)
 {
 }
 
-int QtQmlAndroidNumberPicker::value() const
+int QQmlAndroidNumberPicker::value() const
 {
     return m_value;
 }
 
-void QtQmlAndroidNumberPicker::setValue(int value)
+void QQmlAndroidNumberPicker::setValue(int value)
 {
     if (updateValue(value))
         QtQmlAndroid::callIntMethod(instance(), "setValue", value);
 }
 
-bool QtQmlAndroidNumberPicker::updateValue(int value)
+bool QQmlAndroidNumberPicker::updateValue(int value)
 {
     if (m_value != value) {
         m_value = value;
@@ -29,16 +29,16 @@ bool QtQmlAndroidNumberPicker::updateValue(int value)
     return false;
 }
 
-QAndroidJniObject QtQmlAndroidNumberPicker::onCreate()
+QAndroidJniObject QQmlAndroidNumberPicker::onCreate()
 {
     return QAndroidJniObject("android/widget/NumberPicker",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidNumberPicker::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidNumberPicker::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidLinearLayout::onInflate(instance);
+    QQmlAndroidLinearLayout::onInflate(instance);
 
     m_listener = QAndroidJniObject("qt/android/widget/QtNumberPickerListener",
                                    "(Landroid/widget/NumberPicker;J)V",
@@ -54,7 +54,7 @@ void QtQmlAndroidNumberPicker::onInflate(QAndroidJniObject &instance)
     instance.callMethod<void>("setValue", "(I)V", m_value);
 }
 
-void QtQmlAndroidNumberPicker::onRegisterNativeMethods(jobject listener)
+void QQmlAndroidNumberPicker::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onValueChange", "(JI)V", reinterpret_cast<void *>(onValueChange)}};
 
@@ -64,11 +64,11 @@ void QtQmlAndroidNumberPicker::onRegisterNativeMethods(jobject listener)
     env->DeleteLocalRef(cls);
 }
 
-void QtQmlAndroidNumberPicker::onValueChange(JNIEnv *env, jobject object, jlong instance, jint value)
+void QQmlAndroidNumberPicker::onValueChange(JNIEnv *env, jobject object, jlong instance, jint value)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtQmlAndroidNumberPicker *picker = reinterpret_cast<QtQmlAndroidNumberPicker *>(instance);
+    QQmlAndroidNumberPicker *picker = reinterpret_cast<QQmlAndroidNumberPicker *>(instance);
     if (picker)
         QMetaObject::invokeMethod(picker, "updateValue", Qt::QueuedConnection, Q_ARG(int, value));
 }

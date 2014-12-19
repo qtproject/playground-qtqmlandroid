@@ -6,13 +6,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidCycleInterpolator : public QtQmlAndroidInterpolator
+class QQmlAndroidCycleInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
     Q_PROPERTY(qreal cycles READ cycles WRITE setCycles NOTIFY cyclesChanged)
 
 public:
-    explicit QtQmlAndroidCycleInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidCycleInterpolator(QObject *parent = 0);
 
     qreal cycles() const;
     void setCycles(qreal cycles);
@@ -24,7 +24,7 @@ protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
 
 private:
-    QtQmlAndroidOptional<qreal> m_cycles;
+    QQmlAndroidOptional<qreal> m_cycles;
 };
 
 QT_END_NAMESPACE

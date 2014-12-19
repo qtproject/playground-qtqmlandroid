@@ -5,20 +5,20 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidContext;
+class QQmlAndroidContext;
 
-class QtQmlAndroidContextual : public QtQmlAndroidObject
+class QQmlAndroidContextual : public QQmlAndroidObject
 {
     Q_OBJECT
-    Q_PROPERTY(QtQmlAndroidContext *context READ context NOTIFY contextChanged)
+    Q_PROPERTY(QQmlAndroidContext *context READ context NOTIFY contextChanged)
 
 public:
-    explicit QtQmlAndroidContextual(QObject *parent = 0);
-    explicit QtQmlAndroidContextual(QtQmlAndroidContext *context, QObject *parent = 0);
+    explicit QQmlAndroidContextual(QObject *parent = 0);
+    explicit QQmlAndroidContextual(QQmlAndroidContext *context, QObject *parent = 0);
 
     QAndroidJniObject ctx() const;
-    QtQmlAndroidContext *context() const;
-    void setContext(QtQmlAndroidContext *context);
+    QQmlAndroidContext *context() const;
+    void setContext(QQmlAndroidContext *context);
 
 Q_SIGNALS:
     void contextChanged();
@@ -27,12 +27,12 @@ protected:
     void componentComplete() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    bool initContext(QtQmlAndroidContext *context = 0);
+    bool initContext(QQmlAndroidContext *context = 0);
     void resolveContext();
     void propagateContext();
 
 private:
-    QtQmlAndroidContext *m_context;
+    QQmlAndroidContext *m_context;
 };
 
 QT_END_NAMESPACE

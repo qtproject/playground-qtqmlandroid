@@ -2,19 +2,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidCycleInterpolator::QtQmlAndroidCycleInterpolator(QObject *parent) :
-    QtQmlAndroidInterpolator(parent)
+QQmlAndroidCycleInterpolator::QQmlAndroidCycleInterpolator(QObject *parent) :
+    QQmlAndroidInterpolator(parent)
 {
 }
 
-qreal QtQmlAndroidCycleInterpolator::cycles() const
+qreal QQmlAndroidCycleInterpolator::cycles() const
 {
     if (m_cycles.isNull())
         return 1.0;
     return m_cycles.value();
 }
 
-void QtQmlAndroidCycleInterpolator::setCycles(qreal cycles)
+void QQmlAndroidCycleInterpolator::setCycles(qreal cycles)
 {
     if (m_cycles.isNull() || m_cycles.value() != cycles) {
         m_cycles = cycles;
@@ -22,7 +22,7 @@ void QtQmlAndroidCycleInterpolator::setCycles(qreal cycles)
     }
 }
 
-QAndroidJniObject QtQmlAndroidCycleInterpolator::onCreate()
+QAndroidJniObject QQmlAndroidCycleInterpolator::onCreate()
 {
     if (m_cycles.isNull())
         return QAndroidJniObject("android/view/animation/CycleInterpolator");

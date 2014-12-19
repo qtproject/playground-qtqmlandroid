@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidCalendarView : public QtQmlAndroidFrameLayout
+class QQmlAndroidCalendarView : public QQmlAndroidFrameLayout
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidCalendarView(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidCalendarView(QQmlAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

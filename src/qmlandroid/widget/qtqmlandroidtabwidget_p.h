@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidTabWidget : public QtQmlAndroidLinearLayout
+class QQmlAndroidTabWidget : public QQmlAndroidLinearLayout
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidTabWidget(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidTabWidget(QQmlAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

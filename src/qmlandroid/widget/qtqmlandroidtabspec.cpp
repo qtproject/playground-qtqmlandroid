@@ -6,28 +6,28 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidTabSpec::QtQmlAndroidTabSpec(QtQmlAndroidView *view) :
+QQmlAndroidTabSpec::QQmlAndroidTabSpec(QQmlAndroidView *view) :
     QObject(view)
 {
-    QtQmlAndroidView *parent = qobject_cast<QtQmlAndroidView *>(view->parent());
+    QQmlAndroidView *parent = qobject_cast<QQmlAndroidView *>(view->parent());
     if (parent)
         parent->setIdentifier(16908305); // TODO: android.R.id.tabcontent
 }
 
-QtQmlAndroidTabSpec *QtQmlAndroidTabSpec::qmlAttachedProperties(QObject *object)
+QQmlAndroidTabSpec *QQmlAndroidTabSpec::qmlAttachedProperties(QObject *object)
 {
-    QtQmlAndroidView *view = qobject_cast<QtQmlAndroidView*>(object);
+    QQmlAndroidView *view = qobject_cast<QQmlAndroidView*>(object);
     if (view)
-        return new QtQmlAndroidTabSpec(view);
+        return new QQmlAndroidTabSpec(view);
     return 0;
 }
 
-QString QtQmlAndroidTabSpec::label() const
+QString QQmlAndroidTabSpec::label() const
 {
     return m_label;
 }
 
-void QtQmlAndroidTabSpec::setLabel(const QString &label)
+void QQmlAndroidTabSpec::setLabel(const QString &label)
 {
     if (m_label != label) {
         m_label = label;
@@ -36,10 +36,10 @@ void QtQmlAndroidTabSpec::setLabel(const QString &label)
     }
 }
 
-void QtQmlAndroidTabSpec::setup(QAndroidJniObject &host, int index)
+void QQmlAndroidTabSpec::setup(QAndroidJniObject &host, int index)
 {
     int id = -1;
-    QtQmlAndroidView *content = qobject_cast<QtQmlAndroidView *>(parent());
+    QQmlAndroidView *content = qobject_cast<QQmlAndroidView *>(parent());
     if (content)
         id = content->identifier();
 

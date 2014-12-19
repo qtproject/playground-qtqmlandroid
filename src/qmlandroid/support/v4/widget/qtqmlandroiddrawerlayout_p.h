@@ -6,14 +6,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidDrawerLayout : public QtQmlAndroidViewGroup
+class QQmlAndroidDrawerLayout : public QQmlAndroidViewGroup
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidDrawerLayout(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidDrawerLayout(QQmlAndroidView *parent = 0);
 
-    static QtQmlAndroidDrawerLayoutParams *qmlAttachedProperties(QObject *object);
+    static QQmlAndroidDrawerLayoutParams *qmlAttachedProperties(QObject *object);
 
 public Q_SLOTS:
     void closeDrawers();
@@ -26,6 +26,6 @@ protected:
 
 QT_END_NAMESPACE
 
-QML_DECLARE_TYPEINFO(QtQmlAndroidDrawerLayout, QML_HAS_ATTACHED_PROPERTIES)
+QML_DECLARE_TYPEINFO(QQmlAndroidDrawerLayout, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTQMLANDROIDDRAWERLAYOUT_P_H

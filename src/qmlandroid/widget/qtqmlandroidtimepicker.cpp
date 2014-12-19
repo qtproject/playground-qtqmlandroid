@@ -2,21 +2,21 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidTimePicker::QtQmlAndroidTimePicker(QtQmlAndroidView *parent) :
-    QtQmlAndroidFrameLayout(parent)
+QQmlAndroidTimePicker::QQmlAndroidTimePicker(QQmlAndroidView *parent) :
+    QQmlAndroidFrameLayout(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidTimePicker::onCreate()
+QAndroidJniObject QQmlAndroidTimePicker::onCreate()
 {
     return QAndroidJniObject("android/widget/TimePicker",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidTimePicker::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidTimePicker::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidFrameLayout::onInflate(instance);
+    QQmlAndroidFrameLayout::onInflate(instance);
 }
 
 QT_END_NAMESPACE

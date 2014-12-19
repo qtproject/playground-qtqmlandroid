@@ -5,14 +5,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidViewGroup : public QtQmlAndroidView
+class QQmlAndroidViewGroup : public QQmlAndroidView
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidViewGroup(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidViewGroup(QQmlAndroidView *parent = 0);
 
-    static QtQmlAndroidLayoutParams *qmlAttachedProperties(QObject *object);
+    static QQmlAndroidLayoutParams *qmlAttachedProperties(QObject *object);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
@@ -23,6 +23,6 @@ protected:
 
 QT_END_NAMESPACE
 
-QML_DECLARE_TYPEINFO(QtQmlAndroidViewGroup, QML_HAS_ATTACHED_PROPERTIES)
+QML_DECLARE_TYPEINFO(QQmlAndroidViewGroup, QML_HAS_ATTACHED_PROPERTIES)
 
 #endif // QTQMLANDROIDVIEWGROUP_P_H

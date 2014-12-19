@@ -6,13 +6,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidWindow : public QtQmlAndroidContextual
+class QQmlAndroidWindow : public QQmlAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(int statusBarColor READ statusBarColor WRITE setStatusBarColor NOTIFY statusBarColorChanged)
 
 public:
-    explicit QtQmlAndroidWindow(QtQmlAndroidContext *context);
+    explicit QQmlAndroidWindow(QQmlAndroidContext *context);
 
     int statusBarColor() const;
     void setStatusBarColor(int color);
@@ -24,7 +24,7 @@ protected:
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
 private:
-    QtQmlAndroidOptional<int> m_statusBarColor;
+    QQmlAndroidOptional<int> m_statusBarColor;
 };
 
 QT_END_NAMESPACE

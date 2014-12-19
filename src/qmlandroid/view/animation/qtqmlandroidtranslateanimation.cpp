@@ -2,18 +2,18 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidTranslateAnimation::QtQmlAndroidTranslateAnimation(QObject *parent) :
-    QtQmlAndroidAnimation(parent), m_fromX(0), m_fromY(0), m_toX(0), m_toY(0),
+QQmlAndroidTranslateAnimation::QQmlAndroidTranslateAnimation(QObject *parent) :
+    QQmlAndroidAnimation(parent), m_fromX(0), m_fromY(0), m_toX(0), m_toY(0),
     m_fromXType(ABSOLUTE), m_fromYType(ABSOLUTE), m_toXType(ABSOLUTE), m_toYType(ABSOLUTE)
 {
 }
 
-qreal QtQmlAndroidTranslateAnimation::fromX() const
+qreal QQmlAndroidTranslateAnimation::fromX() const
 {
     return m_fromX;
 }
 
-void QtQmlAndroidTranslateAnimation::setFromX(qreal x)
+void QQmlAndroidTranslateAnimation::setFromX(qreal x)
 {
     if (m_fromX != x) {
         m_fromX = x;
@@ -21,12 +21,12 @@ void QtQmlAndroidTranslateAnimation::setFromX(qreal x)
     }
 }
 
-qreal QtQmlAndroidTranslateAnimation::fromY() const
+qreal QQmlAndroidTranslateAnimation::fromY() const
 {
     return m_fromY;
 }
 
-void QtQmlAndroidTranslateAnimation::setFromY(qreal y)
+void QQmlAndroidTranslateAnimation::setFromY(qreal y)
 {
     if (m_fromY != y) {
         m_fromY = y;
@@ -34,12 +34,12 @@ void QtQmlAndroidTranslateAnimation::setFromY(qreal y)
     }
 }
 
-qreal QtQmlAndroidTranslateAnimation::toX() const
+qreal QQmlAndroidTranslateAnimation::toX() const
 {
     return m_toX;
 }
 
-void QtQmlAndroidTranslateAnimation::setToX(qreal x)
+void QQmlAndroidTranslateAnimation::setToX(qreal x)
 {
     if (m_toX != x) {
         m_toX = x;
@@ -47,12 +47,12 @@ void QtQmlAndroidTranslateAnimation::setToX(qreal x)
     }
 }
 
-qreal QtQmlAndroidTranslateAnimation::toY() const
+qreal QQmlAndroidTranslateAnimation::toY() const
 {
     return m_toY;
 }
 
-void QtQmlAndroidTranslateAnimation::setToY(qreal y)
+void QQmlAndroidTranslateAnimation::setToY(qreal y)
 {
     if (m_toY != y) {
         m_toY = y;
@@ -60,12 +60,12 @@ void QtQmlAndroidTranslateAnimation::setToY(qreal y)
     }
 }
 
-QtQmlAndroidAnimation::Relation QtQmlAndroidTranslateAnimation::fromXType() const
+QQmlAndroidAnimation::Relation QQmlAndroidTranslateAnimation::fromXType() const
 {
     return m_fromXType;
 }
 
-void QtQmlAndroidTranslateAnimation::setFromXType(Relation type)
+void QQmlAndroidTranslateAnimation::setFromXType(Relation type)
 {
     if (m_fromXType != type) {
         m_fromXType = type;
@@ -73,12 +73,12 @@ void QtQmlAndroidTranslateAnimation::setFromXType(Relation type)
     }
 }
 
-QtQmlAndroidAnimation::Relation QtQmlAndroidTranslateAnimation::fromYType() const
+QQmlAndroidAnimation::Relation QQmlAndroidTranslateAnimation::fromYType() const
 {
     return m_fromYType;
 }
 
-void QtQmlAndroidTranslateAnimation::setFromYType(Relation type)
+void QQmlAndroidTranslateAnimation::setFromYType(Relation type)
 {
     if (m_fromYType != type) {
         m_fromYType = type;
@@ -86,12 +86,12 @@ void QtQmlAndroidTranslateAnimation::setFromYType(Relation type)
     }
 }
 
-QtQmlAndroidAnimation::Relation QtQmlAndroidTranslateAnimation::toXType() const
+QQmlAndroidAnimation::Relation QQmlAndroidTranslateAnimation::toXType() const
 {
     return m_toXType;
 }
 
-void QtQmlAndroidTranslateAnimation::setToXType(Relation type)
+void QQmlAndroidTranslateAnimation::setToXType(Relation type)
 {
     if (m_toXType != type) {
         m_toXType = type;
@@ -99,12 +99,12 @@ void QtQmlAndroidTranslateAnimation::setToXType(Relation type)
     }
 }
 
-QtQmlAndroidAnimation::Relation QtQmlAndroidTranslateAnimation::toYType() const
+QQmlAndroidAnimation::Relation QQmlAndroidTranslateAnimation::toYType() const
 {
     return m_toYType;
 }
 
-void QtQmlAndroidTranslateAnimation::setToYType(Relation type)
+void QQmlAndroidTranslateAnimation::setToYType(Relation type)
 {
     if (m_toYType != type) {
         m_toYType = type;
@@ -112,7 +112,7 @@ void QtQmlAndroidTranslateAnimation::setToYType(Relation type)
     }
 }
 
-QAndroidJniObject QtQmlAndroidTranslateAnimation::onCreate()
+QAndroidJniObject QQmlAndroidTranslateAnimation::onCreate()
 {
     return QAndroidJniObject("android/view/animation/TranslateAnimation",
                              "(IFIFIFIF)V",

@@ -4,17 +4,17 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidArrayAdapter::QtQmlAndroidArrayAdapter(QObject *parent) :
-    QtQmlAndroidBaseAdapter(parent), m_style(17367043) // TODO: android.R.layout.simple_list_item_1
+QQmlAndroidArrayAdapter::QQmlAndroidArrayAdapter(QObject *parent) :
+    QQmlAndroidBaseAdapter(parent), m_style(17367043) // TODO: android.R.layout.simple_list_item_1
 {
 }
 
-int QtQmlAndroidArrayAdapter::style() const
+int QQmlAndroidArrayAdapter::style() const
 {
     return m_style;
 }
 
-void QtQmlAndroidArrayAdapter::setStyle(int style)
+void QQmlAndroidArrayAdapter::setStyle(int style)
 {
     if (m_style != style) {
         m_style = style;
@@ -22,12 +22,12 @@ void QtQmlAndroidArrayAdapter::setStyle(int style)
     }
 }
 
-QStringList QtQmlAndroidArrayAdapter::array() const
+QStringList QQmlAndroidArrayAdapter::array() const
 {
     return m_array;
 }
 
-void QtQmlAndroidArrayAdapter::setArray(const QStringList &array)
+void QQmlAndroidArrayAdapter::setArray(const QStringList &array)
 {
     if (m_array != array) {
         m_array = array; // TODO: sync
@@ -36,17 +36,17 @@ void QtQmlAndroidArrayAdapter::setArray(const QStringList &array)
     }
 }
 
-int QtQmlAndroidArrayAdapter::count() const
+int QQmlAndroidArrayAdapter::count() const
 {
     return m_array.count();
 }
 
-QString QtQmlAndroidArrayAdapter::getItem(int position) const
+QString QQmlAndroidArrayAdapter::getItem(int position) const
 {
     return m_array.value(position);
 }
 
-void QtQmlAndroidArrayAdapter::clear()
+void QQmlAndroidArrayAdapter::clear()
 {
     if (!m_array.isEmpty()) {
         m_array.clear(); // TODO: sync
@@ -55,7 +55,7 @@ void QtQmlAndroidArrayAdapter::clear()
     }
 }
 
-QAndroidJniObject QtQmlAndroidArrayAdapter::onCreate()
+QAndroidJniObject QQmlAndroidArrayAdapter::onCreate()
 {
     return QAndroidJniObject("android/widget/ArrayAdapter",
                              "(Landroid/content/Context;I)V",
@@ -63,9 +63,9 @@ QAndroidJniObject QtQmlAndroidArrayAdapter::onCreate()
                              m_style);
 }
 
-void QtQmlAndroidArrayAdapter::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidArrayAdapter::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidBaseAdapter::onInflate(instance);
+    QQmlAndroidBaseAdapter::onInflate(instance);
 
     foreach (const QString &str, m_array)
         instance.callMethod<void>("add", "(Ljava/lang/Object;)V", QAndroidJniObject::fromString(str).object());

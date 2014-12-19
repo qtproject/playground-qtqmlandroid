@@ -3,23 +3,23 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidRatingBar::QtQmlAndroidRatingBar(QtQmlAndroidView *parent) :
-    QtQmlAndroidAbsSeekBar(parent), m_rating(0.0)
+QQmlAndroidRatingBar::QQmlAndroidRatingBar(QQmlAndroidView *parent) :
+    QQmlAndroidAbsSeekBar(parent), m_rating(0.0)
 {
 }
 
-qreal QtQmlAndroidRatingBar::rating() const
+qreal QQmlAndroidRatingBar::rating() const
 {
     return m_rating;
 }
 
-void QtQmlAndroidRatingBar::setRating(qreal rating)
+void QQmlAndroidRatingBar::setRating(qreal rating)
 {
     if (updateRating(rating))
         QtQmlAndroid::callRealMethod(instance(), "setRating", rating);
 }
 
-bool QtQmlAndroidRatingBar::updateRating(qreal rating)
+bool QQmlAndroidRatingBar::updateRating(qreal rating)
 {
     if (!qFuzzyCompare(m_rating, rating)) {
         m_rating = rating;
@@ -29,16 +29,16 @@ bool QtQmlAndroidRatingBar::updateRating(qreal rating)
     return false;
 }
 
-QAndroidJniObject QtQmlAndroidRatingBar::onCreate()
+QAndroidJniObject QQmlAndroidRatingBar::onCreate()
 {
     return QAndroidJniObject("android/widget/RatingBar",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidRatingBar::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidRatingBar::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidAbsSeekBar::onInflate(instance);
+    QQmlAndroidAbsSeekBar::onInflate(instance);
 
     m_listener = QAndroidJniObject("qt/android/widget/QtRatingBarListener",
                                    "(Landroid/widget/RatingBar;J)V",
@@ -54,7 +54,7 @@ void QtQmlAndroidRatingBar::onInflate(QAndroidJniObject &instance)
     instance.callMethod<void>("setRating", "(F)V", m_rating);
 }
 
-void QtQmlAndroidRatingBar::onRegisterNativeMethods(jobject listener)
+void QQmlAndroidRatingBar::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onRatingChanged", "(JFZ)V", reinterpret_cast<void *>(onRatingChanged)}};
 
@@ -64,11 +64,11 @@ void QtQmlAndroidRatingBar::onRegisterNativeMethods(jobject listener)
     env->DeleteLocalRef(cls);
 }
 
-void QtQmlAndroidRatingBar::onRatingChanged(JNIEnv *env, jobject object, jlong instance, jfloat rating, jboolean fromUser)
+void QQmlAndroidRatingBar::onRatingChanged(JNIEnv *env, jobject object, jlong instance, jfloat rating, jboolean fromUser)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtQmlAndroidRatingBar *bar = reinterpret_cast<QtQmlAndroidRatingBar *>(instance);
+    QQmlAndroidRatingBar *bar = reinterpret_cast<QQmlAndroidRatingBar *>(instance);
     if (bar && fromUser)
         QMetaObject::invokeMethod(bar, "updateRating", Qt::QueuedConnection, Q_ARG(qreal, rating));
 }

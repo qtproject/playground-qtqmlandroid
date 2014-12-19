@@ -5,14 +5,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidColorDrawable : public QtQmlAndroidDrawable
+class QQmlAndroidColorDrawable : public QQmlAndroidDrawable
 {
     Q_OBJECT
     Q_PROPERTY(int color READ color WRITE setColor NOTIFY colorChanged)
 
 public:
-    explicit QtQmlAndroidColorDrawable(QObject *parent = 0);
-    explicit QtQmlAndroidColorDrawable(int color, QObject *parent = 0);
+    explicit QQmlAndroidColorDrawable(QObject *parent = 0);
+    explicit QQmlAndroidColorDrawable(int color, QObject *parent = 0);
 
     int color() const;
     void setColor(int color);

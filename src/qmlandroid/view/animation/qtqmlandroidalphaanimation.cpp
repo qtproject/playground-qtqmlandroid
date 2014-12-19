@@ -2,17 +2,17 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidAlphaAnimation::QtQmlAndroidAlphaAnimation(QObject *parent) :
-    QtQmlAndroidAnimation(parent), m_fromAlpha(0), m_toAlpha(0)
+QQmlAndroidAlphaAnimation::QQmlAndroidAlphaAnimation(QObject *parent) :
+    QQmlAndroidAnimation(parent), m_fromAlpha(0), m_toAlpha(0)
 {
 }
 
-qreal QtQmlAndroidAlphaAnimation::fromAlpha() const
+qreal QQmlAndroidAlphaAnimation::fromAlpha() const
 {
     return m_fromAlpha;
 }
 
-void QtQmlAndroidAlphaAnimation::setFromAlpha(qreal alpha)
+void QQmlAndroidAlphaAnimation::setFromAlpha(qreal alpha)
 {
     if (m_fromAlpha != alpha) {
         m_fromAlpha = alpha;
@@ -20,12 +20,12 @@ void QtQmlAndroidAlphaAnimation::setFromAlpha(qreal alpha)
     }
 }
 
-qreal QtQmlAndroidAlphaAnimation::toAlpha() const
+qreal QQmlAndroidAlphaAnimation::toAlpha() const
 {
     return m_toAlpha;
 }
 
-void QtQmlAndroidAlphaAnimation::setToAlpha(qreal alpha)
+void QQmlAndroidAlphaAnimation::setToAlpha(qreal alpha)
 {
     if (m_toAlpha != alpha) {
         m_toAlpha = alpha;
@@ -33,7 +33,7 @@ void QtQmlAndroidAlphaAnimation::setToAlpha(qreal alpha)
     }
 }
 
-QAndroidJniObject QtQmlAndroidAlphaAnimation::onCreate()
+QAndroidJniObject QQmlAndroidAlphaAnimation::onCreate()
 {
     return QAndroidJniObject("android/view/animation/AlphaAnimation",
                              "(FF)V",

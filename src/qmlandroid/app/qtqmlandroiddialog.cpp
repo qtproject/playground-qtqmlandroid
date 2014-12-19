@@ -3,41 +3,41 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidDialog::QtQmlAndroidDialog(QObject *parent) :
-    QtQmlAndroidContextual(parent)
+QQmlAndroidDialog::QQmlAndroidDialog(QObject *parent) :
+    QQmlAndroidContextual(parent)
 {
 }
 
-void QtQmlAndroidDialog::cancel()
+void QQmlAndroidDialog::cancel()
 {
     QtQmlAndroid::callVoidMethod(instance(), "cancel");
 }
 
-void QtQmlAndroidDialog::dismiss()
+void QQmlAndroidDialog::dismiss()
 {
     QtQmlAndroid::callVoidMethod(instance(), "dismiss");
 }
 
-void QtQmlAndroidDialog::hide()
+void QQmlAndroidDialog::hide()
 {
     QtQmlAndroid::callVoidMethod(instance(), "hide");
 }
 
-void QtQmlAndroidDialog::show()
+void QQmlAndroidDialog::show()
 {
     QtQmlAndroid::callVoidMethod(instance(), "show");
 }
 
-QAndroidJniObject QtQmlAndroidDialog::onCreate()
+QAndroidJniObject QQmlAndroidDialog::onCreate()
 {
     return QAndroidJniObject("android/app/Dialog",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidDialog::onInflate(QAndroidJniObject& instance)
+void QQmlAndroidDialog::onInflate(QAndroidJniObject& instance)
 {
-    QtQmlAndroidContextual::onInflate(instance);
+    QQmlAndroidContextual::onInflate(instance);
 }
 
 QT_END_NAMESPACE

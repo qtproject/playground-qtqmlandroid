@@ -10,8 +10,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidView::QtQmlAndroidView(QtQmlAndroidView *parent) :
-    QtQmlAndroidContextual(parent), m_parent(0), m_background(0), m_backgroundResource(0),
+QQmlAndroidView::QQmlAndroidView(QQmlAndroidView *parent) :
+    QQmlAndroidContextual(parent), m_parent(0), m_background(0), m_backgroundResource(0),
     m_animation(0), m_polishing(false), m_visible(true), m_layoutParams(0),
     m_top(0), m_left(0), m_right(0), m_bottom(0)
 {
@@ -25,30 +25,30 @@ QtQmlAndroidView::QtQmlAndroidView(QtQmlAndroidView *parent) :
     requestPolish();
 }
 
-QtQmlAndroidView::~QtQmlAndroidView()
+QQmlAndroidView::~QQmlAndroidView()
 {
-    foreach (QtQmlAndroidView *child, m_children)
+    foreach (QQmlAndroidView *child, m_children)
         child->setParentView(0);
     if (m_parent)
         setParentView(0);
 }
 
-int QtQmlAndroidView::identifier() const
+int QQmlAndroidView::identifier() const
 {
     return m_id;
 }
 
-void QtQmlAndroidView::setIdentifier(int identifier)
+void QQmlAndroidView::setIdentifier(int identifier)
 {
     m_id = identifier;
 }
 
-QtQmlAndroidView *QtQmlAndroidView::parentView() const
+QQmlAndroidView *QQmlAndroidView::parentView() const
 {
     return m_parent;
 }
 
-void QtQmlAndroidView::setParentView(QtQmlAndroidView *parent)
+void QQmlAndroidView::setParentView(QQmlAndroidView *parent)
 {
     if (m_parent != parent) {
         if (m_parent)
@@ -61,54 +61,54 @@ void QtQmlAndroidView::setParentView(QtQmlAndroidView *parent)
     }
 }
 
-QList<QtQmlAndroidView *> QtQmlAndroidView::childViews() const
+QList<QQmlAndroidView *> QQmlAndroidView::childViews() const
 {
     return m_children;
 }
 
-QQmlListProperty<QtQmlAndroidView> QtQmlAndroidView::children()
+QQmlListProperty<QQmlAndroidView> QQmlAndroidView::children()
 {
-    return QQmlListProperty<QtQmlAndroidView>(this, 0, &QtQmlAndroidView::children_append, &QtQmlAndroidView::children_count,
-                                                   &QtQmlAndroidView::children_at, &QtQmlAndroidView::children_clear);
+    return QQmlListProperty<QQmlAndroidView>(this, 0, &QQmlAndroidView::children_append, &QQmlAndroidView::children_count,
+                                                   &QQmlAndroidView::children_at, &QQmlAndroidView::children_clear);
 }
 
-QtQmlAndroidLayoutParams *QtQmlAndroidView::layoutParams() const
+QQmlAndroidLayoutParams *QQmlAndroidView::layoutParams() const
 {
     return m_layoutParams;
 }
 
-void QtQmlAndroidView::setLayoutParams(QtQmlAndroidLayoutParams *params)
+void QQmlAndroidView::setLayoutParams(QQmlAndroidLayoutParams *params)
 {
     if (m_layoutParams != params) {
         if (m_layoutParams) {
-            disconnect(m_layoutParams, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidView::updateLayoutParams);
+            disconnect(m_layoutParams, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidView::updateLayoutParams);
             m_layoutParams->destruct();
         }
         m_layoutParams = params;
         if (m_layoutParams) {
-            connect(m_layoutParams, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidView::updateLayoutParams);
+            connect(m_layoutParams, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidView::updateLayoutParams);
             if (isValid())
                 m_layoutParams->construct();
         }
     }
 }
 
-QtQmlAndroidDrawable *QtQmlAndroidView::background() const
+QQmlAndroidDrawable *QQmlAndroidView::background() const
 {
     return m_background;
 }
 
-void QtQmlAndroidView::setBackground(QtQmlAndroidDrawable *background, int resource)
+void QQmlAndroidView::setBackground(QQmlAndroidDrawable *background, int resource)
 {
     if (m_background != background) {
         if (m_background) {
-            disconnect(m_background, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidView::updateBackground);
+            disconnect(m_background, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidView::updateBackground);
             m_background->destruct();
         }
         m_background = background;
         m_backgroundResource = resource;
         if (m_background) {
-            connect(m_background, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidView::updateBackground);
+            connect(m_background, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidView::updateBackground);
             if (!resource)
                 m_background->construct();
         }
@@ -116,21 +116,21 @@ void QtQmlAndroidView::setBackground(QtQmlAndroidDrawable *background, int resou
     }
 }
 
-QtQmlAndroidAnimation *QtQmlAndroidView::animation() const
+QQmlAndroidAnimation *QQmlAndroidView::animation() const
 {
     return m_animation;
 }
 
-void QtQmlAndroidView::setAnimation(QtQmlAndroidAnimation *animation)
+void QQmlAndroidView::setAnimation(QQmlAndroidAnimation *animation)
 {
     if (m_animation != animation) {
         if (m_animation) {
-            disconnect(m_animation, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidView::updateAnimation);
+            disconnect(m_animation, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidView::updateAnimation);
             m_animation->destruct();
         }
         m_animation = animation;
         if (m_animation) {
-            connect(m_animation, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidView::updateAnimation);
+            connect(m_animation, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidView::updateAnimation);
             if (isValid())
                 m_animation->construct();
         }
@@ -138,38 +138,38 @@ void QtQmlAndroidView::setAnimation(QtQmlAndroidAnimation *animation)
     }
 }
 
-int QtQmlAndroidView::backgroundColor() const
+int QQmlAndroidView::backgroundColor() const
 {
-    QtQmlAndroidColorDrawable *drawable = qobject_cast<QtQmlAndroidColorDrawable *>(m_background);
+    QQmlAndroidColorDrawable *drawable = qobject_cast<QQmlAndroidColorDrawable *>(m_background);
     if (drawable)
         return drawable->color();
     return 0; // TODO
 }
 
-void QtQmlAndroidView::setBackgroundColor(int color)
+void QQmlAndroidView::setBackgroundColor(int color)
 {
-    setBackground(new QtQmlAndroidColorDrawable(color, this));
+    setBackground(new QQmlAndroidColorDrawable(color, this));
 }
 
-int QtQmlAndroidView::backgroundResource() const
+int QQmlAndroidView::backgroundResource() const
 {
     return m_backgroundResource;
 }
 
-void QtQmlAndroidView::setBackgroundResource(int resource)
+void QQmlAndroidView::setBackgroundResource(int resource)
 {
     if (m_backgroundResource != resource) {
-        setBackground(new QtQmlAndroidDrawable(this), resource);
+        setBackground(new QQmlAndroidDrawable(this), resource);
         emit backgroundResourceChanged();
     }
 }
 
-bool QtQmlAndroidView::isVisible() const
+bool QQmlAndroidView::isVisible() const
 {
     return m_visible;
 }
 
-void QtQmlAndroidView::setVisible(bool visible)
+void QQmlAndroidView::setVisible(bool visible)
 {
     if (m_visible != visible) {
         m_visible = visible;
@@ -179,14 +179,14 @@ void QtQmlAndroidView::setVisible(bool visible)
     }
 }
 
-bool QtQmlAndroidView::hasFocus() const
+bool QQmlAndroidView::hasFocus() const
 {
     if (m_focus.isNull())
         return false;
     return m_focus.value();
 }
 
-bool QtQmlAndroidView::updateFocus(bool arg)
+bool QQmlAndroidView::updateFocus(bool arg)
 {
     if (arg != hasFocus()) {
         m_focus = arg;
@@ -196,24 +196,24 @@ bool QtQmlAndroidView::updateFocus(bool arg)
     return false;
 }
 
-qreal QtQmlAndroidView::x() const
+qreal QQmlAndroidView::x() const
 {
     return left(); // TODO: + translationX
 }
 
-qreal QtQmlAndroidView::y() const
+qreal QQmlAndroidView::y() const
 {
     return top(); // TODO: + translationY
 }
 
-int QtQmlAndroidView::top() const
+int QQmlAndroidView::top() const
 {
     if (m_top.isNull())
         return 0;
     return m_top.value();
 }
 
-void QtQmlAndroidView::setTop(int top)
+void QQmlAndroidView::setTop(int top)
 {
     if (m_top.isNull() || m_top.value() != top) {
         m_top = top;
@@ -222,14 +222,14 @@ void QtQmlAndroidView::setTop(int top)
     }
 }
 
-int QtQmlAndroidView::left() const
+int QQmlAndroidView::left() const
 {
     if (m_left.isNull())
         return 0;
     return m_left.value();
 }
 
-void QtQmlAndroidView::setLeft(int left)
+void QQmlAndroidView::setLeft(int left)
 {
     if (m_left.isNull() || m_left.value() != left) {
         m_left = left;
@@ -238,14 +238,14 @@ void QtQmlAndroidView::setLeft(int left)
     }
 }
 
-int QtQmlAndroidView::right() const
+int QQmlAndroidView::right() const
 {
     if (m_right.isNull())
         return 0;
     return m_right.value();
 }
 
-void QtQmlAndroidView::setRight(int right)
+void QQmlAndroidView::setRight(int right)
 {
     if (m_right.isNull() || m_right.value() != right) {
         m_right = right;
@@ -254,14 +254,14 @@ void QtQmlAndroidView::setRight(int right)
     }
 }
 
-int QtQmlAndroidView::bottom() const
+int QQmlAndroidView::bottom() const
 {
     if (m_bottom.isNull())
         return 0;
     return m_bottom.value();
 }
 
-void QtQmlAndroidView::setBottom(int bottom)
+void QQmlAndroidView::setBottom(int bottom)
 {
     if (m_bottom.isNull() || m_bottom.value() != bottom) {
         m_bottom = bottom;
@@ -270,27 +270,27 @@ void QtQmlAndroidView::setBottom(int bottom)
     }
 }
 
-int QtQmlAndroidView::width() const
+int QQmlAndroidView::width() const
 {
     return right() - left();
 }
 
-void QtQmlAndroidView::setWidth(int width)
+void QQmlAndroidView::setWidth(int width)
 {
     setRight(left() + width);
 }
 
-int QtQmlAndroidView::height() const
+int QQmlAndroidView::height() const
 {
     return bottom() - top();
 }
 
-void QtQmlAndroidView::setHeight(int height)
+void QQmlAndroidView::setHeight(int height)
 {
     setBottom(top() + height);
 }
 
-void QtQmlAndroidView::updateGeometry(int t, int l, int r, int b)
+void QQmlAndroidView::updateGeometry(int t, int l, int r, int b)
 {
     if (t != top()) {
         m_top = t;
@@ -314,14 +314,14 @@ void QtQmlAndroidView::updateGeometry(int t, int l, int r, int b)
     }
 }
 
-int QtQmlAndroidView::padding() const
+int QQmlAndroidView::padding() const
 {
     if (!m_padding.isNull())
         return m_padding.value();
     return 0;
 }
 
-void QtQmlAndroidView::setPadding(int padding)
+void QQmlAndroidView::setPadding(int padding)
 {
     if (m_padding.isNull() || m_padding.value() != padding) {
         m_padding = padding;
@@ -329,14 +329,14 @@ void QtQmlAndroidView::setPadding(int padding)
     }
 }
 
-int QtQmlAndroidView::paddingTop() const
+int QQmlAndroidView::paddingTop() const
 {
     if (m_paddingTop.isNull())
         return padding();
     return m_paddingTop.value();
 }
 
-void QtQmlAndroidView::setPaddingTop(int padding)
+void QQmlAndroidView::setPaddingTop(int padding)
 {
     if (m_paddingTop.isNull() || m_paddingTop.value() != padding) {
         m_paddingTop = padding;
@@ -344,14 +344,14 @@ void QtQmlAndroidView::setPaddingTop(int padding)
     }
 }
 
-int QtQmlAndroidView::paddingLeft() const
+int QQmlAndroidView::paddingLeft() const
 {
     if (m_paddingLeft.isNull())
         return padding();
     return m_paddingLeft.value();
 }
 
-void QtQmlAndroidView::setPaddingLeft(int padding)
+void QQmlAndroidView::setPaddingLeft(int padding)
 {
     if (m_paddingLeft.isNull() || m_paddingLeft.value() != padding) {
         m_paddingLeft = padding;
@@ -359,14 +359,14 @@ void QtQmlAndroidView::setPaddingLeft(int padding)
     }
 }
 
-int QtQmlAndroidView::paddingRight() const
+int QQmlAndroidView::paddingRight() const
 {
     if (m_paddingRight.isNull())
         return padding();
     return m_paddingRight.value();
 }
 
-void QtQmlAndroidView::setPaddingRight(int padding)
+void QQmlAndroidView::setPaddingRight(int padding)
 {
     if (m_paddingRight.isNull() || m_paddingRight.value() != padding) {
         m_paddingRight = padding;
@@ -374,14 +374,14 @@ void QtQmlAndroidView::setPaddingRight(int padding)
     }
 }
 
-int QtQmlAndroidView::paddingBottom() const
+int QQmlAndroidView::paddingBottom() const
 {
     if (m_paddingBottom.isNull())
         return padding();
     return m_paddingBottom.value();
 }
 
-void QtQmlAndroidView::setPaddingBottom(int padding)
+void QQmlAndroidView::setPaddingBottom(int padding)
 {
     if (m_paddingBottom.isNull() || m_paddingBottom.value() != padding) {
         m_paddingBottom = padding;
@@ -389,7 +389,7 @@ void QtQmlAndroidView::setPaddingBottom(int padding)
     }
 }
 
-void QtQmlAndroidView::viewChange(ViewChange change, const ViewChangeData &data)
+void QQmlAndroidView::viewChange(ViewChange change, const ViewChangeData &data)
 {
     switch (change) {
     case ViewParentChange:       // data.view
@@ -401,7 +401,7 @@ void QtQmlAndroidView::viewChange(ViewChange change, const ViewChangeData &data)
     }
 }
 
-void QtQmlAndroidView::addChild(QtQmlAndroidView *child)
+void QQmlAndroidView::addChild(QQmlAndroidView *child)
 {
     if (!m_children.contains(child)) {
         m_children.append(child);
@@ -410,7 +410,7 @@ void QtQmlAndroidView::addChild(QtQmlAndroidView *child)
     }
 }
 
-void QtQmlAndroidView::removeChild(QtQmlAndroidView *child)
+void QQmlAndroidView::removeChild(QQmlAndroidView *child)
 {
     if (m_children.removeOne(child)) {
         viewChange(ViewChildRemovedChange, child);
@@ -418,35 +418,35 @@ void QtQmlAndroidView::removeChild(QtQmlAndroidView *child)
     }
 }
 
-void QtQmlAndroidView::children_append(QQmlListProperty<QtQmlAndroidView> *list, QtQmlAndroidView *child)
+void QQmlAndroidView::children_append(QQmlListProperty<QQmlAndroidView> *list, QQmlAndroidView *child)
 {
-    if (QtQmlAndroidView *that = qobject_cast<QtQmlAndroidView *>(list->object))
+    if (QQmlAndroidView *that = qobject_cast<QQmlAndroidView *>(list->object))
         that->addChild(child);
 }
 
-int QtQmlAndroidView::children_count(QQmlListProperty<QtQmlAndroidView> *list)
+int QQmlAndroidView::children_count(QQmlListProperty<QQmlAndroidView> *list)
 {
-    if (QtQmlAndroidView *that = qobject_cast<QtQmlAndroidView *>(list->object))
+    if (QQmlAndroidView *that = qobject_cast<QQmlAndroidView *>(list->object))
         return that->m_children.count();
     return 0;
 }
 
-QtQmlAndroidView *QtQmlAndroidView::children_at(QQmlListProperty<QtQmlAndroidView> *list, int index)
+QQmlAndroidView *QQmlAndroidView::children_at(QQmlListProperty<QQmlAndroidView> *list, int index)
 {
-    if (QtQmlAndroidView *that = qobject_cast<QtQmlAndroidView *>(list->object))
+    if (QQmlAndroidView *that = qobject_cast<QQmlAndroidView *>(list->object))
         return that->m_children.at(index);
     return 0;
 }
 
-void QtQmlAndroidView::children_clear(QQmlListProperty<QtQmlAndroidView> *list)
+void QQmlAndroidView::children_clear(QQmlListProperty<QQmlAndroidView> *list)
 {
-    if (QtQmlAndroidView *that = qobject_cast<QtQmlAndroidView *>(list->object)) {
+    if (QQmlAndroidView *that = qobject_cast<QQmlAndroidView *>(list->object)) {
         while (!that->m_children.isEmpty())
             that->m_children.first()->setParentView(0);
     }
 }
 
-QAndroidJniObject QtQmlAndroidView::onCreate()
+QAndroidJniObject QQmlAndroidView::onCreate()
 {
     Q_ASSERT(!QtQmlAndroid::isMainQtThread());
 
@@ -455,11 +455,11 @@ QAndroidJniObject QtQmlAndroidView::onCreate()
                              ctx().object());
 }
 
-void QtQmlAndroidView::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidView::onInflate(QAndroidJniObject &instance)
 {
     Q_ASSERT(!QtQmlAndroid::isMainQtThread());
 
-    QtQmlAndroidContextual::onInflate(instance);
+    QQmlAndroidContextual::onInflate(instance);
 
     m_listener = QAndroidJniObject("qt/android/view/QtViewListener",
                                    "(Landroid/view/View;J)V",
@@ -493,7 +493,7 @@ void QtQmlAndroidView::onInflate(QAndroidJniObject &instance)
     }
 }
 
-void QtQmlAndroidView::onRegisterNativeMethods(jobject listener)
+void QQmlAndroidView::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onClick", "(J)V", reinterpret_cast<void *>(onClick)},
                                {"onFocusChange", "(JZ)V", reinterpret_cast<void *>(onFocusChange)},
@@ -506,38 +506,38 @@ void QtQmlAndroidView::onRegisterNativeMethods(jobject listener)
     env->DeleteLocalRef(cls);
 }
 
-void QtQmlAndroidView::onClick(JNIEnv *env, jobject object, jlong instance)
+void QQmlAndroidView::onClick(JNIEnv *env, jobject object, jlong instance)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtQmlAndroidView *view = reinterpret_cast<QtQmlAndroidView *>(instance);
+    QQmlAndroidView *view = reinterpret_cast<QQmlAndroidView *>(instance);
     if (view)
         QMetaObject::invokeMethod(view, "click", Qt::QueuedConnection);
 }
 
-void QtQmlAndroidView::onFocusChange(JNIEnv *env, jobject object, jlong instance, jboolean hasFocus)
+void QQmlAndroidView::onFocusChange(JNIEnv *env, jobject object, jlong instance, jboolean hasFocus)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtQmlAndroidView *view = reinterpret_cast<QtQmlAndroidView *>(instance);
+    QQmlAndroidView *view = reinterpret_cast<QQmlAndroidView *>(instance);
     if (view)
         QMetaObject::invokeMethod(view, "updateFocus", Qt::QueuedConnection, Q_ARG(bool, hasFocus));
 }
 
-void QtQmlAndroidView::onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint left, jint top, jint right, jint bottom)
+void QQmlAndroidView::onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint left, jint top, jint right, jint bottom)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtQmlAndroidView *view = reinterpret_cast<QtQmlAndroidView *>(instance);
+    QQmlAndroidView *view = reinterpret_cast<QQmlAndroidView *>(instance);
     if (view)
         QMetaObject::invokeMethod(view, "updateGeometry", Qt::QueuedConnection, Q_ARG(int, top), Q_ARG(int, left), Q_ARG(int, right), Q_ARG(int, bottom));
 }
 
-bool QtQmlAndroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)
+bool QQmlAndroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtQmlAndroidView *view = reinterpret_cast<QtQmlAndroidView *>(instance);
+    QQmlAndroidView *view = reinterpret_cast<QQmlAndroidView *>(instance);
     if (view) {
         //qDebug() << "onLongClick:" << view;
         QMetaObject::invokeMethod(view, "longClick", Qt::QueuedConnection);
@@ -545,7 +545,7 @@ bool QtQmlAndroidView::onLongClick(JNIEnv *env, jobject object, jlong instance)
     return true; // TODO: accept
 }
 
-void QtQmlAndroidView::requestPolish()
+void QQmlAndroidView::requestPolish()
 {
     if (!m_polishing) {
         m_polishing = true;
@@ -553,25 +553,25 @@ void QtQmlAndroidView::requestPolish()
     }
 }
 
-void QtQmlAndroidView::polish()
+void QQmlAndroidView::polish()
 {
 }
 
-bool QtQmlAndroidView::event(QEvent *event)
+bool QQmlAndroidView::event(QEvent *event)
 {
     if (event->type() == QEvent::PolishRequest) {
-        QtQmlAndroidView *view = qobject_cast<QtQmlAndroidView *>(parent());
+        QQmlAndroidView *view = qobject_cast<QQmlAndroidView *>(parent());
         if (view)
             setParentView(view);
         polish();
         m_polishing = false;
     }
-    return QtQmlAndroidContextual::event(event);
+    return QQmlAndroidContextual::event(event);
 }
 
-void QtQmlAndroidView::objectChange(ObjectChange change)
+void QQmlAndroidView::objectChange(ObjectChange change)
 {
-    QtQmlAndroidContextual::objectChange(change);
+    QQmlAndroidContextual::objectChange(change);
     if (change == InstanceChange) {
         updateLayoutParams();
         updateBackground();
@@ -579,7 +579,7 @@ void QtQmlAndroidView::objectChange(ObjectChange change)
     }
 }
 
-void QtQmlAndroidView::updateBackground()
+void QQmlAndroidView::updateBackground()
 {
     if (!isValid() || !m_background)
         return;
@@ -591,7 +591,7 @@ void QtQmlAndroidView::updateBackground()
     });
 }
 
-void QtQmlAndroidView::updateAnimation()
+void QQmlAndroidView::updateAnimation()
 {
     if (!isValid() || !m_animation || !m_animation->isValid())
         return;
@@ -603,7 +603,7 @@ void QtQmlAndroidView::updateAnimation()
     });
 }
 
-void QtQmlAndroidView::updateLayoutParams()
+void QQmlAndroidView::updateLayoutParams()
 {
     if (!isValid() || !m_layoutParams)
         return;

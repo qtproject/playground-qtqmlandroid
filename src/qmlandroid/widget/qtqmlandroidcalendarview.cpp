@@ -2,21 +2,21 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidCalendarView::QtQmlAndroidCalendarView(QtQmlAndroidView *parent) :
-    QtQmlAndroidFrameLayout(parent)
+QQmlAndroidCalendarView::QQmlAndroidCalendarView(QQmlAndroidView *parent) :
+    QQmlAndroidFrameLayout(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidCalendarView::onCreate()
+QAndroidJniObject QQmlAndroidCalendarView::onCreate()
 {
     return QAndroidJniObject("android/widget/CalendarView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidCalendarView::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidCalendarView::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidViewGroup::onInflate(instance);
+    QQmlAndroidViewGroup::onInflate(instance);
 }
 
 QT_END_NAMESPACE

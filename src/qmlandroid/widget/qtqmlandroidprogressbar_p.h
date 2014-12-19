@@ -6,7 +6,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidProgressBar : public QtQmlAndroidView
+class QQmlAndroidProgressBar : public QQmlAndroidView
 {
     Q_OBJECT
     Q_PROPERTY(bool indeterminate READ isIndeterminate WRITE setIndeterminate NOTIFY indeterminateChanged)
@@ -17,7 +17,7 @@ class QtQmlAndroidProgressBar : public QtQmlAndroidView
     Q_ENUMS(Style)
 
 public:
-    explicit QtQmlAndroidProgressBar(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidProgressBar(QQmlAndroidView *parent = 0);
 
     bool isIndeterminate() const;
     void setIndeterminate(bool indeterminate);
@@ -63,7 +63,7 @@ private:
     int m_progress;
     int m_secondary;
     bool m_indeterminate;
-    QtQmlAndroidOptional<Style> m_style;
+    QQmlAndroidOptional<Style> m_style;
 };
 
 QT_END_NAMESPACE

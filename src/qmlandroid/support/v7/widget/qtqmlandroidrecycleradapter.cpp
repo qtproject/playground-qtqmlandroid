@@ -6,17 +6,17 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidRecyclerAdapter::QtQmlAndroidRecyclerAdapter(QObject *parent) :
-    QtQmlAndroidContextual(parent), m_count(0), m_delegate(0)
+QQmlAndroidRecyclerAdapter::QQmlAndroidRecyclerAdapter(QObject *parent) :
+    QQmlAndroidContextual(parent), m_count(0), m_delegate(0)
 {
 }
 
-int QtQmlAndroidRecyclerAdapter::count() const
+int QQmlAndroidRecyclerAdapter::count() const
 {
     return m_count;
 }
 
-void QtQmlAndroidRecyclerAdapter::setCount(int count)
+void QQmlAndroidRecyclerAdapter::setCount(int count)
 {
     if (m_count != count) {
         m_count = count;
@@ -25,12 +25,12 @@ void QtQmlAndroidRecyclerAdapter::setCount(int count)
     }
 }
 
-QQmlComponent *QtQmlAndroidRecyclerAdapter::delegate() const
+QQmlComponent *QQmlAndroidRecyclerAdapter::delegate() const
 {
     return m_delegate;
 }
 
-void QtQmlAndroidRecyclerAdapter::setDelegate(QQmlComponent *delegate)
+void QQmlAndroidRecyclerAdapter::setDelegate(QQmlComponent *delegate)
 {
     if (m_delegate != delegate) {
         m_delegate = delegate;
@@ -39,7 +39,7 @@ void QtQmlAndroidRecyclerAdapter::setDelegate(QQmlComponent *delegate)
     }
 }
 
-QAndroidJniObject QtQmlAndroidRecyclerAdapter::onCreate()
+QAndroidJniObject QQmlAndroidRecyclerAdapter::onCreate()
 {
     return QAndroidJniObject("qt/android/support/v7/widget/QtRecyclerAdapter",
                              "(IJ)V",
@@ -47,9 +47,9 @@ QAndroidJniObject QtQmlAndroidRecyclerAdapter::onCreate()
                              reinterpret_cast<jlong>(this));
 }
 
-void QtQmlAndroidRecyclerAdapter::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidRecyclerAdapter::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidContextual::onInflate(instance);
+    QQmlAndroidContextual::onInflate(instance);
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
@@ -61,7 +61,7 @@ void QtQmlAndroidRecyclerAdapter::onInflate(QAndroidJniObject &instance)
         instance.callMethod<void>("setItemCount", "(I)V", m_count);
 }
 
-void QtQmlAndroidRecyclerAdapter::onRegisterNativeMethods(jobject adapter)
+void QQmlAndroidRecyclerAdapter::onRegisterNativeMethods(jobject adapter)
 {
     JNINativeMethod methods[] {{"onCreateViewHolder", "(JLandroid/view/ViewGroup;I)Lqt/android/support/v7/widget/QtRecyclerAdapter$ViewHolder;", reinterpret_cast<void *>(onCreateViewHolder)},
                                {"onBindViewHolder", "(JLqt/android/support/v7/widget/QtRecyclerAdapter$ViewHolder;I)V", reinterpret_cast<void *>(onBindViewHolder)}};
@@ -72,16 +72,16 @@ void QtQmlAndroidRecyclerAdapter::onRegisterNativeMethods(jobject adapter)
     env->DeleteLocalRef(cls);
 }
 
-jobject QtQmlAndroidRecyclerAdapter::onCreateViewHolder(JNIEnv *env, jobject object, jlong instance, jobject parent, jint viewType)
+jobject QQmlAndroidRecyclerAdapter::onCreateViewHolder(JNIEnv *env, jobject object, jlong instance, jobject parent, jint viewType)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
     Q_UNUSED(parent);
     Q_UNUSED(viewType);
-    QtQmlAndroidRecyclerAdapter *adapter = reinterpret_cast<QtQmlAndroidRecyclerAdapter *>(instance);
+    QQmlAndroidRecyclerAdapter *adapter = reinterpret_cast<QQmlAndroidRecyclerAdapter *>(instance);
     if (adapter) {
-        QtQmlAndroidView *item = 0;
-        QMetaObject::invokeMethod(adapter, "createItem", Qt::BlockingQueuedConnection, Q_RETURN_ARG(QtQmlAndroidView *, item));
+        QQmlAndroidView *item = 0;
+        QMetaObject::invokeMethod(adapter, "createItem", Qt::BlockingQueuedConnection, Q_RETURN_ARG(QQmlAndroidView *, item));
         item->construct();
         adapter->m_holders += QAndroidJniObject("qt/android/support/v7/widget/QtRecyclerAdapter$ViewHolder",
                                                 "(Landroid/view/View;J)V",
@@ -92,40 +92,40 @@ jobject QtQmlAndroidRecyclerAdapter::onCreateViewHolder(JNIEnv *env, jobject obj
     return 0;
 }
 
-void QtQmlAndroidRecyclerAdapter::onBindViewHolder(JNIEnv *env, jobject object, jlong instance, jobject holder, jint position)
+void QQmlAndroidRecyclerAdapter::onBindViewHolder(JNIEnv *env, jobject object, jlong instance, jobject holder, jint position)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtQmlAndroidRecyclerAdapter *adapter = reinterpret_cast<QtQmlAndroidRecyclerAdapter *>(instance);
+    QQmlAndroidRecyclerAdapter *adapter = reinterpret_cast<QQmlAndroidRecyclerAdapter *>(instance);
     if (adapter) {
         jlong vi = QAndroidJniObject(holder).callMethod<jlong>("getInstance");
-        QtQmlAndroidView *item = reinterpret_cast<QtQmlAndroidView *>(vi);
+        QQmlAndroidView *item = reinterpret_cast<QQmlAndroidView *>(vi);
         if (item)
-            QMetaObject::invokeMethod(adapter, "setItemPosition", Qt::BlockingQueuedConnection, Q_ARG(QtQmlAndroidView *, item), Q_ARG(int, position));
+            QMetaObject::invokeMethod(adapter, "setItemPosition", Qt::BlockingQueuedConnection, Q_ARG(QQmlAndroidView *, item), Q_ARG(int, position));
     }
 }
 
-QtQmlAndroidView *QtQmlAndroidRecyclerAdapter::createItem()
+QQmlAndroidView *QQmlAndroidRecyclerAdapter::createItem()
 {
-    QtQmlAndroidView *item = 0;
+    QQmlAndroidView *item = 0;
     if (m_delegate) {
         QQmlContext *creationContext = m_delegate->creationContext();
         QQmlContext *context = new QQmlContext(creationContext ? creationContext : qmlContext(this));
         QObject *object = m_delegate->beginCreate(context);
         if (object) {
             context->setParent(object);
-            item = qobject_cast<QtQmlAndroidView *>(object);
+            item = qobject_cast<QQmlAndroidView *>(object);
             if (!item)
                 delete object;
         } else {
             delete context;
         }
     } else {
-        item = new QtQmlAndroidView;
+        item = new QQmlAndroidView;
     }
     if (item) {
         item->setContext(context());
-        item->setParentView(qobject_cast<QtQmlAndroidView *>(parent())); // TODO
+        item->setParentView(qobject_cast<QQmlAndroidView *>(parent())); // TODO
         setItemPosition(item, -1);
     }
     if (m_delegate)
@@ -133,7 +133,7 @@ QtQmlAndroidView *QtQmlAndroidRecyclerAdapter::createItem()
     return item;
 }
 
-void QtQmlAndroidRecyclerAdapter::setItemPosition(QtQmlAndroidView *item, int position)
+void QQmlAndroidRecyclerAdapter::setItemPosition(QQmlAndroidView *item, int position)
 {
     QQmlContext *context = qmlContext(item);
     if (context)

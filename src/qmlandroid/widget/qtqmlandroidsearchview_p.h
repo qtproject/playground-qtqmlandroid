@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidSearchView : public QtQmlAndroidLinearLayout
+class QQmlAndroidSearchView : public QQmlAndroidLinearLayout
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidSearchView(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidSearchView(QQmlAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

@@ -5,7 +5,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidTranslateAnimation : public QtQmlAndroidAnimation
+class QQmlAndroidTranslateAnimation : public QQmlAndroidAnimation
 {
     Q_OBJECT
     Q_PROPERTY(qreal fromX READ fromX WRITE setFromX NOTIFY fromXChanged)
@@ -18,7 +18,7 @@ class QtQmlAndroidTranslateAnimation : public QtQmlAndroidAnimation
     Q_PROPERTY(Relation toYType READ toYType WRITE setToYType NOTIFY toYTypeChanged)
 
 public:
-    explicit QtQmlAndroidTranslateAnimation(QObject *parent = 0);
+    explicit QQmlAndroidTranslateAnimation(QObject *parent = 0);
 
     qreal fromX() const;
     void setFromX(qreal x);

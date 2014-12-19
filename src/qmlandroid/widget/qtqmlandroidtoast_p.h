@@ -6,16 +6,16 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidView;
+class QQmlAndroidView;
 
-class QtQmlAndroidToast : public QtQmlAndroidObject
+class QQmlAndroidToast : public QQmlAndroidObject
 {
     Q_OBJECT
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
     Q_PROPERTY(int gravity READ gravity WRITE setGravity NOTIFY gravityChanged)
 
 public:
-    explicit QtQmlAndroidToast(QObject *parent = 0);
+    explicit QQmlAndroidToast(QObject *parent = 0);
 
     QString text() const;
     void setText(const QString &text);
@@ -33,7 +33,7 @@ Q_SIGNALS:
 
 private:
     QString m_text;
-    QtQmlAndroidOptional<int> m_gravity;
+    QQmlAndroidOptional<int> m_gravity;
 };
 
 QT_END_NAMESPACE

@@ -7,7 +7,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidTextView : public QtQmlAndroidView
+class QQmlAndroidTextView : public QQmlAndroidView
 {
     Q_OBJECT
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
@@ -18,7 +18,7 @@ class QtQmlAndroidTextView : public QtQmlAndroidView
     Q_PROPERTY(int inputType READ inputType WRITE setInputType NOTIFY inputTypeChanged)
 
 public:
-    explicit QtQmlAndroidTextView(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidTextView(QQmlAndroidView *parent = 0);
 
     QString text() const;
     void setText(const QString &text);
@@ -53,10 +53,10 @@ protected:
 private:
     QString m_text;
     QString m_hint;
-    QtQmlAndroidOptional<int> m_textColor;
-    QtQmlAndroidOptional<qreal> m_textSize;
+    QQmlAndroidOptional<int> m_textColor;
+    QQmlAndroidOptional<qreal> m_textSize;
     bool m_singleLine;
-    QtQmlAndroidOptional<int> m_inputType;
+    QQmlAndroidOptional<int> m_inputType;
 };
 
 QT_END_NAMESPACE

@@ -5,16 +5,16 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidMenuItem;
+class QQmlAndroidMenuItem;
 
-class QtQmlAndroidMenu : public QtQmlAndroidContextual
+class QQmlAndroidMenu : public QQmlAndroidContextual
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidMenu(QObject *parent = 0);
+    explicit QQmlAndroidMenu(QObject *parent = 0);
 
-    QList<QtQmlAndroidMenuItem *> items() const;
+    QList<QQmlAndroidMenuItem *> items() const;
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

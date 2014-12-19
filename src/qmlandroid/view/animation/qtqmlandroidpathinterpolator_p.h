@@ -6,7 +6,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidPathInterpolator : public QtQmlAndroidInterpolator
+class QQmlAndroidPathInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
     Q_PROPERTY(qreal controlX READ controlX WRITE setControlX NOTIFY controlXChanged)
@@ -15,7 +15,7 @@ class QtQmlAndroidPathInterpolator : public QtQmlAndroidInterpolator
     Q_PROPERTY(qreal controlY2 READ controlY2 WRITE setControlY2 NOTIFY controlY2Changed)
 
 public:
-    explicit QtQmlAndroidPathInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidPathInterpolator(QObject *parent = 0);
 
     qreal controlX() const;
     void setControlX(qreal x);
@@ -39,10 +39,10 @@ protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
 
 private:
-    QtQmlAndroidOptional<qreal> m_controlX;
-    QtQmlAndroidOptional<qreal> m_controlY;
-    QtQmlAndroidOptional<qreal> m_controlX2;
-    QtQmlAndroidOptional<qreal> m_controlY2;
+    QQmlAndroidOptional<qreal> m_controlX;
+    QQmlAndroidOptional<qreal> m_controlY;
+    QQmlAndroidOptional<qreal> m_controlX2;
+    QQmlAndroidOptional<qreal> m_controlY2;
 };
 
 QT_END_NAMESPACE

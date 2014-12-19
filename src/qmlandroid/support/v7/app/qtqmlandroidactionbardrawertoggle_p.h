@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidActionBarDrawerToggle : public QtQmlAndroidObject
+class QQmlAndroidActionBarDrawerToggle : public QQmlAndroidObject
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidActionBarDrawerToggle(QObject *parent = 0);
+    explicit QQmlAndroidActionBarDrawerToggle(QObject *parent = 0);
 
     void onCreate(const QAndroidJniObject &activity, const QAndroidJniObject &drawer);
 };

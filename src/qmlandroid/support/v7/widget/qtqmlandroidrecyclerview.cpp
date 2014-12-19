@@ -4,42 +4,42 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidRecyclerView::QtQmlAndroidRecyclerView(QtQmlAndroidView *parent) :
-    QtQmlAndroidViewGroup(parent), m_adapter(0)
+QQmlAndroidRecyclerView::QQmlAndroidRecyclerView(QQmlAndroidView *parent) :
+    QQmlAndroidViewGroup(parent), m_adapter(0)
 {
 }
 
-QtQmlAndroidRecyclerAdapter *QtQmlAndroidRecyclerView::adapter() const
+QQmlAndroidRecyclerAdapter *QQmlAndroidRecyclerView::adapter() const
 {
     return m_adapter;
 }
 
-void QtQmlAndroidRecyclerView::setAdapter(QtQmlAndroidRecyclerAdapter *adapter)
+void QQmlAndroidRecyclerView::setAdapter(QQmlAndroidRecyclerAdapter *adapter)
 {
     if (m_adapter != adapter) {
         if (m_adapter) {
             m_adapter->setContext(0);
-            disconnect(m_adapter, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidRecyclerView::updateAdapter);
+            disconnect(m_adapter, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidRecyclerView::updateAdapter);
             m_adapter->destruct();
         }
         m_adapter = adapter;
         if (m_adapter) {
             m_adapter->setContext(context());
-            connect(m_adapter, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidRecyclerView::updateAdapter);
+            connect(m_adapter, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidRecyclerView::updateAdapter);
             if (isValid())
                 m_adapter->construct();
         }
         emit adapterChanged();
     }}
 
-QAndroidJniObject QtQmlAndroidRecyclerView::onCreate()
+QAndroidJniObject QQmlAndroidRecyclerView::onCreate()
 {
     return QAndroidJniObject("android/support/v7/widget/RecyclerView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidRecyclerView::onInflate(QAndroidJniObject& instance)
+void QQmlAndroidRecyclerView::onInflate(QAndroidJniObject& instance)
 {
     m_layoutManager = QAndroidJniObject("android/support/v7/widget/LinearLayoutManager",
                                         "(Landroid/content/Context;)V",
@@ -49,17 +49,17 @@ void QtQmlAndroidRecyclerView::onInflate(QAndroidJniObject& instance)
                               "(Landroid/support/v7/widget/RecyclerView$LayoutManager;)V",
                               m_layoutManager.object());
 
-    QtQmlAndroidViewGroup::onInflate(instance);
+    QQmlAndroidViewGroup::onInflate(instance);
 }
 
-void QtQmlAndroidRecyclerView::objectChange(ObjectChange change)
+void QQmlAndroidRecyclerView::objectChange(ObjectChange change)
 {
-    QtQmlAndroidViewGroup::objectChange(change);
+    QQmlAndroidViewGroup::objectChange(change);
     if (change == InstanceChange)
         updateAdapter();
 }
 
-void QtQmlAndroidRecyclerView::updateAdapter()
+void QQmlAndroidRecyclerView::updateAdapter()
 {
     if (!isValid() || !m_adapter)
         return;

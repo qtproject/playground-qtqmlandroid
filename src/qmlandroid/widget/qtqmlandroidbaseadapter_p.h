@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidBaseAdapter : public QtQmlAndroidContextual
+class QQmlAndroidBaseAdapter : public QQmlAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(int count READ count NOTIFY countChanged)
 
 public:
-    explicit QtQmlAndroidBaseAdapter(QObject *parent = 0);
+    explicit QQmlAndroidBaseAdapter(QObject *parent = 0);
 
     virtual int count() const = 0;
 

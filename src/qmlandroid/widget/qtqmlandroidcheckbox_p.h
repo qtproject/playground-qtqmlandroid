@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidCheckBox : public QtQmlAndroidCompoundButton
+class QQmlAndroidCheckBox : public QQmlAndroidCompoundButton
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidCheckBox(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidCheckBox(QQmlAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

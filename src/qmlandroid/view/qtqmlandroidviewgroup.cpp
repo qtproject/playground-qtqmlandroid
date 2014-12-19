@@ -5,35 +5,35 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidViewGroup::QtQmlAndroidViewGroup(QtQmlAndroidView *parent) :
-    QtQmlAndroidView(parent)
+QQmlAndroidViewGroup::QQmlAndroidViewGroup(QQmlAndroidView *parent) :
+    QQmlAndroidView(parent)
 {
 }
 
-QtQmlAndroidLayoutParams *QtQmlAndroidViewGroup::qmlAttachedProperties(QObject *object)
+QQmlAndroidLayoutParams *QQmlAndroidViewGroup::qmlAttachedProperties(QObject *object)
 {
-    QtQmlAndroidView *view = qobject_cast<QtQmlAndroidView*>(object);
+    QQmlAndroidView *view = qobject_cast<QQmlAndroidView*>(object);
     if (view)
-        return new QtQmlAndroidLayoutParams(view);
+        return new QQmlAndroidLayoutParams(view);
     return 0;
 }
 
-QAndroidJniObject QtQmlAndroidViewGroup::onCreate()
+QAndroidJniObject QQmlAndroidViewGroup::onCreate()
 {
     return QAndroidJniObject("android/view/ViewGroup",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidViewGroup::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidViewGroup::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidView::onInflate(instance);
+    QQmlAndroidView::onInflate(instance);
 
-    foreach (QtQmlAndroidView *child, childViews())
+    foreach (QQmlAndroidView *child, childViews())
         instance.callMethod<void>("addView", "(Landroid/view/View;)V", child->instance().object());
 }
 
-void QtQmlAndroidViewGroup::viewChange(ViewChange change, const ViewChangeData &data)
+void QQmlAndroidViewGroup::viewChange(ViewChange change, const ViewChangeData &data)
 {
     QAndroidJniObject group = instance();
     switch (change) {

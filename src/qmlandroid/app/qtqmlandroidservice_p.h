@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidService : public QtQmlAndroidContextWrapper
+class QQmlAndroidService : public QQmlAndroidContextWrapper
 {
     Q_OBJECT
     Q_PROPERTY(bool sticky READ isSticky WRITE setSticky NOTIFY stickyChanged)
 
 public:
-    explicit QtQmlAndroidService(QObject *parent = 0);
+    explicit QQmlAndroidService(QObject *parent = 0);
 
     bool isSticky() const;
     void setSticky(bool sticky);

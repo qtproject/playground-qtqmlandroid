@@ -5,32 +5,32 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidView;
-class QtQmlAndroidMenu;
-class QtQmlAndroidWindow;
-class QtQmlAndroidActionBar;
+class QQmlAndroidView;
+class QQmlAndroidMenu;
+class QQmlAndroidWindow;
+class QQmlAndroidActionBar;
 
-class QtQmlAndroidActivity : public QtQmlAndroidContextWrapper
+class QQmlAndroidActivity : public QQmlAndroidContextWrapper
 {
     Q_OBJECT
-    Q_PROPERTY(QtQmlAndroidWindow *window READ window CONSTANT)
-    Q_PROPERTY(QtQmlAndroidActionBar *actionBar READ actionBar WRITE setActionBar)
-    Q_PROPERTY(QtQmlAndroidMenu *optionsMenu READ optionsMenu WRITE setOptionsMenu)
-    Q_PROPERTY(QtQmlAndroidView *contentView READ contentView WRITE setContentView)
+    Q_PROPERTY(QQmlAndroidWindow *window READ window CONSTANT)
+    Q_PROPERTY(QQmlAndroidActionBar *actionBar READ actionBar WRITE setActionBar)
+    Q_PROPERTY(QQmlAndroidMenu *optionsMenu READ optionsMenu WRITE setOptionsMenu)
+    Q_PROPERTY(QQmlAndroidView *contentView READ contentView WRITE setContentView)
 
 public:
-    explicit QtQmlAndroidActivity(QObject *parent = 0);
+    explicit QQmlAndroidActivity(QObject *parent = 0);
 
-    QtQmlAndroidWindow *window() const;
+    QQmlAndroidWindow *window() const;
 
-    QtQmlAndroidActionBar *actionBar() const;
-    void setActionBar(QtQmlAndroidActionBar *bar);
+    QQmlAndroidActionBar *actionBar() const;
+    void setActionBar(QQmlAndroidActionBar *bar);
 
-    QtQmlAndroidMenu *optionsMenu() const;
-    void setOptionsMenu(QtQmlAndroidMenu *menu);
+    QQmlAndroidMenu *optionsMenu() const;
+    void setOptionsMenu(QQmlAndroidMenu *menu);
 
-    QtQmlAndroidView *contentView() const;
-    void setContentView(QtQmlAndroidView *view);
+    QQmlAndroidView *contentView() const;
+    void setContentView(QQmlAndroidView *view);
 
 protected:
     void classBegin() Q_DECL_OVERRIDE;
@@ -44,10 +44,10 @@ private Q_SLOTS:
     void updateContentView();
 
 private:
-    QtQmlAndroidWindow *m_window;
-    QtQmlAndroidView *m_contentView;
-    QtQmlAndroidMenu *m_optionsMenu;
-    QtQmlAndroidActionBar *m_actionBar;
+    QQmlAndroidWindow *m_window;
+    QQmlAndroidView *m_contentView;
+    QQmlAndroidMenu *m_optionsMenu;
+    QQmlAndroidActionBar *m_actionBar;
 };
 
 QT_END_NAMESPACE

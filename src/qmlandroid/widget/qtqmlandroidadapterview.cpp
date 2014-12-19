@@ -4,28 +4,28 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidAdapterView::QtQmlAndroidAdapterView(QtQmlAndroidView *parent) :
-    QtQmlAndroidViewGroup(parent), m_adapter(0)
+QQmlAndroidAdapterView::QQmlAndroidAdapterView(QQmlAndroidView *parent) :
+    QQmlAndroidViewGroup(parent), m_adapter(0)
 {
 }
 
-QtQmlAndroidBaseAdapter *QtQmlAndroidAdapterView::adapter() const
+QQmlAndroidBaseAdapter *QQmlAndroidAdapterView::adapter() const
 {
     return m_adapter;
 }
 
-void QtQmlAndroidAdapterView::setAdapter(QtQmlAndroidBaseAdapter *adapter)
+void QQmlAndroidAdapterView::setAdapter(QQmlAndroidBaseAdapter *adapter)
 {
     if (m_adapter != adapter) {
         if (m_adapter) {
             m_adapter->setContext(0);
-            disconnect(m_adapter, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidAdapterView::updateAdapter);
+            disconnect(m_adapter, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidAdapterView::updateAdapter);
             m_adapter->destruct();
         }
         m_adapter = adapter;
         if (m_adapter) {
             m_adapter->setContext(context());
-            connect(m_adapter, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidAdapterView::updateAdapter);
+            connect(m_adapter, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidAdapterView::updateAdapter);
             if (isValid())
                 m_adapter->construct();
         }
@@ -33,26 +33,26 @@ void QtQmlAndroidAdapterView::setAdapter(QtQmlAndroidBaseAdapter *adapter)
     }
 }
 
-void QtQmlAndroidAdapterView::setSelection(int position)
+void QQmlAndroidAdapterView::setSelection(int position)
 {
     QtQmlAndroid::callIntMethod(instance(), "setSelection", position);
 }
 
-QAndroidJniObject QtQmlAndroidAdapterView::onCreate()
+QAndroidJniObject QQmlAndroidAdapterView::onCreate()
 {
     return QAndroidJniObject("android/widget/AdapterView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidAdapterView::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidAdapterView::onInflate(QAndroidJniObject &instance)
 {
     m_listener = QAndroidJniObject("qt/android/widget/QtAdapterViewListener",
                                    "(Landroid/widget/AdapterView;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));
 
-    QtQmlAndroidViewGroup::onInflate(instance);
+    QQmlAndroidViewGroup::onInflate(instance);
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
@@ -61,7 +61,7 @@ void QtQmlAndroidAdapterView::onInflate(QAndroidJniObject &instance)
     }
 }
 
-void QtQmlAndroidAdapterView::onRegisterNativeMethods(jobject listener)
+void QQmlAndroidAdapterView::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onItemClick", "(JI)V", reinterpret_cast<void *>(onItemClick)}};
 
@@ -71,23 +71,23 @@ void QtQmlAndroidAdapterView::onRegisterNativeMethods(jobject listener)
     env->DeleteLocalRef(cls);
 }
 
-void QtQmlAndroidAdapterView::onItemClick(JNIEnv *env, jobject object, jlong instance, jint position)
+void QQmlAndroidAdapterView::onItemClick(JNIEnv *env, jobject object, jlong instance, jint position)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtQmlAndroidAdapterView *view = reinterpret_cast<QtQmlAndroidAdapterView *>(instance);
+    QQmlAndroidAdapterView *view = reinterpret_cast<QQmlAndroidAdapterView *>(instance);
     if (view)
         QMetaObject::invokeMethod(view, "click", Qt::QueuedConnection, Q_ARG(int, position));
 }
 
-void QtQmlAndroidAdapterView::objectChange(ObjectChange change)
+void QQmlAndroidAdapterView::objectChange(ObjectChange change)
 {
-    QtQmlAndroidViewGroup::objectChange(change);
+    QQmlAndroidViewGroup::objectChange(change);
     if (change == InstanceChange)
         updateAdapter();
 }
 
-void QtQmlAndroidAdapterView::updateAdapter()
+void QQmlAndroidAdapterView::updateAdapter()
 {
     if (!isValid())
         return;

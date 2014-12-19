@@ -5,17 +5,17 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidToast::QtQmlAndroidToast(QObject *parent) :
-    QtQmlAndroidObject(parent)
+QQmlAndroidToast::QQmlAndroidToast(QObject *parent) :
+    QQmlAndroidObject(parent)
 {
 }
 
-QString QtQmlAndroidToast::text() const
+QString QQmlAndroidToast::text() const
 {
     return m_text;
 }
 
-void QtQmlAndroidToast::setText(const QString &text)
+void QQmlAndroidToast::setText(const QString &text)
 {
     if (m_text != text) {
         m_text = text;
@@ -23,14 +23,14 @@ void QtQmlAndroidToast::setText(const QString &text)
     }
 }
 
-int QtQmlAndroidToast::gravity() const
+int QQmlAndroidToast::gravity() const
 {
     if (m_gravity.isNull())
         return 0; // TODO
     return m_gravity.value();
 }
 
-void QtQmlAndroidToast::setGravity(int value)
+void QQmlAndroidToast::setGravity(int value)
 {
     if (value != gravity()) {
         m_gravity = value;
@@ -38,9 +38,9 @@ void QtQmlAndroidToast::setGravity(int value)
     }
 }
 
-void QtQmlAndroidToast::show()
+void QQmlAndroidToast::show()
 {
-    QtQmlAndroidView *view = qobject_cast<QtQmlAndroidView *>(parent());
+    QQmlAndroidView *view = qobject_cast<QQmlAndroidView *>(parent());
     if (!view) {
         qWarning() << "Toast must be in a view.";
         return;
@@ -75,7 +75,7 @@ void QtQmlAndroidToast::show()
     });
 }
 
-void QtQmlAndroidToast::cancel()
+void QQmlAndroidToast::cancel()
 {
     QtQmlAndroid::callVoidMethod(instance(), "cancel");
 }

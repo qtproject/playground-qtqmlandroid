@@ -6,16 +6,16 @@
 QT_BEGIN_NAMESPACE
 
 class QQmlComponent;
-class QtQmlAndroidView;
+class QQmlAndroidView;
 
-class QtQmlAndroidRecyclerAdapter : public QtQmlAndroidContextual
+class QQmlAndroidRecyclerAdapter : public QQmlAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(int count READ count WRITE setCount NOTIFY countChanged)
     Q_PROPERTY(QQmlComponent *delegate READ delegate WRITE setDelegate NOTIFY delegateChanged)
 
 public:
-    explicit QtQmlAndroidRecyclerAdapter(QObject *parent = 0);
+    explicit QQmlAndroidRecyclerAdapter(QObject *parent = 0);
 
     int count() const;
     void setCount(int count);
@@ -36,8 +36,8 @@ protected:
     static void onBindViewHolder(JNIEnv *env, jobject object, jlong instance, jobject holder, jint position);
 
 private Q_SLOTS:
-    QtQmlAndroidView *createItem();
-    void setItemPosition(QtQmlAndroidView *item, int position);
+    QQmlAndroidView *createItem();
+    void setItemPosition(QQmlAndroidView *item, int position);
 
 private:
     int m_count;

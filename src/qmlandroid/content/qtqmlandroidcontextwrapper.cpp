@@ -2,13 +2,13 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidContextWrapper::QtQmlAndroidContextWrapper(QObject *parent) :
-    QtQmlAndroidContext(parent)
+QQmlAndroidContextWrapper::QQmlAndroidContextWrapper(QObject *parent) :
+    QQmlAndroidContext(parent)
 {
 }
 
-QtQmlAndroidContextWrapper::QtQmlAndroidContextWrapper(QtQmlAndroidContext *context, QObject *parent) :
-    QtQmlAndroidContext(context, parent)
+QQmlAndroidContextWrapper::QQmlAndroidContextWrapper(QQmlAndroidContext *context, QObject *parent) :
+    QQmlAndroidContext(context, parent)
 {
 }
 

@@ -2,21 +2,21 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidDatePicker::QtQmlAndroidDatePicker(QtQmlAndroidView *parent) :
-    QtQmlAndroidFrameLayout(parent)
+QQmlAndroidDatePicker::QQmlAndroidDatePicker(QQmlAndroidView *parent) :
+    QQmlAndroidFrameLayout(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidDatePicker::onCreate()
+QAndroidJniObject QQmlAndroidDatePicker::onCreate()
 {
     return QAndroidJniObject("android/widget/DatePicker",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidDatePicker::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidDatePicker::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidFrameLayout::onInflate(instance);
+    QQmlAndroidFrameLayout::onInflate(instance);
 }
 
 QT_END_NAMESPACE

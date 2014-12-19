@@ -5,7 +5,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidRotateAnimation : public QtQmlAndroidAnimation
+class QQmlAndroidRotateAnimation : public QQmlAndroidAnimation
 {
     Q_OBJECT
     Q_PROPERTY(qreal fromDegrees READ fromDegrees WRITE setFromDegrees NOTIFY fromDegreesChanged)
@@ -17,7 +17,7 @@ class QtQmlAndroidRotateAnimation : public QtQmlAndroidAnimation
     Q_ENUMS(Relation)
 
 public:
-    explicit QtQmlAndroidRotateAnimation(QObject *parent = 0);
+    explicit QQmlAndroidRotateAnimation(QObject *parent = 0);
 
     qreal fromDegrees() const;
     void setFromDegrees(qreal degrees);

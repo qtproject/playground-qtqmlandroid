@@ -5,14 +5,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidAlphaAnimation : public QtQmlAndroidAnimation
+class QQmlAndroidAlphaAnimation : public QQmlAndroidAnimation
 {
     Q_OBJECT
     Q_PROPERTY(qreal fromAlpha READ fromAlpha WRITE setFromAlpha NOTIFY fromAlphaChanged)
     Q_PROPERTY(qreal toAlpha READ toAlpha WRITE setToAlpha NOTIFY toAlphaChanged)
 
 public:
-    explicit QtQmlAndroidAlphaAnimation(QObject *parent = 0);
+    explicit QQmlAndroidAlphaAnimation(QObject *parent = 0);
 
     qreal fromAlpha() const;
     void setFromAlpha(qreal alpha);

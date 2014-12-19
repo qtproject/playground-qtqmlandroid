@@ -10,7 +10,7 @@ namespace QtQmlAndroid {
 
 void registerGraphicsModule(const char *uri)
 {
-    qmlRegisterSingletonType<QtQmlAndroidColor>(uri, 0, 21, "Color", QtQmlAndroidColor::provider);
+    qmlRegisterSingletonType<QQmlAndroidColor>(uri, 0, 21, "Color", QQmlAndroidColor::provider);
 }
 
 }

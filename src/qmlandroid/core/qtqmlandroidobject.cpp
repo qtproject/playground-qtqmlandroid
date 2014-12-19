@@ -7,24 +7,24 @@ QT_BEGIN_NAMESPACE
 
 Q_GLOBAL_STATIC(QReadWriteLock, instanceLock)
 
-QtQmlAndroidObject::QtQmlAndroidObject(QObject *parent) :
+QQmlAndroidObject::QQmlAndroidObject(QObject *parent) :
     QObject(parent), m_complete(false)
 {
 }
 
-bool QtQmlAndroidObject::isValid() const
+bool QQmlAndroidObject::isValid() const
 {
     QReadLocker locker(instanceLock());
     return m_instance.isValid();
 }
 
-QAndroidJniObject QtQmlAndroidObject::instance() const
+QAndroidJniObject QQmlAndroidObject::instance() const
 {
     QReadLocker locker(instanceLock());
     return m_instance;
 }
 
-void QtQmlAndroidObject::setInstance(const QAndroidJniObject &instance)
+void QQmlAndroidObject::setInstance(const QAndroidJniObject &instance)
 {
     QWriteLocker locker(instanceLock());
     if (m_instance != instance) {
@@ -34,17 +34,17 @@ void QtQmlAndroidObject::setInstance(const QAndroidJniObject &instance)
     }
 }
 
-void QtQmlAndroidObject::changeInstance()
+void QQmlAndroidObject::changeInstance()
 {
     Q_ASSERT(QtQmlAndroid::isMainQtThread());
     objectChange(InstanceChange);
     emit instanceChanged();
 }
 
-void QtQmlAndroidObject::construct()
+void QQmlAndroidObject::construct()
 {
     foreach (QObject *obj, children()) {
-        QtQmlAndroidObject *child = qobject_cast<QtQmlAndroidObject *>(obj);
+        QQmlAndroidObject *child = qobject_cast<QQmlAndroidObject *>(obj);
         if (child)
             child->construct();
     }
@@ -59,7 +59,7 @@ void QtQmlAndroidObject::construct()
         method();
 }
 
-void QtQmlAndroidObject::inflate(const QAndroidJniObject &instance)
+void QQmlAndroidObject::inflate(const QAndroidJniObject &instance)
 {
     std::function<void()> method = [=]() {
         QAndroidJniObject object(instance);
@@ -74,10 +74,10 @@ void QtQmlAndroidObject::inflate(const QAndroidJniObject &instance)
         method();
 }
 
-void QtQmlAndroidObject::destruct()
+void QQmlAndroidObject::destruct()
 {
     foreach (QObject *obj, children()) {
-        QtQmlAndroidObject *child = qobject_cast<QtQmlAndroidObject *>(obj);
+        QQmlAndroidObject *child = qobject_cast<QQmlAndroidObject *>(obj);
         if (child)
             child->destruct();
     }
@@ -85,64 +85,64 @@ void QtQmlAndroidObject::destruct()
     setInstance(QAndroidJniObject());
 }
 
-QAndroidJniObject QtQmlAndroidObject::onCreate()
+QAndroidJniObject QQmlAndroidObject::onCreate()
 {
     return QAndroidJniObject();
 }
 
-void QtQmlAndroidObject::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidObject::onInflate(QAndroidJniObject &instance)
 {
     Q_UNUSED(instance);
     Q_ASSERT(!QtQmlAndroid::isMainQtThread());
 }
 
-bool QtQmlAndroidObject::isComponentComplete() const
+bool QQmlAndroidObject::isComponentComplete() const
 {
     return m_complete;
 }
 
-void QtQmlAndroidObject::classBegin()
+void QQmlAndroidObject::classBegin()
 {
 }
 
-void QtQmlAndroidObject::componentComplete()
+void QQmlAndroidObject::componentComplete()
 {
     m_complete = true;
 }
 
-void QtQmlAndroidObject::objectChange(ObjectChange change)
+void QQmlAndroidObject::objectChange(ObjectChange change)
 {
     Q_ASSERT(QtQmlAndroid::isMainQtThread());
     Q_UNUSED(change);
 }
 
-QQmlListProperty<QObject> QtQmlAndroidObject::data()
+QQmlListProperty<QObject> QQmlAndroidObject::data()
 {
-    return QQmlListProperty<QObject>(this, 0, &QtQmlAndroidObject::data_append,
-                                     &QtQmlAndroidObject::data_count, &QtQmlAndroidObject::data_at, 0);
+    return QQmlListProperty<QObject>(this, 0, &QQmlAndroidObject::data_append,
+                                     &QQmlAndroidObject::data_count, &QQmlAndroidObject::data_at, 0);
 }
 
-void QtQmlAndroidObject::data_append(QQmlListProperty<QObject> *list, QObject *object)
+void QQmlAndroidObject::data_append(QQmlListProperty<QObject> *list, QObject *object)
 {
-    if (QtQmlAndroidObject *that = qobject_cast<QtQmlAndroidObject *>(list->object))
+    if (QQmlAndroidObject *that = qobject_cast<QQmlAndroidObject *>(list->object))
         object->setParent(that);
 }
 
-int QtQmlAndroidObject::data_count(QQmlListProperty<QObject> *list)
+int QQmlAndroidObject::data_count(QQmlListProperty<QObject> *list)
 {
-    if (QtQmlAndroidObject *that = qobject_cast<QtQmlAndroidObject *>(list->object))
+    if (QQmlAndroidObject *that = qobject_cast<QQmlAndroidObject *>(list->object))
         return that->children().count();
     return 0;
 }
 
-QObject *QtQmlAndroidObject::data_at(QQmlListProperty<QObject> *list, int index)
+QObject *QQmlAndroidObject::data_at(QQmlListProperty<QObject> *list, int index)
 {
-    if (QtQmlAndroidObject *that = qobject_cast<QtQmlAndroidObject *>(list->object))
+    if (QQmlAndroidObject *that = qobject_cast<QQmlAndroidObject *>(list->object))
         return that->children().value(index);
     return 0;
 }
 
-void QtQmlAndroidObject::childEvent(QChildEvent *event)
+void QQmlAndroidObject::childEvent(QChildEvent *event)
 {
     if (event->added())
         emit dataChanged();

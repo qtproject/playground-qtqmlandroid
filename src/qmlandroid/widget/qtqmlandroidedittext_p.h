@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidEditText : public QtQmlAndroidTextView
+class QQmlAndroidEditText : public QQmlAndroidTextView
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidEditText(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidEditText(QQmlAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

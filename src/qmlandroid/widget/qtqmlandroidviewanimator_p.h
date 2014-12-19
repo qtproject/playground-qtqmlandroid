@@ -5,7 +5,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidViewAnimator : public QtQmlAndroidFrameLayout
+class QQmlAndroidViewAnimator : public QQmlAndroidFrameLayout
 {
     Q_OBJECT
     Q_PROPERTY(int displayedChild READ displayedChild WRITE setDisplayedChild NOTIFY displayedChildChanged)
@@ -13,7 +13,7 @@ class QtQmlAndroidViewAnimator : public QtQmlAndroidFrameLayout
     Q_PROPERTY(int outAnimation READ outAnimation WRITE setOutAnimation NOTIFY outAnimationChanged)
 
 public:
-    explicit QtQmlAndroidViewAnimator(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidViewAnimator(QQmlAndroidView *parent = 0);
 
     int displayedChild() const;
     void setDisplayedChild(int child);
@@ -38,9 +38,9 @@ protected:
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
 private:
-    QtQmlAndroidOptional<int> m_displayedChild;
-    QtQmlAndroidOptional<int> m_inAnimation;
-    QtQmlAndroidOptional<int> m_outAnimation;
+    QQmlAndroidOptional<int> m_displayedChild;
+    QQmlAndroidOptional<int> m_inAnimation;
+    QQmlAndroidOptional<int> m_outAnimation;
 };
 
 QT_END_NAMESPACE

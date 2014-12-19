@@ -5,18 +5,18 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidBaseAdapter;
+class QQmlAndroidBaseAdapter;
 
-class QtQmlAndroidAdapterView : public QtQmlAndroidViewGroup
+class QQmlAndroidAdapterView : public QQmlAndroidViewGroup
 {
     Q_OBJECT
-    Q_PROPERTY(QtQmlAndroidBaseAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged) // TODO: Adapter
+    Q_PROPERTY(QQmlAndroidBaseAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged) // TODO: Adapter
 
 public:
-    explicit QtQmlAndroidAdapterView(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidAdapterView(QQmlAndroidView *parent = 0);
 
-    QtQmlAndroidBaseAdapter *adapter() const;
-    void setAdapter(QtQmlAndroidBaseAdapter *adapter);
+    QQmlAndroidBaseAdapter *adapter() const;
+    void setAdapter(QQmlAndroidBaseAdapter *adapter);
 
 public Q_SLOTS:
     void setSelection(int position);
@@ -39,7 +39,7 @@ private Q_SLOTS:
 
 private:
     QAndroidJniObject m_listener;
-    QtQmlAndroidBaseAdapter *m_adapter;
+    QQmlAndroidBaseAdapter *m_adapter;
 };
 
 QT_END_NAMESPACE

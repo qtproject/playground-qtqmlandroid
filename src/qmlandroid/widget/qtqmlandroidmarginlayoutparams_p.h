@@ -5,7 +5,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidMarginLayoutParams : public QtQmlAndroidLayoutParams
+class QQmlAndroidMarginLayoutParams : public QQmlAndroidLayoutParams
 {
     Q_OBJECT
     Q_PROPERTY(int margin READ margin WRITE setMargin NOTIFY marginChanged)
@@ -15,7 +15,7 @@ class QtQmlAndroidMarginLayoutParams : public QtQmlAndroidLayoutParams
     Q_PROPERTY(int bottomMargin READ bottomMargin WRITE setBottomMargin NOTIFY bottomMarginChanged)
 
 public:
-    explicit QtQmlAndroidMarginLayoutParams(QtQmlAndroidView *view);
+    explicit QQmlAndroidMarginLayoutParams(QQmlAndroidView *view);
 
     int margin() const;
     void setMargin(int margin);
@@ -44,11 +44,11 @@ protected:
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
 private:
-    QtQmlAndroidOptional<int> m_margin;
-    QtQmlAndroidOptional<int> m_topMargin;
-    QtQmlAndroidOptional<int> m_leftMargin;
-    QtQmlAndroidOptional<int> m_rightMargin;
-    QtQmlAndroidOptional<int> m_bottomMargin;
+    QQmlAndroidOptional<int> m_margin;
+    QQmlAndroidOptional<int> m_topMargin;
+    QQmlAndroidOptional<int> m_leftMargin;
+    QQmlAndroidOptional<int> m_rightMargin;
+    QQmlAndroidOptional<int> m_bottomMargin;
 };
 
 QT_END_NAMESPACE

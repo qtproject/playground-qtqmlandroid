@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidTimePicker : public QtQmlAndroidFrameLayout
+class QQmlAndroidTimePicker : public QQmlAndroidFrameLayout
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidTimePicker(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidTimePicker(QQmlAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

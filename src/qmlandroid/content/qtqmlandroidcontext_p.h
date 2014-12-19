@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidContext : public QtQmlAndroidContextual
+class QQmlAndroidContext : public QQmlAndroidContextual
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidContext(QObject *parent = 0);
-    explicit QtQmlAndroidContext(QtQmlAndroidContext *context, QObject *parent = 0);
+    explicit QQmlAndroidContext(QObject *parent = 0);
+    explicit QQmlAndroidContext(QQmlAndroidContext *context, QObject *parent = 0);
 };
 
 QT_END_NAMESPACE

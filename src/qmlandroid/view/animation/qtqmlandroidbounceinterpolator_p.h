@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidBounceInterpolator : public QtQmlAndroidInterpolator
+class QQmlAndroidBounceInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidBounceInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidBounceInterpolator(QObject *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

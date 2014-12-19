@@ -2,21 +2,21 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidButton::QtQmlAndroidButton(QtQmlAndroidView *parent) :
-    QtQmlAndroidTextView(parent)
+QQmlAndroidButton::QQmlAndroidButton(QQmlAndroidView *parent) :
+    QQmlAndroidTextView(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidButton::onCreate()
+QAndroidJniObject QQmlAndroidButton::onCreate()
 {
     return QAndroidJniObject("android/widget/Button",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidButton::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidButton::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidTextView::onInflate(instance);
+    QQmlAndroidTextView::onInflate(instance);
 }
 
 QT_END_NAMESPACE

@@ -2,21 +2,21 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidSpace::QtQmlAndroidSpace(QtQmlAndroidView *parent) :
-    QtQmlAndroidView(parent)
+QQmlAndroidSpace::QQmlAndroidSpace(QQmlAndroidView *parent) :
+    QQmlAndroidView(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidSpace::onCreate()
+QAndroidJniObject QQmlAndroidSpace::onCreate()
 {
     return QAndroidJniObject("android/widget/Space",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidSpace::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidSpace::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidView::onInflate(instance);
+    QQmlAndroidView::onInflate(instance);
 }
 
 QT_END_NAMESPACE

@@ -2,17 +2,17 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidDrawable::QtQmlAndroidDrawable(QObject *parent) :
-    QtQmlAndroidObject(parent)
+QQmlAndroidDrawable::QQmlAndroidDrawable(QObject *parent) :
+    QQmlAndroidObject(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidDrawable::onCreate()
+QAndroidJniObject QQmlAndroidDrawable::onCreate()
 {
     return QAndroidJniObject("android/graphics/drawable/Drawable");
 }
 
-void QtQmlAndroidDrawable::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidDrawable::onInflate(QAndroidJniObject &instance)
 {
     Q_UNUSED(instance);
 }

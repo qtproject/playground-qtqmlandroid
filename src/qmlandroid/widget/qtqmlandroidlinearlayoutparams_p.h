@@ -5,14 +5,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidLinearLayoutParams : public QtQmlAndroidMarginLayoutParams
+class QQmlAndroidLinearLayoutParams : public QQmlAndroidMarginLayoutParams
 {
     Q_OBJECT
     Q_PROPERTY(int gravity READ gravity WRITE setGravity NOTIFY gravityChanged)
     Q_PROPERTY(qreal weight READ weight WRITE setWeight NOTIFY weightChanged)
 
 public:
-    explicit QtQmlAndroidLinearLayoutParams(QtQmlAndroidView *view);
+    explicit QQmlAndroidLinearLayoutParams(QQmlAndroidView *view);
 
     int gravity() const;
     void setGravity(int gravity);
@@ -29,8 +29,8 @@ protected:
     void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
 
 private:
-    QtQmlAndroidOptional<int> m_gravity;
-    QtQmlAndroidOptional<qreal> m_weight;
+    QQmlAndroidOptional<int> m_gravity;
+    QQmlAndroidOptional<qreal> m_weight;
 };
 
 QT_END_NAMESPACE

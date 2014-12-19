@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidCardView : public QtQmlAndroidFrameLayout
+class QQmlAndroidCardView : public QQmlAndroidFrameLayout
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidCardView(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidCardView(QQmlAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

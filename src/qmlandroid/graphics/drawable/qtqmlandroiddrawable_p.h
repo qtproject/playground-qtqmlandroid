@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidDrawable : public QtQmlAndroidObject
+class QQmlAndroidDrawable : public QQmlAndroidObject
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidDrawable(QObject *parent = 0);
+    explicit QQmlAndroidDrawable(QObject *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

@@ -2,29 +2,29 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidFrameLayout::QtQmlAndroidFrameLayout(QtQmlAndroidView *parent) :
-    QtQmlAndroidViewGroup(parent)
+QQmlAndroidFrameLayout::QQmlAndroidFrameLayout(QQmlAndroidView *parent) :
+    QQmlAndroidViewGroup(parent)
 {
 }
 
-QtQmlAndroidFrameLayoutParams *QtQmlAndroidFrameLayout::qmlAttachedProperties(QObject *object)
+QQmlAndroidFrameLayoutParams *QQmlAndroidFrameLayout::qmlAttachedProperties(QObject *object)
 {
-    QtQmlAndroidView *view = qobject_cast<QtQmlAndroidView*>(object);
+    QQmlAndroidView *view = qobject_cast<QQmlAndroidView*>(object);
     if (view)
-        return new QtQmlAndroidFrameLayoutParams(view);
+        return new QQmlAndroidFrameLayoutParams(view);
     return 0;
 }
 
-QAndroidJniObject QtQmlAndroidFrameLayout::onCreate()
+QAndroidJniObject QQmlAndroidFrameLayout::onCreate()
 {
     return QAndroidJniObject("android/widget/FrameLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidFrameLayout::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidFrameLayout::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidViewGroup::onInflate(instance);
+    QQmlAndroidViewGroup::onInflate(instance);
 }
 
 QT_END_NAMESPACE

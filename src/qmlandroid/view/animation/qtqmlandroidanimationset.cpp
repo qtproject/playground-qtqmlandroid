@@ -2,17 +2,17 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidAnimationSet::QtQmlAndroidAnimationSet(QObject *parent) :
-    QtQmlAndroidAnimation(parent), m_shareInterpolator(false)
+QQmlAndroidAnimationSet::QQmlAndroidAnimationSet(QObject *parent) :
+    QQmlAndroidAnimation(parent), m_shareInterpolator(false)
 {
 }
 
-bool QtQmlAndroidAnimationSet::shareInterpolator() const
+bool QQmlAndroidAnimationSet::shareInterpolator() const
 {
     return m_shareInterpolator;
 }
 
-void QtQmlAndroidAnimationSet::setShareInterpolator(bool share)
+void QQmlAndroidAnimationSet::setShareInterpolator(bool share)
 {
     if (m_shareInterpolator != share) {
         m_shareInterpolator = share;
@@ -20,19 +20,19 @@ void QtQmlAndroidAnimationSet::setShareInterpolator(bool share)
     }
 }
 
-QAndroidJniObject QtQmlAndroidAnimationSet::onCreate()
+QAndroidJniObject QQmlAndroidAnimationSet::onCreate()
 {
     return QAndroidJniObject("android/view/animation/AnimationSet",
                              "(Z)V",
                              m_shareInterpolator);
 }
 
-void QtQmlAndroidAnimationSet::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidAnimationSet::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidAnimation::onInflate(instance);
+    QQmlAndroidAnimation::onInflate(instance);
 
     foreach (QObject *object, children()) {
-        QtQmlAndroidAnimation *child = qobject_cast<QtQmlAndroidAnimation *>(object);
+        QQmlAndroidAnimation *child = qobject_cast<QQmlAndroidAnimation *>(object);
         if (child) {
             QAndroidJniObject animation = child->instance();
             if (animation.isValid())

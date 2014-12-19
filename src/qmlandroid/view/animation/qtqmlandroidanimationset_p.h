@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidAnimationSet : public QtQmlAndroidAnimation
+class QQmlAndroidAnimationSet : public QQmlAndroidAnimation
 {
     Q_OBJECT
     Q_PROPERTY(bool shareInterpolator READ shareInterpolator WRITE setShareInterpolator NOTIFY shareInterpolatorChanged)
 
 public:
-    explicit QtQmlAndroidAnimationSet(QObject *parent = 0);
+    explicit QQmlAndroidAnimationSet(QObject *parent = 0);
 
     bool shareInterpolator() const;
     void setShareInterpolator(bool share);

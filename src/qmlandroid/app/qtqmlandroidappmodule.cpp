@@ -14,11 +14,11 @@ namespace QtQmlAndroid {
 
 void registerAppModule(const char *uri)
 {
-    qmlRegisterType<QtQmlAndroidActionBar>(uri, 0, 21, "ActionBar");
-    qmlRegisterType<QtQmlAndroidActivity>(uri, 0, 21, "Activity");
-    qmlRegisterType<QtQmlAndroidAlertDialog>(uri, 0, 21, "AlertDialog");
-    qmlRegisterType<QtQmlAndroidDialog>(uri, 0, 21, "Dialog");
-    qmlRegisterType<QtQmlAndroidService>(uri, 0, 21, "Service");
+    qmlRegisterType<QQmlAndroidActionBar>(uri, 0, 21, "ActionBar");
+    qmlRegisterType<QQmlAndroidActivity>(uri, 0, 21, "Activity");
+    qmlRegisterType<QQmlAndroidAlertDialog>(uri, 0, 21, "AlertDialog");
+    qmlRegisterType<QQmlAndroidDialog>(uri, 0, 21, "Dialog");
+    qmlRegisterType<QQmlAndroidService>(uri, 0, 21, "Service");
 }
 
 }

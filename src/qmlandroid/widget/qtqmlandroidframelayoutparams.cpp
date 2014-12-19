@@ -3,19 +3,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidFrameLayoutParams::QtQmlAndroidFrameLayoutParams(QtQmlAndroidView *view) :
-    QtQmlAndroidMarginLayoutParams(view)
+QQmlAndroidFrameLayoutParams::QQmlAndroidFrameLayoutParams(QQmlAndroidView *view) :
+    QQmlAndroidMarginLayoutParams(view)
 {
 }
 
-int QtQmlAndroidFrameLayoutParams::gravity() const
+int QQmlAndroidFrameLayoutParams::gravity() const
 {
     if (m_gravity.isNull())
         return 0; // TODO
     return m_gravity.value();
 }
 
-void QtQmlAndroidFrameLayoutParams::setGravity(int value)
+void QQmlAndroidFrameLayoutParams::setGravity(int value)
 {
     if (value != gravity()) {
         m_gravity = value;
@@ -24,16 +24,16 @@ void QtQmlAndroidFrameLayoutParams::setGravity(int value)
     }
 }
 
-QAndroidJniObject QtQmlAndroidFrameLayoutParams::onCreate()
+QAndroidJniObject QQmlAndroidFrameLayoutParams::onCreate()
 {
     return QAndroidJniObject("android/widget/FrameLayout$LayoutParams",
                              "(II)V",
                              MATCH_PARENT, MATCH_PARENT);
 }
 
-void QtQmlAndroidFrameLayoutParams::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidFrameLayoutParams::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidMarginLayoutParams::onInflate(instance);
+    QQmlAndroidMarginLayoutParams::onInflate(instance);
 
     if (!m_gravity.isNull())
         instance.callMethod<void>("setGravity", "(I)V", m_gravity.value());

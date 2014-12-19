@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidDatePicker : public QtQmlAndroidFrameLayout
+class QQmlAndroidDatePicker : public QQmlAndroidFrameLayout
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidDatePicker(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidDatePicker(QQmlAndroidView *parent = 0);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

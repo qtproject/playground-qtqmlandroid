@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidNumberPicker : public QtQmlAndroidLinearLayout
+class QQmlAndroidNumberPicker : public QQmlAndroidLinearLayout
 {
     Q_OBJECT
     Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)
 
 public:
-    explicit QtQmlAndroidNumberPicker(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidNumberPicker(QQmlAndroidView *parent = 0);
 
     int value() const;
     void setValue(int value);

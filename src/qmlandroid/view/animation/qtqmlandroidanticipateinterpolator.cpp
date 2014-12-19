@@ -2,19 +2,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidAnticipateInterpolator::QtQmlAndroidAnticipateInterpolator(QObject *parent) :
-    QtQmlAndroidInterpolator(parent)
+QQmlAndroidAnticipateInterpolator::QQmlAndroidAnticipateInterpolator(QObject *parent) :
+    QQmlAndroidInterpolator(parent)
 {
 }
 
-qreal QtQmlAndroidAnticipateInterpolator::tension() const
+qreal QQmlAndroidAnticipateInterpolator::tension() const
 {
     if (m_tension.isNull())
         return 1.0;
     return m_tension.value();
 }
 
-void QtQmlAndroidAnticipateInterpolator::setTension(qreal tension)
+void QQmlAndroidAnticipateInterpolator::setTension(qreal tension)
 {
     if (m_tension.isNull() || m_tension.value() != tension) {
         m_tension = tension;
@@ -22,7 +22,7 @@ void QtQmlAndroidAnticipateInterpolator::setTension(qreal tension)
     }
 }
 
-QAndroidJniObject QtQmlAndroidAnticipateInterpolator::onCreate()
+QAndroidJniObject QQmlAndroidAnticipateInterpolator::onCreate()
 {
     if (m_tension.isNull())
         return QAndroidJniObject("android/view/animation/AnticipateInterpolator");

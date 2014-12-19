@@ -4,17 +4,17 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidActionBar::QtQmlAndroidActionBar(QObject *parent) :
-    QtQmlAndroidObject(parent), m_visible(true), m_elevation(0.0), m_background(0)
+QQmlAndroidActionBar::QQmlAndroidActionBar(QObject *parent) :
+    QQmlAndroidObject(parent), m_visible(true), m_elevation(0.0), m_background(0)
 {
 }
 
-bool QtQmlAndroidActionBar::isVisible() const
+bool QQmlAndroidActionBar::isVisible() const
 {
     return m_visible;
 }
 
-void QtQmlAndroidActionBar::setVisible(bool arg)
+void QQmlAndroidActionBar::setVisible(bool arg)
 {
     if (arg != isVisible()) {
         m_visible = arg;
@@ -26,12 +26,12 @@ void QtQmlAndroidActionBar::setVisible(bool arg)
     }
 }
 
-qreal QtQmlAndroidActionBar::elevation() const
+qreal QQmlAndroidActionBar::elevation() const
 {
     return m_elevation;
 }
 
-void QtQmlAndroidActionBar::setElevation(qreal elevation)
+void QQmlAndroidActionBar::setElevation(qreal elevation)
 {
     if (m_elevation != elevation) {
         m_elevation = elevation;
@@ -40,12 +40,12 @@ void QtQmlAndroidActionBar::setElevation(qreal elevation)
     }
 }
 
-QString QtQmlAndroidActionBar::title() const
+QString QQmlAndroidActionBar::title() const
 {
     return m_title;
 }
 
-void QtQmlAndroidActionBar::setTitle(const QString &title)
+void QQmlAndroidActionBar::setTitle(const QString &title)
 {
     if (m_title != title) {
         m_title = title;
@@ -54,12 +54,12 @@ void QtQmlAndroidActionBar::setTitle(const QString &title)
     }
 }
 
-QString QtQmlAndroidActionBar::subtitle() const
+QString QQmlAndroidActionBar::subtitle() const
 {
     return m_subtitle;
 }
 
-void QtQmlAndroidActionBar::setSubtitle(const QString &subtitle)
+void QQmlAndroidActionBar::setSubtitle(const QString &subtitle)
 {
     if (m_subtitle != subtitle) {
         m_subtitle = subtitle;
@@ -68,28 +68,28 @@ void QtQmlAndroidActionBar::setSubtitle(const QString &subtitle)
     }
 }
 
-QtQmlAndroidDrawable *QtQmlAndroidActionBar::background() const
+QQmlAndroidDrawable *QQmlAndroidActionBar::background() const
 {
     return m_background;
 }
 
-void QtQmlAndroidActionBar::setBackground(QtQmlAndroidDrawable *background)
+void QQmlAndroidActionBar::setBackground(QQmlAndroidDrawable *background)
 {
     if (m_background != background) {
         if (m_background) {
-            disconnect(m_background, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidActionBar::updateBackground);
+            disconnect(m_background, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidActionBar::updateBackground);
             m_background->destruct();
         }
         m_background = background;
         if (m_background) {
-            connect(m_background, &QtQmlAndroidObject::instanceChanged, this, &QtQmlAndroidActionBar::updateBackground);
+            connect(m_background, &QQmlAndroidObject::instanceChanged, this, &QQmlAndroidActionBar::updateBackground);
             m_background->construct();
         }
         emit backgroundChanged();
     }
 }
 
-void QtQmlAndroidActionBar::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidActionBar::onInflate(QAndroidJniObject &instance)
 {
     instance.callMethod<void>(m_visible ? "show" : "hide");
 
@@ -104,14 +104,14 @@ void QtQmlAndroidActionBar::onInflate(QAndroidJniObject &instance)
     instance.callMethod<void>("setHomeButtonEnabled", "(Z)V", true);
 }
 
-void QtQmlAndroidActionBar::objectChange(ObjectChange change)
+void QQmlAndroidActionBar::objectChange(ObjectChange change)
 {
-    QtQmlAndroidObject::objectChange(change);
+    QQmlAndroidObject::objectChange(change);
     if (change == InstanceChange)
         updateBackground();
 }
 
-void QtQmlAndroidActionBar::updateBackground()
+void QQmlAndroidActionBar::updateBackground()
 {
     if (!isValid() || !m_background)
         return;

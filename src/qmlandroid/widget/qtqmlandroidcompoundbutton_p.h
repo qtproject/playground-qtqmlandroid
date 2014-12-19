@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidCompoundButton : public QtQmlAndroidButton
+class QQmlAndroidCompoundButton : public QQmlAndroidButton
 {
     Q_OBJECT
     Q_PROPERTY(bool checked READ isChecked WRITE setChecked NOTIFY checkedChanged)
 
 public:
-    explicit QtQmlAndroidCompoundButton(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidCompoundButton(QQmlAndroidView *parent = 0);
 
     bool isChecked() const;
     void setChecked(bool checked);

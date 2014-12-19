@@ -2,19 +2,19 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidOvershootInterpolator::QtQmlAndroidOvershootInterpolator(QObject *parent) :
-    QtQmlAndroidInterpolator(parent)
+QQmlAndroidOvershootInterpolator::QQmlAndroidOvershootInterpolator(QObject *parent) :
+    QQmlAndroidInterpolator(parent)
 {
 }
 
-qreal QtQmlAndroidOvershootInterpolator::tension() const
+qreal QQmlAndroidOvershootInterpolator::tension() const
 {
     if (m_tension.isNull())
         return 2.0;
     return m_tension.value();
 }
 
-void QtQmlAndroidOvershootInterpolator::setTension(qreal tension)
+void QQmlAndroidOvershootInterpolator::setTension(qreal tension)
 {
     if (m_tension.isNull() || m_tension.value() != tension) {
         m_tension = tension;
@@ -22,7 +22,7 @@ void QtQmlAndroidOvershootInterpolator::setTension(qreal tension)
     }
 }
 
-QAndroidJniObject QtQmlAndroidOvershootInterpolator::onCreate()
+QAndroidJniObject QQmlAndroidOvershootInterpolator::onCreate()
 {
     if (m_tension.isNull())
         return QAndroidJniObject("android/view/animation/OvershootInterpolator");

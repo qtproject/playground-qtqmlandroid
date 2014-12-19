@@ -4,17 +4,17 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidTextView::QtQmlAndroidTextView(QtQmlAndroidView *parent) :
-    QtQmlAndroidView(parent), m_singleLine(false)
+QQmlAndroidTextView::QQmlAndroidTextView(QQmlAndroidView *parent) :
+    QQmlAndroidView(parent), m_singleLine(false)
 {
 }
 
-QString QtQmlAndroidTextView::text() const
+QString QQmlAndroidTextView::text() const
 {
     return m_text;
 }
 
-void QtQmlAndroidTextView::setText(const QString &text)
+void QQmlAndroidTextView::setText(const QString &text)
 {
     if (m_text != text) {
         m_text = text;
@@ -23,14 +23,14 @@ void QtQmlAndroidTextView::setText(const QString &text)
     }
 }
 
-int QtQmlAndroidTextView::textColor() const
+int QQmlAndroidTextView::textColor() const
 {
     if (m_textColor.isNull())
-        return QtQmlAndroidColor::BLACK; // TODO
+        return QQmlAndroidColor::BLACK; // TODO
     return m_textColor.value();
 }
 
-void QtQmlAndroidTextView::setTextColor(int color)
+void QQmlAndroidTextView::setTextColor(int color)
 {
     if (color != textColor()) {
         m_textColor = color;
@@ -39,14 +39,14 @@ void QtQmlAndroidTextView::setTextColor(int color)
     }
 }
 
-qreal QtQmlAndroidTextView::textSize() const
+qreal QQmlAndroidTextView::textSize() const
 {
     if (m_textSize.isNull())
         return -1;
     return m_textSize.value();
 }
 
-void QtQmlAndroidTextView::setTextSize(qreal size)
+void QQmlAndroidTextView::setTextSize(qreal size)
 {
     if (size != textSize()) {
         m_textSize = size;
@@ -55,12 +55,12 @@ void QtQmlAndroidTextView::setTextSize(qreal size)
     }
 }
 
-QString QtQmlAndroidTextView::hint() const
+QString QQmlAndroidTextView::hint() const
 {
     return m_hint;
 }
 
-void QtQmlAndroidTextView::setHint(const QString &hint)
+void QQmlAndroidTextView::setHint(const QString &hint)
 {
     if (m_hint != hint) {
         m_hint = hint;
@@ -69,12 +69,12 @@ void QtQmlAndroidTextView::setHint(const QString &hint)
     }
 }
 
-bool QtQmlAndroidTextView::isSingleLine() const
+bool QQmlAndroidTextView::isSingleLine() const
 {
     return m_singleLine;
 }
 
-void QtQmlAndroidTextView::setSingleLine(bool singleLine)
+void QQmlAndroidTextView::setSingleLine(bool singleLine)
 {
     if (m_singleLine != singleLine) {
         m_singleLine = singleLine;
@@ -83,14 +83,14 @@ void QtQmlAndroidTextView::setSingleLine(bool singleLine)
     }
 }
 
-int QtQmlAndroidTextView::inputType() const
+int QQmlAndroidTextView::inputType() const
 {
     if (m_inputType.isNull())
         return 0; // TODO
     return m_inputType.value();
 }
 
-void QtQmlAndroidTextView::setInputType(int type)
+void QQmlAndroidTextView::setInputType(int type)
 {
     if (m_inputType.isNull() || m_inputType.value() != type) {
         m_inputType = type;
@@ -99,16 +99,16 @@ void QtQmlAndroidTextView::setInputType(int type)
     }
 }
 
-QAndroidJniObject QtQmlAndroidTextView::onCreate()
+QAndroidJniObject QQmlAndroidTextView::onCreate()
 {
     return QAndroidJniObject("android/widget/TextView",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidTextView::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidTextView::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidView::onInflate(instance);
+    QQmlAndroidView::onInflate(instance);
 
     if (!m_text.isNull())
         instance.callMethod<void>("setText", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_text).object());

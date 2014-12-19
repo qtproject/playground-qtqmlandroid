@@ -2,29 +2,29 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidRelativeLayout::QtQmlAndroidRelativeLayout(QtQmlAndroidView *parent) :
-    QtQmlAndroidViewGroup(parent)
+QQmlAndroidRelativeLayout::QQmlAndroidRelativeLayout(QQmlAndroidView *parent) :
+    QQmlAndroidViewGroup(parent)
 {
 }
 
-QtQmlAndroidRelativeLayoutParams *QtQmlAndroidRelativeLayout::qmlAttachedProperties(QObject *object)
+QQmlAndroidRelativeLayoutParams *QQmlAndroidRelativeLayout::qmlAttachedProperties(QObject *object)
 {
-    QtQmlAndroidView *view = qobject_cast<QtQmlAndroidView*>(object);
+    QQmlAndroidView *view = qobject_cast<QQmlAndroidView*>(object);
     if (view)
-        return new QtQmlAndroidRelativeLayoutParams(view);
+        return new QQmlAndroidRelativeLayoutParams(view);
     return 0;
 }
 
-QAndroidJniObject QtQmlAndroidRelativeLayout::onCreate()
+QAndroidJniObject QQmlAndroidRelativeLayout::onCreate()
 {
     return QAndroidJniObject("android/widget/RelativeLayout",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidRelativeLayout::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidRelativeLayout::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidViewGroup::onInflate(instance);
+    QQmlAndroidViewGroup::onInflate(instance);
 }
 
 QT_END_NAMESPACE

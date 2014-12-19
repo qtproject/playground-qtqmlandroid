@@ -5,12 +5,12 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidDialog : public QtQmlAndroidContextual
+class QQmlAndroidDialog : public QQmlAndroidContextual
 {
     Q_OBJECT
 
 public:
-    explicit QtQmlAndroidDialog(QObject *parent = 0);
+    explicit QQmlAndroidDialog(QObject *parent = 0);
 
 public Q_SLOTS:
     void cancel();

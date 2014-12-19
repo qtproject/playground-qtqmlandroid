@@ -5,13 +5,13 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidRatingBar : public QtQmlAndroidAbsSeekBar
+class QQmlAndroidRatingBar : public QQmlAndroidAbsSeekBar
 {
     Q_OBJECT
     Q_PROPERTY(qreal rating READ rating WRITE setRating NOTIFY ratingChanged)
 
 public:
-    explicit QtQmlAndroidRatingBar(QtQmlAndroidView *parent = 0);
+    explicit QQmlAndroidRatingBar(QQmlAndroidView *parent = 0);
 
     qreal rating() const;
     void setRating(qreal rating);

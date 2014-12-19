@@ -3,25 +3,25 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidScrollView::QtQmlAndroidScrollView(QtQmlAndroidView *parent) :
-    QtQmlAndroidFrameLayout(parent)
+QQmlAndroidScrollView::QQmlAndroidScrollView(QQmlAndroidView *parent) :
+    QQmlAndroidFrameLayout(parent)
 {
 }
 
-int QtQmlAndroidScrollView::scrollX() const
+int QQmlAndroidScrollView::scrollX() const
 {
     if (m_scrollX.isNull())
         return 0;
     return m_scrollX.value();
 }
 
-void QtQmlAndroidScrollView::setScrollX(int x)
+void QQmlAndroidScrollView::setScrollX(int x)
 {
     if (updateScrollX(x))
         QtQmlAndroid::callIntMethod(instance(), "setScrollX", x);
 }
 
-bool QtQmlAndroidScrollView::updateScrollX(int x)
+bool QQmlAndroidScrollView::updateScrollX(int x)
 {
     if (m_scrollX.isNull() || m_scrollX.value() != x) {
         m_scrollX = x;
@@ -30,20 +30,20 @@ bool QtQmlAndroidScrollView::updateScrollX(int x)
     return false;
 }
 
-int QtQmlAndroidScrollView::scrollY() const
+int QQmlAndroidScrollView::scrollY() const
 {
     if (m_scrollY.isNull())
         return 0;
     return m_scrollY.value();
 }
 
-void QtQmlAndroidScrollView::setScrollY(int y)
+void QQmlAndroidScrollView::setScrollY(int y)
 {
     if (updateScrollY(y))
         QtQmlAndroid::callIntMethod(instance(), "setScrollY", y);
 }
 
-bool QtQmlAndroidScrollView::updateScrollY(int y)
+bool QQmlAndroidScrollView::updateScrollY(int y)
 {
     if (m_scrollY.isNull() || m_scrollY.value() != y) {
         m_scrollY = y;
@@ -52,7 +52,7 @@ bool QtQmlAndroidScrollView::updateScrollY(int y)
     return false;
 }
 
-QAndroidJniObject QtQmlAndroidScrollView::onCreate()
+QAndroidJniObject QQmlAndroidScrollView::onCreate()
 {
     return QAndroidJniObject("qt/android/widget/QtScrollView",
                              "(Landroid/content/Context;J)V",
@@ -60,9 +60,9 @@ QAndroidJniObject QtQmlAndroidScrollView::onCreate()
                              reinterpret_cast<jlong>(this));
 }
 
-void QtQmlAndroidScrollView::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidScrollView::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidFrameLayout::onInflate(instance);
+    QQmlAndroidFrameLayout::onInflate(instance);
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
@@ -71,7 +71,7 @@ void QtQmlAndroidScrollView::onInflate(QAndroidJniObject &instance)
     }
 }
 
-void QtQmlAndroidScrollView::onRegisterNativeMethods(jobject listener)
+void QQmlAndroidScrollView::onRegisterNativeMethods(jobject listener)
 {
     JNINativeMethod methods[] {{"onScrollChanged", "(JII)V", reinterpret_cast<void *>(onScrollChanged)}};
 
@@ -81,11 +81,11 @@ void QtQmlAndroidScrollView::onRegisterNativeMethods(jobject listener)
     env->DeleteLocalRef(cls);
 }
 
-void QtQmlAndroidScrollView::onScrollChanged(JNIEnv *env, jobject object, jlong instance, jint left, jint top)
+void QQmlAndroidScrollView::onScrollChanged(JNIEnv *env, jobject object, jlong instance, jint left, jint top)
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
-    QtQmlAndroidScrollView *view = reinterpret_cast<QtQmlAndroidScrollView *>(instance);
+    QQmlAndroidScrollView *view = reinterpret_cast<QQmlAndroidScrollView *>(instance);
     if (view) {
         QMetaObject::invokeMethod(view, "updateScrollX", Qt::QueuedConnection, Q_ARG(int, left));
         QMetaObject::invokeMethod(view, "updateScrollY", Qt::QueuedConnection, Q_ARG(int, top));

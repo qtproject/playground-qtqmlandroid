@@ -6,7 +6,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidColor : public QObject
+class QQmlAndroidColor : public QObject
 {
     Q_OBJECT
     Q_ENUMS(Constants)

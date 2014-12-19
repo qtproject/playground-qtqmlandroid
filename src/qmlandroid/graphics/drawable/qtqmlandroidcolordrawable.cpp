@@ -3,22 +3,22 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidColorDrawable::QtQmlAndroidColorDrawable(QObject *parent) :
-    QtQmlAndroidDrawable(parent), m_color(0)
+QQmlAndroidColorDrawable::QQmlAndroidColorDrawable(QObject *parent) :
+    QQmlAndroidDrawable(parent), m_color(0)
 {
 }
 
-QtQmlAndroidColorDrawable::QtQmlAndroidColorDrawable(int color, QObject *parent) :
-    QtQmlAndroidDrawable(parent), m_color(color)
+QQmlAndroidColorDrawable::QQmlAndroidColorDrawable(int color, QObject *parent) :
+    QQmlAndroidDrawable(parent), m_color(color)
 {
 }
 
-int QtQmlAndroidColorDrawable::color() const
+int QQmlAndroidColorDrawable::color() const
 {
     return m_color;
 }
 
-void QtQmlAndroidColorDrawable::setColor(int color)
+void QQmlAndroidColorDrawable::setColor(int color)
 {
     if (m_color != color) {
         m_color = color;
@@ -27,14 +27,14 @@ void QtQmlAndroidColorDrawable::setColor(int color)
     }
 }
 
-QAndroidJniObject QtQmlAndroidColorDrawable::onCreate()
+QAndroidJniObject QQmlAndroidColorDrawable::onCreate()
 {
     return QAndroidJniObject("android/graphics/drawable/ColorDrawable");
 }
 
-void QtQmlAndroidColorDrawable::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidColorDrawable::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidDrawable::onInflate(instance);
+    QQmlAndroidDrawable::onInflate(instance);
 
     instance.callMethod<void>("setColor", "(I)V", m_color);
 }

@@ -5,14 +5,14 @@
 
 QT_BEGIN_NAMESPACE
 
-class QtQmlAndroidAlertDialog : public QtQmlAndroidDialog
+class QQmlAndroidAlertDialog : public QQmlAndroidDialog
 {
     Q_OBJECT
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)
     Q_PROPERTY(QString message READ message WRITE setMessage NOTIFY messageChanged)
 
 public:
-    explicit QtQmlAndroidAlertDialog(QObject *parent = 0);
+    explicit QQmlAndroidAlertDialog(QObject *parent = 0);
 
     QString title() const;
     void setTitle(const QString &title);

@@ -2,21 +2,21 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidAbsSeekBar::QtQmlAndroidAbsSeekBar(QtQmlAndroidView *parent) :
-    QtQmlAndroidProgressBar(parent)
+QQmlAndroidAbsSeekBar::QQmlAndroidAbsSeekBar(QQmlAndroidView *parent) :
+    QQmlAndroidProgressBar(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidAbsSeekBar::onCreate()
+QAndroidJniObject QQmlAndroidAbsSeekBar::onCreate()
 {
     return QAndroidJniObject("android/widget/AbsSeekBar",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidAbsSeekBar::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidAbsSeekBar::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidProgressBar::onInflate(instance);
+    QQmlAndroidProgressBar::onInflate(instance);
 }
 
 QT_END_NAMESPACE

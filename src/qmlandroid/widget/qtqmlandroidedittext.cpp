@@ -2,21 +2,21 @@
 
 QT_BEGIN_NAMESPACE
 
-QtQmlAndroidEditText::QtQmlAndroidEditText(QtQmlAndroidView *parent) :
-    QtQmlAndroidTextView(parent)
+QQmlAndroidEditText::QQmlAndroidEditText(QQmlAndroidView *parent) :
+    QQmlAndroidTextView(parent)
 {
 }
 
-QAndroidJniObject QtQmlAndroidEditText::onCreate()
+QAndroidJniObject QQmlAndroidEditText::onCreate()
 {
     return QAndroidJniObject("android/widget/EditText",
                              "(Landroid/content/Context;)V",
                              ctx().object());
 }
 
-void QtQmlAndroidEditText::onInflate(QAndroidJniObject &instance)
+void QQmlAndroidEditText::onInflate(QAndroidJniObject &instance)
 {
-    QtQmlAndroidTextView::onInflate(instance);
+    QQmlAndroidTextView::onInflate(instance);
 }
 
 QT_END_NAMESPACE
