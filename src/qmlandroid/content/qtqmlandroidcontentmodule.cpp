@@ -1,6 +1,6 @@
 #include "qtqmlandroidcontentmodule_p.h"
 
-#include "qtqmlandroidcontext_p.h"
+#include "qqmlandroidcontext_p.h"
 
 #include <QtQml/qqml.h>
 

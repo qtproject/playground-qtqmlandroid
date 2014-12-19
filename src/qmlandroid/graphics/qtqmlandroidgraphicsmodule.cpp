@@ -1,6 +1,6 @@
 #include "qtqmlandroidgraphicsmodule_p.h"
 
-#include "qtqmlandroidcolor_p.h"
+#include "qqmlandroidcolor_p.h"
 
 #include <QtQml/qqml.h>
 

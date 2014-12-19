@@ -1,12 +1,12 @@
 #include "qtqmlandroidviewmodule_p.h"
 
-#include "qtqmlandroidgravity_p.h"
-#include "qtqmlandroidlayoutparams_p.h"
-#include "qtqmlandroidmenu_p.h"
-#include "qtqmlandroidmenuitem_p.h"
-#include "qtqmlandroidview_p.h"
-#include "qtqmlandroidviewgroup_p.h"
-#include "qtqmlandroidwindow_p.h"
+#include "qqmlandroidgravity_p.h"
+#include "qqmlandroidlayoutparams_p.h"
+#include "qqmlandroidmenu_p.h"
+#include "qqmlandroidmenuitem_p.h"
+#include "qqmlandroidview_p.h"
+#include "qqmlandroidviewgroup_p.h"
+#include "qqmlandroidwindow_p.h"
 
 #include <QtQml/qqml.h>
 

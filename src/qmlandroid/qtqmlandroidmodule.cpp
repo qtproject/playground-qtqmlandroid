@@ -1,6 +1,6 @@
 #include "qtqmlandroidmodule_p.h"
 
-#include "qtqmlandroidr_p.h"
+#include "qqmlandroidr_p.h"
 
 #include <QtQml/qqml.h>
 

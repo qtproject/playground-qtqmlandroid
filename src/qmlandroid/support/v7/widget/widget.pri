@@ -1,11 +1,11 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qtqmlandroidcardview_p.h \
-    $$PWD/qtqmlandroidrecycleradapter_p.h \
-    $$PWD/qtqmlandroidrecyclerview_p.h
+    $$PWD/qqmlandroidcardview_p.h \
+    $$PWD/qqmlandroidrecycleradapter_p.h \
+    $$PWD/qqmlandroidrecyclerview_p.h
 
 SOURCES += \
-    $$PWD/qtqmlandroidcardview.cpp \
-    $$PWD/qtqmlandroidrecycleradapter.cpp \
-    $$PWD/qtqmlandroidrecyclerview.cpp
+    $$PWD/qqmlandroidcardview.cpp \
+    $$PWD/qqmlandroidrecycleradapter.cpp \
+    $$PWD/qqmlandroidrecyclerview.cpp

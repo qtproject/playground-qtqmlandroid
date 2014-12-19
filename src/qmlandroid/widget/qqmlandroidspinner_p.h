@@ -1,0 +1,22 @@
+#ifndef QQMLANDROIDSPINNER_P_H
+#define QQMLANDROIDSPINNER_P_H
+
+#include "qqmlandroidadapterview_p.h"
+
+QT_BEGIN_NAMESPACE
+
+class QQmlAndroidSpinner : public QQmlAndroidAdapterView // TODO: AbsSpinner
+{
+    Q_OBJECT
+
+public:
+    explicit QQmlAndroidSpinner(QQmlAndroidView *parent = 0);
+
+protected:
+    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
+};
+
+QT_END_NAMESPACE
+
+#endif // QQMLANDROIDSPINNER_P_H

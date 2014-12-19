@@ -1,17 +1,17 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qtqmlandroidactionbar_p.h \
-    $$PWD/qtqmlandroidactivity_p.h \
-    $$PWD/qtqmlandroidalertdialog_p.h \
-    $$PWD/qtqmlandroidappmodule_p.h \
-    $$PWD/qtqmlandroiddialog_p.h \
-    $$PWD/qtqmlandroidservice_p.h
+    $$PWD/qqmlandroidactionbar_p.h \
+    $$PWD/qqmlandroidactivity_p.h \
+    $$PWD/qqmlandroidalertdialog_p.h \
+    $$PWD/qqmlandroiddialog_p.h \
+    $$PWD/qqmlandroidservice_p.h \
+    $$PWD/qtqmlandroidappmodule_p.h
 
 SOURCES += \
-    $$PWD/qtqmlandroidactionbar.cpp \
-    $$PWD/qtqmlandroidactivity.cpp \
-    $$PWD/qtqmlandroidalertdialog.cpp \
-    $$PWD/qtqmlandroidappmodule.cpp \
-    $$PWD/qtqmlandroiddialog.cpp \
-    $$PWD/qtqmlandroidservice.cpp
+    $$PWD/qqmlandroidactionbar.cpp \
+    $$PWD/qqmlandroidactivity.cpp \
+    $$PWD/qqmlandroidalertdialog.cpp \
+    $$PWD/qqmlandroiddialog.cpp \
+    $$PWD/qqmlandroidservice.cpp \
+    $$PWD/qtqmlandroidappmodule.cpp

@@ -1,13 +1,13 @@
 #include "qtqmlandroidsupportmodule_p.h"
 
-#include "qtqmlandroiddrawerlayout_p.h"
-#include "qtqmlandroidswiperefreshlayout_p.h"
+#include "qqmlandroiddrawerlayout_p.h"
+#include "qqmlandroidswiperefreshlayout_p.h"
 
-#include "qtqmlandroidactionbardrawertoggle_p.h"
+#include "qqmlandroidactionbardrawertoggle_p.h"
 
-#include "qtqmlandroidcardview_p.h"
-#include "qtqmlandroidrecycleradapter_p.h"
-#include "qtqmlandroidrecyclerview_p.h"
+#include "qqmlandroidcardview_p.h"
+#include "qqmlandroidrecycleradapter_p.h"
+#include "qqmlandroidrecyclerview_p.h"
 
 #include <QtQml/qqml.h>
 

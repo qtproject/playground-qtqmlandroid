@@ -1,10 +1,10 @@
 #include "qtqmlandroidappmodule_p.h"
 
-#include "qtqmlandroidactionbar_p.h"
-#include "qtqmlandroidactivity_p.h"
-#include "qtqmlandroidalertdialog_p.h"
-#include "qtqmlandroiddialog_p.h"
-#include "qtqmlandroidservice_p.h"
+#include "qqmlandroidactionbar_p.h"
+#include "qqmlandroidactivity_p.h"
+#include "qqmlandroidalertdialog_p.h"
+#include "qqmlandroiddialog_p.h"
+#include "qqmlandroidservice_p.h"
 
 #include <QtQml/qqml.h>
 

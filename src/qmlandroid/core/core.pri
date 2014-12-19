@@ -1,11 +1,11 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
+    $$PWD/qqmlandroidobject_p.h \
+    $$PWD/qqmlandroidoptional_p.h \
     $$PWD/qtqmlandroidfunctions_p.h \
-    $$PWD/qtqmlandroidglobal_p.h \
-    $$PWD/qtqmlandroidobject_p.h \
-    $$PWD/qtqmlandroidoptional_p.h
+    $$PWD/qtqmlandroidglobal_p.h
 
 SOURCES += \
-    $$PWD/qtqmlandroidfunctions.cpp \
-    $$PWD/qtqmlandroidobject.cpp
+    $$PWD/qqmlandroidobject.cpp \
+    $$PWD/qtqmlandroidfunctions.cpp

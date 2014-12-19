@@ -1,7 +1,7 @@
 #include "qtqmlandroiddrawablemodule_p.h"
 
-#include "qtqmlandroidcolordrawable_p.h"
-#include "qtqmlandroiddrawable_p.h"
+#include "qqmlandroidcolordrawable_p.h"
+#include "qqmlandroiddrawable_p.h"
 
 #include <QtQml/qqml.h>
 
