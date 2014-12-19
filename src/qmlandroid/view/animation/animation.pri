@@ -1,14 +1,12 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qqmlandroidacceleratedecelerateinterpolator_p.h \
     $$PWD/qqmlandroidaccelerateinterpolator_p.h \
     $$PWD/qqmlandroidalphaanimation_p.h \
     $$PWD/qqmlandroidanimation_p.h \
     $$PWD/qqmlandroidanimationset_p.h \
     $$PWD/qqmlandroidanticipateinterpolator_p.h \
     $$PWD/qqmlandroidanticipateovershootinterpolator_p.h \
-    $$PWD/qqmlandroidbounceinterpolator_p.h \
     $$PWD/qqmlandroidcycleinterpolator_p.h \
     $$PWD/qqmlandroiddecelerateinterpolator_p.h \
     $$PWD/qqmlandroidinterpolator_p.h \
@@ -20,14 +18,12 @@ HEADERS += \
     $$PWD/qtqmlandroidanimationmodule_p.h
 
 SOURCES += \
-    $$PWD/qqmlandroidacceleratedecelerateinterpolator.cpp \
     $$PWD/qqmlandroidaccelerateinterpolator.cpp \
     $$PWD/qqmlandroidalphaanimation.cpp \
     $$PWD/qqmlandroidanimation.cpp \
     $$PWD/qqmlandroidanimationset.cpp \
     $$PWD/qqmlandroidanticipateinterpolator.cpp \
     $$PWD/qqmlandroidanticipateovershootinterpolator.cpp \
-    $$PWD/qqmlandroidbounceinterpolator.cpp \
     $$PWD/qqmlandroidcycleinterpolator.cpp \
     $$PWD/qqmlandroiddecelerateinterpolator.cpp \
     $$PWD/qqmlandroidinterpolator.cpp \
@@ -38,8 +34,9 @@ SOURCES += \
     $$PWD/qqmlandroidtranslateanimation.cpp \
     $$PWD/qtqmlandroidanimationmodule.cpp
 
-
 ANDROID_CLASSES = \
+    $$PWD/qqmlandroidacceleratedecelerateinterpolator.json \
+    $$PWD/qqmlandroidbounceinterpolator.json \
     $$PWD/qqmlandroidlinearinterpolator.json
 
 CONFIG += qac

@@ -1,0 +1,5 @@
+{
+    "class": "BounceInterpolator",
+    "base": "Interpolator",
+    "package": "android/view/animation"
+}
