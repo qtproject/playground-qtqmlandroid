@@ -1,2 +1,3 @@
 TEMPLATE = subdirs
-SUBDIRS += android/catalog
+SUBDIRS += \
+    android/catalog

@@ -1,12 +1,13 @@
 TEMPLATE = subdirs
-SUBDIRS += android
-SUBDIRS += app
-SUBDIRS += content
-SUBDIRS += graphics
-SUBDIRS += graphics/drawable
-SUBDIRS += support/v4/widget
-SUBDIRS += support/v7/app
-SUBDIRS += support/v7/widget
-SUBDIRS += view
-SUBDIRS += view/animation
-SUBDIRS += widget
+SUBDIRS += \
+    android \
+    app \
+    content \
+    graphics \
+    graphics/drawable \
+    support/v4/widget \
+    support/v7/app \
+    support/v7/widget \
+    view \
+    view/animation \
+    widget
