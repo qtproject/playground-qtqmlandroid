@@ -8,8 +8,7 @@ Makefile
 *-deployment-settings.json
 .moc
 .rcc
-qac_*.h
-qac_*.cpp
+.qac
 moc_*.cpp
 qrc_*.cpp
 app_process

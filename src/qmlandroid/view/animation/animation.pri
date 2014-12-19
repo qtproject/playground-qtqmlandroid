@@ -12,7 +12,6 @@ HEADERS += \
     $$PWD/qqmlandroidcycleinterpolator_p.h \
     $$PWD/qqmlandroiddecelerateinterpolator_p.h \
     $$PWD/qqmlandroidinterpolator_p.h \
-    $$PWD/qqmlandroidlinearinterpolator_p.h \
     $$PWD/qqmlandroidovershootinterpolator_p.h \
     $$PWD/qqmlandroidpathinterpolator_p.h \
     $$PWD/qqmlandroidrotateanimation_p.h \
@@ -32,10 +31,15 @@ SOURCES += \
     $$PWD/qqmlandroidcycleinterpolator.cpp \
     $$PWD/qqmlandroiddecelerateinterpolator.cpp \
     $$PWD/qqmlandroidinterpolator.cpp \
-    $$PWD/qqmlandroidlinearinterpolator.cpp \
     $$PWD/qqmlandroidovershootinterpolator.cpp \
     $$PWD/qqmlandroidpathinterpolator.cpp \
     $$PWD/qqmlandroidrotateanimation.cpp \
     $$PWD/qqmlandroidscaleanimation.cpp \
     $$PWD/qqmlandroidtranslateanimation.cpp \
     $$PWD/qtqmlandroidanimationmodule.cpp
+
+
+ANDROID_CLASSES = \
+    $$PWD/qqmlandroidlinearinterpolator.json
+
+CONFIG += qac

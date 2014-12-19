@@ -16,17 +16,8 @@ class QAC
 public:
     QAC(const QJsonDocument &doc) : m_doc(doc.object()) { }
 
-    QString errorString() const { return m_error; }
-
-    bool writeHeader(const QString &filePath)
+    void writeHeader(QTextStream &out)
     {
-        QFile file(filePath);
-        if (!file.open(QFile::WriteOnly | QFile::Text)) {
-            m_error = file.errorString();
-            return false;
-        }
-
-        QTextStream out(&file);
         writeHeaderOpenGuard(out);
         out << endl;
         writeHeaderIncludes(out);
@@ -38,18 +29,10 @@ public:
         writeEndNamespace(out);
         out << endl;
         writeHeaderCloseGuard(out);
-        return true;
     }
 
-    bool writeSource(const QString &filePath)
+    void writeSource(QTextStream &out)
     {
-        QFile file(filePath);
-        if (!file.open(QFile::WriteOnly | QFile::Text)) {
-            m_error = file.errorString();
-            return false;
-        }
-
-        QTextStream out(&file);
         writeSourceIncludes(out);
         out << endl;
         writeBeginNamespace(out);
@@ -57,7 +40,6 @@ public:
         writeClassImplementation(out);
         out << endl;
         writeEndNamespace(out);
-        return true;
     }
 
 private:
@@ -100,7 +82,7 @@ private:
 
     void writeSourceIncludes(QTextStream &out)
     {
-        const QString cls = m_doc.value("class").toString();
+        const QString cls = m_doc.value("class").toString().toLower();
         out << "#include \"qqmlandroid" << cls << "_p.h\"" << endl;
     }
 
@@ -144,8 +126,8 @@ static void usage(bool showHelp = false)
     if (showHelp) {
         std::cerr << " Generates C++ from a JSON description file" << std::endl
                   << " The options are:" << std::endl
-                  << "  -o<dir>                 write output to dir" << std::endl
-                  << "  -h                      display this output" << std::endl;
+                  << "  -o<file>                 write output to file" << std::endl
+                  << "  -h                       display this output" << std::endl;
     }
 }
 
@@ -155,8 +137,8 @@ int runQac(int argc, char *argv[])
 
     const QStringList args = app.arguments();
 
-    QString fileName;
-    QString outputPath;
+    QString inputFileName;
+    QString outputFileName;
 
     int index = 1;
     while (index < args.count()) {
@@ -171,20 +153,20 @@ int runQac(int argc, char *argv[])
                 std::cerr << "qac: argument to '-o' is missing" << std::endl;
                 return EXIT_FAILURE;
             } else {
-                outputPath = next;
+                outputFileName = next;
                 ++index; // consume the next argument
             }
         } else if (arg.startsWith(QLatin1String("-o"))) {
-            outputPath = arg.mid(2);
+            outputFileName = arg.mid(2);
 
-            if (outputPath.isEmpty()) {
+            if (outputFileName.isEmpty()) {
                 std::cerr << "qac: argument to '-o' is missing" << std::endl;
                 return EXIT_FAILURE;
             }
         } else {
             const bool isInvalidOpt = arg.startsWith(QLatin1Char('-'));
-            if (!isInvalidOpt && fileName.isEmpty())
-                fileName = arg;
+            if (!isInvalidOpt && inputFileName.isEmpty())
+                inputFileName = arg;
             else {
                 usage(/*show help*/ isInvalidOpt);
                 if (isInvalidOpt)
@@ -196,14 +178,14 @@ int runQac(int argc, char *argv[])
         }
     }
 
-    if (fileName.isEmpty()) {
+    if (inputFileName.isEmpty()) {
         usage();
         return EXIT_SUCCESS;
     }
 
-    QFile inputFile(fileName);
-    if (!inputFile.open(QFile::ReadOnly)) {
-        std::cerr << "qac: cannot read '" << qPrintable(fileName) << "'"
+    QFile inputFile(inputFileName);
+    if (!inputFile.open(QFile::ReadOnly | QFile::Text)) {
+        std::cerr << "qac: cannot read '" << qPrintable(inputFileName) << "'"
                   << " (" << qPrintable(inputFile.errorString()) << ")" << std::endl;
         return EXIT_FAILURE;
     }
@@ -213,29 +195,29 @@ int runQac(int argc, char *argv[])
     inputFile.close();
 
     if (jsonError.error != QJsonParseError::NoError) {
-        std::cerr << "qac: cannot parse '" << qPrintable(fileName) << "'"
+        std::cerr << "qac: cannot parse '" << qPrintable(inputFileName) << "'"
                   << " (" << qPrintable(jsonError.errorString()) << ")" << std::endl;
         return EXIT_FAILURE;
     }
 
-    QDir outputDir(outputPath);
-    if (outputPath.isEmpty())
-        outputDir = QDir::current();
-
-    QString baseName = QFileInfo(inputFile).baseName();
-    QString headerFileName = "qac_" + baseName + ".h";
-    QString sourceFileName = "qac_" + baseName + ".cpp";
-
     QAC qac(doc);
-    if (!qac.writeHeader(outputDir.filePath(headerFileName))) {
-        std::cerr << "qac: cannot write '" << qPrintable(headerFileName) << "'"
-                  << " (" << qPrintable(qac.errorString()) << ")" << std::endl;
-        return EXIT_FAILURE;
-    }
-    if (!qac.writeSource(outputDir.filePath(sourceFileName))) {
-        std::cerr << "qac: cannot write '" << qPrintable(sourceFileName) << "'"
-                  << " (" << qPrintable(qac.errorString()) << ")" << std::endl;
-        return EXIT_FAILURE;
+    if (outputFileName.isEmpty()) {
+        QTextStream out(stdout);
+        qac.writeHeader(out);
+        out << endl;
+        qac.writeSource(out);
+    } else {
+        QFile outputFile(outputFileName);
+        if (!outputFile.open(QFile::WriteOnly | QFile::Text)) {
+            std::cerr << "qac: cannot write '" << qPrintable(outputFileName) << "'"
+                      << " (" << qPrintable(outputFile.errorString()) << ")" << std::endl;
+            return EXIT_FAILURE;
+        }
+        QTextStream out(&outputFile);
+        if (outputFileName.endsWith(".h"))
+            qac.writeHeader(out);
+        else
+            qac.writeSource(out);
     }
 
     return EXIT_SUCCESS;
