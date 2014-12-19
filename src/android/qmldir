@@ -1,3 +1,0 @@
-module android
-plugin qtandroidplugin
-classname QtAndroidPlugin

@@ -1,0 +1,3 @@
+module android.content
+plugin qtqmlandroidcontentplugin
+classname QtQmlAndroidContentPlugin

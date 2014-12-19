@@ -1,0 +1,3 @@
+module android.view
+plugin qtqmlandroidviewplugin
+classname QtQmlAndroidViewPlugin

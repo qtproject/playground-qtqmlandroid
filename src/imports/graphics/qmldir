@@ -1,0 +1,3 @@
+module android.graphics
+plugin qtqmlandroidgraphicsplugin
+classname QtQmlAndroidGraphicsPlugin

@@ -1,0 +1,3 @@
+module android.support.v4.widget
+plugin qtqmlandroidsupportv4widgetplugin
+classname QtQmlAndroidSupportV4WidgetPlugin

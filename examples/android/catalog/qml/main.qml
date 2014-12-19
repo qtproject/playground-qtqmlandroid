@@ -13,7 +13,7 @@ Activity {
     window.statusBarColor: Color.name("#455a64")
 
     actionBar: ActionBar {
-        title: "QtAndroid"
+        title: "QtQmlAndroid"
         subtitle: adapter.getItem(switcher.displayedChild)
         background: ColorDrawable {
             color: Color.name("#607d8b")

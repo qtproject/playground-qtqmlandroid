@@ -1,0 +1,3 @@
+module android.view.animation
+plugin qtqmlandroidanimationplugin
+classname QtQmlAndroidAnimationPlugin

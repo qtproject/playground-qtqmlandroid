@@ -1,0 +1,3 @@
+module android.widget
+plugin qtqmlandroidwidgetplugin
+classname QtQmlAndroidWidgetPlugin

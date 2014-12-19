@@ -1,3 +1,4 @@
 TEMPLATE = subdirs
-SUBDIRS += android
-SUBDIRS += android/java
+SUBDIRS += qmlandroid
+SUBDIRS += imports
+SUBDIRS += java

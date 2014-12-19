@@ -1,4 +1,5 @@
 %modules = ( # path to module name map
+    "QtQmlAndroid" => "$basedir/src/qmlandroid",
 );
 %moduleheaders = ( # restrict the module headers to those found in relative path
 );
