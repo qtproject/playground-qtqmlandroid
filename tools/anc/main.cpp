@@ -4,6 +4,7 @@
 #include <QtCore/qstringlist.h>
 #include <QtCore/qtextstream.h>
 #include <QtCore/qjsonvalue.h>
+#include <QtCore/qjsonarray.h>
 #include <QtCore/qfile.h>
 #include <QtCore/qdir.h>
 #include <iostream>
@@ -54,6 +55,7 @@ private:
     {
         const QString base = m_doc.value("base").toString().toLower();
         out << "#include \"qtqmlandroidglobal_p.h\"" << endl;
+        out << "#include \"qqmlandroidoptional_p.h\"" << endl;
         out << "#include \"qqmlandroid" << base << "_p.h\"" << endl;
         out << "#include <QtAndroidExtras/qandroidjniobject.h>" << endl;
     }
@@ -62,16 +64,74 @@ private:
     {
         const QString cls = m_doc.value("class").toString();
         const QString base = m_doc.value("base").toString();
+        const QJsonArray properties = m_doc.value("properties").toArray();
         out << "class QQmlAndroid" << cls << " : public QQmlAndroid" << base << endl;
         out << "{" << endl;
         out << "    Q_OBJECT" << endl;
+        writePropertyMacros(out, properties);
         out << endl;
         out << "public:" << endl;
         out << "    explicit QQmlAndroid" << cls << "(QObject *parent = 0);" << endl;
         out << endl;
+        writePropertyDeclarations(out, properties);
+        out << "Q_SIGNALS:" << endl;
+        writePropertyNotifiers(out, properties);
+        out << endl;
         out << "protected:" << endl;
         out << "    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;" << endl;
+        out << endl;
+        out << "private:" << endl;
+        writePropertyMembers(out, properties);
         out << "};" << endl;
+    }
+
+    void writePropertyMacros(QTextStream &out, const QJsonArray &properties)
+    {
+        foreach (const QJsonValue &value, properties) {
+            const QJsonObject property = value.toObject();
+            const QString name = property.value("name").toString();
+            const QString type = property.value("type").toString();
+            out << "    Q_PROPERTY(" << type << " " << name << " READ " << name << " WRITE set" << capitalize(name) << " NOTIFY " << name << "Changed)" << endl;
+        }
+    }
+
+    void writePropertyDeclarations(QTextStream &out, const QJsonArray &properties)
+    {
+        foreach (const QJsonValue &value, properties) {
+            const QJsonObject property = value.toObject();
+            const QString name = property.value("name").toString();
+            const QString type = property.value("type").toString();
+            out << "    " << type << " " << name << "() const;" << endl;
+            out << "    void set" << capitalize(name) << "(";
+            if (isPrimitive(type))
+                out << type << " " << name << ");";
+            else
+                out << "const " << type << " &" << name << ");";
+            out << endl << endl;
+        }
+    }
+
+    void writePropertyNotifiers(QTextStream &out, const QJsonArray &properties)
+    {
+        foreach (const QJsonValue &value, properties) {
+            const QJsonObject property = value.toObject();
+            const QString name = property.value("name").toString();
+            out << "    void " << name << "Changed();" << endl;
+        }
+    }
+
+    void writePropertyMembers(QTextStream &out, const QJsonArray &properties)
+    {
+        foreach (const QJsonValue &value, properties) {
+            const QJsonObject property = value.toObject();
+            const QString name = property.value("name").toString();
+            const QString type = property.value("type").toString();
+            const bool optional = property.value("optional").toBool();
+            if (optional)
+                out << "    QQmlAndroidOptional<" << type << "> m_" << name << ";" << endl;
+            else
+                out << "    " << type << " m_" << name << ";" << endl;
+        }
     }
 
     void writeHeaderCloseGuard(QTextStream &out)
@@ -91,17 +151,81 @@ private:
         const QString cls = m_doc.value("class").toString();
         const QString base = m_doc.value("base").toString();
         const QString pkg = m_doc.value("package").toString();
+        const QJsonArray properties = m_doc.value("properties").toArray();
 
         out << "QQmlAndroid" << cls << "::QQmlAndroid" << cls << "(QObject *parent) :" << endl;
         out << "    QQmlAndroid" << base << "(parent)" << endl;
         out << "{" << endl;
         out << "}" << endl;
-
         out << endl;
-
+        foreach (const QJsonValue &value, properties) {
+            const QJsonObject property = value.toObject();
+            writePropertyGetter(out, property);
+            out << endl;
+            writePropertySetter(out, property);
+            out << endl;
+        }
         out << "QAndroidJniObject QQmlAndroid" << cls << "::onCreate()" << endl;
         out << "{" << endl;
         out << "    return QAndroidJniObject(\"" << pkg << "/" << cls << "\");" << endl;
+        out << "}" << endl;
+    }
+
+    void writeValue(QTextStream &out, const QJsonValue &value) {
+        switch (value.type()) {
+        case QJsonValue::Bool:
+            out << value.toBool();
+            break;
+        case QJsonValue::Double:
+            out << value.toDouble();
+            break;
+        default:
+            out << value.toVariant().toString();
+            break;
+        }
+    }
+
+    void writePropertyGetter(QTextStream &out, const QJsonObject &property)
+    {
+        const QString cls = m_doc.value("class").toString();
+        const QString name = property.value("name").toString();
+        const QString type = property.value("type").toVariant().toString();
+        const bool optional = property.value("optional").toBool();
+
+        out << type << " QQmlAndroid" << cls << "::" << name << "() const" << endl;
+        out << "{" << endl;
+        if (optional) {
+            out << "    if (m_" << name << ".isNull())" << endl;
+            out << "        return ";
+            writeValue(out, property.value("value"));
+            out << ";" << endl;
+            out << "    return m_" << name << ".value();" << endl;
+        } else {
+            out << "    return m_" << name << ";" << endl;
+        }
+        out << "}" << endl;
+    }
+
+    void writePropertySetter(QTextStream &out, const QJsonObject &property)
+    {
+        const QString cls = m_doc.value("class").toString();
+        const QString name = property.value("name").toString();
+        const QString type = property.value("type").toVariant().toString();
+        const bool optional = property.value("optional").toBool();
+
+        out << "void QQmlAndroid" << cls << "::set" << capitalize(name) << "(";
+        if (isPrimitive(type))
+            out << type << " " << name << ")" << endl;
+        else
+            out << optionalize(type) << " " << name << ")" << endl;
+        out << "{" << endl;
+        if (optional)
+            out << "    if (m_" << name << ".isNull() || m_" << name << ".value() != " << name << ") {" << endl;
+        else
+            out << "    if (m_" << name << " != " << name << ") {" << endl;
+        out << "        m_" << name << " = " << name << ";" << endl;
+        out << "        emit " << name << "Changed();" << endl;
+        out << "    }" << endl;
         out << "}" << endl;
     }
 
@@ -113,6 +237,21 @@ private:
     void writeEndNamespace(QTextStream &out)
     {
         out << "QT_END_NAMESPACE" << endl;
+    }
+
+    static QString capitalize(const QString &str)
+    {
+        return str.left(1).toUpper() + str.mid(1);
+    }
+
+    static QString optionalize(const QString &type)
+    {
+        return "QQmlAndroidOptional<" + type + ">";
+    }
+
+    static bool isPrimitive(const QString &type)
+    {
+        return type.at(0).isLower();
     }
 
     QString m_error;
