@@ -39,4 +39,4 @@ ANDROID_CLASSES = \
     $$PWD/qqmlandroidbounceinterpolator.json \
     $$PWD/qqmlandroidlinearinterpolator.json
 
-CONFIG += qac
+CONFIG += anc

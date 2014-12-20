@@ -1,0 +1,52 @@
+#global defaults
+qtPrepareTool(QMAKE_ANC, anc)
+isEmpty(ANC_DIR):ANC_DIR = .anc
+
+#anc headers
+anc_header.CONFIG = anc_verify
+anc_header.dependency_type = TYPE_C
+anc_header.commands = $$QMAKE_ANC ${QMAKE_FILE_IN} -o ${QMAKE_FILE_OUT}
+anc_header.output = $$ANC_DIR/${QMAKE_FILE_BASE}_p$${first(QMAKE_EXT_H)}
+anc_header.input = ANDROID_CLASSES
+anc_header.variable_out = ANDROID_HEADERS
+anc_header.name = ANC $${QMAKE_H_MOD_ANC}${QMAKE_FILE_BASE}_p$${first(QMAKE_EXT_H)}
+silent:anc_header.commands = @echo anc ${QMAKE_FILE_IN} && $$anc_header.commands
+QMAKE_EXTRA_COMPILERS += anc_header
+
+#anc sources
+anc_source.CONFIG = anc_verify
+anc_source.dependency_type = TYPE_C
+anc_source.commands = $$QMAKE_ANC ${QMAKE_FILE_IN} -o ${QMAKE_FILE_OUT}
+anc_source.output = $$ANC_DIR/${QMAKE_FILE_BASE}$${first(QMAKE_EXT_CPP)}
+anc_source.input = ANDROID_CLASSES
+anc_source.variable_out = SOURCES
+anc_source.name = ANC $${QMAKE_CPP_MOD_ANC}${QMAKE_FILE_BASE}$${first(QMAKE_EXT_CPP)}
+silent:anc_source.commands = @echo anc ${QMAKE_FILE_IN} && $$anc_source.commands
+QMAKE_EXTRA_COMPILERS += anc_source
+
+load(moc)
+anc_moc.commands = $$moc_header.commands
+anc_moc.output = $$moc_header.output
+anc_moc.input = ANDROID_HEADERS
+anc_moc.variable_out = GENERATED_SOURCES
+anc_moc.name = $${GROUP}_$$moc_header.name
+QMAKE_EXTRA_COMPILERS += anc_moc
+
+#make sure we can include these files
+INCLUDEPATH += $$absolute_path($$ANC_DIR, $$OUT_PWD)
+
+#auto depend on anc
+unix:!no_ancdepend {
+     anc_source.depends += $$first(QMAKE_ANC)
+     anc_header.depends += $$first(QMAKE_ANC)
+}
+
+#generate a ancclean
+build_pass|isEmpty(BUILDS):ancclean.depends = compiler_anc_header_clean compiler_anc_source_clean
+else:ancclean.CONFIG += recursive
+QMAKE_EXTRA_TARGETS += ancclean
+
+#generate a ancables
+build_pass|isEmpty(BUILDS):ancables.depends = compiler_anc_header_make_all compiler_anc_source_make_all
+else:ancables.CONFIG += recursive
+QMAKE_EXTRA_TARGETS += ancables

@@ -11,10 +11,10 @@
 
 QT_BEGIN_NAMESPACE
 
-class QAC
+class Anc
 {
 public:
-    QAC(const QJsonDocument &doc) : m_doc(doc.object()) { }
+    Anc(const QJsonDocument &doc) : m_doc(doc.object()) { }
 
     void writeHeader(QTextStream &out)
     {
@@ -121,7 +121,7 @@ private:
 
 static void usage(bool showHelp = false)
 {
-    std::cerr << "Usage: qac [options]" << std::endl;
+    std::cerr << "Usage: anc [options]" << std::endl;
 
     if (showHelp) {
         std::cerr << " Generates C++ from a JSON description file" << std::endl
@@ -131,7 +131,7 @@ static void usage(bool showHelp = false)
     }
 }
 
-int runQac(int argc, char *argv[])
+int runAnc(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
 
@@ -150,7 +150,7 @@ int runQac(int argc, char *argv[])
             return EXIT_SUCCESS;
         } else if (arg == QLatin1String("-o")) {
             if (next.isEmpty()) {
-                std::cerr << "qac: argument to '-o' is missing" << std::endl;
+                std::cerr << "anc: argument to '-o' is missing" << std::endl;
                 return EXIT_FAILURE;
             } else {
                 outputFileName = next;
@@ -160,7 +160,7 @@ int runQac(int argc, char *argv[])
             outputFileName = arg.mid(2);
 
             if (outputFileName.isEmpty()) {
-                std::cerr << "qac: argument to '-o' is missing" << std::endl;
+                std::cerr << "anc: argument to '-o' is missing" << std::endl;
                 return EXIT_FAILURE;
             }
         } else {
@@ -170,9 +170,9 @@ int runQac(int argc, char *argv[])
             else {
                 usage(/*show help*/ isInvalidOpt);
                 if (isInvalidOpt)
-                    std::cerr << "qac: invalid option '" << qPrintable(arg) << "'" << std::endl;
+                    std::cerr << "anc: invalid option '" << qPrintable(arg) << "'" << std::endl;
                 else
-                    std::cerr << "qac: too many input files specified" << std::endl;
+                    std::cerr << "anc: too many input files specified" << std::endl;
                 return EXIT_FAILURE;
             }
         }
@@ -185,7 +185,7 @@ int runQac(int argc, char *argv[])
 
     QFile inputFile(inputFileName);
     if (!inputFile.open(QFile::ReadOnly | QFile::Text)) {
-        std::cerr << "qac: cannot read '" << qPrintable(inputFileName) << "'"
+        std::cerr << "anc: cannot read '" << qPrintable(inputFileName) << "'"
                   << " (" << qPrintable(inputFile.errorString()) << ")" << std::endl;
         return EXIT_FAILURE;
     }
@@ -195,29 +195,29 @@ int runQac(int argc, char *argv[])
     inputFile.close();
 
     if (jsonError.error != QJsonParseError::NoError) {
-        std::cerr << "qac: cannot parse '" << qPrintable(inputFileName) << "'"
+        std::cerr << "anc: cannot parse '" << qPrintable(inputFileName) << "'"
                   << " (" << qPrintable(jsonError.errorString()) << ")" << std::endl;
         return EXIT_FAILURE;
     }
 
-    QAC qac(doc);
+    Anc anc(doc);
     if (outputFileName.isEmpty()) {
         QTextStream out(stdout);
-        qac.writeHeader(out);
+        anc.writeHeader(out);
         out << endl;
-        qac.writeSource(out);
+        anc.writeSource(out);
     } else {
         QFile outputFile(outputFileName);
         if (!outputFile.open(QFile::WriteOnly | QFile::Text)) {
-            std::cerr << "qac: cannot write '" << qPrintable(outputFileName) << "'"
+            std::cerr << "anc: cannot write '" << qPrintable(outputFileName) << "'"
                       << " (" << qPrintable(outputFile.errorString()) << ")" << std::endl;
             return EXIT_FAILURE;
         }
         QTextStream out(&outputFile);
         if (outputFileName.endsWith(".h"))
-            qac.writeHeader(out);
+            anc.writeHeader(out);
         else
-            qac.writeSource(out);
+            anc.writeSource(out);
     }
 
     return EXIT_SUCCESS;
@@ -227,5 +227,5 @@ QT_END_NAMESPACE
 
 int main(int argc, char *argv[])
 {
-    return QT_PREPEND_NAMESPACE(runQac(argc, argv));
+    return QT_PREPEND_NAMESPACE(runAnc(argc, argv));
 }

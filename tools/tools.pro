@@ -1,5 +1,5 @@
 TEMPLATE = subdirs
 SUBDIRS += \
-    qac
+    anc
 
-qac.CONFIG = host_build
+anc.CONFIG = host_build
