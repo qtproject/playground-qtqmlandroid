@@ -5,6 +5,7 @@
 #include <QtCore/qtextstream.h>
 #include <QtCore/qjsonvalue.h>
 #include <QtCore/qjsonarray.h>
+#include <QtCore/qdebug.h>
 #include <QtCore/qfile.h>
 #include <QtCore/qdir.h>
 #include <iostream>
@@ -150,7 +151,6 @@ private:
     {
         const QString cls = m_doc.value("class").toString();
         const QString base = m_doc.value("base").toString();
-        const QString pkg = m_doc.value("package").toString();
         const QJsonArray properties = m_doc.value("properties").toArray();
 
         out << "QQmlAndroid" << cls << "::QQmlAndroid" << cls << "(QObject *parent) :" << endl;
@@ -165,13 +165,94 @@ private:
             writePropertySetter(out, property);
             out << endl;
         }
+        const QJsonObject jni = m_doc.value("jni").toObject();
+        const QJsonObject construction = jni.value("construction").toObject();
+        writeJniConstruction(out, construction);
+        const QJsonObject inflation = jni.value("inflation").toObject();
+        if (!inflation.isEmpty())
+            writeJniInflation(out, inflation);
+    }
+
+    QJsonObject findProperty(const QString &name)
+    {
+        const QJsonArray properties = m_doc.value("properties").toArray();
+        foreach (const QJsonValue &value, properties) {
+            const QJsonObject property = value.toObject();
+            if (name == property.value("name").toString())
+                return property;
+        }
+        return QJsonObject();
+    }
+
+    QString jniType(const QString &type)
+    {
+        if (type == "bool")
+            return "Z";
+        if (type == "int")
+            return "I";
+        if (type == "qreal" || type == "float")
+            return "F";
+        if (type == "double")
+            return "D";
+        if (type == "long")
+            return "J";
+        return QString();
+    }
+
+    void writeJniConstruction(QTextStream &out, const QJsonObject &construction)
+    {
+        const QString cls = m_doc.value("class").toString();
+        const QString pkg = m_doc.value("package").toString();
+
         out << "QAndroidJniObject QQmlAndroid" << cls << "::onCreate()" << endl;
         out << "{" << endl;
-        out << "    return QAndroidJniObject(\"" << pkg << "/" << cls << "\");" << endl;
+        const QJsonArray constructors = construction.value("constructors").toArray();
+        if (!constructors.isEmpty()) {
+            foreach (const QJsonValue &c, constructors) {
+                const QJsonArray arguments = c.toObject().value("arguments").toArray();
+                QStringList types, fields, conditions;
+                foreach (const QJsonValue &a, arguments) {
+                    const QJsonObject property = findProperty(a.toString());
+                    const QString name = property.value("name").toString();
+                    const QString type = property.value("type").toString();
+                    const bool optional = property.value("optional").toBool();
+                    if (optional)
+                        conditions += "!m_" + name + ".isNull()";
+                    types += jniType(type);
+                    fields += "m_" + name + (optional ? ".value()" : "");
+                }
+                if (!conditions.isEmpty())
+                    out << "    if (" << conditions.join(" && ") << ")" << endl << "    ";
+                out << "    return QAndroidJniObject(\"" << pkg << "/" << cls << "\"";
+                if (!types.isEmpty())
+                    out << ", \"(" << types.join("") << ")V\"";
+                if (!fields.isEmpty())
+                    out << ", " << fields.join(", ");
+                out << ");" << endl;
+            }
+        } else {
+            out << "    return QAndroidJniObject(\"" << pkg << "/" << cls << "\");" << endl;
+        }
         out << "}" << endl;
     }
 
-    void writeValue(QTextStream &out, const QJsonValue &value) {
+    void writeJniInflation(QTextStream &out, const QJsonObject &inflation)
+    {
+        Q_UNUSED(out);
+        Q_UNUSED(inflation);
+#if 0
+        const QString cls = m_doc.value("class").toString();
+        const QString base = m_doc.value("base").toString();
+
+        out << "QAndroidJniObject QQmlAndroid" << cls << "::onInflate(QAndroidJniObject &instance)" << endl;
+        out << "{" << endl;
+        out << "    QQmlAndroid" << base << "::onInflate(instance);" << endl;
+        out << "}" << endl;
+#endif
+    }
+
+    void writeValue(QTextStream &out, const QJsonValue &value)
+    {
         switch (value.type()) {
         case QJsonValue::Bool:
             out << value.toBool();
