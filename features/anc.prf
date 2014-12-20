@@ -4,6 +4,7 @@ isEmpty(ANC_DIR):ANC_DIR = .anc
 
 #anc headers
 anc_header.CONFIG = anc_verify
+anc_source.CONFIG += no_link ###
 anc_header.dependency_type = TYPE_C
 anc_header.commands = $$QMAKE_ANC ${QMAKE_FILE_IN} -o ${QMAKE_FILE_OUT}
 anc_header.output = $$ANC_DIR/${QMAKE_FILE_BASE}_p$${first(QMAKE_EXT_H)}
@@ -15,22 +16,23 @@ QMAKE_EXTRA_COMPILERS += anc_header
 
 #anc sources
 anc_source.CONFIG = anc_verify
+anc_source.CONFIG += no_link ###
 anc_source.dependency_type = TYPE_C
 anc_source.commands = $$QMAKE_ANC ${QMAKE_FILE_IN} -o ${QMAKE_FILE_OUT}
 anc_source.output = $$ANC_DIR/${QMAKE_FILE_BASE}$${first(QMAKE_EXT_CPP)}
 anc_source.input = ANDROID_CLASSES
-anc_source.variable_out = SOURCES
+anc_source.variable_out = ANDROID_SOURCES ### SOURCES
 anc_source.name = ANC $${QMAKE_CPP_MOD_ANC}${QMAKE_FILE_BASE}$${first(QMAKE_EXT_CPP)}
 silent:anc_source.commands = @echo anc ${QMAKE_FILE_IN} && $$anc_source.commands
 QMAKE_EXTRA_COMPILERS += anc_source
 
-load(moc)
-anc_moc.commands = $$moc_header.commands
-anc_moc.output = $$moc_header.output
-anc_moc.input = ANDROID_HEADERS
-anc_moc.variable_out = GENERATED_SOURCES
-anc_moc.name = $${GROUP}_$$moc_header.name
-QMAKE_EXTRA_COMPILERS += anc_moc
+#load(moc)
+#anc_moc.commands = $$moc_header.commands
+#anc_moc.output = $$moc_header.output
+#anc_moc.input = ANDROID_HEADERS
+#anc_moc.variable_out = GENERATED_SOURCES
+#anc_moc.name = $${GROUP}_$$moc_header.name
+#QMAKE_EXTRA_COMPILERS += anc_moc
 
 #make sure we can include these files
 INCLUDEPATH += $$absolute_path($$ANC_DIR, $$OUT_PWD)

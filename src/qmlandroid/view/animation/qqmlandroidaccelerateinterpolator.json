@@ -1,0 +1,13 @@
+{
+    "class": "AccelerateInterpolator",
+    "base": "Interpolator",
+    "package": "android/view/animation",
+    "properties": [
+        {
+            "name": "factor",
+            "type": "qreal",
+            "optional": true,
+            "value": 1.0
+        }
+    ]
+}
