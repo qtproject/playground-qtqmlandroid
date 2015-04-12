@@ -39,14 +39,3 @@ SOURCES += \
     $$PWD/qqmlandroidscaleanimation.cpp \
     $$PWD/qqmlandroidtranslateanimation.cpp \
     $$PWD/qtqmlandroidanimationmodule.cpp
-
-ANDROID_CLASSES = \
-    $$PWD/qqmlandroidacceleratedecelerateinterpolator.json \
-    $$PWD/qqmlandroidaccelerateinterpolator.json \
-    $$PWD/qqmlandroidbounceinterpolator.json \
-    $$PWD/qqmlandroidlinearinterpolator.json
-
-# TODO
-ANC_DIR = $$PWD
-
-CONFIG += anc
