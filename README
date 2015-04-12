@@ -1,0 +1,24 @@
+# QML bindings for native Android controls
+
+## Requirements
+
+- Qt 5 dev (5.6.0)
+- Android 5.x
+- Gradle
+
+## Installation
+
+Build like any Qt module. It might be necessary to run 'make
+install' in 'src/java' until the build system is finalized.
+
+## Qt Creator
+
+When building the example in Qt Creator, tick "Use Gradle" in
+
+    Projects -> Build & Run -> Build Steps -> Build Android APK
+
+## Notes
+
+The Android 5.x dependency is not going to stay. Proper Android
+version handling is just missing for the time being. The goal of
+the hackathon project was to create a visually stunning demo.
