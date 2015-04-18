@@ -13,7 +13,7 @@ Activity {
     window.statusBarColor: Color.name("#455a64")
 
     actionBar: ActionBar {
-        title: "QtQmlAndroid"
+        title: "QML for Android"
         subtitle: adapter.getItem(switcher.displayedChild)
         background: ColorDrawable {
             color: Color.name("#607d8b")
@@ -40,7 +40,7 @@ Activity {
     AlertDialog {
         id: dialog
         title: "About"
-        message: "Native UI controls for Android"
+        message: "QML wrappers for native Android controls."
     }
 
     contentView: DrawerLayout {

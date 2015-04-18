@@ -1,4 +1,13 @@
-# QML bindings for native Android controls
+# QML for Android
+
+QML wrappers for native Android controls.
+
+## Introduction
+
+This is a former Qt hackathon project born in November 2014.
+Credits for the original idea and the groundwork go to Attila Csipa:
+- http://achipa.blogspot.no/2014/11/qml-wrappers-for-native-android.html
+- http://achipa.blogspot.no/2014/11/native-ui-in-qt-on-android-without.html
 
 ## Requirements
 
@@ -8,8 +17,8 @@
 
 ## Installation
 
-Build like any Qt module. It might be necessary to run 'make
-install' in 'src/java' until the build system is finalized.
+Build like any Qt module. It might be necessary to run 'make install'
+in 'src/java' until the build system quirks are fixed.
 
 ## Qt Creator
 
@@ -19,6 +28,6 @@ When building the example in Qt Creator, tick "Use Gradle" in
 
 ## Notes
 
-The Android 5.x dependency is not going to stay. Proper Android
-version handling is just missing for the time being. The goal of
-the hackathon project was to create a visually stunning demo.
+The Android 5.x dependency is not going to stay. Proper Android version
+handling is just missing for the time being. The goal of the hackathon
+project was to create a visually stunning demo, not a polished product. ;)
