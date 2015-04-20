@@ -13,3 +13,7 @@ moc_*.cpp
 qrc_*.cpp
 app_process
 android-build
+/bin
+/include
+/lib
+/mkspecs
