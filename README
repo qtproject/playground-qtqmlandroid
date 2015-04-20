@@ -11,14 +11,15 @@ Credits for the original idea and the groundwork go to Attila Csipa:
 
 ## Requirements
 
-- Qt 5.5
+- Qt 5.4 or later
 - Android 5.x
 - Gradle
 
 ## Installation
 
-Build like any Qt module. It might be necessary to run 'make install'
-in 'src/java' until the build system quirks are fixed.
+Build and install like any Qt module. For developer builds, it's
+necessary to run 'make install' in 'src/java' until the build system
+quirks are fixed.
 
 ## Qt Creator
 
