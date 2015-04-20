@@ -11,7 +11,7 @@ Credits for the original idea and the groundwork go to Attila Csipa:
 
 ## Requirements
 
-- Qt 5 dev (5.6.0)
+- Qt 5.5
 - Android 5.x
 - Gradle
 
