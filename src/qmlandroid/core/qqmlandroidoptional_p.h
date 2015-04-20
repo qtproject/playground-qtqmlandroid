@@ -58,9 +58,6 @@ public:
     operator T&() Q_DECL_NOTHROW { return t; }
     operator const T&() const Q_DECL_NOTHROW { return t; }
 
-    T& value() Q_DECL_NOTHROW { return t; }
-    const T& value() const Q_DECL_NOTHROW { return t; }
-
     bool isNull() const Q_DECL_NOTHROW { return !exists; }
 
 private:
