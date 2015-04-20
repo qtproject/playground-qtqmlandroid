@@ -75,7 +75,7 @@ QQmlAndroidProgressBar::Style QQmlAndroidProgressBar::style() const
 {
     if (m_style.isNull())
         return Medium;
-    return m_style.value();
+    return m_style;
 }
 
 void QQmlAndroidProgressBar::setStyle(Style style)

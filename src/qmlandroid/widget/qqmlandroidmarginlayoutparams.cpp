@@ -12,12 +12,12 @@ int QQmlAndroidMarginLayoutParams::margin() const
 {
     if (m_margin.isNull())
         return 0;
-    return m_margin.value();
+    return m_margin;
 }
 
 void QQmlAndroidMarginLayoutParams::setMargin(int margin)
 {
-    if (m_margin.isNull() || m_margin.value() != margin) {
+    if (m_margin.isNull() || m_margin != margin) {
         m_margin = margin;
         invalidate();
         emit marginChanged();
@@ -28,12 +28,12 @@ int QQmlAndroidMarginLayoutParams::topMargin() const
 {
     if (m_topMargin.isNull())
         return margin();
-    return m_topMargin.value();
+    return m_topMargin;
 }
 
 void QQmlAndroidMarginLayoutParams::setTopMargin(int margin)
 {
-    if (m_topMargin.isNull() || m_topMargin.value() != margin) {
+    if (m_topMargin.isNull() || m_topMargin != margin) {
         m_topMargin = margin;
         invalidate();
         emit topMarginChanged();
@@ -44,12 +44,12 @@ int QQmlAndroidMarginLayoutParams::leftMargin() const
 {
     if (m_leftMargin.isNull())
         return margin();
-    return m_leftMargin.value();
+    return m_leftMargin;
 }
 
 void QQmlAndroidMarginLayoutParams::setLeftMargin(int margin)
 {
-    if (m_leftMargin.isNull() || m_leftMargin.value() != margin) {
+    if (m_leftMargin.isNull() || m_leftMargin != margin) {
         m_leftMargin = margin;
         invalidate();
         emit leftMarginChanged();
@@ -60,12 +60,12 @@ int QQmlAndroidMarginLayoutParams::rightMargin() const
 {
     if (m_rightMargin.isNull())
         return margin();
-    return m_rightMargin.value();
+    return m_rightMargin;
 }
 
 void QQmlAndroidMarginLayoutParams::setRightMargin(int margin)
 {
-    if (m_rightMargin.isNull() || m_rightMargin.value() != margin) {
+    if (m_rightMargin.isNull() || m_rightMargin != margin) {
         m_rightMargin = margin;
         invalidate();
         emit rightMarginChanged();
@@ -76,12 +76,12 @@ int QQmlAndroidMarginLayoutParams::bottomMargin() const
 {
     if (m_bottomMargin.isNull())
         return margin();
-    return m_bottomMargin.value();
+    return m_bottomMargin;
 }
 
 void QQmlAndroidMarginLayoutParams::setBottomMargin(int margin)
 {
-    if (m_bottomMargin.isNull() || m_bottomMargin.value() != margin) {
+    if (m_bottomMargin.isNull() || m_bottomMargin != margin) {
         m_bottomMargin = margin;
         invalidate();
         emit bottomMarginChanged();

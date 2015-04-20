@@ -27,7 +27,7 @@ int QQmlAndroidToast::gravity() const
 {
     if (m_gravity.isNull())
         return 0; // TODO
-    return m_gravity.value();
+    return m_gravity;
 }
 
 void QQmlAndroidToast::setGravity(int value)
@@ -69,7 +69,7 @@ void QQmlAndroidToast::show()
         inflate(toast);
 
         if (!m_gravity.isNull())
-            toast.callMethod<void>("setGravity", "(I)V", m_gravity.value());
+            toast.callMethod<void>("setGravity", "(I)V", m_gravity);
 
         toast.callMethod<void>("show");
     });

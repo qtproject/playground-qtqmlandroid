@@ -11,12 +11,12 @@ qreal QQmlAndroidCycleInterpolator::cycles() const
 {
     if (m_cycles.isNull())
         return 1.0;
-    return m_cycles.value();
+    return m_cycles;
 }
 
 void QQmlAndroidCycleInterpolator::setCycles(qreal cycles)
 {
-    if (m_cycles.isNull() || m_cycles.value() != cycles) {
+    if (m_cycles.isNull() || m_cycles != cycles) {
         m_cycles = cycles;
         emit cyclesChanged();
     }
@@ -29,7 +29,7 @@ QAndroidJniObject QQmlAndroidCycleInterpolator::onCreate()
 
     return QAndroidJniObject("android/view/animation/CycleInterpolator",
                              "(F)V",
-                             m_cycles.value());
+                             m_cycles);
 }
 
 QT_END_NAMESPACE

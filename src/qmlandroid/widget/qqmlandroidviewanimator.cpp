@@ -12,7 +12,7 @@ int QQmlAndroidViewAnimator::displayedChild() const
 {
     if (m_displayedChild.isNull())
         return 0;
-    return m_displayedChild.value();
+    return m_displayedChild;
 }
 
 void QQmlAndroidViewAnimator::setDisplayedChild(int child)
@@ -28,7 +28,7 @@ int QQmlAndroidViewAnimator::inAnimation() const
 {
     if (m_inAnimation.isNull())
         return -1;
-    return m_inAnimation.value();
+    return m_inAnimation;
 }
 
 void QQmlAndroidViewAnimator::setInAnimation(int animation)
@@ -49,7 +49,7 @@ int QQmlAndroidViewAnimator::outAnimation() const
 {
     if (m_outAnimation.isNull())
         return -1;
-    return m_outAnimation.value();
+    return m_outAnimation;
 }
 
 void QQmlAndroidViewAnimator::setOutAnimation(int animation)
@@ -88,11 +88,11 @@ void QQmlAndroidViewAnimator::onInflate(QAndroidJniObject &instance)
     QQmlAndroidFrameLayout::onInflate(instance);
 
     if (!m_displayedChild.isNull())
-        instance.callMethod<void>("setDisplayedChild", "(I)V", m_displayedChild.value());
+        instance.callMethod<void>("setDisplayedChild", "(I)V", m_displayedChild);
     if (!m_inAnimation.isNull())
-        instance.callMethod<void>("setInAnimation", "(Landroid/content/Context;I)V", ctx().object(), m_inAnimation.value());
+        instance.callMethod<void>("setInAnimation", "(Landroid/content/Context;I)V", ctx().object(), m_inAnimation);
     if (!m_outAnimation.isNull())
-        instance.callMethod<void>("setOutAnimation", "(Landroid/content/Context;I)V", ctx().object(), m_outAnimation.value());
+        instance.callMethod<void>("setOutAnimation", "(Landroid/content/Context;I)V", ctx().object(), m_outAnimation);
 }
 
 QT_END_NAMESPACE

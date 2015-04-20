@@ -219,7 +219,7 @@ private:
                     if (optional)
                         conditions += "!m_" + name + ".isNull()";
                     types += jniType(type);
-                    fields += "m_" + name + (optional ? ".value()" : "");
+                    fields += "m_" + name + (optional ? "" : "");
                 }
                 if (!conditions.isEmpty())
                     out << "    if (" << conditions.join(" && ") << ")" << endl << "    ";
@@ -280,10 +280,8 @@ private:
             out << "        return ";
             writeValue(out, property.value("value"));
             out << ";" << endl;
-            out << "    return m_" << name << ".value();" << endl;
-        } else {
-            out << "    return m_" << name << ";" << endl;
         }
+        out << "    return m_" << name << ";" << endl;
         out << "}" << endl;
     }
 
@@ -301,7 +299,7 @@ private:
             out << optionalize(type) << " " << name << ")" << endl;
         out << "{" << endl;
         if (optional)
-            out << "    if (m_" << name << ".isNull() || m_" << name << ".value() != " << name << ") {" << endl;
+            out << "    if (m_" << name << ".isNull() || m_" << name << " != " << name << ") {" << endl;
         else
             out << "    if (m_" << name << " != " << name << ") {" << endl;
         out << "        m_" << name << " = " << name << ";" << endl;

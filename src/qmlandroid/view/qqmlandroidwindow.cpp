@@ -14,12 +14,12 @@ int QQmlAndroidWindow::statusBarColor() const
 {
     if (m_statusBarColor.isNull())
         return 0; // TODO
-    return m_statusBarColor.value();
+    return m_statusBarColor;
 }
 
 void QQmlAndroidWindow::setStatusBarColor(int color)
 {
-    if (m_statusBarColor.isNull() || m_statusBarColor.value() != color) {
+    if (m_statusBarColor.isNull() || m_statusBarColor != color) {
         m_statusBarColor = color;
         QtQmlAndroid::callIntMethod(instance(), "setStatusBarColor", color);
         emit statusBarColorChanged();
@@ -33,7 +33,7 @@ void QQmlAndroidWindow::onInflate(QAndroidJniObject &instance)
         instance.callMethod<void>("addFlags", "(I)V", 0x80000000);
         // TODO: WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         instance.callMethod<void>("clearFlags", "(I)V", 0x04000000);
-        instance.callMethod<void>("setStatusBarColor", "(I)V", m_statusBarColor.value());
+        instance.callMethod<void>("setStatusBarColor", "(I)V", m_statusBarColor);
     }
 }
 

@@ -12,7 +12,7 @@ int QQmlAndroidFrameLayoutParams::gravity() const
 {
     if (m_gravity.isNull())
         return 0; // TODO
-    return m_gravity.value();
+    return m_gravity;
 }
 
 void QQmlAndroidFrameLayoutParams::setGravity(int value)
@@ -36,7 +36,7 @@ void QQmlAndroidFrameLayoutParams::onInflate(QAndroidJniObject &instance)
     QQmlAndroidMarginLayoutParams::onInflate(instance);
 
     if (!m_gravity.isNull())
-        instance.callMethod<void>("setGravity", "(I)V", m_gravity.value());
+        instance.callMethod<void>("setGravity", "(I)V", m_gravity);
 }
 
 QT_END_NAMESPACE

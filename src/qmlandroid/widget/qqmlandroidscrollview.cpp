@@ -12,7 +12,7 @@ int QQmlAndroidScrollView::scrollX() const
 {
     if (m_scrollX.isNull())
         return 0;
-    return m_scrollX.value();
+    return m_scrollX;
 }
 
 void QQmlAndroidScrollView::setScrollX(int x)
@@ -23,7 +23,7 @@ void QQmlAndroidScrollView::setScrollX(int x)
 
 bool QQmlAndroidScrollView::updateScrollX(int x)
 {
-    if (m_scrollX.isNull() || m_scrollX.value() != x) {
+    if (m_scrollX.isNull() || m_scrollX != x) {
         m_scrollX = x;
         emit scrollXChanged();
     }
@@ -34,7 +34,7 @@ int QQmlAndroidScrollView::scrollY() const
 {
     if (m_scrollY.isNull())
         return 0;
-    return m_scrollY.value();
+    return m_scrollY;
 }
 
 void QQmlAndroidScrollView::setScrollY(int y)
@@ -45,7 +45,7 @@ void QQmlAndroidScrollView::setScrollY(int y)
 
 bool QQmlAndroidScrollView::updateScrollY(int y)
 {
-    if (m_scrollY.isNull() || m_scrollY.value() != y) {
+    if (m_scrollY.isNull() || m_scrollY != y) {
         m_scrollY = y;
         emit scrollYChanged();
     }

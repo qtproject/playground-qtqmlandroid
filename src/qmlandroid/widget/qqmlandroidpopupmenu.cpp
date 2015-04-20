@@ -40,7 +40,7 @@ int QQmlAndroidPopupMenu::gravity() const
 {
     if (m_gravity.isNull())
         return 0; // TODO
-    return m_gravity.value();
+    return m_gravity;
 }
 
 void QQmlAndroidPopupMenu::setGravity(int value)
@@ -73,7 +73,7 @@ void QQmlAndroidPopupMenu::show()
         if (!m_gravity.isNull()) {
             popup = QAndroidJniObject("android/widget/PopupMenu",
                                       "(Landroid/content/Context;Landroid/view/View;I)V",
-                                      c.object(), a.object(), m_gravity.value());
+                                      c.object(), a.object(), m_gravity);
         } else {
             popup = QAndroidJniObject("android/widget/PopupMenu",
                                       "(Landroid/content/Context;Landroid/view/View;)V",

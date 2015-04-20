@@ -183,7 +183,7 @@ bool QQmlAndroidView::hasFocus() const
 {
     if (m_focus.isNull())
         return false;
-    return m_focus.value();
+    return m_focus;
 }
 
 bool QQmlAndroidView::updateFocus(bool arg)
@@ -210,12 +210,12 @@ int QQmlAndroidView::top() const
 {
     if (m_top.isNull())
         return 0;
-    return m_top.value();
+    return m_top;
 }
 
 void QQmlAndroidView::setTop(int top)
 {
-    if (m_top.isNull() || m_top.value() != top) {
+    if (m_top.isNull() || m_top != top) {
         m_top = top;
         QtQmlAndroid::callIntMethod(instance(), "setTop", top);
         emit topChanged();
@@ -226,12 +226,12 @@ int QQmlAndroidView::left() const
 {
     if (m_left.isNull())
         return 0;
-    return m_left.value();
+    return m_left;
 }
 
 void QQmlAndroidView::setLeft(int left)
 {
-    if (m_left.isNull() || m_left.value() != left) {
+    if (m_left.isNull() || m_left != left) {
         m_left = left;
         QtQmlAndroid::callIntMethod(instance(), "setLeft", left);
         emit leftChanged();
@@ -242,12 +242,12 @@ int QQmlAndroidView::right() const
 {
     if (m_right.isNull())
         return 0;
-    return m_right.value();
+    return m_right;
 }
 
 void QQmlAndroidView::setRight(int right)
 {
-    if (m_right.isNull() || m_right.value() != right) {
+    if (m_right.isNull() || m_right != right) {
         m_right = right;
         QtQmlAndroid::callIntMethod(instance(), "setRight", right);
         emit rightChanged();
@@ -258,12 +258,12 @@ int QQmlAndroidView::bottom() const
 {
     if (m_bottom.isNull())
         return 0;
-    return m_bottom.value();
+    return m_bottom;
 }
 
 void QQmlAndroidView::setBottom(int bottom)
 {
-    if (m_bottom.isNull() || m_bottom.value() != bottom) {
+    if (m_bottom.isNull() || m_bottom != bottom) {
         m_bottom = bottom;
         QtQmlAndroid::callIntMethod(instance(), "setBottom", bottom);
         emit bottomChanged();
@@ -317,13 +317,13 @@ void QQmlAndroidView::updateGeometry(int t, int l, int r, int b)
 int QQmlAndroidView::padding() const
 {
     if (!m_padding.isNull())
-        return m_padding.value();
+        return m_padding;
     return 0;
 }
 
 void QQmlAndroidView::setPadding(int padding)
 {
-    if (m_padding.isNull() || m_padding.value() != padding) {
+    if (m_padding.isNull() || m_padding != padding) {
         m_padding = padding;
         emit paddingChanged();
     }
@@ -333,12 +333,12 @@ int QQmlAndroidView::paddingTop() const
 {
     if (m_paddingTop.isNull())
         return padding();
-    return m_paddingTop.value();
+    return m_paddingTop;
 }
 
 void QQmlAndroidView::setPaddingTop(int padding)
 {
-    if (m_paddingTop.isNull() || m_paddingTop.value() != padding) {
+    if (m_paddingTop.isNull() || m_paddingTop != padding) {
         m_paddingTop = padding;
         emit paddingTopChanged();
     }
@@ -348,12 +348,12 @@ int QQmlAndroidView::paddingLeft() const
 {
     if (m_paddingLeft.isNull())
         return padding();
-    return m_paddingLeft.value();
+    return m_paddingLeft;
 }
 
 void QQmlAndroidView::setPaddingLeft(int padding)
 {
-    if (m_paddingLeft.isNull() || m_paddingLeft.value() != padding) {
+    if (m_paddingLeft.isNull() || m_paddingLeft != padding) {
         m_paddingLeft = padding;
         emit paddingLeftChanged();
     }
@@ -363,12 +363,12 @@ int QQmlAndroidView::paddingRight() const
 {
     if (m_paddingRight.isNull())
         return padding();
-    return m_paddingRight.value();
+    return m_paddingRight;
 }
 
 void QQmlAndroidView::setPaddingRight(int padding)
 {
-    if (m_paddingRight.isNull() || m_paddingRight.value() != padding) {
+    if (m_paddingRight.isNull() || m_paddingRight != padding) {
         m_paddingRight = padding;
         emit paddingRightChanged();
     }
@@ -378,12 +378,12 @@ int QQmlAndroidView::paddingBottom() const
 {
     if (m_paddingBottom.isNull())
         return padding();
-    return m_paddingBottom.value();
+    return m_paddingBottom;
 }
 
 void QQmlAndroidView::setPaddingBottom(int padding)
 {
-    if (m_paddingBottom.isNull() || m_paddingBottom.value() != padding) {
+    if (m_paddingBottom.isNull() || m_paddingBottom != padding) {
         m_paddingBottom = padding;
         emit paddingBottomChanged();
     }
@@ -479,13 +479,13 @@ void QQmlAndroidView::onInflate(QAndroidJniObject &instance)
     if (!m_padding.isNull() || !m_paddingTop.isNull() || !m_paddingLeft.isNull() || !m_paddingRight.isNull() || !m_paddingBottom.isNull())
         instance.callMethod<void>("setPadding", "(IIII)V", paddingLeft(), paddingTop(), paddingRight(), paddingBottom());
     if (!m_top.isNull())
-        instance.callMethod<void>("setTop", "(I)V", m_top.value());
+        instance.callMethod<void>("setTop", "(I)V", m_top);
     if (!m_left.isNull())
-        instance.callMethod<void>("setLeft", "(I)V", m_left.value());
+        instance.callMethod<void>("setLeft", "(I)V", m_left);
     if (!m_right.isNull())
-        instance.callMethod<void>("setRight", "(I)V", m_right.value());
+        instance.callMethod<void>("setRight", "(I)V", m_right);
     if (!m_bottom.isNull())
-        instance.callMethod<void>("setBottom", "(I)V", m_bottom.value());
+        instance.callMethod<void>("setBottom", "(I)V", m_bottom);
 
     if (m_backgroundResource != 0) {
         QAndroidJniObject background = ctx().callObjectMethod("getDrawable", "(I)Landroid/graphics/drawable/Drawable;", m_backgroundResource);

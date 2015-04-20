@@ -22,7 +22,7 @@ int QQmlAndroidLayoutParams::width() const
 {
     if (m_width.isNull())
         return MATCH_PARENT;
-    return m_width.value();
+    return m_width;
 }
 
 void QQmlAndroidLayoutParams::setWidth(int value)
@@ -38,7 +38,7 @@ int QQmlAndroidLayoutParams::height() const
 {
     if (m_height.isNull())
         return MATCH_PARENT;
-    return m_height.value();
+    return m_height;
 }
 
 void QQmlAndroidLayoutParams::setHeight(int value)
@@ -68,9 +68,9 @@ QAndroidJniObject QQmlAndroidLayoutParams::onCreate()
 void QQmlAndroidLayoutParams::onInflate(QAndroidJniObject &instance)
 {
     if (!m_width.isNull())
-        instance.setField<int>("width", m_width.value());
+        instance.setField<int>("width", m_width);
     if (!m_height.isNull())
-        instance.setField<int>("height", m_height.value());
+        instance.setField<int>("height", m_height);
 }
 
 bool QQmlAndroidLayoutParams::event(QEvent *event)

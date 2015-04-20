@@ -11,12 +11,12 @@ qreal QQmlAndroidAccelerateInterpolator::factor() const
 {
     if (m_factor.isNull())
         return 1.0;
-    return m_factor.value();
+    return m_factor;
 }
 
 void QQmlAndroidAccelerateInterpolator::setFactor(qreal factor)
 {
-    if (m_factor.isNull() || m_factor.value() != factor) {
+    if (m_factor.isNull() || m_factor != factor) {
         m_factor = factor;
         emit factorChanged();
     }
@@ -29,7 +29,7 @@ QAndroidJniObject QQmlAndroidAccelerateInterpolator::onCreate()
 
     return QAndroidJniObject("android/view/animation/AccelerateInterpolator",
                              "(F)V",
-                             m_factor.value());
+                             m_factor);
 }
 
 QT_END_NAMESPACE

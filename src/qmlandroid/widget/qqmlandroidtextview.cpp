@@ -27,7 +27,7 @@ int QQmlAndroidTextView::textColor() const
 {
     if (m_textColor.isNull())
         return QQmlAndroidColor::BLACK; // TODO
-    return m_textColor.value();
+    return m_textColor;
 }
 
 void QQmlAndroidTextView::setTextColor(int color)
@@ -43,7 +43,7 @@ qreal QQmlAndroidTextView::textSize() const
 {
     if (m_textSize.isNull())
         return -1;
-    return m_textSize.value();
+    return m_textSize;
 }
 
 void QQmlAndroidTextView::setTextSize(qreal size)
@@ -87,12 +87,12 @@ int QQmlAndroidTextView::inputType() const
 {
     if (m_inputType.isNull())
         return 0; // TODO
-    return m_inputType.value();
+    return m_inputType;
 }
 
 void QQmlAndroidTextView::setInputType(int type)
 {
-    if (m_inputType.isNull() || m_inputType.value() != type) {
+    if (m_inputType.isNull() || m_inputType != type) {
         m_inputType = type;
         QtQmlAndroid::callIntMethod(instance(), "setInputType", type);
         emit inputTypeChanged();
@@ -113,15 +113,15 @@ void QQmlAndroidTextView::onInflate(QAndroidJniObject &instance)
     if (!m_text.isNull())
         instance.callMethod<void>("setText", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_text).object());
     if (!m_textColor.isNull())
-        instance.callMethod<void>("setTextColor", "(I)V", m_textColor.value());
+        instance.callMethod<void>("setTextColor", "(I)V", m_textColor);
     if (!m_textSize.isNull())
-        instance.callMethod<void>("setTextSize", "(F)V", m_textSize.value());
+        instance.callMethod<void>("setTextSize", "(F)V", m_textSize);
     if (!m_hint.isNull())
         instance.callMethod<void>("setHint", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_hint).object());
     if (m_singleLine)
         instance.callMethod<void>("setSingleLine");
     if (!m_inputType.isNull())
-        instance.callMethod<void>("setInputType", "(I)V", m_inputType.value());
+        instance.callMethod<void>("setInputType", "(I)V", m_inputType);
 }
 
 QT_END_NAMESPACE

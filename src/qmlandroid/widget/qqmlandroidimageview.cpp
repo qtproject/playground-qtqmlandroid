@@ -46,12 +46,12 @@ int QQmlAndroidImageView::imageTintColor() const
 {
     if (m_tint.isNull())
         return 0; // TODO
-    return m_tint.value();
+    return m_tint;
 }
 
 void QQmlAndroidImageView::setImageTintColor(int color)
 {
-    if (m_tint.isNull() || m_tint.value() != color) {
+    if (m_tint.isNull() || m_tint != color) {
         m_tint = color;
         if (isValid()) {
             QAndroidJniObject view = instance();
@@ -86,7 +86,7 @@ void QQmlAndroidImageView::onInflate(QAndroidJniObject &instance)
         QAndroidJniObject tint = QAndroidJniObject::callStaticObjectMethod("android/content/res/ColorStateList",
                                                                            "valueOf",
                                                                            "(I)Landroid/content/res/ColorStateList;",
-                                                                           m_tint.value());
+                                                                           m_tint);
         instance.callMethod<void>("setImageTintList", "(Landroid/content/res/ColorStateList;)v", tint.object());
     }
 }

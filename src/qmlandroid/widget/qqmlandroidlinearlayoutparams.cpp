@@ -12,7 +12,7 @@ int QQmlAndroidLinearLayoutParams::gravity() const
 {
     if (m_gravity.isNull())
         return 0; // TODO
-    return m_gravity.value();
+    return m_gravity;
 }
 
 void QQmlAndroidLinearLayoutParams::setGravity(int value)
@@ -28,7 +28,7 @@ qreal QQmlAndroidLinearLayoutParams::weight() const
 {
     if (m_weight.isNull())
         return 0.0; // TODO
-    return m_weight.value();
+    return m_weight;
 }
 
 void QQmlAndroidLinearLayoutParams::setWeight(qreal value)
@@ -52,9 +52,9 @@ void QQmlAndroidLinearLayoutParams::onInflate(QAndroidJniObject &instance)
     QQmlAndroidMarginLayoutParams::onInflate(instance);
 
     if (!m_gravity.isNull())
-        instance.setField<jint>("gravity", m_gravity.value());
+        instance.setField<jint>("gravity", m_gravity);
     if (!m_weight.isNull())
-        instance.setField<jfloat>("weight", m_weight.value());
+        instance.setField<jfloat>("weight", m_weight);
 }
 
 QT_END_NAMESPACE

@@ -11,12 +11,12 @@ qreal QQmlAndroidAnticipateInterpolator::tension() const
 {
     if (m_tension.isNull())
         return 1.0;
-    return m_tension.value();
+    return m_tension;
 }
 
 void QQmlAndroidAnticipateInterpolator::setTension(qreal tension)
 {
-    if (m_tension.isNull() || m_tension.value() != tension) {
+    if (m_tension.isNull() || m_tension != tension) {
         m_tension = tension;
         emit tensionChanged();
     }
@@ -29,7 +29,7 @@ QAndroidJniObject QQmlAndroidAnticipateInterpolator::onCreate()
 
     return QAndroidJniObject("android/view/animation/AnticipateInterpolator",
                              "(F)V",
-                             m_tension.value());
+                             m_tension);
 }
 
 QT_END_NAMESPACE

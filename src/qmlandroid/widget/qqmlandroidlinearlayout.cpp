@@ -19,7 +19,7 @@ bool QQmlAndroidLinearLayout::isBaselineAligned() const
 {
     if (m_baselineAligned.isNull())
         return true;
-    return m_baselineAligned.value();
+    return m_baselineAligned;
 }
 
 void QQmlAndroidLinearLayout::setBaselineAligned(bool aligned)
@@ -36,7 +36,7 @@ int QQmlAndroidLinearLayout::baselineAlignedChildIndex() const
 {
     if (m_baselineAlignedChildIndex.isNull())
         return -1;
-    return m_baselineAlignedChildIndex.value();
+    return m_baselineAlignedChildIndex;
 }
 
 void QQmlAndroidLinearLayout::setBaselineAlignedChildIndex(int index)
@@ -53,7 +53,7 @@ bool QQmlAndroidLinearLayout::isMeasureWithLargestChildEnabled() const
 {
     if (m_measureWithLargestChild.isNull())
         return false;
-    return m_measureWithLargestChild.value();
+    return m_measureWithLargestChild;
 }
 
 void QQmlAndroidLinearLayout::setMeasureWithLargestChildEnabled(bool enabled)
@@ -70,7 +70,7 @@ QQmlAndroidLinearLayout::Orientation QQmlAndroidLinearLayout::orientation() cons
 {
     if (m_orientation.isNull())
         return HORIZONTAL;
-    return m_orientation.value();
+    return m_orientation;
 }
 
 void QQmlAndroidLinearLayout::setOrientation(Orientation value)
@@ -87,7 +87,7 @@ qreal QQmlAndroidLinearLayout::weightSum() const
 {
     if (m_weightSum.isNull())
         return -1.0f;
-    return m_weightSum.value();
+    return m_weightSum;
 }
 
 void QQmlAndroidLinearLayout::setWeightSum(qreal sum)
@@ -110,18 +110,18 @@ QAndroidJniObject QQmlAndroidLinearLayout::onCreate()
 void QQmlAndroidLinearLayout::onInflate(QAndroidJniObject &instance)
 {
     if (!m_baselineAligned.isNull())
-        instance.callMethod<void>("setBaselineAligned", "(Z)V", m_baselineAligned.value());
+        instance.callMethod<void>("setBaselineAligned", "(Z)V", m_baselineAligned);
     if (!m_measureWithLargestChild.isNull())
-        instance.callMethod<void>("setMeasureWithLargestChildEnabled", "(Z)V", m_measureWithLargestChild.value());
+        instance.callMethod<void>("setMeasureWithLargestChildEnabled", "(Z)V", m_measureWithLargestChild);
     if (!m_orientation.isNull())
-        instance.callMethod<void>("setOrientation", "(I)V", m_orientation.value());
+        instance.callMethod<void>("setOrientation", "(I)V", m_orientation);
     if (!m_weightSum.isNull())
-        instance.callMethod<void>("setWeightSum", "(J)V", m_weightSum.value());
+        instance.callMethod<void>("setWeightSum", "(J)V", m_weightSum);
 
     QQmlAndroidViewGroup::onInflate(instance);
 
     if (!m_baselineAlignedChildIndex.isNull())
-        instance.callMethod<void>("setBaselineAlignedChildIndex", "(I)V", m_baselineAlignedChildIndex.value());
+        instance.callMethod<void>("setBaselineAlignedChildIndex", "(I)V", m_baselineAlignedChildIndex);
 }
 
 QT_END_NAMESPACE
