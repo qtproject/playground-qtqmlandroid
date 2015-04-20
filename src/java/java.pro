@@ -21,13 +21,7 @@ javaresources.path = $$[QT_INSTALL_PREFIX]/src/android/java
 
 INSTALLS += javaresources
 
-!prefix_build:!equals(OUT_PWD, $$PWD) {
-    RETURN = $$escape_expand(\\n\\t)
-    equals(QMAKE_HOST.os, Windows) {
-        RETURN = $$escape_expand(\\r\\n\\t)
-    }
-    OUT_PATH = $$shell_path($$OUT_PWD)
-
+contains(QT_CONFIG, private_tests) {   # -developer-build
     QMAKE_POST_LINK += \
-        $${QMAKE_COPY_DIR} $$shell_path($$PWD/src) $$OUT_PATH
+        $${QMAKE_COPY_DIR} $$shell_path($$PWD/src) $$shell_path($$javaresources.path)
 }

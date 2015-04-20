@@ -17,9 +17,7 @@ Credits for the original idea and the groundwork go to Attila Csipa:
 
 ## Installation
 
-Build and install like any Qt module. For developer builds, it's
-necessary to run 'make install' in 'src/java' until the build system
-quirks are fixed.
+Build and install like any Qt module.
 
 ## Qt Creator
 
