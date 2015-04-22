@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = catalog
-QT += qml
+QT += qml qmlandroid
 
 SOURCES += \
     main.cpp
@@ -22,3 +22,4 @@ DISTFILES += \
     android/gradle/wrapper/gradle-wrapper.properties
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+QMLANDROID_PACKAGES = app support view widget
