@@ -9,15 +9,15 @@ import android.util.TypedValue;
 
 import android.view.Menu;
 
-import qt.android.view.QtMenu;
+import qt.android.view.QmlMenu;
 
-public class QtActivity extends org.qtproject.qt5.android.bindings.QtActivity
+public class QmlActivity extends org.qtproject.qt5.android.bindings.QtActivity
 {
-    public QtActivity() {
+    public QmlActivity() {
         m_menu = null;
     }
 
-    public void setOptionsMenu(QtMenu menu) {
+    public void setOptionsMenu(QmlMenu menu) {
         if (m_menu != menu) {
             m_menu = menu;
             invalidateOptionsMenu();
@@ -54,5 +54,5 @@ public class QtActivity extends org.qtproject.qt5.android.bindings.QtActivity
         m_menu.closed(menu);
     }
 
-    private QtMenu m_menu;
+    private QmlMenu m_menu;
 }

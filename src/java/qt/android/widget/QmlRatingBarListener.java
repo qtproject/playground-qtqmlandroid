@@ -2,9 +2,9 @@ package qt.android.widget;
 
 import android.widget.RatingBar;
 
-public class QtRatingBarListener implements RatingBar.OnRatingBarChangeListener
+public class QmlRatingBarListener implements RatingBar.OnRatingBarChangeListener
 {
-    public QtRatingBarListener(RatingBar ratingBar, long instance) {
+    public QmlRatingBarListener(RatingBar ratingBar, long instance) {
         m_instance = instance;
         ratingBar.setOnRatingBarChangeListener(this);
     }

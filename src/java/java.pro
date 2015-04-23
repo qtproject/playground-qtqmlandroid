@@ -1,20 +1,20 @@
 CONFIG -= qt android_install
 
 OTHER_FILES += \
-    $$PWD/qt/android/app/QtActivity.java \
-    $$PWD/qt/android/app/QtService.java \
-    $$PWD/qt/android/support/v4/widget/QtSwipeRefreshLayoutListener.java \
-    $$PWD/qt/android/support/v7/widget/QtRecyclerAdapter.java \
-    $$PWD/qt/android/view/QtMenu.java \
-    $$PWD/qt/android/view/QtMenuItem.java \
-    $$PWD/qt/android/view/QtViewListener.java \
-    $$PWD/qt/android/widget/QtCompoundButtonListener.java \
-    $$PWD/qt/android/widget/QtNumberPickerListener.java \
-    $$PWD/qt/android/widget/QtRadioGroupListener.java \
-    $$PWD/qt/android/widget/QtRatingBarListener.java \
-    $$PWD/qt/android/widget/QtScrollView.java \
-    $$PWD/qt/android/widget/QtSeekBarListener.java \
-    $$PWD/qt/android/widget/QtTabHostListener.java
+    $$PWD/qt/android/app/QmlActivity.java \
+    $$PWD/qt/android/app/QmlService.java \
+    $$PWD/qt/android/support/v4/widget/QmlSwipeRefreshLayoutListener.java \
+    $$PWD/qt/android/support/v7/widget/QmlRecyclerAdapter.java \
+    $$PWD/qt/android/view/QmlMenu.java \
+    $$PWD/qt/android/view/QmlMenuItem.java \
+    $$PWD/qt/android/view/QmlViewListener.java \
+    $$PWD/qt/android/widget/QmlCompoundButtonListener.java \
+    $$PWD/qt/android/widget/QmlNumberPickerListener.java \
+    $$PWD/qt/android/widget/QmlRadioGroupListener.java \
+    $$PWD/qt/android/widget/QmlRatingBarListener.java \
+    $$PWD/qt/android/widget/QmlScrollView.java \
+    $$PWD/qt/android/widget/QmlSeekBarListener.java \
+    $$PWD/qt/android/widget/QmlTabHostListener.java
 
 java.files = $$PWD/qt
 java.path = $$[QT_INSTALL_PREFIX]/src/java

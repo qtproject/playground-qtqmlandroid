@@ -2,9 +2,9 @@ package qt.android.widget;
 
 import android.widget.TabHost;
 
-public class QtTabHostListener implements TabHost.OnTabChangeListener
+public class QmlTabHostListener implements TabHost.OnTabChangeListener
 {
-    public QtTabHostListener(TabHost host, long instance) {
+    public QmlTabHostListener(TabHost host, long instance) {
         m_instance = instance;
         host.setOnTabChangedListener(this);
     }

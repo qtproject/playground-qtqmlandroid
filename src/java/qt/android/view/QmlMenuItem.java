@@ -4,10 +4,10 @@ import java.lang.CharSequence;
 import android.view.MenuItem;
 import android.view.View;
 
-public class QtMenuItem implements MenuItem.OnMenuItemClickListener,
-                                   MenuItem.OnActionExpandListener
+public class QmlMenuItem implements MenuItem.OnMenuItemClickListener,
+                                    MenuItem.OnActionExpandListener
 {
-    public QtMenuItem(long instance) {
+    public QmlMenuItem(long instance) {
         m_instance = instance;
         m_enabled = true;
         m_visible = true;

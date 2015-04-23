@@ -41,7 +41,7 @@ void QQmlAndroidRecyclerAdapter::setDelegate(QQmlComponent *delegate)
 
 QAndroidJniObject QQmlAndroidRecyclerAdapter::onCreate()
 {
-    return QAndroidJniObject("qt/android/support/v7/widget/QtRecyclerAdapter",
+    return QAndroidJniObject("qt/android/support/v7/widget/QmlRecyclerAdapter",
                              "(IJ)V",
                              m_count,
                              reinterpret_cast<jlong>(this));
@@ -63,8 +63,8 @@ void QQmlAndroidRecyclerAdapter::onInflate(QAndroidJniObject &instance)
 
 void QQmlAndroidRecyclerAdapter::onRegisterNativeMethods(jobject adapter)
 {
-    JNINativeMethod methods[] {{"onCreateViewHolder", "(JLandroid/view/ViewGroup;I)Lqt/android/support/v7/widget/QtRecyclerAdapter$ViewHolder;", reinterpret_cast<void *>(onCreateViewHolder)},
-                               {"onBindViewHolder", "(JLqt/android/support/v7/widget/QtRecyclerAdapter$ViewHolder;I)V", reinterpret_cast<void *>(onBindViewHolder)}};
+    JNINativeMethod methods[] {{"onCreateViewHolder", "(JLandroid/view/ViewGroup;I)Lqt/android/support/v7/widget/QmlRecyclerAdapter$ViewHolder;", reinterpret_cast<void *>(onCreateViewHolder)},
+                               {"onBindViewHolder", "(JLqt/android/support/v7/widget/QmlRecyclerAdapter$ViewHolder;I)V", reinterpret_cast<void *>(onBindViewHolder)}};
 
     QAndroidJniEnvironment env;
     jclass cls = env->GetObjectClass(adapter);
@@ -83,7 +83,7 @@ jobject QQmlAndroidRecyclerAdapter::onCreateViewHolder(JNIEnv *env, jobject obje
         QQmlAndroidView *item = 0;
         QMetaObject::invokeMethod(adapter, "createItem", Qt::BlockingQueuedConnection, Q_RETURN_ARG(QQmlAndroidView *, item));
         item->construct();
-        adapter->m_holders += QAndroidJniObject("qt/android/support/v7/widget/QtRecyclerAdapter$ViewHolder",
+        adapter->m_holders += QAndroidJniObject("qt/android/support/v7/widget/QmlRecyclerAdapter$ViewHolder",
                                                 "(Landroid/view/View;J)V",
                                                 item->instance().object(),
                                                 reinterpret_cast<jlong>(item));

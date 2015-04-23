@@ -2,9 +2,9 @@ package qt.android.widget;
 
 import android.widget.SeekBar;
 
-public class QtSeekBarListener implements SeekBar.OnSeekBarChangeListener
+public class QmlSeekBarListener implements SeekBar.OnSeekBarChangeListener
 {
-    public QtSeekBarListener(SeekBar seekBar, long instance) {
+    public QmlSeekBarListener(SeekBar seekBar, long instance) {
         m_instance = instance;
         seekBar.setOnSeekBarChangeListener(this);
     }

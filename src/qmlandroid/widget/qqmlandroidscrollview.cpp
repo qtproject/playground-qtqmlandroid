@@ -54,7 +54,7 @@ bool QQmlAndroidScrollView::updateScrollY(int y)
 
 QAndroidJniObject QQmlAndroidScrollView::onCreate()
 {
-    return QAndroidJniObject("qt/android/widget/QtScrollView",
+    return QAndroidJniObject("qt/android/widget/QmlScrollView",
                              "(Landroid/content/Context;J)V",
                              ctx().object(),
                              reinterpret_cast<jlong>(this));

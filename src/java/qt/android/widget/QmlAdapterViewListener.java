@@ -4,9 +4,9 @@ import android.view.View;
 import android.widget.Spinner;
 import android.widget.AdapterView;
 
-public class QtAdapterViewListener implements AdapterView.OnItemClickListener
+public class QmlAdapterViewListener implements AdapterView.OnItemClickListener
 {
-    public QtAdapterViewListener(AdapterView view, long instance) {
+    public QmlAdapterViewListener(AdapterView view, long instance) {
         m_instance = instance;
         if (!(view instanceof Spinner)) {
             view.setOnItemClickListener(this);

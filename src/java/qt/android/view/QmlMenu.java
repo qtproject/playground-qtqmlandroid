@@ -5,20 +5,20 @@ import java.util.ArrayList;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import qt.android.view.QtMenuItem;
+import qt.android.view.QmlMenuItem;
 
-public class QtMenu
+public class QmlMenu
 {
-    public QtMenu() {
-        m_items = new ArrayList<QtMenuItem>();
+    public QmlMenu() {
+        m_items = new ArrayList<QmlMenuItem>();
     }
 
-    public void add(QtMenuItem item) {
+    public void add(QmlMenuItem item) {
         m_items.add(item);
     }
 
     public boolean create(Menu menu) {
-        for (QtMenuItem item : m_items) {
+        for (QmlMenuItem item : m_items) {
             MenuItem mi = menu.add(item.getTitle());
             item.create(mi);
         }
@@ -32,5 +32,5 @@ public class QtMenu
     public void closed(Menu menu) {
     }
 
-    private ArrayList<QtMenuItem> m_items;
+    private ArrayList<QmlMenuItem> m_items;
 }

@@ -3,9 +3,9 @@ package qt.android.widget;
 import android.content.Context;
 import android.widget.ScrollView;
 
-public class QtScrollView extends ScrollView
+public class QmlScrollView extends ScrollView
 {
-    public QtScrollView(Context context, long instance) {
+    public QmlScrollView(Context context, long instance) {
         super(context);
         m_instance = instance;
     }

@@ -2,9 +2,9 @@ package qt.android.widget;
 
 import android.widget.NumberPicker;
 
-public class QtNumberPickerListener implements NumberPicker.OnValueChangeListener
+public class QmlNumberPickerListener implements NumberPicker.OnValueChangeListener
 {
-    public QtNumberPickerListener(NumberPicker picker, long instance) {
+    public QmlNumberPickerListener(NumberPicker picker, long instance) {
         m_instance = instance;
         picker.setOnValueChangedListener(this);
     }

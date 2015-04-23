@@ -40,7 +40,7 @@ void QQmlAndroidNumberPicker::onInflate(QAndroidJniObject &instance)
 {
     QQmlAndroidLinearLayout::onInflate(instance);
 
-    m_listener = QAndroidJniObject("qt/android/widget/QtNumberPickerListener",
+    m_listener = QAndroidJniObject("qt/android/widget/QmlNumberPickerListener",
                                    "(Landroid/widget/NumberPicker;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));

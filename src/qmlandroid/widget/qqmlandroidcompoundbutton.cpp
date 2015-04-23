@@ -45,7 +45,7 @@ void QQmlAndroidCompoundButton::onInflate(QAndroidJniObject &instance)
 {
     QQmlAndroidButton::onInflate(instance);
 
-    m_listener = QAndroidJniObject("qt/android/widget/QtCompoundButtonListener",
+    m_listener = QAndroidJniObject("qt/android/widget/QmlCompoundButtonListener",
                                    "(Landroid/widget/CompoundButton;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));

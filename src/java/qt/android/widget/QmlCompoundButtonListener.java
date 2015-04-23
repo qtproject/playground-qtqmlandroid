@@ -2,9 +2,9 @@ package qt.android.widget;
 
 import android.widget.CompoundButton;
 
-public class QtCompoundButtonListener implements CompoundButton.OnCheckedChangeListener
+public class QmlCompoundButtonListener implements CompoundButton.OnCheckedChangeListener
 {
-    public QtCompoundButtonListener(CompoundButton button, long instance) {
+    public QmlCompoundButtonListener(CompoundButton button, long instance) {
         m_instance = instance;
         button.setOnCheckedChangeListener(this);
     }

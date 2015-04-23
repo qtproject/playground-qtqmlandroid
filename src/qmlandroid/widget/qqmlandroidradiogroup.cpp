@@ -36,7 +36,7 @@ void QQmlAndroidRadioGroup::onInflate(QAndroidJniObject &instance)
 {
     QQmlAndroidLinearLayout::onInflate(instance);
 
-    m_listener = QAndroidJniObject("qt/android/widget/QtRadioGroupListener",
+    m_listener = QAndroidJniObject("qt/android/widget/QmlRadioGroupListener",
                                    "(Landroid/widget/RadioGroup;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));

@@ -18,7 +18,7 @@ void QQmlAndroidSeekBar::onInflate(QAndroidJniObject &instance)
 {
     QQmlAndroidAbsSeekBar::onInflate(instance);
 
-    m_listener = QAndroidJniObject("qt/android/widget/QtSeekBarListener",
+    m_listener = QAndroidJniObject("qt/android/widget/QmlSeekBarListener",
                                    "(Landroid/widget/SeekBar;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));

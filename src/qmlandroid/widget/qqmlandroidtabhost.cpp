@@ -19,7 +19,7 @@ void QQmlAndroidTabHost::onInflate(QAndroidJniObject &instance)
 {
     QQmlAndroidFrameLayout::onInflate(instance);
 
-    m_listener = QAndroidJniObject("qt/android/widget/QtTabHostListener",
+    m_listener = QAndroidJniObject("qt/android/widget/QmlTabHostListener",
                                    "(Landroid/widget/TabHost;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));

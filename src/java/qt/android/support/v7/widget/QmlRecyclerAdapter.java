@@ -6,9 +6,9 @@ import android.support.v7.widget.RecyclerView;
 
 import java.lang.Integer;
 
-public class QtRecyclerAdapter extends RecyclerView.Adapter<QtRecyclerAdapter.ViewHolder>
+public class QmlRecyclerAdapter extends RecyclerView.Adapter<QmlRecyclerAdapter.ViewHolder>
 {
-    public QtRecyclerAdapter(int count, long instance) {
+    public QmlRecyclerAdapter(int count, long instance) {
         m_count = count;
         m_instance = instance;
     }

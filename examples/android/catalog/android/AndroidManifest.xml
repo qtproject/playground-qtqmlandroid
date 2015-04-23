@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <manifest package="org.qtproject.example" xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0" android:versionCode="1" android:installLocation="auto">
     <application android:hardwareAccelerated="true" android:name="org.qtproject.qt5.android.bindings.QtApplication" android:label="-- %%INSERT_APP_NAME%% --" android:theme="@android:style/Theme.Material.Light.DarkActionBar">
-        <service android:name="qt.android.app.QtService" />
+        <service android:name="qt.android.app.QmlService" />
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|locale|fontScale|keyboard|keyboardHidden|navigation"
-                  android:name="qt.android.app.QtActivity"
+                  android:name="qt.android.app.QmlActivity"
                   android:label="-- %%INSERT_APP_NAME%% --"
                   android:screenOrientation="unspecified"
                   android:launchMode="singleTop">

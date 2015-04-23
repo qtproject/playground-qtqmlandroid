@@ -3,12 +3,12 @@ package qt.android.view;
 import android.view.View;
 import android.widget.AdapterView;
 
-public class QtViewListener implements View.OnClickListener,
-                                       View.OnFocusChangeListener,
-                                       View.OnLayoutChangeListener,
-                                       View.OnLongClickListener
+public class QmlViewListener implements View.OnClickListener,
+                                        View.OnFocusChangeListener,
+                                        View.OnLayoutChangeListener,
+                                        View.OnLongClickListener
 {
-    public QtViewListener(View view, long instance) {
+    public QmlViewListener(View view, long instance) {
         m_instance = instance;
         if (!(view instanceof AdapterView)) {
             view.setOnClickListener(this);

@@ -21,7 +21,7 @@ QList<QQmlAndroidMenuItem *> QQmlAndroidMenu::items() const
 
 QAndroidJniObject QQmlAndroidMenu::onCreate()
 {
-    return QAndroidJniObject("qt/android/view/QtMenu");
+    return QAndroidJniObject("qt/android/view/QmlMenu");
 }
 
 void QQmlAndroidMenu::onInflate(QAndroidJniObject &instance)
@@ -29,7 +29,7 @@ void QQmlAndroidMenu::onInflate(QAndroidJniObject &instance)
     foreach (QQmlAndroidMenuItem *item, items()) {
         item->construct();
         if (item->isValid())
-            instance.callMethod<void>("add", "(Lqt/android/view/QtMenuItem;)V", item->instance().object());
+            instance.callMethod<void>("add", "(Lqt/android/view/QmlMenuItem;)V", item->instance().object());
     }
 }
 

@@ -139,7 +139,7 @@ void QQmlAndroidActivity::updateOptionsMenu()
 
     QAndroidJniObject activity = instance();
     QtQmlAndroid::callFunction([=]() {
-        activity.callMethod<void>("setOptionsMenu", "(Lqt/android/view/QtMenu;)V", menu.object());
+        activity.callMethod<void>("setOptionsMenu", "(Lqt/android/view/QmlMenu;)V", menu.object());
     });
 }
 
