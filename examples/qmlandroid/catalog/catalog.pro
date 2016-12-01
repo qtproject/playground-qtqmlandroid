@@ -23,3 +23,6 @@ DISTFILES += \
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 QMLANDROID_PACKAGES = app support view widget
+
+target.path = $$[QT_INSTALL_EXAMPLES]/qmlandroid/catalog
+INSTALLS += target
