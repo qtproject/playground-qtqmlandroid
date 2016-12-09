@@ -12,8 +12,8 @@
 // We mean it.
 //
 
-#include "qqmlandroidinterpolator_p.h"
-#include "qqmlandroidoptional_p.h"
+#include <QtQmlAndroid/private/qqmlandroidinterpolator_p.h>
+#include <QtQmlAndroid/private/qqmlandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
 

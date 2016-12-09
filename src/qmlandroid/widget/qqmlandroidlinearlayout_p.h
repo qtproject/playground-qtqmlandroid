@@ -12,9 +12,9 @@
 // We mean it.
 //
 
-#include "qqmlandroidviewgroup_p.h"
-#include "qqmlandroidoptional_p.h"
-#include "qqmlandroidlinearlayoutparams_p.h"
+#include <QtQmlAndroid/private/qqmlandroidviewgroup_p.h>
+#include <QtQmlAndroid/private/qqmlandroidoptional_p.h>
+#include <QtQmlAndroid/private/qqmlandroidlinearlayoutparams_p.h>
 
 QT_BEGIN_NAMESPACE
 

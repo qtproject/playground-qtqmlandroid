@@ -12,7 +12,7 @@
 // We mean it.
 //
 
-#include "qqmlandroidtextview_p.h"
+#include <QtQmlAndroid/private/qqmlandroidtextview_p.h>
 
 QT_BEGIN_NAMESPACE
 

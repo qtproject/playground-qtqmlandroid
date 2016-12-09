@@ -12,8 +12,8 @@
 // We mean it.
 //
 
-#include "qqmlandroidviewgroup_p.h"
-#include "qqmlandroidframelayoutparams_p.h"
+#include <QtQmlAndroid/private/qqmlandroidviewgroup_p.h>
+#include <QtQmlAndroid/private/qqmlandroidframelayoutparams_p.h>
 
 QT_BEGIN_NAMESPACE
 

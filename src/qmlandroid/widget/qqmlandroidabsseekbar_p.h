@@ -12,7 +12,7 @@
 // We mean it.
 //
 
-#include "qqmlandroidprogressbar_p.h"
+#include <QtQmlAndroid/private/qqmlandroidprogressbar_p.h>
 
 QT_BEGIN_NAMESPACE
 

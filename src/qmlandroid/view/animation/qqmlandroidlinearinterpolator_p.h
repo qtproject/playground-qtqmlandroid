@@ -12,9 +12,9 @@
 // We mean it.
 //
 
-#include "qtqmlandroidglobal_p.h"
-#include "qqmlandroidoptional_p.h"
-#include "qqmlandroidinterpolator_p.h"
+#include <QtQmlAndroid/private/qtqmlandroidglobal_p.h>
+#include <QtQmlAndroid/private/qqmlandroidoptional_p.h>
+#include <QtQmlAndroid/private/qqmlandroidinterpolator_p.h>
 #include <QtAndroidExtras/qandroidjniobject.h>
 
 QT_BEGIN_NAMESPACE

@@ -12,8 +12,8 @@
 // We mean it.
 //
 
-#include "qqmlandroidobject_p.h"
-#include "qqmlandroidoptional_p.h"
+#include <QtQmlAndroid/private/qqmlandroidobject_p.h>
+#include <QtQmlAndroid/private/qqmlandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
 

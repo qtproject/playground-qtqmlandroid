@@ -12,7 +12,7 @@
 // We mean it.
 //
 
-#include "qqmlandroidanimation_p.h"
+#include <QtQmlAndroid/private/qqmlandroidanimation_p.h>
 
 QT_BEGIN_NAMESPACE
 

@@ -12,7 +12,7 @@
 // We mean it.
 //
 
-#include "qqmlandroidcontextwrapper_p.h"
+#include <QtQmlAndroid/private/qqmlandroidcontextwrapper_p.h>
 
 QT_BEGIN_NAMESPACE
 

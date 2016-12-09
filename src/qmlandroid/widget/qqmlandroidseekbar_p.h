@@ -12,7 +12,7 @@
 // We mean it.
 //
 
-#include "qqmlandroidabsseekbar_p.h"
+#include <QtQmlAndroid/private/qqmlandroidabsseekbar_p.h>
 
 QT_BEGIN_NAMESPACE
 

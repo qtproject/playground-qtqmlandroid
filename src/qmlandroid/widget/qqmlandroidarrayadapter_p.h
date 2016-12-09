@@ -12,7 +12,7 @@
 // We mean it.
 //
 
-#include "qqmlandroidbaseadapter_p.h"
+#include <QtQmlAndroid/private/qqmlandroidbaseadapter_p.h>
 #include <QtCore/qstringlist.h>
 
 QT_BEGIN_NAMESPACE
