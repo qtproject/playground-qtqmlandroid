@@ -22,7 +22,7 @@ class QQmlAndroidDrawable;
 class QQmlAndroidAnimation;
 class QQmlAndroidLayoutParams;
 
-class QQmlAndroidView : public QQmlAndroidContextual
+class Q_QMLANDROID_EXPORT QQmlAndroidView : public QQmlAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(QQmlAndroidView *parent READ parentView WRITE setParentView NOTIFY parentChanged)

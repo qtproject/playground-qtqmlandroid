@@ -18,7 +18,7 @@ QT_BEGIN_NAMESPACE
 
 class QQmlAndroidContext;
 
-class QQmlAndroidContextual : public QQmlAndroidObject
+class Q_QMLANDROID_EXPORT QQmlAndroidContextual : public QQmlAndroidObject
 {
     Q_OBJECT
     Q_PROPERTY(QQmlAndroidContext *context READ context NOTIFY contextChanged)
