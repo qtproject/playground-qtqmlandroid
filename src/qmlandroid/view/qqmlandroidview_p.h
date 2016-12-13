@@ -75,6 +75,8 @@ class Q_QMLANDROID_EXPORT QQmlAndroidView : public QQmlAndroidContextual
 
     Q_PROPERTY(qreal x READ x NOTIFY xChanged)
     Q_PROPERTY(qreal y READ y NOTIFY yChanged)
+    Q_PROPERTY(qreal z READ z WRITE setZ NOTIFY zChanged)
+
     Q_PROPERTY(int top READ top WRITE setTop NOTIFY topChanged)
     Q_PROPERTY(int left READ left WRITE setLeft NOTIFY leftChanged)
     Q_PROPERTY(int right READ right WRITE setRight NOTIFY rightChanged)
@@ -134,6 +136,9 @@ public:
 
     qreal x() const;
     qreal y() const;
+
+    qreal z() const;
+    void setZ(qreal z);
 
     int top() const;
     void setTop(int top);
@@ -198,6 +203,9 @@ public:
     qreal translationZ() const;
     void setTranslationZ(qreal translationZ);
 
+    qreal elevation() const;
+    void setElevation(qreal elevation);
+
     void requestPolish();
 
     enum ViewChange {
@@ -229,6 +237,7 @@ Q_SIGNALS:
     void click();
     void xChanged();
     void yChanged();
+    void zChanged();
     void topChanged();
     void leftChanged();
     void rightChanged();
@@ -250,6 +259,7 @@ Q_SIGNALS:
     void translationXChanged();
     void translationYChanged();
     void translationZChanged();
+    void elevationChanged();
     void longClick(); // TODO: accept
 
 protected:
@@ -318,6 +328,7 @@ private:
     QQmlAndroidOptional<qreal> m_translationX;
     QQmlAndroidOptional<qreal> m_translationY;
     QQmlAndroidOptional<qreal> m_translationZ;
+    QQmlAndroidOptional<qreal> m_elevation;
 };
 
 QT_END_NAMESPACE

@@ -242,6 +242,16 @@ qreal QQmlAndroidView::y() const
     return top(); // TODO: + translationY
 }
 
+qreal QQmlAndroidView::z() const
+{
+    return elevation() + translationZ();
+}
+
+void QQmlAndroidView::setZ(qreal z)
+{
+    setTranslationZ(z - elevation());
+}
+
 int QQmlAndroidView::top() const
 {
     if (m_top.isNull())
@@ -582,6 +592,24 @@ void QQmlAndroidView::setTranslationZ(qreal translationZ)
         m_translationZ = translationZ;
         QtQmlAndroid::callRealMethod(instance(), "setTranslationZ", translationZ);
         emit translationZChanged();
+        emit zChanged();
+    }
+}
+
+qreal QQmlAndroidView::elevation() const
+{
+    if (!m_elevation.isNull())
+        return m_elevation;
+    return 0;
+}
+
+void QQmlAndroidView::setElevation(qreal elevation)
+{
+    if (m_elevation.isNull() || m_elevation != elevation) {
+        m_elevation = elevation;
+        QtQmlAndroid::callRealMethod(instance(), "setElevation", elevation);
+        emit elevationChanged();
+        emit zChanged();
     }
 }
 
@@ -702,6 +730,8 @@ void QQmlAndroidView::onInflate(QAndroidJniObject &instance)
         instance.callMethod<void>("setTranslationY", "(F)V", m_translationY);
     if (!m_translationZ.isNull())
         instance.callMethod<void>("setTranslationZ", "(F)V", m_translationZ);
+    if (!m_elevation.isNull())
+        instance.callMethod<void>("setElevation", "(F)V", m_elevation);
 
     if (m_backgroundResource != 0) {
         QAndroidJniObject background = ctx().callObjectMethod("getDrawable", "(I)Landroid/graphics/drawable/Drawable;", m_backgroundResource);
