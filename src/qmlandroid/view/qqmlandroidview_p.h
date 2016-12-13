@@ -88,6 +88,17 @@ class Q_QMLANDROID_EXPORT QQmlAndroidView : public QQmlAndroidContextual
     Q_PROPERTY(int paddingRight READ paddingRight WRITE setPaddingRight NOTIFY paddingRightChanged)
     Q_PROPERTY(int paddingBottom READ paddingBottom WRITE setPaddingBottom NOTIFY paddingBottomChanged)
 
+    Q_PROPERTY(qreal scaleX READ scaleX WRITE setScaleX NOTIFY scaleXChanged)
+    Q_PROPERTY(qreal scaleY READ scaleY WRITE setScaleY NOTIFY scaleYChanged)
+    Q_PROPERTY(qreal pivotX READ pivotX WRITE setPivotX NOTIFY pivotXChanged)
+    Q_PROPERTY(qreal pivotY READ pivotY WRITE setPivotY NOTIFY pivotYChanged)
+    Q_PROPERTY(qreal rotation READ rotation WRITE setRotation NOTIFY rotationChanged)
+    Q_PROPERTY(qreal rotationX READ rotationX WRITE setRotationX NOTIFY rotationXChanged)
+    Q_PROPERTY(qreal rotationY READ rotationY WRITE setRotationY NOTIFY rotationYChanged)
+    Q_PROPERTY(qreal translationX READ translationX WRITE setTranslationX NOTIFY translationXChanged)
+    Q_PROPERTY(qreal translationY READ translationY WRITE setTranslationY NOTIFY translationYChanged)
+    Q_PROPERTY(qreal translationZ READ translationZ WRITE setTranslationZ NOTIFY translationZChanged)
+
 public:
     explicit QQmlAndroidView(QQmlAndroidView *parent = 0);
     ~QQmlAndroidView();
@@ -157,6 +168,36 @@ public:
     int paddingBottom() const;
     void setPaddingBottom(int padding);
 
+    qreal scaleX() const;
+    void setScaleX(qreal scaleX);
+
+    qreal scaleY() const;
+    void setScaleY(qreal scaleY);
+
+    qreal pivotX() const;
+    void setPivotX(qreal pivotX);
+
+    qreal pivotY() const;
+    void setPivotY(qreal pivotY);
+
+    qreal rotation() const;
+    void setRotation(qreal rotation);
+
+    qreal rotationX() const;
+    void setRotationX(qreal rotationY);
+
+    qreal rotationY() const;
+    void setRotationY(qreal rotationY);
+
+    qreal translationX() const;
+    void setTranslationX(qreal translationY);
+
+    qreal translationY() const;
+    void setTranslationY(qreal translationY);
+
+    qreal translationZ() const;
+    void setTranslationZ(qreal translationZ);
+
     void requestPolish();
 
     enum ViewChange {
@@ -199,6 +240,16 @@ Q_SIGNALS:
     void paddingLeftChanged();
     void paddingRightChanged();
     void paddingBottomChanged();
+    void scaleXChanged();
+    void scaleYChanged();
+    void pivotXChanged();
+    void pivotYChanged();
+    void rotationChanged();
+    void rotationXChanged();
+    void rotationYChanged();
+    void translationXChanged();
+    void translationYChanged();
+    void translationZChanged();
     void longClick(); // TODO: accept
 
 protected:
@@ -257,6 +308,16 @@ private:
     QQmlAndroidOptional<int> m_paddingLeft;
     QQmlAndroidOptional<int> m_paddingRight;
     QQmlAndroidOptional<int> m_paddingBottom;
+    QQmlAndroidOptional<qreal> m_scaleX;
+    QQmlAndroidOptional<qreal> m_scaleY;
+    QQmlAndroidOptional<qreal> m_pivotX;
+    QQmlAndroidOptional<qreal> m_pivotY;
+    QQmlAndroidOptional<qreal> m_rotation;
+    QQmlAndroidOptional<qreal> m_rotationX;
+    QQmlAndroidOptional<qreal> m_rotationY;
+    QQmlAndroidOptional<qreal> m_translationX;
+    QQmlAndroidOptional<qreal> m_translationY;
+    QQmlAndroidOptional<qreal> m_translationZ;
 };
 
 QT_END_NAMESPACE

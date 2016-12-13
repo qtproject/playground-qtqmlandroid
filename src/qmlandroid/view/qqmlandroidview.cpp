@@ -425,6 +425,166 @@ void QQmlAndroidView::setPaddingBottom(int padding)
     }
 }
 
+qreal QQmlAndroidView::scaleX() const
+{
+    if (!m_scaleX.isNull())
+        return m_scaleX;
+    return 0;
+}
+
+void QQmlAndroidView::setScaleX(qreal scaleX)
+{
+    if (m_scaleX.isNull() || m_scaleX != scaleX) {
+        m_scaleX = scaleX;
+        QtQmlAndroid::callRealMethod(instance(), "setScaleX", scaleX);
+        emit scaleXChanged();
+    }
+}
+
+qreal QQmlAndroidView::scaleY() const
+{
+    if (!m_scaleY.isNull())
+        return m_scaleY;
+    return 0;
+}
+
+void QQmlAndroidView::setScaleY(qreal scaleY)
+{
+    if (m_scaleY.isNull() || m_scaleY != scaleY) {
+        m_scaleY = scaleY;
+        QtQmlAndroid::callRealMethod(instance(), "setScaleY", scaleY);
+        emit scaleYChanged();
+    }
+}
+
+qreal QQmlAndroidView::pivotX() const
+{
+    if (!m_pivotX.isNull())
+        return m_pivotX;
+    return 0;
+}
+
+void QQmlAndroidView::setPivotX(qreal pivotX)
+{
+    if (m_pivotX.isNull() || m_pivotX != pivotX) {
+        m_pivotX = pivotX;
+        QtQmlAndroid::callRealMethod(instance(), "setPivotX", pivotX);
+        emit pivotXChanged();
+    }
+}
+
+qreal QQmlAndroidView::pivotY() const
+{
+    if (!m_pivotY.isNull())
+        return m_pivotY;
+    return 0;
+}
+
+void QQmlAndroidView::setPivotY(qreal pivotY)
+{
+    if (m_pivotY.isNull() || m_pivotY != pivotY) {
+        m_pivotY = pivotY;
+        QtQmlAndroid::callRealMethod(instance(), "setPivotY", pivotY);
+        emit pivotYChanged();
+    }
+}
+
+qreal QQmlAndroidView::rotation() const
+{
+    if (!m_rotation.isNull())
+        return m_rotation;
+    return 0;
+}
+
+void QQmlAndroidView::setRotation(qreal rotation)
+{
+    if (m_rotation.isNull() || m_rotation != rotation) {
+        m_rotation = rotation;
+        QtQmlAndroid::callRealMethod(instance(), "setRotation", rotation);
+        emit rotationChanged();
+    }
+}
+
+qreal QQmlAndroidView::rotationX() const
+{
+    if (!m_rotationX.isNull())
+        return m_rotationX;
+    return 0;
+}
+
+void QQmlAndroidView::setRotationX(qreal rotationX)
+{
+    if (m_rotationX.isNull() || m_rotationX != rotationX) {
+        m_rotationX = rotationX;
+        QtQmlAndroid::callRealMethod(instance(), "setRotationX", rotationX);
+        emit rotationXChanged();
+    }
+}
+
+qreal QQmlAndroidView::rotationY() const
+{
+    if (!m_rotationY.isNull())
+        return m_rotationY;
+    return 0;
+}
+
+void QQmlAndroidView::setRotationY(qreal rotationY)
+{
+    if (m_rotationY.isNull() || m_rotationY != rotationY) {
+        m_rotationY = rotationY;
+        QtQmlAndroid::callRealMethod(instance(), "setRotationY", rotationY);
+        emit rotationYChanged();
+    }
+}
+
+qreal QQmlAndroidView::translationX() const
+{
+    if (!m_translationX.isNull())
+        return m_translationX;
+    return 0;
+}
+
+void QQmlAndroidView::setTranslationX(qreal translationX)
+{
+    if (m_translationX.isNull() || m_translationX != translationX) {
+        m_translationX = translationX;
+        QtQmlAndroid::callRealMethod(instance(), "setTranslationX", translationX);
+        emit translationXChanged();
+    }
+}
+
+qreal QQmlAndroidView::translationY() const
+{
+    if (!m_translationY.isNull())
+        return m_translationY;
+    return 0;
+}
+
+void QQmlAndroidView::setTranslationY(qreal translationY)
+{
+    if (m_translationY.isNull() || m_translationY != translationY) {
+        m_translationY = translationY;
+        QtQmlAndroid::callRealMethod(instance(), "setTranslationY", translationY);
+        emit translationYChanged();
+    }
+}
+
+qreal QQmlAndroidView::translationZ() const
+{
+    if (!m_translationZ.isNull())
+        return m_translationZ;
+    return 0;
+}
+
+void QQmlAndroidView::setTranslationZ(qreal translationZ)
+{
+    if (m_translationZ.isNull() || m_translationZ != translationZ) {
+        m_translationZ = translationZ;
+        QtQmlAndroid::callRealMethod(instance(), "setTranslationZ", translationZ);
+        emit translationZChanged();
+    }
+}
+
 void QQmlAndroidView::viewChange(ViewChange change, const ViewChangeData &data)
 {
     switch (change) {
@@ -522,6 +682,26 @@ void QQmlAndroidView::onInflate(QAndroidJniObject &instance)
         instance.callMethod<void>("setRight", "(I)V", m_right);
     if (!m_bottom.isNull())
         instance.callMethod<void>("setBottom", "(I)V", m_bottom);
+    if (!m_scaleX.isNull())
+        instance.callMethod<void>("setScaleX", "(F)V", m_scaleX);
+    if (!m_scaleY.isNull())
+        instance.callMethod<void>("setScaleY", "(F)V", m_scaleY);
+    if (!m_pivotX.isNull())
+        instance.callMethod<void>("setPivotX", "(F)V", m_pivotX);
+    if (!m_pivotY.isNull())
+        instance.callMethod<void>("setPivotY", "(F)V", m_pivotY);
+    if (!m_rotation.isNull())
+        instance.callMethod<void>("setRotation", "(F)V", m_rotation);
+    if (!m_rotationX.isNull())
+        instance.callMethod<void>("setRotationX", "(F)V", m_rotationX);
+    if (!m_rotationY.isNull())
+        instance.callMethod<void>("setRotationY", "(F)V", m_rotationY);
+    if (!m_translationX.isNull())
+        instance.callMethod<void>("setTranslationX", "(F)V", m_translationX);
+    if (!m_translationY.isNull())
+        instance.callMethod<void>("setTranslationY", "(F)V", m_translationY);
+    if (!m_translationZ.isNull())
+        instance.callMethod<void>("setTranslationZ", "(F)V", m_translationZ);
 
     if (m_backgroundResource != 0) {
         QAndroidJniObject background = ctx().callObjectMethod("getDrawable", "(I)Landroid/graphics/drawable/Drawable;", m_backgroundResource);
