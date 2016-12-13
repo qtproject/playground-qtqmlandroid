@@ -2,6 +2,6 @@ TEMPLATE = subdirs
 SUBDIRS += \
     qmlandroid \
     imports \
-    java
+    android
 
 imports.depends = qmlandroid
