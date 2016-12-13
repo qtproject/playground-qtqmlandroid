@@ -73,8 +73,8 @@ class Q_QMLANDROID_EXPORT QQmlAndroidView : public QQmlAndroidContextual
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)
     Q_PROPERTY(bool focus READ hasFocus NOTIFY focusChanged)
 
-    Q_PROPERTY(qreal x READ x NOTIFY xChanged)
-    Q_PROPERTY(qreal y READ y NOTIFY yChanged)
+    Q_PROPERTY(qreal x READ x WRITE setX NOTIFY xChanged)
+    Q_PROPERTY(qreal y READ y WRITE setY NOTIFY yChanged)
     Q_PROPERTY(qreal z READ z WRITE setZ NOTIFY zChanged)
 
     Q_PROPERTY(int top READ top WRITE setTop NOTIFY topChanged)
@@ -135,7 +135,10 @@ public:
     bool hasFocus() const;
 
     qreal x() const;
+    void setX(qreal x);
+
     qreal y() const;
+    void setY(qreal y);
 
     qreal z() const;
     void setZ(qreal z);

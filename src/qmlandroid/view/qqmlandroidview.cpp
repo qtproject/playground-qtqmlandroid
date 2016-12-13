@@ -234,12 +234,22 @@ bool QQmlAndroidView::updateFocus(bool arg)
 
 qreal QQmlAndroidView::x() const
 {
-    return left(); // TODO: + translationX
+    return left() + translationX();
+}
+
+void QQmlAndroidView::setX(qreal x)
+{
+    setTranslationX(x - left());
 }
 
 qreal QQmlAndroidView::y() const
 {
-    return top(); // TODO: + translationY
+    return top() + translationY();
+}
+
+void QQmlAndroidView::setY(qreal y)
+{
+    setTranslationY(y - top());
 }
 
 qreal QQmlAndroidView::z() const
@@ -265,6 +275,7 @@ void QQmlAndroidView::setTop(int top)
         m_top = top;
         QtQmlAndroid::callIntMethod(instance(), "setTop", top);
         emit topChanged();
+        emit yChanged();
     }
 }
 
@@ -281,6 +292,7 @@ void QQmlAndroidView::setLeft(int left)
         m_left = left;
         QtQmlAndroid::callIntMethod(instance(), "setLeft", left);
         emit leftChanged();
+        emit xChanged();
     }
 }
 
@@ -560,6 +572,7 @@ void QQmlAndroidView::setTranslationX(qreal translationX)
         m_translationX = translationX;
         QtQmlAndroid::callRealMethod(instance(), "setTranslationX", translationX);
         emit translationXChanged();
+        emit xChanged();
     }
 }
 
@@ -576,6 +589,7 @@ void QQmlAndroidView::setTranslationY(qreal translationY)
         m_translationY = translationY;
         QtQmlAndroid::callRealMethod(instance(), "setTranslationY", translationY);
         emit translationYChanged();
+        emit yChanged();
     }
 }
 
