@@ -90,6 +90,8 @@ class Q_QMLANDROID_EXPORT QQmlAndroidView : public QQmlAndroidContextual
     Q_PROPERTY(int paddingRight READ paddingRight WRITE setPaddingRight NOTIFY paddingRightChanged)
     Q_PROPERTY(int paddingBottom READ paddingBottom WRITE setPaddingBottom NOTIFY paddingBottomChanged)
 
+    Q_PROPERTY(qreal alpha READ alpha WRITE setAlpha NOTIFY alphaChanged)
+
     Q_PROPERTY(qreal scaleX READ scaleX WRITE setScaleX NOTIFY scaleXChanged)
     Q_PROPERTY(qreal scaleY READ scaleY WRITE setScaleY NOTIFY scaleYChanged)
     Q_PROPERTY(qreal pivotX READ pivotX WRITE setPivotX NOTIFY pivotXChanged)
@@ -176,6 +178,9 @@ public:
     int paddingBottom() const;
     void setPaddingBottom(int padding);
 
+    qreal alpha() const;
+    void setAlpha(qreal alpha);
+
     qreal scaleX() const;
     void setScaleX(qreal scaleX);
 
@@ -252,6 +257,7 @@ Q_SIGNALS:
     void paddingLeftChanged();
     void paddingRightChanged();
     void paddingBottomChanged();
+    void alphaChanged();
     void scaleXChanged();
     void scaleYChanged();
     void pivotXChanged();
@@ -321,6 +327,7 @@ private:
     QQmlAndroidOptional<int> m_paddingLeft;
     QQmlAndroidOptional<int> m_paddingRight;
     QQmlAndroidOptional<int> m_paddingBottom;
+    QQmlAndroidOptional<qreal> m_alpha;
     QQmlAndroidOptional<qreal> m_scaleX;
     QQmlAndroidOptional<qreal> m_scaleY;
     QQmlAndroidOptional<qreal> m_pivotX;

@@ -447,6 +447,22 @@ void QQmlAndroidView::setPaddingBottom(int padding)
     }
 }
 
+qreal QQmlAndroidView::alpha() const
+{
+    if (!m_alpha.isNull())
+        return m_alpha;
+    return 0;
+}
+
+void QQmlAndroidView::setAlpha(qreal alpha)
+{
+    if (m_alpha.isNull() || m_alpha != alpha) {
+        m_alpha = alpha;
+        QtQmlAndroid::callRealMethod(instance(), "setAlpha", alpha);
+        emit alphaChanged();
+    }
+}
+
 qreal QQmlAndroidView::scaleX() const
 {
     if (!m_scaleX.isNull())
@@ -724,6 +740,8 @@ void QQmlAndroidView::onInflate(QAndroidJniObject &instance)
         instance.callMethod<void>("setRight", "(I)V", m_right);
     if (!m_bottom.isNull())
         instance.callMethod<void>("setBottom", "(I)V", m_bottom);
+    if (!m_alpha.isNull())
+        instance.callMethod<void>("setAlpha", "(F)V", m_alpha);
     if (!m_scaleX.isNull())
         instance.callMethod<void>("setScaleX", "(F)V", m_scaleX);
     if (!m_scaleY.isNull())
