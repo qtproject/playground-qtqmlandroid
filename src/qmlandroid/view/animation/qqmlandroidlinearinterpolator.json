@@ -1,5 +1,0 @@
-{
-    "class": "LinearInterpolator",
-    "base": "Interpolator",
-    "package": "android/view/animation"
-}

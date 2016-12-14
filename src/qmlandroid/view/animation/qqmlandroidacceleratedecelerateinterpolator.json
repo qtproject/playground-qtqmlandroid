@@ -1,5 +1,0 @@
-{
-    "class": "AccelerateDecelerateInterpolator",
-    "base": "Interpolator",
-    "package": "android/view/animation"
-}
