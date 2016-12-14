@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidTabWidget : public QQmlAndroidLinearLayout
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidTabWidget(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidTabWidget(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

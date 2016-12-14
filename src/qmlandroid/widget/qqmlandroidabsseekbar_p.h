@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidAbsSeekBar : public QQmlAndroidProgressBar
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidAbsSeekBar(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidAbsSeekBar(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidBounceInterpolator : public QQmlAndroidInte
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidBounceInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidBounceInterpolator(QObject *parent = nullptr);
 
 Q_SIGNALS:
 

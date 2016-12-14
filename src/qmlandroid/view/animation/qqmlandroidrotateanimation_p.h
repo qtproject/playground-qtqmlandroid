@@ -64,7 +64,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidRotateAnimation : public QQmlAndroidAnimati
     Q_ENUMS(Relation)
 
 public:
-    explicit QQmlAndroidRotateAnimation(QObject *parent = 0);
+    explicit QQmlAndroidRotateAnimation(QObject *parent = nullptr);
 
     qreal fromDegrees() const;
     void setFromDegrees(qreal degrees);

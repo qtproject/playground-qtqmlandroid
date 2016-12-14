@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidBaseAdapter : public QQmlAndroidContextual
     Q_PROPERTY(int count READ count NOTIFY countChanged)
 
 public:
-    explicit QQmlAndroidBaseAdapter(QObject *parent = 0);
+    explicit QQmlAndroidBaseAdapter(QObject *parent = nullptr);
 
     virtual int count() const = 0;
 

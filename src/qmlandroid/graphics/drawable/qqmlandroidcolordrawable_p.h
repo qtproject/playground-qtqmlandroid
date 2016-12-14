@@ -58,8 +58,8 @@ class Q_QMLANDROID_EXPORT QQmlAndroidColorDrawable : public QQmlAndroidDrawable
     Q_PROPERTY(int color READ color WRITE setColor NOTIFY colorChanged)
 
 public:
-    explicit QQmlAndroidColorDrawable(QObject *parent = 0);
-    explicit QQmlAndroidColorDrawable(int color, QObject *parent = 0);
+    explicit QQmlAndroidColorDrawable(QObject *parent = nullptr);
+    explicit QQmlAndroidColorDrawable(int color, QObject *parent = nullptr);
 
     int color() const;
     void setColor(int color);

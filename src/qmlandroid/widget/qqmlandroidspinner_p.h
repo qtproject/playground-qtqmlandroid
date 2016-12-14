@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidSpinner : public QQmlAndroidAdapterView // 
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidSpinner(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidSpinner(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

@@ -59,7 +59,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidAlphaAnimation : public QQmlAndroidAnimatio
     Q_PROPERTY(qreal toAlpha READ toAlpha WRITE setToAlpha NOTIFY toAlphaChanged)
 
 public:
-    explicit QQmlAndroidAlphaAnimation(QObject *parent = 0);
+    explicit QQmlAndroidAlphaAnimation(QObject *parent = nullptr);
 
     qreal fromAlpha() const;
     void setFromAlpha(qreal alpha);

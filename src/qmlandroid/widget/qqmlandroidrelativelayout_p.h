@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidRelativeLayout : public QQmlAndroidViewGrou
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidRelativeLayout(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidRelativeLayout(QQmlAndroidView *parent = nullptr);
 
     static QQmlAndroidRelativeLayoutParams *qmlAttachedProperties(QObject *object);
 

@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidLinearInterpolator : public QQmlAndroidInte
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidLinearInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidLinearInterpolator(QObject *parent = nullptr);
 
 Q_SIGNALS:
 

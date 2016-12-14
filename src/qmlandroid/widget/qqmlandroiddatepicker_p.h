@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidDatePicker : public QQmlAndroidFrameLayout
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidDatePicker(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidDatePicker(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

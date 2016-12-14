@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidArrayAdapter : public QQmlAndroidBaseAdapte
     Q_PROPERTY(QStringList array READ array WRITE setArray NOTIFY arrayChanged)
 
 public:
-    explicit QQmlAndroidArrayAdapter(QObject *parent = 0);
+    explicit QQmlAndroidArrayAdapter(QObject *parent = nullptr);
 
     int style() const;
     void setStyle(int style);

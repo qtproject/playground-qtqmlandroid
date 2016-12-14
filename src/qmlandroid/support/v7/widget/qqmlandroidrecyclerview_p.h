@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidRecyclerView : public QQmlAndroidViewGroup
     Q_PROPERTY(QQmlAndroidRecyclerAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged)
 
 public:
-    explicit QQmlAndroidRecyclerView(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidRecyclerView(QQmlAndroidView *parent = nullptr);
 
     QQmlAndroidRecyclerAdapter *adapter() const;
     void setAdapter(QQmlAndroidRecyclerAdapter *adapter);

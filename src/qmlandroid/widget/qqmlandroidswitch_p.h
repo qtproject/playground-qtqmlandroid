@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidSwitch : public QQmlAndroidCompoundButton
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidSwitch(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidSwitch(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

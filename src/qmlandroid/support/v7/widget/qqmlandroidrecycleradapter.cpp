@@ -116,7 +116,7 @@ jobject QQmlAndroidRecyclerAdapter::onCreateViewHolder(JNIEnv *env, jobject obje
     Q_UNUSED(viewType);
     QQmlAndroidRecyclerAdapter *adapter = reinterpret_cast<QQmlAndroidRecyclerAdapter *>(instance);
     if (adapter) {
-        QQmlAndroidView *item = 0;
+        QQmlAndroidView *item = nullptr;
         QMetaObject::invokeMethod(adapter, "createItem", Qt::BlockingQueuedConnection, Q_RETURN_ARG(QQmlAndroidView *, item));
         item->construct();
         adapter->m_holders += QAndroidJniObject("qt/android/support/v7/widget/QmlRecyclerAdapter$ViewHolder",
@@ -143,7 +143,7 @@ void QQmlAndroidRecyclerAdapter::onBindViewHolder(JNIEnv *env, jobject object, j
 
 QQmlAndroidView *QQmlAndroidRecyclerAdapter::createItem()
 {
-    QQmlAndroidView *item = 0;
+    QQmlAndroidView *item = nullptr;
     if (m_delegate) {
         QQmlContext *creationContext = m_delegate->creationContext();
         QQmlContext *context = new QQmlContext(creationContext ? creationContext : qmlContext(this));

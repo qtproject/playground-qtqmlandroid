@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidViewFlipper : public QQmlAndroidViewAnimato
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidViewFlipper(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidViewFlipper(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

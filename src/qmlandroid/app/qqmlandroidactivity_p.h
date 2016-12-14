@@ -66,7 +66,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidActivity : public QQmlAndroidContextWrapper
     Q_PROPERTY(QQmlAndroidView *contentView READ contentView WRITE setContentView)
 
 public:
-    explicit QQmlAndroidActivity(QObject *parent = 0);
+    explicit QQmlAndroidActivity(QObject *parent = nullptr);
 
     QQmlAndroidWindow *window() const;
 

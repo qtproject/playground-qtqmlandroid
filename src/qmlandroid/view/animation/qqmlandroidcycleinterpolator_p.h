@@ -59,7 +59,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidCycleInterpolator : public QQmlAndroidInter
     Q_PROPERTY(qreal cycles READ cycles WRITE setCycles NOTIFY cyclesChanged)
 
 public:
-    explicit QQmlAndroidCycleInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidCycleInterpolator(QObject *parent = nullptr);
 
     qreal cycles() const;
     void setCycles(qreal cycles);

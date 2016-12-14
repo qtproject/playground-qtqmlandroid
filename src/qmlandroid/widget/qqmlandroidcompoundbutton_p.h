@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidCompoundButton : public QQmlAndroidButton
     Q_PROPERTY(bool checked READ isChecked WRITE setChecked NOTIFY checkedChanged)
 
 public:
-    explicit QQmlAndroidCompoundButton(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidCompoundButton(QQmlAndroidView *parent = nullptr);
 
     bool isChecked() const;
     void setChecked(bool checked);

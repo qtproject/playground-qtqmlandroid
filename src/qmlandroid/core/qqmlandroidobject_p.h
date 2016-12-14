@@ -67,7 +67,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidObject : public QObject, public QQmlParserS
     Q_INTERFACES(QQmlParserStatus)
 
 public:
-    explicit QQmlAndroidObject(QObject *parent = 0);
+    explicit QQmlAndroidObject(QObject *parent = nullptr);
 
     bool isValid() const;
     QAndroidJniObject instance() const;

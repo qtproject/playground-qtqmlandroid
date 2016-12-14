@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidSpace : public QQmlAndroidView
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidSpace(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidSpace(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

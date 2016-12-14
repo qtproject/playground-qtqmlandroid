@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidDialog : public QQmlAndroidContextual
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidDialog(QObject *parent = 0);
+    explicit QQmlAndroidDialog(QObject *parent = nullptr);
 
 public Q_SLOTS:
     void cancel();

@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidCheckBox : public QQmlAndroidCompoundButton
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidCheckBox(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidCheckBox(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

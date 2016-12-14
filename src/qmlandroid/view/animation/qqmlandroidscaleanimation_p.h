@@ -65,7 +65,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidScaleAnimation : public QQmlAndroidAnimatio
     Q_PROPERTY(Relation pivotYType READ pivotYType WRITE setPivotYType NOTIFY pivotYTypeChanged)
 
 public:
-    explicit QQmlAndroidScaleAnimation(QObject *parent = 0);
+    explicit QQmlAndroidScaleAnimation(QObject *parent = nullptr);
 
     qreal fromXScale() const;
     void setFromXScale(qreal scale);

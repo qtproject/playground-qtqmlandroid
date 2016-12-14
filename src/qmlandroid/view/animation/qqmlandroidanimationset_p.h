@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidAnimationSet : public QQmlAndroidAnimation
     Q_PROPERTY(bool shareInterpolator READ shareInterpolator WRITE setShareInterpolator NOTIFY shareInterpolatorChanged)
 
 public:
-    explicit QQmlAndroidAnimationSet(QObject *parent = 0);
+    explicit QQmlAndroidAnimationSet(QObject *parent = nullptr);
 
     bool shareInterpolator() const;
     void setShareInterpolator(bool share);

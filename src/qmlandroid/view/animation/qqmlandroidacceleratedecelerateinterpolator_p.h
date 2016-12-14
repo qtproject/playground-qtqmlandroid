@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidAccelerateDecelerateInterpolator : public Q
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidAccelerateDecelerateInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidAccelerateDecelerateInterpolator(QObject *parent = nullptr);
 
 Q_SIGNALS:
 

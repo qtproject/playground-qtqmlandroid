@@ -59,7 +59,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidMenu : public QQmlAndroidContextual
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidMenu(QObject *parent = 0);
+    explicit QQmlAndroidMenu(QObject *parent = nullptr);
 
     QList<QQmlAndroidMenuItem *> items() const;
 

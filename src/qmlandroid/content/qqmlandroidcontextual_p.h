@@ -60,8 +60,8 @@ class Q_QMLANDROID_EXPORT QQmlAndroidContextual : public QQmlAndroidObject
     Q_PROPERTY(QQmlAndroidContext *context READ context NOTIFY contextChanged)
 
 public:
-    explicit QQmlAndroidContextual(QObject *parent = 0);
-    explicit QQmlAndroidContextual(QQmlAndroidContext *context, QObject *parent = 0);
+    explicit QQmlAndroidContextual(QObject *parent = nullptr);
+    explicit QQmlAndroidContextual(QQmlAndroidContext *context, QObject *parent = nullptr);
 
     QAndroidJniObject ctx() const;
     QQmlAndroidContext *context() const;
@@ -74,7 +74,7 @@ protected:
     void componentComplete() Q_DECL_OVERRIDE;
 
 private Q_SLOTS:
-    bool initContext(QQmlAndroidContext *context = 0);
+    bool initContext(QQmlAndroidContext *context = nullptr);
     void resolveContext();
     void propagateContext();
 

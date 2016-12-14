@@ -62,7 +62,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidToast : public QQmlAndroidObject
     Q_PROPERTY(int gravity READ gravity WRITE setGravity NOTIFY gravityChanged)
 
 public:
-    explicit QQmlAndroidToast(QObject *parent = 0);
+    explicit QQmlAndroidToast(QObject *parent = nullptr);
 
     QString text() const;
     void setText(const QString &text);

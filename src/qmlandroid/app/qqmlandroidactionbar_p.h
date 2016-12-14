@@ -65,7 +65,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidActionBar : public QQmlAndroidObject
     Q_PROPERTY(QQmlAndroidDrawable *background READ background WRITE setBackground NOTIFY backgroundChanged)
 
 public:
-    explicit QQmlAndroidActionBar(QObject *parent = 0);
+    explicit QQmlAndroidActionBar(QObject *parent = nullptr);
 
     bool isVisible() const;
     void setVisible(bool visible);

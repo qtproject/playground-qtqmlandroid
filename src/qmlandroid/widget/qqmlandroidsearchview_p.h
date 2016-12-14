@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidSearchView : public QQmlAndroidLinearLayout
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidSearchView(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidSearchView(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

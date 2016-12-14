@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidButton : public QQmlAndroidTextView
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidButton(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidButton(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

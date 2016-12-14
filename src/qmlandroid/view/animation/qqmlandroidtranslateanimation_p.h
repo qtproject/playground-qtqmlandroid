@@ -65,7 +65,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidTranslateAnimation : public QQmlAndroidAnim
     Q_PROPERTY(Relation toYType READ toYType WRITE setToYType NOTIFY toYTypeChanged)
 
 public:
-    explicit QQmlAndroidTranslateAnimation(QObject *parent = 0);
+    explicit QQmlAndroidTranslateAnimation(QObject *parent = nullptr);
 
     qreal fromX() const;
     void setFromX(qreal x);

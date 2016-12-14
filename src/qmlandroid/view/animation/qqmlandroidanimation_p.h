@@ -71,7 +71,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidAnimation : public QQmlAndroidContextual
     Q_ENUMS(RepeatMode ZAdjustment Infinity Relation)
 
 public:
-    explicit QQmlAndroidAnimation(QObject *parent = 0);
+    explicit QQmlAndroidAnimation(QObject *parent = nullptr);
 
     int resource() const;
     void setResource(int resource);

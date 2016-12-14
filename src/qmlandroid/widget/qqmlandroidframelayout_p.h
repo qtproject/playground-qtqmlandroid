@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidFrameLayout : public QQmlAndroidViewGroup
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidFrameLayout(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidFrameLayout(QQmlAndroidView *parent = nullptr);
 
     static QQmlAndroidFrameLayoutParams *qmlAttachedProperties(QObject *object);
 

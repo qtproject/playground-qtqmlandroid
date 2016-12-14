@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidDrawable : public QQmlAndroidObject
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidDrawable(QObject *parent = 0);
+    explicit QQmlAndroidDrawable(QObject *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

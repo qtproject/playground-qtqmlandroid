@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidActionBarDrawerToggle : public QQmlAndroidO
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidActionBarDrawerToggle(QObject *parent = 0);
+    explicit QQmlAndroidActionBarDrawerToggle(QObject *parent = nullptr);
 
     void onCreate(const QAndroidJniObject &activity, const QAndroidJniObject &drawer);
 };

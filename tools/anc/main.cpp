@@ -108,7 +108,7 @@ private:
         writePropertyMacros(out, properties);
         out << endl;
         out << "public:" << endl;
-        out << "    explicit QQmlAndroid" << cls << "(QObject *parent = 0);" << endl;
+        out << "    explicit QQmlAndroid" << cls << "(QObject *parent = nullptr);" << endl;
         out << endl;
         writePropertyDeclarations(out, properties);
         out << "Q_SIGNALS:" << endl;

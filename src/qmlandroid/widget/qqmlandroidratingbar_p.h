@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidRatingBar : public QQmlAndroidAbsSeekBar
     Q_PROPERTY(qreal rating READ rating WRITE setRating NOTIFY ratingChanged)
 
 public:
-    explicit QQmlAndroidRatingBar(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidRatingBar(QQmlAndroidView *parent = nullptr);
 
     qreal rating() const;
     void setRating(qreal rating);

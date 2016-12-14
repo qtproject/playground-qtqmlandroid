@@ -62,7 +62,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidPathInterpolator : public QQmlAndroidInterp
     Q_PROPERTY(qreal controlY2 READ controlY2 WRITE setControlY2 NOTIFY controlY2Changed)
 
 public:
-    explicit QQmlAndroidPathInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidPathInterpolator(QObject *parent = nullptr);
 
     qreal controlX() const;
     void setControlX(qreal x);

@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidTabHost : public QQmlAndroidFrameLayout
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidTabHost(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidTabHost(QQmlAndroidView *parent = nullptr);
 
 Q_SIGNALS:
     void tabChanged(const QString &tabId);

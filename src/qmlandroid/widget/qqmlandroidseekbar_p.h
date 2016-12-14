@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidSeekBar : public QQmlAndroidAbsSeekBar
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidSeekBar(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidSeekBar(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

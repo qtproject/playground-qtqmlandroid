@@ -59,7 +59,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidAccelerateInterpolator : public QQmlAndroid
     Q_PROPERTY(qreal factor READ factor WRITE setFactor NOTIFY factorChanged)
 
 public:
-    explicit QQmlAndroidAccelerateInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidAccelerateInterpolator(QObject *parent = nullptr);
 
     qreal factor() const;
     void setFactor(qreal factor);

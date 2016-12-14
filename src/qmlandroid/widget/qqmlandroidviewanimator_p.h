@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidViewAnimator : public QQmlAndroidFrameLayou
     Q_PROPERTY(int outAnimation READ outAnimation WRITE setOutAnimation NOTIFY outAnimationChanged)
 
 public:
-    explicit QQmlAndroidViewAnimator(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidViewAnimator(QQmlAndroidView *parent = nullptr);
 
     int displayedChild() const;
     void setDisplayedChild(int child);

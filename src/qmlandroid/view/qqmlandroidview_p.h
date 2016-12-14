@@ -104,7 +104,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidView : public QQmlAndroidContextual
     Q_PROPERTY(qreal translationZ READ translationZ WRITE setTranslationZ NOTIFY translationZChanged)
 
 public:
-    explicit QQmlAndroidView(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidView(QQmlAndroidView *parent = nullptr);
     ~QQmlAndroidView();
 
     int identifier() const;

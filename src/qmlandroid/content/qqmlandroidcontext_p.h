@@ -57,8 +57,8 @@ class Q_QMLANDROID_EXPORT QQmlAndroidContext : public QQmlAndroidContextual
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidContext(QObject *parent = 0);
-    explicit QQmlAndroidContext(QQmlAndroidContext *context, QObject *parent = 0);
+    explicit QQmlAndroidContext(QObject *parent = nullptr);
+    explicit QQmlAndroidContext(QQmlAndroidContext *context, QObject *parent = nullptr);
 };
 
 QT_END_NAMESPACE

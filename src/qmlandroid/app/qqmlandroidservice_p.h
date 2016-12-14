@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidService : public QQmlAndroidContextWrapper
     Q_PROPERTY(bool sticky READ isSticky WRITE setSticky NOTIFY stickyChanged)
 
 public:
-    explicit QQmlAndroidService(QObject *parent = 0);
+    explicit QQmlAndroidService(QObject *parent = nullptr);
 
     bool isSticky() const;
     void setSticky(bool sticky);

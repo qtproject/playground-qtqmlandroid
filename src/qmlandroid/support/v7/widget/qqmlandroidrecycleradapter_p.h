@@ -62,7 +62,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidRecyclerAdapter : public QQmlAndroidContext
     Q_PROPERTY(QQmlComponent *delegate READ delegate WRITE setDelegate NOTIFY delegateChanged)
 
 public:
-    explicit QQmlAndroidRecyclerAdapter(QObject *parent = 0);
+    explicit QQmlAndroidRecyclerAdapter(QObject *parent = nullptr);
 
     int count() const;
     void setCount(int count);

@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidViewSwitcher : public QQmlAndroidViewAnimat
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidViewSwitcher(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidViewSwitcher(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

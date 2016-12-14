@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidAdapterView : public QQmlAndroidViewGroup
     Q_PROPERTY(QQmlAndroidBaseAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged) // TODO: Adapter
 
 public:
-    explicit QQmlAndroidAdapterView(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidAdapterView(QQmlAndroidView *parent = nullptr);
 
     QQmlAndroidBaseAdapter *adapter() const;
     void setAdapter(QQmlAndroidBaseAdapter *adapter);

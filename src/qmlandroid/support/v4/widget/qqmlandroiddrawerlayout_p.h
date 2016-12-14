@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidDrawerLayout : public QQmlAndroidViewGroup
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidDrawerLayout(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidDrawerLayout(QQmlAndroidView *parent = nullptr);
 
     static QQmlAndroidDrawerLayoutParams *qmlAttachedProperties(QObject *object);
 

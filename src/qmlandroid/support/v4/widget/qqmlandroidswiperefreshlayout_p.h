@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidSwipeRefreshLayout : public QQmlAndroidView
     Q_PROPERTY(bool refreshing READ isRefreshing WRITE setRefreshing NOTIFY refreshingChanged)
 
 public:
-    explicit QQmlAndroidSwipeRefreshLayout(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidSwipeRefreshLayout(QQmlAndroidView *parent = nullptr);
 
     bool isRefreshing() const;
     void setRefreshing(bool refreshing);

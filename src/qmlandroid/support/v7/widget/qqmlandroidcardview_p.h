@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidCardView : public QQmlAndroidFrameLayout
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidCardView(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidCardView(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

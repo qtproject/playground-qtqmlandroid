@@ -63,7 +63,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidPopupMenu : public QQmlAndroidObject
     Q_PROPERTY(int gravity READ gravity WRITE setGravity NOTIFY gravityChanged)
 
 public:
-    explicit QQmlAndroidPopupMenu(QObject *parent = 0);
+    explicit QQmlAndroidPopupMenu(QObject *parent = nullptr);
 
     QList<QQmlAndroidMenuItem *> items() const;
 

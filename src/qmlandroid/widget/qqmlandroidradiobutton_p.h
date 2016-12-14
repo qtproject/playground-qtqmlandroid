@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidRadioButton : public QQmlAndroidCompoundBut
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidRadioButton(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidRadioButton(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

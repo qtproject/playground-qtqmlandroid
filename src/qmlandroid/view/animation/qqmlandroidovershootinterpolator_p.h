@@ -59,7 +59,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidOvershootInterpolator : public QQmlAndroidI
     Q_PROPERTY(qreal tension READ tension WRITE setTension NOTIFY tensionChanged)
 
 public:
-    explicit QQmlAndroidOvershootInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidOvershootInterpolator(QObject *parent = nullptr);
 
     qreal tension() const;
     void setTension(qreal tension);

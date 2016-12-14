@@ -67,7 +67,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidMenuItem : public QQmlAndroidContextual
     Q_ENUMS(ShowAs)
 
 public:
-    explicit QQmlAndroidMenuItem(QObject *parent = 0);
+    explicit QQmlAndroidMenuItem(QObject *parent = nullptr);
 
     QString title() const;
     void setTitle(const QString &title);

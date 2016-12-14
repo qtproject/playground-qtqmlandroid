@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidInterpolator : public QQmlAndroidObject
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidInterpolator(QObject *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

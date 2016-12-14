@@ -59,7 +59,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidAnticipateInterpolator : public QQmlAndroid
     Q_PROPERTY(qreal tension READ tension WRITE setTension NOTIFY tensionChanged)
 
 public:
-    explicit QQmlAndroidAnticipateInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidAnticipateInterpolator(QObject *parent = nullptr);
 
     qreal tension() const;
     void setTension(qreal tension);

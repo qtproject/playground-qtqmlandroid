@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidNumberPicker : public QQmlAndroidLinearLayo
     Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)
 
 public:
-    explicit QQmlAndroidNumberPicker(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidNumberPicker(QQmlAndroidView *parent = nullptr);
 
     int value() const;
     void setValue(int value);

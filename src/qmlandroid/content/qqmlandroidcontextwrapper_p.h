@@ -57,8 +57,8 @@ class Q_QMLANDROID_EXPORT QQmlAndroidContextWrapper : public QQmlAndroidContext
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidContextWrapper(QObject *parent = 0);
-    explicit QQmlAndroidContextWrapper(QQmlAndroidContext *context, QObject *parent = 0);
+    explicit QQmlAndroidContextWrapper(QObject *parent = nullptr);
+    explicit QQmlAndroidContextWrapper(QQmlAndroidContext *context, QObject *parent = nullptr);
 };
 
 QT_END_NAMESPACE

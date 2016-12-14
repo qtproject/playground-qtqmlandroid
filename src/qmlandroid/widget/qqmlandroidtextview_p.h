@@ -65,7 +65,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidTextView : public QQmlAndroidView
     Q_PROPERTY(int inputType READ inputType WRITE setInputType NOTIFY inputTypeChanged)
 
 public:
-    explicit QQmlAndroidTextView(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidTextView(QQmlAndroidView *parent = nullptr);
 
     QString text() const;
     void setText(const QString &text);

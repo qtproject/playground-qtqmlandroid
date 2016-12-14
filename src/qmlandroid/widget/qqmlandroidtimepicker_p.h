@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidTimePicker : public QQmlAndroidFrameLayout
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidTimePicker(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidTimePicker(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

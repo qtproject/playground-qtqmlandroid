@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidAnticipateOvershootInterpolator : public QQ
     Q_PROPERTY(qreal extraTension READ extraTension WRITE setExtraTension NOTIFY extraTensionChanged)
 
 public:
-    explicit QQmlAndroidAnticipateOvershootInterpolator(QObject *parent = 0);
+    explicit QQmlAndroidAnticipateOvershootInterpolator(QObject *parent = nullptr);
 
     qreal tension() const;
     void setTension(qreal tension);

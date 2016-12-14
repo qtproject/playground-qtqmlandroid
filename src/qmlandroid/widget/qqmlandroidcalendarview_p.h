@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidCalendarView : public QQmlAndroidFrameLayou
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidCalendarView(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidCalendarView(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

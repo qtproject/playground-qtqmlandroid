@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidListView : public QQmlAndroidAdapterView //
     Q_OBJECT
 
 public:
-    explicit QQmlAndroidListView(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidListView(QQmlAndroidView *parent = nullptr);
 
 protected:
     QAndroidJniObject onCreate() Q_DECL_OVERRIDE;

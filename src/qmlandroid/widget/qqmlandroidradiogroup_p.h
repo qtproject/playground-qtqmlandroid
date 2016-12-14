@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidRadioGroup : public QQmlAndroidLinearLayout
     Q_PROPERTY(QQmlAndroidRadioButton *checkedButton READ checkedButton WRITE setCheckedButton NOTIFY checkedButtonChanged)
 
 public:
-    explicit QQmlAndroidRadioGroup(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidRadioGroup(QQmlAndroidView *parent = nullptr);
 
     QQmlAndroidRadioButton *checkedButton() const;
     void setCheckedButton(QQmlAndroidRadioButton *button);

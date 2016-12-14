@@ -59,7 +59,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidScrollView : public QQmlAndroidFrameLayout
     Q_PROPERTY(int scrollY READ scrollY WRITE setScrollY NOTIFY scrollYChanged)
 
 public:
-    explicit QQmlAndroidScrollView(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidScrollView(QQmlAndroidView *parent = nullptr);
 
     int scrollX() const;
     void setScrollX(int x);

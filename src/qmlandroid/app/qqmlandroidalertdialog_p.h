@@ -59,7 +59,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidAlertDialog : public QQmlAndroidDialog
     Q_PROPERTY(QString message READ message WRITE setMessage NOTIFY messageChanged)
 
 public:
-    explicit QQmlAndroidAlertDialog(QObject *parent = 0);
+    explicit QQmlAndroidAlertDialog(QObject *parent = nullptr);
 
     QString title() const;
     void setTitle(const QString &title);

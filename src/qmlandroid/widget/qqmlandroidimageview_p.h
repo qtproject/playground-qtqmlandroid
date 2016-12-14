@@ -62,7 +62,7 @@ class Q_QMLANDROID_EXPORT QQmlAndroidImageView : public QQmlAndroidView
     Q_PROPERTY(int imageTintColor READ imageTintColor WRITE setImageTintColor NOTIFY imageTintColorChanged)
 
 public:
-    explicit QQmlAndroidImageView(QQmlAndroidView *parent = 0);
+    explicit QQmlAndroidImageView(QQmlAndroidView *parent = nullptr);
 
     QUrl imageURI() const;
     void setImageURI(const QUrl &uri);
