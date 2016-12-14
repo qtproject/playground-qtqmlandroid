@@ -19,9 +19,34 @@ Credits for the original idea and the groundwork go to Attila Csipa:
 
 Build and install like any Qt module.
 
-## Qt Creator
+## Getting Started
 
-When building the example in Qt Creator, tick "Use Gradle" in
+Link to the library, and deploy the desired Android packages
+in the application .pro file:
+
+    QT += qmlandroid
+    QMLANDROID_PACKAGES = app view widget
+
+A minimal QML example that can replace the main.qml when using
+the Qt Quick Application template in Qt Creator. The rest can
+stay the same, using QQmlApplicationEngine to load the main.qml:
+
+    import android 0.21
+    import android.app 0.21
+    import android.view 0.21
+    import android.widget 0.21
+
+    Activity {
+        contentView: Button {
+            text: "Button"
+        }
+    }
+
+Using an options menu in Activity requires changing the activity
+type in AndroidManifest.xml. The default activity type for Qt apps
+is "org.qtproject.qt5.android.bindings.QtActivity", which must be
+changed to "qt.android.app.QmlActivity". In order to create the
+file, click "Create Templates" in Qt Creator:
 
     Projects -> Build & Run -> Build Steps -> Build Android APK
 
