@@ -68,7 +68,7 @@ Q_SIGNALS:
     void statusBarColorChanged();
 
 protected:
-    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
+    void onInflate(QAndroidJniObject &instance) override;
 
 private:
     QQmlAndroidOptional<int> m_statusBarColor;

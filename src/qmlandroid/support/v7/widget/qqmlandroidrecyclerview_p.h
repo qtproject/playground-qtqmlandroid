@@ -69,10 +69,10 @@ Q_SIGNALS:
     void adapterChanged();
 
 protected:
-    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
-    void onInflate(QAndroidJniObject& instance) Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() override;
+    void onInflate(QAndroidJniObject& instance) override;
 
-    void objectChange(ObjectChange change) Q_DECL_OVERRIDE;
+    void objectChange(ObjectChange change) override;
 
 private Q_SLOTS:
     void updateAdapter();

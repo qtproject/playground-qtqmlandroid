@@ -115,7 +115,7 @@ private:
         writePropertyNotifiers(out, properties);
         out << endl;
         out << "protected:" << endl;
-        out << "    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;" << endl;
+        out << "    QAndroidJniObject onCreate() override;" << endl;
         out << endl;
         out << "private:" << endl;
         writePropertyMembers(out, properties);

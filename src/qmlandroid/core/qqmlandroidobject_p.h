@@ -91,8 +91,8 @@ protected:
     virtual void onInflate(QAndroidJniObject &instance);
 
     bool isComponentComplete() const;
-    void classBegin() Q_DECL_OVERRIDE;
-    void componentComplete() Q_DECL_OVERRIDE;
+    void classBegin() override;
+    void componentComplete() override;
 
     virtual void objectChange(ObjectChange change);
 
@@ -100,7 +100,7 @@ protected:
     static int data_count(QQmlListProperty<QObject> *list);
     static QObject *data_at(QQmlListProperty<QObject> *list, int index);
 
-    void childEvent(QChildEvent *event) Q_DECL_OVERRIDE;
+    void childEvent(QChildEvent *event) override;
 
 private Q_SLOTS:
     void changeInstance();

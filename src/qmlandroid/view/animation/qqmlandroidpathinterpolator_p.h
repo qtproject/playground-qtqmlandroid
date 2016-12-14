@@ -83,7 +83,7 @@ Q_SIGNALS:
     void controlY2Changed();
 
 protected:
-    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() override;
 
 private:
     QQmlAndroidOptional<qreal> m_controlX;

@@ -75,8 +75,8 @@ Q_SIGNALS:
     void delegateChanged();
 
 protected:
-    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
-    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() override;
+    void onInflate(QAndroidJniObject &instance) override;
 
     static void onRegisterNativeMethods(jobject adapter);
     static jobject onCreateViewHolder(JNIEnv *env, jobject object, jlong instance, jobject parent, jint viewType);

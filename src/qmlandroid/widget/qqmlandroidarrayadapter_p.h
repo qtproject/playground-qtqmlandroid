@@ -68,19 +68,19 @@ public:
     QStringList array() const;
     void setArray(const QStringList &array);
 
-    int count() const Q_DECL_OVERRIDE;
+    int count() const override;
     Q_INVOKABLE QString getItem(int position) const;
 
 public Q_SLOTS:
-    void clear() Q_DECL_OVERRIDE;
+    void clear() override;
 
 Q_SIGNALS:
     void styleChanged();
     void arrayChanged();
 
 protected:
-    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
-    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() override;
+    void onInflate(QAndroidJniObject &instance) override;
 
 private:
     int m_style;

@@ -68,7 +68,7 @@ Q_SIGNALS:
     void tensionChanged();
 
 protected:
-    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() override;
 
 private:
     QQmlAndroidOptional<qreal> m_tension;

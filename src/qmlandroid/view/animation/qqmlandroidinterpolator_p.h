@@ -60,7 +60,7 @@ public:
     explicit QQmlAndroidInterpolator(QObject *parent = nullptr);
 
 protected:
-    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() override;
 };
 
 QT_END_NAMESPACE

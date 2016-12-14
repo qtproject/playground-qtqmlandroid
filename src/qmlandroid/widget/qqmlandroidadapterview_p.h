@@ -73,13 +73,13 @@ Q_SIGNALS:
     void click(int position);
 
 protected:
-    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
-    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() override;
+    void onInflate(QAndroidJniObject &instance) override;
 
     static void onRegisterNativeMethods(jobject listener);
     static void onItemClick(JNIEnv *env, jobject object, jlong instance, jint position);
 
-    void objectChange(ObjectChange change) Q_DECL_OVERRIDE;
+    void objectChange(ObjectChange change) override;
 
 private Q_SLOTS:
     void updateAdapter();

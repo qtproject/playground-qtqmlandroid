@@ -71,7 +71,7 @@ Q_SIGNALS:
     void contextChanged();
 
 protected:
-    void componentComplete() Q_DECL_OVERRIDE;
+    void componentComplete() override;
 
 private Q_SLOTS:
     bool initContext(QQmlAndroidContext *context = nullptr);

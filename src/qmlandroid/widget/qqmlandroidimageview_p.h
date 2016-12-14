@@ -79,8 +79,8 @@ Q_SIGNALS:
     void imageTintColorChanged();
 
 protected:
-    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
-    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() override;
+    void onInflate(QAndroidJniObject &instance) override;
 
 private:
     QAndroidJniObject getUri() const;

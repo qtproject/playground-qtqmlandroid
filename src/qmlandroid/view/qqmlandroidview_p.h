@@ -283,8 +283,8 @@ protected:
     static QQmlAndroidView *children_at(QQmlListProperty<QQmlAndroidView> *list, int index);
     static void children_clear(QQmlListProperty<QQmlAndroidView> *list);
 
-    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
-    void onInflate(QAndroidJniObject &instance) Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() override;
+    void onInflate(QAndroidJniObject &instance) override;
 
     static void onRegisterNativeMethods(jobject listener);
     static void onClick(JNIEnv *env, jobject object, jlong instance);
@@ -292,9 +292,9 @@ protected:
     static void onLayoutChange(JNIEnv *env, jobject object, jlong instance, jint left, jint top, jint right, jint bottom);
     static bool onLongClick(JNIEnv *env, jobject object, jlong instance);
 
-    bool event(QEvent *event) Q_DECL_OVERRIDE;
+    bool event(QEvent *event) override;
 
-    void objectChange(ObjectChange change) Q_DECL_OVERRIDE;
+    void objectChange(ObjectChange change) override;
 
 private Q_SLOTS:
     void updateBackground();

@@ -72,7 +72,7 @@ Q_SIGNALS:
     void toAlphaChanged();
 
 protected:
-    QAndroidJniObject onCreate() Q_DECL_OVERRIDE;
+    QAndroidJniObject onCreate() override;
 
 private:
     qreal m_fromAlpha;
