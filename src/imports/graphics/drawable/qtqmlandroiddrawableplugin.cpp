@@ -35,7 +35,10 @@
 ****************************************************************************/
 
 #include <QtQml/qqmlextensionplugin.h>
-#include <QtQmlAndroid/private/qtqmlandroiddrawablemodule_p.h>
+#include <QtQml/qqml.h>
+
+#include <QtQmlAndroid/private/qqmlandroidcolordrawable_p.h>
+#include <QtQmlAndroid/private/qqmlandroiddrawable_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -45,11 +48,14 @@ class QtQmlAndroidDrawablePlugin: public QQmlExtensionPlugin
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface/1.0")
 
 public:
-    void registerTypes(const char *uri)
-    {
-        QtQmlAndroid::registerDrawableModule(uri);
-    }
+    void registerTypes(const char *uri) override;
 };
+
+void QtQmlAndroidDrawablePlugin::registerTypes(const char *uri)
+{
+    qmlRegisterType<QQmlAndroidColorDrawable>(uri, 0, 21, "ColorDrawable");
+    qmlRegisterType<QQmlAndroidDrawable>(uri, 0, 21, "Drawable");
+}
 
 QT_END_NAMESPACE
 

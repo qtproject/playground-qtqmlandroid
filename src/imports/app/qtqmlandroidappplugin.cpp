@@ -35,7 +35,13 @@
 ****************************************************************************/
 
 #include <QtQml/qqmlextensionplugin.h>
-#include <QtQmlAndroid/private/qtqmlandroidappmodule_p.h>
+#include <QtQml/qqml.h>
+
+#include <QtQmlAndroid/private/qqmlandroidactionbar_p.h>
+#include <QtQmlAndroid/private/qqmlandroidactivity_p.h>
+#include <QtQmlAndroid/private/qqmlandroidalertdialog_p.h>
+#include <QtQmlAndroid/private/qqmlandroiddialog_p.h>
+#include <QtQmlAndroid/private/qqmlandroidservice_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -45,11 +51,17 @@ class QtQmlAndroidAppPlugin: public QQmlExtensionPlugin
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface/1.0")
 
 public:
-    void registerTypes(const char *uri)
-    {
-        QtQmlAndroid::registerAppModule(uri);
-    }
+    void registerTypes(const char *uri) override;
 };
+
+void QtQmlAndroidAppPlugin::registerTypes(const char *uri)
+{
+    qmlRegisterType<QQmlAndroidActionBar>(uri, 0, 21, "ActionBar");
+    qmlRegisterType<QQmlAndroidActivity>(uri, 0, 21, "Activity");
+    qmlRegisterType<QQmlAndroidAlertDialog>(uri, 0, 21, "AlertDialog");
+    qmlRegisterType<QQmlAndroidDialog>(uri, 0, 21, "Dialog");
+    qmlRegisterType<QQmlAndroidService>(uri, 0, 21, "Service");
+}
 
 QT_END_NAMESPACE
 

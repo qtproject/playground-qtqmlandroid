@@ -35,7 +35,9 @@
 ****************************************************************************/
 
 #include <QtQml/qqmlextensionplugin.h>
-#include <QtQmlAndroid/private/qtqmlandroidcontentmodule_p.h>
+#include <QtQml/qqml.h>
+
+#include <QtQmlAndroid/private/qqmlandroidcontext_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -45,11 +47,13 @@ class QtQmlAndroidContentPlugin: public QQmlExtensionPlugin
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface/1.0")
 
 public:
-    void registerTypes(const char *uri)
-    {
-        QtQmlAndroid::registerContentModule(uri);
-    }
+    void registerTypes(const char *uri) override;
 };
+
+void QtQmlAndroidContentPlugin::registerTypes(const char *uri)
+{
+    qmlRegisterUncreatableType<QQmlAndroidContext>(uri, 0, 21, "Context", QStringLiteral("Cannot create Context"));
+}
 
 QT_END_NAMESPACE
 

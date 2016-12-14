@@ -35,7 +35,9 @@
 ****************************************************************************/
 
 #include <QtQml/qqmlextensionplugin.h>
-#include <QtQmlAndroid/private/qtqmlandroidgraphicsmodule_p.h>
+#include <QtQml/qqml.h>
+
+#include <QtQmlAndroid/private/qqmlandroidcolor_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -45,11 +47,13 @@ class QtQmlAndroidGraphicsPlugin: public QQmlExtensionPlugin
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface/1.0")
 
 public:
-    void registerTypes(const char *uri)
-    {
-        QtQmlAndroid::registerGraphicsModule(uri);
-    }
+    void registerTypes(const char *uri) override;
 };
+
+void QtQmlAndroidGraphicsPlugin::registerTypes(const char *uri)
+{
+    qmlRegisterSingletonType<QQmlAndroidColor>(uri, 0, 21, "Color", QQmlAndroidColor::provider);
+}
 
 QT_END_NAMESPACE
 

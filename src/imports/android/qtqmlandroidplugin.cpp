@@ -35,7 +35,9 @@
 ****************************************************************************/
 
 #include <QtQml/qqmlextensionplugin.h>
-#include <QtQmlAndroid/private/qtqmlandroidmodule_p.h>
+#include <QtQml/qqml.h>
+
+#include <QtQmlAndroid/private/qqmlandroidr_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -45,11 +47,13 @@ class QtQmlAndroidPlugin: public QQmlExtensionPlugin
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface/1.0")
 
 public:
-    void registerTypes(const char *uri)
-    {
-        QtQmlAndroid::registerAndroidModule(uri);
-    }
+    void registerTypes(const char *uri) override;
 };
+
+void QtQmlAndroidPlugin::registerTypes(const char *uri)
+{
+    qmlRegisterSingletonType<QQmlAndroidR>(uri, 0, 21, "R", QQmlAndroidR::provider);
+}
 
 QT_END_NAMESPACE
 

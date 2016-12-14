@@ -41,8 +41,7 @@ HEADERS += \
     $$PWD/qqmlandroidtogglebutton_p.h \
     $$PWD/qqmlandroidviewanimator_p.h \
     $$PWD/qqmlandroidviewflipper_p.h \
-    $$PWD/qqmlandroidviewswitcher_p.h \
-    $$PWD/qtqmlandroidwidgetmodule_p.h
+    $$PWD/qqmlandroidviewswitcher_p.h
 
 SOURCES += \
     $$PWD/qqmlandroidabsseekbar.cpp \
@@ -85,5 +84,4 @@ SOURCES += \
     $$PWD/qqmlandroidtogglebutton.cpp \
     $$PWD/qqmlandroidviewanimator.cpp \
     $$PWD/qqmlandroidviewflipper.cpp \
-    $$PWD/qqmlandroidviewswitcher.cpp \
-    $$PWD/qtqmlandroidwidgetmodule.cpp
+    $$PWD/qqmlandroidviewswitcher.cpp

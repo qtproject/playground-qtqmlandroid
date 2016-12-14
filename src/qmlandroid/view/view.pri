@@ -7,8 +7,7 @@ HEADERS += \
     $$PWD/qqmlandroidmenuitem_p.h \
     $$PWD/qqmlandroidview_p.h \
     $$PWD/qqmlandroidviewgroup_p.h \
-    $$PWD/qqmlandroidwindow_p.h \
-    $$PWD/qtqmlandroidviewmodule_p.h
+    $$PWD/qqmlandroidwindow_p.h
 
 SOURCES += \
     $$PWD/qqmlandroidlayoutparams.cpp \
@@ -16,7 +15,6 @@ SOURCES += \
     $$PWD/qqmlandroidmenuitem.cpp \
     $$PWD/qqmlandroidview.cpp \
     $$PWD/qqmlandroidviewgroup.cpp \
-    $$PWD/qqmlandroidwindow.cpp \
-    $$PWD/qtqmlandroidviewmodule.cpp
+    $$PWD/qqmlandroidwindow.cpp
 
 include(animation/animation.pri)

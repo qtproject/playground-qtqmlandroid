@@ -35,7 +35,10 @@
 ****************************************************************************/
 
 #include <QtQml/qqmlextensionplugin.h>
-#include <QtQmlAndroid/private/qtqmlandroidsupportmodule_p.h>
+#include <QtQml/qqml.h>
+
+#include <QtQmlAndroid/private/qqmlandroiddrawerlayout_p.h>
+#include <QtQmlAndroid/private/qqmlandroidswiperefreshlayout_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -45,11 +48,14 @@ class QtQmlAndroidSupportV4WidgetPlugin: public QQmlExtensionPlugin
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface/1.0")
 
 public:
-    void registerTypes(const char *uri)
-    {
-        QtQmlAndroid::registerSupportV4WidgetModule(uri);
-    }
+    void registerTypes(const char *uri) override;
 };
+
+void QtQmlAndroidSupportV4WidgetPlugin::registerTypes(const char *uri)
+{
+    qmlRegisterType<QQmlAndroidDrawerLayout>(uri, 0, 21, "DrawerLayout");
+    qmlRegisterType<QQmlAndroidSwipeRefreshLayout>(uri, 0, 21, "SwipeRefreshLayout");
+}
 
 QT_END_NAMESPACE
 

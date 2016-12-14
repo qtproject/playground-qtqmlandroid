@@ -17,8 +17,7 @@ HEADERS += \
     $$PWD/qqmlandroidpathinterpolator_p.h \
     $$PWD/qqmlandroidrotateanimation_p.h \
     $$PWD/qqmlandroidscaleanimation_p.h \
-    $$PWD/qqmlandroidtranslateanimation_p.h \
-    $$PWD/qtqmlandroidanimationmodule_p.h
+    $$PWD/qqmlandroidtranslateanimation_p.h
 
 SOURCES += \
     $$PWD/qqmlandroidacceleratedecelerateinterpolator.cpp \
@@ -37,5 +36,4 @@ SOURCES += \
     $$PWD/qqmlandroidpathinterpolator.cpp \
     $$PWD/qqmlandroidrotateanimation.cpp \
     $$PWD/qqmlandroidscaleanimation.cpp \
-    $$PWD/qqmlandroidtranslateanimation.cpp \
-    $$PWD/qtqmlandroidanimationmodule.cpp
+    $$PWD/qqmlandroidtranslateanimation.cpp

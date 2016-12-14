@@ -1,12 +1,10 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qqmlandroidr_p.h \
-    $$PWD/qtqmlandroidmodule_p.h
+    $$PWD/qqmlandroidr_p.h
 
 SOURCES += \
-    $$PWD/qqmlandroidr.cpp \
-    $$PWD/qtqmlandroidmodule.cpp
+    $$PWD/qqmlandroidr.cpp
 
 include(app/app.pri)
 include(core/core.pri)

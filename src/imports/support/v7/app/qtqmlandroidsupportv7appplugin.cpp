@@ -35,7 +35,9 @@
 ****************************************************************************/
 
 #include <QtQml/qqmlextensionplugin.h>
-#include <QtQmlAndroid/private/qtqmlandroidsupportmodule_p.h>
+#include <QtQml/qqml.h>
+
+#include <QtQmlAndroid/private/qqmlandroidactionbardrawertoggle_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -45,11 +47,13 @@ class QtQmlAndroidSupportV7AppPlugin: public QQmlExtensionPlugin
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface/1.0")
 
 public:
-    void registerTypes(const char *uri)
-    {
-        QtQmlAndroid::registerSupportV7AppModule(uri);
-    }
+    void registerTypes(const char *uri) override;
 };
+
+void QtQmlAndroidSupportV7AppPlugin::registerTypes(const char *uri)
+{
+    qmlRegisterType<QQmlAndroidActionBarDrawerToggle>(uri, 0, 21, "ActionBarDrawerToggle");
+}
 
 QT_END_NAMESPACE
 

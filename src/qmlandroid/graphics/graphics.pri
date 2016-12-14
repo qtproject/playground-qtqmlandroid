@@ -1,11 +1,9 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qqmlandroidcolor_p.h \
-    $$PWD/qtqmlandroidgraphicsmodule_p.h
+    $$PWD/qqmlandroidcolor_p.h
 
 SOURCES += \
-    $$PWD/qqmlandroidcolor.cpp \
-    $$PWD/qtqmlandroidgraphicsmodule.cpp
+    $$PWD/qqmlandroidcolor.cpp
 
 include(drawable/drawable.pri)
