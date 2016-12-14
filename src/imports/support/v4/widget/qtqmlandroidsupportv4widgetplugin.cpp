@@ -37,8 +37,8 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qqmlandroiddrawerlayout_p.h>
-#include <QtQmlAndroid/private/qqmlandroidswiperefreshlayout_p.h>
+#include <QtQmlAndroid/private/qnativeandroiddrawerlayout_p.h>
+#include <QtQmlAndroid/private/qnativeandroidswiperefreshlayout_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -53,8 +53,8 @@ public:
 
 void QtQmlAndroidSupportV4WidgetPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterType<QQmlAndroidDrawerLayout>(uri, 0, 21, "DrawerLayout");
-    qmlRegisterType<QQmlAndroidSwipeRefreshLayout>(uri, 0, 21, "SwipeRefreshLayout");
+    qmlRegisterType<QNativeAndroidDrawerLayout>(uri, 0, 21, "DrawerLayout");
+    qmlRegisterType<QNativeAndroidSwipeRefreshLayout>(uri, 0, 21, "SwipeRefreshLayout");
 }
 
 QT_END_NAMESPACE

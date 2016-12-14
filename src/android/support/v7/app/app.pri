@@ -1,7 +1,7 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qqmlandroidactionbardrawertoggle_p.h
+    $$PWD/qnativeandroidactionbardrawertoggle_p.h
 
 SOURCES += \
-    $$PWD/qqmlandroidactionbardrawertoggle.cpp
+    $$PWD/qnativeandroidactionbardrawertoggle.cpp

@@ -37,7 +37,7 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qqmlandroidcontext_p.h>
+#include <QtQmlAndroid/private/qnativeandroidcontext_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -52,7 +52,7 @@ public:
 
 void QtQmlAndroidContentPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterUncreatableType<QQmlAndroidContext>(uri, 0, 21, "Context", QStringLiteral("Cannot create Context"));
+    qmlRegisterUncreatableType<QNativeAndroidContext>(uri, 0, 21, "Context", QStringLiteral("Cannot create Context"));
 }
 
 QT_END_NAMESPACE

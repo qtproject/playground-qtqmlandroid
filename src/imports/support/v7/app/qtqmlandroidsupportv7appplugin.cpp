@@ -37,7 +37,7 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qqmlandroidactionbardrawertoggle_p.h>
+#include <QtQmlAndroid/private/qnativeandroidactionbardrawertoggle_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -52,7 +52,7 @@ public:
 
 void QtQmlAndroidSupportV7AppPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterType<QQmlAndroidActionBarDrawerToggle>(uri, 0, 21, "ActionBarDrawerToggle");
+    qmlRegisterType<QNativeAndroidActionBarDrawerToggle>(uri, 0, 21, "ActionBarDrawerToggle");
 }
 
 QT_END_NAMESPACE

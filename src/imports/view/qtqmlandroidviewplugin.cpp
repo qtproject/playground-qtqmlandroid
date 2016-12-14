@@ -37,13 +37,13 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qqmlandroidgravity_p.h>
-#include <QtQmlAndroid/private/qqmlandroidlayoutparams_p.h>
-#include <QtQmlAndroid/private/qqmlandroidmenu_p.h>
-#include <QtQmlAndroid/private/qqmlandroidmenuitem_p.h>
-#include <QtQmlAndroid/private/qqmlandroidview_p.h>
-#include <QtQmlAndroid/private/qqmlandroidviewgroup_p.h>
-#include <QtQmlAndroid/private/qqmlandroidwindow_p.h>
+#include <QtQmlAndroid/private/qnativeandroidgravity_p.h>
+#include <QtQmlAndroid/private/qnativeandroidlayoutparams_p.h>
+#include <QtQmlAndroid/private/qnativeandroidmenu_p.h>
+#include <QtQmlAndroid/private/qnativeandroidmenuitem_p.h>
+#include <QtQmlAndroid/private/qnativeandroidview_p.h>
+#include <QtQmlAndroid/private/qnativeandroidviewgroup_p.h>
+#include <QtQmlAndroid/private/qnativeandroidwindow_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -58,13 +58,13 @@ public:
 
 void QtQmlAndroidViewPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterUncreatableType<QQmlAndroidGravity>(uri, 0, 21, "Gravity", QStringLiteral("Gravity is an enum"));
-    qmlRegisterUncreatableType<QQmlAndroidLayoutParams>(uri, 0, 21, "Layout", QStringLiteral("Layout is an attached property"));
-    qmlRegisterType<QQmlAndroidMenu>(uri, 0, 21, "Menu");
-    qmlRegisterType<QQmlAndroidMenuItem>(uri, 0, 21, "MenuItem");
-    qmlRegisterType<QQmlAndroidView>(uri, 0, 21, "View");
-    qmlRegisterType<QQmlAndroidViewGroup>(uri, 0, 21, "ViewGroup");
-    qmlRegisterType<QQmlAndroidWindow>();
+    qmlRegisterUncreatableType<QNativeAndroidGravity>(uri, 0, 21, "Gravity", QStringLiteral("Gravity is an enum"));
+    qmlRegisterUncreatableType<QNativeAndroidLayoutParams>(uri, 0, 21, "Layout", QStringLiteral("Layout is an attached property"));
+    qmlRegisterType<QNativeAndroidMenu>(uri, 0, 21, "Menu");
+    qmlRegisterType<QNativeAndroidMenuItem>(uri, 0, 21, "MenuItem");
+    qmlRegisterType<QNativeAndroidView>(uri, 0, 21, "View");
+    qmlRegisterType<QNativeAndroidViewGroup>(uri, 0, 21, "ViewGroup");
+    qmlRegisterType<QNativeAndroidWindow>();
 }
 
 QT_END_NAMESPACE

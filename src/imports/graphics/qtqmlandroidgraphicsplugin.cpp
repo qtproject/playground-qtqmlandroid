@@ -37,7 +37,7 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qqmlandroidcolor_p.h>
+#include <QtQmlAndroid/private/qnativeandroidcolor_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -52,7 +52,7 @@ public:
 
 void QtQmlAndroidGraphicsPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterSingletonType<QQmlAndroidColor>(uri, 0, 21, "Color", QQmlAndroidColor::provider);
+    qmlRegisterSingletonType<QNativeAndroidColor>(uri, 0, 21, "Color", QNativeAndroidColor::provider);
 }
 
 QT_END_NAMESPACE

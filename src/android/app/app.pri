@@ -1,15 +1,15 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qqmlandroidactionbar_p.h \
-    $$PWD/qqmlandroidactivity_p.h \
-    $$PWD/qqmlandroidalertdialog_p.h \
-    $$PWD/qqmlandroiddialog_p.h \
-    $$PWD/qqmlandroidservice_p.h
+    $$PWD/qnativeandroidactionbar_p.h \
+    $$PWD/qnativeandroidactivity_p.h \
+    $$PWD/qnativeandroidalertdialog_p.h \
+    $$PWD/qnativeandroiddialog_p.h \
+    $$PWD/qnativeandroidservice_p.h
 
 SOURCES += \
-    $$PWD/qqmlandroidactionbar.cpp \
-    $$PWD/qqmlandroidactivity.cpp \
-    $$PWD/qqmlandroidalertdialog.cpp \
-    $$PWD/qqmlandroiddialog.cpp \
-    $$PWD/qqmlandroidservice.cpp
+    $$PWD/qnativeandroidactionbar.cpp \
+    $$PWD/qnativeandroidactivity.cpp \
+    $$PWD/qnativeandroidalertdialog.cpp \
+    $$PWD/qnativeandroiddialog.cpp \
+    $$PWD/qnativeandroidservice.cpp

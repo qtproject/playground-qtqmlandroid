@@ -37,8 +37,8 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qqmlandroidcolordrawable_p.h>
-#include <QtQmlAndroid/private/qqmlandroiddrawable_p.h>
+#include <QtQmlAndroid/private/qnativeandroidcolordrawable_p.h>
+#include <QtQmlAndroid/private/qnativeandroiddrawable_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -53,8 +53,8 @@ public:
 
 void QtQmlAndroidDrawablePlugin::registerTypes(const char *uri)
 {
-    qmlRegisterType<QQmlAndroidColorDrawable>(uri, 0, 21, "ColorDrawable");
-    qmlRegisterType<QQmlAndroidDrawable>(uri, 0, 21, "Drawable");
+    qmlRegisterType<QNativeAndroidColorDrawable>(uri, 0, 21, "ColorDrawable");
+    qmlRegisterType<QNativeAndroidDrawable>(uri, 0, 21, "Drawable");
 }
 
 QT_END_NAMESPACE

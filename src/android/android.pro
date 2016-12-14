@@ -11,6 +11,6 @@ features.path = $$[QT_HOST_DATA]/mkspecs/features
 !prefix_build: COPIES += features
 INSTALLS += features
 
-include(qmlandroid.pri)
+include(android.pri)
 
 load(qt_module)

@@ -1,11 +1,11 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qqmlandroidcontext_p.h \
-    $$PWD/qqmlandroidcontextual_p.h \
-    $$PWD/qqmlandroidcontextwrapper_p.h
+    $$PWD/qnativeandroidcontext_p.h \
+    $$PWD/qnativeandroidcontextual_p.h \
+    $$PWD/qnativeandroidcontextwrapper_p.h
 
 SOURCES += \
-    $$PWD/qqmlandroidcontext.cpp \
-    $$PWD/qqmlandroidcontextual.cpp \
-    $$PWD/qqmlandroidcontextwrapper.cpp
+    $$PWD/qnativeandroidcontext.cpp \
+    $$PWD/qnativeandroidcontextual.cpp \
+    $$PWD/qnativeandroidcontextwrapper.cpp

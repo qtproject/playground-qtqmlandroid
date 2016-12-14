@@ -37,42 +37,42 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qqmlandroidarrayadapter_p.h>
-#include <QtQmlAndroid/private/qqmlandroidbutton_p.h>
-#include <QtQmlAndroid/private/qqmlandroidcalendarview_p.h>
-#include <QtQmlAndroid/private/qqmlandroidcheckbox_p.h>
-#include <QtQmlAndroid/private/qqmlandroiddatepicker_p.h>
-#include <QtQmlAndroid/private/qqmlandroidedittext_p.h>
-#include <QtQmlAndroid/private/qqmlandroidframelayout_p.h>
-#include <QtQmlAndroid/private/qqmlandroidframelayoutparams_p.h>
-#include <QtQmlAndroid/private/qqmlandroidimageview_p.h>
-#include <QtQmlAndroid/private/qqmlandroidlinearlayout_p.h>
-#include <QtQmlAndroid/private/qqmlandroidlinearlayoutparams_p.h>
-#include <QtQmlAndroid/private/qqmlandroidlistview_p.h>
-#include <QtQmlAndroid/private/qqmlandroidnumberpicker_p.h>
-#include <QtQmlAndroid/private/qqmlandroidpopupmenu_p.h>
-#include <QtQmlAndroid/private/qqmlandroidprogressbar_p.h>
-#include <QtQmlAndroid/private/qqmlandroidradiobutton_p.h>
-#include <QtQmlAndroid/private/qqmlandroidradiogroup_p.h>
-#include <QtQmlAndroid/private/qqmlandroidratingbar_p.h>
-#include <QtQmlAndroid/private/qqmlandroidrelativelayout_p.h>
-#include <QtQmlAndroid/private/qqmlandroidrelativelayoutparams_p.h>
-#include <QtQmlAndroid/private/qqmlandroidscrollview_p.h>
-#include <QtQmlAndroid/private/qqmlandroidsearchview_p.h>
-#include <QtQmlAndroid/private/qqmlandroidseekbar_p.h>
-#include <QtQmlAndroid/private/qqmlandroidspace_p.h>
-#include <QtQmlAndroid/private/qqmlandroidspinner_p.h>
-#include <QtQmlAndroid/private/qqmlandroidswitch_p.h>
-#include <QtQmlAndroid/private/qqmlandroidtabhost_p.h>
-#include <QtQmlAndroid/private/qqmlandroidtabspec_p.h>
-#include <QtQmlAndroid/private/qqmlandroidtabwidget_p.h>
-#include <QtQmlAndroid/private/qqmlandroidtextview_p.h>
-#include <QtQmlAndroid/private/qqmlandroidtimepicker_p.h>
-#include <QtQmlAndroid/private/qqmlandroidtoast_p.h>
-#include <QtQmlAndroid/private/qqmlandroidtogglebutton_p.h>
-#include <QtQmlAndroid/private/qqmlandroidviewanimator_p.h>
-#include <QtQmlAndroid/private/qqmlandroidviewflipper_p.h>
-#include <QtQmlAndroid/private/qqmlandroidviewswitcher_p.h>
+#include <QtQmlAndroid/private/qnativeandroidarrayadapter_p.h>
+#include <QtQmlAndroid/private/qnativeandroidbutton_p.h>
+#include <QtQmlAndroid/private/qnativeandroidcalendarview_p.h>
+#include <QtQmlAndroid/private/qnativeandroidcheckbox_p.h>
+#include <QtQmlAndroid/private/qnativeandroiddatepicker_p.h>
+#include <QtQmlAndroid/private/qnativeandroidedittext_p.h>
+#include <QtQmlAndroid/private/qnativeandroidframelayout_p.h>
+#include <QtQmlAndroid/private/qnativeandroidframelayoutparams_p.h>
+#include <QtQmlAndroid/private/qnativeandroidimageview_p.h>
+#include <QtQmlAndroid/private/qnativeandroidlinearlayout_p.h>
+#include <QtQmlAndroid/private/qnativeandroidlinearlayoutparams_p.h>
+#include <QtQmlAndroid/private/qnativeandroidlistview_p.h>
+#include <QtQmlAndroid/private/qnativeandroidnumberpicker_p.h>
+#include <QtQmlAndroid/private/qnativeandroidpopupmenu_p.h>
+#include <QtQmlAndroid/private/qnativeandroidprogressbar_p.h>
+#include <QtQmlAndroid/private/qnativeandroidradiobutton_p.h>
+#include <QtQmlAndroid/private/qnativeandroidradiogroup_p.h>
+#include <QtQmlAndroid/private/qnativeandroidratingbar_p.h>
+#include <QtQmlAndroid/private/qnativeandroidrelativelayout_p.h>
+#include <QtQmlAndroid/private/qnativeandroidrelativelayoutparams_p.h>
+#include <QtQmlAndroid/private/qnativeandroidscrollview_p.h>
+#include <QtQmlAndroid/private/qnativeandroidsearchview_p.h>
+#include <QtQmlAndroid/private/qnativeandroidseekbar_p.h>
+#include <QtQmlAndroid/private/qnativeandroidspace_p.h>
+#include <QtQmlAndroid/private/qnativeandroidspinner_p.h>
+#include <QtQmlAndroid/private/qnativeandroidswitch_p.h>
+#include <QtQmlAndroid/private/qnativeandroidtabhost_p.h>
+#include <QtQmlAndroid/private/qnativeandroidtabspec_p.h>
+#include <QtQmlAndroid/private/qnativeandroidtabwidget_p.h>
+#include <QtQmlAndroid/private/qnativeandroidtextview_p.h>
+#include <QtQmlAndroid/private/qnativeandroidtimepicker_p.h>
+#include <QtQmlAndroid/private/qnativeandroidtoast_p.h>
+#include <QtQmlAndroid/private/qnativeandroidtogglebutton_p.h>
+#include <QtQmlAndroid/private/qnativeandroidviewanimator_p.h>
+#include <QtQmlAndroid/private/qnativeandroidviewflipper_p.h>
+#include <QtQmlAndroid/private/qnativeandroidviewswitcher_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -87,43 +87,43 @@ public:
 
 void QtQmlAndroidWidgetPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterType<QQmlAndroidArrayAdapter>(uri, 0, 21, "ArrayAdapter");
-    qmlRegisterType<QQmlAndroidBaseAdapter>();
-    qmlRegisterType<QQmlAndroidButton>(uri, 0, 21, "Button");
-    qmlRegisterType<QQmlAndroidCalendarView>(uri, 0, 21, "CalendarView");
-    qmlRegisterType<QQmlAndroidCheckBox>(uri, 0, 21, "CheckBox");
-    qmlRegisterType<QQmlAndroidDatePicker>(uri, 0, 21, "DatePicker");
-    qmlRegisterType<QQmlAndroidEditText>(uri, 0, 21, "EditText");
-    qmlRegisterType<QQmlAndroidFrameLayout>(uri, 0, 21, "FrameLayout");
-    qmlRegisterType<QQmlAndroidFrameLayoutParams>();
-    qmlRegisterType<QQmlAndroidImageView>(uri, 0, 21, "ImageView");
-    qmlRegisterType<QQmlAndroidLinearLayout>(uri, 0, 21, "LinearLayout");
-    qmlRegisterType<QQmlAndroidLinearLayoutParams>();
-    qmlRegisterType<QQmlAndroidListView>(uri, 0, 21, "ListView");
-    qmlRegisterType<QQmlAndroidNumberPicker>(uri, 0, 21, "NumberPicker");
-    qmlRegisterType<QQmlAndroidPopupMenu>(uri, 0, 21, "PopupMenu");
-    qmlRegisterType<QQmlAndroidProgressBar>(uri, 0, 21, "ProgressBar");
-    qmlRegisterType<QQmlAndroidRadioButton>(uri, 0, 21, "RadioButton");
-    qmlRegisterType<QQmlAndroidRadioGroup>(uri, 0, 21, "RadioGroup");
-    qmlRegisterType<QQmlAndroidRatingBar>(uri, 0, 21, "RatingBar");
-    qmlRegisterType<QQmlAndroidRelativeLayout>(uri, 0, 21, "RelativeLayout");
-    qmlRegisterType<QQmlAndroidRelativeLayoutParams>();
-    qmlRegisterType<QQmlAndroidScrollView>(uri, 0, 21, "ScrollView");
-    qmlRegisterType<QQmlAndroidSearchView>(uri, 0, 21, "SearchView");
-    qmlRegisterType<QQmlAndroidSeekBar>(uri, 0, 21, "SeekBar");
-    qmlRegisterType<QQmlAndroidSpace>(uri, 0, 21, "Space");
-    qmlRegisterType<QQmlAndroidSpinner>(uri, 0, 21, "Spinner");
-    qmlRegisterType<QQmlAndroidSwitch>(uri, 0, 21, "Switch");
-    qmlRegisterType<QQmlAndroidTabHost>(uri, 0, 21, "TabHost");
-    qmlRegisterUncreatableType<QQmlAndroidTabSpec>(uri, 0, 21, "TabSpec", QStringLiteral("TabSpec is an attached property"));
-    qmlRegisterType<QQmlAndroidTabWidget>(uri, 0, 21, "TabWidget");
-    qmlRegisterType<QQmlAndroidTextView>(uri, 0, 21, "TextView");
-    qmlRegisterType<QQmlAndroidTimePicker>(uri, 0, 21, "TimePicker");
-    qmlRegisterType<QQmlAndroidToast>(uri, 0, 21, "Toast");
-    qmlRegisterType<QQmlAndroidToggleButton>(uri, 0, 21, "ToggleButton");
-    qmlRegisterType<QQmlAndroidViewAnimator>(uri, 0, 21, "ViewAnimator");
-    qmlRegisterType<QQmlAndroidViewFlipper>(uri, 0, 21, "ViewFlipper");
-    qmlRegisterType<QQmlAndroidViewSwitcher>(uri, 0, 21, "ViewSwitcher");
+    qmlRegisterType<QNativeAndroidArrayAdapter>(uri, 0, 21, "ArrayAdapter");
+    qmlRegisterType<QNativeAndroidBaseAdapter>();
+    qmlRegisterType<QNativeAndroidButton>(uri, 0, 21, "Button");
+    qmlRegisterType<QNativeAndroidCalendarView>(uri, 0, 21, "CalendarView");
+    qmlRegisterType<QNativeAndroidCheckBox>(uri, 0, 21, "CheckBox");
+    qmlRegisterType<QNativeAndroidDatePicker>(uri, 0, 21, "DatePicker");
+    qmlRegisterType<QNativeAndroidEditText>(uri, 0, 21, "EditText");
+    qmlRegisterType<QNativeAndroidFrameLayout>(uri, 0, 21, "FrameLayout");
+    qmlRegisterType<QNativeAndroidFrameLayoutParams>();
+    qmlRegisterType<QNativeAndroidImageView>(uri, 0, 21, "ImageView");
+    qmlRegisterType<QNativeAndroidLinearLayout>(uri, 0, 21, "LinearLayout");
+    qmlRegisterType<QNativeAndroidLinearLayoutParams>();
+    qmlRegisterType<QNativeAndroidListView>(uri, 0, 21, "ListView");
+    qmlRegisterType<QNativeAndroidNumberPicker>(uri, 0, 21, "NumberPicker");
+    qmlRegisterType<QNativeAndroidPopupMenu>(uri, 0, 21, "PopupMenu");
+    qmlRegisterType<QNativeAndroidProgressBar>(uri, 0, 21, "ProgressBar");
+    qmlRegisterType<QNativeAndroidRadioButton>(uri, 0, 21, "RadioButton");
+    qmlRegisterType<QNativeAndroidRadioGroup>(uri, 0, 21, "RadioGroup");
+    qmlRegisterType<QNativeAndroidRatingBar>(uri, 0, 21, "RatingBar");
+    qmlRegisterType<QNativeAndroidRelativeLayout>(uri, 0, 21, "RelativeLayout");
+    qmlRegisterType<QNativeAndroidRelativeLayoutParams>();
+    qmlRegisterType<QNativeAndroidScrollView>(uri, 0, 21, "ScrollView");
+    qmlRegisterType<QNativeAndroidSearchView>(uri, 0, 21, "SearchView");
+    qmlRegisterType<QNativeAndroidSeekBar>(uri, 0, 21, "SeekBar");
+    qmlRegisterType<QNativeAndroidSpace>(uri, 0, 21, "Space");
+    qmlRegisterType<QNativeAndroidSpinner>(uri, 0, 21, "Spinner");
+    qmlRegisterType<QNativeAndroidSwitch>(uri, 0, 21, "Switch");
+    qmlRegisterType<QNativeAndroidTabHost>(uri, 0, 21, "TabHost");
+    qmlRegisterUncreatableType<QNativeAndroidTabSpec>(uri, 0, 21, "TabSpec", QStringLiteral("TabSpec is an attached property"));
+    qmlRegisterType<QNativeAndroidTabWidget>(uri, 0, 21, "TabWidget");
+    qmlRegisterType<QNativeAndroidTextView>(uri, 0, 21, "TextView");
+    qmlRegisterType<QNativeAndroidTimePicker>(uri, 0, 21, "TimePicker");
+    qmlRegisterType<QNativeAndroidToast>(uri, 0, 21, "Toast");
+    qmlRegisterType<QNativeAndroidToggleButton>(uri, 0, 21, "ToggleButton");
+    qmlRegisterType<QNativeAndroidViewAnimator>(uri, 0, 21, "ViewAnimator");
+    qmlRegisterType<QNativeAndroidViewFlipper>(uri, 0, 21, "ViewFlipper");
+    qmlRegisterType<QNativeAndroidViewSwitcher>(uri, 0, 21, "ViewSwitcher");
 }
 
 QT_END_NAMESPACE

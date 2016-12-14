@@ -37,7 +37,7 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qqmlandroidr_p.h>
+#include <QtQmlAndroid/private/qnativeandroidr_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -52,7 +52,7 @@ public:
 
 void QtQmlAndroidPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterSingletonType<QQmlAndroidR>(uri, 0, 21, "R", QQmlAndroidR::provider);
+    qmlRegisterSingletonType<QNativeAndroidR>(uri, 0, 21, "R", QNativeAndroidR::provider);
 }
 
 QT_END_NAMESPACE

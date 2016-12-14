@@ -37,9 +37,9 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qqmlandroidcardview_p.h>
-#include <QtQmlAndroid/private/qqmlandroidrecycleradapter_p.h>
-#include <QtQmlAndroid/private/qqmlandroidrecyclerview_p.h>
+#include <QtQmlAndroid/private/qnativeandroidcardview_p.h>
+#include <QtQmlAndroid/private/qnativeandroidrecycleradapter_p.h>
+#include <QtQmlAndroid/private/qnativeandroidrecyclerview_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -54,9 +54,9 @@ public:
 
 void QtQmlAndroidSupportV7WidgetPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterType<QQmlAndroidCardView>(uri, 0, 21, "CardView");
-    qmlRegisterType<QQmlAndroidRecyclerAdapter>(uri, 0, 21, "RecyclerAdapter");
-    qmlRegisterType<QQmlAndroidRecyclerView>(uri, 0, 21, "RecyclerView");
+    qmlRegisterType<QNativeAndroidCardView>(uri, 0, 21, "CardView");
+    qmlRegisterType<QNativeAndroidRecyclerAdapter>(uri, 0, 21, "RecyclerAdapter");
+    qmlRegisterType<QNativeAndroidRecyclerView>(uri, 0, 21, "RecyclerView");
 }
 
 QT_END_NAMESPACE

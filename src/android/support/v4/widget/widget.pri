@@ -1,11 +1,11 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/qqmlandroiddrawerlayout_p.h \
-    $$PWD/qqmlandroiddrawerlayoutparams_p.h \
-    $$PWD/qqmlandroidswiperefreshlayout_p.h
+    $$PWD/qnativeandroiddrawerlayout_p.h \
+    $$PWD/qnativeandroiddrawerlayoutparams_p.h \
+    $$PWD/qnativeandroidswiperefreshlayout_p.h
 
 SOURCES += \
-    $$PWD/qqmlandroiddrawerlayout.cpp \
-    $$PWD/qqmlandroiddrawerlayoutparams.cpp \
-    $$PWD/qqmlandroidswiperefreshlayout.cpp
+    $$PWD/qnativeandroiddrawerlayout.cpp \
+    $$PWD/qnativeandroiddrawerlayoutparams.cpp \
+    $$PWD/qnativeandroidswiperefreshlayout.cpp

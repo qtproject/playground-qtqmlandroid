@@ -37,11 +37,11 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qqmlandroidactionbar_p.h>
-#include <QtQmlAndroid/private/qqmlandroidactivity_p.h>
-#include <QtQmlAndroid/private/qqmlandroidalertdialog_p.h>
-#include <QtQmlAndroid/private/qqmlandroiddialog_p.h>
-#include <QtQmlAndroid/private/qqmlandroidservice_p.h>
+#include <QtQmlAndroid/private/qnativeandroidactionbar_p.h>
+#include <QtQmlAndroid/private/qnativeandroidactivity_p.h>
+#include <QtQmlAndroid/private/qnativeandroidalertdialog_p.h>
+#include <QtQmlAndroid/private/qnativeandroiddialog_p.h>
+#include <QtQmlAndroid/private/qnativeandroidservice_p.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -56,11 +56,11 @@ public:
 
 void QtQmlAndroidAppPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterType<QQmlAndroidActionBar>(uri, 0, 21, "ActionBar");
-    qmlRegisterType<QQmlAndroidActivity>(uri, 0, 21, "Activity");
-    qmlRegisterType<QQmlAndroidAlertDialog>(uri, 0, 21, "AlertDialog");
-    qmlRegisterType<QQmlAndroidDialog>(uri, 0, 21, "Dialog");
-    qmlRegisterType<QQmlAndroidService>(uri, 0, 21, "Service");
+    qmlRegisterType<QNativeAndroidActionBar>(uri, 0, 21, "ActionBar");
+    qmlRegisterType<QNativeAndroidActivity>(uri, 0, 21, "Activity");
+    qmlRegisterType<QNativeAndroidAlertDialog>(uri, 0, 21, "AlertDialog");
+    qmlRegisterType<QNativeAndroidDialog>(uri, 0, 21, "Dialog");
+    qmlRegisterType<QNativeAndroidService>(uri, 0, 21, "Service");
 }
 
 QT_END_NAMESPACE
