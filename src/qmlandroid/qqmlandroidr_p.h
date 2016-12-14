@@ -48,6 +48,8 @@
 // We mean it.
 //
 
+#include <QtQmlAndroid/private/qtqmlandroidglobal_p.h>
+
 #include <QtCore/qobject.h>
 #include <QtQml/qqmlpropertymap.h>
 
@@ -56,7 +58,7 @@ QT_BEGIN_NAMESPACE
 class QJSEngine;
 class QQmlEngine;
 
-class QQmlAndroidR : public QObject
+class Q_QMLANDROID_EXPORT QQmlAndroidR : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QQmlPropertyMap *anim READ anim CONSTANT)

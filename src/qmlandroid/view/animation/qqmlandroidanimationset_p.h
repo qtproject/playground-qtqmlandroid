@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidAnimationSet : public QQmlAndroidAnimation
+class Q_QMLANDROID_EXPORT QQmlAndroidAnimationSet : public QQmlAndroidAnimation
 {
     Q_OBJECT
     Q_PROPERTY(bool shareInterpolator READ shareInterpolator WRITE setShareInterpolator NOTIFY shareInterpolatorChanged)

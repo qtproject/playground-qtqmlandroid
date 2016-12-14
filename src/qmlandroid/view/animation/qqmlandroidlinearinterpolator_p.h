@@ -55,7 +55,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidLinearInterpolator : public QQmlAndroidInterpolator
+class Q_QMLANDROID_EXPORT QQmlAndroidLinearInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
 

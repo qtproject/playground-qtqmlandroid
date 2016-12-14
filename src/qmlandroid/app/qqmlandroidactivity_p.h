@@ -57,7 +57,7 @@ class QQmlAndroidMenu;
 class QQmlAndroidWindow;
 class QQmlAndroidActionBar;
 
-class QQmlAndroidActivity : public QQmlAndroidContextWrapper
+class Q_QMLANDROID_EXPORT QQmlAndroidActivity : public QQmlAndroidContextWrapper
 {
     Q_OBJECT
     Q_PROPERTY(QQmlAndroidWindow *window READ window CONSTANT)

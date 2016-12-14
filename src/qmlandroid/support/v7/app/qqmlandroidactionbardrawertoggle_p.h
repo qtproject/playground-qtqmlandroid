@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidActionBarDrawerToggle : public QQmlAndroidObject
+class Q_QMLANDROID_EXPORT QQmlAndroidActionBarDrawerToggle : public QQmlAndroidObject
 {
     Q_OBJECT
 

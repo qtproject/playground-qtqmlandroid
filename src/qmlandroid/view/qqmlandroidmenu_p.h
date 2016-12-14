@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 class QQmlAndroidMenuItem;
 
-class QQmlAndroidMenu : public QQmlAndroidContextual
+class Q_QMLANDROID_EXPORT QQmlAndroidMenu : public QQmlAndroidContextual
 {
     Q_OBJECT
 

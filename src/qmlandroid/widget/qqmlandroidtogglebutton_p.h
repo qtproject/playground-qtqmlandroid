@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidToggleButton : public QQmlAndroidCompoundButton
+class Q_QMLANDROID_EXPORT QQmlAndroidToggleButton : public QQmlAndroidCompoundButton
 {
     Q_OBJECT
     Q_PROPERTY(QString textOn READ textOn WRITE setTextOn NOTIFY textOnChanged)

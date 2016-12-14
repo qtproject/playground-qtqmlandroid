@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 class QQmlAndroidView;
 
-class QQmlAndroidMenuItem : public QQmlAndroidContextual
+class Q_QMLANDROID_EXPORT QQmlAndroidMenuItem : public QQmlAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)

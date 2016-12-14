@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 class QQmlAndroidBaseAdapter;
 
-class QQmlAndroidAdapterView : public QQmlAndroidViewGroup
+class Q_QMLANDROID_EXPORT QQmlAndroidAdapterView : public QQmlAndroidViewGroup
 {
     Q_OBJECT
     Q_PROPERTY(QQmlAndroidBaseAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged) // TODO: Adapter

@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidOvershootInterpolator : public QQmlAndroidInterpolator
+class Q_QMLANDROID_EXPORT QQmlAndroidOvershootInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
     Q_PROPERTY(qreal tension READ tension WRITE setTension NOTIFY tensionChanged)

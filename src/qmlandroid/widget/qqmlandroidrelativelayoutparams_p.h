@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidRelativeLayoutParams : public QQmlAndroidMarginLayoutParams
+class Q_QMLANDROID_EXPORT QQmlAndroidRelativeLayoutParams : public QQmlAndroidMarginLayoutParams
 {
     Q_OBJECT
     Q_PROPERTY(QQmlAndroidView *above READ above WRITE setAbove NOTIFY aboveChanged)

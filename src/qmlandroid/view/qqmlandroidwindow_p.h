@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidWindow : public QQmlAndroidContextual
+class Q_QMLANDROID_EXPORT QQmlAndroidWindow : public QQmlAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(int statusBarColor READ statusBarColor WRITE setStatusBarColor NOTIFY statusBarColorChanged)

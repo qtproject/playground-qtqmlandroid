@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidTabWidget : public QQmlAndroidLinearLayout
+class Q_QMLANDROID_EXPORT QQmlAndroidTabWidget : public QQmlAndroidLinearLayout
 {
     Q_OBJECT
 

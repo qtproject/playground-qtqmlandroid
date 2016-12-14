@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidCheckBox : public QQmlAndroidCompoundButton
+class Q_QMLANDROID_EXPORT QQmlAndroidCheckBox : public QQmlAndroidCompoundButton
 {
     Q_OBJECT
 

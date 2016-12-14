@@ -54,7 +54,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidImageView : public QQmlAndroidView
+class Q_QMLANDROID_EXPORT QQmlAndroidImageView : public QQmlAndroidView
 {
     Q_OBJECT
     Q_PROPERTY(QUrl imageURI READ imageURI WRITE setImageURI NOTIFY imageURIChanged)

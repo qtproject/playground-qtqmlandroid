@@ -48,6 +48,8 @@
 // We mean it.
 //
 
+#include <QtQmlAndroid/private/qtqmlandroidglobal_p.h>
+
 #include <QtCore/qobject.h>
 #include <QtAndroidExtras/qandroidjniobject.h>
 #include <QtQml/qqml.h>
@@ -57,7 +59,7 @@ QT_BEGIN_NAMESPACE
 class QQmlAndroidView;
 class QQmlAndroidTabHost;
 
-class QQmlAndroidTabSpec : public QObject
+class Q_QMLANDROID_EXPORT QQmlAndroidTabSpec : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY labelChanged)

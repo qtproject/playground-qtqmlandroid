@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidDatePicker : public QQmlAndroidFrameLayout
+class Q_QMLANDROID_EXPORT QQmlAndroidDatePicker : public QQmlAndroidFrameLayout
 {
     Q_OBJECT
 

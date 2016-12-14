@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidDrawable : public QQmlAndroidObject
+class Q_QMLANDROID_EXPORT QQmlAndroidDrawable : public QQmlAndroidObject
 {
     Q_OBJECT
 

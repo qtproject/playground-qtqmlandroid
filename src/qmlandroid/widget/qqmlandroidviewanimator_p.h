@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidViewAnimator : public QQmlAndroidFrameLayout
+class Q_QMLANDROID_EXPORT QQmlAndroidViewAnimator : public QQmlAndroidFrameLayout
 {
     Q_OBJECT
     Q_PROPERTY(int displayedChild READ displayedChild WRITE setDisplayedChild NOTIFY displayedChildChanged)

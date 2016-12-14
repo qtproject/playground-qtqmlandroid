@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidDrawerLayoutParams : public QQmlAndroidMarginLayoutParams
+class Q_QMLANDROID_EXPORT QQmlAndroidDrawerLayoutParams : public QQmlAndroidMarginLayoutParams
 {
     Q_OBJECT
     Q_PROPERTY(int gravity READ gravity WRITE setGravity NOTIFY gravityChanged) // TODO Gravity

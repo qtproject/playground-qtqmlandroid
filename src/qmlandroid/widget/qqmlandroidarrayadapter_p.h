@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidArrayAdapter : public QQmlAndroidBaseAdapter
+class Q_QMLANDROID_EXPORT QQmlAndroidArrayAdapter : public QQmlAndroidBaseAdapter
 {
     Q_OBJECT
     Q_PROPERTY(int style READ style WRITE setStyle NOTIFY styleChanged)

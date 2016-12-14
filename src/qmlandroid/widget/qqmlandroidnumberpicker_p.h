@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidNumberPicker : public QQmlAndroidLinearLayout
+class Q_QMLANDROID_EXPORT QQmlAndroidNumberPicker : public QQmlAndroidLinearLayout
 {
     Q_OBJECT
     Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)

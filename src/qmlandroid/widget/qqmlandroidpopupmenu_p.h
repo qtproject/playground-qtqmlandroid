@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 class QQmlAndroidView;
 class QQmlAndroidMenuItem;
 
-class QQmlAndroidPopupMenu : public QQmlAndroidObject
+class Q_QMLANDROID_EXPORT QQmlAndroidPopupMenu : public QQmlAndroidObject
 {
     Q_OBJECT
     Q_PROPERTY(QQmlAndroidView *anchor READ anchor WRITE setAnchor NOTIFY anchorChanged)

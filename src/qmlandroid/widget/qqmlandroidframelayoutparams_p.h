@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidFrameLayoutParams : public QQmlAndroidMarginLayoutParams
+class Q_QMLANDROID_EXPORT QQmlAndroidFrameLayoutParams : public QQmlAndroidMarginLayoutParams
 {
     Q_OBJECT
     Q_PROPERTY(int gravity READ gravity WRITE setGravity NOTIFY gravityChanged)

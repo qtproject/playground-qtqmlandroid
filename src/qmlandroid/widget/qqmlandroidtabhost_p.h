@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidTabHost : public QQmlAndroidFrameLayout
+class Q_QMLANDROID_EXPORT QQmlAndroidTabHost : public QQmlAndroidFrameLayout
 {
     Q_OBJECT
 

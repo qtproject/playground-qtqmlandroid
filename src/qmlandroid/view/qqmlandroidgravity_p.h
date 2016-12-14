@@ -48,11 +48,13 @@
 // We mean it.
 //
 
+#include <QtQmlAndroid/private/qtqmlandroidglobal_p.h>
+
 #include <QtCore/qobject.h>
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidGravity : public QObject
+class Q_QMLANDROID_EXPORT QQmlAndroidGravity : public QObject
 {
     Q_OBJECT
     Q_FLAGS(Flags)

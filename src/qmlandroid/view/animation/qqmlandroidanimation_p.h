@@ -55,7 +55,7 @@ QT_BEGIN_NAMESPACE
 
 class QQmlAndroidInterpolator;
 
-class QQmlAndroidAnimation : public QQmlAndroidContextual
+class Q_QMLANDROID_EXPORT QQmlAndroidAnimation : public QQmlAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(int resource READ resource WRITE setResource NOTIFY resourceChanged)

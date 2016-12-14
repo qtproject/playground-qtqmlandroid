@@ -54,7 +54,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidLinearLayout : public QQmlAndroidViewGroup
+class Q_QMLANDROID_EXPORT QQmlAndroidLinearLayout : public QQmlAndroidViewGroup
 {
     Q_OBJECT
     Q_PROPERTY(bool baselineAligned READ isBaselineAligned WRITE setBaselineAligned NOTIFY baselineAlignedChanged)

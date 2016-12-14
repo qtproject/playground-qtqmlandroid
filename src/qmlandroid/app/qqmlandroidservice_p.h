@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidService : public QQmlAndroidContextWrapper
+class Q_QMLANDROID_EXPORT QQmlAndroidService : public QQmlAndroidContextWrapper
 {
     Q_OBJECT
     Q_PROPERTY(bool sticky READ isSticky WRITE setSticky NOTIFY stickyChanged)

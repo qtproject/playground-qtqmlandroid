@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 class QQmlAndroidRecyclerAdapter;
 
-class QQmlAndroidRecyclerView : public QQmlAndroidViewGroup
+class Q_QMLANDROID_EXPORT QQmlAndroidRecyclerView : public QQmlAndroidViewGroup
 {
     Q_OBJECT
     Q_PROPERTY(QQmlAndroidRecyclerAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged)

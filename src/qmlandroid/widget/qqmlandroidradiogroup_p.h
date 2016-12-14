@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 class QQmlAndroidRadioButton;
 
-class QQmlAndroidRadioGroup : public QQmlAndroidLinearLayout
+class Q_QMLANDROID_EXPORT QQmlAndroidRadioGroup : public QQmlAndroidLinearLayout
 {
     Q_OBJECT
     Q_PROPERTY(QQmlAndroidRadioButton *checkedButton READ checkedButton WRITE setCheckedButton NOTIFY checkedButtonChanged)

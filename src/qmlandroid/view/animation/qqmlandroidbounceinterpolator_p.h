@@ -55,7 +55,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidBounceInterpolator : public QQmlAndroidInterpolator
+class Q_QMLANDROID_EXPORT QQmlAndroidBounceInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
 

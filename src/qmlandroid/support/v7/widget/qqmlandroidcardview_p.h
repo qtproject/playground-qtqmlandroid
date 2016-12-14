@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidCardView : public QQmlAndroidFrameLayout
+class Q_QMLANDROID_EXPORT QQmlAndroidCardView : public QQmlAndroidFrameLayout
 {
     Q_OBJECT
 

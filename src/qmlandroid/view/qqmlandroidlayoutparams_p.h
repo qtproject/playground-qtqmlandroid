@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 
 class QQmlAndroidView;
 
-class QQmlAndroidLayoutParams : public QQmlAndroidObject
+class Q_QMLANDROID_EXPORT QQmlAndroidLayoutParams : public QQmlAndroidObject
 {
     Q_OBJECT
     Q_PROPERTY(int width READ width WRITE setWidth NOTIFY widthChanged)

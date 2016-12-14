@@ -55,7 +55,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidAccelerateDecelerateInterpolator : public QQmlAndroidInterpolator
+class Q_QMLANDROID_EXPORT QQmlAndroidAccelerateDecelerateInterpolator : public QQmlAndroidInterpolator
 {
     Q_OBJECT
 

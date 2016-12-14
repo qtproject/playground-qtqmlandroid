@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidAlertDialog : public QQmlAndroidDialog
+class Q_QMLANDROID_EXPORT QQmlAndroidAlertDialog : public QQmlAndroidDialog
 {
     Q_OBJECT
     Q_PROPERTY(QString title READ title WRITE setTitle NOTIFY titleChanged)

@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidListView : public QQmlAndroidAdapterView // TODO: AbsListView
+class Q_QMLANDROID_EXPORT QQmlAndroidListView : public QQmlAndroidAdapterView // TODO: AbsListView
 {
     Q_OBJECT
 

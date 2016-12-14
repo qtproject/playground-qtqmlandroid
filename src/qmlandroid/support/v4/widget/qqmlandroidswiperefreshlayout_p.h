@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidSwipeRefreshLayout : public QQmlAndroidViewGroup
+class Q_QMLANDROID_EXPORT QQmlAndroidSwipeRefreshLayout : public QQmlAndroidViewGroup
 {
     Q_OBJECT
     Q_PROPERTY(bool refreshing READ isRefreshing WRITE setRefreshing NOTIFY refreshingChanged)

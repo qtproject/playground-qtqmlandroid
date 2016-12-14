@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidViewGroup : public QQmlAndroidView
+class Q_QMLANDROID_EXPORT QQmlAndroidViewGroup : public QQmlAndroidView
 {
     Q_OBJECT
 

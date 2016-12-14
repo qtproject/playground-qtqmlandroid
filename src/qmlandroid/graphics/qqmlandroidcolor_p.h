@@ -48,12 +48,14 @@
 // We mean it.
 //
 
+#include <QtQmlAndroid/private/qtqmlandroidglobal_p.h>
+
 #include <QtCore/qobject.h>
 #include <QtQml/qqmlengine.h>
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidColor : public QObject
+class Q_QMLANDROID_EXPORT QQmlAndroidColor : public QObject
 {
     Q_OBJECT
     Q_ENUMS(Constants)

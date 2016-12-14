@@ -55,7 +55,7 @@ QT_BEGIN_NAMESPACE
 class QQmlComponent;
 class QQmlAndroidView;
 
-class QQmlAndroidRecyclerAdapter : public QQmlAndroidContextual
+class Q_QMLANDROID_EXPORT QQmlAndroidRecyclerAdapter : public QQmlAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(int count READ count WRITE setCount NOTIFY countChanged)

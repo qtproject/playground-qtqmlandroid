@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidRatingBar : public QQmlAndroidAbsSeekBar
+class Q_QMLANDROID_EXPORT QQmlAndroidRatingBar : public QQmlAndroidAbsSeekBar
 {
     Q_OBJECT
     Q_PROPERTY(qreal rating READ rating WRITE setRating NOTIFY ratingChanged)

@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class QQmlAndroidMarginLayoutParams : public QQmlAndroidLayoutParams
+class Q_QMLANDROID_EXPORT QQmlAndroidMarginLayoutParams : public QQmlAndroidLayoutParams
 {
     Q_OBJECT
     Q_PROPERTY(int margin READ margin WRITE setMargin NOTIFY marginChanged)
