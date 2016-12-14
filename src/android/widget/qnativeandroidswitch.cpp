@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidSwitch::QNativeAndroidSwitch(QNativeAndroidView *parent) :
-    QNativeAndroidCompoundButton(parent)
+QNativeAndroidSwitch::QNativeAndroidSwitch(QNativeAndroidContext *context) :
+    QNativeAndroidCompoundButton(context)
 {
 }
 

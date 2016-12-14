@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidViewFlipper : public QNativeAndroidViewA
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidViewFlipper(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidViewFlipper(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

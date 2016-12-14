@@ -65,7 +65,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidTextView : public QNativeAndroidView
     Q_PROPERTY(int inputType READ inputType WRITE setInputType NOTIFY inputTypeChanged)
 
 public:
-    explicit QNativeAndroidTextView(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidTextView(QNativeAndroidContext *context = nullptr);
 
     QString text() const;
     void setText(const QString &text);

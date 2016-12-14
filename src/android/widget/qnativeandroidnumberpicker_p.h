@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidNumberPicker : public QNativeAndroidLine
     Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)
 
 public:
-    explicit QNativeAndroidNumberPicker(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidNumberPicker(QNativeAndroidContext *context = nullptr);
 
     int value() const;
     void setValue(int value);

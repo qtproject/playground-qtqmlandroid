@@ -64,7 +64,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidProgressBar : public QNativeAndroidView
     Q_ENUMS(Style)
 
 public:
-    explicit QNativeAndroidProgressBar(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidProgressBar(QNativeAndroidContext *context = nullptr);
 
     bool isIndeterminate() const;
     void setIndeterminate(bool indeterminate);

@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidCalendarView : public QNativeAndroidFram
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidCalendarView(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidCalendarView(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

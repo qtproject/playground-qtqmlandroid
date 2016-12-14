@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidCompoundButton : public QNativeAndroidBu
     Q_PROPERTY(bool checked READ isChecked WRITE setChecked NOTIFY checkedChanged)
 
 public:
-    explicit QNativeAndroidCompoundButton(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidCompoundButton(QNativeAndroidContext *context = nullptr);
 
     bool isChecked() const;
     void setChecked(bool checked);

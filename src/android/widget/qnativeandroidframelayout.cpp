@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidFrameLayout::QNativeAndroidFrameLayout(QNativeAndroidView *parent) :
-    QNativeAndroidViewGroup(parent)
+QNativeAndroidFrameLayout::QNativeAndroidFrameLayout(QNativeAndroidContext *context) :
+    QNativeAndroidViewGroup(context)
 {
 }
 

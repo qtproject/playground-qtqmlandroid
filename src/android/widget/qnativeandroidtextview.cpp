@@ -40,8 +40,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidTextView::QNativeAndroidTextView(QNativeAndroidView *parent) :
-    QNativeAndroidView(parent), m_singleLine(false)
+QNativeAndroidTextView::QNativeAndroidTextView(QNativeAndroidContext *context) :
+    QNativeAndroidView(context), m_singleLine(false)
 {
 }
 

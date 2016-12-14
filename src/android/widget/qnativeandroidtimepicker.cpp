@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidTimePicker::QNativeAndroidTimePicker(QNativeAndroidView *parent) :
-    QNativeAndroidFrameLayout(parent)
+QNativeAndroidTimePicker::QNativeAndroidTimePicker(QNativeAndroidContext *context) :
+    QNativeAndroidFrameLayout(context)
 {
 }
 

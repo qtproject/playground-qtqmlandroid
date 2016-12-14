@@ -59,7 +59,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidScrollView : public QNativeAndroidFrameL
     Q_PROPERTY(int scrollY READ scrollY WRITE setScrollY NOTIFY scrollYChanged)
 
 public:
-    explicit QNativeAndroidScrollView(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidScrollView(QNativeAndroidContext *context = nullptr);
 
     int scrollX() const;
     void setScrollX(int x);

@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidViewGroup : public QNativeAndroidView
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidViewGroup(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidViewGroup(QNativeAndroidContext *context = nullptr);
 
     static QNativeAndroidLayoutParams *qmlAttachedProperties(QObject *object);
 

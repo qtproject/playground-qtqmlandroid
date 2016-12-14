@@ -40,8 +40,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidRecyclerView::QNativeAndroidRecyclerView(QNativeAndroidView *parent) :
-    QNativeAndroidViewGroup(parent), m_adapter(0)
+QNativeAndroidRecyclerView::QNativeAndroidRecyclerView(QNativeAndroidContext *context) :
+    QNativeAndroidViewGroup(context), m_adapter(0)
 {
 }
 

@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidSeekBar::QNativeAndroidSeekBar(QNativeAndroidView *parent) :
-    QNativeAndroidAbsSeekBar(parent)
+QNativeAndroidSeekBar::QNativeAndroidSeekBar(QNativeAndroidContext *context) :
+    QNativeAndroidAbsSeekBar(context)
 {
 }
 

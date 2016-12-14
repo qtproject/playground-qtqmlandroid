@@ -39,8 +39,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidToggleButton::QNativeAndroidToggleButton(QNativeAndroidView *parent) :
-    QNativeAndroidCompoundButton(parent)
+QNativeAndroidToggleButton::QNativeAndroidToggleButton(QNativeAndroidContext *context) :
+    QNativeAndroidCompoundButton(context)
 {
 }
 

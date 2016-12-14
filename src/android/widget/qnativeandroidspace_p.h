@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidSpace : public QNativeAndroidView
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidSpace(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidSpace(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

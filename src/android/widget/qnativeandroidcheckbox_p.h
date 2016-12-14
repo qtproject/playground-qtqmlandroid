@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidCheckBox : public QNativeAndroidCompound
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidCheckBox(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidCheckBox(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

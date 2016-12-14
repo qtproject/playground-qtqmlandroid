@@ -65,7 +65,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidLinearLayout : public QNativeAndroidView
     Q_ENUMS(Orientation)
 
 public:
-    explicit QNativeAndroidLinearLayout(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidLinearLayout(QNativeAndroidContext *context = nullptr);
 
     static QNativeAndroidLinearLayoutParams *qmlAttachedProperties(QObject *object);
 

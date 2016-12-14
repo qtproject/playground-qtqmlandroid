@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidViewAnimator : public QNativeAndroidFram
     Q_PROPERTY(int outAnimation READ outAnimation WRITE setOutAnimation NOTIFY outAnimationChanged)
 
 public:
-    explicit QNativeAndroidViewAnimator(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidViewAnimator(QNativeAndroidContext *context = nullptr);
 
     int displayedChild() const;
     void setDisplayedChild(int child);

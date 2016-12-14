@@ -46,16 +46,16 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidView::QNativeAndroidView(QNativeAndroidView *parent) :
-    QNativeAndroidContextual(parent), m_parent(0), m_background(0), m_backgroundResource(0),
+QNativeAndroidView::QNativeAndroidView(QNativeAndroidContext *context) :
+    QNativeAndroidContextual(context), m_parent(0), m_background(0), m_backgroundResource(0),
     m_animation(0), m_polishing(false), m_visible(true), m_layoutParams(0),
     m_top(0), m_left(0), m_right(0), m_bottom(0)
 {
     static int id = 0;
     m_id = ++id;
 
-    if (parent)
-        setParentView(parent);
+    if (context)
+        setContext(context);
 
     // TODO: find a better place for this (upon construction of the native control perhaps?)
     requestPolish();

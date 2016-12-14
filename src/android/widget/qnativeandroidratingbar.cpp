@@ -39,8 +39,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidRatingBar::QNativeAndroidRatingBar(QNativeAndroidView *parent) :
-    QNativeAndroidAbsSeekBar(parent), m_rating(0.0)
+QNativeAndroidRatingBar::QNativeAndroidRatingBar(QNativeAndroidContext *context) :
+    QNativeAndroidAbsSeekBar(context), m_rating(0.0)
 {
 }
 

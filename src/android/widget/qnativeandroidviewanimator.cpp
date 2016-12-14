@@ -39,8 +39,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidViewAnimator::QNativeAndroidViewAnimator(QNativeAndroidView *parent) :
-    QNativeAndroidFrameLayout(parent)
+QNativeAndroidViewAnimator::QNativeAndroidViewAnimator(QNativeAndroidContext *context) :
+    QNativeAndroidFrameLayout(context)
 {
 }
 

@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidViewSwitcher : public QNativeAndroidView
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidViewSwitcher(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidViewSwitcher(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

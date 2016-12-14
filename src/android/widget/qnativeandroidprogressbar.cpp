@@ -39,8 +39,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidProgressBar::QNativeAndroidProgressBar(QNativeAndroidView *parent) :
-    QNativeAndroidView(parent), m_max(100), m_progress(0), m_secondary(0), m_indeterminate(false)
+QNativeAndroidProgressBar::QNativeAndroidProgressBar(QNativeAndroidContext *context) :
+    QNativeAndroidView(context), m_max(100), m_progress(0), m_secondary(0), m_indeterminate(false)
 {
 }
 

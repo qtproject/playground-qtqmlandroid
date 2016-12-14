@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidFrameLayout : public QNativeAndroidViewG
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidFrameLayout(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidFrameLayout(QNativeAndroidContext *context = nullptr);
 
     static QNativeAndroidFrameLayoutParams *qmlAttachedProperties(QObject *object);
 

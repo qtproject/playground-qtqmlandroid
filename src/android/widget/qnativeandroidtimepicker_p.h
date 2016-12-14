@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidTimePicker : public QNativeAndroidFrameL
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidTimePicker(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidTimePicker(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

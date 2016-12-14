@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidSwipeRefreshLayout : public QNativeAndro
     Q_PROPERTY(bool refreshing READ isRefreshing WRITE setRefreshing NOTIFY refreshingChanged)
 
 public:
-    explicit QNativeAndroidSwipeRefreshLayout(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidSwipeRefreshLayout(QNativeAndroidContext *context = nullptr);
 
     bool isRefreshing() const;
     void setRefreshing(bool refreshing);

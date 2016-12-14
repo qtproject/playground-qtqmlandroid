@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidButton : public QNativeAndroidTextView
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidButton(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidButton(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidRecyclerView : public QNativeAndroidView
     Q_PROPERTY(QNativeAndroidRecyclerAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged)
 
 public:
-    explicit QNativeAndroidRecyclerView(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidRecyclerView(QNativeAndroidContext *context = nullptr);
 
     QNativeAndroidRecyclerAdapter *adapter() const;
     void setAdapter(QNativeAndroidRecyclerAdapter *adapter);

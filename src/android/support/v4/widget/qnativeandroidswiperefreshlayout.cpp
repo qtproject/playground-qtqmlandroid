@@ -39,8 +39,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidSwipeRefreshLayout::QNativeAndroidSwipeRefreshLayout(QNativeAndroidView *parent) :
-    QNativeAndroidViewGroup(parent), m_refreshing(false)
+QNativeAndroidSwipeRefreshLayout::QNativeAndroidSwipeRefreshLayout(QNativeAndroidContext *context) :
+    QNativeAndroidViewGroup(context), m_refreshing(false)
 {
 }
 

@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidSearchView : public QNativeAndroidLinear
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidSearchView(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidSearchView(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

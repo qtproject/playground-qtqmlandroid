@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidAdapterView : public QNativeAndroidViewG
     Q_PROPERTY(QNativeAndroidBaseAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged) // TODO: Adapter
 
 public:
-    explicit QNativeAndroidAdapterView(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidAdapterView(QNativeAndroidContext *context = nullptr);
 
     QNativeAndroidBaseAdapter *adapter() const;
     void setAdapter(QNativeAndroidBaseAdapter *adapter);

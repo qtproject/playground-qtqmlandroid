@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidSeekBar : public QNativeAndroidAbsSeekBa
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidSeekBar(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidSeekBar(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

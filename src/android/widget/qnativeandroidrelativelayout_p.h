@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidRelativeLayout : public QNativeAndroidVi
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidRelativeLayout(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidRelativeLayout(QNativeAndroidContext *context = nullptr);
 
     static QNativeAndroidRelativeLayoutParams *qmlAttachedProperties(QObject *object);
 

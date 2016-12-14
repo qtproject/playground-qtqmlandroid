@@ -39,8 +39,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidNumberPicker::QNativeAndroidNumberPicker(QNativeAndroidView *parent) :
-    QNativeAndroidLinearLayout(parent), m_value(0)
+QNativeAndroidNumberPicker::QNativeAndroidNumberPicker(QNativeAndroidContext *context) :
+    QNativeAndroidLinearLayout(context), m_value(0)
 {
 }
 

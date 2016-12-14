@@ -60,7 +60,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidRadioGroup : public QNativeAndroidLinear
     Q_PROPERTY(QNativeAndroidRadioButton *checkedButton READ checkedButton WRITE setCheckedButton NOTIFY checkedButtonChanged)
 
 public:
-    explicit QNativeAndroidRadioGroup(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidRadioGroup(QNativeAndroidContext *context = nullptr);
 
     QNativeAndroidRadioButton *checkedButton() const;
     void setCheckedButton(QNativeAndroidRadioButton *button);

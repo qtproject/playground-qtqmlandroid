@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidRadioButton : public QNativeAndroidCompo
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidRadioButton(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidRadioButton(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

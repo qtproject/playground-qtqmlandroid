@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidTabWidget::QNativeAndroidTabWidget(QNativeAndroidView *parent) :
-    QNativeAndroidLinearLayout(parent)
+QNativeAndroidTabWidget::QNativeAndroidTabWidget(QNativeAndroidContext *context) :
+    QNativeAndroidLinearLayout(context)
 {
     setIdentifier(16908307); // TODO: android.R.id.tabs
 }

@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidEditText : public QNativeAndroidTextView
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidEditText(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidEditText(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

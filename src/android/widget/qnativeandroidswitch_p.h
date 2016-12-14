@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidSwitch : public QNativeAndroidCompoundBu
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidSwitch(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidSwitch(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

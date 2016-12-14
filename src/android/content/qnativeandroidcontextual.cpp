@@ -48,7 +48,7 @@ QNativeAndroidContextual::QNativeAndroidContextual(QObject *parent) :
 }
 
 QNativeAndroidContextual::QNativeAndroidContextual(QNativeAndroidContext* context, QObject *parent) :
-    QNativeAndroidObject(parent), m_context(0)
+    QNativeAndroidObject(parent || context == this ? parent : context), m_context(0)
 {
     if (!initContext(context))
         QMetaObject::invokeMethod(this, "resolveContext", Qt::QueuedConnection);

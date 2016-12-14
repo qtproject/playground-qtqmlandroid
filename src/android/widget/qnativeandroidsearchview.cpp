@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidSearchView::QNativeAndroidSearchView(QNativeAndroidView *parent) :
-    QNativeAndroidLinearLayout(parent)
+QNativeAndroidSearchView::QNativeAndroidSearchView(QNativeAndroidContext *context) :
+    QNativeAndroidLinearLayout(context)
 {
 }
 

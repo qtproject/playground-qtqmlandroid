@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidTabWidget : public QNativeAndroidLinearL
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidTabWidget(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidTabWidget(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

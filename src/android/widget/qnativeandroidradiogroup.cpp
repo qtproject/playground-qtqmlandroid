@@ -40,8 +40,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidRadioGroup::QNativeAndroidRadioGroup(QNativeAndroidView *parent) :
-    QNativeAndroidLinearLayout(parent), m_checkedButton(0)
+QNativeAndroidRadioGroup::QNativeAndroidRadioGroup(QNativeAndroidContext *context) :
+    QNativeAndroidLinearLayout(context), m_checkedButton(0)
 {
 }
 

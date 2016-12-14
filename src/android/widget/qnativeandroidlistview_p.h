@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidListView : public QNativeAndroidAdapterV
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidListView(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidListView(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

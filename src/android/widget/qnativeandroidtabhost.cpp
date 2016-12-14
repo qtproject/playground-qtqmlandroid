@@ -39,8 +39,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidTabHost::QNativeAndroidTabHost(QNativeAndroidView *parent) :
-    QNativeAndroidFrameLayout(parent)
+QNativeAndroidTabHost::QNativeAndroidTabHost(QNativeAndroidContext *context) :
+    QNativeAndroidFrameLayout(context)
 {
 }
 

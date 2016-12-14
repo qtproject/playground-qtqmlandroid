@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidSpinner : public QNativeAndroidAdapterVi
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidSpinner(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidSpinner(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

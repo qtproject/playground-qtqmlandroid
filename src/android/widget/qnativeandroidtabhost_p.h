@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidTabHost : public QNativeAndroidFrameLayo
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidTabHost(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidTabHost(QNativeAndroidContext *context = nullptr);
 
 Q_SIGNALS:
     void tabChanged(const QString &tabId);

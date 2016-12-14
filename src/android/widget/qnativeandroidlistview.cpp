@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidListView::QNativeAndroidListView(QNativeAndroidView *parent) :
-    QNativeAndroidAdapterView(parent)
+QNativeAndroidListView::QNativeAndroidListView(QNativeAndroidContext *context) :
+    QNativeAndroidAdapterView(context)
 {
 }
 

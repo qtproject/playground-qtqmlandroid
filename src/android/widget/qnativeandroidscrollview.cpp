@@ -39,8 +39,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidScrollView::QNativeAndroidScrollView(QNativeAndroidView *parent) :
-    QNativeAndroidFrameLayout(parent)
+QNativeAndroidScrollView::QNativeAndroidScrollView(QNativeAndroidContext *context) :
+    QNativeAndroidFrameLayout(context)
 {
 }
 

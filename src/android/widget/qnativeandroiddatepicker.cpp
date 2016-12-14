@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidDatePicker::QNativeAndroidDatePicker(QNativeAndroidView *parent) :
-    QNativeAndroidFrameLayout(parent)
+QNativeAndroidDatePicker::QNativeAndroidDatePicker(QNativeAndroidContext *context) :
+    QNativeAndroidFrameLayout(context)
 {
 }
 

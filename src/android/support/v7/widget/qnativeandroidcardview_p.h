@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidCardView : public QNativeAndroidFrameLay
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidCardView(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidCardView(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

@@ -39,8 +39,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidCompoundButton::QNativeAndroidCompoundButton(QNativeAndroidView *parent) :
-    QNativeAndroidButton(parent), m_checked(false)
+QNativeAndroidCompoundButton::QNativeAndroidCompoundButton(QNativeAndroidContext *context) :
+    QNativeAndroidButton(context), m_checked(false)
 {
 }
 

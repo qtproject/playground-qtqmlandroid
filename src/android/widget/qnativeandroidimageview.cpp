@@ -39,8 +39,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidImageView::QNativeAndroidImageView(QNativeAndroidView *parent) :
-    QNativeAndroidView(parent), m_resource(0)
+QNativeAndroidImageView::QNativeAndroidImageView(QNativeAndroidContext *context) :
+    QNativeAndroidView(context), m_resource(0)
 {
 }
 

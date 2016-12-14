@@ -57,7 +57,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidDatePicker : public QNativeAndroidFrameL
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidDatePicker(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidDatePicker(QNativeAndroidContext *context = nullptr);
 
 protected:
     QAndroidJniObject onCreate() override;

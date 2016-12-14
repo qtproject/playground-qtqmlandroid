@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidRadioButton::QNativeAndroidRadioButton(QNativeAndroidView *parent) :
-    QNativeAndroidCompoundButton(parent)
+QNativeAndroidRadioButton::QNativeAndroidRadioButton(QNativeAndroidContext *context) :
+    QNativeAndroidCompoundButton(context)
 {
 }
 

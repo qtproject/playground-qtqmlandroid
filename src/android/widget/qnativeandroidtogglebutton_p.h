@@ -59,7 +59,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidToggleButton : public QNativeAndroidComp
     Q_PROPERTY(QString textOff READ textOff WRITE setTextOff NOTIFY textOffChanged)
 
 public:
-    explicit QNativeAndroidToggleButton(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidToggleButton(QNativeAndroidContext *context = nullptr);
 
     QString textOn() const;
     void setTextOn(const QString &text);

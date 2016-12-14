@@ -58,7 +58,7 @@ class Q_QMLANDROID_EXPORT QNativeAndroidDrawerLayout : public QNativeAndroidView
     Q_OBJECT
 
 public:
-    explicit QNativeAndroidDrawerLayout(QNativeAndroidView *parent = nullptr);
+    explicit QNativeAndroidDrawerLayout(QNativeAndroidContext *context = nullptr);
 
     static QNativeAndroidDrawerLayoutParams *qmlAttachedProperties(QObject *object);
 

@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidCalendarView::QNativeAndroidCalendarView(QNativeAndroidView *parent) :
-    QNativeAndroidFrameLayout(parent)
+QNativeAndroidCalendarView::QNativeAndroidCalendarView(QNativeAndroidContext *context) :
+    QNativeAndroidFrameLayout(context)
 {
 }
 
