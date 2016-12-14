@@ -1,7 +1,6 @@
 TEMPLATE = subdirs
 SUBDIRS += \
-    qmlandroid \
-    imports \
-    android
+    android \
+    imports
 
-imports.depends = qmlandroid
+imports.depends = android

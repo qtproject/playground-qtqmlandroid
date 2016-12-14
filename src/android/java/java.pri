@@ -1,5 +1,3 @@
-CONFIG -= qt android_install
-
 OTHER_FILES += \
     $$PWD/qml/qt/android/app/QmlActivity.java \
     $$PWD/qml/qt/android/app/QmlService.java \
