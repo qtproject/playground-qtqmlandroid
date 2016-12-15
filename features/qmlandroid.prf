@@ -12,17 +12,12 @@ for(pkg, QMLANDROID_PACKAGES) {
     QMLANDROID_INPUT += $$pkg_path
 }
 
-defineReplace(qmlAndroidPkgOutputName) {
-    name = $$basename(1)
-    name = $$absolute_path($$name, $$OUT_PWD/android-build/src/qt/android/)
-    name = $$relative_path($$name, $$_PRO_FILE_PWD_)
-    return($${name})
-}
+QMLANDROID_OUTPUT = $$relative_path($$OUT_PWD/android-build/src/qt/android/, $$_PRO_FILE_PWD_)
 
 qmlandroid.input = QMLANDROID_INPUT
-qmlandroid.output = ${QMAKE_FUNC_FILE_IN_qmlAndroidPkgOutputName}
+qmlandroid.output = ${QMAKE_FILE_IN_NAME}
 !contains(TEMPLATE, vc.*): qmlandroid.variable_out = PRE_TARGETDEPS
-qmlandroid.commands = ( $$sprintf($$QMAKE_MKDIR_CMD, ${QMAKE_FILE_OUT}) ) && $$QMAKE_COPY_DIR ${QMAKE_FILE_IN} ${QMAKE_FILE_OUT}
+qmlandroid.commands = ( $$sprintf($$QMAKE_MKDIR_CMD, $$QMLANDROID_OUTPUT) ) && $$QMAKE_COPY_DIR ${QMAKE_FILE_IN} $$QMLANDROID_OUTPUT
 qmlandroid.name = COPY ${QMAKE_FILE_IN}
 qmlandroid.CONFIG = no_link no_clean
 QMAKE_EXTRA_COMPILERS += qmlandroid
