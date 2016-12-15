@@ -1,12 +1,12 @@
 isEmpty(QMLANDROID_PREFIX): \
     QMLANDROID_PREFIX = $$[QT_INSTALL_PREFIX]
 
-pkg_paths = $$files($$QMLANDROID_PREFIX/src/android/java/qml/qt/android/*)
+pkg_paths = $$files($$QMLANDROID_PREFIX/src/android/java/native/qt/android/*)
 for(pp, pkg_paths): \
     pkg_names += $$basename(pp)
 
 for(pkg, QMLANDROID_PACKAGES) {
-    pkg_path = $$QMLANDROID_PREFIX/src/android/java/qml/qt/android/$$pkg
+    pkg_path = $$QMLANDROID_PREFIX/src/android/java/native/qt/android/$$pkg
     !exists($$pkg_path): \
         error("Unknown QML for Android package '$$pkg'. Available packages: $$pkg_names")
     QMLANDROID_INPUT += $$pkg_path
