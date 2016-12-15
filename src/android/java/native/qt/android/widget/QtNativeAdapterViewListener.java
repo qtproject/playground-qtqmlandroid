@@ -36,20 +36,25 @@
 
 package qt.android.widget;
 
-import android.widget.TabHost;
+import android.view.View;
+import android.widget.Spinner;
+import android.widget.AdapterView;
 
-public class QmlTabHostListener implements TabHost.OnTabChangeListener
+public class QtNativeAdapterViewListener implements AdapterView.OnItemClickListener
 {
-    public QmlTabHostListener(TabHost host, long instance) {
+    public QtNativeAdapterViewListener(AdapterView view, long instance) {
         m_instance = instance;
-        host.setOnTabChangedListener(this);
+        if (!(view instanceof Spinner)) {
+            view.setOnItemClickListener(this);
+        }
     }
 
     @Override
-    public void onTabChanged(String tabId) {
-        onTabChanged(m_instance, tabId);
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        onItemClick(m_instance, position);
     }
 
     private long m_instance;
-    private static native void onTabChanged(long instance, String tabId);
+    private static native void onItemClick(long instance, int position);
 }

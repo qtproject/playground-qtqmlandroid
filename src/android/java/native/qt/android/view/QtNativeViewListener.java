@@ -34,23 +34,50 @@
 **
 ****************************************************************************/
 
-package qt.android.widget;
+package qt.android.view;
 
-import android.content.Context;
-import android.widget.ScrollView;
+import android.view.View;
+import android.widget.AdapterView;
 
-public class QmlScrollView extends ScrollView
+public class QtNativeViewListener implements View.OnClickListener,
+                                        View.OnFocusChangeListener,
+                                        View.OnLayoutChangeListener,
+                                        View.OnLongClickListener
 {
-    public QmlScrollView(Context context, long instance) {
-        super(context);
+    public QtNativeViewListener(View view, long instance) {
         m_instance = instance;
+        if (!(view instanceof AdapterView)) {
+            view.setOnClickListener(this);
+            view.setOnLongClickListener(this);
+        }
+        view.setOnFocusChangeListener(this);
+        view.addOnLayoutChangeListener(this);
     }
 
     @Override
-    protected void onScrollChanged(int left, int top, int oldLeft, int oldTop) {
-        onScrollChanged(m_instance, left, top);
+    public void onClick(View view) {
+        onClick(m_instance);
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean hasFocus) {
+        onFocusChange(m_instance, hasFocus);
+    }
+
+    @Override
+    public void onLayoutChange(View view, int left, int top, int right, int bottom,
+                                          int oldLeft, int oldTop, int oldRight, int oldBottom) {
+        onLayoutChange(m_instance, left, top, right, bottom);
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+        return false; // TODO: onLongClick(m_instance);
     }
 
     private long m_instance;
-    private static native void onScrollChanged(long instance, int left, int top);
+    private static native void onClick(long instance);
+    private static native void onFocusChange(long instance, boolean hasFocus);
+    private static native void onLayoutChange(long instance, int left, int top, int right, int bottom);
+    private static native boolean onLongClick(long instance);
 }

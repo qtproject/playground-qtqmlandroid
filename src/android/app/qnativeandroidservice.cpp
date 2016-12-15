@@ -73,7 +73,7 @@ void QNativeAndroidService::start()
                                                      cls.object());
         intent.callObjectMethod("putExtra",
                                 "(Ljava/lang/String;J)Landroid/content/Intent;",
-                                QAndroidJniObject::fromString(QStringLiteral("QmlService")).object(),
+                                QAndroidJniObject::fromString(QStringLiteral("QtNativeService")).object(),
                                 reinterpret_cast<jlong>(this));
         QAndroidJniObject component = context.callObjectMethod("startService",
                                                                "(Landroid/content/Intent;)Landroid/content/ComponentName;",
@@ -98,7 +98,7 @@ void QNativeAndroidService::stop()
                                                      cls.object());
         intent.callObjectMethod("putExtra",
                                 "(Ljava/lang/String;J)Landroid/content/Intent;",
-                                QAndroidJniObject::fromString(QStringLiteral("QmlService")).object(),
+                                QAndroidJniObject::fromString(QStringLiteral("QtNativeService")).object(),
                                 reinterpret_cast<jlong>(this));
         context.callMethod<jboolean>("stopService",
                                      "(Landroid/content/Intent;)Z",
@@ -108,7 +108,7 @@ void QNativeAndroidService::stop()
 
 QAndroidJniObject QNativeAndroidService::onCreate()
 {
-    return QAndroidJniObject("qt/android/app/QmlService");
+    return QAndroidJniObject("qt/android/app/QtNativeService");
 }
 
 void QNativeAndroidService::onInflate(QAndroidJniObject& instance)

@@ -36,20 +36,20 @@
 
 package qt.android.widget;
 
-import android.widget.RatingBar;
+import android.widget.CompoundButton;
 
-public class QmlRatingBarListener implements RatingBar.OnRatingBarChangeListener
+public class QtNativeCompoundButtonListener implements CompoundButton.OnCheckedChangeListener
 {
-    public QmlRatingBarListener(RatingBar ratingBar, long instance) {
+    public QtNativeCompoundButtonListener(CompoundButton button, long instance) {
         m_instance = instance;
-        ratingBar.setOnRatingBarChangeListener(this);
+        button.setOnCheckedChangeListener(this);
     }
 
     @Override
-    public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-        onRatingChanged(m_instance, rating, fromUser);
+    public void onCheckedChanged(CompoundButton button, boolean isChecked) {
+        onCheckedChanged(m_instance, isChecked);
     }
 
     private long m_instance;
-    private static native void onRatingChanged(long instance, float rating, boolean fromUser);
+    private static native void onCheckedChanged(long instance, boolean isChecked);
 }

@@ -175,7 +175,7 @@ void QNativeAndroidActivity::updateOptionsMenu()
 
     QAndroidJniObject activity = instance();
     QtQmlAndroid::callFunction([=]() {
-        activity.callMethod<void>("setOptionsMenu", "(Lqt/android/view/QmlMenu;)V", menu.object());
+        activity.callMethod<void>("setOptionsMenu", "(Lqt/android/view/QtNativeMenu;)V", menu.object());
     });
 }
 

@@ -45,8 +45,8 @@ stay the same, using QQmlApplicationEngine to load the main.qml:
 Using an options menu in Activity requires changing the activity
 type in AndroidManifest.xml. The default activity type for Qt apps
 is "org.qtproject.qt5.android.bindings.QtActivity", which must be
-changed to "qt.android.app.QmlActivity". In order to create the
-file, click "Create Templates" in Qt Creator:
+changed to "qt.android.app.QtNativeActivity". In order to create
+the file, click "Create Templates" in Qt Creator:
 
     Projects -> Build & Run -> Build Steps -> Build Android APK
 

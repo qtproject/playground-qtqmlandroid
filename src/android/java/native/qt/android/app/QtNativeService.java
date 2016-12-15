@@ -34,50 +34,63 @@
 **
 ****************************************************************************/
 
-package qt.android.view;
+package qt.android.app;
 
-import android.view.View;
-import android.widget.AdapterView;
+import android.app.Service;
+import android.os.IBinder;
+import android.content.Intent;
 
-public class QmlViewListener implements View.OnClickListener,
-                                        View.OnFocusChangeListener,
-                                        View.OnLayoutChangeListener,
-                                        View.OnLongClickListener
+public class QtNativeService extends Service
 {
-    public QmlViewListener(View view, long instance) {
-        m_instance = instance;
-        if (!(view instanceof AdapterView)) {
-            view.setOnClickListener(this);
-            view.setOnLongClickListener(this);
-        }
-        view.setOnFocusChangeListener(this);
-        view.addOnLayoutChangeListener(this);
+    public QtNativeService() {
     }
 
     @Override
-    public void onClick(View view) {
-        onClick(m_instance);
+    public void onCreate() {
+        System.out.println("### QtNativeService.onCreate");
+        onCreated(0);
     }
 
     @Override
-    public void onFocusChange(View view, boolean hasFocus) {
-        onFocusChange(m_instance, hasFocus);
+    public void onDestroy() {
+        System.out.println("### QtNativeService.onDestroy");
+        onDestroyed(0);
     }
 
     @Override
-    public void onLayoutChange(View view, int left, int top, int right, int bottom,
-                                          int oldLeft, int oldTop, int oldRight, int oldBottom) {
-        onLayoutChange(m_instance, left, top, right, bottom);
+    public IBinder onBind(Intent intent) {
+        long instance = intent.getLongExtra("QtNativeService", 0);
+        System.out.println("### TODO: QtNativeService.onBind " + instance);
+        return null;
     }
 
     @Override
-    public boolean onLongClick(View view) {
-        return false; // TODO: onLongClick(m_instance);
+    public void onRebind(Intent intent) {
+        long instance = intent.getLongExtra("QtNativeService", 0);
+        System.out.println("### TODO: QtNativeService.onRebind " + instance);
     }
 
-    private long m_instance;
-    private static native void onClick(long instance);
-    private static native void onFocusChange(long instance, boolean hasFocus);
-    private static native void onLayoutChange(long instance, int left, int top, int right, int bottom);
-    private static native boolean onLongClick(long instance);
+    @Override
+    public boolean onUnbind(Intent intent) {
+        long instance = intent.getLongExtra("QtNativeService", 0);
+        System.out.println("### TODO: QtNativeService.onUnbind " + instance);
+        return false;
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        long instance = intent.getLongExtra("QtNativeService", 0);
+        System.out.println("### QtNativeService.onStartCommand " + instance);
+        return onStartCommand(instance, flags, startId) ? START_STICKY : START_NOT_STICKY;
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        long instance = rootIntent.getLongExtra("QtNativeService", 0);
+        System.out.println("### QtNativeService.onTaskRemoved " + instance);
+    }
+
+    private static native void onCreated(long instance);
+    private static native void onDestroyed(long instance);
+    private static native boolean onStartCommand(long instance, int flags, int startId);
 }

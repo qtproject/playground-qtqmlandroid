@@ -159,7 +159,7 @@ void QNativeAndroidMenuItem::setActionView(QNativeAndroidView *view)
 
 QAndroidJniObject QNativeAndroidMenuItem::onCreate()
 {
-    return QAndroidJniObject("qt/android/view/QmlMenuItem",
+    return QAndroidJniObject("qt/android/view/QtNativeMenuItem",
                              "(J)V",
                              reinterpret_cast<jlong>(this));
 }

@@ -34,22 +34,23 @@
 **
 ****************************************************************************/
 
-package qt.android.support.v4.widget;
+package qt.android.widget;
 
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.content.Context;
+import android.widget.ScrollView;
 
-public class QmlSwipeRefreshLayoutListener implements SwipeRefreshLayout.OnRefreshListener
+public class QtNativeScrollView extends ScrollView
 {
-    public QmlSwipeRefreshLayoutListener(SwipeRefreshLayout layout, long instance) {
+    public QtNativeScrollView(Context context, long instance) {
+        super(context);
         m_instance = instance;
-        layout.setOnRefreshListener(this);
     }
 
     @Override
-    public void onRefresh() {
-        onRefresh(m_instance);
+    protected void onScrollChanged(int left, int top, int oldLeft, int oldTop) {
+        onScrollChanged(m_instance, left, top);
     }
 
     private long m_instance;
-    private static native void onRefresh(long instance);
+    private static native void onScrollChanged(long instance, int left, int top);
 }

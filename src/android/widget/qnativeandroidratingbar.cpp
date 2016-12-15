@@ -76,7 +76,7 @@ void QNativeAndroidRatingBar::onInflate(QAndroidJniObject &instance)
 {
     QNativeAndroidAbsSeekBar::onInflate(instance);
 
-    m_listener = QAndroidJniObject("qt/android/widget/QmlRatingBarListener",
+    m_listener = QAndroidJniObject("qt/android/widget/QtNativeRatingBarListener",
                                    "(Landroid/widget/RatingBar;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));

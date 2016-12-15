@@ -34,22 +34,61 @@
 **
 ****************************************************************************/
 
-package qt.android.widget;
+package qt.android.app;
 
-import android.widget.CompoundButton;
+import java.util.ArrayList;
 
-public class QmlCompoundButtonListener implements CompoundButton.OnCheckedChangeListener
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.R.attr;
+import android.util.TypedValue;
+
+import android.view.Menu;
+
+import qt.android.view.QtNativeMenu;
+
+public class QtNativeActivity extends org.qtproject.qt5.android.bindings.QtActivity
 {
-    public QmlCompoundButtonListener(CompoundButton button, long instance) {
-        m_instance = instance;
-        button.setOnCheckedChangeListener(this);
+    public QtNativeActivity() {
+        m_menu = null;
+    }
+
+    public void setOptionsMenu(QtNativeMenu menu) {
+        if (m_menu != menu) {
+            m_menu = menu;
+            invalidateOptionsMenu();
+        }
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton button, boolean isChecked) {
-        onCheckedChanged(m_instance, isChecked);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        TypedValue attr = new TypedValue();
+        getTheme().resolveAttribute(android.R.attr.windowBackground, attr, true);
+        if (attr.type >= TypedValue.TYPE_FIRST_COLOR_INT && attr.type <= TypedValue.TYPE_LAST_COLOR_INT)
+            getWindow().setBackgroundDrawable(new ColorDrawable(attr.data));
+        else
+            getWindow().setBackgroundDrawableResource(attr.resourceId);
     }
 
-    private long m_instance;
-    private static native void onCheckedChanged(long instance, boolean isChecked);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if (m_menu != null)
+            return m_menu.create(menu);
+        return false;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (m_menu != null)
+            return m_menu.prepare(menu);
+        return false;
+    }
+
+    @Override
+    public void onOptionsMenuClosed(Menu menu) {
+        m_menu.closed(menu);
+    }
+
+    private QtNativeMenu m_menu;
 }

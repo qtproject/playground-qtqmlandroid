@@ -83,7 +83,7 @@ QAndroidJniObject QNativeAndroidAdapterView::onCreate()
 
 void QNativeAndroidAdapterView::onInflate(QAndroidJniObject &instance)
 {
-    m_listener = QAndroidJniObject("qt/android/widget/QmlAdapterViewListener",
+    m_listener = QAndroidJniObject("qt/android/widget/QtNativeAdapterViewListener",
                                    "(Landroid/widget/AdapterView;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));

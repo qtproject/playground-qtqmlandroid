@@ -34,32 +34,22 @@
 **
 ****************************************************************************/
 
-package qt.android.widget;
+package qt.android.support.v4.widget;
 
-import android.widget.SeekBar;
+import android.support.v4.widget.SwipeRefreshLayout;
 
-public class QmlSeekBarListener implements SeekBar.OnSeekBarChangeListener
+public class QtNativeSwipeRefreshLayoutListener implements SwipeRefreshLayout.OnRefreshListener
 {
-    public QmlSeekBarListener(SeekBar seekBar, long instance) {
+    public QtNativeSwipeRefreshLayoutListener(SwipeRefreshLayout layout, long instance) {
         m_instance = instance;
-        seekBar.setOnSeekBarChangeListener(this);
+        layout.setOnRefreshListener(this);
     }
 
     @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        onProgressChanged(m_instance, progress, fromUser);
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-        // TODO
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-        // TODO
+    public void onRefresh() {
+        onRefresh(m_instance);
     }
 
     private long m_instance;
-    private static native void onProgressChanged(long instance, int progress, boolean fromUser);
+    private static native void onRefresh(long instance);
 }

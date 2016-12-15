@@ -34,22 +34,39 @@
 **
 ****************************************************************************/
 
-package qt.android.widget;
+package qt.android.view;
 
-import android.widget.NumberPicker;
+import java.util.ArrayList;
 
-public class QmlNumberPickerListener implements NumberPicker.OnValueChangeListener
+import android.view.Menu;
+import android.view.MenuItem;
+
+import qt.android.view.QtNativeMenuItem;
+
+public class QtNativeMenu
 {
-    public QmlNumberPickerListener(NumberPicker picker, long instance) {
-        m_instance = instance;
-        picker.setOnValueChangedListener(this);
+    public QtNativeMenu() {
+        m_items = new ArrayList<QtNativeMenuItem>();
     }
 
-    @Override
-    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-        onValueChange(m_instance, newVal);
+    public void add(QtNativeMenuItem item) {
+        m_items.add(item);
     }
 
-    private long m_instance;
-    private static native void onValueChange(long instance, int value);
+    public boolean create(Menu menu) {
+        for (QtNativeMenuItem item : m_items) {
+            MenuItem mi = menu.add(item.getTitle());
+            item.create(mi);
+        }
+        return true;
+    }
+
+    public boolean prepare(Menu menu) {
+        return true;
+    }
+
+    public void closed(Menu menu) {
+    }
+
+    private ArrayList<QtNativeMenuItem> m_items;
 }

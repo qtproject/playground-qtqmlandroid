@@ -36,21 +36,20 @@
 
 package qt.android.widget;
 
-import android.widget.RadioGroup;
-import android.widget.RadioButton;
+import android.widget.RatingBar;
 
-public class QmlRadioGroupListener implements RadioGroup.OnCheckedChangeListener
+public class QtNativeRatingBarListener implements RatingBar.OnRatingBarChangeListener
 {
-    public QmlRadioGroupListener(RadioGroup group, long instance) {
+    public QtNativeRatingBarListener(RatingBar ratingBar, long instance) {
         m_instance = instance;
-        group.setOnCheckedChangeListener(this);
+        ratingBar.setOnRatingBarChangeListener(this);
     }
 
     @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-        onCheckedChanged(m_instance, checkedId);
+    public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+        onRatingChanged(m_instance, rating, fromUser);
     }
 
     private long m_instance;
-    private static native void onCheckedChanged(long instance, int checkedId);
+    private static native void onRatingChanged(long instance, float rating, boolean fromUser);
 }
