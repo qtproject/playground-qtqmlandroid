@@ -22,7 +22,7 @@ DISTFILES += \
     android/gradle/wrapper/gradle-wrapper.properties
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
-QMLANDROID_PACKAGES = app support view widget
+ANDROID_SUPPORT = v4 v7
 
 target.path = $$[QT_INSTALL_EXAMPLES]/qmlandroid/catalog
 INSTALLS += target

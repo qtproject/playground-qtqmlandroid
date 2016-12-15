@@ -34,22 +34,27 @@
 **
 ****************************************************************************/
 
-package qt.android.widget;
+package org.qtproject.qt5.android.bindings.widget;
 
-import android.widget.CompoundButton;
+import android.view.View;
+import android.widget.Spinner;
+import android.widget.AdapterView;
 
-public class QtNativeCompoundButtonListener implements CompoundButton.OnCheckedChangeListener
+public class QtNativeAdapterViewListener implements AdapterView.OnItemClickListener
 {
-    public QtNativeCompoundButtonListener(CompoundButton button, long instance) {
+    public QtNativeAdapterViewListener(AdapterView view, long instance) {
         m_instance = instance;
-        button.setOnCheckedChangeListener(this);
+        if (!(view instanceof Spinner)) {
+            view.setOnItemClickListener(this);
+        }
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton button, boolean isChecked) {
-        onCheckedChanged(m_instance, isChecked);
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        onItemClick(m_instance, position);
     }
 
     private long m_instance;
-    private static native void onCheckedChanged(long instance, boolean isChecked);
+    private static native void onItemClick(long instance, int position);
 }

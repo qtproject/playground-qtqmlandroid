@@ -34,66 +34,23 @@
 **
 ****************************************************************************/
 
-package qt.android.support.v7.widget;
+package org.qtproject.qt5.android.bindings.widget;
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.support.v7.widget.RecyclerView;
+import android.content.Context;
+import android.widget.ScrollView;
 
-import java.lang.Integer;
-
-public class QtNativeRecyclerAdapter extends RecyclerView.Adapter<QtNativeRecyclerAdapter.ViewHolder>
+public class QtNativeScrollView extends ScrollView
 {
-    public QtNativeRecyclerAdapter(int count, long instance) {
-        m_count = count;
+    public QtNativeScrollView(Context context, long instance) {
+        super(context);
         m_instance = instance;
     }
 
     @Override
-    public int getItemCount() {
-        return m_count;
+    protected void onScrollChanged(int left, int top, int oldLeft, int oldTop) {
+        onScrollChanged(m_instance, left, top);
     }
 
-    public void setItemCount(int count) {
-        if (m_count != count) {
-            m_count = count;
-            notifyDataSetChanged();
-        }
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder
-    {
-        public ViewHolder(View view, long instance) {
-            super(view);
-            m_instance = instance;
-        }
-        public long getInstance() {
-            return m_instance;
-        }
-        private long m_instance;
-    }
-
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        ViewHolder vh = onCreateViewHolder(m_instance, parent, viewType);
-        // TODO:
-        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(-1, -2);
-        vh.itemView.setLayoutParams(params);
-        return vh;
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        onBindViewHolder(m_instance, holder, position);
-    }
-
-    @Override
-    public void onViewRecycled(ViewHolder holder) {
-        // TODO
-    }
-
-    private int m_count;
     private long m_instance;
-    private static native ViewHolder onCreateViewHolder(long instance, ViewGroup parent, int viewType);
-    private static native void onBindViewHolder(long instance, ViewHolder holder, int position);
+    private static native void onScrollChanged(long instance, int left, int top);
 }

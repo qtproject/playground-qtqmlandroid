@@ -34,32 +34,22 @@
 **
 ****************************************************************************/
 
-package qt.android.widget;
+package org.qtproject.qt5.android.bindings.widget;
 
-import android.widget.SeekBar;
+import android.widget.TabHost;
 
-public class QtNativeSeekBarListener implements SeekBar.OnSeekBarChangeListener
+public class QtNativeTabHostListener implements TabHost.OnTabChangeListener
 {
-    public QtNativeSeekBarListener(SeekBar seekBar, long instance) {
+    public QtNativeTabHostListener(TabHost host, long instance) {
         m_instance = instance;
-        seekBar.setOnSeekBarChangeListener(this);
+        host.setOnTabChangedListener(this);
     }
 
     @Override
-    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        onProgressChanged(m_instance, progress, fromUser);
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-        // TODO
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-        // TODO
+    public void onTabChanged(String tabId) {
+        onTabChanged(m_instance, tabId);
     }
 
     private long m_instance;
-    private static native void onProgressChanged(long instance, int progress, boolean fromUser);
+    private static native void onTabChanged(long instance, String tabId);
 }

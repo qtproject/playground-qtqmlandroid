@@ -1,23 +1,23 @@
 isEmpty(QMLANDROID_PREFIX): \
     QMLANDROID_PREFIX = $$[QT_INSTALL_PREFIX]
 
-pkg_paths = $$files($$QMLANDROID_PREFIX/src/android/java/native/qt/android/*)
-for(pp, pkg_paths): \
-    pkg_names += $$basename(pp)
+support_pkg_paths = $$files($$QMLANDROID_PREFIX/src/android/java/support/*)
+for(path, support_pkg_paths): \
+    support_pkg_names += $$basename(path)
 
-for(pkg, QMLANDROID_PACKAGES) {
-    pkg_path = $$QMLANDROID_PREFIX/src/android/java/native/qt/android/$$pkg
+for(pkg, ANDROID_SUPPORT) {
+    pkg_path = $$QMLANDROID_PREFIX/src/android/java/support/$$pkg
     !exists($$pkg_path): \
-        error("Unknown QML for Android package '$$pkg'. Available packages: $$pkg_names")
-    QMLANDROID_INPUT += $$pkg_path
+        error("Unknown Android support package '$$pkg'. Available packages: $$pkg_names")
+    ANDROID_SUPPORT_INPUT += $$pkg_path
 }
 
-QMLANDROID_OUTPUT = $$relative_path($$OUT_PWD/android-build/src/qt/android/, $$_PRO_FILE_PWD_)
+ANDROID_SUPPORT_OUTPUT = $$relative_path($$OUT_PWD/android-build/src/org/qtproject/qt5/android/bindings, $$_PRO_FILE_PWD_)
 
-qmlandroid.input = QMLANDROID_INPUT
-qmlandroid.output = ${QMAKE_FILE_IN_NAME}
-!contains(TEMPLATE, vc.*): qmlandroid.variable_out = PRE_TARGETDEPS
-qmlandroid.commands = ( $$sprintf($$QMAKE_MKDIR_CMD, $$QMLANDROID_OUTPUT) ) && $$QMAKE_COPY_DIR ${QMAKE_FILE_IN} $$QMLANDROID_OUTPUT
-qmlandroid.name = COPY ${QMAKE_FILE_IN}
-qmlandroid.CONFIG = no_link no_clean
-QMAKE_EXTRA_COMPILERS += qmlandroid
+android_support.input = ANDROID_SUPPORT_INPUT
+android_support.output = ${QMAKE_FILE_IN_NAME}
+!contains(TEMPLATE, vc.*): android_support.variable_out = PRE_TARGETDEPS
+android_support.commands = ( $$sprintf($$QMAKE_MKDIR_CMD, $$ANDROID_SUPPORT_OUTPUT) ) && $$QMAKE_COPY_DIR ${QMAKE_FILE_IN} $$ANDROID_SUPPORT_OUTPUT
+android_support.name = COPY ${QMAKE_FILE_IN}
+android_support.CONFIG = no_link no_clean
+QMAKE_EXTRA_COMPILERS += android_support

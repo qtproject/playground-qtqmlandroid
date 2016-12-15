@@ -34,22 +34,22 @@
 **
 ****************************************************************************/
 
-package qt.android.widget;
+package org.qtproject.qt5.android.bindings.widget;
 
-import android.widget.TabHost;
+import android.widget.NumberPicker;
 
-public class QtNativeTabHostListener implements TabHost.OnTabChangeListener
+public class QtNativeNumberPickerListener implements NumberPicker.OnValueChangeListener
 {
-    public QtNativeTabHostListener(TabHost host, long instance) {
+    public QtNativeNumberPickerListener(NumberPicker picker, long instance) {
         m_instance = instance;
-        host.setOnTabChangedListener(this);
+        picker.setOnValueChangedListener(this);
     }
 
     @Override
-    public void onTabChanged(String tabId) {
-        onTabChanged(m_instance, tabId);
+    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+        onValueChange(m_instance, newVal);
     }
 
     private long m_instance;
-    private static native void onTabChanged(long instance, String tabId);
+    private static native void onValueChange(long instance, int value);
 }

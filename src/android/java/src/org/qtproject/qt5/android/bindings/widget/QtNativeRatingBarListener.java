@@ -34,39 +34,22 @@
 **
 ****************************************************************************/
 
-package qt.android.view;
+package org.qtproject.qt5.android.bindings.widget;
 
-import java.util.ArrayList;
+import android.widget.RatingBar;
 
-import android.view.Menu;
-import android.view.MenuItem;
-
-import qt.android.view.QtNativeMenuItem;
-
-public class QtNativeMenu
+public class QtNativeRatingBarListener implements RatingBar.OnRatingBarChangeListener
 {
-    public QtNativeMenu() {
-        m_items = new ArrayList<QtNativeMenuItem>();
+    public QtNativeRatingBarListener(RatingBar ratingBar, long instance) {
+        m_instance = instance;
+        ratingBar.setOnRatingBarChangeListener(this);
     }
 
-    public void add(QtNativeMenuItem item) {
-        m_items.add(item);
+    @Override
+    public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+        onRatingChanged(m_instance, rating, fromUser);
     }
 
-    public boolean create(Menu menu) {
-        for (QtNativeMenuItem item : m_items) {
-            MenuItem mi = menu.add(item.getTitle());
-            item.create(mi);
-        }
-        return true;
-    }
-
-    public boolean prepare(Menu menu) {
-        return true;
-    }
-
-    public void closed(Menu menu) {
-    }
-
-    private ArrayList<QtNativeMenuItem> m_items;
+    private long m_instance;
+    private static native void onRatingChanged(long instance, float rating, boolean fromUser);
 }

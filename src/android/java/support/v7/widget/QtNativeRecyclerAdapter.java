@@ -34,63 +34,66 @@
 **
 ****************************************************************************/
 
-package qt.android.app;
+package org.qtproject.qt5.android.bindings.support.v7.widget;
 
-import android.app.Service;
-import android.os.IBinder;
-import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.support.v7.widget.RecyclerView;
 
-public class QtNativeService extends Service
+import java.lang.Integer;
+
+public class QtNativeRecyclerAdapter extends RecyclerView.Adapter<QtNativeRecyclerAdapter.ViewHolder>
 {
-    public QtNativeService() {
+    public QtNativeRecyclerAdapter(int count, long instance) {
+        m_count = count;
+        m_instance = instance;
     }
 
     @Override
-    public void onCreate() {
-        System.out.println("### QtNativeService.onCreate");
-        onCreated(0);
+    public int getItemCount() {
+        return m_count;
+    }
+
+    public void setItemCount(int count) {
+        if (m_count != count) {
+            m_count = count;
+            notifyDataSetChanged();
+        }
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder
+    {
+        public ViewHolder(View view, long instance) {
+            super(view);
+            m_instance = instance;
+        }
+        public long getInstance() {
+            return m_instance;
+        }
+        private long m_instance;
     }
 
     @Override
-    public void onDestroy() {
-        System.out.println("### QtNativeService.onDestroy");
-        onDestroyed(0);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        ViewHolder vh = onCreateViewHolder(m_instance, parent, viewType);
+        // TODO:
+        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(-1, -2);
+        vh.itemView.setLayoutParams(params);
+        return vh;
     }
 
     @Override
-    public IBinder onBind(Intent intent) {
-        long instance = intent.getLongExtra("QtNativeService", 0);
-        System.out.println("### TODO: QtNativeService.onBind " + instance);
-        return null;
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        onBindViewHolder(m_instance, holder, position);
     }
 
     @Override
-    public void onRebind(Intent intent) {
-        long instance = intent.getLongExtra("QtNativeService", 0);
-        System.out.println("### TODO: QtNativeService.onRebind " + instance);
+    public void onViewRecycled(ViewHolder holder) {
+        // TODO
     }
 
-    @Override
-    public boolean onUnbind(Intent intent) {
-        long instance = intent.getLongExtra("QtNativeService", 0);
-        System.out.println("### TODO: QtNativeService.onUnbind " + instance);
-        return false;
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        long instance = intent.getLongExtra("QtNativeService", 0);
-        System.out.println("### QtNativeService.onStartCommand " + instance);
-        return onStartCommand(instance, flags, startId) ? START_STICKY : START_NOT_STICKY;
-    }
-
-    @Override
-    public void onTaskRemoved(Intent rootIntent) {
-        long instance = rootIntent.getLongExtra("QtNativeService", 0);
-        System.out.println("### QtNativeService.onTaskRemoved " + instance);
-    }
-
-    private static native void onCreated(long instance);
-    private static native void onDestroyed(long instance);
-    private static native boolean onStartCommand(long instance, int flags, int startId);
+    private int m_count;
+    private long m_instance;
+    private static native ViewHolder onCreateViewHolder(long instance, ViewGroup parent, int viewType);
+    private static native void onBindViewHolder(long instance, ViewHolder holder, int position);
 }

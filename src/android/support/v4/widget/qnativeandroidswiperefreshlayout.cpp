@@ -76,7 +76,7 @@ void QNativeAndroidSwipeRefreshLayout::onInflate(QAndroidJniObject &instance)
 {
     QNativeAndroidViewGroup::onInflate(instance);
 
-    m_listener = QAndroidJniObject("qt/android/support/v4/widget/QtNativeSwipeRefreshLayoutListener",
+    m_listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/support/v4/widget/QtNativeSwipeRefreshLayoutListener",
                                    "(Landroid/support/v4/widget/SwipeRefreshLayout;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));

@@ -34,7 +34,7 @@
 **
 ****************************************************************************/
 
-package qt.android.widget;
+package org.qtproject.qt5.android.bindings.widget;
 
 import android.widget.RadioGroup;
 import android.widget.RadioButton;

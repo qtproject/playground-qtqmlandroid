@@ -25,7 +25,6 @@ Link to the library, and deploy the desired Android packages
 in the application .pro file:
 
     QT += qmlandroid
-    QMLANDROID_PACKAGES = app view widget
 
 A minimal QML example that can replace the main.qml when using
 the Qt Quick Application template in Qt Creator. The rest can
@@ -45,8 +44,8 @@ stay the same, using QQmlApplicationEngine to load the main.qml:
 Using an options menu in Activity requires changing the activity
 type in AndroidManifest.xml. The default activity type for Qt apps
 is "org.qtproject.qt5.android.bindings.QtActivity", which must be
-changed to "qt.android.app.QtNativeActivity". In order to create
-the file, click "Create Templates" in Qt Creator:
+changed to "org.qtproject.qt5.android.bindings.app.QtNativeActivity".
+In order to create the file, click "Create Templates" in Qt Creator:
 
     Projects -> Build & Run -> Build Steps -> Build Android APK
 

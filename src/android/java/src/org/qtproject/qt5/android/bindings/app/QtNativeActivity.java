@@ -34,7 +34,7 @@
 **
 ****************************************************************************/
 
-package qt.android.app;
+package org.qtproject.qt5.android.bindings.app;
 
 import java.util.ArrayList;
 
@@ -45,7 +45,7 @@ import android.util.TypedValue;
 
 import android.view.Menu;
 
-import qt.android.view.QtNativeMenu;
+import org.qtproject.qt5.android.bindings.view.QtNativeMenu;
 
 public class QtNativeActivity extends org.qtproject.qt5.android.bindings.QtActivity
 {

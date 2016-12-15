@@ -108,7 +108,7 @@ void QNativeAndroidService::stop()
 
 QAndroidJniObject QNativeAndroidService::onCreate()
 {
-    return QAndroidJniObject("qt/android/app/QtNativeService");
+    return QAndroidJniObject("org/qtproject/qt5/android/bindings/app/QtNativeService");
 }
 
 void QNativeAndroidService::onInflate(QAndroidJniObject& instance)

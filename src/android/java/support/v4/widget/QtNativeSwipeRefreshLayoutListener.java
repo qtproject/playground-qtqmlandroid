@@ -34,7 +34,7 @@
 **
 ****************************************************************************/
 
-package qt.android.support.v4.widget;
+package org.qtproject.qt5.android.bindings.support.v4.widget;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 

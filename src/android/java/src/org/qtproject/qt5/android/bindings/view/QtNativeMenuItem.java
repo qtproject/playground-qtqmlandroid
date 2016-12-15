@@ -34,7 +34,7 @@
 **
 ****************************************************************************/
 
-package qt.android.view;
+package org.qtproject.qt5.android.bindings.view;
 
 import java.lang.CharSequence;
 import android.view.MenuItem;

@@ -34,23 +34,32 @@
 **
 ****************************************************************************/
 
-package qt.android.widget;
+package org.qtproject.qt5.android.bindings.widget;
 
-import android.content.Context;
-import android.widget.ScrollView;
+import android.widget.SeekBar;
 
-public class QtNativeScrollView extends ScrollView
+public class QtNativeSeekBarListener implements SeekBar.OnSeekBarChangeListener
 {
-    public QtNativeScrollView(Context context, long instance) {
-        super(context);
+    public QtNativeSeekBarListener(SeekBar seekBar, long instance) {
         m_instance = instance;
+        seekBar.setOnSeekBarChangeListener(this);
     }
 
     @Override
-    protected void onScrollChanged(int left, int top, int oldLeft, int oldTop) {
-        onScrollChanged(m_instance, left, top);
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        onProgressChanged(m_instance, progress, fromUser);
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+        // TODO
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        // TODO
     }
 
     private long m_instance;
-    private static native void onScrollChanged(long instance, int left, int top);
+    private static native void onProgressChanged(long instance, int progress, boolean fromUser);
 }

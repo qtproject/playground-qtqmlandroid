@@ -715,7 +715,7 @@ void QNativeAndroidView::onInflate(QAndroidJniObject &instance)
 
     QNativeAndroidContextual::onInflate(instance);
 
-    m_listener = QAndroidJniObject("qt/android/view/QtNativeViewListener",
+    m_listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/view/QtNativeViewListener",
                                    "(Landroid/view/View;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));
