@@ -118,15 +118,8 @@ void QNativeAndroidActivity::setContentView(QNativeAndroidView *view)
     }
 }
 
-void QNativeAndroidActivity::classBegin()
+void QNativeAndroidActivity::start()
 {
-    QNativeAndroidContextWrapper::classBegin();
-}
-
-void QNativeAndroidActivity::componentComplete()
-{
-    QNativeAndroidContextWrapper::componentComplete();
-
     foreach (QObject *child, children()) {
         QNativeAndroidObject *object = qobject_cast<QNativeAndroidObject *>(child);
         if (object)
@@ -138,6 +131,17 @@ void QNativeAndroidActivity::componentComplete()
 
     if (m_window)
         setupWindow();
+}
+
+void QNativeAndroidActivity::classBegin()
+{
+    QNativeAndroidContextWrapper::classBegin();
+}
+
+void QNativeAndroidActivity::componentComplete()
+{
+    QNativeAndroidContextWrapper::componentComplete();
+    start();
 }
 
 void QNativeAndroidActivity::setupWindow()

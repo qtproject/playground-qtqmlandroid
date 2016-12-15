@@ -79,6 +79,9 @@ public:
     QNativeAndroidView *contentView() const;
     void setContentView(QNativeAndroidView *view);
 
+public Q_SLOTS:
+    void start();
+
 protected:
     void classBegin() override;
     void componentComplete() override;
