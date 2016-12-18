@@ -35,99 +35,123 @@
 ****************************************************************************/
 
 #include "qnativeandroidrotateanimation_p.h"
+#include "qnativeandroidanimation_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidRotateAnimation::QNativeAndroidRotateAnimation(QObject *parent) :
-    QNativeAndroidAnimation(parent), m_from(0), m_to(0),
-    m_pivotX(0), m_pivotY(0), m_pivotXType(ABSOLUTE), m_pivotYType(ABSOLUTE)
+class QNativeAndroidRotateAnimationPrivate : public QNativeAndroidAnimationPrivate
+{
+public:
+    qreal from = 0.0;
+    qreal to = 0.0;
+    qreal pivotX = 0.0;
+    qreal pivotY = 0.0;
+    QNativeAndroidRotateAnimation::Relation pivotXType = QNativeAndroidRotateAnimation::ABSOLUTE;
+    QNativeAndroidRotateAnimation::Relation pivotYType = QNativeAndroidRotateAnimation::ABSOLUTE;
+};
+
+QNativeAndroidRotateAnimation::QNativeAndroidRotateAnimation(QObject *parent)
+    : QNativeAndroidAnimation(*(new QNativeAndroidRotateAnimationPrivate), parent)
 {
 }
 
 qreal QNativeAndroidRotateAnimation::fromDegrees() const
 {
-    return m_from;
+    Q_D(const QNativeAndroidRotateAnimation);
+    return d->from;
 }
 
 void QNativeAndroidRotateAnimation::setFromDegrees(qreal degrees)
 {
-    if (m_from != degrees) {
-        m_from = degrees;
+    Q_D(QNativeAndroidRotateAnimation);
+    if (d->from != degrees) {
+        d->from = degrees;
         emit fromDegreesChanged();
     }
 }
 
 qreal QNativeAndroidRotateAnimation::toDegrees() const
 {
-    return m_to;
+    Q_D(const QNativeAndroidRotateAnimation);
+    return d->to;
 }
 
 void QNativeAndroidRotateAnimation::setToDegrees(qreal degrees)
 {
-    if (m_to != degrees) {
-        m_to = degrees;
+    Q_D(QNativeAndroidRotateAnimation);
+    if (d->to != degrees) {
+        d->to = degrees;
         emit toDegreesChanged();
     }
 }
 
 qreal QNativeAndroidRotateAnimation::pivotX() const
 {
-    return m_pivotX;
+    Q_D(const QNativeAndroidRotateAnimation);
+    return d->pivotX;
 }
 
 void QNativeAndroidRotateAnimation::setPivotX(qreal pivotX)
 {
-    if (m_pivotX != pivotX) {
-        m_pivotX = pivotX;
+    Q_D(QNativeAndroidRotateAnimation);
+    if (d->pivotX != pivotX) {
+        d->pivotX = pivotX;
         emit pivotXChanged();
     }
 }
 
 qreal QNativeAndroidRotateAnimation::pivotY() const
 {
-    return m_pivotY;
+    Q_D(const QNativeAndroidRotateAnimation);
+    return d->pivotY;
 }
 
 void QNativeAndroidRotateAnimation::setPivotY(qreal pivotY)
 {
-    if (m_pivotY != pivotY) {
-        m_pivotY = pivotY;
+    Q_D(QNativeAndroidRotateAnimation);
+    if (d->pivotY != pivotY) {
+        d->pivotY = pivotY;
         emit pivotYChanged();
     }
 }
 
 QNativeAndroidRotateAnimation::Relation QNativeAndroidRotateAnimation::pivotXType() const
 {
-    return m_pivotXType;
+    Q_D(const QNativeAndroidRotateAnimation);
+    return d->pivotXType;
 }
 
 void QNativeAndroidRotateAnimation::setPivotXType(Relation type)
 {
-    if (m_pivotXType != type) {
-        m_pivotXType = type;
+    Q_D(QNativeAndroidRotateAnimation);
+    if (d->pivotXType != type) {
+        d->pivotXType = type;
         emit pivotXTypeChanged();
     }
 }
 
 QNativeAndroidRotateAnimation::Relation QNativeAndroidRotateAnimation::pivotYType() const
 {
-    return m_pivotYType;
+    Q_D(const QNativeAndroidRotateAnimation);
+    return d->pivotYType;
 }
 
 void QNativeAndroidRotateAnimation::setPivotYType(Relation type)
 {
-    if (m_pivotYType != type) {
-        m_pivotYType = type;
+    Q_D(QNativeAndroidRotateAnimation);
+    if (d->pivotYType != type) {
+        d->pivotYType = type;
         emit pivotYTypeChanged();
     }
 }
 
 QAndroidJniObject QNativeAndroidRotateAnimation::onCreate()
 {
+    Q_D(QNativeAndroidRotateAnimation);
     return QAndroidJniObject("android/view/animation/RotateAnimation",
                              "(FFIFIF)V",
-                             m_from, m_to,
-                             m_pivotXType, m_pivotX, m_pivotYType, m_pivotY);
+                             d->from, d->to,
+                             d->pivotXType, d->pivotX, d->pivotYType, d->pivotY);
 }
 
 QT_END_NAMESPACE

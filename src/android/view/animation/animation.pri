@@ -5,6 +5,7 @@ HEADERS += \
     $$PWD/qnativeandroidaccelerateinterpolator_p.h \
     $$PWD/qnativeandroidalphaanimation_p.h \
     $$PWD/qnativeandroidanimation_p.h \
+    $$PWD/qnativeandroidanimation_p_p.h \
     $$PWD/qnativeandroidanimationset_p.h \
     $$PWD/qnativeandroidanticipateinterpolator_p.h \
     $$PWD/qnativeandroidanticipateovershootinterpolator_p.h \

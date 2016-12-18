@@ -34,8 +34,8 @@
 **
 ****************************************************************************/
 
-#ifndef QNATIVEANDROIDALPHAANIMATION_P_H
-#define QNATIVEANDROIDALPHAANIMATION_P_H
+#ifndef QNATIVEANDROIDANIMATION_P_P_H
+#define QNATIVEANDROIDANIMATION_P_P_H
 
 //
 //  W A R N I N G
@@ -48,39 +48,27 @@
 // We mean it.
 //
 
+#include <QtNativeAndroid/private/qnativeandroidcontextual_p_p.h>
+#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 #include <QtNativeAndroid/private/qnativeandroidanimation_p.h>
 
 QT_BEGIN_NAMESPACE
 
-class QNativeAndroidAlphaAnimationPrivate;
-
-class Q_NATIVEANDROID_EXPORT QNativeAndroidAlphaAnimation : public QNativeAndroidAnimation
+class QNativeAndroidAnimationPrivate : public QNativeAndroidContextualPrivate
 {
-    Q_OBJECT
-    Q_PROPERTY(qreal fromAlpha READ fromAlpha WRITE setFromAlpha NOTIFY fromAlphaChanged)
-    Q_PROPERTY(qreal toAlpha READ toAlpha WRITE setToAlpha NOTIFY toAlphaChanged)
-
 public:
-    explicit QNativeAndroidAlphaAnimation(QObject *parent = nullptr);
-
-    qreal fromAlpha() const;
-    void setFromAlpha(qreal alpha);
-
-    qreal toAlpha() const;
-    void setToAlpha(qreal alpha);
-
-Q_SIGNALS:
-    void fromAlphaChanged();
-    void toAlphaChanged();
-
-protected:
-    QAndroidJniObject onCreate() override;
-
-private:
-    Q_DISABLE_COPY(QNativeAndroidAlphaAnimation)
-    Q_DECLARE_PRIVATE(QNativeAndroidAlphaAnimation)
+    QNativeAndroidOptional<int> resource;
+    QNativeAndroidOptional<int> duration;
+    QNativeAndroidOptional<bool> fillAfter;
+    QNativeAndroidOptional<bool> fillBefore;
+    QNativeAndroidOptional<bool> fillEnabled;
+    QNativeAndroidInterpolator *interpolator = nullptr;
+    QNativeAndroidOptional<int> repeatCount;
+    QNativeAndroidOptional<int> startOffset;
+    QNativeAndroidOptional<QNativeAndroidAnimation::RepeatMode> repeatMode;
+    QNativeAndroidOptional<QNativeAndroidAnimation::ZAdjustment> zAdjustment;
 };
 
 QT_END_NAMESPACE
 
-#endif // QNATIVEANDROIDALPHAANIMATION_P_H
+#endif // QNATIVEANDROIDANIMATION_P_P_H

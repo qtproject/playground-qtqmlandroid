@@ -35,45 +35,58 @@
 ****************************************************************************/
 
 #include "qnativeandroidalphaanimation_p.h"
+#include "qnativeandroidanimation_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidAlphaAnimation::QNativeAndroidAlphaAnimation(QObject *parent) :
-    QNativeAndroidAnimation(parent), m_fromAlpha(0), m_toAlpha(0)
+class QNativeAndroidAlphaAnimationPrivate : public QNativeAndroidAnimationPrivate
+{
+public:
+    qreal fromAlpha = 0.0;
+    qreal toAlpha = 0.0;
+};
+
+QNativeAndroidAlphaAnimation::QNativeAndroidAlphaAnimation(QObject *parent)
+    : QNativeAndroidAnimation(*(new QNativeAndroidAlphaAnimationPrivate), parent)
 {
 }
 
 qreal QNativeAndroidAlphaAnimation::fromAlpha() const
 {
-    return m_fromAlpha;
+    Q_D(const QNativeAndroidAlphaAnimation);
+    return d->fromAlpha;
 }
 
 void QNativeAndroidAlphaAnimation::setFromAlpha(qreal alpha)
 {
-    if (m_fromAlpha != alpha) {
-        m_fromAlpha = alpha;
+    Q_D(QNativeAndroidAlphaAnimation);
+    if (d->fromAlpha != alpha) {
+        d->fromAlpha = alpha;
         emit fromAlphaChanged();
     }
 }
 
 qreal QNativeAndroidAlphaAnimation::toAlpha() const
 {
-    return m_toAlpha;
+    Q_D(const QNativeAndroidAlphaAnimation);
+    return d->toAlpha;
 }
 
 void QNativeAndroidAlphaAnimation::setToAlpha(qreal alpha)
 {
-    if (m_toAlpha != alpha) {
-        m_toAlpha = alpha;
+    Q_D(QNativeAndroidAlphaAnimation);
+    if (d->toAlpha != alpha) {
+        d->toAlpha = alpha;
         emit toAlphaChanged();
     }
 }
 
 QAndroidJniObject QNativeAndroidAlphaAnimation::onCreate()
 {
+    Q_D(QNativeAndroidAlphaAnimation);
     return QAndroidJniObject("android/view/animation/AlphaAnimation",
                              "(FF)V",
-                             m_fromAlpha, m_toAlpha);
+                             d->fromAlpha, d->toAlpha);
 }
 
 QT_END_NAMESPACE

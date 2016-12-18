@@ -35,32 +35,42 @@
 ****************************************************************************/
 
 #include "qnativeandroidanimationset_p.h"
+#include "qnativeandroidanimation_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidAnimationSet::QNativeAndroidAnimationSet(QObject *parent) :
-    QNativeAndroidAnimation(parent), m_shareInterpolator(false)
+class QNativeAndroidAnimationSetPrivate : public QNativeAndroidAnimationPrivate
+{
+public:
+    bool shareInterpolator = false;
+};
+
+QNativeAndroidAnimationSet::QNativeAndroidAnimationSet(QObject *parent)
+    : QNativeAndroidAnimation(*(new QNativeAndroidAnimationSetPrivate), parent)
 {
 }
 
 bool QNativeAndroidAnimationSet::shareInterpolator() const
 {
-    return m_shareInterpolator;
+    Q_D(const QNativeAndroidAnimationSet);
+    return d->shareInterpolator;
 }
 
 void QNativeAndroidAnimationSet::setShareInterpolator(bool share)
 {
-    if (m_shareInterpolator != share) {
-        m_shareInterpolator = share;
+    Q_D(QNativeAndroidAnimationSet);
+    if (d->shareInterpolator != share) {
+        d->shareInterpolator = share;
         emit shareInterpolatorChanged();
     }
 }
 
 QAndroidJniObject QNativeAndroidAnimationSet::onCreate()
 {
+    Q_D(QNativeAndroidAnimationSet);
     return QAndroidJniObject("android/view/animation/AnimationSet",
                              "(Z)V",
-                             m_shareInterpolator);
+                             d->shareInterpolator);
 }
 
 void QNativeAndroidAnimationSet::onInflate(QAndroidJniObject &instance)

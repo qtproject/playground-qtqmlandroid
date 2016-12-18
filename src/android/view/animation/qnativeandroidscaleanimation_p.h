@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidScaleAnimationPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidScaleAnimation : public QNativeAndroidAnimation
 {
     Q_OBJECT
@@ -105,14 +107,8 @@ protected:
     QAndroidJniObject onCreate() override;
 
 private:
-    qreal m_fromX;
-    qreal m_fromY;
-    qreal m_toX;
-    qreal m_toY;
-    qreal m_pivotX;
-    qreal m_pivotY;
-    Relation m_pivotXType;
-    Relation m_pivotYType;
+    Q_DISABLE_COPY(QNativeAndroidScaleAnimation)
+    Q_DECLARE_PRIVATE(QNativeAndroidScaleAnimation)
 };
 
 QT_END_NAMESPACE

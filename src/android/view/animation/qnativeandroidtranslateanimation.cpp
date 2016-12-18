@@ -35,125 +35,155 @@
 ****************************************************************************/
 
 #include "qnativeandroidtranslateanimation_p.h"
+#include "qnativeandroidanimation_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidTranslateAnimation::QNativeAndroidTranslateAnimation(QObject *parent) :
-    QNativeAndroidAnimation(parent), m_fromX(0), m_fromY(0), m_toX(0), m_toY(0),
-    m_fromXType(ABSOLUTE), m_fromYType(ABSOLUTE), m_toXType(ABSOLUTE), m_toYType(ABSOLUTE)
+class QNativeAndroidTranslateAnimationPrivate : public QNativeAndroidAnimationPrivate
+{
+public:
+    qreal fromX = 0.0;
+    qreal fromY = 0.0;
+    qreal toX = 0.0;
+    qreal toY = 0.0;
+    QNativeAndroidTranslateAnimation::Relation fromXType = QNativeAndroidTranslateAnimation::ABSOLUTE;
+    QNativeAndroidTranslateAnimation::Relation fromYType = QNativeAndroidTranslateAnimation::ABSOLUTE;
+    QNativeAndroidTranslateAnimation::Relation toXType = QNativeAndroidTranslateAnimation::ABSOLUTE;
+    QNativeAndroidTranslateAnimation::Relation toYType = QNativeAndroidTranslateAnimation::ABSOLUTE;
+};
+
+QNativeAndroidTranslateAnimation::QNativeAndroidTranslateAnimation(QObject *parent)
+    : QNativeAndroidAnimation(*(new QNativeAndroidTranslateAnimationPrivate), parent)
 {
 }
 
 qreal QNativeAndroidTranslateAnimation::fromX() const
 {
-    return m_fromX;
+    Q_D(const QNativeAndroidTranslateAnimation);
+    return d->fromX;
 }
 
 void QNativeAndroidTranslateAnimation::setFromX(qreal x)
 {
-    if (m_fromX != x) {
-        m_fromX = x;
+    Q_D(QNativeAndroidTranslateAnimation);
+    if (d->fromX != x) {
+        d->fromX = x;
         emit fromXChanged();
     }
 }
 
 qreal QNativeAndroidTranslateAnimation::fromY() const
 {
-    return m_fromY;
+    Q_D(const QNativeAndroidTranslateAnimation);
+    return d->fromY;
 }
 
 void QNativeAndroidTranslateAnimation::setFromY(qreal y)
 {
-    if (m_fromY != y) {
-        m_fromY = y;
+    Q_D(QNativeAndroidTranslateAnimation);
+    if (d->fromY != y) {
+        d->fromY = y;
         emit fromYChanged();
     }
 }
 
 qreal QNativeAndroidTranslateAnimation::toX() const
 {
-    return m_toX;
+    Q_D(const QNativeAndroidTranslateAnimation);
+    return d->toX;
 }
 
 void QNativeAndroidTranslateAnimation::setToX(qreal x)
 {
-    if (m_toX != x) {
-        m_toX = x;
+    Q_D(QNativeAndroidTranslateAnimation);
+    if (d->toX != x) {
+        d->toX = x;
         emit toXChanged();
     }
 }
 
 qreal QNativeAndroidTranslateAnimation::toY() const
 {
-    return m_toY;
+    Q_D(const QNativeAndroidTranslateAnimation);
+    return d->toY;
 }
 
 void QNativeAndroidTranslateAnimation::setToY(qreal y)
 {
-    if (m_toY != y) {
-        m_toY = y;
+    Q_D(QNativeAndroidTranslateAnimation);
+    if (d->toY != y) {
+        d->toY = y;
         emit toYChanged();
     }
 }
 
 QNativeAndroidAnimation::Relation QNativeAndroidTranslateAnimation::fromXType() const
 {
-    return m_fromXType;
+    Q_D(const QNativeAndroidTranslateAnimation);
+    return d->fromXType;
 }
 
 void QNativeAndroidTranslateAnimation::setFromXType(Relation type)
 {
-    if (m_fromXType != type) {
-        m_fromXType = type;
+    Q_D(QNativeAndroidTranslateAnimation);
+    if (d->fromXType != type) {
+        d->fromXType = type;
         emit fromXTypeChanged();
     }
 }
 
 QNativeAndroidAnimation::Relation QNativeAndroidTranslateAnimation::fromYType() const
 {
-    return m_fromYType;
+    Q_D(const QNativeAndroidTranslateAnimation);
+    return d->fromYType;
 }
 
 void QNativeAndroidTranslateAnimation::setFromYType(Relation type)
 {
-    if (m_fromYType != type) {
-        m_fromYType = type;
+    Q_D(QNativeAndroidTranslateAnimation);
+    if (d->fromYType != type) {
+        d->fromYType = type;
         emit fromYTypeChanged();
     }
 }
 
 QNativeAndroidAnimation::Relation QNativeAndroidTranslateAnimation::toXType() const
 {
-    return m_toXType;
+    Q_D(const QNativeAndroidTranslateAnimation);
+    return d->toXType;
 }
 
 void QNativeAndroidTranslateAnimation::setToXType(Relation type)
 {
-    if (m_toXType != type) {
-        m_toXType = type;
+    Q_D(QNativeAndroidTranslateAnimation);
+    if (d->toXType != type) {
+        d->toXType = type;
         emit toXTypeChanged();
     }
 }
 
 QNativeAndroidAnimation::Relation QNativeAndroidTranslateAnimation::toYType() const
 {
-    return m_toYType;
+    Q_D(const QNativeAndroidTranslateAnimation);
+    return d->toYType;
 }
 
 void QNativeAndroidTranslateAnimation::setToYType(Relation type)
 {
-    if (m_toYType != type) {
-        m_toYType = type;
+    Q_D(QNativeAndroidTranslateAnimation);
+    if (d->toYType != type) {
+        d->toYType = type;
         emit toYTypeChanged();
     }
 }
 
 QAndroidJniObject QNativeAndroidTranslateAnimation::onCreate()
 {
+    Q_D(QNativeAndroidTranslateAnimation);
     return QAndroidJniObject("android/view/animation/TranslateAnimation",
                              "(IFIFIFIF)V",
-                             m_fromXType, m_fromX, m_toXType, m_toX,
-                             m_fromYType, m_fromY, m_toYType, m_toY);
+                             d->fromXType, d->fromX, d->toXType, d->toX,
+                             d->fromYType, d->fromY, d->toYType, d->toY);
 }
 
 QT_END_NAMESPACE

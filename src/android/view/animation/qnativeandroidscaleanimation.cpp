@@ -35,125 +35,155 @@
 ****************************************************************************/
 
 #include "qnativeandroidscaleanimation_p.h"
+#include "qnativeandroidanimation_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidScaleAnimation::QNativeAndroidScaleAnimation(QObject *parent) :
-    QNativeAndroidAnimation(parent), m_fromX(0), m_fromY(0), m_toX(0), m_toY(0),
-    m_pivotX(0), m_pivotY(0), m_pivotXType(ABSOLUTE), m_pivotYType(ABSOLUTE)
+class QNativeAndroidScaleAnimationPrivate : public QNativeAndroidAnimationPrivate
+{
+public:
+    qreal fromX = 0.0;
+    qreal fromY = 0.0;
+    qreal toX = 0.0;
+    qreal toY = 0.0;
+    qreal pivotX = 0.0;
+    qreal pivotY = 0.0;
+    QNativeAndroidScaleAnimation::Relation pivotXType = QNativeAndroidScaleAnimation::ABSOLUTE;
+    QNativeAndroidScaleAnimation::Relation pivotYType = QNativeAndroidScaleAnimation::ABSOLUTE;
+};
+
+QNativeAndroidScaleAnimation::QNativeAndroidScaleAnimation(QObject *parent)
+    : QNativeAndroidAnimation(*(new QNativeAndroidScaleAnimationPrivate), parent)
 {
 }
 
 qreal QNativeAndroidScaleAnimation::fromXScale() const
 {
-    return m_fromX;
+    Q_D(const QNativeAndroidScaleAnimation);
+    return d->fromX;
 }
 
 void QNativeAndroidScaleAnimation::setFromXScale(qreal x)
 {
-    if (m_fromX != x) {
-        m_fromX = x;
+    Q_D(QNativeAndroidScaleAnimation);
+    if (d->fromX != x) {
+        d->fromX = x;
         emit fromXScaleChanged();
     }
 }
 
 qreal QNativeAndroidScaleAnimation::fromYScale() const
 {
-    return m_fromY;
+    Q_D(const QNativeAndroidScaleAnimation);
+    return d->fromY;
 }
 
 void QNativeAndroidScaleAnimation::setFromYScale(qreal y)
 {
-    if (m_fromY != y) {
-        m_fromY = y;
+    Q_D(QNativeAndroidScaleAnimation);
+    if (d->fromY != y) {
+        d->fromY = y;
         emit fromYScaleChanged();
     }
 }
 
 qreal QNativeAndroidScaleAnimation::toXScale() const
 {
-    return m_toX;
+    Q_D(const QNativeAndroidScaleAnimation);
+    return d->toX;
 }
 
 void QNativeAndroidScaleAnimation::setToXScale(qreal x)
 {
-    if (m_toX != x) {
-        m_toX = x;
+    Q_D(QNativeAndroidScaleAnimation);
+    if (d->toX != x) {
+        d->toX = x;
         emit toXScaleChanged();
     }
 }
 
 qreal QNativeAndroidScaleAnimation::toYScale() const
 {
-    return m_toY;
+    Q_D(const QNativeAndroidScaleAnimation);
+    return d->toY;
 }
 
 void QNativeAndroidScaleAnimation::setToYScale(qreal y)
 {
-    if (m_toY != y) {
-        m_toY = y;
+    Q_D(QNativeAndroidScaleAnimation);
+    if (d->toY != y) {
+        d->toY = y;
         emit toYScaleChanged();
     }
 }
 
 qreal QNativeAndroidScaleAnimation::pivotX() const
 {
-    return m_pivotX;
+    Q_D(const QNativeAndroidScaleAnimation);
+    return d->pivotX;
 }
 
 void QNativeAndroidScaleAnimation::setPivotX(qreal pivotX)
 {
-    if (m_pivotX != pivotX) {
-        m_pivotX = pivotX;
+    Q_D(QNativeAndroidScaleAnimation);
+    if (d->pivotX != pivotX) {
+        d->pivotX = pivotX;
         emit pivotXChanged();
     }
 }
 
 qreal QNativeAndroidScaleAnimation::pivotY() const
 {
-    return m_pivotY;
+    Q_D(const QNativeAndroidScaleAnimation);
+    return d->pivotY;
 }
 
 void QNativeAndroidScaleAnimation::setPivotY(qreal pivotY)
 {
-    if (m_pivotY != pivotY) {
-        m_pivotY = pivotY;
+    Q_D(QNativeAndroidScaleAnimation);
+    if (d->pivotY != pivotY) {
+        d->pivotY = pivotY;
         emit pivotYChanged();
     }
 }
 
 QNativeAndroidAnimation::Relation QNativeAndroidScaleAnimation::pivotXType() const
 {
-    return m_pivotXType;
+    Q_D(const QNativeAndroidScaleAnimation);
+    return d->pivotXType;
 }
 
 void QNativeAndroidScaleAnimation::setPivotXType(Relation type)
 {
-    if (m_pivotXType != type) {
-        m_pivotXType = type;
+    Q_D(QNativeAndroidScaleAnimation);
+    if (d->pivotXType != type) {
+        d->pivotXType = type;
         emit pivotXTypeChanged();
     }
 }
 
 QNativeAndroidAnimation::Relation QNativeAndroidScaleAnimation::pivotYType() const
 {
-    return m_pivotYType;
+    Q_D(const QNativeAndroidScaleAnimation);
+    return d->pivotYType;
 }
 
 void QNativeAndroidScaleAnimation::setPivotYType(Relation type)
 {
-    if (m_pivotYType != type) {
-        m_pivotYType = type;
+    Q_D(QNativeAndroidScaleAnimation);
+    if (d->pivotYType != type) {
+        d->pivotYType = type;
         emit pivotYTypeChanged();
     }
 }
 
 QAndroidJniObject QNativeAndroidScaleAnimation::onCreate()
 {
+    Q_D(QNativeAndroidScaleAnimation);
     return QAndroidJniObject("android/view/animation/ScaleAnimation",
                              "(FFFFIFIF)V",
-                             m_fromX, m_toX, m_fromY, m_toY,
-                             m_pivotXType, m_pivotX, m_pivotYType, m_pivotY);
+                             d->fromX, d->toX, d->fromY, d->toY,
+                             d->pivotXType, d->pivotX, d->pivotYType, d->pivotY);
 }
 
 QT_END_NAMESPACE

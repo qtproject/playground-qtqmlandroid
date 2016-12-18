@@ -54,6 +54,7 @@
 QT_BEGIN_NAMESPACE
 
 class QNativeAndroidInterpolator;
+class QNativeAndroidAnimationPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidAnimation : public QNativeAndroidContextual
 {
@@ -142,6 +143,8 @@ Q_SIGNALS:
     void zAdjustmentChanged();
 
 protected:
+    QNativeAndroidAnimation(QNativeAndroidAnimationPrivate &dd, QObject *parent = nullptr);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
 
@@ -151,16 +154,8 @@ private Q_SLOTS:
     void updateInterpolator();
 
 private:
-    QNativeAndroidOptional<int> m_resource;
-    QNativeAndroidOptional<int> m_duration;
-    QNativeAndroidOptional<bool> m_fillAfter;
-    QNativeAndroidOptional<bool> m_fillBefore;
-    QNativeAndroidOptional<bool> m_fillEnabled;
-    QNativeAndroidInterpolator *m_interpolator;
-    QNativeAndroidOptional<int> m_repeatCount;
-    QNativeAndroidOptional<RepeatMode> m_repeatMode;
-    QNativeAndroidOptional<int> m_startOffset;
-    QNativeAndroidOptional<ZAdjustment> m_zAdjustment;
+    Q_DISABLE_COPY(QNativeAndroidAnimation)
+    Q_DECLARE_PRIVATE(QNativeAndroidAnimation)
 };
 
 QT_END_NAMESPACE

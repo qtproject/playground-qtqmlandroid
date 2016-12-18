@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidTranslateAnimationPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidTranslateAnimation : public QNativeAndroidAnimation
 {
     Q_OBJECT
@@ -105,14 +107,8 @@ protected:
     QAndroidJniObject onCreate() override;
 
 private:
-    qreal m_fromX;
-    qreal m_fromY;
-    qreal m_toX;
-    qreal m_toY;
-    Relation m_fromXType;
-    Relation m_fromYType;
-    Relation m_toXType;
-    Relation m_toYType;
+    Q_DISABLE_COPY(QNativeAndroidTranslateAnimation)
+    Q_DECLARE_PRIVATE(QNativeAndroidTranslateAnimation)
 };
 
 QT_END_NAMESPACE

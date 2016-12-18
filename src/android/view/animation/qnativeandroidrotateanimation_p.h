@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidRotateAnimationPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidRotateAnimation : public QNativeAndroidAnimation
 {
     Q_OBJECT
@@ -96,12 +98,8 @@ protected:
     QAndroidJniObject onCreate() override;
 
 private:
-    qreal m_from;
-    qreal m_to;
-    qreal m_pivotX;
-    qreal m_pivotY;
-    Relation m_pivotXType;
-    Relation m_pivotYType;
+    Q_DISABLE_COPY(QNativeAndroidRotateAnimation)
+    Q_DECLARE_PRIVATE(QNativeAndroidRotateAnimation)
 };
 
 QT_END_NAMESPACE
