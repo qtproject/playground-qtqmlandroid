@@ -40,7 +40,7 @@
 #include "qnativeandroidmenu_p.h"
 #include "qnativeandroidview_p.h"
 #include "qnativeandroidwindow_p.h"
-#include "qtqmlandroidfunctions_p.h"
+#include "qtnativeandroidfunctions_p.h"
 #include <QtCore/private/qjnihelpers_p.h>
 #include <QtAndroidExtras/qandroidfunctions.h>
 #include <QtAndroidExtras/qandroidjnienvironment.h>

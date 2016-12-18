@@ -34,38 +34,70 @@
 **
 ****************************************************************************/
 
-#ifndef QTQMLANDROIDFUNCTIONS_P_H
-#define QTQMLANDROIDFUNCTIONS_P_H
-
-//
-//  W A R N I N G
-//  -------------
-//
-// This file is not part of the Qt API.  It exists purely as an
-// implementation detail.  This header file may change from version to
-// version without notice, or even be removed.
-//
-// We mean it.
-//
-
-#include <functional>
-#include <QtCore/qglobal.h>
+#include "qtnativeandroidfunctions_p.h"
+#include <QtCore/qstring.h>
+#include <QtCore/private/qjnihelpers_p.h>
+#include <QtConcurrent/qtconcurrentrun.h>
+#include <QtAndroidExtras/qandroidfunctions.h>
+#include <QtAndroidExtras/qandroidjniobject.h>
+#include <QtAndroidExtras/qandroidjnienvironment.h>
 
 QT_BEGIN_NAMESPACE
 
-class QString;
-class QAndroidJniObject;
+namespace QtQmlAndroid {
 
-namespace QtQmlAndroid
+void callFunction(std::function<void()> method)
 {
-    void callFunction(std::function<void()> method);
-    void callTextMethod(const QAndroidJniObject &obj, const char *method, const QString &text);
-    void callRealMethod(const QAndroidJniObject &obj, const char *method, qreal value);
-    void callIntMethod(const QAndroidJniObject &obj, const char *method, int value);
-    void callBoolMethod(const QAndroidJniObject &obj, const char *method, bool value);
-    void callVoidMethod(const QAndroidJniObject &obj, const char *method);
+    QAndroidJniEnvironment env;
+    QRunnable *runnable = new QtConcurrent::StoredFunctorCall0<void, decltype(method)>(method);
+    QtAndroidPrivate::runOnUiThread(runnable, env);
+}
+
+void callTextMethod(const QAndroidJniObject &obj, const char *method, const QString &text)
+{
+    if (obj.isValid()) {
+        callFunction([=]() {
+            obj.callMethod<void>(method, "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(text).object());
+        });
+    }
+}
+
+void callRealMethod(const QAndroidJniObject &obj, const char *method, qreal value)
+{
+    if (obj.isValid()) {
+        callFunction([=]() {
+            obj.callMethod<void>(method, "(F)V", value);
+        });
+    }
+}
+
+void callIntMethod(const QAndroidJniObject &obj, const char *method, int value)
+{
+    if (obj.isValid()) {
+        callFunction([=]() {
+            obj.callMethod<void>(method, "(I)V", value);
+        });
+    }
+}
+
+void callBoolMethod(const QAndroidJniObject &obj, const char *method, bool value)
+{
+    if (obj.isValid()) {
+        callFunction([=]() {
+            obj.callMethod<void>(method, "(Z)V", value);
+        });
+    }
+}
+
+void callVoidMethod(const QAndroidJniObject &obj, const char *method)
+{
+    if (obj.isValid()) {
+        callFunction([=]() {
+            obj.callMethod<void>(method);
+        });
+    }
+}
+
 }
 
 QT_END_NAMESPACE
-
-#endif // QTQMLANDROIDFUNCTIONS_P_H

@@ -35,7 +35,7 @@
 ****************************************************************************/
 
 #include "qnativeandroidpopupmenu_p.h"
-#include "qtqmlandroidfunctions_p.h"
+#include "qtnativeandroidfunctions_p.h"
 #include "qnativeandroidmenuitem_p.h"
 #include "qnativeandroidcontext_p.h"
 #include "qnativeandroidview_p.h"

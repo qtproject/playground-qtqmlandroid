@@ -36,7 +36,7 @@
 
 #include "qnativeandroidrecyclerview_p.h"
 #include "qnativeandroidrecycleradapter_p.h"
-#include "qtqmlandroidfunctions_p.h"
+#include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 

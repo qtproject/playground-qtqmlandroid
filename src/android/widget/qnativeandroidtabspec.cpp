@@ -37,7 +37,7 @@
 #include "qnativeandroidtabspec_p.h"
 #include "qnativeandroidtabhost_p.h"
 #include "qnativeandroidview_p.h"
-#include "qtqmlandroidfunctions_p.h"
+#include "qtnativeandroidfunctions_p.h"
 #include <QtAndroidExtras/qandroidjniobject.h>
 
 QT_BEGIN_NAMESPACE

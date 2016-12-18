@@ -35,7 +35,7 @@
 ****************************************************************************/
 
 #include "qnativeandroidtoast_p.h"
-#include "qtqmlandroidfunctions_p.h"
+#include "qtnativeandroidfunctions_p.h"
 #include "qnativeandroidview_p.h"
 #include <QtCore/qdebug.h>
 

@@ -39,7 +39,7 @@
 #include "qnativeandroidcolordrawable_p.h"
 #include "qnativeandroidlayoutparams_p.h"
 #include "qnativeandroidanimation_p.h"
-#include "qtqmlandroidfunctions_p.h"
+#include "qtnativeandroidfunctions_p.h"
 #include <QtCore/qcoreapplication.h>
 #include <QtCore/qcoreevent.h>
 #include <QtCore/qhash.h>

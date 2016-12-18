@@ -35,7 +35,7 @@
 ****************************************************************************/
 
 #include "qnativeandroidrecycleradapter_p.h"
-#include "qtqmlandroidfunctions_p.h"
+#include "qtnativeandroidfunctions_p.h"
 #include "qnativeandroidview_p.h"
 #include <QtQml/qqmlcomponent.h>
 #include <QtQml/qqmlcontext.h>
