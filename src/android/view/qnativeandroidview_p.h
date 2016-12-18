@@ -57,6 +57,7 @@ QT_BEGIN_NAMESPACE
 class QNativeAndroidDrawable;
 class QNativeAndroidAnimation;
 class QNativeAndroidLayoutParams;
+class QNativeAndroidViewPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidView : public QNativeAndroidContextual
 {
@@ -272,6 +273,8 @@ Q_SIGNALS:
     void longClick(); // TODO: accept
 
 protected:
+    QNativeAndroidView(QNativeAndroidViewPrivate &dd, QNativeAndroidContext *context = nullptr);
+
     virtual void polish();
     virtual void viewChange(ViewChange change, const ViewChangeData &data);
 
@@ -304,41 +307,8 @@ private Q_SLOTS:
     void updateGeometry(int top, int left, int right, int bottom);
 
 private:
-    int m_id;
-    QNativeAndroidView *m_parent;
-    QList<QNativeAndroidView *> m_children;
-    QNativeAndroidDrawable *m_background;
-    int m_backgroundResource;
-    QNativeAndroidAnimation *m_animation;
-    bool m_polishing;
-    bool m_visible;
-
-    QAndroidJniObject m_listener;
-
-    QNativeAndroidLayoutParams *m_layoutParams;
-
-    QNativeAndroidOptional<bool> m_focus;
-    QNativeAndroidOptional<int> m_top;
-    QNativeAndroidOptional<int> m_left;
-    QNativeAndroidOptional<int> m_right;
-    QNativeAndroidOptional<int> m_bottom;
-    QNativeAndroidOptional<int> m_padding;
-    QNativeAndroidOptional<int> m_paddingTop;
-    QNativeAndroidOptional<int> m_paddingLeft;
-    QNativeAndroidOptional<int> m_paddingRight;
-    QNativeAndroidOptional<int> m_paddingBottom;
-    QNativeAndroidOptional<qreal> m_alpha;
-    QNativeAndroidOptional<qreal> m_scaleX;
-    QNativeAndroidOptional<qreal> m_scaleY;
-    QNativeAndroidOptional<qreal> m_pivotX;
-    QNativeAndroidOptional<qreal> m_pivotY;
-    QNativeAndroidOptional<qreal> m_rotation;
-    QNativeAndroidOptional<qreal> m_rotationX;
-    QNativeAndroidOptional<qreal> m_rotationY;
-    QNativeAndroidOptional<qreal> m_translationX;
-    QNativeAndroidOptional<qreal> m_translationY;
-    QNativeAndroidOptional<qreal> m_translationZ;
-    QNativeAndroidOptional<qreal> m_elevation;
+    Q_DISABLE_COPY(QNativeAndroidView)
+    Q_DECLARE_PRIVATE(QNativeAndroidView)
 };
 
 QT_END_NAMESPACE

@@ -6,6 +6,7 @@ HEADERS += \
     $$PWD/qnativeandroidmenu_p.h \
     $$PWD/qnativeandroidmenuitem_p.h \
     $$PWD/qnativeandroidview_p.h \
+    $$PWD/qnativeandroidview_p_p.h \
     $$PWD/qnativeandroidviewgroup_p.h \
     $$PWD/qnativeandroidwindow_p.h
 
