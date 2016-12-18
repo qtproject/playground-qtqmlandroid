@@ -49,9 +49,10 @@
 //
 
 #include <QtNativeAndroid/private/qnativeandroidinterpolator_p.h>
-#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
+
+class QNativeAndroidOvershootInterpolatorPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidOvershootInterpolator : public QNativeAndroidInterpolator
 {
@@ -71,7 +72,8 @@ protected:
     QAndroidJniObject onCreate() override;
 
 private:
-    QNativeAndroidOptional<qreal> m_tension;
+    Q_DISABLE_COPY(QNativeAndroidOvershootInterpolator)
+    Q_DECLARE_PRIVATE(QNativeAndroidOvershootInterpolator)
 };
 
 QT_END_NAMESPACE

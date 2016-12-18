@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidAccelerateDecelerateInterpolator::QNativeAndroidAccelerateDecelerateInterpolator(QObject *parent) :
-    QNativeAndroidInterpolator(parent)
+QNativeAndroidAccelerateDecelerateInterpolator::QNativeAndroidAccelerateDecelerateInterpolator(QObject *parent)
+    : QNativeAndroidInterpolator(parent)
 {
 }
 

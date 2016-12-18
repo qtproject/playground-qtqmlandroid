@@ -13,6 +13,7 @@ HEADERS += \
     $$PWD/qnativeandroidcycleinterpolator_p.h \
     $$PWD/qnativeandroiddecelerateinterpolator_p.h \
     $$PWD/qnativeandroidinterpolator_p.h \
+    $$PWD/qnativeandroidinterpolator_p_p.h \
     $$PWD/qnativeandroidlinearinterpolator_p.h \
     $$PWD/qnativeandroidovershootinterpolator_p.h \
     $$PWD/qnativeandroidpathinterpolator_p.h \

@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidLinearInterpolator::QNativeAndroidLinearInterpolator(QObject *parent) :
-    QNativeAndroidInterpolator(parent)
+QNativeAndroidLinearInterpolator::QNativeAndroidLinearInterpolator(QObject *parent)
+    : QNativeAndroidInterpolator(parent)
 {
 }
 

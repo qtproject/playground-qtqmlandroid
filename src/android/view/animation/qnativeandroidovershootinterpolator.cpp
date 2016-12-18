@@ -35,37 +35,48 @@
 ****************************************************************************/
 
 #include "qnativeandroidovershootinterpolator_p.h"
+#include "qnativeandroidinterpolator_p_p.h"
+#include "qnativeandroidoptional_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidOvershootInterpolator::QNativeAndroidOvershootInterpolator(QObject *parent) :
-    QNativeAndroidInterpolator(parent)
+class QNativeAndroidOvershootInterpolatorPrivate : public QNativeAndroidInterpolatorPrivate
+{
+public:
+    QNativeAndroidOptional<qreal> tension;
+};
+
+QNativeAndroidOvershootInterpolator::QNativeAndroidOvershootInterpolator(QObject *parent)
+    : QNativeAndroidInterpolator(*(new QNativeAndroidOvershootInterpolatorPrivate), parent)
 {
 }
 
 qreal QNativeAndroidOvershootInterpolator::tension() const
 {
-    if (m_tension.isNull())
+    Q_D(const QNativeAndroidOvershootInterpolator);
+    if (d->tension.isNull())
         return 2.0;
-    return m_tension;
+    return d->tension;
 }
 
 void QNativeAndroidOvershootInterpolator::setTension(qreal tension)
 {
-    if (m_tension.isNull() || m_tension != tension) {
-        m_tension = tension;
+    Q_D(QNativeAndroidOvershootInterpolator);
+    if (d->tension.isNull() || d->tension != tension) {
+        d->tension = tension;
         emit tensionChanged();
     }
 }
 
 QAndroidJniObject QNativeAndroidOvershootInterpolator::onCreate()
 {
-    if (m_tension.isNull())
+    Q_D(QNativeAndroidOvershootInterpolator);
+    if (d->tension.isNull())
         return QAndroidJniObject("android/view/animation/OvershootInterpolator");
 
     return QAndroidJniObject("android/view/animation/OvershootInterpolator",
                              "(F)V",
-                             m_tension);
+                             d->tension);
 }
 
 QT_END_NAMESPACE

@@ -35,11 +35,17 @@
 ****************************************************************************/
 
 #include "qnativeandroidinterpolator_p.h"
+#include "qnativeandroidinterpolator_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidInterpolator::QNativeAndroidInterpolator(QObject *parent) :
-    QNativeAndroidObject(parent)
+QNativeAndroidInterpolator::QNativeAndroidInterpolator(QObject *parent)
+    : QNativeAndroidObject(*(new QNativeAndroidInterpolatorPrivate), parent)
+{
+}
+
+QNativeAndroidInterpolator::QNativeAndroidInterpolator(QNativeAndroidInterpolatorPrivate &dd, QObject *parent)
+    : QNativeAndroidObject(dd, parent)
 {
 }
 

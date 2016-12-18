@@ -34,49 +34,29 @@
 **
 ****************************************************************************/
 
-#include "qnativeandroidanticipateinterpolator_p.h"
-#include "qnativeandroidinterpolator_p_p.h"
-#include "qnativeandroidoptional_p.h"
+#ifndef QNATIVEANDROIDINTERPOLATOR_P_P_H
+#define QNATIVEANDROIDINTERPOLATOR_P_P_H
+
+//
+//  W A R N I N G
+//  -------------
+//
+// This file is not part of the Qt API.  It exists purely as an
+// implementation detail.  This header file may change from version to
+// version without notice, or even be removed.
+//
+// We mean it.
+//
+
+#include <QtNativeAndroid/private/qnativeandroidobject_p_p.h>
 
 QT_BEGIN_NAMESPACE
 
-class QNativeAndroidAnticipateInterpolatorPrivate : public QNativeAndroidInterpolatorPrivate
+class QNativeAndroidInterpolatorPrivate : public QNativeAndroidObjectPrivate
 {
 public:
-    QNativeAndroidOptional<qreal> tension;
 };
 
-QNativeAndroidAnticipateInterpolator::QNativeAndroidAnticipateInterpolator(QObject *parent)
-    : QNativeAndroidInterpolator(*(new QNativeAndroidAnticipateInterpolatorPrivate), parent)
-{
-}
-
-qreal QNativeAndroidAnticipateInterpolator::tension() const
-{
-    Q_D(const QNativeAndroidAnticipateInterpolator);
-    if (d->tension.isNull())
-        return 1.0;
-    return d->tension;
-}
-
-void QNativeAndroidAnticipateInterpolator::setTension(qreal tension)
-{
-    Q_D(QNativeAndroidAnticipateInterpolator);
-    if (d->tension.isNull() || d->tension != tension) {
-        d->tension = tension;
-        emit tensionChanged();
-    }
-}
-
-QAndroidJniObject QNativeAndroidAnticipateInterpolator::onCreate()
-{
-    Q_D(QNativeAndroidAnticipateInterpolator);
-    if (d->tension.isNull())
-        return QAndroidJniObject("android/view/animation/AnticipateInterpolator");
-
-    return QAndroidJniObject("android/view/animation/AnticipateInterpolator",
-                             "(F)V",
-                             d->tension);
-}
-
 QT_END_NAMESPACE
+
+#endif // QNATIVEANDROIDINTERPOLATOR_P_P_H

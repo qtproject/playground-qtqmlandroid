@@ -48,10 +48,7 @@
 // We mean it.
 //
 
-#include <QtNativeAndroid/private/qtnativeandroidglobal_p.h>
-#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 #include <QtNativeAndroid/private/qnativeandroidinterpolator_p.h>
-#include <QtAndroidExtras/qandroidjniobject.h>
 
 QT_BEGIN_NAMESPACE
 
@@ -66,8 +63,6 @@ Q_SIGNALS:
 
 protected:
     QAndroidJniObject onCreate() override;
-
-private:
 };
 
 QT_END_NAMESPACE

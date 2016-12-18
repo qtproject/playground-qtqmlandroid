@@ -35,37 +35,48 @@
 ****************************************************************************/
 
 #include "qnativeandroidcycleinterpolator_p.h"
+#include "qnativeandroidinterpolator_p_p.h"
+#include "qnativeandroidoptional_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidCycleInterpolator::QNativeAndroidCycleInterpolator(QObject *parent) :
-    QNativeAndroidInterpolator(parent)
+class QNativeAndroidCycleInterpolatorPrivate : public QNativeAndroidInterpolatorPrivate
+{
+public:
+    QNativeAndroidOptional<qreal> cycles;
+};
+
+QNativeAndroidCycleInterpolator::QNativeAndroidCycleInterpolator(QObject *parent)
+    : QNativeAndroidInterpolator(*(new QNativeAndroidCycleInterpolatorPrivate), parent)
 {
 }
 
 qreal QNativeAndroidCycleInterpolator::cycles() const
 {
-    if (m_cycles.isNull())
+    Q_D(const QNativeAndroidCycleInterpolator);
+    if (d->cycles.isNull())
         return 1.0;
-    return m_cycles;
+    return d->cycles;
 }
 
 void QNativeAndroidCycleInterpolator::setCycles(qreal cycles)
 {
-    if (m_cycles.isNull() || m_cycles != cycles) {
-        m_cycles = cycles;
+    Q_D(QNativeAndroidCycleInterpolator);
+    if (d->cycles.isNull() || d->cycles != cycles) {
+        d->cycles = cycles;
         emit cyclesChanged();
     }
 }
 
 QAndroidJniObject QNativeAndroidCycleInterpolator::onCreate()
 {
-    if (m_cycles.isNull())
+    Q_D(QNativeAndroidCycleInterpolator);
+    if (d->cycles.isNull())
         return QAndroidJniObject("android/view/animation/CycleInterpolator");
 
     return QAndroidJniObject("android/view/animation/CycleInterpolator",
                              "(F)V",
-                             m_cycles);
+                             d->cycles);
 }
 
 QT_END_NAMESPACE

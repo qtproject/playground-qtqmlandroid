@@ -35,58 +35,72 @@
 ****************************************************************************/
 
 #include "qnativeandroidanticipateovershootinterpolator_p.h"
+#include "qnativeandroidinterpolator_p_p.h"
+#include "qnativeandroidoptional_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidAnticipateOvershootInterpolator::QNativeAndroidAnticipateOvershootInterpolator(QObject *parent) :
-    QNativeAndroidInterpolator(parent)
+class QNativeAndroidAnticipateOvershootInterpolatorPrivate : public QNativeAndroidInterpolatorPrivate
+{
+public:
+    QNativeAndroidOptional<qreal> tension;
+    QNativeAndroidOptional<qreal> extraTension;
+};
+
+QNativeAndroidAnticipateOvershootInterpolator::QNativeAndroidAnticipateOvershootInterpolator(QObject *parent)
+    : QNativeAndroidInterpolator(*(new QNativeAndroidAnticipateOvershootInterpolatorPrivate), parent)
 {
 }
 
 qreal QNativeAndroidAnticipateOvershootInterpolator::tension() const
 {
-    if (m_tension.isNull())
+    Q_D(const QNativeAndroidAnticipateOvershootInterpolator);
+    if (d->tension.isNull())
         return 1.0;
-    return m_tension;
+    return d->tension;
 }
 
 void QNativeAndroidAnticipateOvershootInterpolator::setTension(qreal tension)
 {
-    if (m_tension.isNull() || m_tension != tension) {
-        m_tension = tension;
+    Q_D(QNativeAndroidAnticipateOvershootInterpolator);
+    if (d->tension.isNull() || d->tension != tension) {
+        d->tension = tension;
         emit tensionChanged();
     }
 }
 
 qreal QNativeAndroidAnticipateOvershootInterpolator::extraTension() const
 {
-    if (m_extraTension.isNull())
+    Q_D(const QNativeAndroidAnticipateOvershootInterpolator);
+    if (d->extraTension.isNull())
         return 1.0;
-    return m_extraTension;
+    return d->extraTension;
 }
 
 void QNativeAndroidAnticipateOvershootInterpolator::setExtraTension(qreal tension)
 {
-    if (m_extraTension.isNull() || m_extraTension != tension) {
-        m_extraTension = tension;
+    Q_D(QNativeAndroidAnticipateOvershootInterpolator);
+    if (d->extraTension.isNull() || d->extraTension != tension) {
+        d->extraTension = tension;
         emit extraTensionChanged();
     }
 }
 
 QAndroidJniObject QNativeAndroidAnticipateOvershootInterpolator::onCreate()
 {
-    if (m_tension.isNull() && m_extraTension.isNull())
+    Q_D(QNativeAndroidAnticipateOvershootInterpolator);
+    if (d->tension.isNull() && d->extraTension.isNull())
         return QAndroidJniObject("android/view/animation/AnticipateOvershootInterpolator");
 
-    if (!m_tension.isNull())
+    if (!d->tension.isNull())
         return QAndroidJniObject("android/view/animation/AnticipateOvershootInterpolator",
                                  "(F)V",
-                                 m_tension);
+                                 d->tension);
 
     return QAndroidJniObject("android/view/animation/AnticipateOvershootInterpolator",
                              "(FF)V",
-                             m_tension,
-                             m_extraTension);
+                             d->tension,
+                             d->extraTension);
 }
 
 QT_END_NAMESPACE

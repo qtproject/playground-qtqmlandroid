@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidBounceInterpolator::QNativeAndroidBounceInterpolator(QObject *parent) :
-    QNativeAndroidInterpolator(parent)
+QNativeAndroidBounceInterpolator::QNativeAndroidBounceInterpolator(QObject *parent)
+    : QNativeAndroidInterpolator(parent)
 {
 }
 

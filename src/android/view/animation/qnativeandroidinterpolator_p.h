@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidInterpolatorPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidInterpolator : public QNativeAndroidObject
 {
     Q_OBJECT
@@ -60,7 +62,13 @@ public:
     explicit QNativeAndroidInterpolator(QObject *parent = nullptr);
 
 protected:
+    QNativeAndroidInterpolator(QNativeAndroidInterpolatorPrivate &dd, QObject *parent = nullptr);
+
     QAndroidJniObject onCreate() override;
+
+private:
+    Q_DISABLE_COPY(QNativeAndroidInterpolator)
+    Q_DECLARE_PRIVATE(QNativeAndroidInterpolator)
 };
 
 QT_END_NAMESPACE

@@ -35,89 +35,109 @@
 ****************************************************************************/
 
 #include "qnativeandroidpathinterpolator_p.h"
+#include "qnativeandroidinterpolator_p_p.h"
+#include "qnativeandroidoptional_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidPathInterpolator::QNativeAndroidPathInterpolator(QObject *parent) :
-    QNativeAndroidInterpolator(parent)
+class QNativeAndroidPathInterpolatorPrivate : public QNativeAndroidInterpolatorPrivate
+{
+public:
+    QNativeAndroidOptional<qreal> controlX;
+    QNativeAndroidOptional<qreal> controlY;
+    QNativeAndroidOptional<qreal> controlX2;
+    QNativeAndroidOptional<qreal> controlY2;
+};
+
+QNativeAndroidPathInterpolator::QNativeAndroidPathInterpolator(QObject *parent)
+    : QNativeAndroidInterpolator(*(new QNativeAndroidPathInterpolatorPrivate), parent)
 {
 }
 
 qreal QNativeAndroidPathInterpolator::controlX() const
 {
-    if (m_controlX.isNull())
+    Q_D(const QNativeAndroidPathInterpolator);
+    if (d->controlX.isNull())
         return 0.0;
-    return m_controlX;
+    return d->controlX;
 }
 
 void QNativeAndroidPathInterpolator::setControlX(qreal x)
 {
-    if (m_controlX.isNull() || m_controlX != x) {
-        m_controlX = x;
+    Q_D(QNativeAndroidPathInterpolator);
+    if (d->controlX.isNull() || d->controlX != x) {
+        d->controlX = x;
         emit controlXChanged();
     }
 }
 
 qreal QNativeAndroidPathInterpolator::controlY() const
 {
-    if (m_controlY.isNull())
+    Q_D(const QNativeAndroidPathInterpolator);
+    if (d->controlY.isNull())
         return 0.0;
-    return m_controlY;
+    return d->controlY;
 }
 
 void QNativeAndroidPathInterpolator::setControlY(qreal y)
 {
-    if (m_controlY.isNull() || m_controlY != y) {
-        m_controlY = y;
+    Q_D(QNativeAndroidPathInterpolator);
+    if (d->controlY.isNull() || d->controlY != y) {
+        d->controlY = y;
         emit controlYChanged();
     }
 }
 
 qreal QNativeAndroidPathInterpolator::controlX2() const
 {
-    if (m_controlX2.isNull())
+    Q_D(const QNativeAndroidPathInterpolator);
+    if (d->controlX2.isNull())
         return 0.0;
-    return m_controlX2;
+    return d->controlX2;
 }
 
 void QNativeAndroidPathInterpolator::setControlX2(qreal x)
 {
-    if (m_controlX2.isNull() || m_controlX2 != x) {
-        m_controlX2 = x;
+    Q_D(QNativeAndroidPathInterpolator);
+    if (d->controlX2.isNull() || d->controlX2 != x) {
+        d->controlX2 = x;
         emit controlX2Changed();
     }
 }
 
 qreal QNativeAndroidPathInterpolator::controlY2() const
 {
-    if (m_controlY2.isNull())
+    Q_D(const QNativeAndroidPathInterpolator);
+    if (d->controlY2.isNull())
         return 0.0;
-    return m_controlY2;
+    return d->controlY2;
 }
 
 void QNativeAndroidPathInterpolator::setControlY2(qreal y)
 {
-    if (m_controlY2.isNull() || m_controlY2 != y) {
-        m_controlY2 = y;
+    Q_D(QNativeAndroidPathInterpolator);
+    if (d->controlY2.isNull() || d->controlY2 != y) {
+        d->controlY2 = y;
         emit controlY2Changed();
     }
 }
 
 QAndroidJniObject QNativeAndroidPathInterpolator::onCreate()
 {
-    if (!m_controlX.isNull() && !m_controlY.isNull() && !m_controlX2.isNull() && !m_controlY2.isNull())
+    Q_D(QNativeAndroidPathInterpolator);
+    if (!d->controlX.isNull() && !d->controlY.isNull() && !d->controlX2.isNull() && !d->controlY2.isNull())
         return QAndroidJniObject("android/view/animation/PathInterpolator",
                                  "(FFFF)V",
-                                 m_controlX,
-                                 m_controlY,
-                                 m_controlX2,
-                                 m_controlY2);
+                                 d->controlX,
+                                 d->controlY,
+                                 d->controlX2,
+                                 d->controlY2);
 
-    if (!m_controlX.isNull() && !m_controlY.isNull())
+    if (!d->controlX.isNull() && !d->controlY.isNull())
         return QAndroidJniObject("android/view/animation/PathInterpolator",
                                  "(FF)V",
-                                 m_controlX,
-                                 m_controlY);
+                                 d->controlX,
+                                 d->controlY);
 
     return QAndroidJniObject();
 }

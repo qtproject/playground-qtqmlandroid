@@ -35,37 +35,48 @@
 ****************************************************************************/
 
 #include "qnativeandroidaccelerateinterpolator_p.h"
+#include "qnativeandroidinterpolator_p_p.h"
+#include "qnativeandroidoptional_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidAccelerateInterpolator::QNativeAndroidAccelerateInterpolator(QObject *parent) :
-    QNativeAndroidInterpolator(parent)
+class QNativeAndroidAccelerateInterpolatorPrivate : public QNativeAndroidInterpolatorPrivate
+{
+public:
+    QNativeAndroidOptional<qreal> factor;
+};
+
+QNativeAndroidAccelerateInterpolator::QNativeAndroidAccelerateInterpolator(QObject *parent)
+    : QNativeAndroidInterpolator(*(new QNativeAndroidAccelerateInterpolatorPrivate), parent)
 {
 }
 
 qreal QNativeAndroidAccelerateInterpolator::factor() const
 {
-    if (m_factor.isNull())
+    Q_D(const QNativeAndroidAccelerateInterpolator);
+    if (d->factor.isNull())
         return 1.0;
-    return m_factor;
+    return d->factor;
 }
 
 void QNativeAndroidAccelerateInterpolator::setFactor(qreal factor)
 {
-    if (m_factor.isNull() || m_factor != factor) {
-        m_factor = factor;
+    Q_D(QNativeAndroidAccelerateInterpolator);
+    if (d->factor.isNull() || d->factor != factor) {
+        d->factor = factor;
         emit factorChanged();
     }
 }
 
 QAndroidJniObject QNativeAndroidAccelerateInterpolator::onCreate()
 {
-    if (m_factor.isNull())
+    Q_D(QNativeAndroidAccelerateInterpolator);
+    if (d->factor.isNull())
         return QAndroidJniObject("android/view/animation/AccelerateInterpolator");
 
     return QAndroidJniObject("android/view/animation/AccelerateInterpolator",
                              "(F)V",
-                             m_factor);
+                             d->factor);
 }
 
 QT_END_NAMESPACE
