@@ -35,16 +35,27 @@
 ****************************************************************************/
 
 #include "qnativeandroidcontextwrapper_p.h"
+#include "qnativeandroidcontextwrapper_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidContextWrapper::QNativeAndroidContextWrapper(QObject *parent) :
-    QNativeAndroidContext(parent)
+QNativeAndroidContextWrapper::QNativeAndroidContextWrapper(QObject *parent)
+    : QNativeAndroidContext(*(new QNativeAndroidContextWrapperPrivate), parent)
 {
 }
 
-QNativeAndroidContextWrapper::QNativeAndroidContextWrapper(QNativeAndroidContext *context, QObject *parent) :
-    QNativeAndroidContext(context, parent)
+QNativeAndroidContextWrapper::QNativeAndroidContextWrapper(QNativeAndroidContext *context, QObject *parent)
+    : QNativeAndroidContext(*(new QNativeAndroidContextWrapperPrivate), context, parent)
+{
+}
+
+QNativeAndroidContextWrapper::QNativeAndroidContextWrapper(QNativeAndroidContextWrapperPrivate &dd, QObject *parent)
+    : QNativeAndroidContext(dd, parent)
+{
+}
+
+QNativeAndroidContextWrapper::QNativeAndroidContextWrapper(QNativeAndroidContextWrapperPrivate &dd, QNativeAndroidContext *context, QObject *parent)
+    : QNativeAndroidContext(dd, context, parent)
 {
 }
 

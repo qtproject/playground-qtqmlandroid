@@ -51,13 +51,14 @@
 #include <QtNativeAndroid/private/qtnativeandroidglobal_p.h>
 
 #include <QtCore/qobject.h>
-#include <QtCore/qreadwritelock.h>
 #include <QtQml/qqmllist.h>
 #include <QtQml/qqmlparserstatus.h>
 #include <QtAndroidExtras/qandroidjniobject.h>
 #include <QtAndroidExtras/qandroidjnienvironment.h>
 
 QT_BEGIN_NAMESPACE
+
+class QNativeAndroidObjectPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidObject : public QObject, public QQmlParserStatus
 {
@@ -87,6 +88,8 @@ Q_SIGNALS:
     void instanceChanged();
 
 protected:
+    QNativeAndroidObject(QNativeAndroidObjectPrivate &dd, QObject *parent = nullptr);
+
     virtual QAndroidJniObject onCreate();
     virtual void onInflate(QAndroidJniObject &instance);
 
@@ -106,10 +109,10 @@ private Q_SLOTS:
     void changeInstance();
 
 private:
-    void setInstance(const QAndroidJniObject &instance);
+    Q_DISABLE_COPY(QNativeAndroidObject)
+    Q_DECLARE_PRIVATE(QNativeAndroidObject)
 
-    bool m_complete;
-    QAndroidJniObject m_instance;
+    void setInstance(const QAndroidJniObject &instance);
     friend class QNativeAndroidActivity;
 };
 

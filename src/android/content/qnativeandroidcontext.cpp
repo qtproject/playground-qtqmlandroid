@@ -35,16 +35,27 @@
 ****************************************************************************/
 
 #include "qnativeandroidcontext_p.h"
+#include "qnativeandroidcontext_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidContext::QNativeAndroidContext(QObject *parent) :
-    QNativeAndroidContextual(this, parent)
+QNativeAndroidContext::QNativeAndroidContext(QObject *parent)
+    : QNativeAndroidContextual(this, parent)
 {
 }
 
-QNativeAndroidContext::QNativeAndroidContext(QNativeAndroidContext *context, QObject *parent) :
-    QNativeAndroidContextual(context, parent)
+QNativeAndroidContext::QNativeAndroidContext(QNativeAndroidContext *context, QObject *parent)
+    : QNativeAndroidContextual(context, parent)
+{
+}
+
+QNativeAndroidContext::QNativeAndroidContext(QNativeAndroidContextPrivate &dd, QObject *parent)
+    : QNativeAndroidContextual(dd, parent)
+{
+}
+
+QNativeAndroidContext::QNativeAndroidContext(QNativeAndroidContextPrivate &dd, QNativeAndroidContext *context, QObject *parent)
+    : QNativeAndroidContextual(dd, context, parent)
 {
 }
 

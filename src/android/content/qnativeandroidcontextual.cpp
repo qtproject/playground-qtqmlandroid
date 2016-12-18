@@ -35,20 +35,35 @@
 ****************************************************************************/
 
 #include "qnativeandroidcontextual_p.h"
+#include "qnativeandroidcontextual_p_p.h"
 #include "qnativeandroidcontext_p.h"
 #include <QtCore/qdebug.h>
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidContextual::QNativeAndroidContextual(QObject *parent) :
-    QNativeAndroidObject(parent), m_context(0)
+QNativeAndroidContextual::QNativeAndroidContextual(QObject *parent)
+    : QNativeAndroidObject(*(new QNativeAndroidContextualPrivate), parent)
 {
     if (!initContext())
         QMetaObject::invokeMethod(this, "resolveContext", Qt::QueuedConnection);
 }
 
-QNativeAndroidContextual::QNativeAndroidContextual(QNativeAndroidContext* context, QObject *parent) :
-    QNativeAndroidObject(parent || context == this ? parent : context), m_context(0)
+QNativeAndroidContextual::QNativeAndroidContextual(QNativeAndroidContext* context, QObject *parent)
+    : QNativeAndroidObject(*(new QNativeAndroidContextualPrivate), parent || context == this ? parent : context)
+{
+    if (!initContext(context))
+        QMetaObject::invokeMethod(this, "resolveContext", Qt::QueuedConnection);
+}
+
+QNativeAndroidContextual::QNativeAndroidContextual(QNativeAndroidContextualPrivate &dd, QObject *parent)
+    : QNativeAndroidObject(dd, parent)
+{
+    if (!initContext())
+        QMetaObject::invokeMethod(this, "resolveContext", Qt::QueuedConnection);
+}
+
+QNativeAndroidContextual::QNativeAndroidContextual(QNativeAndroidContextualPrivate &dd, QNativeAndroidContext *context, QObject *parent)
+    : QNativeAndroidObject(dd, parent)
 {
     if (!initContext(context))
         QMetaObject::invokeMethod(this, "resolveContext", Qt::QueuedConnection);
@@ -56,20 +71,23 @@ QNativeAndroidContextual::QNativeAndroidContextual(QNativeAndroidContext* contex
 
 QAndroidJniObject QNativeAndroidContextual::ctx() const
 {
-    if (!m_context)
+    Q_D(const QNativeAndroidContextual);
+    if (!d->context)
         return QAndroidJniObject();
-    return m_context->instance();
+    return d->context->instance();
 }
 
 QNativeAndroidContext *QNativeAndroidContextual::context() const
 {
-    return m_context;
+    Q_D(const QNativeAndroidContextual);
+    return d->context;
 }
 
 void QNativeAndroidContextual::setContext(QNativeAndroidContext *context)
 {
-    if (m_context != context) {
-        m_context = context;
+    Q_D(QNativeAndroidContextual);
+    if (d->context != context) {
+        d->context = context;
         propagateContext();
         emit contextChanged();
     }
@@ -104,19 +122,21 @@ bool QNativeAndroidContextual::initContext(QNativeAndroidContext *context)
 
 void QNativeAndroidContextual::resolveContext()
 {
-    if (!m_context) {
+    Q_D(QNativeAndroidContextual);
+    if (!d->context) {
         setContext(findContext(this));
-        if (!m_context)
+        if (!d->context)
             qWarning() << "QNativeAndroidContextual: could not resolve context for" << this;
     }
 }
 
 void QNativeAndroidContextual::propagateContext()
 {
+    Q_D(QNativeAndroidContextual);
     foreach (QObject *child, children()) {
         QNativeAndroidContextual *contextual = qobject_cast<QNativeAndroidContextual *>(child);
         if (contextual)
-            contextual->setContext(m_context);
+            contextual->setContext(d->context);
     }
 }
 

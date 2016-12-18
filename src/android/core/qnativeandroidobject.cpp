@@ -35,36 +35,47 @@
 ****************************************************************************/
 
 #include "qnativeandroidobject_p.h"
+#include "qnativeandroidobject_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
+
 #include <QtCore/qcoreapplication.h>
+#include <QtCore/qreadwritelock.h>
 #include <QtCore/qcoreevent.h>
 
 QT_BEGIN_NAMESPACE
 
 Q_GLOBAL_STATIC(QReadWriteLock, instanceLock)
 
-QNativeAndroidObject::QNativeAndroidObject(QObject *parent) :
-    QObject(parent), m_complete(false)
+QNativeAndroidObject::QNativeAndroidObject(QObject *parent)
+    : QObject(*(new QNativeAndroidObjectPrivate), parent)
+{
+}
+
+QNativeAndroidObject::QNativeAndroidObject(QNativeAndroidObjectPrivate &dd, QObject *parent)
+    : QObject(dd, parent)
 {
 }
 
 bool QNativeAndroidObject::isValid() const
 {
+    Q_D(const QNativeAndroidObject);
     QReadLocker locker(instanceLock());
-    return m_instance.isValid();
+    return d->instance.isValid();
 }
 
 QAndroidJniObject QNativeAndroidObject::instance() const
 {
+    Q_D(const QNativeAndroidObject);
     QReadLocker locker(instanceLock());
-    return m_instance;
+    return d->instance;
 }
 
 void QNativeAndroidObject::setInstance(const QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidObject);
     QWriteLocker locker(instanceLock());
-    if (m_instance != instance) {
-        m_instance = instance;
+    if (d->instance != instance) {
+        d->instance = instance;
         // queue to Qt thread if necessary
         QMetaObject::invokeMethod(this, "changeInstance", Qt::AutoConnection);
     }
@@ -134,7 +145,8 @@ void QNativeAndroidObject::onInflate(QAndroidJniObject &instance)
 
 bool QNativeAndroidObject::isComponentComplete() const
 {
-    return m_complete;
+    Q_D(const QNativeAndroidObject);
+    return d->complete;
 }
 
 void QNativeAndroidObject::classBegin()
@@ -143,7 +155,8 @@ void QNativeAndroidObject::classBegin()
 
 void QNativeAndroidObject::componentComplete()
 {
-    m_complete = true;
+    Q_D(QNativeAndroidObject);
+    d->complete = true;
 }
 
 void QNativeAndroidObject::objectChange(ObjectChange change)

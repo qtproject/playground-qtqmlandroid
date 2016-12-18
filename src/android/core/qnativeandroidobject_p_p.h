@@ -34,8 +34,8 @@
 **
 ****************************************************************************/
 
-#ifndef QNATIVEANDROIDCONTEXTUAL_P_H
-#define QNATIVEANDROIDCONTEXTUAL_P_H
+#ifndef QNATIVEANDROIDOBJECT_P_P_H
+#define QNATIVEANDROIDOBJECT_P_P_H
 
 //
 //  W A R N I N G
@@ -48,45 +48,18 @@
 // We mean it.
 //
 
-#include <QtNativeAndroid/private/qnativeandroidobject_p.h>
+#include <QtCore/private/qobject_p.h>
+#include <QtAndroidExtras/qandroidjniobject.h>
 
 QT_BEGIN_NAMESPACE
 
-class QNativeAndroidContext;
-class QNativeAndroidContextualPrivate;
-
-class Q_NATIVEANDROID_EXPORT QNativeAndroidContextual : public QNativeAndroidObject
+class QNativeAndroidObjectPrivate : public QObjectPrivate
 {
-    Q_OBJECT
-    Q_PROPERTY(QNativeAndroidContext *context READ context NOTIFY contextChanged)
-
 public:
-    explicit QNativeAndroidContextual(QObject *parent = nullptr);
-    explicit QNativeAndroidContextual(QNativeAndroidContext *context, QObject *parent = nullptr);
-
-    QAndroidJniObject ctx() const;
-    QNativeAndroidContext *context() const;
-    void setContext(QNativeAndroidContext *context);
-
-Q_SIGNALS:
-    void contextChanged();
-
-protected:
-    QNativeAndroidContextual(QNativeAndroidContextualPrivate &dd, QObject *parent = nullptr);
-    QNativeAndroidContextual(QNativeAndroidContextualPrivate &dd, QNativeAndroidContext *context, QObject *parent = nullptr);
-
-    void componentComplete() override;
-
-private Q_SLOTS:
-    bool initContext(QNativeAndroidContext *context = nullptr);
-    void resolveContext();
-    void propagateContext();
-
-private:
-    Q_DISABLE_COPY(QNativeAndroidContextual)
-    Q_DECLARE_PRIVATE(QNativeAndroidContextual)
+    bool complete = false;
+    QAndroidJniObject instance;
 };
 
 QT_END_NAMESPACE
 
-#endif // QNATIVEANDROIDCONTEXTUAL_P_H
+#endif // QNATIVEANDROIDOBJECT_P_P_H

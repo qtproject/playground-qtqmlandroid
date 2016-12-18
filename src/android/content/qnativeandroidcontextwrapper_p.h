@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidContextWrapperPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidContextWrapper : public QNativeAndroidContext
 {
     Q_OBJECT
@@ -59,6 +61,14 @@ class Q_NATIVEANDROID_EXPORT QNativeAndroidContextWrapper : public QNativeAndroi
 public:
     explicit QNativeAndroidContextWrapper(QObject *parent = nullptr);
     explicit QNativeAndroidContextWrapper(QNativeAndroidContext *context, QObject *parent = nullptr);
+
+protected:
+    QNativeAndroidContextWrapper(QNativeAndroidContextWrapperPrivate &dd, QObject *parent = nullptr);
+    QNativeAndroidContextWrapper(QNativeAndroidContextWrapperPrivate &dd, QNativeAndroidContext *context, QObject *parent = nullptr);
+
+private:
+    Q_DISABLE_COPY(QNativeAndroidContextWrapper)
+    Q_DECLARE_PRIVATE(QNativeAndroidContextWrapper)
 };
 
 QT_END_NAMESPACE
