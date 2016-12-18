@@ -1,12 +1,12 @@
-isEmpty(QMLANDROID_PREFIX): \
-    QMLANDROID_PREFIX = $$[QT_INSTALL_PREFIX]
+isEmpty(MODULE_PREFIX): \
+    MODULE_PREFIX = $$[QT_INSTALL_PREFIX]
 
-support_pkg_paths = $$files($$QMLANDROID_PREFIX/src/android/java/support/*)
+support_pkg_paths = $$files($$MODULE_PREFIX/src/android/java/support/*)
 for(path, support_pkg_paths): \
     support_pkg_names += $$basename(path)
 
 for(pkg, ANDROID_SUPPORT) {
-    pkg_path = $$QMLANDROID_PREFIX/src/android/java/support/$$pkg
+    pkg_path = $$MODULE_PREFIX/src/android/java/support/$$pkg
     !exists($$pkg_path): \
         error("Unknown Android support package '$$pkg'. Available packages: $$pkg_names")
     ANDROID_SUPPORT_INPUT += $$pkg_path
