@@ -210,7 +210,7 @@ void QNativeAndroidView::setVisible(bool visible)
     if (m_visible != visible) {
         m_visible = visible;
         // TODO: VISIBLE(0), INVISIBLE(4), GONE(8)
-        QtQmlAndroid::callIntMethod(instance(), "setVisibility", visible ? 0 : 4);
+        QtNativeAndroid::callIntMethod(instance(), "setVisibility", visible ? 0 : 4);
         emit visibleChanged();
     }
 }
@@ -273,7 +273,7 @@ void QNativeAndroidView::setTop(int top)
 {
     if (m_top.isNull() || m_top != top) {
         m_top = top;
-        QtQmlAndroid::callIntMethod(instance(), "setTop", top);
+        QtNativeAndroid::callIntMethod(instance(), "setTop", top);
         emit topChanged();
         emit yChanged();
     }
@@ -290,7 +290,7 @@ void QNativeAndroidView::setLeft(int left)
 {
     if (m_left.isNull() || m_left != left) {
         m_left = left;
-        QtQmlAndroid::callIntMethod(instance(), "setLeft", left);
+        QtNativeAndroid::callIntMethod(instance(), "setLeft", left);
         emit leftChanged();
         emit xChanged();
     }
@@ -307,7 +307,7 @@ void QNativeAndroidView::setRight(int right)
 {
     if (m_right.isNull() || m_right != right) {
         m_right = right;
-        QtQmlAndroid::callIntMethod(instance(), "setRight", right);
+        QtNativeAndroid::callIntMethod(instance(), "setRight", right);
         emit rightChanged();
     }
 }
@@ -323,7 +323,7 @@ void QNativeAndroidView::setBottom(int bottom)
 {
     if (m_bottom.isNull() || m_bottom != bottom) {
         m_bottom = bottom;
-        QtQmlAndroid::callIntMethod(instance(), "setBottom", bottom);
+        QtNativeAndroid::callIntMethod(instance(), "setBottom", bottom);
         emit bottomChanged();
     }
 }
@@ -458,7 +458,7 @@ void QNativeAndroidView::setAlpha(qreal alpha)
 {
     if (m_alpha.isNull() || m_alpha != alpha) {
         m_alpha = alpha;
-        QtQmlAndroid::callRealMethod(instance(), "setAlpha", alpha);
+        QtNativeAndroid::callRealMethod(instance(), "setAlpha", alpha);
         emit alphaChanged();
     }
 }
@@ -474,7 +474,7 @@ void QNativeAndroidView::setScaleX(qreal scaleX)
 {
     if (m_scaleX.isNull() || m_scaleX != scaleX) {
         m_scaleX = scaleX;
-        QtQmlAndroid::callRealMethod(instance(), "setScaleX", scaleX);
+        QtNativeAndroid::callRealMethod(instance(), "setScaleX", scaleX);
         emit scaleXChanged();
     }
 }
@@ -490,7 +490,7 @@ void QNativeAndroidView::setScaleY(qreal scaleY)
 {
     if (m_scaleY.isNull() || m_scaleY != scaleY) {
         m_scaleY = scaleY;
-        QtQmlAndroid::callRealMethod(instance(), "setScaleY", scaleY);
+        QtNativeAndroid::callRealMethod(instance(), "setScaleY", scaleY);
         emit scaleYChanged();
     }
 }
@@ -506,7 +506,7 @@ void QNativeAndroidView::setPivotX(qreal pivotX)
 {
     if (m_pivotX.isNull() || m_pivotX != pivotX) {
         m_pivotX = pivotX;
-        QtQmlAndroid::callRealMethod(instance(), "setPivotX", pivotX);
+        QtNativeAndroid::callRealMethod(instance(), "setPivotX", pivotX);
         emit pivotXChanged();
     }
 }
@@ -522,7 +522,7 @@ void QNativeAndroidView::setPivotY(qreal pivotY)
 {
     if (m_pivotY.isNull() || m_pivotY != pivotY) {
         m_pivotY = pivotY;
-        QtQmlAndroid::callRealMethod(instance(), "setPivotY", pivotY);
+        QtNativeAndroid::callRealMethod(instance(), "setPivotY", pivotY);
         emit pivotYChanged();
     }
 }
@@ -538,7 +538,7 @@ void QNativeAndroidView::setRotation(qreal rotation)
 {
     if (m_rotation.isNull() || m_rotation != rotation) {
         m_rotation = rotation;
-        QtQmlAndroid::callRealMethod(instance(), "setRotation", rotation);
+        QtNativeAndroid::callRealMethod(instance(), "setRotation", rotation);
         emit rotationChanged();
     }
 }
@@ -554,7 +554,7 @@ void QNativeAndroidView::setRotationX(qreal rotationX)
 {
     if (m_rotationX.isNull() || m_rotationX != rotationX) {
         m_rotationX = rotationX;
-        QtQmlAndroid::callRealMethod(instance(), "setRotationX", rotationX);
+        QtNativeAndroid::callRealMethod(instance(), "setRotationX", rotationX);
         emit rotationXChanged();
     }
 }
@@ -570,7 +570,7 @@ void QNativeAndroidView::setRotationY(qreal rotationY)
 {
     if (m_rotationY.isNull() || m_rotationY != rotationY) {
         m_rotationY = rotationY;
-        QtQmlAndroid::callRealMethod(instance(), "setRotationY", rotationY);
+        QtNativeAndroid::callRealMethod(instance(), "setRotationY", rotationY);
         emit rotationYChanged();
     }
 }
@@ -586,7 +586,7 @@ void QNativeAndroidView::setTranslationX(qreal translationX)
 {
     if (m_translationX.isNull() || m_translationX != translationX) {
         m_translationX = translationX;
-        QtQmlAndroid::callRealMethod(instance(), "setTranslationX", translationX);
+        QtNativeAndroid::callRealMethod(instance(), "setTranslationX", translationX);
         emit translationXChanged();
         emit xChanged();
     }
@@ -603,7 +603,7 @@ void QNativeAndroidView::setTranslationY(qreal translationY)
 {
     if (m_translationY.isNull() || m_translationY != translationY) {
         m_translationY = translationY;
-        QtQmlAndroid::callRealMethod(instance(), "setTranslationY", translationY);
+        QtNativeAndroid::callRealMethod(instance(), "setTranslationY", translationY);
         emit translationYChanged();
         emit yChanged();
     }
@@ -620,7 +620,7 @@ void QNativeAndroidView::setTranslationZ(qreal translationZ)
 {
     if (m_translationZ.isNull() || m_translationZ != translationZ) {
         m_translationZ = translationZ;
-        QtQmlAndroid::callRealMethod(instance(), "setTranslationZ", translationZ);
+        QtNativeAndroid::callRealMethod(instance(), "setTranslationZ", translationZ);
         emit translationZChanged();
         emit zChanged();
     }
@@ -637,7 +637,7 @@ void QNativeAndroidView::setElevation(qreal elevation)
 {
     if (m_elevation.isNull() || m_elevation != elevation) {
         m_elevation = elevation;
-        QtQmlAndroid::callRealMethod(instance(), "setElevation", elevation);
+        QtNativeAndroid::callRealMethod(instance(), "setElevation", elevation);
         emit elevationChanged();
         emit zChanged();
     }
@@ -702,7 +702,7 @@ void QNativeAndroidView::children_clear(QQmlListProperty<QNativeAndroidView> *li
 
 QAndroidJniObject QNativeAndroidView::onCreate()
 {
-    Q_ASSERT(!QtQmlAndroid::isMainQtThread());
+    Q_ASSERT(!QtNativeAndroid::isMainQtThread());
 
     return QAndroidJniObject("android/view/View",
                              "(Landroid/content/Context;)V",
@@ -711,7 +711,7 @@ QAndroidJniObject QNativeAndroidView::onCreate()
 
 void QNativeAndroidView::onInflate(QAndroidJniObject &instance)
 {
-    Q_ASSERT(!QtQmlAndroid::isMainQtThread());
+    Q_ASSERT(!QtNativeAndroid::isMainQtThread());
 
     QNativeAndroidContextual::onInflate(instance);
 
@@ -864,7 +864,7 @@ void QNativeAndroidView::updateBackground()
 
     QAndroidJniObject view = instance();
     QAndroidJniObject background = m_background->instance();
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         view.callMethod<void>("setBackground", "(Landroid/graphics/drawable/Drawable;)V", background.object());
     });
 }
@@ -876,7 +876,7 @@ void QNativeAndroidView::updateAnimation()
 
     QAndroidJniObject view = instance();
     QAndroidJniObject animation = m_animation->instance();
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         view.callMethod<void>("startAnimation", "(Landroid/view/animation/Animation;)V", animation.object());
     });
 }
@@ -888,7 +888,7 @@ void QNativeAndroidView::updateLayoutParams()
 
     QAndroidJniObject view = instance();
     QAndroidJniObject params = m_layoutParams->instance();
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         view.callMethod<void>("setLayoutParams",
                               "(Landroid/view/ViewGroup$LayoutParams;)V",
                               params.object());

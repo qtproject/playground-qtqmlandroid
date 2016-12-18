@@ -75,7 +75,7 @@ void QNativeAndroidViewGroup::viewChange(ViewChange change, const ViewChangeData
     switch (change) {
     case ViewChildAddedChange: // data.view
         if (group.isValid()) {
-//            QtQmlAndroid::callFunction([=]() {
+//            QtNativeAndroid::callFunction([=]() {
 //                QAndroidJniObject child = data.view->onCreate();
 //                data.view->onInflate(child);
 //                data.view->setInstance(child);
@@ -86,7 +86,7 @@ void QNativeAndroidViewGroup::viewChange(ViewChange change, const ViewChangeData
     case ViewChildRemovedChange: // data.view
         if (group.isValid()) {
 //            QAndroidJniObject child = data.view->instance();
-//            QtQmlAndroid::callFunction([=]() {
+//            QtNativeAndroid::callFunction([=]() {
 //                group.callMethod<void>("removeView", "(Landroid/view/View;)V", child.object());
 //            });
 //            data.view->setInstance(QAndroidJniObject());

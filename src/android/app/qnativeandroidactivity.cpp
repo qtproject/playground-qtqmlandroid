@@ -150,7 +150,7 @@ void QNativeAndroidActivity::setupWindow()
         return;
 
     QAndroidJniObject activity = instance();
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         QAndroidJniObject wnd = activity.callObjectMethod("getWindow", "()Landroid/view/Window;");
         m_window->inflate(wnd);
     });
@@ -162,7 +162,7 @@ void QNativeAndroidActivity::setupActionBar()
         return;
 
     QAndroidJniObject activity = instance();
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         QAndroidJniObject bar = activity.callObjectMethod("getActionBar", "()Landroid/app/ActionBar;");
         m_actionBar->inflate(bar);
     });
@@ -178,14 +178,14 @@ void QNativeAndroidActivity::updateOptionsMenu()
         menu = m_optionsMenu->instance();
 
     QAndroidJniObject activity = instance();
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         activity.callMethod<void>("setOptionsMenu", "(Lorg/qtproject/qt5/android/bindings/view/QtNativeMenu;)V", menu.object());
     });
 }
 
 void QNativeAndroidActivity::invalidateOptionsMenu()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "invalidateOptionsMenu");
+    QtNativeAndroid::callVoidMethod(instance(), "invalidateOptionsMenu");
 }
 
 void QNativeAndroidActivity::updateContentView()
@@ -198,7 +198,7 @@ void QNativeAndroidActivity::updateContentView()
         content = m_contentView->instance();
 
     QAndroidJniObject activity = instance();
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         activity.callMethod<void>("setContentView", "(Landroid/view/View;)V", content.object());
     });
 }

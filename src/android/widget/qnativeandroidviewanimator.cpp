@@ -55,7 +55,7 @@ void QNativeAndroidViewAnimator::setDisplayedChild(int child)
 {
     if (child != displayedChild()) {
         m_displayedChild = child;
-        QtQmlAndroid::callIntMethod(instance(), "setDisplayedChild", child);
+        QtNativeAndroid::callIntMethod(instance(), "setDisplayedChild", child);
         emit displayedChildChanged();
     }
 }
@@ -72,11 +72,11 @@ void QNativeAndroidViewAnimator::setInAnimation(int animation)
     if (animation != inAnimation()) {
         m_inAnimation = animation;
         if (instance().isValid()) {
-            QtQmlAndroid::callFunction([=]() {
+            QtNativeAndroid::callFunction([=]() {
                 instance().callMethod<void>("setInAnimation", "(Landroid/content/Context;I)V", ctx().object(), animation);
             });
         }
-        QtQmlAndroid::callIntMethod(instance(), "setInAnimation", animation);
+        QtNativeAndroid::callIntMethod(instance(), "setInAnimation", animation);
         emit inAnimationChanged();
     }
 }
@@ -93,23 +93,23 @@ void QNativeAndroidViewAnimator::setOutAnimation(int animation)
     if (animation != outAnimation()) {
         m_outAnimation = animation;
         if (instance().isValid()) {
-            QtQmlAndroid::callFunction([=]() {
+            QtNativeAndroid::callFunction([=]() {
                 instance().callMethod<void>("setOutAnimation", "(Landroid/content/Context;I)V", ctx().object(), animation);
             });
         }
-        QtQmlAndroid::callIntMethod(instance(), "setInAnimation", animation);
+        QtNativeAndroid::callIntMethod(instance(), "setInAnimation", animation);
         emit inAnimationChanged();
     }
 }
 
 void QNativeAndroidViewAnimator::showNext()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "showNext");
+    QtNativeAndroid::callVoidMethod(instance(), "showNext");
 }
 
 void QNativeAndroidViewAnimator::showPrevious()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "showPrevious");
+    QtNativeAndroid::callVoidMethod(instance(), "showPrevious");
 }
 
 QAndroidJniObject QNativeAndroidViewAnimator::onCreate()

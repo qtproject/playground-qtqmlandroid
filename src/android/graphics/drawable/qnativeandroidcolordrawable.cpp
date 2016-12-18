@@ -58,7 +58,7 @@ void QNativeAndroidColorDrawable::setColor(int color)
 {
     if (m_color != color) {
         m_color = color;
-        QtQmlAndroid::callIntMethod(instance(), "setColor", color);
+        QtNativeAndroid::callIntMethod(instance(), "setColor", color);
         emit colorChanged();
     }
 }

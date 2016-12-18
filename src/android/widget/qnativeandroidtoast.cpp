@@ -88,7 +88,7 @@ void QNativeAndroidToast::show()
         return;
     }
 
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         QAndroidJniObject toast;
         if (!m_text.isNull()) {
             toast = QAndroidJniObject::callStaticObjectMethod("android/widget/Toast",
@@ -113,7 +113,7 @@ void QNativeAndroidToast::show()
 
 void QNativeAndroidToast::cancel()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "cancel");
+    QtNativeAndroid::callVoidMethod(instance(), "cancel");
 }
 
 QT_END_NAMESPACE

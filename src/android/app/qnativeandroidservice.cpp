@@ -65,7 +65,7 @@ void QNativeAndroidService::start()
     if (!context.isValid() || !service.isValid())
         return; // TODO: warn
 
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         QAndroidJniObject cls = service.callObjectMethod("getClass", "()Ljava/lang/Class;");
         QAndroidJniObject intent = QAndroidJniObject("android/content/Intent",
                                                      "(Landroid/content/Context;Ljava/lang/Class;)V",
@@ -90,7 +90,7 @@ void QNativeAndroidService::stop()
     if (!context.isValid() || !service.isValid())
         return; // TODO: warn
 
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         QAndroidJniObject cls = service.callObjectMethod("getClass", "()Ljava/lang/Class;");
         QAndroidJniObject intent = QAndroidJniObject("android/content/Intent",
                                                      "(Landroid/content/Context;Ljava/lang/Class;)V",

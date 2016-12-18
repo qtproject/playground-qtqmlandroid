@@ -46,22 +46,22 @@ QNativeAndroidDialog::QNativeAndroidDialog(QObject *parent) :
 
 void QNativeAndroidDialog::cancel()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "cancel");
+    QtNativeAndroid::callVoidMethod(instance(), "cancel");
 }
 
 void QNativeAndroidDialog::dismiss()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "dismiss");
+    QtNativeAndroid::callVoidMethod(instance(), "dismiss");
 }
 
 void QNativeAndroidDialog::hide()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "hide");
+    QtNativeAndroid::callVoidMethod(instance(), "hide");
 }
 
 void QNativeAndroidDialog::show()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "show");
+    QtNativeAndroid::callVoidMethod(instance(), "show");
 }
 
 QAndroidJniObject QNativeAndroidDialog::onCreate()

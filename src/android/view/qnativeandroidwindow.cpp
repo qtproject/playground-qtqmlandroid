@@ -57,7 +57,7 @@ void QNativeAndroidWindow::setStatusBarColor(int color)
 {
     if (m_statusBarColor.isNull() || m_statusBarColor != color) {
         m_statusBarColor = color;
-        QtQmlAndroid::callIntMethod(instance(), "setStatusBarColor", color);
+        QtNativeAndroid::callIntMethod(instance(), "setStatusBarColor", color);
         emit statusBarColorChanged();
     }
 }

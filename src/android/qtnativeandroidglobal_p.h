@@ -64,7 +64,7 @@ QT_BEGIN_NAMESPACE
 #  define Q_QMLANDROID_EXPORT
 #endif
 
-namespace QtQmlAndroid {
+namespace QtNativeAndroid {
     static inline bool isMainQtThread()
     {
         return QThread::currentThread() == qApp->thread();

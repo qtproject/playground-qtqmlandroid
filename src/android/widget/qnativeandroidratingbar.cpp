@@ -52,7 +52,7 @@ qreal QNativeAndroidRatingBar::rating() const
 void QNativeAndroidRatingBar::setRating(qreal rating)
 {
     if (updateRating(rating))
-        QtQmlAndroid::callRealMethod(instance(), "setRating", rating);
+        QtNativeAndroid::callRealMethod(instance(), "setRating", rating);
 }
 
 bool QNativeAndroidRatingBar::updateRating(qreal rating)

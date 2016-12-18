@@ -55,9 +55,9 @@ void QNativeAndroidActionBar::setVisible(bool arg)
     if (arg != isVisible()) {
         m_visible = arg;
         if (arg)
-            QtQmlAndroid::callVoidMethod(instance(), "show");
+            QtNativeAndroid::callVoidMethod(instance(), "show");
         else
-            QtQmlAndroid::callVoidMethod(instance(), "hide");
+            QtNativeAndroid::callVoidMethod(instance(), "hide");
         emit visibleChanged();
     }
 }
@@ -71,7 +71,7 @@ void QNativeAndroidActionBar::setElevation(qreal elevation)
 {
     if (m_elevation != elevation) {
         m_elevation = elevation;
-        QtQmlAndroid::callRealMethod(instance(), "setElevation", elevation);
+        QtNativeAndroid::callRealMethod(instance(), "setElevation", elevation);
         emit elevationChanged();
     }
 }
@@ -85,7 +85,7 @@ void QNativeAndroidActionBar::setTitle(const QString &title)
 {
     if (m_title != title) {
         m_title = title;
-        QtQmlAndroid::callTextMethod(instance(), "setTitle", title);
+        QtNativeAndroid::callTextMethod(instance(), "setTitle", title);
         emit titleChanged();
     }
 }
@@ -99,7 +99,7 @@ void QNativeAndroidActionBar::setSubtitle(const QString &subtitle)
 {
     if (m_subtitle != subtitle) {
         m_subtitle = subtitle;
-        QtQmlAndroid::callTextMethod(instance(), "setSubtitle", subtitle);
+        QtNativeAndroid::callTextMethod(instance(), "setSubtitle", subtitle);
         emit subtitleChanged();
     }
 }
@@ -154,7 +154,7 @@ void QNativeAndroidActionBar::updateBackground()
 
     QAndroidJniObject bar = instance();
     QAndroidJniObject background = m_background->instance();
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         bar.callMethod<void>("setBackgroundDrawable", "(Landroid/graphics/drawable/Drawable;)V", background.object());
     });
 }

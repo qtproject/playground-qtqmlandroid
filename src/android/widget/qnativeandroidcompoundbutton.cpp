@@ -52,7 +52,7 @@ bool QNativeAndroidCompoundButton::isChecked() const
 void QNativeAndroidCompoundButton::setChecked(bool checked)
 {
     if (updateChecked(checked))
-        QtQmlAndroid::callBoolMethod(instance(), "setChecked", checked);
+        QtNativeAndroid::callBoolMethod(instance(), "setChecked", checked);
 }
 
 bool QNativeAndroidCompoundButton::updateChecked(bool arg)
@@ -67,7 +67,7 @@ bool QNativeAndroidCompoundButton::updateChecked(bool arg)
 
 void QNativeAndroidCompoundButton::toggle()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "toggle");
+    QtNativeAndroid::callVoidMethod(instance(), "toggle");
 }
 
 QAndroidJniObject QNativeAndroidCompoundButton::onCreate()

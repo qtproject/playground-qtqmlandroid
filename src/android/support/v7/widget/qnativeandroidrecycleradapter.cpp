@@ -56,7 +56,7 @@ void QNativeAndroidRecyclerAdapter::setCount(int count)
 {
     if (m_count != count) {
         m_count = count;
-        QtQmlAndroid::callIntMethod(instance(), "setItemCount", count);
+        QtNativeAndroid::callIntMethod(instance(), "setItemCount", count);
         emit countChanged();
     }
 }
@@ -70,7 +70,7 @@ void QNativeAndroidRecyclerAdapter::setDelegate(QQmlComponent *delegate)
 {
     if (m_delegate != delegate) {
         m_delegate = delegate;
-        QtQmlAndroid::callVoidMethod(instance(), "notifyDataSetChanged");
+        QtNativeAndroid::callVoidMethod(instance(), "notifyDataSetChanged");
         emit delegateChanged();
     }
 }

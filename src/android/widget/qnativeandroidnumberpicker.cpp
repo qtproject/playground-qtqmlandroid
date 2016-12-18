@@ -52,7 +52,7 @@ int QNativeAndroidNumberPicker::value() const
 void QNativeAndroidNumberPicker::setValue(int value)
 {
     if (updateValue(value))
-        QtQmlAndroid::callIntMethod(instance(), "setValue", value);
+        QtNativeAndroid::callIntMethod(instance(), "setValue", value);
 }
 
 bool QNativeAndroidNumberPicker::updateValue(int value)

@@ -71,7 +71,7 @@ void QNativeAndroidAdapterView::setAdapter(QNativeAndroidBaseAdapter *adapter)
 
 void QNativeAndroidAdapterView::setSelection(int position)
 {
-    QtQmlAndroid::callIntMethod(instance(), "setSelection", position);
+    QtNativeAndroid::callIntMethod(instance(), "setSelection", position);
 }
 
 QAndroidJniObject QNativeAndroidAdapterView::onCreate()
@@ -133,7 +133,7 @@ void QNativeAndroidAdapterView::updateAdapter()
         adapter = m_adapter->instance();
 
     QAndroidJniObject view = instance();
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         view.callMethod<void>("setAdapter", "(Landroid/widget/Adapter;)V", adapter.object());
     });
 }

@@ -53,12 +53,12 @@ QNativeAndroidRadioButton *QNativeAndroidRadioGroup::checkedButton() const
 void QNativeAndroidRadioGroup::setCheckedButton(QNativeAndroidRadioButton *button)
 {
     if (updateCheckedButton(button))
-        QtQmlAndroid::callIntMethod(instance(), "check", button ? button->identifier() : -1);
+        QtNativeAndroid::callIntMethod(instance(), "check", button ? button->identifier() : -1);
 }
 
 void QNativeAndroidRadioGroup::clearCheck()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "clearCheck");
+    QtNativeAndroid::callVoidMethod(instance(), "clearCheck");
 }
 
 QAndroidJniObject QNativeAndroidRadioGroup::onCreate()

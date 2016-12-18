@@ -102,7 +102,7 @@ void QNativeAndroidRecyclerView::updateAdapter()
 
     QAndroidJniObject view = instance();
     QAndroidJniObject adapter = m_adapter->instance();
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         view.callMethod<void>("setAdapter", "(Landroid/support/v7/widget/RecyclerView$Adapter;)V", adapter.object());
     });
 }

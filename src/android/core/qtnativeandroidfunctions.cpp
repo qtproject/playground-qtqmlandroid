@@ -44,7 +44,7 @@
 
 QT_BEGIN_NAMESPACE
 
-namespace QtQmlAndroid {
+namespace QtNativeAndroid {
 
 void callFunction(std::function<void()> method)
 {

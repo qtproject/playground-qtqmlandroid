@@ -54,7 +54,7 @@ int QNativeAndroidScrollView::scrollX() const
 void QNativeAndroidScrollView::setScrollX(int x)
 {
     if (updateScrollX(x))
-        QtQmlAndroid::callIntMethod(instance(), "setScrollX", x);
+        QtNativeAndroid::callIntMethod(instance(), "setScrollX", x);
 }
 
 bool QNativeAndroidScrollView::updateScrollX(int x)
@@ -76,7 +76,7 @@ int QNativeAndroidScrollView::scrollY() const
 void QNativeAndroidScrollView::setScrollY(int y)
 {
     if (updateScrollY(y))
-        QtQmlAndroid::callIntMethod(instance(), "setScrollY", y);
+        QtNativeAndroid::callIntMethod(instance(), "setScrollY", y);
 }
 
 bool QNativeAndroidScrollView::updateScrollY(int y)

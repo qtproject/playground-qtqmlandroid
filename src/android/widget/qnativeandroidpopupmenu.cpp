@@ -104,7 +104,7 @@ void QNativeAndroidPopupMenu::show()
     QAndroidJniObject c = context->instance();
     QAndroidJniObject a = anchor->instance();
 
-    QtQmlAndroid::callFunction([=]() {
+    QtNativeAndroid::callFunction([=]() {
         QAndroidJniObject popup;
         if (!m_gravity.isNull()) {
             popup = QAndroidJniObject("android/widget/PopupMenu",
@@ -131,7 +131,7 @@ void QNativeAndroidPopupMenu::show()
 
 void QNativeAndroidPopupMenu::dismiss()
 {
-    QtQmlAndroid::callVoidMethod(instance(), "dismiss");
+    QtNativeAndroid::callVoidMethod(instance(), "dismiss");
 }
 
 QT_END_NAMESPACE

@@ -53,7 +53,7 @@ void QNativeAndroidProgressBar::setIndeterminate(bool indeterminate)
 {
     if (m_indeterminate != indeterminate) {
         m_indeterminate = indeterminate;
-        QtQmlAndroid::callBoolMethod(instance(), "setIndeterminate", indeterminate);
+        QtNativeAndroid::callBoolMethod(instance(), "setIndeterminate", indeterminate);
         emit indeterminateChanged();
     }
 }
@@ -66,7 +66,7 @@ int QNativeAndroidProgressBar::progress() const
 void QNativeAndroidProgressBar::setProgress(int progress)
 {
     if (updateProgress(progress))
-        QtQmlAndroid::callIntMethod(instance(), "setProgress", progress);
+        QtNativeAndroid::callIntMethod(instance(), "setProgress", progress);
 }
 
 bool QNativeAndroidProgressBar::updateProgress(int progress)
@@ -88,7 +88,7 @@ void QNativeAndroidProgressBar::setSecondaryProgress(int progress)
 {
     if (m_secondary != progress) {
         m_secondary = progress;
-        QtQmlAndroid::callIntMethod(instance(), "setSecondaryProgress", progress);
+        QtNativeAndroid::callIntMethod(instance(), "setSecondaryProgress", progress);
         emit secondaryProgressChanged();
     }
 }
@@ -102,7 +102,7 @@ void QNativeAndroidProgressBar::setMax(int max)
 {
     if (m_max != max) {
         m_max = max;
-        QtQmlAndroid::callIntMethod(instance(), "setMax", max);
+        QtNativeAndroid::callIntMethod(instance(), "setMax", max);
         emit maxChanged();
     }
 }

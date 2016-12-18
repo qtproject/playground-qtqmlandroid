@@ -52,7 +52,7 @@ bool QNativeAndroidSwipeRefreshLayout::isRefreshing() const
 void QNativeAndroidSwipeRefreshLayout::setRefreshing(bool refreshing)
 {
     if (updateRefreshing(refreshing))
-        QtQmlAndroid::callBoolMethod(instance(), "setRefreshing", refreshing);
+        QtNativeAndroid::callBoolMethod(instance(), "setRefreshing", refreshing);
 }
 
 bool QNativeAndroidSwipeRefreshLayout::updateRefreshing(bool refreshing)

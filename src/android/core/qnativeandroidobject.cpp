@@ -72,7 +72,7 @@ void QNativeAndroidObject::setInstance(const QAndroidJniObject &instance)
 
 void QNativeAndroidObject::changeInstance()
 {
-    Q_ASSERT(QtQmlAndroid::isMainQtThread());
+    Q_ASSERT(QtNativeAndroid::isMainQtThread());
     objectChange(InstanceChange);
     emit instanceChanged();
 }
@@ -89,8 +89,8 @@ void QNativeAndroidObject::construct()
         inflate(onCreate());
     };
 
-    if (QtQmlAndroid::isMainQtThread())
-        QtQmlAndroid::callFunction(method);
+    if (QtNativeAndroid::isMainQtThread())
+        QtNativeAndroid::callFunction(method);
     else
         method();
 }
@@ -104,8 +104,8 @@ void QNativeAndroidObject::inflate(const QAndroidJniObject &instance)
         setInstance(object);
     };
 
-    if (QtQmlAndroid::isMainQtThread())
-        QtQmlAndroid::callFunction(method);
+    if (QtNativeAndroid::isMainQtThread())
+        QtNativeAndroid::callFunction(method);
     else
         method();
 }
@@ -129,7 +129,7 @@ QAndroidJniObject QNativeAndroidObject::onCreate()
 void QNativeAndroidObject::onInflate(QAndroidJniObject &instance)
 {
     Q_UNUSED(instance);
-    Q_ASSERT(!QtQmlAndroid::isMainQtThread());
+    Q_ASSERT(!QtNativeAndroid::isMainQtThread());
 }
 
 bool QNativeAndroidObject::isComponentComplete() const
@@ -148,7 +148,7 @@ void QNativeAndroidObject::componentComplete()
 
 void QNativeAndroidObject::objectChange(ObjectChange change)
 {
-    Q_ASSERT(QtQmlAndroid::isMainQtThread());
+    Q_ASSERT(QtNativeAndroid::isMainQtThread());
     Q_UNUSED(change);
 }
 

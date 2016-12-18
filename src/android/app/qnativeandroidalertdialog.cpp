@@ -53,7 +53,7 @@ void QNativeAndroidAlertDialog::setTitle(const QString &title)
 {
     if (m_title != title) {
         m_title = title;
-        QtQmlAndroid::callTextMethod(instance(), "setTitle", title);
+        QtNativeAndroid::callTextMethod(instance(), "setTitle", title);
         emit titleChanged();
     }
 }
@@ -67,7 +67,7 @@ void QNativeAndroidAlertDialog::setMessage(const QString &message)
 {
     if (m_message != message) {
         m_message = message;
-        QtQmlAndroid::callTextMethod(instance(), "setMessage", message);
+        QtNativeAndroid::callTextMethod(instance(), "setMessage", message);
         emit messageChanged();
     }
 }
