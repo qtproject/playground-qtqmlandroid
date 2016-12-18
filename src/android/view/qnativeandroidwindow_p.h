@@ -49,9 +49,10 @@
 //
 
 #include <QtNativeAndroid/private/qnativeandroidcontextual_p.h>
-#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
+
+class QNativeAndroidWindowPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidWindow : public QNativeAndroidContextual
 {
@@ -71,7 +72,8 @@ protected:
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    QNativeAndroidOptional<int> m_statusBarColor;
+    Q_DISABLE_COPY(QNativeAndroidWindow)
+    Q_DECLARE_PRIVATE(QNativeAndroidWindow)
 };
 
 QT_END_NAMESPACE

@@ -35,29 +35,41 @@
 ****************************************************************************/
 
 #include "qnativeandroidmenuitem_p.h"
+#include "qnativeandroidcontextual_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 #include "qnativeandroidcontext_p.h"
 #include "qnativeandroidview_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidMenuItem::QNativeAndroidMenuItem(QObject *parent) :
-    QNativeAndroidContextual(parent), m_enabled(true), m_visible(true),
-    m_checkable(false), m_checked(false),
-    m_showAs(0), // TODO: SHOW_AS_ACTION_NEVER
-    m_actionView(0)
+class QNativeAndroidMenuItemPrivate : public QNativeAndroidContextualPrivate
+{
+public:
+    QString title;
+    bool enabled = true;
+    bool visible = true;
+    bool checkable = false;
+    bool checked = false;
+    int showAs = 0; // TODO: SHOW_AS_ACTION_NEVER
+    QNativeAndroidView *actionView = nullptr;
+};
+
+QNativeAndroidMenuItem::QNativeAndroidMenuItem(QObject *parent)
+    : QNativeAndroidContextual(*(new QNativeAndroidMenuItemPrivate), parent)
 {
 }
 
 QString QNativeAndroidMenuItem::title() const
 {
-    return m_title;
+    Q_D(const QNativeAndroidMenuItem);
+    return d->title;
 }
 
 void QNativeAndroidMenuItem::setTitle(const QString &title)
 {
-    if (m_title != title) {
-        m_title = title;
+    Q_D(QNativeAndroidMenuItem);
+    if (d->title != title) {
+        d->title = title;
         QtNativeAndroid::callTextMethod(instance(), "setTitle", title);
         emit titleChanged();
     }
@@ -65,13 +77,15 @@ void QNativeAndroidMenuItem::setTitle(const QString &title)
 
 bool QNativeAndroidMenuItem::isEnabled() const
 {
-    return m_enabled;
+    Q_D(const QNativeAndroidMenuItem);
+    return d->enabled;
 }
 
 void QNativeAndroidMenuItem::setEnabled(bool enabled)
 {
-    if (m_enabled != enabled) {
-        m_enabled = enabled;
+    Q_D(QNativeAndroidMenuItem);
+    if (d->enabled != enabled) {
+        d->enabled = enabled;
         QtNativeAndroid::callBoolMethod(instance(), "setEnabled", enabled);
         emit enabledChanged();
     }
@@ -79,13 +93,15 @@ void QNativeAndroidMenuItem::setEnabled(bool enabled)
 
 bool QNativeAndroidMenuItem::isVisible() const
 {
-    return m_visible;
+    Q_D(const QNativeAndroidMenuItem);
+    return d->visible;
 }
 
 void QNativeAndroidMenuItem::setVisible(bool visible)
 {
-    if (m_visible != visible) {
-        m_visible = visible;
+    Q_D(QNativeAndroidMenuItem);
+    if (d->visible != visible) {
+        d->visible = visible;
         QtNativeAndroid::callBoolMethod(instance(), "setVisible", visible);
         if (isValid() && context())
             QMetaObject::invokeMethod(context(), "invalidateOptionsMenu");
@@ -95,13 +111,15 @@ void QNativeAndroidMenuItem::setVisible(bool visible)
 
 bool QNativeAndroidMenuItem::isCheckable() const
 {
-    return m_checkable;
+    Q_D(const QNativeAndroidMenuItem);
+    return d->checkable;
 }
 
 void QNativeAndroidMenuItem::setCheckable(bool checkable)
 {
-    if (m_checkable != checkable) {
-        m_checkable = checkable;
+    Q_D(QNativeAndroidMenuItem);
+    if (d->checkable != checkable) {
+        d->checkable = checkable;
         QtNativeAndroid::callBoolMethod(instance(), "setCheckable", checkable);
         emit checkableChanged();
     }
@@ -109,13 +127,15 @@ void QNativeAndroidMenuItem::setCheckable(bool checkable)
 
 bool QNativeAndroidMenuItem::isChecked() const
 {
-    return m_checked;
+    Q_D(const QNativeAndroidMenuItem);
+    return d->checked;
 }
 
 void QNativeAndroidMenuItem::setChecked(bool checked)
 {
-    if (m_checked != checked) {
-        m_checked = checked;
+    Q_D(QNativeAndroidMenuItem);
+    if (d->checked != checked) {
+        d->checked = checked;
         QtNativeAndroid::callBoolMethod(instance(), "setChecked", checked);
         emit checkedChanged();
     }
@@ -123,13 +143,15 @@ void QNativeAndroidMenuItem::setChecked(bool checked)
 
 int QNativeAndroidMenuItem::showAs() const
 {
-    return m_showAs;
+    Q_D(const QNativeAndroidMenuItem);
+    return d->showAs;
 }
 
 void QNativeAndroidMenuItem::setShowAs(int showAs)
 {
-    if (m_showAs != showAs) {
-        m_showAs = showAs;
+    Q_D(QNativeAndroidMenuItem);
+    if (d->showAs != showAs) {
+        d->showAs = showAs;
         QtNativeAndroid::callIntMethod(instance(), "setShowAs", showAs);
         emit showAsChanged();
     }
@@ -137,21 +159,23 @@ void QNativeAndroidMenuItem::setShowAs(int showAs)
 
 QNativeAndroidView *QNativeAndroidMenuItem::actionView() const
 {
-    return m_actionView;
+    Q_D(const QNativeAndroidMenuItem);
+    return d->actionView;
 }
 
 void QNativeAndroidMenuItem::setActionView(QNativeAndroidView *view)
 {
-    if (m_actionView != view) {
-        if (m_actionView) {
-            disconnect(m_actionView, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidMenuItem::updateActionView);
-            m_actionView->destruct();
+    Q_D(QNativeAndroidMenuItem);
+    if (d->actionView != view) {
+        if (d->actionView) {
+            disconnect(d->actionView, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidMenuItem::updateActionView);
+            d->actionView->destruct();
         }
-        m_actionView = view;
-        if (m_actionView) {
-            connect(m_actionView, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidMenuItem::updateActionView);
+        d->actionView = view;
+        if (d->actionView) {
+            connect(d->actionView, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidMenuItem::updateActionView);
             if (isValid())
-                m_actionView->construct();
+                d->actionView->construct();
         }
         emit actionViewChanged();
     }
@@ -166,12 +190,13 @@ QAndroidJniObject QNativeAndroidMenuItem::onCreate()
 
 void QNativeAndroidMenuItem::onInflate(QAndroidJniObject &instance)
 {
-    instance.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_title).object());
-    instance.callMethod<void>("setEnabled", "(Z)V", m_enabled);
-    instance.callMethod<void>("setVisible", "(Z)V", m_visible);
-    instance.callMethod<void>("setCheckable", "(Z)V", m_checkable);
-    instance.callMethod<void>("setChecked", "(Z)V", m_enabled);
-    instance.callMethod<void>("setShowAs", "(I)V", m_showAs);
+    Q_D(QNativeAndroidMenuItem);
+    instance.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(d->title).object());
+    instance.callMethod<void>("setEnabled", "(Z)V", d->enabled);
+    instance.callMethod<void>("setVisible", "(Z)V", d->visible);
+    instance.callMethod<void>("setCheckable", "(Z)V", d->checkable);
+    instance.callMethod<void>("setChecked", "(Z)V", d->enabled);
+    instance.callMethod<void>("setShowAs", "(I)V", d->showAs);
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
@@ -238,11 +263,12 @@ void QNativeAndroidMenuItem::objectChange(ObjectChange change)
 
 void QNativeAndroidMenuItem::updateActionView()
 {
-    if (!isValid() || !m_actionView)
+    Q_D(QNativeAndroidMenuItem);
+    if (!isValid() || !d->actionView)
         return;
 
     QAndroidJniObject item = instance();
-    QAndroidJniObject view = m_actionView->instance();
+    QAndroidJniObject view = d->actionView->instance();
     QtNativeAndroid::callFunction([=]() {
         item.callMethod<void>("setActionView", "(Landroid/view/View;)V", view.object());
     });

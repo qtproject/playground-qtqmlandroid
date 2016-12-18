@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidViewGroupPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidViewGroup : public QNativeAndroidView
 {
     Q_OBJECT
@@ -62,10 +64,16 @@ public:
     static QNativeAndroidLayoutParams *qmlAttachedProperties(QObject *object);
 
 protected:
+    QNativeAndroidViewGroup(QNativeAndroidViewGroupPrivate &dd, QNativeAndroidContext *context = nullptr);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
 
     void viewChange(ViewChange change, const ViewChangeData &data) override;
+
+private:
+    Q_DISABLE_COPY(QNativeAndroidViewGroup)
+    Q_DECLARE_PRIVATE(QNativeAndroidViewGroup)
 };
 
 QT_END_NAMESPACE

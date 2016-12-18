@@ -55,6 +55,7 @@
 QT_BEGIN_NAMESPACE
 
 class QNativeAndroidView;
+class QNativeAndroidLayoutParamsPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidLayoutParams : public QNativeAndroidObject
 {
@@ -88,16 +89,16 @@ Q_SIGNALS:
     void heightChanged();
 
 protected:
+    QNativeAndroidLayoutParams(QNativeAndroidLayoutParamsPrivate &dd, QNativeAndroidView *view);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
 
     bool event(QEvent *event) override;
 
 private:
-    bool m_dirty;
-    QNativeAndroidView *m_view;
-    QNativeAndroidOptional<int> m_width;
-    QNativeAndroidOptional<int> m_height;
+    Q_DISABLE_COPY(QNativeAndroidLayoutParams)
+    Q_DECLARE_PRIVATE(QNativeAndroidLayoutParams)
 };
 
 QT_END_NAMESPACE

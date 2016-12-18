@@ -35,15 +35,26 @@
 ****************************************************************************/
 
 #include "qnativeandroidlayoutparams_p.h"
+#include "qnativeandroidlayoutparams_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 #include "qnativeandroidview_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidLayoutParams::QNativeAndroidLayoutParams(QNativeAndroidView *view) :
-    QNativeAndroidObject(view), m_dirty(false), m_view(view)
+QNativeAndroidLayoutParams::QNativeAndroidLayoutParams(QNativeAndroidView *view)
+    : QNativeAndroidObject(*(new QNativeAndroidLayoutParamsPrivate), view)
 {
-    m_view->setLayoutParams(this);
+    Q_D(QNativeAndroidLayoutParams);
+    d->view = view;
+    view->setLayoutParams(this);
+}
+
+QNativeAndroidLayoutParams::QNativeAndroidLayoutParams(QNativeAndroidLayoutParamsPrivate &dd, QNativeAndroidView *view)
+    : QNativeAndroidObject(dd, view)
+{
+    Q_D(QNativeAndroidLayoutParams);
+    d->view = view;
+    view->setLayoutParams(this);
 }
 
 QNativeAndroidLayoutParams *QNativeAndroidLayoutParams::qmlAttachedProperties(QObject *object)
@@ -56,15 +67,17 @@ QNativeAndroidLayoutParams *QNativeAndroidLayoutParams::qmlAttachedProperties(QO
 
 int QNativeAndroidLayoutParams::width() const
 {
-    if (m_width.isNull())
+    Q_D(const QNativeAndroidLayoutParams);
+    if (d->width.isNull())
         return MATCH_PARENT;
-    return m_width;
+    return d->width;
 }
 
 void QNativeAndroidLayoutParams::setWidth(int value)
 {
+    Q_D(QNativeAndroidLayoutParams);
     if (value != width()) {
-        m_width = value;
+        d->width = value;
         invalidate();
         emit widthChanged();
     }
@@ -72,15 +85,17 @@ void QNativeAndroidLayoutParams::setWidth(int value)
 
 int QNativeAndroidLayoutParams::height() const
 {
-    if (m_height.isNull())
+    Q_D(const QNativeAndroidLayoutParams);
+    if (d->height.isNull())
         return MATCH_PARENT;
-    return m_height;
+    return d->height;
 }
 
 void QNativeAndroidLayoutParams::setHeight(int value)
 {
+    Q_D(QNativeAndroidLayoutParams);
     if (value != height()) {
-        m_height = value;
+        d->height = value;
         invalidate();
         emit heightChanged();
     }
@@ -88,8 +103,9 @@ void QNativeAndroidLayoutParams::setHeight(int value)
 
 void QNativeAndroidLayoutParams::invalidate()
 {
-    if (!m_dirty && isValid()) {
-        m_dirty = true;
+    Q_D(QNativeAndroidLayoutParams);
+    if (!d->dirty && isValid()) {
+        d->dirty = true;
         QCoreApplication::postEvent(this, new QEvent(QEvent::LayoutRequest));
     }
 }
@@ -103,18 +119,20 @@ QAndroidJniObject QNativeAndroidLayoutParams::onCreate()
 
 void QNativeAndroidLayoutParams::onInflate(QAndroidJniObject &instance)
 {
-    if (!m_width.isNull())
-        instance.setField<int>("width", m_width);
-    if (!m_height.isNull())
-        instance.setField<int>("height", m_height);
+    Q_D(QNativeAndroidLayoutParams);
+    if (!d->width.isNull())
+        instance.setField<int>("width", d->width);
+    if (!d->height.isNull())
+        instance.setField<int>("height", d->height);
 }
 
 bool QNativeAndroidLayoutParams::event(QEvent *event)
 {
+    Q_D(QNativeAndroidLayoutParams);
     if (event->type() == QEvent::LayoutRequest) {
-        if (m_dirty && isValid()) {
+        if (d->dirty && isValid()) {
             construct();
-            m_dirty = false;
+            d->dirty = false;
         }
     }
     return QNativeAndroidObject::event(event);

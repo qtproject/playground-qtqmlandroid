@@ -34,45 +34,36 @@
 **
 ****************************************************************************/
 
-#include "qnativeandroidmenu_p.h"
-#include "qnativeandroidmenu_p_p.h"
-#include "qnativeandroidmenuitem_p.h"
+#ifndef QNATIVEANDROIDLAYOUTPARAMS_P_P_H
+#define QNATIVEANDROIDLAYOUTPARAMS_P_P_H
+
+//
+//  W A R N I N G
+//  -------------
+//
+// This file is not part of the Qt API.  It exists purely as an
+// implementation detail.  This header file may change from version to
+// version without notice, or even be removed.
+//
+// We mean it.
+//
+
+#include <QtNativeAndroid/private/qnativeandroidobject_p_p.h>
+#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidMenu::QNativeAndroidMenu(QObject *parent)
-    : QNativeAndroidContextual(*(new QNativeAndroidMenuPrivate), parent)
-{
-}
+class QNativeAndroidView;
 
-QNativeAndroidMenu::QNativeAndroidMenu(QNativeAndroidMenuPrivate &dd, QObject *parent)
-    : QNativeAndroidContextual(dd, parent)
+class QNativeAndroidLayoutParamsPrivate : public QNativeAndroidObjectPrivate
 {
-}
-
-QList<QNativeAndroidMenuItem *> QNativeAndroidMenu::items() const
-{
-    QList<QNativeAndroidMenuItem *> lst;
-    foreach (QObject *child, children()) {
-        QNativeAndroidMenuItem *item = qobject_cast<QNativeAndroidMenuItem *>(child);
-        if (item)
-            lst += item;
-    }
-    return lst;
-}
-
-QAndroidJniObject QNativeAndroidMenu::onCreate()
-{
-    return QAndroidJniObject("org/qtproject/qt5/android/bindings/view/QtNativeMenu");
-}
-
-void QNativeAndroidMenu::onInflate(QAndroidJniObject &instance)
-{
-    foreach (QNativeAndroidMenuItem *item, items()) {
-        item->construct();
-        if (item->isValid())
-            instance.callMethod<void>("add", "(Lorg/qtproject/qt5/android/bindings/view/QtNativeMenuItem;)V", item->instance().object());
-    }
-}
+public:
+    bool dirty = false;
+    QNativeAndroidView *view = nullptr;
+    QNativeAndroidOptional<int> width;
+    QNativeAndroidOptional<int> height;
+};
 
 QT_END_NAMESPACE
+
+#endif // QNATIVEANDROIDLAYOUTPARAMS_P_P_H

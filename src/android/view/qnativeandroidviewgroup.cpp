@@ -35,14 +35,15 @@
 ****************************************************************************/
 
 #include "qnativeandroidviewgroup_p.h"
+#include "qnativeandroidviewgroup_p_p.h"
 #include "qnativeandroidlayoutparams_p.h"
 #include "qtnativeandroidfunctions_p.h"
 #include "qnativeandroidcontext_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidViewGroup::QNativeAndroidViewGroup(QNativeAndroidContext *context) :
-    QNativeAndroidView(context)
+QNativeAndroidViewGroup::QNativeAndroidViewGroup(QNativeAndroidContext *context)
+    : QNativeAndroidView(*(new QNativeAndroidViewGroupPrivate), context)
 {
 }
 

@@ -35,28 +35,38 @@
 ****************************************************************************/
 
 #include "qnativeandroidwindow_p.h"
+#include "qnativeandroidcontextual_p_p.h"
 #include "qnativeandroidcontext_p.h"
+#include "qnativeandroidoptional_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidWindow::QNativeAndroidWindow(QNativeAndroidContext *context) :
-    QNativeAndroidContextual(context)
+class QNativeAndroidWindowPrivate : public QNativeAndroidContextualPrivate
+{
+public:
+    QNativeAndroidOptional<int> statusBarColor;
+};
+
+QNativeAndroidWindow::QNativeAndroidWindow(QNativeAndroidContext *context)
+    : QNativeAndroidContextual(*(new QNativeAndroidWindowPrivate), context)
 {
     setContext(context);
 }
 
 int QNativeAndroidWindow::statusBarColor() const
 {
-    if (m_statusBarColor.isNull())
+    Q_D(const QNativeAndroidWindow);
+    if (d->statusBarColor.isNull())
         return 0; // TODO
-    return m_statusBarColor;
+    return d->statusBarColor;
 }
 
 void QNativeAndroidWindow::setStatusBarColor(int color)
 {
-    if (m_statusBarColor.isNull() || m_statusBarColor != color) {
-        m_statusBarColor = color;
+    Q_D(QNativeAndroidWindow);
+    if (d->statusBarColor.isNull() || d->statusBarColor != color) {
+        d->statusBarColor = color;
         QtNativeAndroid::callIntMethod(instance(), "setStatusBarColor", color);
         emit statusBarColorChanged();
     }
@@ -64,12 +74,13 @@ void QNativeAndroidWindow::setStatusBarColor(int color)
 
 void QNativeAndroidWindow::onInflate(QAndroidJniObject &instance)
 {
-    if (!m_statusBarColor.isNull()) {
+    Q_D(QNativeAndroidWindow);
+    if (!d->statusBarColor.isNull()) {
         // TODO: WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS
         instance.callMethod<void>("addFlags", "(I)V", 0x80000000);
         // TODO: WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
         instance.callMethod<void>("clearFlags", "(I)V", 0x04000000);
-        instance.callMethod<void>("setStatusBarColor", "(I)V", m_statusBarColor);
+        instance.callMethod<void>("setStatusBarColor", "(I)V", d->statusBarColor);
     }
 }
 

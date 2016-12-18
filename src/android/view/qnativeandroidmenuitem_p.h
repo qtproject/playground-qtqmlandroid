@@ -53,6 +53,7 @@
 QT_BEGIN_NAMESPACE
 
 class QNativeAndroidView;
+class QNativeAndroidMenuItemPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidMenuItem : public QNativeAndroidContextual
 {
@@ -123,13 +124,8 @@ private Q_SLOTS:
     void updateActionView();
 
 private:
-    QString m_title;
-    bool m_enabled;
-    bool m_visible;
-    bool m_checkable;
-    bool m_checked;
-    int m_showAs;
-    QNativeAndroidView *m_actionView;
+    Q_DISABLE_COPY(QNativeAndroidMenuItem)
+    Q_DECLARE_PRIVATE(QNativeAndroidMenuItem)
 };
 
 QT_END_NAMESPACE
