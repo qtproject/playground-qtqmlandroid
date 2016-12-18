@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidServicePrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidService : public QNativeAndroidContextWrapper
 {
     Q_OBJECT
@@ -85,7 +87,8 @@ private Q_SLOTS:
     bool startCommand(int flags, int startId);
 
 private:
-    bool m_sticky;
+    Q_DISABLE_COPY(QNativeAndroidService)
+    Q_DECLARE_PRIVATE(QNativeAndroidService)
 };
 
 QT_END_NAMESPACE

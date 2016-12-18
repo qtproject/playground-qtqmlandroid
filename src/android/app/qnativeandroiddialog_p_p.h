@@ -34,52 +34,28 @@
 **
 ****************************************************************************/
 
-#include "qnativeandroiddialog_p.h"
-#include "qnativeandroiddialog_p_p.h"
-#include "qtnativeandroidfunctions_p.h"
+#ifndef QNATIVEANDROIDDIALOG_P_P_H
+#define QNATIVEANDROIDDIALOG_P_P_H
+
+//
+//  W A R N I N G
+//  -------------
+//
+// This file is not part of the Qt API.  It exists purely as an
+// implementation detail.  This header file may change from version to
+// version without notice, or even be removed.
+//
+// We mean it.
+//
+
+#include <QtNativeAndroid/private/qnativeandroidcontextual_p_p.h>
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidDialog::QNativeAndroidDialog(QObject *parent)
-    : QNativeAndroidContextual(*(new QNativeAndroidDialogPrivate), parent)
+class QNativeAndroidDialogPrivate : public QNativeAndroidContextualPrivate
 {
-}
-
-QNativeAndroidDialog::QNativeAndroidDialog(QNativeAndroidDialogPrivate &dd, QObject *parent)
-    : QNativeAndroidContextual(dd, parent)
-{
-}
-
-void QNativeAndroidDialog::cancel()
-{
-    QtNativeAndroid::callVoidMethod(instance(), "cancel");
-}
-
-void QNativeAndroidDialog::dismiss()
-{
-    QtNativeAndroid::callVoidMethod(instance(), "dismiss");
-}
-
-void QNativeAndroidDialog::hide()
-{
-    QtNativeAndroid::callVoidMethod(instance(), "hide");
-}
-
-void QNativeAndroidDialog::show()
-{
-    QtNativeAndroid::callVoidMethod(instance(), "show");
-}
-
-QAndroidJniObject QNativeAndroidDialog::onCreate()
-{
-    return QAndroidJniObject("android/app/Dialog",
-                             "(Landroid/content/Context;)V",
-                             ctx().object());
-}
-
-void QNativeAndroidDialog::onInflate(QAndroidJniObject& instance)
-{
-    QNativeAndroidContextual::onInflate(instance);
-}
+};
 
 QT_END_NAMESPACE
+
+#endif // QNATIVEANDROIDDIALOG_P_P_H

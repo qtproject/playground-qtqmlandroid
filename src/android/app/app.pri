@@ -5,6 +5,7 @@ HEADERS += \
     $$PWD/qnativeandroidactivity_p.h \
     $$PWD/qnativeandroidalertdialog_p.h \
     $$PWD/qnativeandroiddialog_p.h \
+    $$PWD/qnativeandroiddialog_p_p.h \
     $$PWD/qnativeandroidservice_p.h
 
 SOURCES += \

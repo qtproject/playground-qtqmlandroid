@@ -35,24 +35,33 @@
 ****************************************************************************/
 
 #include "qnativeandroidservice_p.h"
+#include "qnativeandroidcontextwrapper_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidService::QNativeAndroidService(QObject *parent) :
-    QNativeAndroidContextWrapper(0, parent), m_sticky(true)
+class QNativeAndroidServicePrivate : public QNativeAndroidContextWrapperPrivate
+{
+public:
+    bool sticky = true;
+};
+
+QNativeAndroidService::QNativeAndroidService(QObject *parent)
+    : QNativeAndroidContextWrapper(*(new QNativeAndroidServicePrivate), nullptr, parent)
 {
 }
 
 bool QNativeAndroidService::isSticky() const
 {
-    return m_sticky;
+    Q_D(const QNativeAndroidService);
+    return d->sticky;
 }
 
 void QNativeAndroidService::setSticky(bool sticky)
 {
-    if (m_sticky != sticky) {
-        m_sticky = sticky;
+    Q_D(QNativeAndroidService);
+    if (d->sticky != sticky) {
+        d->sticky = sticky;
         emit stickyChanged();
     }
 }
@@ -167,9 +176,10 @@ jboolean QNativeAndroidService::onStartCommand(JNIEnv *env, jobject object, jlon
 
 bool QNativeAndroidService::startCommand(int flags, int startId)
 {
+    Q_D(QNativeAndroidService);
     Q_UNUSED(flags);
     Q_UNUSED(startId);
-    return m_sticky;
+    return d->sticky;
 }
 
 QT_END_NAMESPACE

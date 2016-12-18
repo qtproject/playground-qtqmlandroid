@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidDialogPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidDialog : public QNativeAndroidContextual
 {
     Q_OBJECT
@@ -66,8 +68,14 @@ public Q_SLOTS:
     void show();
 
 protected:
+    QNativeAndroidDialog(QNativeAndroidDialogPrivate &dd, QObject *parent = nullptr);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject& instance) override;
+
+private:
+    Q_DISABLE_COPY(QNativeAndroidDialog)
+    Q_DECLARE_PRIVATE(QNativeAndroidDialog)
 };
 
 QT_END_NAMESPACE

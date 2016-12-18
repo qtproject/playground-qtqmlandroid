@@ -54,6 +54,7 @@
 QT_BEGIN_NAMESPACE
 
 class QNativeAndroidDrawable;
+class QNativeAndroidActionBarPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidActionBar : public QNativeAndroidObject
 {
@@ -98,11 +99,8 @@ private Q_SLOTS:
     void updateBackground();
 
 private:
-    bool m_visible;
-    qreal m_elevation;
-    QString m_title;
-    QString m_subtitle;
-    QNativeAndroidDrawable *m_background;
+    Q_DISABLE_COPY(QNativeAndroidActionBar)
+    Q_DECLARE_PRIVATE(QNativeAndroidActionBar)
 };
 
 QT_END_NAMESPACE

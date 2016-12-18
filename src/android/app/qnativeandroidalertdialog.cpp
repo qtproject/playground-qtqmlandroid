@@ -35,24 +35,34 @@
 ****************************************************************************/
 
 #include "qnativeandroidalertdialog_p.h"
+#include "qnativeandroiddialog_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidAlertDialog::QNativeAndroidAlertDialog(QObject *parent) :
-    QNativeAndroidDialog(parent)
+class QNativeAndroidAlertDialogPrivate : public QNativeAndroidDialogPrivate
+{
+public:
+    QString title;
+    QString message;
+};
+
+QNativeAndroidAlertDialog::QNativeAndroidAlertDialog(QObject *parent)
+    : QNativeAndroidDialog(*(new QNativeAndroidAlertDialogPrivate), parent)
 {
 }
 
 QString QNativeAndroidAlertDialog::title() const
 {
-    return m_title;
+    Q_D(const QNativeAndroidAlertDialog);
+    return d->title;
 }
 
 void QNativeAndroidAlertDialog::setTitle(const QString &title)
 {
-    if (m_title != title) {
-        m_title = title;
+    Q_D(QNativeAndroidAlertDialog);
+    if (d->title != title) {
+        d->title = title;
         QtNativeAndroid::callTextMethod(instance(), "setTitle", title);
         emit titleChanged();
     }
@@ -60,13 +70,15 @@ void QNativeAndroidAlertDialog::setTitle(const QString &title)
 
 QString QNativeAndroidAlertDialog::message() const
 {
-    return m_message;
+    Q_D(const QNativeAndroidAlertDialog);
+    return d->message;
 }
 
 void QNativeAndroidAlertDialog::setMessage(const QString &message)
 {
-    if (m_message != message) {
-        m_message = message;
+    Q_D(QNativeAndroidAlertDialog);
+    if (d->message != message) {
+        d->message = message;
         QtNativeAndroid::callTextMethod(instance(), "setMessage", message);
         emit messageChanged();
     }
@@ -81,12 +93,13 @@ QAndroidJniObject QNativeAndroidAlertDialog::onCreate()
 
 void QNativeAndroidAlertDialog::onInflate(QAndroidJniObject& instance)
 {
+    Q_D(QNativeAndroidAlertDialog);
     QNativeAndroidDialog::onInflate(instance);
 
-    if (!m_title.isNull())
-        instance.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_title).object());
-    if (!m_message.isNull())
-        instance.callMethod<void>("setMessage", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_message).object());
+    if (!d->title.isNull())
+        instance.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(d->title).object());
+    if (!d->message.isNull())
+        instance.callMethod<void>("setMessage", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(d->message).object());
 }
 
 QT_END_NAMESPACE

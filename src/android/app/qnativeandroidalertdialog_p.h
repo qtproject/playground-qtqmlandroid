@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidAlertDialogPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidAlertDialog : public QNativeAndroidDialog
 {
     Q_OBJECT
@@ -76,8 +78,8 @@ protected:
     void onInflate(QAndroidJniObject& instance) override;
 
 private:
-    QString m_title;
-    QString m_message;
+    Q_DISABLE_COPY(QNativeAndroidAlertDialog)
+    Q_DECLARE_PRIVATE(QNativeAndroidAlertDialog)
 };
 
 QT_END_NAMESPACE

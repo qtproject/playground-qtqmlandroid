@@ -35,25 +35,38 @@
 ****************************************************************************/
 
 #include "qnativeandroidactionbar_p.h"
+#include "qnativeandroidobject_p_p.h"
 #include "qnativeandroiddrawable_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidActionBar::QNativeAndroidActionBar(QObject *parent) :
-    QNativeAndroidObject(parent), m_visible(true), m_elevation(0.0), m_background(0)
+class QNativeAndroidActionBarPrivate : public QNativeAndroidObjectPrivate
+{
+public:
+    bool visible = true;
+    qreal elevation = 0.0;
+    QString title;
+    QString subtitle;
+    QNativeAndroidDrawable *background = nullptr;
+};
+
+QNativeAndroidActionBar::QNativeAndroidActionBar(QObject *parent)
+    : QNativeAndroidObject(*(new QNativeAndroidActionBarPrivate), parent)
 {
 }
 
 bool QNativeAndroidActionBar::isVisible() const
 {
-    return m_visible;
+    Q_D(const QNativeAndroidActionBar);
+    return d->visible;
 }
 
 void QNativeAndroidActionBar::setVisible(bool arg)
 {
+    Q_D(QNativeAndroidActionBar);
     if (arg != isVisible()) {
-        m_visible = arg;
+        d->visible = arg;
         if (arg)
             QtNativeAndroid::callVoidMethod(instance(), "show");
         else
@@ -64,13 +77,15 @@ void QNativeAndroidActionBar::setVisible(bool arg)
 
 qreal QNativeAndroidActionBar::elevation() const
 {
-    return m_elevation;
+    Q_D(const QNativeAndroidActionBar);
+    return d->elevation;
 }
 
 void QNativeAndroidActionBar::setElevation(qreal elevation)
 {
-    if (m_elevation != elevation) {
-        m_elevation = elevation;
+    Q_D(QNativeAndroidActionBar);
+    if (d->elevation != elevation) {
+        d->elevation = elevation;
         QtNativeAndroid::callRealMethod(instance(), "setElevation", elevation);
         emit elevationChanged();
     }
@@ -78,13 +93,15 @@ void QNativeAndroidActionBar::setElevation(qreal elevation)
 
 QString QNativeAndroidActionBar::title() const
 {
-    return m_title;
+    Q_D(const QNativeAndroidActionBar);
+    return d->title;
 }
 
 void QNativeAndroidActionBar::setTitle(const QString &title)
 {
-    if (m_title != title) {
-        m_title = title;
+    Q_D(QNativeAndroidActionBar);
+    if (d->title != title) {
+        d->title = title;
         QtNativeAndroid::callTextMethod(instance(), "setTitle", title);
         emit titleChanged();
     }
@@ -92,13 +109,15 @@ void QNativeAndroidActionBar::setTitle(const QString &title)
 
 QString QNativeAndroidActionBar::subtitle() const
 {
-    return m_subtitle;
+    Q_D(const QNativeAndroidActionBar);
+    return d->subtitle;
 }
 
 void QNativeAndroidActionBar::setSubtitle(const QString &subtitle)
 {
-    if (m_subtitle != subtitle) {
-        m_subtitle = subtitle;
+    Q_D(QNativeAndroidActionBar);
+    if (d->subtitle != subtitle) {
+        d->subtitle = subtitle;
         QtNativeAndroid::callTextMethod(instance(), "setSubtitle", subtitle);
         emit subtitleChanged();
     }
@@ -106,20 +125,22 @@ void QNativeAndroidActionBar::setSubtitle(const QString &subtitle)
 
 QNativeAndroidDrawable *QNativeAndroidActionBar::background() const
 {
-    return m_background;
+    Q_D(const QNativeAndroidActionBar);
+    return d->background;
 }
 
 void QNativeAndroidActionBar::setBackground(QNativeAndroidDrawable *background)
 {
-    if (m_background != background) {
-        if (m_background) {
-            disconnect(m_background, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActionBar::updateBackground);
-            m_background->destruct();
+    Q_D(QNativeAndroidActionBar);
+    if (d->background != background) {
+        if (d->background) {
+            disconnect(d->background, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActionBar::updateBackground);
+            d->background->destruct();
         }
-        m_background = background;
-        if (m_background) {
-            connect(m_background, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActionBar::updateBackground);
-            m_background->construct();
+        d->background = background;
+        if (d->background) {
+            connect(d->background, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActionBar::updateBackground);
+            d->background->construct();
         }
         emit backgroundChanged();
     }
@@ -127,15 +148,16 @@ void QNativeAndroidActionBar::setBackground(QNativeAndroidDrawable *background)
 
 void QNativeAndroidActionBar::onInflate(QAndroidJniObject &instance)
 {
-    instance.callMethod<void>(m_visible ? "show" : "hide");
+    Q_D(QNativeAndroidActionBar);
+    instance.callMethod<void>(d->visible ? "show" : "hide");
 
-    if (!m_title.isNull())
-        instance.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_title).object());
-    if (!m_subtitle.isNull())
-        instance.callMethod<void>("setSubtitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_subtitle).object());
+    if (!d->title.isNull())
+        instance.callMethod<void>("setTitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(d->title).object());
+    if (!d->subtitle.isNull())
+        instance.callMethod<void>("setSubtitle", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(d->subtitle).object());
 
     // TODO: properties
-    instance.callMethod<void>("setElevation", "(F)V", m_elevation);
+    instance.callMethod<void>("setElevation", "(F)V", d->elevation);
     instance.callMethod<void>("setDisplayHomeAsUpEnabled", "(Z)V", true);
     instance.callMethod<void>("setHomeButtonEnabled", "(Z)V", true);
 }
@@ -149,11 +171,12 @@ void QNativeAndroidActionBar::objectChange(ObjectChange change)
 
 void QNativeAndroidActionBar::updateBackground()
 {
-    if (!isValid() || !m_background)
+    Q_D(QNativeAndroidActionBar);
+    if (!isValid() || !d->background)
         return;
 
     QAndroidJniObject bar = instance();
-    QAndroidJniObject background = m_background->instance();
+    QAndroidJniObject background = d->background->instance();
     QtNativeAndroid::callFunction([=]() {
         bar.callMethod<void>("setBackgroundDrawable", "(Landroid/graphics/drawable/Drawable;)V", background.object());
     });

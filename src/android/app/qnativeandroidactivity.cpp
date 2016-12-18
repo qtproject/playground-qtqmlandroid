@@ -35,6 +35,7 @@
 ****************************************************************************/
 
 #include "qnativeandroidactivity_p.h"
+#include "qnativeandroidcontextwrapper_p_p.h"
 #include "qnativeandroidactionbar_p.h"
 #include "qnativeandroidmenuitem_p.h"
 #include "qnativeandroidmenu_p.h"
@@ -47,89 +48,108 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidActivity::QNativeAndroidActivity(QObject *parent) :
-    QNativeAndroidContextWrapper(parent), m_window(new QNativeAndroidWindow(this)),
-    m_contentView(0), m_optionsMenu(0), m_actionBar(0)
+class QNativeAndroidActivityPrivate : public QNativeAndroidContextWrapperPrivate
 {
+public:
+    QNativeAndroidWindow *window = nullptr;
+    QNativeAndroidView *contentView = nullptr;
+    QNativeAndroidMenu *optionsMenu = nullptr;
+    QNativeAndroidActionBar *actionBar = nullptr;
+};
+
+QNativeAndroidActivity::QNativeAndroidActivity(QObject *parent)
+    : QNativeAndroidContextWrapper(*(new QNativeAndroidActivityPrivate), parent)
+{
+    Q_D(QNativeAndroidActivity);
+    d->window = new QNativeAndroidWindow(this);
+
     // TODO: multiple activities?
     setInstance(QtAndroid::androidActivity());
 }
 
 QNativeAndroidWindow *QNativeAndroidActivity::window() const
 {
-    return m_window;
+    Q_D(const QNativeAndroidActivity);
+    return d->window;
 }
 
 QNativeAndroidActionBar *QNativeAndroidActivity::actionBar() const
 {
-    return m_actionBar;
+    Q_D(const QNativeAndroidActivity);
+    return d->actionBar;
 }
 
 void QNativeAndroidActivity::setActionBar(QNativeAndroidActionBar *bar)
 {
-    if (m_actionBar != bar) {
-        if (m_actionBar)
-            m_actionBar->destruct();
-        m_actionBar = bar;
-        if (m_actionBar)
+    Q_D(QNativeAndroidActivity);
+    if (d->actionBar != bar) {
+        if (d->actionBar)
+            d->actionBar->destruct();
+        d->actionBar = bar;
+        if (d->actionBar)
             setupActionBar();
     }
 }
 
 QNativeAndroidMenu *QNativeAndroidActivity::optionsMenu() const
 {
-    return m_optionsMenu;
+    Q_D(const QNativeAndroidActivity);
+    return d->optionsMenu;
 }
 
 void QNativeAndroidActivity::setOptionsMenu(QNativeAndroidMenu *menu)
 {
-    if (m_optionsMenu != menu) {
-        if (m_optionsMenu) {
-            disconnect(m_optionsMenu, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActivity::updateOptionsMenu);
-            m_optionsMenu->destruct();
+    Q_D(QNativeAndroidActivity);
+    if (d->optionsMenu != menu) {
+        if (d->optionsMenu) {
+            disconnect(d->optionsMenu, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActivity::updateOptionsMenu);
+            d->optionsMenu->destruct();
         }
-        m_optionsMenu = menu;
-        if (m_optionsMenu) {
-            connect(m_optionsMenu, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActivity::updateOptionsMenu);
+        d->optionsMenu = menu;
+        if (d->optionsMenu) {
+            connect(d->optionsMenu, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActivity::updateOptionsMenu);
             if (isComponentComplete())
-                m_optionsMenu->construct();
+                d->optionsMenu->construct();
         }
     }
 }
 
 QNativeAndroidView *QNativeAndroidActivity::contentView() const
 {
-    return m_contentView;
+    Q_D(const QNativeAndroidActivity);
+    return d->contentView;
 }
 
 void QNativeAndroidActivity::setContentView(QNativeAndroidView *view)
 {
-    if (m_contentView != view) {
-        if (m_contentView) {
-            disconnect(m_contentView, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActivity::updateContentView);
-            m_contentView->destruct();
+    Q_D(QNativeAndroidActivity);
+    if (d->contentView != view) {
+        if (d->contentView) {
+            disconnect(d->contentView, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActivity::updateContentView);
+            d->contentView->destruct();
         }
-        m_contentView = view;
-        if (m_contentView) {
-            connect(m_contentView, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActivity::updateContentView);
+        d->contentView = view;
+        if (d->contentView) {
+            connect(d->contentView, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidActivity::updateContentView);
             if (isComponentComplete())
-                m_contentView->construct();
+                d->contentView->construct();
         }
     }
 }
 
 void QNativeAndroidActivity::start()
 {
+    Q_D(QNativeAndroidActivity);
     foreach (QObject *child, children()) {
         QNativeAndroidObject *object = qobject_cast<QNativeAndroidObject *>(child);
         if (object)
             object->construct();
     }
 
-    if (m_actionBar)
+    if (d->actionBar)
         setupActionBar();
 
-    if (m_window)
+    if (d->window)
         setupWindow();
 }
 
@@ -146,36 +166,39 @@ void QNativeAndroidActivity::componentComplete()
 
 void QNativeAndroidActivity::setupWindow()
 {
+    Q_D(QNativeAndroidActivity);
     if (!isValid())
         return;
 
     QAndroidJniObject activity = instance();
     QtNativeAndroid::callFunction([=]() {
         QAndroidJniObject wnd = activity.callObjectMethod("getWindow", "()Landroid/view/Window;");
-        m_window->inflate(wnd);
+        d->window->inflate(wnd);
     });
 }
 
 void QNativeAndroidActivity::setupActionBar()
 {
+    Q_D(QNativeAndroidActivity);
     if (!isValid())
         return;
 
     QAndroidJniObject activity = instance();
     QtNativeAndroid::callFunction([=]() {
         QAndroidJniObject bar = activity.callObjectMethod("getActionBar", "()Landroid/app/ActionBar;");
-        m_actionBar->inflate(bar);
+        d->actionBar->inflate(bar);
     });
 }
 
 void QNativeAndroidActivity::updateOptionsMenu()
 {
+    Q_D(QNativeAndroidActivity);
     if (!isValid())
         return;
 
     QAndroidJniObject menu;
-    if (m_optionsMenu)
-        menu = m_optionsMenu->instance();
+    if (d->optionsMenu)
+        menu = d->optionsMenu->instance();
 
     QAndroidJniObject activity = instance();
     QtNativeAndroid::callFunction([=]() {
@@ -190,12 +213,13 @@ void QNativeAndroidActivity::invalidateOptionsMenu()
 
 void QNativeAndroidActivity::updateContentView()
 {
+    Q_D(QNativeAndroidActivity);
     if (!isValid())
         return;
 
     QAndroidJniObject content;
-    if (m_contentView)
-        content = m_contentView->instance();
+    if (d->contentView)
+        content = d->contentView->instance();
 
     QAndroidJniObject activity = instance();
     QtNativeAndroid::callFunction([=]() {

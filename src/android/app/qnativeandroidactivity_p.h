@@ -56,6 +56,7 @@ class QNativeAndroidView;
 class QNativeAndroidMenu;
 class QNativeAndroidWindow;
 class QNativeAndroidActionBar;
+class QNativeAndroidActivityPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidActivity : public QNativeAndroidContextWrapper
 {
@@ -94,10 +95,8 @@ private Q_SLOTS:
     void updateContentView();
 
 private:
-    QNativeAndroidWindow *m_window;
-    QNativeAndroidView *m_contentView;
-    QNativeAndroidMenu *m_optionsMenu;
-    QNativeAndroidActionBar *m_actionBar;
+    Q_DISABLE_COPY(QNativeAndroidActivity)
+    Q_DECLARE_PRIVATE(QNativeAndroidActivity)
 };
 
 QT_END_NAMESPACE
