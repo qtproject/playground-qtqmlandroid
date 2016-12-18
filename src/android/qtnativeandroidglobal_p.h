@@ -34,8 +34,8 @@
 **
 ****************************************************************************/
 
-#ifndef QTQMLANDROIDGLOBAL_P_H
-#define QTQMLANDROIDGLOBAL_P_H
+#ifndef QTNATIVEANDROIDGLOBAL_P_H
+#define QTNATIVEANDROIDGLOBAL_P_H
 
 //
 //  W A R N I N G
@@ -73,4 +73,4 @@ namespace QtQmlAndroid {
 
 QT_END_NAMESPACE
 
-#endif // QTQMLANDROIDGLOBAL_P_H
+#endif // QTNATIVEANDROIDGLOBAL_P_H

@@ -48,7 +48,7 @@
 // We mean it.
 //
 
-#include <QtQmlAndroid/private/qtqmlandroidglobal_p.h>
+#include <QtQmlAndroid/private/qtnativeandroidglobal_p.h>
 #include <QtQmlAndroid/private/qnativeandroidoptional_p.h>
 #include <QtQmlAndroid/private/qnativeandroidinterpolator_p.h>
 #include <QtAndroidExtras/qandroidjniobject.h>
