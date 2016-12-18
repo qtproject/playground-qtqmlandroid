@@ -1,4 +1,5 @@
 TARGET = QtQmlAndroid
+MODULE = qmlandroid
 
 QT += androidextras qml
 QT += core-private # qjnihelpers
