@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidViewFlipper : public QNativeAndroidViewAnimator
+class Q_NATIVEANDROID_EXPORT QNativeAndroidViewFlipper : public QNativeAndroidViewAnimator
 {
     Q_OBJECT
 

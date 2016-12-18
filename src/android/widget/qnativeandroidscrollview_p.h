@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidScrollView : public QNativeAndroidFrameLayout
+class Q_NATIVEANDROID_EXPORT QNativeAndroidScrollView : public QNativeAndroidFrameLayout
 {
     Q_OBJECT
     Q_PROPERTY(int scrollX READ scrollX WRITE setScrollX NOTIFY scrollXChanged)

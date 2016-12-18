@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidTabWidget : public QNativeAndroidLinearLayout
+class Q_NATIVEANDROID_EXPORT QNativeAndroidTabWidget : public QNativeAndroidLinearLayout
 {
     Q_OBJECT
 

@@ -58,7 +58,7 @@ class QNativeAndroidDrawable;
 class QNativeAndroidAnimation;
 class QNativeAndroidLayoutParams;
 
-class Q_QMLANDROID_EXPORT QNativeAndroidView : public QNativeAndroidContextual
+class Q_NATIVEANDROID_EXPORT QNativeAndroidView : public QNativeAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(QNativeAndroidView *parent READ parentView WRITE setParentView NOTIFY parentChanged)

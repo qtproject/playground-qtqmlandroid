@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidEditText : public QNativeAndroidTextView
+class Q_NATIVEANDROID_EXPORT QNativeAndroidEditText : public QNativeAndroidTextView
 {
     Q_OBJECT
 

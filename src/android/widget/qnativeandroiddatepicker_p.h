@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidDatePicker : public QNativeAndroidFrameLayout
+class Q_NATIVEANDROID_EXPORT QNativeAndroidDatePicker : public QNativeAndroidFrameLayout
 {
     Q_OBJECT
 

@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidInterpolator : public QNativeAndroidObject
+class Q_NATIVEANDROID_EXPORT QNativeAndroidInterpolator : public QNativeAndroidObject
 {
     Q_OBJECT
 

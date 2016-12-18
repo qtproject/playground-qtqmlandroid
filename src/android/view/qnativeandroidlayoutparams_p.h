@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 
 class QNativeAndroidView;
 
-class Q_QMLANDROID_EXPORT QNativeAndroidLayoutParams : public QNativeAndroidObject
+class Q_NATIVEANDROID_EXPORT QNativeAndroidLayoutParams : public QNativeAndroidObject
 {
     Q_OBJECT
     Q_PROPERTY(int width READ width WRITE setWidth NOTIFY widthChanged)

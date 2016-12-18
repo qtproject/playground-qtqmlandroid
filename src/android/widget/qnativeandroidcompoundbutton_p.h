@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidCompoundButton : public QNativeAndroidButton
+class Q_NATIVEANDROID_EXPORT QNativeAndroidCompoundButton : public QNativeAndroidButton
 {
     Q_OBJECT
     Q_PROPERTY(bool checked READ isChecked WRITE setChecked NOTIFY checkedChanged)

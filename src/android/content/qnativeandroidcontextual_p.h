@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 class QNativeAndroidContext;
 
-class Q_QMLANDROID_EXPORT QNativeAndroidContextual : public QNativeAndroidObject
+class Q_NATIVEANDROID_EXPORT QNativeAndroidContextual : public QNativeAndroidObject
 {
     Q_OBJECT
     Q_PROPERTY(QNativeAndroidContext *context READ context NOTIFY contextChanged)

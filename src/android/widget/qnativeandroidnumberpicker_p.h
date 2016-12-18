@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidNumberPicker : public QNativeAndroidLinearLayout
+class Q_NATIVEANDROID_EXPORT QNativeAndroidNumberPicker : public QNativeAndroidLinearLayout
 {
     Q_OBJECT
     Q_PROPERTY(int value READ value WRITE setValue NOTIFY valueChanged)

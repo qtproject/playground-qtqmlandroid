@@ -54,7 +54,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidImageView : public QNativeAndroidView
+class Q_NATIVEANDROID_EXPORT QNativeAndroidImageView : public QNativeAndroidView
 {
     Q_OBJECT
     Q_PROPERTY(QUrl imageURI READ imageURI WRITE setImageURI NOTIFY imageURIChanged)

@@ -59,7 +59,7 @@ QT_BEGIN_NAMESPACE
 class QNativeAndroidView;
 class QNativeAndroidTabHost;
 
-class Q_QMLANDROID_EXPORT QNativeAndroidTabSpec : public QObject
+class Q_NATIVEANDROID_EXPORT QNativeAndroidTabSpec : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString label READ label WRITE setLabel NOTIFY labelChanged)

@@ -56,7 +56,7 @@ QT_BEGIN_NAMESPACE
 class QNativeAndroidView;
 class QNativeAndroidMenuItem;
 
-class Q_QMLANDROID_EXPORT QNativeAndroidPopupMenu : public QNativeAndroidObject
+class Q_NATIVEANDROID_EXPORT QNativeAndroidPopupMenu : public QNativeAndroidObject
 {
     Q_OBJECT
     Q_PROPERTY(QNativeAndroidView *anchor READ anchor WRITE setAnchor NOTIFY anchorChanged)

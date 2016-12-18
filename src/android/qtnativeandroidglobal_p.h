@@ -56,12 +56,12 @@ QT_BEGIN_NAMESPACE
 
 #ifndef QT_STATIC
 #  if defined(QT_BUILD_NATIVEANDROID_LIB)
-#    define Q_QMLANDROID_EXPORT Q_DECL_EXPORT
+#    define Q_NATIVEANDROID_EXPORT Q_DECL_EXPORT
 #  else
-#    define Q_QMLANDROID_EXPORT Q_DECL_IMPORT
+#    define Q_NATIVEANDROID_EXPORT Q_DECL_IMPORT
 #  endif
 #else
-#  define Q_QMLANDROID_EXPORT
+#  define Q_NATIVEANDROID_EXPORT
 #endif
 
 namespace QtNativeAndroid {

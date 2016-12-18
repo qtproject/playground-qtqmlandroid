@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidContextWrapper : public QNativeAndroidContext
+class Q_NATIVEANDROID_EXPORT QNativeAndroidContextWrapper : public QNativeAndroidContext
 {
     Q_OBJECT
 

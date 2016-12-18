@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidColorDrawable : public QNativeAndroidDrawable
+class Q_NATIVEANDROID_EXPORT QNativeAndroidColorDrawable : public QNativeAndroidDrawable
 {
     Q_OBJECT
     Q_PROPERTY(int color READ color WRITE setColor NOTIFY colorChanged)

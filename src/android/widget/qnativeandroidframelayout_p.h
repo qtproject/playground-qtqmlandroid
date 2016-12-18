@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidFrameLayout : public QNativeAndroidViewGroup
+class Q_NATIVEANDROID_EXPORT QNativeAndroidFrameLayout : public QNativeAndroidViewGroup
 {
     Q_OBJECT
 

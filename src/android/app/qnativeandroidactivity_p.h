@@ -57,7 +57,7 @@ class QNativeAndroidMenu;
 class QNativeAndroidWindow;
 class QNativeAndroidActionBar;
 
-class Q_QMLANDROID_EXPORT QNativeAndroidActivity : public QNativeAndroidContextWrapper
+class Q_NATIVEANDROID_EXPORT QNativeAndroidActivity : public QNativeAndroidContextWrapper
 {
     Q_OBJECT
     Q_PROPERTY(QNativeAndroidWindow *window READ window CONSTANT)

@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidDialog : public QNativeAndroidContextual
+class Q_NATIVEANDROID_EXPORT QNativeAndroidDialog : public QNativeAndroidContextual
 {
     Q_OBJECT
 

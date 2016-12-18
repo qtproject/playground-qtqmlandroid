@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidProgressBar : public QNativeAndroidView
+class Q_NATIVEANDROID_EXPORT QNativeAndroidProgressBar : public QNativeAndroidView
 {
     Q_OBJECT
     Q_PROPERTY(bool indeterminate READ isIndeterminate WRITE setIndeterminate NOTIFY indeterminateChanged)

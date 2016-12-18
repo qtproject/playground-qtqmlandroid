@@ -59,7 +59,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidObject : public QObject, public QQmlParserStatus
+class Q_NATIVEANDROID_EXPORT QNativeAndroidObject : public QObject, public QQmlParserStatus
 {
     Q_OBJECT
     Q_PROPERTY(QQmlListProperty<QObject> data READ data NOTIFY dataChanged)

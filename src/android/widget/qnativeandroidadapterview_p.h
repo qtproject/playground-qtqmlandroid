@@ -54,7 +54,7 @@ QT_BEGIN_NAMESPACE
 
 class QNativeAndroidBaseAdapter;
 
-class Q_QMLANDROID_EXPORT QNativeAndroidAdapterView : public QNativeAndroidViewGroup
+class Q_NATIVEANDROID_EXPORT QNativeAndroidAdapterView : public QNativeAndroidViewGroup
 {
     Q_OBJECT
     Q_PROPERTY(QNativeAndroidBaseAdapter *adapter READ adapter WRITE setAdapter NOTIFY adapterChanged) // TODO: Adapter

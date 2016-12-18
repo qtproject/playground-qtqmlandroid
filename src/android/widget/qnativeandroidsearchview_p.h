@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidSearchView : public QNativeAndroidLinearLayout
+class Q_NATIVEANDROID_EXPORT QNativeAndroidSearchView : public QNativeAndroidLinearLayout
 {
     Q_OBJECT
 

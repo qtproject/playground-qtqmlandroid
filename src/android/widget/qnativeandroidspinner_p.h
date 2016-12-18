@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidSpinner : public QNativeAndroidAdapterView // TODO: AbsSpinner
+class Q_NATIVEANDROID_EXPORT QNativeAndroidSpinner : public QNativeAndroidAdapterView // TODO: AbsSpinner
 {
     Q_OBJECT
 

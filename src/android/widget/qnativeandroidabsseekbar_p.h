@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidAbsSeekBar : public QNativeAndroidProgressBar
+class Q_NATIVEANDROID_EXPORT QNativeAndroidAbsSeekBar : public QNativeAndroidProgressBar
 {
     Q_OBJECT
 

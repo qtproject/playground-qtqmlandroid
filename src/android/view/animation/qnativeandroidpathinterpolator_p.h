@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidPathInterpolator : public QNativeAndroidInterpolator
+class Q_NATIVEANDROID_EXPORT QNativeAndroidPathInterpolator : public QNativeAndroidInterpolator
 {
     Q_OBJECT
     Q_PROPERTY(qreal controlX READ controlX WRITE setControlX NOTIFY controlXChanged)

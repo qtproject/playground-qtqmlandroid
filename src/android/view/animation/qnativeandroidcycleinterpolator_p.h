@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidCycleInterpolator : public QNativeAndroidInterpolator
+class Q_NATIVEANDROID_EXPORT QNativeAndroidCycleInterpolator : public QNativeAndroidInterpolator
 {
     Q_OBJECT
     Q_PROPERTY(qreal cycles READ cycles WRITE setCycles NOTIFY cyclesChanged)

@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidRotateAnimation : public QNativeAndroidAnimation
+class Q_NATIVEANDROID_EXPORT QNativeAndroidRotateAnimation : public QNativeAndroidAnimation
 {
     Q_OBJECT
     Q_PROPERTY(qreal fromDegrees READ fromDegrees WRITE setFromDegrees NOTIFY fromDegreesChanged)

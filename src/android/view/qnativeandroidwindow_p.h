@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidWindow : public QNativeAndroidContextual
+class Q_NATIVEANDROID_EXPORT QNativeAndroidWindow : public QNativeAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(int statusBarColor READ statusBarColor WRITE setStatusBarColor NOTIFY statusBarColorChanged)

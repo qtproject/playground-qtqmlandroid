@@ -55,7 +55,7 @@ QT_BEGIN_NAMESPACE
 
 class QNativeAndroidDrawable;
 
-class Q_QMLANDROID_EXPORT QNativeAndroidActionBar : public QNativeAndroidObject
+class Q_NATIVEANDROID_EXPORT QNativeAndroidActionBar : public QNativeAndroidObject
 {
     Q_OBJECT
     Q_PROPERTY(bool visible READ isVisible WRITE setVisible NOTIFY visibleChanged)

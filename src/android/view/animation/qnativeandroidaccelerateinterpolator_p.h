@@ -53,7 +53,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidAccelerateInterpolator : public QNativeAndroidInterpolator
+class Q_NATIVEANDROID_EXPORT QNativeAndroidAccelerateInterpolator : public QNativeAndroidInterpolator
 {
     Q_OBJECT
     Q_PROPERTY(qreal factor READ factor WRITE setFactor NOTIFY factorChanged)

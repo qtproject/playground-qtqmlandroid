@@ -58,7 +58,7 @@ QT_BEGIN_NAMESPACE
 class QJSEngine;
 class QQmlEngine;
 
-class Q_QMLANDROID_EXPORT QNativeAndroidR : public QObject
+class Q_NATIVEANDROID_EXPORT QNativeAndroidR : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QQmlPropertyMap *anim READ anim CONSTANT)

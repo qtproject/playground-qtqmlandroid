@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidBaseAdapter : public QNativeAndroidContextual
+class Q_NATIVEANDROID_EXPORT QNativeAndroidBaseAdapter : public QNativeAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(int count READ count NOTIFY countChanged)

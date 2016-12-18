@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidSwipeRefreshLayout : public QNativeAndroidViewGroup
+class Q_NATIVEANDROID_EXPORT QNativeAndroidSwipeRefreshLayout : public QNativeAndroidViewGroup
 {
     Q_OBJECT
     Q_PROPERTY(bool refreshing READ isRefreshing WRITE setRefreshing NOTIFY refreshingChanged)

@@ -55,7 +55,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidColor : public QObject
+class Q_NATIVEANDROID_EXPORT QNativeAndroidColor : public QObject
 {
     Q_OBJECT
     Q_ENUMS(Constants)

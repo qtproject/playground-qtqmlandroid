@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidCalendarView : public QNativeAndroidFrameLayout
+class Q_NATIVEANDROID_EXPORT QNativeAndroidCalendarView : public QNativeAndroidFrameLayout
 {
     Q_OBJECT
 

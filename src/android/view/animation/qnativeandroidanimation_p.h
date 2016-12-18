@@ -55,7 +55,7 @@ QT_BEGIN_NAMESPACE
 
 class QNativeAndroidInterpolator;
 
-class Q_QMLANDROID_EXPORT QNativeAndroidAnimation : public QNativeAndroidContextual
+class Q_NATIVEANDROID_EXPORT QNativeAndroidAnimation : public QNativeAndroidContextual
 {
     Q_OBJECT
     Q_PROPERTY(int resource READ resource WRITE setResource NOTIFY resourceChanged)

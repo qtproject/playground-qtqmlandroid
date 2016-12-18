@@ -54,7 +54,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidTextView : public QNativeAndroidView
+class Q_NATIVEANDROID_EXPORT QNativeAndroidTextView : public QNativeAndroidView
 {
     Q_OBJECT
     Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)

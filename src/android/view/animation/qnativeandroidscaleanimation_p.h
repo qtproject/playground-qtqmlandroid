@@ -52,7 +52,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Q_QMLANDROID_EXPORT QNativeAndroidScaleAnimation : public QNativeAndroidAnimation
+class Q_NATIVEANDROID_EXPORT QNativeAndroidScaleAnimation : public QNativeAndroidAnimation
 {
     Q_OBJECT
     Q_PROPERTY(qreal fromXScale READ fromXScale WRITE setFromXScale NOTIFY fromXScaleChanged)
