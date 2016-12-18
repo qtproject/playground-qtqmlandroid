@@ -48,9 +48,9 @@
 // We mean it.
 //
 
-#include <QtQmlAndroid/private/qtnativeandroidglobal_p.h>
-#include <QtQmlAndroid/private/qnativeandroidoptional_p.h>
-#include <QtQmlAndroid/private/qnativeandroidinterpolator_p.h>
+#include <QtNativeAndroid/private/qtnativeandroidglobal_p.h>
+#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
+#include <QtNativeAndroid/private/qnativeandroidinterpolator_p.h>
 #include <QtAndroidExtras/qandroidjniobject.h>
 
 QT_BEGIN_NAMESPACE

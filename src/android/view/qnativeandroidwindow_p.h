@@ -48,8 +48,8 @@
 // We mean it.
 //
 
-#include <QtQmlAndroid/private/qnativeandroidcontextual_p.h>
-#include <QtQmlAndroid/private/qnativeandroidoptional_p.h>
+#include <QtNativeAndroid/private/qnativeandroidcontextual_p.h>
+#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
 

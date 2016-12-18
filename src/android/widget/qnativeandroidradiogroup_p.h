@@ -48,7 +48,7 @@
 // We mean it.
 //
 
-#include <QtQmlAndroid/private/qnativeandroidlinearlayout_p.h>
+#include <QtNativeAndroid/private/qnativeandroidlinearlayout_p.h>
 
 QT_BEGIN_NAMESPACE
 

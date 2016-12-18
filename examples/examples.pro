@@ -1,3 +1,3 @@
 TEMPLATE = subdirs
 SUBDIRS += \
-    qmlandroid/catalog
+    nativeandroid/catalog

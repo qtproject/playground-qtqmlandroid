@@ -24,7 +24,7 @@ Build and install like any Qt module.
 Link to the library, and deploy the desired Android packages
 in the application .pro file:
 
-    QT += qmlandroid
+    QT += nativeandroid
 
 A minimal QML example that can replace the main.qml when using
 the Qt Quick Application template in Qt Creator. The rest can

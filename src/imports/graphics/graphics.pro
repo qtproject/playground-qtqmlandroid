@@ -2,7 +2,7 @@ TARGET = qtqmlandroidgraphicsplugin
 TARGETPATH = android/graphics
 IMPORT_VERSION = 0.21
 
-QT += qmlandroid-private
+QT += nativeandroid-private
 
 SOURCES += \
     $$PWD/qtqmlandroidgraphicsplugin.cpp

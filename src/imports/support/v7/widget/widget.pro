@@ -2,7 +2,7 @@ TARGET = qtqmlandroidsupportv7widgetplugin
 TARGETPATH = android/support/v7/widget
 IMPORT_VERSION = 0.21
 
-QT += qmlandroid-private
+QT += nativeandroid-private
 
 SOURCES += \
     $$PWD/qtqmlandroidsupportv7widgetplugin.cpp

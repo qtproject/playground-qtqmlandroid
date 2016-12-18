@@ -48,7 +48,7 @@
 // We mean it.
 //
 
-#include <QtQmlAndroid/private/qtnativeandroidglobal_p.h>
+#include <QtNativeAndroid/private/qtnativeandroidglobal_p.h>
 
 #include <QtCore/qobject.h>
 #include <QtCore/qreadwritelock.h>

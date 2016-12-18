@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = catalog
-QT += qml qmlandroid
+QT += qml nativeandroid
 
 SOURCES += \
     main.cpp
@@ -24,5 +24,5 @@ DISTFILES += \
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
 ANDROID_SUPPORT = v4 v7
 
-target.path = $$[QT_INSTALL_EXAMPLES]/qmlandroid/catalog
+target.path = $$[QT_INSTALL_EXAMPLES]/nativeandroid/catalog
 INSTALLS += target

@@ -48,7 +48,7 @@
 // We mean it.
 //
 
-#include <QtQmlAndroid/private/qnativeandroidviewanimator_p.h>
+#include <QtNativeAndroid/private/qnativeandroidviewanimator_p.h>
 
 QT_BEGIN_NAMESPACE
 

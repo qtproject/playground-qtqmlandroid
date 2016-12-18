@@ -48,7 +48,7 @@
 // We mean it.
 //
 
-#include <QtQmlAndroid/private/qnativeandroidanimation_p.h>
+#include <QtNativeAndroid/private/qnativeandroidanimation_p.h>
 
 QT_BEGIN_NAMESPACE
 

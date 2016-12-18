@@ -48,7 +48,7 @@
 // We mean it.
 //
 
-#include <QtQmlAndroid/private/qnativeandroidprogressbar_p.h>
+#include <QtNativeAndroid/private/qnativeandroidprogressbar_p.h>
 
 QT_BEGIN_NAMESPACE
 

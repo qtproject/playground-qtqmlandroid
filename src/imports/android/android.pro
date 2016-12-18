@@ -2,7 +2,7 @@ TARGET = qtqmlandroidplugin
 TARGETPATH = android
 IMPORT_VERSION = 0.21
 
-QT += qmlandroid-private
+QT += nativeandroid-private
 
 SOURCES += \
     $$PWD/qtqmlandroidplugin.cpp

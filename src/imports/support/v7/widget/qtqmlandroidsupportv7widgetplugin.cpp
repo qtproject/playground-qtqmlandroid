@@ -37,9 +37,9 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qnativeandroidcardview_p.h>
-#include <QtQmlAndroid/private/qnativeandroidrecycleradapter_p.h>
-#include <QtQmlAndroid/private/qnativeandroidrecyclerview_p.h>
+#include <QtNativeAndroid/private/qnativeandroidcardview_p.h>
+#include <QtNativeAndroid/private/qnativeandroidrecycleradapter_p.h>
+#include <QtNativeAndroid/private/qnativeandroidrecyclerview_p.h>
 
 QT_BEGIN_NAMESPACE
 

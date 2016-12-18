@@ -37,22 +37,22 @@
 #include <QtQml/qqmlextensionplugin.h>
 #include <QtQml/qqml.h>
 
-#include <QtQmlAndroid/private/qnativeandroidacceleratedecelerateinterpolator_p.h>
-#include <QtQmlAndroid/private/qnativeandroidaccelerateinterpolator_p.h>
-#include <QtQmlAndroid/private/qnativeandroidalphaanimation_p.h>
-#include <QtQmlAndroid/private/qnativeandroidanimation_p.h>
-#include <QtQmlAndroid/private/qnativeandroidanimationset_p.h>
-#include <QtQmlAndroid/private/qnativeandroidanticipateinterpolator_p.h>
-#include <QtQmlAndroid/private/qnativeandroidanticipateovershootinterpolator_p.h>
-#include <QtQmlAndroid/private/qnativeandroidbounceinterpolator_p.h>
-#include <QtQmlAndroid/private/qnativeandroidcycleinterpolator_p.h>
-#include <QtQmlAndroid/private/qnativeandroiddecelerateinterpolator_p.h>
-#include <QtQmlAndroid/private/qnativeandroidlinearinterpolator_p.h>
-#include <QtQmlAndroid/private/qnativeandroidovershootinterpolator_p.h>
-#include <QtQmlAndroid/private/qnativeandroidpathinterpolator_p.h>
-#include <QtQmlAndroid/private/qnativeandroidrotateanimation_p.h>
-#include <QtQmlAndroid/private/qnativeandroidscaleanimation_p.h>
-#include <QtQmlAndroid/private/qnativeandroidtranslateanimation_p.h>
+#include <QtNativeAndroid/private/qnativeandroidacceleratedecelerateinterpolator_p.h>
+#include <QtNativeAndroid/private/qnativeandroidaccelerateinterpolator_p.h>
+#include <QtNativeAndroid/private/qnativeandroidalphaanimation_p.h>
+#include <QtNativeAndroid/private/qnativeandroidanimation_p.h>
+#include <QtNativeAndroid/private/qnativeandroidanimationset_p.h>
+#include <QtNativeAndroid/private/qnativeandroidanticipateinterpolator_p.h>
+#include <QtNativeAndroid/private/qnativeandroidanticipateovershootinterpolator_p.h>
+#include <QtNativeAndroid/private/qnativeandroidbounceinterpolator_p.h>
+#include <QtNativeAndroid/private/qnativeandroidcycleinterpolator_p.h>
+#include <QtNativeAndroid/private/qnativeandroiddecelerateinterpolator_p.h>
+#include <QtNativeAndroid/private/qnativeandroidlinearinterpolator_p.h>
+#include <QtNativeAndroid/private/qnativeandroidovershootinterpolator_p.h>
+#include <QtNativeAndroid/private/qnativeandroidpathinterpolator_p.h>
+#include <QtNativeAndroid/private/qnativeandroidrotateanimation_p.h>
+#include <QtNativeAndroid/private/qnativeandroidscaleanimation_p.h>
+#include <QtNativeAndroid/private/qnativeandroidtranslateanimation_p.h>
 
 QT_BEGIN_NAMESPACE
 
