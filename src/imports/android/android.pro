@@ -1,11 +1,13 @@
-TARGET = qtqmlandroidplugin
-TARGETPATH = android
-IMPORT_VERSION = 0.21
-
-QT += nativeandroid-private
-
-SOURCES += \
-    $$PWD/qtqmlandroidplugin.cpp
-
-CONFIG += no_cxx_module
-load(qml_plugin)
+TEMPLATE = subdirs
+SUBDIRS += \
+    android \
+    app \
+    content \
+    graphics \
+    graphics/drawable \
+    support/v4/widget \
+    support/v7/app \
+    support/v7/widget \
+    view \
+    view/animation \
+    widget
