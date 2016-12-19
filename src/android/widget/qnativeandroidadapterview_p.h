@@ -53,6 +53,7 @@
 QT_BEGIN_NAMESPACE
 
 class QNativeAndroidBaseAdapter;
+class QNativeAndroidAdapterViewPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidAdapterView : public QNativeAndroidViewGroup
 {
@@ -85,8 +86,8 @@ private Q_SLOTS:
     void updateAdapter();
 
 private:
-    QAndroidJniObject m_listener;
-    QNativeAndroidBaseAdapter *m_adapter;
+    Q_DISABLE_COPY(QNativeAndroidAdapterView)
+    Q_DECLARE_PRIVATE(QNativeAndroidAdapterView)
 };
 
 QT_END_NAMESPACE

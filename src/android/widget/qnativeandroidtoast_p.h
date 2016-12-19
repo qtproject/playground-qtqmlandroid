@@ -49,11 +49,11 @@
 //
 
 #include <QtNativeAndroid/private/qnativeandroidobject_p.h>
-#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
 
 class QNativeAndroidView;
+class QNativeAndroidToastPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidToast : public QNativeAndroidObject
 {
@@ -79,8 +79,8 @@ Q_SIGNALS:
     void gravityChanged();
 
 private:
-    QString m_text;
-    QNativeAndroidOptional<int> m_gravity;
+    Q_DISABLE_COPY(QNativeAndroidToast)
+    Q_DECLARE_PRIVATE(QNativeAndroidToast)
 };
 
 QT_END_NAMESPACE

@@ -35,20 +35,30 @@
 ****************************************************************************/
 
 #include "qnativeandroidscrollview_p.h"
+#include "qnativeandroidframelayout_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
+#include "qnativeandroidoptional_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidScrollView::QNativeAndroidScrollView(QNativeAndroidContext *context) :
-    QNativeAndroidFrameLayout(context)
+class QNativeAndroidScrollViewPrivate : public QNativeAndroidFrameLayoutPrivate
+{
+public:
+    QNativeAndroidOptional<int> scrollX;
+    QNativeAndroidOptional<int> scrollY;
+};
+
+QNativeAndroidScrollView::QNativeAndroidScrollView(QNativeAndroidContext *context)
+    : QNativeAndroidFrameLayout(*(new QNativeAndroidScrollViewPrivate), context)
 {
 }
 
 int QNativeAndroidScrollView::scrollX() const
 {
-    if (m_scrollX.isNull())
+    Q_D(const QNativeAndroidScrollView);
+    if (d->scrollX.isNull())
         return 0;
-    return m_scrollX;
+    return d->scrollX;
 }
 
 void QNativeAndroidScrollView::setScrollX(int x)
@@ -59,8 +69,9 @@ void QNativeAndroidScrollView::setScrollX(int x)
 
 bool QNativeAndroidScrollView::updateScrollX(int x)
 {
-    if (m_scrollX.isNull() || m_scrollX != x) {
-        m_scrollX = x;
+    Q_D(QNativeAndroidScrollView);
+    if (d->scrollX.isNull() || d->scrollX != x) {
+        d->scrollX = x;
         emit scrollXChanged();
     }
     return false;
@@ -68,9 +79,10 @@ bool QNativeAndroidScrollView::updateScrollX(int x)
 
 int QNativeAndroidScrollView::scrollY() const
 {
-    if (m_scrollY.isNull())
+    Q_D(const QNativeAndroidScrollView);
+    if (d->scrollY.isNull())
         return 0;
-    return m_scrollY;
+    return d->scrollY;
 }
 
 void QNativeAndroidScrollView::setScrollY(int y)
@@ -81,8 +93,9 @@ void QNativeAndroidScrollView::setScrollY(int y)
 
 bool QNativeAndroidScrollView::updateScrollY(int y)
 {
-    if (m_scrollY.isNull() || m_scrollY != y) {
-        m_scrollY = y;
+    Q_D(QNativeAndroidScrollView);
+    if (d->scrollY.isNull() || d->scrollY != y) {
+        d->scrollY = y;
         emit scrollYChanged();
     }
     return false;

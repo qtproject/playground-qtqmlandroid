@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidCompoundButtonPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidCompoundButton : public QNativeAndroidButton
 {
     Q_OBJECT
@@ -70,6 +72,8 @@ Q_SIGNALS:
     void checkedChanged();
 
 protected:
+    QNativeAndroidCompoundButton(QNativeAndroidCompoundButtonPrivate &dd, QNativeAndroidContext *context = nullptr);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
 
@@ -80,8 +84,8 @@ private Q_SLOTS:
     bool updateChecked(bool checked);
 
 private:
-    bool m_checked;
-    QAndroidJniObject m_listener;
+    Q_DISABLE_COPY(QNativeAndroidCompoundButton)
+    Q_DECLARE_PRIVATE(QNativeAndroidCompoundButton)
 };
 
 QT_END_NAMESPACE

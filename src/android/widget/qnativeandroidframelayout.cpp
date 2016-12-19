@@ -35,11 +35,17 @@
 ****************************************************************************/
 
 #include "qnativeandroidframelayout_p.h"
+#include "qnativeandroidframelayout_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidFrameLayout::QNativeAndroidFrameLayout(QNativeAndroidContext *context) :
-    QNativeAndroidViewGroup(context)
+QNativeAndroidFrameLayout::QNativeAndroidFrameLayout(QNativeAndroidContext *context)
+    : QNativeAndroidViewGroup(*(new QNativeAndroidFrameLayoutPrivate), context)
+{
+}
+
+QNativeAndroidFrameLayout::QNativeAndroidFrameLayout(QNativeAndroidFrameLayoutPrivate &dd, QNativeAndroidContext *context)
+    : QNativeAndroidViewGroup(dd, context)
 {
 }
 

@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidTimePickerPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidTimePicker : public QNativeAndroidFrameLayout
 {
     Q_OBJECT
@@ -62,6 +64,10 @@ public:
 protected:
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
+
+private:
+    Q_DISABLE_COPY(QNativeAndroidTimePicker)
+    Q_DECLARE_PRIVATE(QNativeAndroidTimePicker)
 };
 
 QT_END_NAMESPACE

@@ -35,11 +35,17 @@
 ****************************************************************************/
 
 #include "qnativeandroidbutton_p.h"
+#include "qnativeandroidbutton_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidButton::QNativeAndroidButton(QNativeAndroidContext *context) :
-    QNativeAndroidTextView(context)
+QNativeAndroidButton::QNativeAndroidButton(QNativeAndroidContext *context)
+    : QNativeAndroidTextView(*(new QNativeAndroidButtonPrivate), context)
+{
+}
+
+QNativeAndroidButton::QNativeAndroidButton(QNativeAndroidButtonPrivate &dd, QNativeAndroidContext *context)
+    : QNativeAndroidTextView(dd, context)
 {
 }
 

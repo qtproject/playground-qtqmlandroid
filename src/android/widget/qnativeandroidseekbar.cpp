@@ -35,11 +35,18 @@
 ****************************************************************************/
 
 #include "qnativeandroidseekbar_p.h"
+#include "qnativeandroidabsseekbar_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidSeekBar::QNativeAndroidSeekBar(QNativeAndroidContext *context) :
-    QNativeAndroidAbsSeekBar(context)
+class QNativeAndroidSeekBarPrivate : public QNativeAndroidAbsSeekBarPrivate
+{
+public:
+    QAndroidJniObject listener;
+};
+
+QNativeAndroidSeekBar::QNativeAndroidSeekBar(QNativeAndroidContext *context)
+    : QNativeAndroidAbsSeekBar(*(new QNativeAndroidSeekBarPrivate), context)
 {
 }
 
@@ -52,16 +59,17 @@ QAndroidJniObject QNativeAndroidSeekBar::onCreate()
 
 void QNativeAndroidSeekBar::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidSeekBar);
     QNativeAndroidAbsSeekBar::onInflate(instance);
 
-    m_listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeSeekBarListener",
+    d->listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeSeekBarListener",
                                    "(Landroid/widget/SeekBar;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        onRegisterNativeMethods(m_listener.object());
+        onRegisterNativeMethods(d->listener.object());
         nativeMethodsRegistered = true;
     }
 }

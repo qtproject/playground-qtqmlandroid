@@ -47,6 +47,11 @@ QNativeAndroidViewGroup::QNativeAndroidViewGroup(QNativeAndroidContext *context)
 {
 }
 
+QNativeAndroidViewGroup::QNativeAndroidViewGroup(QNativeAndroidViewGroupPrivate &dd, QNativeAndroidContext *context)
+    : QNativeAndroidView(dd, context)
+{
+}
+
 QNativeAndroidLayoutParams *QNativeAndroidViewGroup::qmlAttachedProperties(QObject *object)
 {
     QNativeAndroidView *view = qobject_cast<QNativeAndroidView*>(object);

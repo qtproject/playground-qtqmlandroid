@@ -49,10 +49,11 @@
 //
 
 #include <QtNativeAndroid/private/qnativeandroidview_p.h>
-#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 #include <QtCore/qurl.h>
 
 QT_BEGIN_NAMESPACE
+
+class QNativeAndroidImageViewPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidImageView : public QNativeAndroidView
 {
@@ -83,11 +84,10 @@ protected:
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    QAndroidJniObject getUri() const;
+    Q_DISABLE_COPY(QNativeAndroidImageView)
+    Q_DECLARE_PRIVATE(QNativeAndroidImageView)
 
-    QUrl m_uri;
-    int m_resource;
-    QNativeAndroidOptional<int> m_tint;
+    QAndroidJniObject getUri() const;
 };
 
 QT_END_NAMESPACE

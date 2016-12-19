@@ -35,19 +35,28 @@
 ****************************************************************************/
 
 #include "qnativeandroidradiogroup_p.h"
+#include "qnativeandroidlinearlayout_p_p.h"
 #include "qnativeandroidradiobutton_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidRadioGroup::QNativeAndroidRadioGroup(QNativeAndroidContext *context) :
-    QNativeAndroidLinearLayout(context), m_checkedButton(0)
+class QNativeAndroidRadioGroupPrivate : public QNativeAndroidLinearLayoutPrivate
+{
+public:
+    QAndroidJniObject listener;
+    QNativeAndroidRadioButton* checkedButton = nullptr;
+};
+
+QNativeAndroidRadioGroup::QNativeAndroidRadioGroup(QNativeAndroidContext *context)
+    : QNativeAndroidLinearLayout(*(new QNativeAndroidRadioGroupPrivate), context)
 {
 }
 
 QNativeAndroidRadioButton *QNativeAndroidRadioGroup::checkedButton() const
 {
-    return m_checkedButton;
+    Q_D(const QNativeAndroidRadioGroup);
+    return d->checkedButton;
 }
 
 void QNativeAndroidRadioGroup::setCheckedButton(QNativeAndroidRadioButton *button)
@@ -70,16 +79,17 @@ QAndroidJniObject QNativeAndroidRadioGroup::onCreate()
 
 void QNativeAndroidRadioGroup::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidRadioGroup);
     QNativeAndroidLinearLayout::onInflate(instance);
 
-    m_listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeRadioGroupListener",
+    d->listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeRadioGroupListener",
                                    "(Landroid/widget/RadioGroup;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        onRegisterNativeMethods(m_listener.object());
+        onRegisterNativeMethods(d->listener.object());
         nativeMethodsRegistered = true;
     }
 
@@ -120,8 +130,9 @@ void QNativeAndroidRadioGroup::updateCheckedButtonId(int checkedId)
 
 bool QNativeAndroidRadioGroup::updateCheckedButton(QNativeAndroidRadioButton *button)
 {
-    if (m_checkedButton != button) {
-        m_checkedButton = button;
+    Q_D(QNativeAndroidRadioGroup);
+    if (d->checkedButton != button) {
+        d->checkedButton = button;
         emit checkedButtonChanged();
         return true;
     }

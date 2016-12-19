@@ -35,16 +35,26 @@
 ****************************************************************************/
 
 #include "qnativeandroidpopupmenu_p.h"
+#include "qnativeandroidobject_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 #include "qnativeandroidmenuitem_p.h"
+#include "qnativeandroidoptional_p.h"
 #include "qnativeandroidcontext_p.h"
 #include "qnativeandroidview_p.h"
 #include <QtCore/qdebug.h>
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidPopupMenu::QNativeAndroidPopupMenu(QObject *parent) :
-    QNativeAndroidObject(parent), m_anchor(0)
+class QNativeAndroidPopupMenuPrivate : public QNativeAndroidObjectPrivate
+{
+public:
+    QNativeAndroidView *anchor = nullptr;
+    QNativeAndroidOptional<int> gravity;
+    QAndroidJniObject listener;
+};
+
+QNativeAndroidPopupMenu::QNativeAndroidPopupMenu(QObject *parent)
+    : QNativeAndroidObject(*(new QNativeAndroidPopupMenuPrivate), parent)
 {
 }
 
@@ -61,35 +71,40 @@ QList<QNativeAndroidMenuItem *> QNativeAndroidPopupMenu::items() const
 
 QNativeAndroidView *QNativeAndroidPopupMenu::anchor() const
 {
-    return m_anchor;
+    Q_D(const QNativeAndroidPopupMenu);
+    return d->anchor;
 }
 
 void QNativeAndroidPopupMenu::setAnchor(QNativeAndroidView *anchor)
 {
-    if (m_anchor != anchor) {
-        m_anchor = anchor;
+    Q_D(QNativeAndroidPopupMenu);
+    if (d->anchor != anchor) {
+        d->anchor = anchor;
         emit anchorChanged();
     }
 }
 
 int QNativeAndroidPopupMenu::gravity() const
 {
-    if (m_gravity.isNull())
+    Q_D(const QNativeAndroidPopupMenu);
+    if (d->gravity.isNull())
         return 0; // TODO
-    return m_gravity;
+    return d->gravity;
 }
 
 void QNativeAndroidPopupMenu::setGravity(int value)
 {
+    Q_D(QNativeAndroidPopupMenu);
     if (value != gravity()) {
-        m_gravity = value;
+        d->gravity = value;
         emit gravityChanged();
     }
 }
 
 void QNativeAndroidPopupMenu::show()
 {
-    QNativeAndroidView *anchor = m_anchor ? m_anchor : qobject_cast<QNativeAndroidView *>(parent());
+    Q_D(QNativeAndroidPopupMenu);
+    QNativeAndroidView *anchor = d->anchor ? d->anchor : qobject_cast<QNativeAndroidView *>(parent());
     if (!anchor) {
         qWarning() << "PopupMenu parent must be either anchored or in a view.";
         return;
@@ -106,10 +121,10 @@ void QNativeAndroidPopupMenu::show()
 
     QtNativeAndroid::callFunction([=]() {
         QAndroidJniObject popup;
-        if (!m_gravity.isNull()) {
+        if (!d->gravity.isNull()) {
             popup = QAndroidJniObject("android/widget/PopupMenu",
                                       "(Landroid/content/Context;Landroid/view/View;I)V",
-                                      c.object(), a.object(), m_gravity);
+                                      c.object(), a.object(), d->gravity);
         } else {
             popup = QAndroidJniObject("android/widget/PopupMenu",
                                       "(Landroid/content/Context;Landroid/view/View;)V",

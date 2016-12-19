@@ -35,11 +35,17 @@
 ****************************************************************************/
 
 #include "qnativeandroidbaseadapter_p.h"
+#include "qnativeandroidbaseadapter_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidBaseAdapter::QNativeAndroidBaseAdapter(QObject *parent) :
-    QNativeAndroidContextual(parent)
+QNativeAndroidBaseAdapter::QNativeAndroidBaseAdapter(QObject *parent)
+    : QNativeAndroidContextual(*(new QNativeAndroidBaseAdapterPrivate), parent)
+{
+}
+
+QNativeAndroidBaseAdapter::QNativeAndroidBaseAdapter(QNativeAndroidBaseAdapterPrivate &dd, QObject *parent)
+    : QNativeAndroidContextual(dd, parent)
 {
 }
 

@@ -35,24 +35,34 @@
 ****************************************************************************/
 
 #include "qnativeandroidtogglebutton_p.h"
+#include "qnativeandroidcompoundbutton_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidToggleButton::QNativeAndroidToggleButton(QNativeAndroidContext *context) :
-    QNativeAndroidCompoundButton(context)
+class QNativeAndroidToggleButtonPrivate : public QNativeAndroidCompoundButtonPrivate
+{
+public:
+    QString textOn;
+    QString textOff;
+};
+
+QNativeAndroidToggleButton::QNativeAndroidToggleButton(QNativeAndroidContext *context)
+    : QNativeAndroidCompoundButton(*(new QNativeAndroidToggleButtonPrivate), context)
 {
 }
 
 QString QNativeAndroidToggleButton::textOn() const
 {
-    return m_textOn;
+    Q_D(const QNativeAndroidToggleButton);
+    return d->textOn;
 }
 
 void QNativeAndroidToggleButton::setTextOn(const QString &text)
 {
-    if (m_textOn != text) {
-        m_textOn = text;
+    Q_D(QNativeAndroidToggleButton);
+    if (d->textOn != text) {
+        d->textOn = text;
         QtNativeAndroid::callTextMethod(instance(), "setTextOn", text);
         emit textOnChanged();
     }
@@ -60,13 +70,15 @@ void QNativeAndroidToggleButton::setTextOn(const QString &text)
 
 QString QNativeAndroidToggleButton::textOff() const
 {
-    return m_textOff;
+    Q_D(const QNativeAndroidToggleButton);
+    return d->textOff;
 }
 
 void QNativeAndroidToggleButton::setTextOff(const QString &text)
 {
-    if (m_textOff != text) {
-        m_textOff = text;
+    Q_D(QNativeAndroidToggleButton);
+    if (d->textOff != text) {
+        d->textOff = text;
         QtNativeAndroid::callTextMethod(instance(), "setTextOff", text);
         emit textOffChanged();
     }
@@ -81,12 +93,13 @@ QAndroidJniObject QNativeAndroidToggleButton::onCreate()
 
 void QNativeAndroidToggleButton::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidToggleButton);
     QNativeAndroidCompoundButton::onInflate(instance);
 
-    if (!m_textOn.isNull())
-        instance.callMethod<void>("setTextOn", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_textOn).object());
-    if (!m_textOff.isNull())
-        instance.callMethod<void>("setTextOff", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(m_textOff).object());
+    if (!d->textOn.isNull())
+        instance.callMethod<void>("setTextOn", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(d->textOn).object());
+    if (!d->textOff.isNull())
+        instance.callMethod<void>("setTextOff", "(Ljava/lang/CharSequence;)V", QAndroidJniObject::fromString(d->textOff).object());
 }
 
 QT_END_NAMESPACE

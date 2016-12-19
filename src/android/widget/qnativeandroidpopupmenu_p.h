@@ -49,12 +49,12 @@
 //
 
 #include <QtNativeAndroid/private/qnativeandroidobject_p.h>
-#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
 
 class QNativeAndroidView;
 class QNativeAndroidMenuItem;
+class QNativeAndroidPopupMenuPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidPopupMenu : public QNativeAndroidObject
 {
@@ -84,9 +84,8 @@ Q_SIGNALS:
     void itemClick();
 
 private:
-    QNativeAndroidView *m_anchor;
-    QNativeAndroidOptional<int> m_gravity;
-    QAndroidJniObject m_listener;
+    Q_DISABLE_COPY(QNativeAndroidPopupMenu)
+    Q_DECLARE_PRIVATE(QNativeAndroidPopupMenu)
 };
 
 QT_END_NAMESPACE

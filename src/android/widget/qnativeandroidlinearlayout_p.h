@@ -49,10 +49,11 @@
 //
 
 #include <QtNativeAndroid/private/qnativeandroidviewgroup_p.h>
-#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 #include <QtNativeAndroid/private/qnativeandroidlinearlayoutparams_p.h>
 
 QT_BEGIN_NAMESPACE
+
+class QNativeAndroidLinearLayoutPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidLinearLayout : public QNativeAndroidViewGroup
 {
@@ -100,17 +101,14 @@ Q_SIGNALS:
     void weightSumChanged();
 
 protected:
+    QNativeAndroidLinearLayout(QNativeAndroidLinearLayoutPrivate &dd, QNativeAndroidContext *context = nullptr);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    QNativeAndroidOptional<bool> m_baselineAligned;
-    QNativeAndroidOptional<bool> m_baselineAlignedChildIndex;
-    // TODO: Drawable divider
-    // TODO: int gravity
-    QNativeAndroidOptional<bool> m_measureWithLargestChild;
-    QNativeAndroidOptional<Orientation> m_orientation;
-    QNativeAndroidOptional<qreal> m_weightSum;
+    Q_DISABLE_COPY(QNativeAndroidLinearLayout)
+    Q_DECLARE_PRIVATE(QNativeAndroidLinearLayout)
 };
 
 QT_END_NAMESPACE

@@ -35,24 +35,36 @@
 ****************************************************************************/
 
 #include "qnativeandroidimageview_p.h"
+#include "qnativeandroidview_p_p.h"
+#include "qnativeandroidoptional_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidImageView::QNativeAndroidImageView(QNativeAndroidContext *context) :
-    QNativeAndroidView(context), m_resource(0)
+class QNativeAndroidImageViewPrivate : public QNativeAndroidViewPrivate
+{
+public:
+    QUrl uri;
+    int resource = 0;
+    QNativeAndroidOptional<int> tint;
+};
+
+QNativeAndroidImageView::QNativeAndroidImageView(QNativeAndroidContext *context)
+    : QNativeAndroidView(*(new QNativeAndroidImageViewPrivate), context)
 {
 }
 
 QUrl QNativeAndroidImageView::imageURI() const
 {
-    return m_uri;
+    Q_D(const QNativeAndroidImageView);
+    return d->uri;
 }
 
 void QNativeAndroidImageView::setImageURI(const QUrl &uri)
 {
-    if (m_uri != uri) {
-        m_uri = uri;
+    Q_D(QNativeAndroidImageView);
+    if (d->uri != uri) {
+        d->uri = uri;
         if (isValid()) {
             QAndroidJniObject v = instance();
             QAndroidJniObject u = getUri();
@@ -66,13 +78,15 @@ void QNativeAndroidImageView::setImageURI(const QUrl &uri)
 
 int QNativeAndroidImageView::imageResource() const
 {
-    return m_resource;
+    Q_D(const QNativeAndroidImageView);
+    return d->resource;
 }
 
 void QNativeAndroidImageView::setImageResource(int resource)
 {
-    if (m_resource != resource) {
-        m_resource = resource;
+    Q_D(QNativeAndroidImageView);
+    if (d->resource != resource) {
+        d->resource = resource;
         QtNativeAndroid::callIntMethod(instance(), "setImageResource", resource);
         emit imageResourceChanged();
     }
@@ -80,15 +94,17 @@ void QNativeAndroidImageView::setImageResource(int resource)
 
 int QNativeAndroidImageView::imageTintColor() const
 {
-    if (m_tint.isNull())
+    Q_D(const QNativeAndroidImageView);
+    if (d->tint.isNull())
         return 0; // TODO
-    return m_tint;
+    return d->tint;
 }
 
 void QNativeAndroidImageView::setImageTintColor(int color)
 {
-    if (m_tint.isNull() || m_tint != color) {
-        m_tint = color;
+    Q_D(QNativeAndroidImageView);
+    if (d->tint.isNull() || d->tint != color) {
+        d->tint = color;
         if (isValid()) {
             QAndroidJniObject view = instance();
             QtNativeAndroid::callFunction([=]() {
@@ -112,24 +128,26 @@ QAndroidJniObject QNativeAndroidImageView::onCreate()
 
 void QNativeAndroidImageView::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidImageView);
     QNativeAndroidView::onInflate(instance);
 
-    if (m_uri.isValid())
+    if (d->uri.isValid())
         instance.callMethod<void>("setImageURI", "(Landroid/net/Uri;)V", getUri().object());
-    if (m_resource > 0)
-        instance.callMethod<void>("setImageResource", "(I)V", m_resource);
-    if (!m_tint.isNull()) {
+    if (d->resource > 0)
+        instance.callMethod<void>("setImageResource", "(I)V", d->resource);
+    if (!d->tint.isNull()) {
         QAndroidJniObject tint = QAndroidJniObject::callStaticObjectMethod("android/content/res/ColorStateList",
                                                                            "valueOf",
                                                                            "(I)Landroid/content/res/ColorStateList;",
-                                                                           m_tint);
+                                                                           d->tint);
         instance.callMethod<void>("setImageTintList", "(Landroid/content/res/ColorStateList;)v", tint.object());
     }
 }
 
 QAndroidJniObject QNativeAndroidImageView::getUri() const
 {
-    QAndroidJniObject str = QAndroidJniObject::fromString(m_uri.toString());
+    Q_D(const QNativeAndroidImageView);
+    QAndroidJniObject str = QAndroidJniObject::fromString(d->uri.toString());
     return QAndroidJniObject::callStaticObjectMethod("android/net/Uri", "parse", "(Ljava/lang/String;)Landroid/net/Uri;", str.object());
 }
 

@@ -35,38 +35,50 @@
 ****************************************************************************/
 
 #include "qnativeandroidarrayadapter_p.h"
+#include "qnativeandroidbaseadapter_p_p.h"
 #include "qnativeandroidadapterview_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidArrayAdapter::QNativeAndroidArrayAdapter(QObject *parent) :
-    QNativeAndroidBaseAdapter(parent), m_style(17367043) // TODO: android.R.layout.simple_list_item_1
+class QNativeAndroidArrayAdapterPrivate : public QNativeAndroidBaseAdapterPrivate
+{
+public:
+    int style = 17367043; // TODO: android.R.layout.simple_list_item_1
+    QStringList array;
+};
+
+QNativeAndroidArrayAdapter::QNativeAndroidArrayAdapter(QObject *parent)
+    : QNativeAndroidBaseAdapter(*(new QNativeAndroidArrayAdapterPrivate), parent)
 {
 }
 
 int QNativeAndroidArrayAdapter::style() const
 {
-    return m_style;
+    Q_D(const QNativeAndroidArrayAdapter);
+    return d->style;
 }
 
 void QNativeAndroidArrayAdapter::setStyle(int style)
 {
-    if (m_style != style) {
-        m_style = style;
+    Q_D(QNativeAndroidArrayAdapter);
+    if (d->style != style) {
+        d->style = style;
         emit styleChanged();
     }
 }
 
 QStringList QNativeAndroidArrayAdapter::array() const
 {
-    return m_array;
+    Q_D(const QNativeAndroidArrayAdapter);
+    return d->array;
 }
 
 void QNativeAndroidArrayAdapter::setArray(const QStringList &array)
 {
-    if (m_array != array) {
-        m_array = array; // TODO: sync
+    Q_D(QNativeAndroidArrayAdapter);
+    if (d->array != array) {
+        d->array = array; // TODO: sync
         emit countChanged();
         emit arrayChanged();
     }
@@ -74,18 +86,21 @@ void QNativeAndroidArrayAdapter::setArray(const QStringList &array)
 
 int QNativeAndroidArrayAdapter::count() const
 {
-    return m_array.count();
+    Q_D(const QNativeAndroidArrayAdapter);
+    return d->array.count();
 }
 
 QString QNativeAndroidArrayAdapter::getItem(int position) const
 {
-    return m_array.value(position);
+    Q_D(const QNativeAndroidArrayAdapter);
+    return d->array.value(position);
 }
 
 void QNativeAndroidArrayAdapter::clear()
 {
-    if (!m_array.isEmpty()) {
-        m_array.clear(); // TODO: sync
+    Q_D(QNativeAndroidArrayAdapter);
+    if (!d->array.isEmpty()) {
+        d->array.clear(); // TODO: sync
         emit countChanged();
         emit arrayChanged();
     }
@@ -93,17 +108,19 @@ void QNativeAndroidArrayAdapter::clear()
 
 QAndroidJniObject QNativeAndroidArrayAdapter::onCreate()
 {
+    Q_D(QNativeAndroidArrayAdapter);
     return QAndroidJniObject("android/widget/ArrayAdapter",
                              "(Landroid/content/Context;I)V",
                              ctx().object(),
-                             m_style);
+                             d->style);
 }
 
 void QNativeAndroidArrayAdapter::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidArrayAdapter);
     QNativeAndroidBaseAdapter::onInflate(instance);
 
-    foreach (const QString &str, m_array)
+    foreach (const QString &str, d->array)
         instance.callMethod<void>("add", "(Ljava/lang/Object;)V", QAndroidJniObject::fromString(str).object());
 }
 

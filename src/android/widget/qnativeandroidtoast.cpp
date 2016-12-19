@@ -35,47 +35,61 @@
 ****************************************************************************/
 
 #include "qnativeandroidtoast_p.h"
+#include "qnativeandroidobject_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
+#include "qnativeandroidoptional_p.h"
 #include "qnativeandroidview_p.h"
 #include <QtCore/qdebug.h>
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidToast::QNativeAndroidToast(QObject *parent) :
-    QNativeAndroidObject(parent)
+class QNativeAndroidToastPrivate : public QNativeAndroidObjectPrivate
+{
+public:
+    QString text;
+    QNativeAndroidOptional<int> gravity;
+};
+
+QNativeAndroidToast::QNativeAndroidToast(QObject *parent)
+    : QNativeAndroidObject(*(new QNativeAndroidToastPrivate), parent)
 {
 }
 
 QString QNativeAndroidToast::text() const
 {
-    return m_text;
+    Q_D(const QNativeAndroidToast);
+    return d->text;
 }
 
 void QNativeAndroidToast::setText(const QString &text)
 {
-    if (m_text != text) {
-        m_text = text;
+    Q_D(QNativeAndroidToast);
+    if (d->text != text) {
+        d->text = text;
         emit textChanged();
     }
 }
 
 int QNativeAndroidToast::gravity() const
 {
-    if (m_gravity.isNull())
+    Q_D(const QNativeAndroidToast);
+    if (d->gravity.isNull())
         return 0; // TODO
-    return m_gravity;
+    return d->gravity;
 }
 
 void QNativeAndroidToast::setGravity(int value)
 {
+    Q_D(QNativeAndroidToast);
     if (value != gravity()) {
-        m_gravity = value;
+        d->gravity = value;
         emit gravityChanged();
     }
 }
 
 void QNativeAndroidToast::show()
 {
+    Q_D(QNativeAndroidToast);
     QNativeAndroidView *view = qobject_cast<QNativeAndroidView *>(parent());
     if (!view) {
         qWarning() << "Toast must be in a view.";
@@ -90,12 +104,12 @@ void QNativeAndroidToast::show()
 
     QtNativeAndroid::callFunction([=]() {
         QAndroidJniObject toast;
-        if (!m_text.isNull()) {
+        if (!d->text.isNull()) {
             toast = QAndroidJniObject::callStaticObjectMethod("android/widget/Toast",
                                                               "makeText",
                                                               "(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;",
                                                               ctx.object(),
-                                                              QAndroidJniObject::fromString(m_text).object(),
+                                                              QAndroidJniObject::fromString(d->text).object(),
                                                               0); // TODO: LENGTH_SHORT (0), LENGTH_LONG (1)
         } else {
             toast = QAndroidJniObject("android/widget/Toast",
@@ -104,8 +118,8 @@ void QNativeAndroidToast::show()
         }
         inflate(toast);
 
-        if (!m_gravity.isNull())
-            toast.callMethod<void>("setGravity", "(I)V", m_gravity);
+        if (!d->gravity.isNull())
+            toast.callMethod<void>("setGravity", "(I)V", d->gravity);
 
         toast.callMethod<void>("show");
     });

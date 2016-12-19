@@ -39,11 +39,18 @@
 #include "qnativeandroidview_p.h"
 #include "qtnativeandroidfunctions_p.h"
 #include <QtAndroidExtras/qandroidjniobject.h>
+#include <QtCore/private/qobject_p.h>
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidTabSpec::QNativeAndroidTabSpec(QNativeAndroidView *view) :
-    QObject(view)
+class QNativeAndroidTabSpecPrivate : public QObjectPrivate
+{
+public:
+    QString label;
+};
+
+QNativeAndroidTabSpec::QNativeAndroidTabSpec(QNativeAndroidView *view)
+    : QObject(*(new QNativeAndroidTabSpecPrivate), view)
 {
     QNativeAndroidView *parent = qobject_cast<QNativeAndroidView *>(view->parent());
     if (parent)
@@ -60,13 +67,15 @@ QNativeAndroidTabSpec *QNativeAndroidTabSpec::qmlAttachedProperties(QObject *obj
 
 QString QNativeAndroidTabSpec::label() const
 {
-    return m_label;
+    Q_D(const QNativeAndroidTabSpec);
+    return d->label;
 }
 
 void QNativeAndroidTabSpec::setLabel(const QString &label)
 {
-    if (m_label != label) {
-        m_label = label;
+    Q_D(QNativeAndroidTabSpec);
+    if (d->label != label) {
+        d->label = label;
         // TODO: invalidate
         emit labelChanged();
     }
@@ -74,6 +83,7 @@ void QNativeAndroidTabSpec::setLabel(const QString &label)
 
 void QNativeAndroidTabSpec::setup(QAndroidJniObject &host, int index)
 {
+    Q_D(QNativeAndroidTabSpec);
     int id = -1;
     QNativeAndroidView *content = qobject_cast<QNativeAndroidView *>(parent());
     if (content)
@@ -86,7 +96,7 @@ void QNativeAndroidTabSpec::setup(QAndroidJniObject &host, int index)
 
         spec.callObjectMethod("setIndicator",
                              "(Ljava/lang/CharSequence;)Landroid/widget/TabHost$TabSpec;",
-                             QAndroidJniObject::fromString(m_label).object());
+                             QAndroidJniObject::fromString(d->label).object());
 
         if (id != -1) {
             spec.callObjectMethod("setContent",

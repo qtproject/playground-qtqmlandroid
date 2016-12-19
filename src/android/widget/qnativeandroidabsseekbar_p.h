@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidAbsSeekBarPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidAbsSeekBar : public QNativeAndroidProgressBar
 {
     Q_OBJECT
@@ -60,8 +62,14 @@ public:
     explicit QNativeAndroidAbsSeekBar(QNativeAndroidContext *context = nullptr);
 
 protected:
+    QNativeAndroidAbsSeekBar(QNativeAndroidAbsSeekBarPrivate &dd, QNativeAndroidContext *context = nullptr);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
+
+private:
+    Q_DISABLE_COPY(QNativeAndroidAbsSeekBar)
+    Q_DECLARE_PRIVATE(QNativeAndroidAbsSeekBar)
 };
 
 QT_END_NAMESPACE

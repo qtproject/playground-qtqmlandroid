@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidSeekBarPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidSeekBar : public QNativeAndroidAbsSeekBar
 {
     Q_OBJECT
@@ -67,7 +69,8 @@ protected:
     static void onProgressChanged(JNIEnv *env, jobject object, jlong instance, jint progress, jboolean fromUser);
 
 private:
-    QAndroidJniObject m_listener;
+    Q_DISABLE_COPY(QNativeAndroidSeekBar)
+    Q_DECLARE_PRIVATE(QNativeAndroidSeekBar)
 };
 
 QT_END_NAMESPACE

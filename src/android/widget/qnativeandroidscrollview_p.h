@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidScrollViewPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidScrollView : public QNativeAndroidFrameLayout
 {
     Q_OBJECT
@@ -83,8 +85,8 @@ private Q_SLOTS:
     bool updateScrollY(int y);
 
 private:
-    QNativeAndroidOptional<int> m_scrollX;
-    QNativeAndroidOptional<int> m_scrollY;
+    Q_DISABLE_COPY(QNativeAndroidScrollView)
+    Q_DECLARE_PRIVATE(QNativeAndroidScrollView)
 };
 
 QT_END_NAMESPACE

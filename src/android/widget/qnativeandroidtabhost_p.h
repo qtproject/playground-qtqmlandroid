@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidTabHostPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidTabHost : public QNativeAndroidFrameLayout
 {
     Q_OBJECT
@@ -70,7 +72,8 @@ protected:
     static void onTabChanged(JNIEnv *env, jobject object, jlong instance, jstring tabId);
 
 private:
-    QAndroidJniObject m_listener;
+    Q_DISABLE_COPY(QNativeAndroidTabHost)
+    Q_DECLARE_PRIVATE(QNativeAndroidTabHost)
 };
 
 QT_END_NAMESPACE

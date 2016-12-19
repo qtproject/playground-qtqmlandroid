@@ -51,13 +51,14 @@
 #include <QtNativeAndroid/private/qtnativeandroidglobal_p.h>
 
 #include <QtCore/qobject.h>
-#include <QtAndroidExtras/qandroidjniobject.h>
 #include <QtQml/qqml.h>
 
 QT_BEGIN_NAMESPACE
 
+class QAndroidJniObject;
 class QNativeAndroidView;
 class QNativeAndroidTabHost;
+class QNativeAndroidTabSpecPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidTabSpec : public QObject
 {
@@ -78,7 +79,8 @@ Q_SIGNALS:
     void labelChanged();
 
 private:
-    QString m_label;
+    Q_DISABLE_COPY(QNativeAndroidTabSpec)
+    Q_DECLARE_PRIVATE(QNativeAndroidTabSpec)
 };
 
 QT_END_NAMESPACE

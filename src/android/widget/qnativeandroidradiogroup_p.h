@@ -53,6 +53,7 @@
 QT_BEGIN_NAMESPACE
 
 class QNativeAndroidRadioButton;
+class QNativeAndroidRadioGroupPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidRadioGroup : public QNativeAndroidLinearLayout
 {
@@ -83,8 +84,8 @@ private Q_SLOTS:
     bool updateCheckedButton(QNativeAndroidRadioButton *button);
 
 private:
-    QAndroidJniObject m_listener;
-    QNativeAndroidRadioButton* m_checkedButton;
+    Q_DISABLE_COPY(QNativeAndroidRadioGroup)
+    Q_DECLARE_PRIVATE(QNativeAndroidRadioGroup)
 };
 
 QT_END_NAMESPACE

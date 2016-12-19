@@ -35,11 +35,17 @@
 ****************************************************************************/
 
 #include "qnativeandroiddatepicker_p.h"
+#include "qnativeandroidframelayout_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidDatePicker::QNativeAndroidDatePicker(QNativeAndroidContext *context) :
-    QNativeAndroidFrameLayout(context)
+class QNativeAndroidDatePickerPrivate : public QNativeAndroidFrameLayoutPrivate
+{
+public:
+};
+
+QNativeAndroidDatePicker::QNativeAndroidDatePicker(QNativeAndroidContext *context)
+    : QNativeAndroidFrameLayout(*(new QNativeAndroidDatePickerPrivate), context)
 {
 }
 

@@ -35,35 +35,38 @@
 ****************************************************************************/
 
 #include "qnativeandroidadapterview_p.h"
+#include "qnativeandroidadapterview_p_p.h"
 #include "qnativeandroidbaseadapter_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidAdapterView::QNativeAndroidAdapterView(QNativeAndroidContext *context) :
-    QNativeAndroidViewGroup(context), m_adapter(0)
+QNativeAndroidAdapterView::QNativeAndroidAdapterView(QNativeAndroidContext *context)
+    : QNativeAndroidViewGroup(*(new QNativeAndroidAdapterViewPrivate), context)
 {
 }
 
 QNativeAndroidBaseAdapter *QNativeAndroidAdapterView::adapter() const
 {
-    return m_adapter;
+    Q_D(const QNativeAndroidAdapterView);
+    return d->adapter;
 }
 
 void QNativeAndroidAdapterView::setAdapter(QNativeAndroidBaseAdapter *adapter)
 {
-    if (m_adapter != adapter) {
-        if (m_adapter) {
-            m_adapter->setContext(0);
-            disconnect(m_adapter, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidAdapterView::updateAdapter);
-            m_adapter->destruct();
+    Q_D(QNativeAndroidAdapterView);
+    if (d->adapter != adapter) {
+        if (d->adapter) {
+            d->adapter->setContext(0);
+            disconnect(d->adapter, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidAdapterView::updateAdapter);
+            d->adapter->destruct();
         }
-        m_adapter = adapter;
-        if (m_adapter) {
-            m_adapter->setContext(context());
-            connect(m_adapter, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidAdapterView::updateAdapter);
+        d->adapter = adapter;
+        if (d->adapter) {
+            d->adapter->setContext(context());
+            connect(d->adapter, &QNativeAndroidObject::instanceChanged, this, &QNativeAndroidAdapterView::updateAdapter);
             if (isValid())
-                m_adapter->construct();
+                d->adapter->construct();
         }
         emit adapterChanged();
     }
@@ -83,7 +86,8 @@ QAndroidJniObject QNativeAndroidAdapterView::onCreate()
 
 void QNativeAndroidAdapterView::onInflate(QAndroidJniObject &instance)
 {
-    m_listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeAdapterViewListener",
+    Q_D(QNativeAndroidAdapterView);
+    d->listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeAdapterViewListener",
                                    "(Landroid/widget/AdapterView;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));
@@ -92,7 +96,7 @@ void QNativeAndroidAdapterView::onInflate(QAndroidJniObject &instance)
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        onRegisterNativeMethods(m_listener.object());
+        onRegisterNativeMethods(d->listener.object());
         nativeMethodsRegistered = true;
     }
 }
@@ -125,12 +129,13 @@ void QNativeAndroidAdapterView::objectChange(ObjectChange change)
 
 void QNativeAndroidAdapterView::updateAdapter()
 {
+    Q_D(QNativeAndroidAdapterView);
     if (!isValid())
         return;
 
     QAndroidJniObject adapter;
-    if (m_adapter)
-        adapter = m_adapter->instance();
+    if (d->adapter)
+        adapter = d->adapter->instance();
 
     QAndroidJniObject view = instance();
     QtNativeAndroid::callFunction([=]() {

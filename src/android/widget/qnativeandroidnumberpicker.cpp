@@ -35,18 +35,27 @@
 ****************************************************************************/
 
 #include "qnativeandroidnumberpicker_p.h"
+#include "qnativeandroidlinearlayout_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidNumberPicker::QNativeAndroidNumberPicker(QNativeAndroidContext *context) :
-    QNativeAndroidLinearLayout(context), m_value(0)
+class QNativeAndroidNumberPickerPrivate : public QNativeAndroidLinearLayoutPrivate
+{
+public:
+    int value = 0;
+    QAndroidJniObject listener;
+};
+
+QNativeAndroidNumberPicker::QNativeAndroidNumberPicker(QNativeAndroidContext *context)
+    : QNativeAndroidLinearLayout(*(new QNativeAndroidNumberPickerPrivate), context)
 {
 }
 
 int QNativeAndroidNumberPicker::value() const
 {
-    return m_value;
+    Q_D(const QNativeAndroidNumberPicker);
+    return d->value;
 }
 
 void QNativeAndroidNumberPicker::setValue(int value)
@@ -57,8 +66,9 @@ void QNativeAndroidNumberPicker::setValue(int value)
 
 bool QNativeAndroidNumberPicker::updateValue(int value)
 {
-    if (m_value != value) {
-        m_value = value;
+    Q_D(QNativeAndroidNumberPicker);
+    if (d->value != value) {
+        d->value = value;
         emit valueChanged();
         return true;
     }
@@ -74,20 +84,21 @@ QAndroidJniObject QNativeAndroidNumberPicker::onCreate()
 
 void QNativeAndroidNumberPicker::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidNumberPicker);
     QNativeAndroidLinearLayout::onInflate(instance);
 
-    m_listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeNumberPickerListener",
+    d->listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeNumberPickerListener",
                                    "(Landroid/widget/NumberPicker;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        onRegisterNativeMethods(m_listener.object());
+        onRegisterNativeMethods(d->listener.object());
         nativeMethodsRegistered = true;
     }
 
-    instance.callMethod<void>("setValue", "(I)V", m_value);
+    instance.callMethod<void>("setValue", "(I)V", d->value);
 }
 
 void QNativeAndroidNumberPicker::onRegisterNativeMethods(jobject listener)

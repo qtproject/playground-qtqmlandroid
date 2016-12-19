@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidViewAnimatorPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidViewAnimator : public QNativeAndroidFrameLayout
 {
     Q_OBJECT
@@ -85,9 +87,8 @@ protected:
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    QNativeAndroidOptional<int> m_displayedChild;
-    QNativeAndroidOptional<int> m_inAnimation;
-    QNativeAndroidOptional<int> m_outAnimation;
+    Q_DISABLE_COPY(QNativeAndroidViewAnimator)
+    Q_DECLARE_PRIVATE(QNativeAndroidViewAnimator)
 };
 
 QT_END_NAMESPACE

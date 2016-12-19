@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidViewSwitcher::QNativeAndroidViewSwitcher(QNativeAndroidContext *context) :
-    QNativeAndroidViewAnimator(context)
+QNativeAndroidViewSwitcher::QNativeAndroidViewSwitcher(QNativeAndroidContext *context)
+    : QNativeAndroidViewAnimator(context)
 {
 }
 

@@ -35,11 +35,17 @@
 ****************************************************************************/
 
 #include "qnativeandroidcalendarview_p.h"
+#include "qnativeandroidframelayout_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidCalendarView::QNativeAndroidCalendarView(QNativeAndroidContext *context) :
-    QNativeAndroidFrameLayout(context)
+class QNativeAndroidCalendarViewPrivate : public QNativeAndroidFrameLayoutPrivate
+{
+public:
+};
+
+QNativeAndroidCalendarView::QNativeAndroidCalendarView(QNativeAndroidContext *context)
+    : QNativeAndroidFrameLayout(*(new QNativeAndroidCalendarViewPrivate), context)
 {
 }
 

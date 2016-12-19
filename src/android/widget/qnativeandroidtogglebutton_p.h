@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidToggleButtonPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidToggleButton : public QNativeAndroidCompoundButton
 {
     Q_OBJECT
@@ -76,8 +78,8 @@ protected:
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    QString m_textOn;
-    QString m_textOff;
+    Q_DISABLE_COPY(QNativeAndroidToggleButton)
+    Q_DECLARE_PRIVATE(QNativeAndroidToggleButton)
 };
 
 QT_END_NAMESPACE

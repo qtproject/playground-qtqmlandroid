@@ -35,18 +35,25 @@
 ****************************************************************************/
 
 #include "qnativeandroidcompoundbutton_p.h"
+#include "qnativeandroidcompoundbutton_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidCompoundButton::QNativeAndroidCompoundButton(QNativeAndroidContext *context) :
-    QNativeAndroidButton(context), m_checked(false)
+QNativeAndroidCompoundButton::QNativeAndroidCompoundButton(QNativeAndroidContext *context)
+    : QNativeAndroidButton(*(new QNativeAndroidCompoundButtonPrivate), context)
+{
+}
+
+QNativeAndroidCompoundButton::QNativeAndroidCompoundButton(QNativeAndroidCompoundButtonPrivate &dd, QNativeAndroidContext *context)
+    : QNativeAndroidButton(dd, context)
 {
 }
 
 bool QNativeAndroidCompoundButton::isChecked() const
 {
-    return m_checked;
+    Q_D(const QNativeAndroidCompoundButton);
+    return d->checked;
 }
 
 void QNativeAndroidCompoundButton::setChecked(bool checked)
@@ -57,8 +64,9 @@ void QNativeAndroidCompoundButton::setChecked(bool checked)
 
 bool QNativeAndroidCompoundButton::updateChecked(bool arg)
 {
+    Q_D(QNativeAndroidCompoundButton);
     if (arg != isChecked()) {
-        m_checked = arg;
+        d->checked = arg;
         emit checkedChanged();
         return true;
     }
@@ -79,20 +87,21 @@ QAndroidJniObject QNativeAndroidCompoundButton::onCreate()
 
 void QNativeAndroidCompoundButton::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidCompoundButton);
     QNativeAndroidButton::onInflate(instance);
 
-    m_listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeCompoundButtonListener",
+    d->listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeCompoundButtonListener",
                                    "(Landroid/widget/CompoundButton;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        onRegisterNativeMethods(m_listener.object());
+        onRegisterNativeMethods(d->listener.object());
         nativeMethodsRegistered = true;
     }
 
-    instance.callMethod<void>("setChecked", "(Z)V", m_checked);
+    instance.callMethod<void>("setChecked", "(Z)V", d->checked);
 }
 
 void QNativeAndroidCompoundButton::onRegisterNativeMethods(jobject listener)

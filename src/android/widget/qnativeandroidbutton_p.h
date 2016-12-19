@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidButtonPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidButton : public QNativeAndroidTextView
 {
     Q_OBJECT
@@ -60,8 +62,14 @@ public:
     explicit QNativeAndroidButton(QNativeAndroidContext *context = nullptr);
 
 protected:
+    QNativeAndroidButton(QNativeAndroidButtonPrivate &dd, QNativeAndroidContext *context = nullptr);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
+
+private:
+    Q_DISABLE_COPY(QNativeAndroidButton)
+    Q_DECLARE_PRIVATE(QNativeAndroidButton)
 };
 
 QT_END_NAMESPACE

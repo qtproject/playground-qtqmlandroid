@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidRatingBarPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidRatingBar : public QNativeAndroidAbsSeekBar
 {
     Q_OBJECT
@@ -77,8 +79,8 @@ private Q_SLOTS:
     bool updateRating(qreal rating);
 
 private:
-    qreal m_rating;
-    QAndroidJniObject m_listener;
+    Q_DISABLE_COPY(QNativeAndroidRatingBar)
+    Q_DECLARE_PRIVATE(QNativeAndroidRatingBar)
 };
 
 QT_END_NAMESPACE

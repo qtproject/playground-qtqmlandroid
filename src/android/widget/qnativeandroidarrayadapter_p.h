@@ -53,6 +53,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidArrayAdapterPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidArrayAdapter : public QNativeAndroidBaseAdapter
 {
     Q_OBJECT
@@ -83,8 +85,8 @@ protected:
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    int m_style;
-    QStringList m_array;
+    Q_DISABLE_COPY(QNativeAndroidArrayAdapter)
+    Q_DECLARE_PRIVATE(QNativeAndroidArrayAdapter)
 };
 
 QT_END_NAMESPACE

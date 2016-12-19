@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidNumberPickerPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidNumberPicker : public QNativeAndroidLinearLayout
 {
     Q_OBJECT
@@ -77,8 +79,8 @@ private Q_SLOTS:
     bool updateValue(int value);
 
 private:
-    int m_value;
-    QAndroidJniObject m_listener;
+    Q_DISABLE_COPY(QNativeAndroidNumberPicker)
+    Q_DECLARE_PRIVATE(QNativeAndroidNumberPicker)
 };
 
 QT_END_NAMESPACE

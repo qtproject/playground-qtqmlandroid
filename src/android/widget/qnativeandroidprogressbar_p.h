@@ -49,9 +49,10 @@
 //
 
 #include <QtNativeAndroid/private/qnativeandroidview_p.h>
-#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
+
+class QNativeAndroidProgressBarPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidProgressBar : public QNativeAndroidView
 {
@@ -99,6 +100,8 @@ Q_SIGNALS:
     void maxChanged();
 
 protected:
+    QNativeAndroidProgressBar(QNativeAndroidProgressBarPrivate &dd, QNativeAndroidContext *context = nullptr);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
 
@@ -106,11 +109,8 @@ private Q_SLOTS:
     bool updateProgress(int progress);
 
 private:
-    int m_max;
-    int m_progress;
-    int m_secondary;
-    bool m_indeterminate;
-    QNativeAndroidOptional<Style> m_style;
+    Q_DISABLE_COPY(QNativeAndroidProgressBar)
+    Q_DECLARE_PRIVATE(QNativeAndroidProgressBar)
 };
 
 QT_END_NAMESPACE

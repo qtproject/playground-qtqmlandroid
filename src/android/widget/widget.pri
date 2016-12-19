@@ -2,19 +2,26 @@ INCLUDEPATH += $$PWD
 
 HEADERS += \
     $$PWD/qnativeandroidabsseekbar_p.h \
+    $$PWD/qnativeandroidabsseekbar_p_p.h \
     $$PWD/qnativeandroidadapterview_p.h \
+    $$PWD/qnativeandroidadapterview_p_p.h \
     $$PWD/qnativeandroidarrayadapter_p.h \
     $$PWD/qnativeandroidbaseadapter_p.h \
+    $$PWD/qnativeandroidbaseadapter_p_p.h \
     $$PWD/qnativeandroidbutton_p.h \
+    $$PWD/qnativeandroidbutton_p_p.h \
     $$PWD/qnativeandroidcalendarview_p.h \
     $$PWD/qnativeandroidcheckbox_p.h \
     $$PWD/qnativeandroidcompoundbutton_p.h \
+    $$PWD/qnativeandroidcompoundbutton_p_p.h \
     $$PWD/qnativeandroiddatepicker_p.h \
     $$PWD/qnativeandroidedittext_p.h \
     $$PWD/qnativeandroidframelayout_p.h \
+    $$PWD/qnativeandroidframelayout_p_p.h \
     $$PWD/qnativeandroidframelayoutparams_p.h \
     $$PWD/qnativeandroidimageview_p.h \
     $$PWD/qnativeandroidlinearlayout_p.h \
+    $$PWD/qnativeandroidlinearlayout_p_p.h \
     $$PWD/qnativeandroidlinearlayoutparams_p.h \
     $$PWD/qnativeandroidlistview_p.h \
     $$PWD/qnativeandroidmarginlayoutparams_p.h \
@@ -22,6 +29,7 @@ HEADERS += \
     $$PWD/qnativeandroidnumberpicker_p.h \
     $$PWD/qnativeandroidpopupmenu_p.h \
     $$PWD/qnativeandroidprogressbar_p.h \
+    $$PWD/qnativeandroidprogressbar_p_p.h \
     $$PWD/qnativeandroidradiobutton_p.h \
     $$PWD/qnativeandroidradiogroup_p.h \
     $$PWD/qnativeandroidratingbar_p.h \
@@ -37,10 +45,12 @@ HEADERS += \
     $$PWD/qnativeandroidtabspec_p.h \
     $$PWD/qnativeandroidtabwidget_p.h \
     $$PWD/qnativeandroidtextview_p.h \
+    $$PWD/qnativeandroidtextview_p_p.h \
     $$PWD/qnativeandroidtimepicker_p.h \
     $$PWD/qnativeandroidtoast_p.h \
     $$PWD/qnativeandroidtogglebutton_p.h \
     $$PWD/qnativeandroidviewanimator_p.h \
+    $$PWD/qnativeandroidviewanimator_p_p.h \
     $$PWD/qnativeandroidviewflipper_p.h \
     $$PWD/qnativeandroidviewswitcher_p.h
 

@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidBaseAdapterPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidBaseAdapter : public QNativeAndroidContextual
 {
     Q_OBJECT
@@ -69,8 +71,14 @@ Q_SIGNALS:
     void countChanged();
 
 protected:
+    QNativeAndroidBaseAdapter(QNativeAndroidBaseAdapterPrivate &dd, QObject *parent = nullptr);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
+
+private:
+    Q_DISABLE_COPY(QNativeAndroidBaseAdapter)
+    Q_DECLARE_PRIVATE(QNativeAndroidBaseAdapter)
 };
 
 QT_END_NAMESPACE

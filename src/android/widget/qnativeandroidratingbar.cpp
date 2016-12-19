@@ -35,18 +35,27 @@
 ****************************************************************************/
 
 #include "qnativeandroidratingbar_p.h"
+#include "qnativeandroidabsseekbar_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidRatingBar::QNativeAndroidRatingBar(QNativeAndroidContext *context) :
-    QNativeAndroidAbsSeekBar(context), m_rating(0.0)
+class QNativeAndroidRatingBarPrivate : public QNativeAndroidAbsSeekBarPrivate
+{
+public:
+    qreal rating = 0.0;
+    QAndroidJniObject listener;
+};
+
+QNativeAndroidRatingBar::QNativeAndroidRatingBar(QNativeAndroidContext *context)
+    : QNativeAndroidAbsSeekBar(*(new QNativeAndroidRatingBarPrivate), context)
 {
 }
 
 qreal QNativeAndroidRatingBar::rating() const
 {
-    return m_rating;
+    Q_D(const QNativeAndroidRatingBar);
+    return d->rating;
 }
 
 void QNativeAndroidRatingBar::setRating(qreal rating)
@@ -57,8 +66,9 @@ void QNativeAndroidRatingBar::setRating(qreal rating)
 
 bool QNativeAndroidRatingBar::updateRating(qreal rating)
 {
-    if (!qFuzzyCompare(m_rating, rating)) {
-        m_rating = rating;
+    Q_D(QNativeAndroidRatingBar);
+    if (!qFuzzyCompare(d->rating, rating)) {
+        d->rating = rating;
         emit ratingChanged();
         return true;
     }
@@ -74,20 +84,21 @@ QAndroidJniObject QNativeAndroidRatingBar::onCreate()
 
 void QNativeAndroidRatingBar::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidRatingBar);
     QNativeAndroidAbsSeekBar::onInflate(instance);
 
-    m_listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeRatingBarListener",
+    d->listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeRatingBarListener",
                                    "(Landroid/widget/RatingBar;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        onRegisterNativeMethods(m_listener.object());
+        onRegisterNativeMethods(d->listener.object());
         nativeMethodsRegistered = true;
     }
 
-    instance.callMethod<void>("setRating", "(F)V", m_rating);
+    instance.callMethod<void>("setRating", "(F)V", d->rating);
 }
 
 void QNativeAndroidRatingBar::onRegisterNativeMethods(jobject listener)

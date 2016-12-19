@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidDatePickerPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidDatePicker : public QNativeAndroidFrameLayout
 {
     Q_OBJECT
@@ -62,6 +64,10 @@ public:
 protected:
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
+
+private:
+    Q_DISABLE_COPY(QNativeAndroidDatePicker)
+    Q_DECLARE_PRIVATE(QNativeAndroidDatePicker)
 };
 
 QT_END_NAMESPACE

@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidCheckBox::QNativeAndroidCheckBox(QNativeAndroidContext *context) :
-    QNativeAndroidCompoundButton(context)
+QNativeAndroidCheckBox::QNativeAndroidCheckBox(QNativeAndroidContext *context)
+    : QNativeAndroidCompoundButton(context)
 {
 }
 

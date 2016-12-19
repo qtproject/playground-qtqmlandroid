@@ -35,12 +35,19 @@
 ****************************************************************************/
 
 #include "qnativeandroidtabhost_p.h"
+#include "qnativeandroidframelayout_p_p.h"
 #include "qnativeandroidtabspec_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidTabHost::QNativeAndroidTabHost(QNativeAndroidContext *context) :
-    QNativeAndroidFrameLayout(context)
+class QNativeAndroidTabHostPrivate : public QNativeAndroidFrameLayoutPrivate
+{
+public:
+    QAndroidJniObject listener;
+};
+
+QNativeAndroidTabHost::QNativeAndroidTabHost(QNativeAndroidContext *context)
+    : QNativeAndroidFrameLayout(*(new QNativeAndroidTabHostPrivate), context)
 {
 }
 
@@ -53,16 +60,17 @@ QAndroidJniObject QNativeAndroidTabHost::onCreate()
 
 void QNativeAndroidTabHost::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidTabHost);
     QNativeAndroidFrameLayout::onInflate(instance);
 
-    m_listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeTabHostListener",
+    d->listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/widget/QtNativeTabHostListener",
                                    "(Landroid/widget/TabHost;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        onRegisterNativeMethods(m_listener.object());
+        onRegisterNativeMethods(d->listener.object());
         nativeMethodsRegistered = true;
     }
 

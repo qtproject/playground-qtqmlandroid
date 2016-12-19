@@ -35,11 +35,17 @@
 ****************************************************************************/
 
 #include "qnativeandroidabsseekbar_p.h"
+#include "qnativeandroidabsseekbar_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidAbsSeekBar::QNativeAndroidAbsSeekBar(QNativeAndroidContext *context) :
-    QNativeAndroidProgressBar(context)
+QNativeAndroidAbsSeekBar::QNativeAndroidAbsSeekBar(QNativeAndroidContext *context)
+    : QNativeAndroidProgressBar(*(new QNativeAndroidAbsSeekBarPrivate), context)
+{
+}
+
+QNativeAndroidAbsSeekBar::QNativeAndroidAbsSeekBar(QNativeAndroidAbsSeekBarPrivate &dd, QNativeAndroidContext *context)
+    : QNativeAndroidProgressBar(dd, context)
 {
 }
 

@@ -35,11 +35,17 @@
 ****************************************************************************/
 
 #include "qnativeandroidtimepicker_p.h"
+#include "qnativeandroidframelayout_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidTimePicker::QNativeAndroidTimePicker(QNativeAndroidContext *context) :
-    QNativeAndroidFrameLayout(context)
+class QNativeAndroidTimePickerPrivate : public QNativeAndroidFrameLayoutPrivate
+{
+public:
+};
+
+QNativeAndroidTimePicker::QNativeAndroidTimePicker(QNativeAndroidContext *context)
+    : QNativeAndroidFrameLayout(*(new QNativeAndroidTimePickerPrivate), context)
 {
 }
 

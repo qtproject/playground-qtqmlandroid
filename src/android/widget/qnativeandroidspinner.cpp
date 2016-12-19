@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidSpinner::QNativeAndroidSpinner(QNativeAndroidContext *context) :
-    QNativeAndroidAdapterView(context)
+QNativeAndroidSpinner::QNativeAndroidSpinner(QNativeAndroidContext *context)
+    : QNativeAndroidAdapterView(context)
 {
 }
 

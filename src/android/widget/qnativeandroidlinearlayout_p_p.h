@@ -34,8 +34,8 @@
 **
 ****************************************************************************/
 
-#ifndef QNATIVEANDROIDTEXTVIEW_P_H
-#define QNATIVEANDROIDTEXTVIEW_P_H
+#ifndef QNATIVEANDROIDLINEARLAYOUT_P_P_H
+#define QNATIVEANDROIDLINEARLAYOUT_P_P_H
 
 //
 //  W A R N I N G
@@ -48,63 +48,24 @@
 // We mean it.
 //
 
-#include <QtNativeAndroid/private/qnativeandroidview_p.h>
-#include <QtGui/qcolor.h>
+#include <QtNativeAndroid/private/qnativeandroidviewgroup_p_p.h>
+#include <QtNativeAndroid/private/qnativeandroidlinearlayout_p.h>
+#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
 
-class QNativeAndroidTextViewPrivate;
-
-class Q_NATIVEANDROID_EXPORT QNativeAndroidTextView : public QNativeAndroidView
+class QNativeAndroidLinearLayoutPrivate : public QNativeAndroidViewGroupPrivate
 {
-    Q_OBJECT
-    Q_PROPERTY(QString text READ text WRITE setText NOTIFY textChanged)
-    Q_PROPERTY(int textColor READ textColor WRITE setTextColor NOTIFY textColorChanged)
-    Q_PROPERTY(qreal textSize READ textSize WRITE setTextSize NOTIFY textSizeChanged)
-    Q_PROPERTY(QString hint READ hint WRITE setHint NOTIFY hintChanged)
-    Q_PROPERTY(bool singleLine READ isSingleLine WRITE setSingleLine NOTIFY singleLineChanged)
-    Q_PROPERTY(int inputType READ inputType WRITE setInputType NOTIFY inputTypeChanged)
-
 public:
-    explicit QNativeAndroidTextView(QNativeAndroidContext *context = nullptr);
-
-    QString text() const;
-    void setText(const QString &text);
-
-    int textColor() const;
-    void setTextColor(int color);
-
-    qreal textSize() const;
-    void setTextSize(qreal size);
-
-    QString hint() const;
-    void setHint(const QString &hint);
-
-    bool isSingleLine() const;
-    void setSingleLine(bool singleLine);
-
-    int inputType() const;
-    void setInputType(int type);
-
-Q_SIGNALS:
-    void textChanged();
-    void textColorChanged();
-    void textSizeChanged();
-    void hintChanged();
-    void singleLineChanged();
-    void inputTypeChanged();
-
-protected:
-    QNativeAndroidTextView(QNativeAndroidTextViewPrivate &dd, QNativeAndroidContext *context = nullptr);
-
-    QAndroidJniObject onCreate() override;
-    void onInflate(QAndroidJniObject &instance) override;
-
-private:
-    Q_DISABLE_COPY(QNativeAndroidTextView)
-    Q_DECLARE_PRIVATE(QNativeAndroidTextView)
+    QNativeAndroidOptional<bool> baselineAligned;
+    QNativeAndroidOptional<bool> baselineAlignedChildIndex;
+    // TODO: Drawable divider
+    // TODO: int gravity
+    QNativeAndroidOptional<bool> measureWithLargestChild;
+    QNativeAndroidOptional<QNativeAndroidLinearLayout::Orientation> orientation;
+    QNativeAndroidOptional<qreal> weightSum;
 };
 
 QT_END_NAMESPACE
 
-#endif // QNATIVEANDROIDTEXTVIEW_P_H
+#endif // QNATIVEANDROIDLINEARLAYOUT_P_P_H

@@ -35,24 +35,32 @@
 ****************************************************************************/
 
 #include "qnativeandroidprogressbar_p.h"
+#include "qnativeandroidprogressbar_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidProgressBar::QNativeAndroidProgressBar(QNativeAndroidContext *context) :
-    QNativeAndroidView(context), m_max(100), m_progress(0), m_secondary(0), m_indeterminate(false)
+QNativeAndroidProgressBar::QNativeAndroidProgressBar(QNativeAndroidContext *context)
+    : QNativeAndroidView(*(new QNativeAndroidProgressBarPrivate), context)
+{
+}
+
+QNativeAndroidProgressBar::QNativeAndroidProgressBar(QNativeAndroidProgressBarPrivate &dd, QNativeAndroidContext *context)
+    : QNativeAndroidView(dd, context)
 {
 }
 
 bool QNativeAndroidProgressBar::isIndeterminate() const
 {
-    return m_indeterminate;
+    Q_D(const QNativeAndroidProgressBar);
+    return d->indeterminate;
 }
 
 void QNativeAndroidProgressBar::setIndeterminate(bool indeterminate)
 {
-    if (m_indeterminate != indeterminate) {
-        m_indeterminate = indeterminate;
+    Q_D(QNativeAndroidProgressBar);
+    if (d->indeterminate != indeterminate) {
+        d->indeterminate = indeterminate;
         QtNativeAndroid::callBoolMethod(instance(), "setIndeterminate", indeterminate);
         emit indeterminateChanged();
     }
@@ -60,7 +68,8 @@ void QNativeAndroidProgressBar::setIndeterminate(bool indeterminate)
 
 int QNativeAndroidProgressBar::progress() const
 {
-    return m_progress;
+    Q_D(const QNativeAndroidProgressBar);
+    return d->progress;
 }
 
 void QNativeAndroidProgressBar::setProgress(int progress)
@@ -71,8 +80,9 @@ void QNativeAndroidProgressBar::setProgress(int progress)
 
 bool QNativeAndroidProgressBar::updateProgress(int progress)
 {
-    if (m_progress != progress) {
-        m_progress = progress;
+    Q_D(QNativeAndroidProgressBar);
+    if (d->progress != progress) {
+        d->progress = progress;
         emit progressChanged();
         return true;
     }
@@ -81,13 +91,15 @@ bool QNativeAndroidProgressBar::updateProgress(int progress)
 
 int QNativeAndroidProgressBar::secondaryProgress() const
 {
-    return m_secondary;
+    Q_D(const QNativeAndroidProgressBar);
+    return d->secondary;
 }
 
 void QNativeAndroidProgressBar::setSecondaryProgress(int progress)
 {
-    if (m_secondary != progress) {
-        m_secondary = progress;
+    Q_D(QNativeAndroidProgressBar);
+    if (d->secondary != progress) {
+        d->secondary = progress;
         QtNativeAndroid::callIntMethod(instance(), "setSecondaryProgress", progress);
         emit secondaryProgressChanged();
     }
@@ -95,13 +107,15 @@ void QNativeAndroidProgressBar::setSecondaryProgress(int progress)
 
 int QNativeAndroidProgressBar::max() const
 {
-    return m_max;
+    Q_D(const QNativeAndroidProgressBar);
+    return d->max;
 }
 
 void QNativeAndroidProgressBar::setMax(int max)
 {
-    if (m_max != max) {
-        m_max = max;
+    Q_D(QNativeAndroidProgressBar);
+    if (d->max != max) {
+        d->max = max;
         QtNativeAndroid::callIntMethod(instance(), "setMax", max);
         emit maxChanged();
     }
@@ -109,14 +123,16 @@ void QNativeAndroidProgressBar::setMax(int max)
 
 QNativeAndroidProgressBar::Style QNativeAndroidProgressBar::style() const
 {
-    if (m_style.isNull())
+    Q_D(const QNativeAndroidProgressBar);
+    if (d->style.isNull())
         return Medium;
-    return m_style;
+    return d->style;
 }
 
 void QNativeAndroidProgressBar::setStyle(Style style)
 {
-    m_style = style; // TODO: warning after construction or re-construct?
+    Q_D(QNativeAndroidProgressBar);
+    d->style = style; // TODO: warning after construction or re-construct?
 }
 
 QAndroidJniObject QNativeAndroidProgressBar::onCreate()
@@ -128,16 +144,17 @@ QAndroidJniObject QNativeAndroidProgressBar::onCreate()
 
 void QNativeAndroidProgressBar::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidProgressBar);
     QNativeAndroidView::onInflate(instance);
 
-    if (m_progress > 0)
-        instance.callMethod<void>("setProgress", "(I)V", m_progress);
-    if (m_secondary > 0)
-        instance.callMethod<void>("setSecondaryProgress", "(I)V", m_secondary);
-    if (m_indeterminate)
-        instance.callMethod<void>("setIndeterminate", "(Z)V", m_indeterminate);
-    if (m_max != 100)
-        instance.callMethod<void>("setMax", "(I)V", m_max);
+    if (d->progress > 0)
+        instance.callMethod<void>("setProgress", "(I)V", d->progress);
+    if (d->secondary > 0)
+        instance.callMethod<void>("setSecondaryProgress", "(I)V", d->secondary);
+    if (d->indeterminate)
+        instance.callMethod<void>("setIndeterminate", "(Z)V", d->indeterminate);
+    if (d->max != 100)
+        instance.callMethod<void>("setMax", "(I)V", d->max);
 }
 
 QT_END_NAMESPACE
