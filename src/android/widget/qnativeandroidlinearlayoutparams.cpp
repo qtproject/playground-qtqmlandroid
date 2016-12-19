@@ -35,26 +35,36 @@
 ****************************************************************************/
 
 #include "qnativeandroidlinearlayoutparams_p.h"
+#include "qnativeandroidmarginlayoutparams_p_p.h"
 #include "qnativeandroidview_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidLinearLayoutParams::QNativeAndroidLinearLayoutParams(QNativeAndroidView *view) :
-    QNativeAndroidMarginLayoutParams(view)
+class QNativeAndroidLinearLayoutParamsPrivate : public QNativeAndroidMarginLayoutParamsPrivate
+{
+public:
+    QNativeAndroidOptional<int> gravity;
+    QNativeAndroidOptional<qreal> weight;
+};
+
+QNativeAndroidLinearLayoutParams::QNativeAndroidLinearLayoutParams(QNativeAndroidView *view)
+    : QNativeAndroidMarginLayoutParams(*(new QNativeAndroidLinearLayoutParamsPrivate), view)
 {
 }
 
 int QNativeAndroidLinearLayoutParams::gravity() const
 {
-    if (m_gravity.isNull())
+    Q_D(const QNativeAndroidLinearLayoutParams);
+    if (d->gravity.isNull())
         return 0; // TODO
-    return m_gravity;
+    return d->gravity;
 }
 
 void QNativeAndroidLinearLayoutParams::setGravity(int value)
 {
+    Q_D(QNativeAndroidLinearLayoutParams);
     if (value != gravity()) {
-        m_gravity = value;
+        d->gravity = value;
         invalidate();
         emit gravityChanged();
     }
@@ -62,15 +72,17 @@ void QNativeAndroidLinearLayoutParams::setGravity(int value)
 
 qreal QNativeAndroidLinearLayoutParams::weight() const
 {
-    if (m_weight.isNull())
+    Q_D(const QNativeAndroidLinearLayoutParams);
+    if (d->weight.isNull())
         return 0.0; // TODO
-    return m_weight;
+    return d->weight;
 }
 
 void QNativeAndroidLinearLayoutParams::setWeight(qreal value)
 {
+    Q_D(QNativeAndroidLinearLayoutParams);
     if (value != weight()) {
-        m_weight = value;
+        d->weight = value;
         invalidate();
         emit weightChanged();
     }
@@ -85,12 +97,13 @@ QAndroidJniObject QNativeAndroidLinearLayoutParams::onCreate()
 
 void QNativeAndroidLinearLayoutParams::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidLinearLayoutParams);
     QNativeAndroidMarginLayoutParams::onInflate(instance);
 
-    if (!m_gravity.isNull())
-        instance.setField<jint>("gravity", m_gravity);
-    if (!m_weight.isNull())
-        instance.setField<jfloat>("weight", m_weight);
+    if (!d->gravity.isNull())
+        instance.setField<jint>("gravity", d->gravity);
+    if (!d->weight.isNull())
+        instance.setField<jfloat>("weight", d->weight);
 }
 
 QT_END_NAMESPACE

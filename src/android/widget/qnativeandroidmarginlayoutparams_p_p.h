@@ -34,55 +34,35 @@
 **
 ****************************************************************************/
 
-#include "qnativeandroidframelayoutparams_p.h"
-#include "qnativeandroidmarginlayoutparams_p_p.h"
-#include "qnativeandroidview_p.h"
+#ifndef QNATIVEANDROIDMARGINLAYOUTPARAMS_P_P_H
+#define QNATIVEANDROIDMARGINLAYOUTPARAMS_P_P_H
+
+//
+//  W A R N I N G
+//  -------------
+//
+// This file is not part of the Qt API.  It exists purely as an
+// implementation detail.  This header file may change from version to
+// version without notice, or even be removed.
+//
+// We mean it.
+//
+
+#include <QtNativeAndroid/private/qnativeandroidlayoutparams_p_p.h>
+#include <QtNativeAndroid/private/qnativeandroidoptional_p.h>
 
 QT_BEGIN_NAMESPACE
 
-class QNativeAndroidFrameLayoutParamsPrivate : public QNativeAndroidMarginLayoutParamsPrivate
+class QNativeAndroidMarginLayoutParamsPrivate : public QNativeAndroidLayoutParamsPrivate
 {
 public:
-    QNativeAndroidOptional<int> gravity;
+    QNativeAndroidOptional<int> margin;
+    QNativeAndroidOptional<int> topMargin;
+    QNativeAndroidOptional<int> leftMargin;
+    QNativeAndroidOptional<int> rightMargin;
+    QNativeAndroidOptional<int> bottomMargin;
 };
 
-QNativeAndroidFrameLayoutParams::QNativeAndroidFrameLayoutParams(QNativeAndroidView *view)
-    : QNativeAndroidMarginLayoutParams(*(new QNativeAndroidMarginLayoutParamsPrivate), view)
-{
-}
-
-int QNativeAndroidFrameLayoutParams::gravity() const
-{
-    Q_D(const QNativeAndroidFrameLayoutParams);
-    if (d->gravity.isNull())
-        return 0; // TODO
-    return d->gravity;
-}
-
-void QNativeAndroidFrameLayoutParams::setGravity(int value)
-{
-    Q_D(QNativeAndroidFrameLayoutParams);
-    if (value != gravity()) {
-        d->gravity = value;
-        invalidate();
-        emit gravityChanged();
-    }
-}
-
-QAndroidJniObject QNativeAndroidFrameLayoutParams::onCreate()
-{
-    return QAndroidJniObject("android/widget/FrameLayout$LayoutParams",
-                             "(II)V",
-                             MATCH_PARENT, MATCH_PARENT);
-}
-
-void QNativeAndroidFrameLayoutParams::onInflate(QAndroidJniObject &instance)
-{
-    Q_D(QNativeAndroidFrameLayoutParams);
-    QNativeAndroidMarginLayoutParams::onInflate(instance);
-
-    if (!d->gravity.isNull())
-        instance.callMethod<void>("setGravity", "(I)V", d->gravity);
-}
-
 QT_END_NAMESPACE
+
+#endif // QNATIVEANDROIDMARGINLAYOUTPARAMS_P_P_H

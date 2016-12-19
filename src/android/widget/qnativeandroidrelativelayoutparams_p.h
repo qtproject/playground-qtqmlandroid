@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidRelativeLayoutParamsPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidRelativeLayoutParams : public QNativeAndroidMarginLayoutParams
 {
     Q_OBJECT
@@ -182,30 +184,8 @@ protected:
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    QNativeAndroidView *m_above;
-    QNativeAndroidView *m_below;
-    QNativeAndroidView *m_alignTop;
-    QNativeAndroidView *m_alignLeft;
-    QNativeAndroidView *m_alignRight;
-    QNativeAndroidView *m_alignBottom;
-    QNativeAndroidView *m_alignStart;
-    QNativeAndroidView *m_alignEnd;
-    QNativeAndroidView *m_alignBaseline;
-    QNativeAndroidView *m_toLeftOf;
-    QNativeAndroidView *m_toRightOf;
-    QNativeAndroidView *m_toStartOf;
-    QNativeAndroidView *m_toEndOf;
-
-    bool m_alignParentTop;
-    bool m_alignParentLeft;
-    bool m_alignParentRight;
-    bool m_alignParentBottom;
-    bool m_alignParentStart;
-    bool m_alignParentEnd;
-    bool m_alignWithParent;
-    bool m_centerHorizontal;
-    bool m_centerVertical;
-    bool m_centerInParent;
+    Q_DISABLE_COPY(QNativeAndroidRelativeLayoutParams)
+    Q_DECLARE_PRIVATE(QNativeAndroidRelativeLayoutParams)
 };
 
 QT_END_NAMESPACE

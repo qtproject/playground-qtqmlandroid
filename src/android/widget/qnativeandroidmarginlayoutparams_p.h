@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidMarginLayoutParamsPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidMarginLayoutParams : public QNativeAndroidLayoutParams
 {
     Q_OBJECT
@@ -87,15 +89,14 @@ Q_SIGNALS:
     void bottomMarginChanged();
 
 protected:
+    QNativeAndroidMarginLayoutParams(QNativeAndroidMarginLayoutParamsPrivate &dd, QNativeAndroidView *view);
+
     QAndroidJniObject onCreate() override;
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    QNativeAndroidOptional<int> m_margin;
-    QNativeAndroidOptional<int> m_topMargin;
-    QNativeAndroidOptional<int> m_leftMargin;
-    QNativeAndroidOptional<int> m_rightMargin;
-    QNativeAndroidOptional<int> m_bottomMargin;
+    Q_DISABLE_COPY(QNativeAndroidMarginLayoutParams)
+    Q_DECLARE_PRIVATE(QNativeAndroidMarginLayoutParams)
 };
 
 QT_END_NAMESPACE

@@ -35,26 +35,34 @@
 ****************************************************************************/
 
 #include "qnativeandroidmarginlayoutparams_p.h"
+#include "qnativeandroidmarginlayoutparams_p_p.h"
 #include "qnativeandroidview_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidMarginLayoutParams::QNativeAndroidMarginLayoutParams(QNativeAndroidView *view) :
-    QNativeAndroidLayoutParams(view)
+QNativeAndroidMarginLayoutParams::QNativeAndroidMarginLayoutParams(QNativeAndroidView *view)
+    : QNativeAndroidLayoutParams(*(new QNativeAndroidMarginLayoutParamsPrivate), view)
+{
+}
+
+QNativeAndroidMarginLayoutParams::QNativeAndroidMarginLayoutParams(QNativeAndroidMarginLayoutParamsPrivate &dd, QNativeAndroidView *view)
+    : QNativeAndroidLayoutParams(dd, view)
 {
 }
 
 int QNativeAndroidMarginLayoutParams::margin() const
 {
-    if (m_margin.isNull())
+    Q_D(const QNativeAndroidMarginLayoutParams);
+    if (d->margin.isNull())
         return 0;
-    return m_margin;
+    return d->margin;
 }
 
 void QNativeAndroidMarginLayoutParams::setMargin(int margin)
 {
-    if (m_margin.isNull() || m_margin != margin) {
-        m_margin = margin;
+    Q_D(QNativeAndroidMarginLayoutParams);
+    if (d->margin.isNull() || d->margin != margin) {
+        d->margin = margin;
         invalidate();
         emit marginChanged();
     }
@@ -62,15 +70,17 @@ void QNativeAndroidMarginLayoutParams::setMargin(int margin)
 
 int QNativeAndroidMarginLayoutParams::topMargin() const
 {
-    if (m_topMargin.isNull())
+    Q_D(const QNativeAndroidMarginLayoutParams);
+    if (d->topMargin.isNull())
         return margin();
-    return m_topMargin;
+    return d->topMargin;
 }
 
 void QNativeAndroidMarginLayoutParams::setTopMargin(int margin)
 {
-    if (m_topMargin.isNull() || m_topMargin != margin) {
-        m_topMargin = margin;
+    Q_D(QNativeAndroidMarginLayoutParams);
+    if (d->topMargin.isNull() || d->topMargin != margin) {
+        d->topMargin = margin;
         invalidate();
         emit topMarginChanged();
     }
@@ -78,15 +88,17 @@ void QNativeAndroidMarginLayoutParams::setTopMargin(int margin)
 
 int QNativeAndroidMarginLayoutParams::leftMargin() const
 {
-    if (m_leftMargin.isNull())
+    Q_D(const QNativeAndroidMarginLayoutParams);
+    if (d->leftMargin.isNull())
         return margin();
-    return m_leftMargin;
+    return d->leftMargin;
 }
 
 void QNativeAndroidMarginLayoutParams::setLeftMargin(int margin)
 {
-    if (m_leftMargin.isNull() || m_leftMargin != margin) {
-        m_leftMargin = margin;
+    Q_D(QNativeAndroidMarginLayoutParams);
+    if (d->leftMargin.isNull() || d->leftMargin != margin) {
+        d->leftMargin = margin;
         invalidate();
         emit leftMarginChanged();
     }
@@ -94,15 +106,17 @@ void QNativeAndroidMarginLayoutParams::setLeftMargin(int margin)
 
 int QNativeAndroidMarginLayoutParams::rightMargin() const
 {
-    if (m_rightMargin.isNull())
+    Q_D(const QNativeAndroidMarginLayoutParams);
+    if (d->rightMargin.isNull())
         return margin();
-    return m_rightMargin;
+    return d->rightMargin;
 }
 
 void QNativeAndroidMarginLayoutParams::setRightMargin(int margin)
 {
-    if (m_rightMargin.isNull() || m_rightMargin != margin) {
-        m_rightMargin = margin;
+    Q_D(QNativeAndroidMarginLayoutParams);
+    if (d->rightMargin.isNull() || d->rightMargin != margin) {
+        d->rightMargin = margin;
         invalidate();
         emit rightMarginChanged();
     }
@@ -110,15 +124,17 @@ void QNativeAndroidMarginLayoutParams::setRightMargin(int margin)
 
 int QNativeAndroidMarginLayoutParams::bottomMargin() const
 {
-    if (m_bottomMargin.isNull())
+    Q_D(const QNativeAndroidMarginLayoutParams);
+    if (d->bottomMargin.isNull())
         return margin();
-    return m_bottomMargin;
+    return d->bottomMargin;
 }
 
 void QNativeAndroidMarginLayoutParams::setBottomMargin(int margin)
 {
-    if (m_bottomMargin.isNull() || m_bottomMargin != margin) {
-        m_bottomMargin = margin;
+    Q_D(QNativeAndroidMarginLayoutParams);
+    if (d->bottomMargin.isNull() || d->bottomMargin != margin) {
+        d->bottomMargin = margin;
         invalidate();
         emit bottomMarginChanged();
     }

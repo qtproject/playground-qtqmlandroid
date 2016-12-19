@@ -18,6 +18,7 @@ HEADERS += \
     $$PWD/qnativeandroidlinearlayoutparams_p.h \
     $$PWD/qnativeandroidlistview_p.h \
     $$PWD/qnativeandroidmarginlayoutparams_p.h \
+    $$PWD/qnativeandroidmarginlayoutparams_p_p.h \
     $$PWD/qnativeandroidnumberpicker_p.h \
     $$PWD/qnativeandroidpopupmenu_p.h \
     $$PWD/qnativeandroidprogressbar_p.h \

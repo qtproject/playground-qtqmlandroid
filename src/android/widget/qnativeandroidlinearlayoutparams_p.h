@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidLinearLayoutParamsPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidLinearLayoutParams : public QNativeAndroidMarginLayoutParams
 {
     Q_OBJECT
@@ -76,8 +78,8 @@ protected:
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    QNativeAndroidOptional<int> m_gravity;
-    QNativeAndroidOptional<qreal> m_weight;
+    Q_DISABLE_COPY(QNativeAndroidLinearLayoutParams)
+    Q_DECLARE_PRIVATE(QNativeAndroidLinearLayoutParams)
 };
 
 QT_END_NAMESPACE
