@@ -35,29 +35,40 @@
 ****************************************************************************/
 
 #include "qnativeandroidcolordrawable_p.h"
+#include "qnativeandroiddrawable_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidColorDrawable::QNativeAndroidColorDrawable(QObject *parent) :
-    QNativeAndroidDrawable(parent), m_color(0)
+class QNativeAndroidColorDrawablePrivate : public QNativeAndroidDrawablePrivate
+{
+public:
+    int color = 0;
+};
+
+QNativeAndroidColorDrawable::QNativeAndroidColorDrawable(QObject *parent)
+    : QNativeAndroidDrawable(*(new QNativeAndroidColorDrawablePrivate), parent)
 {
 }
 
-QNativeAndroidColorDrawable::QNativeAndroidColorDrawable(int color, QObject *parent) :
-    QNativeAndroidDrawable(parent), m_color(color)
+QNativeAndroidColorDrawable::QNativeAndroidColorDrawable(int color, QObject *parent)
+    : QNativeAndroidDrawable(*(new QNativeAndroidColorDrawablePrivate), parent)
 {
+    Q_D(QNativeAndroidColorDrawable);
+    d->color = color;
 }
 
 int QNativeAndroidColorDrawable::color() const
 {
-    return m_color;
+    Q_D(const QNativeAndroidColorDrawable);
+    return d->color;
 }
 
 void QNativeAndroidColorDrawable::setColor(int color)
 {
-    if (m_color != color) {
-        m_color = color;
+    Q_D(QNativeAndroidColorDrawable);
+    if (d->color != color) {
+        d->color = color;
         QtNativeAndroid::callIntMethod(instance(), "setColor", color);
         emit colorChanged();
     }
@@ -70,9 +81,10 @@ QAndroidJniObject QNativeAndroidColorDrawable::onCreate()
 
 void QNativeAndroidColorDrawable::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidColorDrawable);
     QNativeAndroidDrawable::onInflate(instance);
 
-    instance.callMethod<void>("setColor", "(I)V", m_color);
+    instance.callMethod<void>("setColor", "(I)V", d->color);
 }
 
 QT_END_NAMESPACE

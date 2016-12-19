@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidColorDrawablePrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidColorDrawable : public QNativeAndroidDrawable
 {
     Q_OBJECT
@@ -72,7 +74,8 @@ protected:
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    int m_color;
+    Q_DISABLE_COPY(QNativeAndroidColorDrawable)
+    Q_DECLARE_PRIVATE(QNativeAndroidColorDrawable)
 };
 
 QT_END_NAMESPACE

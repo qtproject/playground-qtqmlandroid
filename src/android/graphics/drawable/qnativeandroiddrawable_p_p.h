@@ -34,8 +34,8 @@
 **
 ****************************************************************************/
 
-#ifndef QNATIVEANDROIDDRAWABLE_P_H
-#define QNATIVEANDROIDDRAWABLE_P_H
+#ifndef QNATIVEANDROIDDRAWABLE_P_P_H
+#define QNATIVEANDROIDDRAWABLE_P_P_H
 
 //
 //  W A R N I N G
@@ -48,30 +48,15 @@
 // We mean it.
 //
 
-#include <QtNativeAndroid/private/qnativeandroidobject_p.h>
+#include <QtNativeAndroid/private/qnativeandroidobject_p_p.h>
 
 QT_BEGIN_NAMESPACE
 
-class QNativeAndroidDrawablePrivate;
-
-class Q_NATIVEANDROID_EXPORT QNativeAndroidDrawable : public QNativeAndroidObject
+class QNativeAndroidDrawablePrivate : public QNativeAndroidObjectPrivate
 {
-    Q_OBJECT
-
 public:
-    explicit QNativeAndroidDrawable(QObject *parent = nullptr);
-
-protected:
-    QNativeAndroidDrawable(QNativeAndroidDrawablePrivate &dd, QObject *parent = nullptr);
-
-    QAndroidJniObject onCreate() override;
-    void onInflate(QAndroidJniObject &instance) override;
-
-private:
-    Q_DISABLE_COPY(QNativeAndroidDrawable)
-    Q_DECLARE_PRIVATE(QNativeAndroidDrawable)
 };
 
 QT_END_NAMESPACE
 
-#endif // QNATIVEANDROIDDRAWABLE_P_H
+#endif // QNATIVEANDROIDDRAWABLE_P_P_H

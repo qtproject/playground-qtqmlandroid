@@ -35,11 +35,17 @@
 ****************************************************************************/
 
 #include "qnativeandroiddrawable_p.h"
+#include "qnativeandroiddrawable_p_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidDrawable::QNativeAndroidDrawable(QObject *parent) :
-    QNativeAndroidObject(parent)
+QNativeAndroidDrawable::QNativeAndroidDrawable(QObject *parent)
+    : QNativeAndroidObject(*(new QNativeAndroidDrawablePrivate), parent)
+{
+}
+
+QNativeAndroidDrawable::QNativeAndroidDrawable(QNativeAndroidDrawablePrivate &dd, QObject *parent)
+    : QNativeAndroidObject(dd, parent)
 {
 }
 
