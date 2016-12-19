@@ -77,6 +77,7 @@ void QNativeAndroidViewGroup::onInflate(QAndroidJniObject &instance)
 
 void QNativeAndroidViewGroup::viewChange(ViewChange change, const ViewChangeData &data)
 {
+    Q_UNUSED(data);
     QAndroidJniObject group = instance();
     switch (change) {
     case ViewChildAddedChange: // data.view

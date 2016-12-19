@@ -147,6 +147,7 @@ void QNativeAndroidService::onCreated(JNIEnv *env, jobject object, jlong instanc
 {
     Q_UNUSED(env);
     Q_UNUSED(object);
+    Q_UNUSED(instance);
 //    QNativeAndroidService *service = reinterpret_cast<QNativeAndroidService *>(instance);
 //    if (service)
 //        QMetaObject::invokeMethod(service, "created", Qt::QueuedConnection);

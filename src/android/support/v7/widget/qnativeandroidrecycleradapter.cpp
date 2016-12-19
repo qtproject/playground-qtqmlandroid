@@ -191,7 +191,7 @@ void QNativeAndroidRecyclerAdapter::setItemPosition(QNativeAndroidView *item, in
     if (context)
         context = context->parentContext();
     if (context)
-        context->setContextProperty("position", position);
+        context->setContextProperty(QStringLiteral("position"), position);
 }
 
 QT_END_NAMESPACE
