@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidSwipeRefreshLayoutPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidSwipeRefreshLayout : public QNativeAndroidViewGroup
 {
     Q_OBJECT
@@ -77,8 +79,8 @@ private Q_SLOTS:
     bool updateRefreshing(bool refreshing);
 
 private:
-    bool m_refreshing;
-    QAndroidJniObject m_listener;
+    Q_DISABLE_COPY(QNativeAndroidSwipeRefreshLayout)
+    Q_DECLARE_PRIVATE(QNativeAndroidSwipeRefreshLayout)
 };
 
 QT_END_NAMESPACE

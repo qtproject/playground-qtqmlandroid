@@ -35,25 +35,34 @@
 ****************************************************************************/
 
 #include "qnativeandroiddrawerlayoutparams_p.h"
+#include "qnativeandroidmarginlayoutparams_p_p.h"
 #include "qnativeandroiddrawerlayout_p.h"
 #include "qnativeandroidview_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidDrawerLayoutParams::QNativeAndroidDrawerLayoutParams(QNativeAndroidView *view) :
-    QNativeAndroidMarginLayoutParams(view), m_gravity(0)
+class QNativeAndroidDrawerLayoutParamsPrivate : public QNativeAndroidMarginLayoutParamsPrivate
+{
+public:
+    int gravity = 0;
+};
+
+QNativeAndroidDrawerLayoutParams::QNativeAndroidDrawerLayoutParams(QNativeAndroidView *view)
+    : QNativeAndroidMarginLayoutParams(*(new QNativeAndroidDrawerLayoutParamsPrivate), view)
 {
 }
 
 int QNativeAndroidDrawerLayoutParams::gravity() const
 {
-    return m_gravity;
+    Q_D(const QNativeAndroidDrawerLayoutParams);
+    return d->gravity;
 }
 
 void QNativeAndroidDrawerLayoutParams::setGravity(int value)
 {
-    if (m_gravity != value) {
-        m_gravity = value;
+    Q_D(QNativeAndroidDrawerLayoutParams);
+    if (d->gravity != value) {
+        d->gravity = value;
         invalidate();
         emit gravityChanged();
     }
@@ -61,16 +70,18 @@ void QNativeAndroidDrawerLayoutParams::setGravity(int value)
 
 QAndroidJniObject QNativeAndroidDrawerLayoutParams::onCreate()
 {
+    Q_D(QNativeAndroidDrawerLayoutParams);
     return QAndroidJniObject("android/support/v4/widget/DrawerLayout$LayoutParams",
                              "(III)V",
-                             MATCH_PARENT, MATCH_PARENT, m_gravity);
+                             MATCH_PARENT, MATCH_PARENT, d->gravity);
 }
 
 void QNativeAndroidDrawerLayoutParams::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidDrawerLayoutParams);
     QNativeAndroidMarginLayoutParams::onInflate(instance);
 
-    instance.setField<int>("gravity", m_gravity);
+    instance.setField<int>("gravity", d->gravity);
 }
 
 QT_END_NAMESPACE

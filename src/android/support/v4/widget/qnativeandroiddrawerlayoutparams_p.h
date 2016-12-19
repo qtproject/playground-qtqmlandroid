@@ -52,6 +52,8 @@
 
 QT_BEGIN_NAMESPACE
 
+class QNativeAndroidDrawerLayoutParamsPrivate;
+
 class Q_NATIVEANDROID_EXPORT QNativeAndroidDrawerLayoutParams : public QNativeAndroidMarginLayoutParams
 {
     Q_OBJECT
@@ -71,7 +73,8 @@ protected:
     void onInflate(QAndroidJniObject &instance) override;
 
 private:
-    int m_gravity;
+    Q_DISABLE_COPY(QNativeAndroidDrawerLayoutParams)
+    Q_DECLARE_PRIVATE(QNativeAndroidDrawerLayoutParams)
 };
 
 QT_END_NAMESPACE

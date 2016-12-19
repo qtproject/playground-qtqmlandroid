@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidCardView::QNativeAndroidCardView(QNativeAndroidContext *context) :
-    QNativeAndroidFrameLayout(context)
+QNativeAndroidCardView::QNativeAndroidCardView(QNativeAndroidContext *context)
+    : QNativeAndroidFrameLayout(context)
 {
 }
 

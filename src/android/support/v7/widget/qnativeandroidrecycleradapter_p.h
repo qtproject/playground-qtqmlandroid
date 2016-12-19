@@ -54,6 +54,7 @@ QT_BEGIN_NAMESPACE
 
 class QQmlComponent;
 class QNativeAndroidView;
+class QNativeAndroidRecyclerAdapterPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidRecyclerAdapter : public QNativeAndroidContextual
 {
@@ -87,9 +88,8 @@ private Q_SLOTS:
     void setItemPosition(QNativeAndroidView *item, int position);
 
 private:
-    int m_count;
-    QQmlComponent *m_delegate;
-    QList<QAndroidJniObject> m_holders;
+    Q_DISABLE_COPY(QNativeAndroidRecyclerAdapter)
+    Q_DECLARE_PRIVATE(QNativeAndroidRecyclerAdapter)
 };
 
 QT_END_NAMESPACE

@@ -35,18 +35,27 @@
 ****************************************************************************/
 
 #include "qnativeandroidswiperefreshlayout_p.h"
+#include "qnativeandroidviewgroup_p_p.h"
 #include "qtnativeandroidfunctions_p.h"
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidSwipeRefreshLayout::QNativeAndroidSwipeRefreshLayout(QNativeAndroidContext *context) :
-    QNativeAndroidViewGroup(context), m_refreshing(false)
+class QNativeAndroidSwipeRefreshLayoutPrivate : public QNativeAndroidViewGroupPrivate
+{
+public:
+    bool refreshing = false;
+    QAndroidJniObject listener;
+};
+
+QNativeAndroidSwipeRefreshLayout::QNativeAndroidSwipeRefreshLayout(QNativeAndroidContext *context)
+    : QNativeAndroidViewGroup(*(new QNativeAndroidSwipeRefreshLayoutPrivate), context)
 {
 }
 
 bool QNativeAndroidSwipeRefreshLayout::isRefreshing() const
 {
-    return m_refreshing;
+    Q_D(const QNativeAndroidSwipeRefreshLayout);
+    return d->refreshing;
 }
 
 void QNativeAndroidSwipeRefreshLayout::setRefreshing(bool refreshing)
@@ -57,8 +66,9 @@ void QNativeAndroidSwipeRefreshLayout::setRefreshing(bool refreshing)
 
 bool QNativeAndroidSwipeRefreshLayout::updateRefreshing(bool refreshing)
 {
-    if (m_refreshing != refreshing) {
-        m_refreshing = refreshing;
+    Q_D(QNativeAndroidSwipeRefreshLayout);
+    if (d->refreshing != refreshing) {
+        d->refreshing = refreshing;
         emit refreshingChanged();
         return true;
     }
@@ -74,16 +84,17 @@ QAndroidJniObject QNativeAndroidSwipeRefreshLayout::onCreate()
 
 void QNativeAndroidSwipeRefreshLayout::onInflate(QAndroidJniObject &instance)
 {
+    Q_D(QNativeAndroidSwipeRefreshLayout);
     QNativeAndroidViewGroup::onInflate(instance);
 
-    m_listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/support/v4/widget/QtNativeSwipeRefreshLayoutListener",
+    d->listener = QAndroidJniObject("org/qtproject/qt5/android/bindings/support/v4/widget/QtNativeSwipeRefreshLayoutListener",
                                    "(Landroid/support/v4/widget/SwipeRefreshLayout;J)V",
                                    instance.object(),
                                    reinterpret_cast<jlong>(this));
 
     static bool nativeMethodsRegistered = false;
     if (!nativeMethodsRegistered) {
-        onRegisterNativeMethods(m_listener.object());
+        onRegisterNativeMethods(d->listener.object());
         nativeMethodsRegistered = true;
     }
 }

@@ -53,6 +53,7 @@
 QT_BEGIN_NAMESPACE
 
 class QNativeAndroidRecyclerAdapter;
+class QNativeAndroidRecyclerViewPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidRecyclerView : public QNativeAndroidViewGroup
 {
@@ -78,8 +79,8 @@ private Q_SLOTS:
     void updateAdapter();
 
 private:
-    QNativeAndroidRecyclerAdapter *m_adapter;
-    QAndroidJniObject m_layoutManager;
+    Q_DISABLE_COPY(QNativeAndroidRecyclerView)
+    Q_DECLARE_PRIVATE(QNativeAndroidRecyclerView)
 };
 
 QT_END_NAMESPACE

@@ -38,8 +38,8 @@
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidActionBarDrawerToggle::QNativeAndroidActionBarDrawerToggle(QObject *parent) :
-    QNativeAndroidObject(parent)
+QNativeAndroidActionBarDrawerToggle::QNativeAndroidActionBarDrawerToggle(QObject *parent)
+    : QNativeAndroidObject(parent)
 {
 }
 
