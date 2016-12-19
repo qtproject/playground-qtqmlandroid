@@ -51,12 +51,13 @@
 #include <QtNativeAndroid/private/qtnativeandroidglobal_p.h>
 
 #include <QtCore/qobject.h>
-#include <QtQml/qqmlpropertymap.h>
 
 QT_BEGIN_NAMESPACE
 
 class QJSEngine;
 class QQmlEngine;
+class QQmlPropertyMap;
+class QNativeAndroidRPrivate;
 
 class Q_NATIVEANDROID_EXPORT QNativeAndroidR : public QObject
 {
@@ -85,7 +86,7 @@ class Q_NATIVEANDROID_EXPORT QNativeAndroidR : public QObject
     Q_PROPERTY(QQmlPropertyMap *xml READ xml CONSTANT)
 
 public:
-    QNativeAndroidR();
+    explicit QNativeAndroidR(QObject *parent = nullptr);
 
     QQmlPropertyMap *anim();
     QQmlPropertyMap *animator();
@@ -113,28 +114,8 @@ public:
     static QObject *provider(QQmlEngine *engine, QJSEngine *scriptEngine);
 
 private:
-    QQmlPropertyMap *m_anim;
-    QQmlPropertyMap *m_animator;
-    QQmlPropertyMap *m_array;
-    QQmlPropertyMap *m_attr;
-    QQmlPropertyMap *m_boolean;
-    QQmlPropertyMap *m_color;
-    QQmlPropertyMap *m_dimen;
-    QQmlPropertyMap *m_drawable;
-    QQmlPropertyMap *m_fraction;
-    QQmlPropertyMap *m_id;
-    QQmlPropertyMap *m_integer;
-    QQmlPropertyMap *m_interpolator;
-    QQmlPropertyMap *m_layout;
-    QQmlPropertyMap *m_menu;
-    QQmlPropertyMap *m_mipmap;
-    QQmlPropertyMap *m_plurals;
-    QQmlPropertyMap *m_raw;
-    QQmlPropertyMap *m_string;
-    QQmlPropertyMap *m_style;
-    QQmlPropertyMap *m_styleable;
-    QQmlPropertyMap *m_transition;
-    QQmlPropertyMap *m_xml;
+    Q_DISABLE_COPY(QNativeAndroidR)
+    Q_DECLARE_PRIVATE(QNativeAndroidR)
 };
 
 QT_END_NAMESPACE

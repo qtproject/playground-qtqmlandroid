@@ -35,34 +35,42 @@
 ****************************************************************************/
 
 #include "qnativeandroidr_p.h"
+#include <QtCore/private/qobject_p.h>
 #include <QtAndroidExtras/qandroidjniobject.h>
 #include <QtAndroidExtras/qandroidjnienvironment.h>
+#include <QtQml/qqmlpropertymap.h>
 
 QT_BEGIN_NAMESPACE
 
-QNativeAndroidR::QNativeAndroidR() :
-    m_anim(0),
-    m_animator(0),
-    m_array(0),
-    m_attr(0),
-    m_boolean(0),
-    m_color(0),
-    m_dimen(0),
-    m_drawable(0),
-    m_fraction(0),
-    m_id(0),
-    m_integer(0),
-    m_interpolator(0),
-    m_layout(0),
-    m_menu(0),
-    m_mipmap(0),
-    m_plurals(0),
-    m_raw(0),
-    m_string(0),
-    m_style(0),
-    m_styleable(0),
-    m_transition(0),
-    m_xml(0)
+class QNativeAndroidRPrivate : public QObjectPrivate
+{
+public:
+    QQmlPropertyMap *anim = nullptr;
+    QQmlPropertyMap *animator = nullptr;
+    QQmlPropertyMap *array = nullptr;
+    QQmlPropertyMap *attr = nullptr;
+    QQmlPropertyMap *boolean = nullptr;
+    QQmlPropertyMap *color = nullptr;
+    QQmlPropertyMap *dimen = nullptr;
+    QQmlPropertyMap *drawable = nullptr;
+    QQmlPropertyMap *fraction = nullptr;
+    QQmlPropertyMap *id = nullptr;
+    QQmlPropertyMap *integer = nullptr;
+    QQmlPropertyMap *interpolator = nullptr;
+    QQmlPropertyMap *layout = nullptr;
+    QQmlPropertyMap *menu = nullptr;
+    QQmlPropertyMap *mipmap = nullptr;
+    QQmlPropertyMap *plurals = nullptr;
+    QQmlPropertyMap *raw = nullptr;
+    QQmlPropertyMap *string = nullptr;
+    QQmlPropertyMap *style = nullptr;
+    QQmlPropertyMap *styleable = nullptr;
+    QQmlPropertyMap *transition = nullptr;
+    QQmlPropertyMap *xml = nullptr;
+};
+
+QNativeAndroidR::QNativeAndroidR(QObject *parent)
+    : QObject(*(new QNativeAndroidRPrivate), parent)
 {
 }
 
@@ -88,156 +96,178 @@ static QQmlPropertyMap *getFields(const char *className, QObject *parent)
 
 QQmlPropertyMap *QNativeAndroidR::anim()
 {
-    if (!m_anim)
-        m_anim = getFields("android/R$anim", this);
-    return m_anim;
+    Q_D(QNativeAndroidR);
+    if (!d->anim)
+        d->anim = getFields("android/R$anim", this);
+    return d->anim;
 }
 
 QQmlPropertyMap *QNativeAndroidR::animator()
 {
-    if (!m_animator)
-        m_animator = getFields("android/R$animator", this);
-    return m_animator;
+    Q_D(QNativeAndroidR);
+    if (!d->animator)
+        d->animator = getFields("android/R$animator", this);
+    return d->animator;
 }
 
 QQmlPropertyMap *QNativeAndroidR::array()
 {
-    if (!m_array)
-        m_array = getFields("android/R$array", this);
-    return m_array;
+    Q_D(QNativeAndroidR);
+    if (!d->array)
+        d->array = getFields("android/R$array", this);
+    return d->array;
 }
 
 QQmlPropertyMap *QNativeAndroidR::attr()
 {
-    if (!m_attr)
-        m_attr = getFields("android/R$attr", this);
-    return m_attr;
+    Q_D(QNativeAndroidR);
+    if (!d->attr)
+        d->attr = getFields("android/R$attr", this);
+    return d->attr;
 }
 
 QQmlPropertyMap *QNativeAndroidR::boolean()
 {
-    if (!m_boolean)
-        m_boolean = getFields("android/R$boolean", this);
-    return m_boolean;
+    Q_D(QNativeAndroidR);
+    if (!d->boolean)
+        d->boolean = getFields("android/R$boolean", this);
+    return d->boolean;
 }
 
 QQmlPropertyMap *QNativeAndroidR::color()
 {
-    if (!m_color)
-        m_color = getFields("android/R$color", this);
-    return m_color;
+    Q_D(QNativeAndroidR);
+    if (!d->color)
+        d->color = getFields("android/R$color", this);
+    return d->color;
 }
 
 QQmlPropertyMap *QNativeAndroidR::dimen()
 {
-    if (!m_dimen)
-        m_dimen = getFields("android/R$dimen", this);
-    return m_dimen;
+    Q_D(QNativeAndroidR);
+    if (!d->dimen)
+        d->dimen = getFields("android/R$dimen", this);
+    return d->dimen;
 }
 
 QQmlPropertyMap *QNativeAndroidR::drawable()
 {
-    if (!m_drawable)
-        m_drawable = getFields("android/R$drawable", this);
-    return m_drawable;
+    Q_D(QNativeAndroidR);
+    if (!d->drawable)
+        d->drawable = getFields("android/R$drawable", this);
+    return d->drawable;
 }
 
 QQmlPropertyMap *QNativeAndroidR::fraction()
 {
-    if (!m_fraction)
-        m_fraction = getFields("android/R$fraction", this);
-    return m_fraction;
+    Q_D(QNativeAndroidR);
+    if (!d->fraction)
+        d->fraction = getFields("android/R$fraction", this);
+    return d->fraction;
 }
 
 QQmlPropertyMap *QNativeAndroidR::id()
 {
-    if (!m_id)
-        m_id = getFields("android/R$id", this);
-    return m_id;
+    Q_D(QNativeAndroidR);
+    if (!d->id)
+        d->id = getFields("android/R$id", this);
+    return d->id;
 }
 
 QQmlPropertyMap *QNativeAndroidR::integer()
 {
-    if (!m_integer)
-        m_integer = getFields("android/R$integer", this);
-    return m_integer;
+    Q_D(QNativeAndroidR);
+    if (!d->integer)
+        d->integer = getFields("android/R$integer", this);
+    return d->integer;
 }
 
 QQmlPropertyMap *QNativeAndroidR::interpolator()
 {
-    if (!m_interpolator)
-        m_interpolator = getFields("android/R$interpolator", this);
-    return m_interpolator;
+    Q_D(QNativeAndroidR);
+    if (!d->interpolator)
+        d->interpolator = getFields("android/R$interpolator", this);
+    return d->interpolator;
 }
 
 QQmlPropertyMap *QNativeAndroidR::layout()
 {
-    if (!m_layout)
-        m_layout = getFields("android/R$layout", this);
-    return m_layout;
+    Q_D(QNativeAndroidR);
+    if (!d->layout)
+        d->layout = getFields("android/R$layout", this);
+    return d->layout;
 }
 
 QQmlPropertyMap *QNativeAndroidR::menu()
 {
-    if (!m_menu)
-        m_menu = getFields("android/R$menu", this);
-    return m_menu;
+    Q_D(QNativeAndroidR);
+    if (!d->menu)
+        d->menu = getFields("android/R$menu", this);
+    return d->menu;
 }
 
 QQmlPropertyMap *QNativeAndroidR::mipmap()
 {
-    if (!m_mipmap)
-        m_mipmap = getFields("android/R$mipmap", this);
-    return m_mipmap;
+    Q_D(QNativeAndroidR);
+    if (!d->mipmap)
+        d->mipmap = getFields("android/R$mipmap", this);
+    return d->mipmap;
 }
 
 QQmlPropertyMap *QNativeAndroidR::plurals()
 {
-    if (!m_plurals)
-        m_plurals = getFields("android/R$plurals", this);
-    return m_plurals;
+    Q_D(QNativeAndroidR);
+    if (!d->plurals)
+        d->plurals = getFields("android/R$plurals", this);
+    return d->plurals;
 }
 
 QQmlPropertyMap *QNativeAndroidR::raw()
 {
-    if (!m_raw)
-        m_raw = getFields("android/R$raw", this);
-    return m_raw;
+    Q_D(QNativeAndroidR);
+    if (!d->raw)
+        d->raw = getFields("android/R$raw", this);
+    return d->raw;
 }
 
 QQmlPropertyMap *QNativeAndroidR::string()
 {
-    if (!m_string)
-        m_string = getFields("android/R$string", this);
-    return m_string;
+    Q_D(QNativeAndroidR);
+    if (!d->string)
+        d->string = getFields("android/R$string", this);
+    return d->string;
 }
 
 QQmlPropertyMap *QNativeAndroidR::style()
 {
-    if (!m_style)
-        m_style = getFields("android/R$style", this);
-    return m_style;
+    Q_D(QNativeAndroidR);
+    if (!d->style)
+        d->style = getFields("android/R$style", this);
+    return d->style;
 }
 
 QQmlPropertyMap *QNativeAndroidR::styleable()
 {
-    if (!m_styleable)
-        m_styleable = getFields("android/R$styleable", this);
-    return m_styleable;
+    Q_D(QNativeAndroidR);
+    if (!d->styleable)
+        d->styleable = getFields("android/R$styleable", this);
+    return d->styleable;
 }
 
 QQmlPropertyMap *QNativeAndroidR::transition()
 {
-    if (!m_transition)
-        m_transition = getFields("android/R$transition", this);
-    return m_transition;
+    Q_D(QNativeAndroidR);
+    if (!d->transition)
+        d->transition = getFields("android/R$transition", this);
+    return d->transition;
 }
 
 QQmlPropertyMap *QNativeAndroidR::xml()
 {
-    if (!m_xml)
-        m_xml = getFields("android/R$xml", this);
-    return m_xml;
+    Q_D(QNativeAndroidR);
+    if (!d->xml)
+        d->xml = getFields("android/R$xml", this);
+    return d->xml;
 }
 
 QObject *QNativeAndroidR::provider(QQmlEngine *engine, QJSEngine *scriptEngine)
